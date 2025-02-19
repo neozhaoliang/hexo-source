@@ -1,0 +1,22 @@
+<% var sliders=site.data.slider; %>
+  <% if (sliders) { %>
+    <div class="slider">
+      <ul class="slides">
+        <% for (var i in sliders) { %>
+          <li>
+            <a href="<%= sliders[i].link || 'javascript:;' %>">
+              <img class="slider-image" src="<%= sliders[i].image %>">
+              <div class="caption <%= sliders[i].align %>-align">
+                <h4 class="dark yellow-text text-lighten-1">
+                  <%= sliders[i].title %>
+                    </h3>
+                    <h5 class="light yellow-text text-lighten-2">
+                      <%= sliders[i].subtitle %>
+                    </h5>
+              </div>
+            </a>
+          </li>
+          <% } %>
+      </ul>
+    </div>
+    <% } %>

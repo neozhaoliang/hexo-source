@@ -1,0 +1,17 @@
+alias sb="sudo service NetworkManager stop && sudo rm /var/lib/NetworkManager/NetworkManager.state && sudo service NetworkManager start"
+alias py="/usr/bin/python3"
+alias py2="/usr/bin/python2.7"
+alias et="TERM=xterm-256color emacsclient -t"
+alias ec="emacsclient -c -n"
+alias demacs="systemctl --user restart emacs.service"
+alias hexos="cd ~/文档/Hexo博客/ && nohup hexo s --draft&"
+alias book="cd ~/文档/Hexo博客/themes/raytaylorism/source/book/ && bash make.sh"
+
+export TAICHI_CMAKE_ARGS="$TAICHI_CMAKE_ARGS -DTI_WITH_VULKAN:BOOL=ON -DCMAKE_CXX_COMPILER=/usr/bin/clang++"
+
+export PATH=~/.taichi-llvm-10.0.0-linux/bin:$PATH
+
+alias add="git remote add upstream git@github.com:taichi-dev/taichi.git && git remote set-url --push upstream no-push"
+
+alias fetch="git fetch upstream && git rebase upstream/master"
+

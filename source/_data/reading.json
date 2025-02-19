@@ -1,0 +1,24 @@
+{
+    "define": {
+	    "readed": "Scenes and simulations in Taichi"
+
+    },
+    "contents": {
+        "readed": [{
+            "title": "Poisson disk sampling",
+            "cover": "https://user-images.githubusercontent.com/23307174/171776193-1b73c948-c7c9-4c30-a4bd-bac3db4de06f.png",
+            "review": "Bridson's fast Poisson disk sampling algorithm",
+            "doubanLink": "https://github.com/neozhaoliang/awesome-shaders-in-taichi/blob/main/poisson_disk_sampling.py"
+        }, {
+            "title": "Poisson disk sampling",
+            "cover": "https://user-images.githubusercontent.com/23307174/171776193-1b73c948-c7c9-4c30-a4bd-bac3db4de06f.png",
+            "review": "推荐非UI人士了解UI阅读。",
+            "doubanLink": "https://github.com/neozhaoliang/awesome-shaders-in-taichi/blob/main/poisson_disk_sampling.py"
+        }, {
+            "title": "Poisson disk sampling",
+            "cover": "https://user-images.githubusercontent.com/23307174/171776193-1b73c948-c7c9-4c30-a4bd-bac3db4de06f.png",
+            "review": "推荐非UI人士了解UI阅读。",
+            "doubanLink": "https://github.com/neozhaoliang/awesome-shaders-in-taichi/blob/main/poisson_disk_sampling.py"
+        }]
+    }
+}

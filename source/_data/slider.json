@@ -1,0 +1,58 @@
+[
+    {
+        "image": "/images/gallery/euclidean.jpg",
+        "align": "left",
+        "title": "3D uniform Euclidean honeycombs",
+        "subtitle": "",
+        "link": "/"
+    },
+    {
+        "image": "/images/gallery/compact1.jpg",
+        "align": "left",
+        "title": "3D compact hyperbolic honeycombs (I)",
+        "subtitle": "",
+        "link": null
+    },
+    {
+        "image": "/images/gallery/compact2.jpg",
+        "align": "left",
+        "title": "3D compact hyperbolic honeycombs (II)",
+        "subtitle": "",
+        "link": null
+    },
+    {
+        "image": "/images/gallery/paracompact.jpg",
+        "align": "left",
+        "title": "3D paracompact hyperbolic honeycombs",
+        "subtitle": "",
+        "link": null
+    },
+    {
+        "image": "/images/gallery/noncompact.jpg",
+        "align": "left",
+        "title": "Circle packings on the boundary of hyperbolic 3-space",
+        "subtitle": "",
+        "link": null
+    },
+    {
+        "image": "/images/gallery/ballpacking1.jpg",
+        "align": "left",
+        "title": "Sphere packings on the boundary of hyperbolic 4-space (I)",
+        "subtitle": "",
+        "link": null
+    },
+    {
+        "image": "/images/gallery/ballpacking2.jpg",
+        "align": "left",
+        "title": "Sphere packings on the boundary of hyperbolic 4-space (II)",
+        "subtitle": "",
+        "link": null
+    },
+    {
+        "image": "/images/gallery/penrose_cooling.jpg",
+        "align": "left",
+        "title": "Penrose cooling process",
+        "subtitle": "",
+        "link": null
+    }
+]

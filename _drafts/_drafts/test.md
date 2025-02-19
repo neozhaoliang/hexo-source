@@ -1,0 +1,117 @@
+---
+title: "hello"
+date: 2024-02-17 21:31:41
+tags:
+categories:
+url: "test"
+---
+\newcommand{\end}{\mathrm{End}}
+\newcommand{\bil}{\mathrm{Bil}}
+
+非退化双线性型是一个很有用的概念，它可以把一个空间中的问题“镜像”地映射到其对偶空间中去，并在对偶空间中得到解决。粗略地讲，一个空间内的高维问题实际上是其对偶空间内的一个低维问题；一个关于商空间的问题实际是对偶空间内的子空间问题。这常常可以帮助我们简化问题。
+
+# 什么是非退化双线性型？
+
+设 $V,W$ 是域 $F$ 上的有限维向量空间，映射 $B(v,w):V\times W\rightarrow F$ 称作是一个双线性函数，如果它对每个分量都是线性的：
+
+$$\begin{align}B(v,w_1+w_2)&=B(v,w_1)+B(v,w_2)\\
+B(v_1+v_2,w)&=B(v_1,w)+B(v_2,w)
+\end{align}$$
+
+如果 $B$ 满足下面的条件，我们就称 $B$ 为非退化的双线性函数，简称非退化双线性型。
+
+1. 若 $v\in V$ 使得对任何 $w\in W$ 有 $B(v,w)=0$ 则 $v=0$.
+2. 若 $w\in W$ 使得对任何 $v\in W$ 有 $B(v,w)=0$ 则 $w=0$.
+
+现在设 $B(v,w):V\times W\rightarrow F$ 是一个非退化双线性型，给定 $v\in V$，我们可以定义一个 $W$ 上的线性泛函 $\varphi_v$：
+$$\varphi_v(w)=B(v,w).$$
+映射 $v\rightarrow\varphi_v$ 是一个从 $V$ 到 $W$ 的对偶空间 $W^\ast$ 的映射，此映射显然是线性的，而且很容易验证是单射，从而 $\dim V\leq \dim W^\ast$。同理线性映射
+$$w\rightarrow\phi_w: \phi_w(v) =B(v,w)$$
+是从 $W$ 到 $V^\ast$ 的单射，因此 $\dim W\leq \dim V^\ast$。由于任何有限维向量空间和它的对偶空间维数相同，因此综合两个不等式就得到了 $\dim V=\dim W$，而且 $v\rightarrow\varphi_v$ 是从 $V$ 到 $W^\ast$ 的线性同构，$w\rightarrow\phi_w$ 是从 $W$ 到 $V^\ast$ 的线性同构。
+
+总结一下：如果存在 $V\times W\rightarrow F$ 的非退化双线性型 $B$，则 $\dim V=\dim W$，而且 $V$ 和 $W$ 可以借助于 $B$ 同构地映射为对方的对偶空间，这时我们称 $V$ 和 $W$ 关于 $B$ 互为对偶空间。
+
+# 零化子
+
+设 $V_1\subset V$ 是 $V$ 的子空间，定义其关于 $B$ 的零化子 $V_1^\bot\subset W$ 为
+$$V_1^{\bot}=\{w\in W\ |\ B(v,w)=0, \ \forall v\in V_1 \}.$$
+类似地对 $W$ 的子空间 $W_1$ 可以定义其零化子 $W_1^\bot\subset V$ 为
+$$W_1^{\bot}=\{v\in V\ |\ B(v,w)=0, \ \forall w\in W_1\}.$$
+由于 $B$ 的双线性性，不难验证 $V_1^\bot,W_1^\bot$ 都是子空间。
+
+定义双线性函数 $B_1:V_1\times W/V_1^\bot\rightarrow F$ 为
+$$B_1(v_1,[w])=B(v_1,w),\quad v_1\in V_1, w\in W.$$
+不难验证 $B_1$ 的定义是合理的（不依赖于商空间代表元的选取），同时也是非退化的，从而我们得到
+$$\dim V_1=\dim W/V_1^\bot =\dim W-\dim V_1^\bot.$$
+
+接下来是个很有用的结论：如果 $V=V_1\oplus V_2$ 是子空间的直和，则 $W$ 也分解对对应的零化子的直和：$W=V_1^\bot\oplus V_2^\bot$（证明是平凡的）。
+
+
+# 伴随变换
+
+> 定义：设 $A:V\rightarrow V$ 是一个线性变换，定义 $A$（关于双线性型 $B$）的伴随变换 $A^\ast: W\rightarrow W$ 为满足如下等式的唯一的线性变换：
+> $$B(Av,w)=B(v,A^\ast w)\quad v\in V,w\in W.$$
+
+这个一句话的定义固然很爽快，但是问题是满足要求的 $A^\ast$ 存在吗？存在的话唯一吗？下面来解决这两个问题。
+
+设 $\(W)$ 是 $W$ 上全体线性变换组成的空间，$\bil(V,W)$ 是 $V\times W$ 上全体双线性函数组成的向量空间。
+
+对任意 $f\in\end(W)$，定义 $V\times W$ 上的双线性函数 $B_f$ 为 $B_f=B(v,fw)$。映射 $f\rightarrow B_f$ 明显是线性的，而且利用 $B$ 的非退化性可见这是一个单射，于是 $f\rightarrow B_f$ 是一个从 $\end(W)$ 到 $\bil(V,W)$ 的线性单射。然而 $\end(W)$ 和 $\bil(V,W)$ 的维数相同，都是 $\dim V\times \dim W$，从而这是线性同构。因此 $\bil(V,W)$ 中任何元素都形如 $B(v,fw)$，其中 $f\in\end(W)$ 是唯一确定的。特别地对双线性型 $B(Av,w)$ 应用此结论可知存在唯一的 $A^\ast\in\ed(W)$ 使得 $B(Av,w)=B(v,A^\ast w)$ 成立，这就证明了结论。
+
+
+# 限制 VS 诱导
+
+现在假设 $A$ 是 $V$ 上的线性变换，子空间 $V_1$ 是 $A$ 的不变子空间，容易验证这时 $V_1^\bot$ 是 $A^\ast$ 的不变子空间，于是我们可以考虑 $A$ 在 $V_1$ 上的限制 $A_1=A|_{V_1}$，以及 $A^\ast$ 在商空间 $W/V_1^\bot$ 上的诱导 $\widetilde{A^\ast}$。
+
+
+> 定理：$A_1$ 和 $\widetilde{A^\ast}$ 关于双线性型 $B_1(v_1,[w])=B(v_1,w)$ 互为伴随变换：
+> $$B_1(A_1 v_1, [w])=B_1(v_1,\widetilde{A^\ast}[w]),\quad v_1\in V_1, [w]\in W/V_1^\bot.$$
+
+证明很直接，故不再赘述。
+
+好了，到此为止我们作一个总结：在已经介绍的非退化双线性型的理论中，处处都展现了高度的对称性：$V$ 和 $W$ 互为对偶空间；零化子建立了 $V$ 的子空间与 $W$ 的子空间（甚至子空间直和分解）的一一对应；$V$ 上的线性变换与 $W$ 上的线性变换的一一对应；限制与诱导的对应。这种高度的对称性非常适合把 $V$ 中的问题转移到对偶空间 $W$ 中去。下面就是这一思想的一个精彩应用。
+
+
+# 有理标准形的简洁证明
+
+
+这一段将给出有理标准形定理的一个非常简洁的证明。这个证明过程可以看做是非退化双线性型的 "典型用法"。
+
+对每个向量 $v\in V$，定义它的阶为 $m_v(x)\in F[x]$，这里 $m_v(x)$ 是使得 $m_v(A)v=0$ 的次数最低的首一多项式。任何使得 $g(A)v=0$ 的多项式 $g(x)$ 都是 $m_v(x)$ 的倍式。
+
+
+> 定理：设 $A$ 是域 $F$ 上的有限维向量空间 $V$ 上的线性变换，则 $V$ 中存在一组非零的向量 $\{v_1,\ldots,v_r\}$，它们的阶都是 $F[x]$ 中素多项式的幂 $\{p_1(x)^{e_1},\ldots,p_r(x)^{e_r}\}$，而且 $V$ 是循环子空间 $\{\langle v_i\rangle,1\leq i\leq r\}$ 的直和：
+> $$V=\langle v_1\rangle\oplus\langle v_2\rangle\oplus\cdots\oplus\langle v_r\rangle.$$
+>
+> 这个分解方式在下面的意义下是唯一确定的：如果
+> $$V=\langle w_1\rangle\oplus\langle w_2\rangle\oplus\cdots\oplus\langle v_s\rangle.$$
+> 是另一种分解为循环子空间的方式，$\{w_1,\ldots,w_s\}$ 的阶也都是素多项式的幂 $\{q_1(x)^{f_1},\ldots,q_s(x)^{f_s}\}$，则 $r=s$ 且两个集合
+> $$\{p_1(x)^{e_1},\ldots,p_r(x)^{e_r}\}\quad\text{和}\quad\{q_1(x)^{f_1},\ldots,q_s(x)^{f_s}\}$$
+> 只相差一个重排。
+
+证明： 所有证明有理标准形定理的第一步都是利用准素分解，只要对 $A$ 的极小多项式 $m_A(x)=p(x)^a$ 是一个素多项式的幂的情形证明即可。
+
+我们断言这时必然有一个 $v\in V$ 的阶恰好是 $p(x)^a$。否则任何 $v$ 的阶都是 $p(x)^a$ 的因子但又不等于 $p(x)^a$，那么就都是 $p(x)^{a-1}$ 的因子，从而 $p(A)^{a-1}=0$，与 $A$ 的极小多项式是 $p(x)^a$ 矛盾。
+
+所以取 $v_1$ 使得 $v_1$ 的阶为 $p(x)^a$，则 $v_1$ 生成一个循环子空间 $\langle v_1\rangle$。如果 $\langle v_1\rangle\ne V$，我们断言可以找到一个 $A-$ 不变子空间 $W$ 使得
+$$V= \langle v_1\rangle\oplus W.$$
+这样就可以对 $W$ 继续这个操作，最终把 $V$ 分解为一些循环子空间的直和。
+考虑 $V\times V^\ast\rightarrow F$ 的非退化双线性型
+$$(v,f)\rightarrow f(v),\quad v\in V,f\in V^\ast.$$
+设 $A^\ast$ 为 $A$ 的伴随变换：$(Av,f)=(v,A^\ast f)$，则对任何多项式 $g(x)\in F[x]$ 有 $(g(A)v,f)=(v,g(A^\ast)f)$，由此可见 $A$ 和 $A^\ast$ 有相同的极小多项式。
+
+证明想法是这样的：现在我们还不知道在 $V$ 中是否有分解 $V=\langle v_1\rangle\oplus W$存在，但是我们知道在 $V^\ast$ 中 $\langle v_1\rangle^\bot$ 是 $A^\ast-$ 不变子空间，如果能在 $V^\ast$ 中给 $\langle v_1\rangle^\bot$ 找到不变子空间 $W_1$ 使得 $V^\ast=\langle v_1\rangle^\bot\oplus W_1$ 的话，那么返回 $V$ 中去就有 $V=\langle v_1\rangle\oplus W_1^\bot$，$W_1^\bot$ 就是我们要找的补空间！
+
+设 $\langle v_1\rangle^\bot$ 为 $\langle v_1\rangle$ 在 $V^\ast$ 中的零化子，则 $\langle v_1\rangle^\bot$ 是 $A^\ast$ 的不变子空间，从而 $A^\ast$ 在 $V^\ast/\langle v_1\rangle^\bot$ 上有诱导变换 $\widetilde{A^\ast}$。我们已经知道 $A$ 在 $\langle v_1\rangle$ 上的限制 $A_1$ 与 $\widetilde{A^\ast}$ 在 $V^\ast/\langle v_1\rangle^\bot$ 上的作用是一对伴随变换，因此 $\widetilde{A^\ast}$ 在 $V^\ast/\langle v_1\rangle^\bot$ 上的极小多项式也是 $p(x)^a$，从而存在 $[f]\in V^\ast/\langle v_1\rangle^\bot$ 使得 $[f]$ 的阶是 $p(x)^a$。
+
+令 $W_1$ 为 $\{f,A^\ast f,\ldots,(A^\ast)^{d-1}f\}$ 在 $V^\ast$ 中张成的子空间，其中 $d=\deg p(x)^a$。显然 $W_1$ 是一个 $A^\ast-$ 不变子空间，其维数是 $d$，而且 $W_1\cap \langle v_1\rangle^\bot=0$。
+
+现在 $\dim\langle v_1\rangle^\bot=\dim V^\ast-d$，因此
+
+$$V^\ast = \langle v_1\rangle^\bot \oplus W_1,$$
+
+这是一个 $V^\ast$ 的 $A^\ast-$ 不变子空间直和分解，回到 $V$ 中去：
+
+$$V=\langle v_1\rangle\oplus (W_1)^\bot.$$
+
+这样就得到了想要的 $A-$ 不变子空间直和分解。
