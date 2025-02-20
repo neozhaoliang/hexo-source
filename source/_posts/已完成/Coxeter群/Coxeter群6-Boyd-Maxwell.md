@@ -33,6 +33,19 @@ url: "coxeter-groups-boyd-maxwell"
 
 # 球堆
 
+在接下来的内容中，我们将频繁使用前文的一个 [命题](/coxeter-groups-three-cases/#connected-component-dot)，我把它在这里再重复一次：
+
+::: {.proposition .unnumbered}
+
+设 $u,v\in \Q-\{0\}$。
+
+1. 如果 $u\sim v$ 则 $(u,v)\leq0$。
+2. $(u,v)=0$ 当且仅当 $u,v$ 是共线的 light-like 的向量。
+3. 如果 $u,v$ 中至少有一个是 time-like 的向量，则 $u\sim v$ 当且仅当 $(u,v)<0$。
+:::
+
+
+
 ::: definition
 如果一个非空集合 $\P\subset V$ 满足下列条件，我们就称 $\P$ 是一个**球堆**：
 
@@ -100,10 +113,10 @@ $$\begin{aligned}
 
 1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们来证明 $\P$ 中所有球帽两两之间至多只有一个公共点。为此设 $k\ne k'\in\P$ 且 $\{k,k'\}\ne\{k_1,k_2\}$，不妨设 $k\notin\{k_1,k_2\}$。若 $C_k\cap C_{k'}$ 为空则结论自然成立；否则设 $v\in C_k\cap C_{k'}$ 是一个公共点，我们来证明必有 $|C_{-k}\cap C_{-k'}|>1$，从而由 @Pre:disjoint-pair 可知 $v$ 是 $C_k$ 和 $C_{k'}$ 的唯一公共点。为此我们只要找一个向量 $w\sim v$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$ 即可，这样 $w$ 的某个正倍数 $w'\in\H$，从而根据 @Pre:intersect-pair 即得结论。
 
-这个 $w$ 是很好找的，取 $w=k_1-(k_1,k_2)k_2$ 即可。麻烦的地方在于证明 $w\sim v$。我们来计算：
+这个 $w$ 是很好找的，取 $w=k_1-(k_1,k_2)k_2$，则 $w$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$。麻烦的地方在于证明 $w\sim v$。我们有
 $$(v,w)=(v,k_1)-(k_1,k_2)(v,k_2)=(v-(v,k_2)k_2, k_1).$$
 
-记 $u=v-(v, k_2)k_2$，我们来说明 $(u,k_1)\leq0$。首先由计算可得
+记 $u=v-(v, k_2)k_2$，则
 
 $$\begin{aligned}
 (u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
@@ -117,16 +130,14 @@ $$
 
 总之 $u$ 的某个正倍数 $u'=cu$ 属于 $\H$。
 
-由于 $C_{k_1}\cap C_{k_2}$ 至多只有一个点，结合 $(u',k_2)=0$ 和 @Pre:intersect-pair 可得
-$$0\geq (u',k_1)=c(v-(v,k_2)k_2, k_1)=c(v, k_1-(k_1,k_2)k_2).$$
-记 $w=k_1-(k_1,k_2)k_2$，则 $w$ 满足 $(w,w)\leq0$ 和 $(v,w)\leq 0$。我们来说明必有 $w\sim v$：
+由于 $C_{k_1}\cap C_{k_2}$ 至多只包含一个点，结合 $(u',k_2)=0$ 和 @Pre:intersect-pair 可得 $(u',k_1)\leq0$，当然就有 $(u,k_1)\leq0$，从而 $(v,w)\leq0$。
+
+现在我们已经准备好了证明 $w\sim v$：
 
 1. 如果 $(w,v)<0$ 自然有 $w\sim v$；
-2. 如果 $(w,v)=0$ 但 $w\not\sim v$，则 $w,v$ 必然是反向共线的 light-like 的向量。由 $(w,w)=0$ 可得 $(k_1,k_2)=-1$，即 $w=k_1+k_2$，从而 $v=d(k_1+k_2)\,(d<0)$。$v$ 满足 $(v,k_1)=(v,k_2)=0$，从而 $v$ 就是 $C_{k_1}$ 和 $C_{k_2}$ 的唯一交点。于是 $v$ 满足 $(v,k)\geq0$ 和 $(v,k')\geq0$。由于 $k\notin\{k_1,k_2\}$，所以
+2. 如果 $(w,v)=0$ 但 $w\not\sim v$，则 $w,v$ 必然是反向共线的 light-like 的向量。由 $(w,w)=0$ 可得 $(k_1,k_2)=-1$，即 $w=k_1+k_2$，从而 $v=d(k_1+k_2)\,(d<0)$。$v$ 满足 $(v,k_1)=(v,k_2)=0$，从而 $v$ 就是 $C_{k_1}$ 和 $C_{k_2}$ 的唯一交点。由于 $k\notin\{k_1,k_2\}$，所以
 $$(v,k)=\underbrace{d}_{<0}(\underbrace{(k_1,k)}_{\leq-1} + \underbrace{(k_2,k)}_{\leq-1})>0.$$
 从而 $v\in C_{k}$。这与 @Pre:intersect-triple 矛盾。
-
-总之 $w\sim v$，从而 $w$ 的某个正倍数 $w'$ 属于 $\H$。我们有 $(w',k)<0$ 和 $(w',k')\leq0$，于是由 @Pre:intersect-pair $C_{-k}\cap C_{-k'}$ 包含多于 1 个点。再由 @Pre:disjoint-pair 可得 $C_k\cap C_{k'}$ 恰好只包含 $v$。
 
 2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。则对任何 $k_1,k_2\in\P$，内积 $\inn$ 限制在二维子空间 $U=\span\{k_1,k_2\}$ 上肯定不是正定的，否则的话 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，从而 $C_{k_1}$ 和 $C_{k_2}$ 会在 $\H$ 的内部有交点，所以 $|(k_1,k_2)|\geq1$。如果是 $(k_1,k_2)\geq1$ 的话，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 二者中必有一个至多只包含一个点，不妨设为 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
 
