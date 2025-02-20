@@ -197,16 +197,19 @@ $\Q$ 由上、下两个分支 $\Q_+,\,\Q_-$ 组成，它们分别由 $\Q$ 中满
 
 1. 如果 $u\sim v$ 则 $(u,v)\leq0$。
 2. $(u,v)=0$ 当且仅当 $u,v$ 是共线的 light-like 的向量。
+3. 如果 $u,v$ 中至少有一个是 time-like 的向量，则 $u\sim v$ 当且仅当 $(u,v)<0$。
 :::
 
-@Pre:connected-component-dot 的显然推论是：
+**证明**：
 
-::: {.corollary #suff-for-equiv}
-设 $u,v\in\Q-\{0\}$。
+设 $u=x+cz,\, v=y+dz$，则 $u,v\in\Q$ 说明 $(x,x)\leq c^2$，$(y,y)\leq d^2$。
 
-1. 若 $(u,v)>0$ 则 $u\not\sim v$。
-2. 若 $(u,v)\leq0$，且 $u,v$ 中至少有一个是 time-like 的，则 $u\sim v$。
-:::
+1. 若 $u\sim v$，则 $c,d$ 同为正或者同为负。由于 $z^\bot$ 是正定子空间，$x,y\in z^\bot$，由 Cauchy-Schwartz 不等式有
+$$(u,v)=(x,y)-cd\leq \sqrt{(x,x)\cdot (y,y)}-cd \leq \sqrt{c^2d^2}-cd=|cd|-cd=0.\tag{$\ast$}\label{eq:uv}$$
+2. 如果 $u\sim v$，则 $(u,v)=0$ 说明 $(\ref{eq:uv})$ 中等号全部成立，从而 $(x,y)=\sqrt{(x,x)\cdot (y,y)}$，即 $x,y$ 共线；以及 $(x,x)=c^2,\,(y,y)=d^2$，即 $x,y$ 都是 light-like 的向量。设 $y=\lambda x$，则由 $(x,y)=cd$ 可得 $\lambda (x,x)=cd$，即 $d=\lambda c$，从而 $v=\lambda u$ 共线。如果 $u\not\sim v$，则 $u\sim -v$。利用同样的论证，$u$ 和 $-v$ 是共线的 light-like 的向量，当然 $u$ 和 $v$ 也是。反方向是显然的。
+3. 不妨设 $u$ 是 time-like 的向量。$\Rightarrow$：如果 $u\sim v$，$(\ref{eq:uv})$ 给出了 $(u,v)\leq0$。结合 $u$ 是 time-like 的和 2 中刚刚证明的结论，严格的不等号成立。$\Leftarrow$：如果 $u\not\sim v$ 则 $u\sim -v$，根据 1 的结论，$(u,-v)\leq0$，从而 $(u,v)\geq0$，矛盾。
+
+$\blacksquare$
 
 记 $\Q_+$ 和 $\Q_-$ 的内点分别为 $\N_+$ 和 $\N_-$，$\N_+$ 和 $\N_-$ 分别是 $\N=\{v\in V\mid (v,v)<0\}$ 的两个连通分支。
 

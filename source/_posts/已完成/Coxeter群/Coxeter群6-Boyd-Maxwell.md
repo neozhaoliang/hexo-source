@@ -30,6 +30,7 @@ url: "coxeter-groups-boyd-maxwell"
 \newcommand{\H}{\mathcal{H}}
 \newcommand{\tcr}{\overline{\mathcal{C}_r}}
 
+
 # 球堆
 
 ::: definition
@@ -51,12 +52,11 @@ $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 
 **证明**：由于 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$，所以 $k_1+k_2$ 是 time-like 或者 light-like 的。设 $u\in C_{k_1}\cap C_{k_2}$，$v\in C_{-k_1}\cap C_{-k_2}$，则
 
-$$(u, k_1+k_2)\geq0,\quad(v,k_1+k_2)\leq0.$$
+$$(u, k_1+k_2)\geq0\quad\text{and}\quad(v,k_1+k_2)\leq0.$$
 
-如果 $k_1+k_2$ 是 time-like 的，则由上式可知 $u\not\sim k_1+k_2$ 和 $v\sim k_1+k_2$。但这与 $u\sim v$ 矛盾。所以 $k_1+k_2$ 必须是 light-like 的。
+如果 $k_1+k_2$ 是 time-like 的，则 $u\not\sim k_1+k_2$ 且 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以 $k_1+k_2$ 必须是 light-like 的，从而 $(k_1,k_2)=-1$。
 
 进一步如果 $(u,k_1+k_2)>0$ 且 $(v,k_1+k_2)<0$，则 $v\sim k_1+k_2$ 但是 $u\not\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以 $(u,k_1+k_2)$ 和 $(v,k_1+k_2)$ 中必然有一个是 0，即 $u$ 和 $v$ 中必有一个是 $k_1+k_2$ 的倍数，然而 $\H$ 中与 $k_1+k_2$ 共线的点是唯一确定的，所以 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多包含一个点，且此点与 $k_1+k_2$ 共线。$\blacksquare$
-
 
 :::{.lemma #intersect-pair}
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。如果 $v\in\H$ 满足
@@ -66,12 +66,12 @@ $$(v,k_1)\geq0\quad \text{and}\quad (v,k_2)>0.$$
 
 **证明**：记 $a=(v,k_2)>0$，考虑向量 $u=v-tk_2$，其中 $t\in(0, a)$ 是实数。
 
-由于 $(u,u)=(v,v)+t^2-2at< 0$ 和 $(u,v)=(v,v)-at< 0$ 所以 $u\sim v$。从而 $u$ 的某个正倍数 $u'=cu\,(c>0)$ 属于 $\H$。由于
+由于 $(u,u)=(v,v)+t^2-2at<0$ 是 time-like 的，以及 $(u,v)=(v,v)-at<0$，所以 $u\sim v$。从而 $u$ 的某个正倍数 $u'=cu\,(c>0)$ 属于 $\H$。由于
 
 $$\begin{aligned}
 (u,k_1)&=\overbrace{(v,k_1)}^{\geq0} - \overbrace{t}^{>0}\cdot\overbrace{(k_1,k_2)}^{\leq-1}>0,\\
 (u,k_2)&=a-t>0.\end{aligned}$$
-所以 $(u',k_1)>0,\,(u',k_2)>0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。由于 $t\in(0,a)$ 有无穷多个取值，并且不难验证不同的 $t$ 给出的 $u'$ 互不相同，所以 $|C_{k_1}\cap C_{k_2}|>1$。$\blacksquare$
+所以 $(u',k_1)>0,\,(u',k_2)>0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。由于 $t\in(0,a)$ 有无穷多个取值，并且不难验证不同的 $t$ 给出的 $u'$ 互不相同，所以 $|C_{k_1}\cap C_{k_2}|=\infty>1$。$\blacksquare$
 
 
 :::{.lemma #intersect-triple}
@@ -98,7 +98,12 @@ $$\begin{aligned}
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们来证明 $\P$ 中所有球帽两两之间至多只有一个公共点。为此设 $k\ne k'\in\P$ 且 $\{k,k'\}\ne\{k_1,k_2\}$，不妨设 $k\notin\{k_1,k_2\}$。并设 $v\in C_k\cap C_{k'}$ 是一个公共点。记 $u=v-(v, k_2)k_2$，则我们有
+1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们来证明 $\P$ 中所有球帽两两之间至多只有一个公共点。为此设 $k\ne k'\in\P$ 且 $\{k,k'\}\ne\{k_1,k_2\}$，不妨设 $k\notin\{k_1,k_2\}$。若 $C_k\cap C_{k'}$ 为空则结论自然成立；否则设 $v\in C_k\cap C_{k'}$ 是一个公共点，我们来证明必有 $|C_{-k}\cap C_{-k'}|>1$，从而由 @Pre:disjoint-pair 可知 $v$ 是 $C_k$ 和 $C_{k'}$ 的唯一公共点。为此我们只要找一个向量 $w\sim v$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$ 即可，这样 $w$ 的某个正倍数 $w'\in\H$，从而根据 @Pre:intersect-pair 即得结论。
+
+这个 $w$ 是很好找的，取 $w=k_1-(k_1,k_2)k_2$ 即可。麻烦的地方在于证明 $w\sim v$。我们来计算：
+$$(v,w)=(v,k_1)-(k_1,k_2)(v,k_2)=(v-(v,k_2)k_2, k_1).$$
+
+记 $u=v-(v, k_2)k_2$，我们来说明 $(u,k_1)\leq0$。首先由计算可得
 
 $$\begin{aligned}
 (u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
@@ -107,8 +112,8 @@ $$\begin{aligned}
 $$
 我们来说明 $u\sim v$。分两种情形：
 
-1. 如果 $(u,u)<0$，那么由上面第一个式子 $(u,u)=(u,v)-(v,k_2)\overbrace{(u,k_2)}^{=0}=(u,v)<0$ 自然可以得出 $u\sim v$；
-2. 如果 $(u,u)=0$，那么由上面第二个式子 $(v,v)=(v,k_2)=0$，从而 $u=v$，也有 $u\sim v$ 成立。
+1. 如果 $(v,k_2)=0$，那么 $u=v$ 自然有 $u\sim v$ 成立。
+2. 如果 $(v,k_2)\ne0$，那么根据上面第二个式子 $(u,u)<0$，即 $u$ 是 time-like 的；并且 $(u,u)=(u,v)-(v,k_2)\overbrace{(u,k_2)}^{=0}=(u,v)<0$，从而 $u\sim v$。
 
 总之 $u$ 的某个正倍数 $u'=cu$ 属于 $\H$。
 
@@ -168,9 +173,9 @@ $$\omega_s\in\cl{\cone{\bigcup_{w\in W_I}w(\omega_t)}}\subset\tcr.$$
 $\blacksquare$
 
 ::: {.theorem #max-packing}
-若 $W$ 是双曲的，则 $\myhat{\Omega_r}$ 是非平凡的球堆当且仅当 $\Gamma$ 的 level 是 2，这时 $\myhat{\Omega_r}$ 还是极大球堆。
+若 $W$ 是双曲的，则 $\hat{\Omega}_r$ 是非平凡的球堆当且仅当 $\Gamma$ 的 level 是 2，这时 $\hat{\Omega}_r$ 还是极大球堆。
 :::
 
-**证明**：若 $\Gamma$ 的 level 是 2，根据 @Pre:level-2，$\Omega_r$ 中的元素两两分离，将其单位化后得到的 $\myhat{\Omega_r}$ 仍然两两分离，所以 $\myhat{\Omega_r}$ 的元素两两之间的内积 $\leq -1$，从而 $\myhat{\Omega_r}$ 确实给出一个球堆。如果存在某个球与任何 $\myhat{\Omega_r}$ 中的球都不相交或者相切的话，设这个球对应的单位向量是 $k\in\S$，则根据 @Pre:suff-for-disjoint，有 $(k,\myhat{\omega})\leq -1$ 对任何 $\myhat{\omega}\in\myhat{\Omega_r}$ 成立，从而 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。根据 @Pre:dual-cone-nonspace $(k,k)=(-k,-k)\leq0$，矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大堆积。
+**证明**：若 $\Gamma$ 的 level 是 2，则 [$\Omega_r$ 中的元素两两分离](/coxeter-groups-level#level-12)，将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。如果存在某个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $k$ 对应的球与 $\hat{\Omega}_r$ 中的任何球都没有公共内部的话，有 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，从而 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups-tits-cone/#dual-cone-nonspace)，$(k,k)=(-k,-k)\leq0$，矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大球堆。
 
-反之若 $W$ 是双曲的并且 $\myhat{\Omega_r}$ 是一个非平凡球堆，$W$ 的 level 大于 1，所有的实权之间两两分离。然而任何非实权和其它任何权张成的子空间当然不可能是正定的，所以对任何两个基本权生成的二维子空间 $\span\{\omega_i,\omega_j\}$ 是 time-like 或者 light-like 的，从而 $\minus{\Gamma}{i,j}$ 是正定或者仿射的，所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$
+反之若 $\hat{\Omega}_r$ 是一个非平凡球堆，则 $W$ 的 level 必然大于 1，且所有的实权之间两两分离。于是任何两个基本权生成的二维子空间 $\span\{\omega_i,\omega_j\}$ 都是 time-like 或者 light-like 的。又由于 $W$ 是双曲的，从而 $\Gamma\setminus\{i,j\}$ 是正定或者仿射的，所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$
