@@ -33,19 +33,6 @@ url: "coxeter-groups-boyd-maxwell"
 
 # 球堆
 
-在接下来的内容中，我们将频繁使用前文的一个 [命题](/coxeter-groups-three-cases/#connected-component-dot)，我把它在这里再重复一次：
-
-::: {.proposition .unnumbered}
-
-设 $u,v\in \Q-\{0\}$。
-
-1. 如果 $u\sim v$ 则 $(u,v)\leq0$。
-2. $(u,v)=0$ 当且仅当 $u,v$ 是共线的 light-like 的向量。
-3. 如果 $u,v$ 中至少有一个是 time-like 的向量，则 $u\sim v$ 当且仅当 $(u,v)<0$。
-:::
-
-
-
 ::: definition
 如果一个非空集合 $\P\subset V$ 满足下列条件，我们就称 $\P$ 是一个**球堆**：
 
@@ -63,13 +50,18 @@ $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$，则集合 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多只包含一个点。并且当这两个集合中的某个恰好只含一个点时，此点与 $k_1+k_2$ 共线，并且有 $(k_1,k_2)=-1$ 成立。
 :::
 
-**证明**：由于 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$，所以 $k_1+k_2$ 是 time-like 或者 light-like 的。设 $u\in C_{k_1}\cap C_{k_2}$，$v\in C_{-k_1}\cap C_{-k_2}$，则
-
+**证明**：设 $u\in C_{k_1}\cap C_{k_2}$，$v\in C_{-k_1}\cap C_{-k_2}$，则
 $$(u, k_1+k_2)\geq0\quad\text{and}\quad(v,k_1+k_2)\leq0.$$
-
-如果 $k_1+k_2$ 是 time-like 的，则 $u\not\sim k_1+k_2$ 且 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以 $k_1+k_2$ 必须是 light-like 的，从而 $(k_1,k_2)=-1$。
+由于 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$，所以 $k_1+k_2$ 是 time-like 或者 light-like 的。如果 $k_1+k_2$ 是 time-like 的，则 $u\not\sim k_1+k_2$ 且 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以 $k_1+k_2$ 必须是 light-like 的，从而 $(k_1,k_2)=-1$。
 
 进一步如果 $(u,k_1+k_2)>0$ 且 $(v,k_1+k_2)<0$，则 $v\sim k_1+k_2$ 但是 $u\not\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以 $(u,k_1+k_2)$ 和 $(v,k_1+k_2)$ 中必然有一个是 0，即 $u$ 和 $v$ 中必有一个是 $k_1+k_2$ 的倍数，然而 $\H$ 中与 $k_1+k_2$ 共线的点是唯一确定的，所以 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多包含一个点，且此点与 $k_1+k_2$ 共线。$\blacksquare$
+
+:::{.lemma #contain-time-like}
+设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。如果 $|C_{k_1}\cap C_{k_2}|>1$，则 $C_{k_1}\cap C_{k_2}$ 中必然包含某个 time-like 的向量。
+:::
+**证明**：
+设 $u,v\in C_{k_1}\cap C_{k_2}$ 是两个不同点，则 $u\sim v$ 且 $u,v$ 线性无关，从而 $(u,v)<0$。$z=u+v$ 满足 $z\sim u$ 和 $(z,z)<0$，从而 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
+$\blacksquare$
 
 :::{.lemma #intersect-pair}
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。如果 $v\in\H$ 满足
@@ -86,23 +78,6 @@ $$\begin{aligned}
 (u,k_2)&=a-t>0.\end{aligned}$$
 所以 $(u',k_1)>0,\,(u',k_2)>0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。由于 $t\in(0,a)$ 有无穷多个取值，并且不难验证不同的 $t$ 给出的 $u'$ 互不相同，所以 $|C_{k_1}\cap C_{k_2}|=\infty>1$。$\blacksquare$
 
-
-:::{.lemma #intersect-triple}
-设 $\P$ 是球堆，$k_1,k_2,k_3\in\P$ 互不相同。如果 $C_{k_1}\cap C_{k_2}$ 只包含一个点 $v$，则 $v\notin C_{k_3}$。
-:::
-
-**证明**：由于 $C_{k_1}\cap C_{k_2}$ 只包含 $v$，根据 @Pre:disjoint-pair 我们有 $(k_1,k_2)=-1$ 且 $v$ 与 $k_1+k_2$ 共线。特别地 $(v,k_1)=(v, k_2)=0$。
-
-用反证法，若 $v\in C_{k_3}$，则 $(v,k_3)\geq0$，于是 $(v,k_1+k_2+k_3)\geq0$。但是 $k_1+k_2+k_3$ 是一个 time-like 的向量：
-$$(k_1+k_2+k_3,k_1+k_2+k_3)=3 + 2\sum_{i<j}(k_i,k_j)\leq -3 < 0.$$
-所以只能是 $(v,k_1+k_2+k_3)=(v,k_3)>0$。记 $a=(v,k_3)>0$。
-
-考察 $u=v-tk_3$，其中 $t\in(0,a)$。仿照 @Pre:intersect-pair 的证明可以得到 $(u,u)<0,\,(u,v)<0$ 从而 $u\sim v$，从而 $u$ 的一个正倍数 $u'\in\H$，以及
-$$\begin{aligned}
-(u,k_1)&=\overbrace{(v,k_1)}^{=0} - \overbrace{t}^{>0}\cdot\overbrace{(k_3,k_1)}^{\leq-1}>0,\\
-(u,k_2)&=\overbrace{(v,k_2)}^{=0} - \overbrace{t}^{>0}\cdot\overbrace{(k_3,k_2)}^{\leq-1}>0.\end{aligned}$$
-从而 $u'\in C_{k_1}\cap C_{k_2}$。由于这样的 $t$ 有无穷多个，并且显然不同的 $t$ 给出不同的 $u'$，这与 $C_{k_1} \cap C_{k_2}$ 只包含一个点矛盾。$\blacksquare$
-
 ::: {.theorem #thm-sphere-packing}
 设 $\P$ 是 $V$ 的一个非空子集，则下面两点是等价的：
 
@@ -111,33 +86,21 @@ $$\begin{aligned}
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们来证明 $\P$ 中所有球帽两两之间至多只有一个公共点。为此设 $k\ne k'\in\P$ 且 $\{k,k'\}\ne\{k_1,k_2\}$，不妨设 $k\notin\{k_1,k_2\}$。若 $C_k\cap C_{k'}$ 为空则结论自然成立；否则设 $v\in C_k\cap C_{k'}$ 是一个公共点，我们来证明必有 $|C_{-k}\cap C_{-k'}|>1$，从而由 @Pre:disjoint-pair 可知 $v$ 是 $C_k$ 和 $C_{k'}$ 的唯一公共点。为此我们只要找一个向量 $w\sim v$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$ 即可，这样 $w$ 的某个正倍数 $w'\in\H$，从而根据 @Pre:intersect-pair 即得结论。
+1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们来证明任何两个球帽 $k\ne k'\in\P$ 之间至多只有一个公共点。不妨设 $k\notin\{k_1,k_2\}$。用反证法，若 $|C_k\cap C_{k'}|>1$，我们来说明这时同样也有 $|C_{-k}\cap C_{-k'}|>1$，从而与 @Pre:disjoint-pair 矛盾。
 
-这个 $w$ 是很好找的，取 $w=k_1-(k_1,k_2)k_2$，则 $w$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$。麻烦的地方在于证明 $w\sim v$。我们有
+根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。我们来找 $w\sim v$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$，这样的话 $w$ 的某个正倍数 $w'\in\H$ 并且 $(w',-k)>0,\,(w',-k')\geq0$，根据 @Pre:intersect-pair 即得 $|C_{-k}\cap C_{-k'}|>1$。
+
+这个 $w$ 是很好找的，$w=k_1-(k_1,k_2)k_2$ 就满足要求。不难验证有 $(w, k)<0$ 和 $(w,k')\leq0$。麻烦的地方在于证明 $w\sim v$。由于 $v$ 是 time-like 的，所以只要 $(v,w)\leq0$ 即可保证 $w\sim v$（实际上严格的不等号成立）。我们有
 $$(v,w)=(v,k_1)-(k_1,k_2)(v,k_2)=(v-(v,k_2)k_2, k_1).$$
-
-记 $u=v-(v, k_2)k_2$，则
+记 $u=v-(v, k_2)k_2$，则目标变为证明 $(u,k_1)\leq0$。注意到
 
 $$\begin{aligned}
 (u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
-(u,u)&=(v,v)-(v,k_2)^2 \leq0.
+(u,u)&=(u,v),\\
+(u,u)&=\underbrace{(v,v)}_{<0}-\underbrace{(v,k_2)^2}_{\leq0} <0.
 \end{aligned}
 $$
-我们来说明 $u\sim v$。分两种情形：
-
-1. 如果 $(v,k_2)=0$，那么 $u=v$ 自然有 $u\sim v$ 成立。
-2. 如果 $(v,k_2)\ne0$，那么根据上面第二个式子 $(u,u)<0$，即 $u$ 是 time-like 的；并且 $(u,u)=(u,v)-(v,k_2)\overbrace{(u,k_2)}^{=0}=(u,v)<0$，从而 $u\sim v$。
-
-总之 $u$ 的某个正倍数 $u'=cu$ 属于 $\H$。
-
-由于 $C_{k_1}\cap C_{k_2}$ 至多只包含一个点，结合 $(u',k_2)=0$ 和 @Pre:intersect-pair 可得 $(u',k_1)\leq0$，当然就有 $(u,k_1)\leq0$，从而 $(v,w)\leq0$。
-
-现在我们已经准备好了证明 $w\sim v$：
-
-1. 如果 $(w,v)<0$ 自然有 $w\sim v$；
-2. 如果 $(w,v)=0$ 但 $w\not\sim v$，则 $w,v$ 必然是反向共线的 light-like 的向量。由 $(w,w)=0$ 可得 $(k_1,k_2)=-1$，即 $w=k_1+k_2$，从而 $v=d(k_1+k_2)\,(d<0)$。$v$ 满足 $(v,k_1)=(v,k_2)=0$，从而 $v$ 就是 $C_{k_1}$ 和 $C_{k_2}$ 的唯一交点。由于 $k\notin\{k_1,k_2\}$，所以
-$$(v,k)=\underbrace{d}_{<0}(\underbrace{(k_1,k)}_{\leq-1} + \underbrace{(k_2,k)}_{\leq-1})>0.$$
-从而 $v\in C_{k}$。这与 @Pre:intersect-triple 矛盾。
+即 $(u,u)=(u,v)<0$，从而 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。由于 $C_{k_1}\cap C_{k_2}$ 至多只包含一个点，结合 $(u',k_2)=0$ 和 @Pre:intersect-pair 可得 $(u',k_1)\leq0$，当然就有 $(u,k_1)\leq0$，从而 $(v,w)\leq0$。这就证明了 $w\sim v$。
 
 2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。则对任何 $k_1,k_2\in\P$，内积 $\inn$ 限制在二维子空间 $U=\span\{k_1,k_2\}$ 上肯定不是正定的，否则的话 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，从而 $C_{k_1}$ 和 $C_{k_2}$ 会在 $\H$ 的内部有交点，所以 $|(k_1,k_2)|\geq1$。如果是 $(k_1,k_2)\geq1$ 的话，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 二者中必有一个至多只包含一个点，不妨设为 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
 
