@@ -31,6 +31,26 @@ url: "coxeter-groups-boyd-maxwell"
 \newcommand{\tcr}{\overline{\mathcal{C}_r}}
 
 
+本文的内容主要来自 [@Maxwell82] 和 [@Maxwell89]，并修复了 Maxwell 的一些错误。Maxwell 在 [@Maxwell82, pp 81] 中写到：（采用我们的记号）
+
+:::{.simple}
+When $\Gamma$ is hyperbolic, the cone
+
+$$\{v\in V\mid (v,v)\leq0\}$$
+
+has two connected components (after deleting 0), which are also the equivalent classes for the relation
+$$u\sim v\Leftrightarrow (u,v)\leq0.$$
+:::
+
+这显然是错误的，因为对 light-like 的向量 $u$，$u$ 和 $-u$ 显然属于不同的分支。
+
+这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一点修改。详情见下面的 @Pre:thm-sphere-packing。
+
+
+# 球的反演
+
+
+
 # 球堆
 
 ::: definition
@@ -100,7 +120,7 @@ $$\begin{aligned}
 (u,u)&=\underbrace{(v,v)}_{<0}-\underbrace{(v,k_2)^2}_{\leq0} <0.
 \end{aligned}
 $$
-即 $(u,u)=(u,v)<0$，从而 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。由于 $C_{k_1}\cap C_{k_2}$ 至多只包含一个点，结合 $(u',k_2)=0$ 和 @Pre:intersect-pair 可得 $(u',k_1)\leq0$，当然就有 $(u,k_1)\leq0$，从而 $(v,w)\leq0$。这就证明了 $w\sim v$。
+即 $(u,u)=(u,v)<0$，从而 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话由 @Pre:intersect-pair 可得 $|C_{k_1}\cap C_{k_2}|>1$，矛盾。从而 $(v,w)\leq0$。这就证明了 $w\sim v$。
 
 2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。则对任何 $k_1,k_2\in\P$，内积 $\inn$ 限制在二维子空间 $U=\span\{k_1,k_2\}$ 上肯定不是正定的，否则的话 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，从而 $C_{k_1}$ 和 $C_{k_2}$ 会在 $\H$ 的内部有交点，所以 $|(k_1,k_2)|\geq1$。如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
 
@@ -114,7 +134,6 @@ $$\hat{\Omega}_r=\{\hat{\omega}\mid \omega\in\Omega_r\}.$$
 ::: {.theorem #real-cone-closure}
 如果 $W$ 是不可约、双曲的，且 level 大于等于 2，则 $\tcr = \cl{\tc}$。
 :::
-
 
 
 **证明**：只要证明 $\tcr$ 包含那些非实的基本权 $(\omega_s, \omega_s)\leq 0$ 即可。若如此，则 $\tcr$ 包含全部基本权 $\Delta^\ast$，从而也包含 $\cone{\Delta^\ast}=\barfd$，再结合 $\tcr$ 是 $W$- 不变的，即得 $\tcr$ 包含 $\bigcup\limits_{w\in W}w\barfd=\tc$，从而包含 $\cl{\tc}$。
