@@ -29,7 +29,7 @@ url: "coxeter-groups-boyd-maxwell"
 \newcommand{\P}{\mathcal{P}}
 \newcommand{\H}{\mathcal{H}}
 \newcommand{\tcr}{\overline{\mathcal{C}_r}}
-
+\newcommand{\sign}[1]{\mathrm{sgn}(#1)}
 
 本文的内容主要来自 [@Maxwell82] 和 [@Maxwell89]，并修复了 Maxwell 的一些错误。Maxwell 在 [@Maxwell82, pp 81] 中写到：（采用我们的记号）
 
@@ -49,7 +49,22 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 
 # 球的反演
 
+:::{.definition}
+设 $a\in\R^n$，$r\in\R\setminus\{0\}$。注意我们 $r$ 允许是负数。球面
+$$B(a,r)=\set{x\in\R^n\mid |x-a|=|r|}$$
+将 $\R^n$ 分成内外两部分。我们规定其内部 $B^\circ(a,r)$ 由如下的集合构成：
+$$B^\circ(a,r)=\{x\in\R^n\mid |x-a|\cdot\sign{r}<r\}.$$
+即当 $r>0$ 时，$B^\circ(a,r)$ 就是通常意义下球面包围的有界区域 $\{|x-a|<r\}$；当 $r<0$ 时，$B^\circ(a,r)$ 是球面外部的无界区域 $\{|x-a|>-r\}$。
 
+此外我们记 $b=1/r$ 为 $B(a,r)$ 的**弯曲** (bend)。
+:::
+
+
+:::{.definition}
+记将 $B(a,r)$ 关于单位球 $B(0,1)$ 反演后得到的球为 $B(\hat{a},\hat{r})$，则
+$$\hat{r} = \frac{r}{|a|^2-r^2}.$$
+记 $\hat{b}=1/{\hat{r}}$ 为 $B(\hat{a},\hat{r})$ 的弯曲。我们也称 $\hat{b}$ 是 $B(a,r)$ 的**余弯曲** (co-bend)。
+:::
 
 # 球堆
 
