@@ -31,6 +31,11 @@ url: "coxeter-groups-boyd-maxwell"
 \newcommand{\tcr}{\overline{\mathcal{C}_r}}
 \newcommand{\sign}[1]{\mathrm{sgn}(#1)}
 \newcommand{\Rntwo}{\mathbb{R}^{n+1,1}}
+\newcommand{\PR}{\mathrm{P}(\mathbb{R}^{n+1,1})}
+\newcommand{\L}{\mathbb{L}^{n+1}}
+\newcommand{\PL}{\mathrm{P}(\mathbb{L}^{n+1})}
+\newcommand{\LR}{\mathbb{R}^{n+1,1}}
+\newcommand{\ER}{\overline{\mathbb{R}^n}}
 
 本文的内容主要来自 [@Maxwell82] 和 [@Maxwell89]，并修复了一些错误。Maxwell 在 [@Maxwell82, pp 81] 中写到：（采用我们的记号）
 
@@ -45,7 +50,45 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 
 这显然是错误的，因为对 light-like 的向量 $u$，$u$ 和 $-u$ 属于不同的分支。这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一些修改。详情见下面的 @Pre:thm-sphere-packing。
 
-# 球堆
+
+# 球的反演
+
+在这一节中，我们约定 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，即在这组基下内积的 Gram 矩阵为
+$$\begin{pmatrix}I_{n+1} &\\ & -1\end{pmatrix}.$$
+令 $e_0=\frac{1}{2}(e_{n+2}-e_{n+1}),\, e_\infty=\frac{1}{2}(e_{n+2}+e_{n+1})$，则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组基下的 Gram 矩阵为
+$$\begin{pmatrix}0&&&-\frac{1}{2}\\&I_n&&\\-\frac{1}{2}&&&0\end{pmatrix}.$$
+任何 $v\in V$ 可以写成 $v=ae_0 + x + be_\infty\,(a,b\in\R)$ 的形式，其中 $x\in\span\{e_1,\ldots,e_n\}$ 是一个 Euclidean 空间中的向量。我们用坐标三元组 $v=(a,x,b)$ 来表示 $v$。两个三元组之间的内积为：
+$$((a,x,b), (c,y,d)) = (x,y)-\frac{1}{2}(ad+bc).$$
+
+采用 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这种基可能乍看起来很奇怪，但是在后面处理球面时，它相比使用 $\{e_1,e_2,\ldots,e_{n+2}\}$ 这组基会方便许多。
+
+
+## 射影模型
+
+设 $v\in\R^{n+1,1}$，我们约定用 $[v]$ 表示 $v$ 在射影空间 $\PR$ 中的等价类。
+
+::: definition
+定义光锥 (light cone/null cone) 为
+$$\L = \{v\in \LR \mid(v,v)=0\}.$$
+以及
+$$\PL=\{[v]\mid v\in\L\setminus\{0\}\}.$$
+$\PL$ 是 $\L$ 中所有直线组成的集合。
+:::
+
+熟知 $\ER=\R^n\cup\{\infty\}$ 和 $\R^{n+1}$ 中的单位球 $S^n=\{x_1^2+x_2^2+\cdots+x_{n+1}^2=1\}$ 在球极投影下是一一对应的。我们来说明它们分别和 $\PL$ 是一一对应的，并且当 $x\in\ER$ 和 $y\in S^n$ 在球极投影下对应时，它们在 $\PL$ 中是同一个点。
+
+具体的对应如下图所示：
+
+![原图出自 [conformalgeometricalgebra](http://conformalgeometricalgebra.org/wiki/index.php?title=Main_Page)](/images/coxeter/Horosphere.svg){width=400}
+
+
++ $S^n$ 对应的是图中的红圈，它是 $\L$ 与超平面 $v_{n+2}=1$ 相交的截线；
++ $\R^n$ 对应的是图中的 horosphere，它是 $\L$ 和超平面 $v_{n+2}-v_{n+1}=1$ 相交的截线；
++ $\infty$ 对应的是 $e_\infty$，它不在 horosphere 上。
+
+你可以看到，红色的 $S^n$ 和蓝色的 horosphere 都位于 $\L$ 上。$\L$ 中的每条直线都与红圈有唯一的交点；但是 $\L$ 中的每条直线
+
+# 双曲球堆
 
 ::: definition
 如果一个非空集合 $\P\subset V$ 满足下列条件，我们就称 $\P$ 是一个**球堆**：
