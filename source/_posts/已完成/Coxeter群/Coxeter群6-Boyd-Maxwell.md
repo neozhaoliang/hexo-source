@@ -30,8 +30,9 @@ url: "coxeter-groups-boyd-maxwell"
 \newcommand{\H}{\mathcal{H}}
 \newcommand{\tcr}{\overline{\mathcal{C}_r}}
 \newcommand{\sign}[1]{\mathrm{sgn}(#1)}
+\newcommand{\Rntwo}{\mathbb{R}^{n+1,1}}
 
-本文的内容主要来自 [@Maxwell82] 和 [@Maxwell89]，并修复了 Maxwell 的一些错误。Maxwell 在 [@Maxwell82, pp 81] 中写到：（采用我们的记号）
+本文的内容主要来自 [@Maxwell82] 和 [@Maxwell89]，并修复了一些错误。Maxwell 在 [@Maxwell82, pp 81] 中写到：（采用我们的记号）
 
 :::{.simple}
 When $\Gamma$ is hyperbolic, the cone
@@ -45,18 +46,6 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 这显然是错误的，因为对 light-like 的向量 $u$，$u$ 和 $-u$ 显然属于不同的分支。
 
 这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一点修改。详情见下面的 @Pre:thm-sphere-packing。
-
-
-# 球的反演
-
-:::{.definition}
-设 $a\in\R^n$，$r\in\R\setminus\{0\}$。注意我们 $r$ 允许是负数。球面
-$$B(a,r)=\set{x\in\R^n\mid |x-a|=|r|}$$
-将 $\R^n$ 分成内外两部分。我们规定其正半空间 $B^+(a,r)$ 由如下的集合构成：
-$$B^+(a,r)=\{x\in\R^n\mid |x-a|\cdot\sign{r}<r\}.$$
-即当 $r>0$ 时，$B+(a,r)$ 就是通常意义下球面包围的有界区域 $\{|x-a|<r\}$；当 $r<0$ 时，$B^+(a,r)$ 是球面外部的无界区域 $\{|x-a|>-r\}$。
-:::
-
 
 # 球堆
 
