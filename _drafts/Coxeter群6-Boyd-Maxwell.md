@@ -52,21 +52,19 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 这显然是错误的，因为对 light-like 的向量 $u$，$u$ 和 $-u$ 属于不同的分支。这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一些修改。详情见下面的 @Pre:thm-sphere-packing。
 
 
-# 射影模型
+# 球的反演
 
 在这一节中，我们约定 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，即在这组基下内积的 Gram 矩阵为
 $$\begin{pmatrix}I_{n+1} &\\ & -1\end{pmatrix}.$$
-任何 $v\in V$ 可以写成如下形式：
-$$v = y + ce_{n+2},\quad y\in\span\{e_1,\ldots,e_{n+1}\},\, c\in\R$$
-其中 $y$ 是一个 space-like 的向量。我们用 $|y|$ 表示 $y$ 的范数。 
-
-采用另一组基在处理球面时更方便。令 $e_0=\frac{1}{2}(e_{n+2}-e_{n+1}),\, e_\infty=\frac{1}{2}(e_{n+2}+e_{n+1})$，则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组基下的 Gram 矩阵为
+令 $e_0=\frac{1}{2}(e_{n+2}-e_{n+1}),\, e_\infty=\frac{1}{2}(e_{n+2}+e_{n+1})$，则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组基下的 Gram 矩阵为
 $$\begin{pmatrix}0&&&-\frac{1}{2}\\&I_n&&\\-\frac{1}{2}&&&0\end{pmatrix}.$$
-任何 $v\in V$ 可以写成如下形式，其中 $x$ 也是一个 space-like 的向量：
-$$v=ae_0 + x + be_\infty,\quad x\in\span\{e_1,\ldots,e_n\},\,a,b\in\R$$
-设 $w=ce_0 + z + de_\infty$ 是另一向量，则 $v,w$ 的内积为
-$$(v,w) = (x, z) - \frac{ad+bc}{2}.$$
+任何 $v\in V$ 可以写成 $v=ae_0 + x + be_\infty\,(a,b\in\R)$ 的形式，其中 $x\in\span\{e_1,\ldots,e_n\}$ 是一个 Euclidean 空间中的向量。设 $w=ce_0+y+de_\infty\,(c,d\in\R)$ 是另一个向量，则 $v,w$ 之间的内积为：
+$$(v,w)=(x,y)-\frac{1}{2}(ad+bc).$$
 
+采用 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这种基可能乍看起来很奇怪，但是在后面处理球面时，它相比使用 $\{e_1,e_2,\ldots,e_{n+2}\}$ 这组基会方便许多。
+
+
+## 射影模型
 
 设 $v\in\R^{n+1,1}$，我们约定用 $[v]$ 表示 $v$ 在射影空间 $\PR$ 中的等价类。
 
