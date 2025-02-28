@@ -34,7 +34,7 @@ url: "coxeter-groups-three-cases"
 
 # 有限
 
-关于 Coxeter 群的一个熟知的结论是，$W$ 是有限群当且仅当内积 $\inn$ 是正定的 [见 @Humphreys90 section 6.4]。我这里略过对此结论的证明（否则篇幅会拉的太长）。我们来证明这还等价于 $\tc=V^\ast$：
+关于 Coxeter 群的一个熟知的结论是，$(W,S)$ 是有限群当且仅当内积 $\inn$ 是正定的 [见 @Humphreys90 section 6.4]。我这里略过对此结论的证明（否则篇幅会拉的太长）。我们来证明这还等价于 $\tc=V^\ast$：
 
 :::{.theorem #finite-tits-V}
 Tits 锥 $\tc=V^\ast$ 当且仅当 $W$ 是有限群。
@@ -48,7 +48,7 @@ Tits 锥 $\tc=V^\ast$ 当且仅当 $W$ 是有限群。
 
 **证明**：
 
-$\Rightarrow$: $\tc=V^\ast$ 当然可以推出 $-\fd\in\tc$（$\fd$ 是基本区域），而对任何 $x\in-\fd$ 都有 $\Phi^+\subseteq \negf{x}$，根据前文得到的 [Tits 锥的刻画](/coxeter-groups-tits-cone/#tits-neg-finite)，$|\Phi^+|=|\negf{x}|<\infty$，从而 $\Phi^+$ 是有限集，从而 $\Phi$ 也是有限集。根据我们在根系一文中证明过的另一个 [结论](/coxeter-groups-root-system/#w-phi-both-finite-infinite)，$W$ 是有限群。
+$\Rightarrow$: 由 $\tc=V^\ast$ 可得 $-\fd\in\tc$（$\fd$ 是基本区域），而对任何 $x\in-\fd$ 都有 $\Phi^+\subseteq \negf{x}$，根据 [Tits 锥的刻画](/coxeter-groups-tits-cone/#tits-neg-finite)，$|\Phi^+|=|\negf{x}|<\infty$，从而 $\Phi$ 是有限集，[从而 $W$ 是有限群](/coxeter-groups-root-system/#w-phi-both-finite-infinite)。
 
 $\Leftarrow$: $W$ 是有限群说明 $\Phi$ 也是有限的，从而对任何 $x\in V^\ast$ 都有 $|\negf{x}|\leq |\Phi^+|<\infty$，从而 $x\in\tc$。$\blacksquare$
 
@@ -195,7 +195,7 @@ $\Q$ 由上、下两个分支 $\Q_+,\,\Q_-$ 组成，它们分别由 $\Q$ 中满
 
 设 $u,v\in \Q-\{0\}$。
 
-1. 如果 $u\sim v$ 则 $(u,v)\leq0$。反之如果 $(u,v)<0$ 则 $u\sim v$。
+1. 如果 $u\sim v$ 则 $(u,v)\leq0$。
 2. $(u,v)=0$ 当且仅当 $u,v$ 是共线的 light-like 的向量。
 3. 如果 $u,v$ 中至少有一个是 time-like 的向量，则 $u\sim v$ 当且仅当 $(u,v)<0$。
 :::
@@ -205,10 +205,11 @@ $\Q$ 由上、下两个分支 $\Q_+,\,\Q_-$ 组成，它们分别由 $\Q$ 中满
 设 $u=x+cz,\, v=y+dz$，则 $u,v\in\Q$ 说明 $(x,x)\leq c^2$，$(y,y)\leq d^2$。
 
 1. 若 $u\sim v$，则 $c,d$ 同为正或者同为负。由于 $z^\bot$ 是正定子空间，$x,y\in z^\bot$，由 Cauchy-Schwartz 不等式有
-$$(u,v)=(x,y)-cd\leq \sqrt{(x,x)\cdot (y,y)}-cd \leq \sqrt{c^2d^2}-cd=|cd|-cd=0.\tag{$\ast$}\label{eq:uv}$$
-反过来如果 $(u,v)<0$ 但是 $u\not\sim v$，则 $u\sim -v$，从而 $(u,-v)\leq0$，与 $(u,v)<0$ 矛盾。
-2. 如果 $u\sim v$，则 $(u,v)=0$ 说明 $(\ref{eq:uv})$ 中等号全部成立，从而 $(x,y)=\sqrt{(x,x)\cdot (y,y)}$，即 $x,y$ 共线；以及 $(x,x)=c^2,\,(y,y)=d^2$，即 $x,y$ 都是 light-like 的向量。设 $y=\lambda x$，则由 $(x,y)=cd$ 可得 $\lambda (x,x)=cd$，即 $d=\lambda c$，从而 $v=\lambda u$ 共线。如果 $u\not\sim v$，则 $u\sim -v$。利用同样的论证，$u$ 和 $-v$ 是共线的 light-like 的向量，当然 $u$ 和 $v$ 也是。反方向是显然的。
-3. 不妨设 $u$ 是 time-like 的向量。$\Rightarrow$：如果 $u\sim v$，$(\ref{eq:uv})$ 给出了 $(u,v)\leq0$。结合 $u$ 是 time-like 的和 2 中刚刚证明的结论，严格的不等号成立。$\Leftarrow$：如果 $u\not\sim v$ 则 $u\sim -v$，根据 1 的结论，$(u,-v)\leq0$，从而 $(u,v)\geq0$，矛盾。
+$$(u,v)=(x,y)-cd\leq \sqrt{(x,x)\cdot (y,y)}-cd \leq \sqrt{c^2d^2}-cd=|cd|-cd=0.$$
+2. 如果 $u,v$ 不共线，则 $U=\span\{u,v\}$ 是二维子空间，对 $w=au+bv\,(a,b\in\R)$，由 $(u,v)=0$ 可得
+$$(w,w)=a^2(u,u) + b^2(v,v)\leq0.$$
+即 $U$ 不包含 space-like 的向量。这与 $\dim U=2$ 和 $V$ 的 Sylvester 符号是 $(n-1,1)$ 矛盾，所以 $u,v$ 必须共线。进一步显然 $u,v$ 都是 light-like 的。反方向是显然的。
+3. 不妨设 $u$ 是 time-like 的向量。$\Rightarrow$：如果 $u\sim v$，1 证明了 $(u,v)\leq0$。结合 $u$ 是 time-like 的和 2 的结论，严格的不等号成立。$\Leftarrow$：如果 $u\not\sim v$ 则 $u\sim -v$，根据 1 的结论，$(u,-v)\leq0$，从而 $(u,v)\geq0$，矛盾。
 
 $\blacksquare$
 
@@ -221,6 +222,8 @@ $\blacksquare$
 ::: {.proposition #dual-cone-trivial-intersection}
 在 $W$ 不可约且双曲的情形，$\tc^\ast\cap \Q_+,\,\tc^\ast\cap\Q_-$ 中必有一个是 $\{0\}$。
 :::
+
+这个结论应该是很直观的，如果 $\tc^\ast$ 同时包含 $\Q_+,\Q_-$ 中的非零向量的话，由于 $\tc^\ast$ 是点锥，这两个向量必然不共线，从而它们的非负线性组合可以给出 space-like 的向量，这与 $\tc^\ast$ 不含 space-like 的向量矛盾。
 
 **证明**：若不然，设 $u\in\tc^\ast\cap\Q_+,\,u'\in \tc^\ast\cap\Q_-$ 是非零向量，$u=x+cz,\,u'=y+dz$ 是 [如前所述的分解](#lorentzinian-decomposition)，则 $c>0,\,d<0$。考察 $$v=cu'-du=cy-dx\in(\R z)^\bot.$$
 $v$ 是 $u$ 和 $u'$ 的非负线性组合，所以 $v$ 也属于 $\tc^\ast$，从而 [$(v,v)\leq0$](/coxeter-groups-tits-cone/#dual-cone-nonspace)。结合 $(\R z)^\bot$ 是 space-like 的可得 $v=0$，于是 $cu'=du$。由于 $c,d$ 异号所以 $u$ 和 $-u$ 同时属于 $\tc^\ast$，但 $\tc^\ast$ 是点锥，所以 $u=0$。从而 $\tc^\ast\cap\Q_+$ 和 $\tc^\ast\cap\Q_-$ 中必有一个等于 $\{0\}$。$\blacksquare$

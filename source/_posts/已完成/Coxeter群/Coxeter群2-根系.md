@@ -20,22 +20,22 @@ url: "coxeter-groups-root-system"
 \newcommand{\gl}{\mathrm{GL}}
 \newcommand{\R}{\mathbb{R}}
 
-我们先回顾一下 [第一篇笔记](/coxeter-groups-geometric-realization/) 中介绍的主要内容。
+我们先回顾 [第一篇笔记](/coxeter-groups-geometric-realization/) 的主要内容。
 
 设 $(W,S)$ 是一个 Coxeter 系。在 [上文](/coxeter-groups-geometric-realization/) 中，我们按照如下方式，将 $(W,S)$ 表示为一个实向量空间 $V$ 上的正交反射群：
 
 1. 取一个 $n=|S|$ 维实向量空间 $V$，$V$ 的一组基为 $\{\alpha_s\mid s\in S\}$；
 2. 规定了 $V$ 上的内积 $\inn$；
 2. 对每个生成元 $s\in S$，规定 $s$ 在 $V$ 上的作用为关于 $\alpha_s$ 的反射 $\rho_s$；
-3. 我们证明了 $\rho$ 是从 $W\to\gl(V)$ 的群同态，并且 $\rho(W)$ 保持内积 $\inn$。
+3. 我们证明了 $\rho$ 是从 $W\to\mathrm{O}(V)$ 的群同态。
 
-但是我们还有一个未完成的工作：证明 $\rho$ 是嵌入映射。本文会完成它。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。:smirk:
+但是我们还有一个未完成的工作：证明 $\rho$ 是同构。本文会完成它。此外我还会介绍关于根系的一些知识。如果你直接翻到本文后面，会发现我罗列了很多关于根系的推论。这并不是我在故故意掉书袋，这些推论每一条后面都会用到。不过读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。
 
 <!--more-->
 
 # 根系
 
-我们记 $\Delta=\{\alpha_s\mid s\in S\}$ 是如前所取的 $V$ 的一组基。
+记 $\Delta=\{\alpha_s\mid s\in S\}$ 是如前所取的 $V$ 的一组基。
 
 ::: Definition
 我们称集合
@@ -98,7 +98,7 @@ l(w)&=l(vu\cdot uv_I)\leq l(vu) + l(uv_I) = (l(v) -1) + l(uv_I)\\
 \end{align*}$$
 于是所有的不等号都是等式，从而 $(vu,uv_I)\in A$，但这与 $(v,v_I)$ 的选择矛盾。所以不论 $u=s$ 或是 $u=t$ 都有 $l(vu)>l(v)$。
 
-由于 $l(v)\leq l(w)-1$ 所以根据归纳假设 $v\alpha_s,\,v\alpha_t$ 都是正根。如果我们能够证明 $v_I\alpha_s$ 是 $\alpha_s$ 和 $\alpha_t$ 的非负线性组合：$$v_I\alpha_s = a\alpha_s + b\alpha_t,\quad a,\,b\geq0,$$
+由于 $l(v)\leq l(w)-1$ 所以根据归纳假设 $v\alpha_s,\,v\alpha_t$ 都是正根。如果我们能够证明 $v_I\alpha_s$ 是 $\alpha_s$ 和 $\alpha_t$ 的非负线性组合：$$v_I\alpha_s = a\alpha_s + b\alpha_t,\quad a,\,b\geq0.$$
 则
 $$w\alpha_s=vv_I\alpha_s=v(a\alpha_s + b\alpha_t)=av\alpha_s + bv\alpha_t\in\Phi^+.$$
 这就证明了结论。

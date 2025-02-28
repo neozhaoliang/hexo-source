@@ -72,14 +72,14 @@ $$\begin{pmatrix}(\alpha_s,\alpha_s) & (\alpha_s,\alpha_t)\\(\alpha_t,\alpha_t)&
 我们先回顾一下锥的概念：
 
 ::: definition
-设 $C$ 是某实向量空间的子集。如果对任何 $x\in C$ 和实数 $\alpha\geq0$ 都有 $\alpha x\in C$，就称 $C$ 是一个**锥**。如果 $C$ 还是凸集，就称 $C$ 是**凸锥**。凸锥满足对任何 $x,y\in C$ 和非负实数 $\alpha,\beta\geq0$，$\alpha x + \beta y$ 仍然属于 $C$。
+设 $C$ 是某实向量空间的子集。如果对任何实数 $\alpha\geq0$ 都有 $\alpha C\subset C$，就称 $C$ 是一个**锥**。如果 $C$ 还是凸集，就称 $C$ 是**凸锥**。凸锥满足对任何 $x,y\in C$ 和非负实数 $\alpha,\beta\geq0$，$\alpha x + \beta y$ 仍然属于 $C$。
 :::
 
 设 $X$ 是某实向量空间的子集，我们用记号 $\cone{X}$ 表示 $X$ 中元素的所有有限非负线性组合：
 $$\cone{X} = \left\{\sum_{i=1}^n c_ix_i,\, x_1,\ldots,x_n\in X,\, c_i\geq0.\right\}.$$
 显然 $\cone{X}$ 总是凸锥，并且它还是包含 $X$ 的最小凸锥。
 
-注意，当 $X$ 是有限集时，$\cone{X}$ 总是闭集，但是当 $X$ 是无限集时 $\cone{X}$ 未必是闭集。
+当 $X$ 是有限集时，$\cone{X}$ 总是闭集，但是当 $X$ 是无限集时 $\cone{X}$ 未必是闭集。
 
 ::: {.definition #fundamental-weights}
 设 $\Delta^\ast=\{\omega_t\}\subset V^\ast$ 是 $\Delta$ 的一组对偶基，满足 $\lfun{\alpha_s}{\omega_t}=\delta_{st}$，$\Delta^\ast$ 叫做**基本权**。记

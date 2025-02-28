@@ -23,7 +23,7 @@ url: "coxeter-groups-geometric-realization"
 
 设 $S$ 是一个集合，一个基于 $S$ 的 Coxeter 矩阵 $M=(m_{s,t})_{s,t\in S}$ 是一个对称矩阵，其对角线上都是 1，非对角线元素取值范围为 $\{2,3,\ldots,\infty\}$。$|S|$ 叫做 $M$ 的秩 (rank)。在这个系列中我们只考虑 $|S|<\infty$ 的情形。
 
-矩阵 $M$ 确定了一个有限表现群 $W$，其生成元为集合 $S$，表现如下：
+矩阵 $M$ 确定了一个有限表现群 $W$，其生成元为集合 $S$，群表现如下：
 $$W = \langle s\in S\ |\ (st)^{m_{s,t}}=1\ {\rm if}\ m_{s,t}<\infty\rangle.$$
 
 即 $S$ 满足的生成关系是：
@@ -39,13 +39,13 @@ $$W = \langle s\in S\ |\ (st)^{m_{s,t}}=1\ {\rm if}\ m_{s,t}<\infty\rangle.$$
 我们总是用 $(W,S)$ 来表示一个 Coxeter 群。即我们在提到一个 Coxeter 群 $W$ 时需要同时指明 $W$ 的生成元集合 $S$。这是因为，可能存在不同的生成元集合 $S$ 和 $S'$，它们给出同一个群 $W$。但是像长度函数 $l(w)$、Bruhat 序这些重要的概念，只有在指定生成元集 $S$ 的前提下才有意义。
 :::
 
-用 Coxeter 矩阵或者群表现来描述 Coxeter 群还是太不方便了。我们可以用一个有限图 $\Gamma$ 更直观地表示一个 Coxeter 群 $(W,S)$，$\Gamma$ 叫做 $(W,S)$ 的 Coxeter 图：
+用 Coxeter 矩阵或者群表现来描述 Coxeter 群还是太不方便了。我们可以用一个有限图 $\Gamma$ 更直观地表示 $(W,S)$，$\Gamma$ 叫做 $(W,S)$ 的 **Coxeter 图**：
 
-+ $\Gamma$ 的顶点集就是 $S$。
-+ 两个顶点 $s,t\in S$ 之间连一条边当且仅当 $m_{s,t}\ne 2$，并且我们给这条边标上记号 $m_{s,t}$。
-+ 如果 $m_{s,t}=3$，省略这个记号。
++ $\Gamma$ 的顶点集是 $S$。
++ 如果 $m_{s,t}\ne 2$，就在顶点 $s$ 和 $t$ 之间连一条边，并且给这条边标上记号 $m_{s,t}$。
++ 但是如果 $m_{s,t}=3$ 的话，就省略这个记号不写。
 
-如果 $\Gamma$ 是连通的，就称 $(W,S)$ 是**不可约的**。
+此外如果 $\Gamma$ 是连通的，就称 $(W,S)$ 是**不可约的**。
 
 ::: example
 Coxeter 矩阵
@@ -68,7 +68,7 @@ $$\begin{pmatrix}1 & m & 2\\m&1&2\\2&2&1\end{pmatrix}$$
 
 ![](/images/coxeter/prism.svg){.fig width=120}
 
-$\Gamma$ 有两个连通分支，所以 $W$ 是可约的。这个群给出的是三维 Euclidean 空间的棱柱，前两个相邻的顶点在 $xy$ 平面内生成正 $m$ 边形，最后的孤立顶点是一面镜子，它的作用是在 $z$ 轴方向上将多边形作反射形成棱柱结构：
+$\Gamma$ 有两个连通分支，所以 $W$ 是可约的。这个群是三维空间中棱柱的对称群，前两个相邻的顶点给出二面体群 $D_m$，它负责在 $xy$ 平面内生成正 $m$ 边形；最后的孤立顶点在 $z$ 轴方向上将多边形作反射形成棱柱结构：
 
 <video src="/images/coxeter/prism-6.mp4" width=300 controls></video>
 :::
@@ -101,21 +101,21 @@ $W$ 是不可约的。这个群给出的是三维双曲空间中的密铺：
 去掉最后一个顶点，前三个顶点给出正十二面体的对称群 $(5,3)$，说明这个密铺由正十二面体组成；去掉第一个顶点，剩下三个顶点给出正方体的对称群 $(3,4)\cong(4,3)$，说明每个顶点处有 8 个正十二面体相遇。
 :::
 
-我们主要关心的是 $\Gamma$ 不可约的情形。这是因为，如果 $\Gamma=\Gamma_1\cup\cdots\cup\Gamma_k\,(k>1)$ 是多个连通分支的并的话，则对任何 $s\in\Gamma_i$ 和 $t\in\Gamma_j$ 有 $m_{s,t}=2$，从而 $st=ts$，于是 $\Gamma_i$ 中的生成元与 $\Gamma_j$ 中的生成元两两交换，这时 $W$ 有直积分解
+我们主要关心 $\Gamma$ 不可约的情形。因为如果 $\Gamma=\Gamma_1\cup\cdots\cup\Gamma_k\,(k>1)$ 是多个连通分支的并的话，则对任何 $s\in\Gamma_i$ 和 $t\in\Gamma_j$ 有 $m_{s,t}=2$，从而 $st=ts$，于是 $\Gamma_i$ 中的生成元与 $\Gamma_j$ 中的生成元两两交换，这时 $W$ 有直积分解
 $$W=W_1\times\cdots\times W_k.$$
 其中 $W_1,\ldots,W_k$ 分别是 $\Gamma_1,\ldots,\Gamma_k$ 对应的 Coxeter 群。所以我们只要研究 $\Gamma$ 不可约的情形即可。
 
-还有一种给 $\Gamma$ 的边标号的方式，叫做 Vinberg 记号，允许给 $m_{s,t}=\infty$ 的那些边用 $\leq-1$ 的实数作为标号。比如像下面这样：
+还有一种给 $\Gamma$ 的边标号的方式，叫做 Vinberg 记号，允许给 $m_{s,t}=\infty$ 的边用 $\leq-1$ 的实数作为标号。比如像下面这样：
 
 ![](/images/coxeter/level2.svg){.fig width=120 #level2}
 
-作为抽象 Coxeter 群，它和前面的 [$\Delta(3,4,\infty)$](#3-4-inf) 是同一个群，但是这里 $\infty$ 边的标号变成了 $-1.1$。后面会解释，Vinberg 记号相当于指定了这条边的两个顶点在几何实现中对应的两个镜面的「双曲距离」。在后文中我们也会采用这种记号。
+作为抽象 Coxeter 群，它和前面的 [$\Delta(3,4,\infty)$](#3-4-inf) 是同一个群，但是这里 $\infty$ 边的标号变成了 $-1.1$。我后面会解释，Vinberg 记号相当于指定了这条边的两个顶点在几何实现中对应的两个镜面的「双曲距离」。在后文介绍 Boyd-Maxwell 球堆时，我们也会采用这种记号。
 
-用 Coxeter 图来表示 Coxeter 群，除了直观上的好处外，它还能告诉我们一些关于 $(W,S)$ 的结构信息。比如当 $\Gamma$ 包含回路时，你可以立刻知道 $(W,S)$ 一定是无限群 [@Humphreys90, section 2.7]。还有一些更微妙的信息也可以从 $\Gamma$ 中读出来。
+Coxeter 图除了直观上的好处外，它还能告诉我们一些关于 $(W,S)$ 的结构信息。比如当 $\Gamma$ 包含回路，或者有某个顶点的度数 $\geq4$ 时，你可以立刻知道 $(W,S)$ 一定是无限群 [@Humphreys90, section 2.7]。还有一些更微妙的信息也可以从 $\Gamma$ 中读出来。
 
 # 长度函数
 
-对 $W$ 中的任一元素 $w$，存在许多种不同的方式将 $w$ 表示为 $S$ 中生成元的乘积。在所有这些表示中，长度最短者叫做 $w$ 的**既约表示**：即若 $w=s_1s_2\cdots s_k$ 是一个长度为 $k$ 的表示，且 $w$ 不存在任何长度小于 $k$ 的表示，就称 $s_1s_2\cdots s_k$ 是 $w$ 的既约表示。$w$ 的既约表示可能不唯一，但它们都具有相同的长度。定义 $l(w)$ 为 $w$ 的任意一个既约表示的长度。
+对 $W$ 中的任一元素 $w$，存在许多种不同的方式将 $w$ 表示为 $S$ 中生成元的乘积。在所有这些表示中，长度最短者叫做 $w$ 的**既约表示**：即，如果 $w=s_1s_2\cdots s_k$ 是一个长度为 $k$ 的表示，且 $w$ 不存在任何长度小于 $k$ 的表示，就称 $s_1s_2\cdots s_k$ 是 $w$ 的既约表示。$w$ 的既约表示可能不唯一，但它们都具有相同的长度。定义 $l(w)$ 为 $w$ 的任意一个既约表示的长度。
 
 $l(w)$ 具有如下的性质：
 
@@ -130,7 +130,7 @@ $l(w)$ 具有如下的性质：
 
 # 几何实现
 
-抽象 Coxeter 群是用生成元和生成关系定义的，直接从这种定义出发研究群结构是非常困难的。在这一节中，我们将介绍如何将抽象的 Coxeter 群实现为一个内积空间中的正交反射群，从而可以使用几何、线性代数等多种工具来研究它。
+抽象 Coxeter 群是用生成元和生成关系定义的，直接从这种定义出发研究群结构是非常困难的。在这一节中，我们介绍如何将抽象的 Coxeter 群实现为一个内积空间中的正交反射群，从而可以使用几何、线性代数等多种工具来研究它。
 
 设 $(W,S)$ 是一个 Coxeter 系，$M=(m_{s,t})_{s,t\in S}$ 是 Coxeter 矩阵，$V$ 是一个维数为 $n=|S|$ 的实向量空间，其一组基为 $\{\alpha_s \mid s\in S\}$。我们规定 $V$ 上的内积 $\inn$ 如下：
 
@@ -162,17 +162,19 @@ $a_{s,t}=1$ 表示 Euclidean 空间中两个平行的镜面（或者双曲空间
 
 正如名字所暗示的那样，$\inn$ 是有限型的当且仅当 $W$ 是有限反射群，这时 $W$ 给出的万花筒是球面上的密铺；$\inn$ 是仿射型的当且仅当 $W$ 可以实现为 Euclidean 空间上的仿射 Weyl 群，这时 $W$ 给出的万花筒是 Euclidean 空间中的密铺；$\inn$ 是双曲型的意味着 $W$ 给出的是双曲空间中的密铺。这些我们会在后面作更详细的讨论。
 
-对任何 $s\in S$，定义 $V$ 上的反射 $\rho_s$ 为
+给定 $s\in S$，定义 $V$ 上的反射 $\rho_s$ 为
 $$\rho_s(v) = v -2(v,\alpha_s)\alpha_s ,\quad v\in V.$$
-容易验证 $\rho_s$ 满足 $\rho_s^2=1$，并且它保持 $\inn$ 不变：
-$$(\rho_s(u),\rho_s(v)) = (u,v),\quad \forall u,v\in V.$$
-即 $\rho_s$ 是以 $\alpha$ 为法向量的镜面反射。
+容易验证 $\rho_s$ 满足以下几点：
 
-我们来证明 $s\to\rho_s$ 实际上是从 $(W,S)$ 到 $\gl(V)$ 的群同态，从而
-$$\rho: W\to\rho(W)\leqslant\gl(V)$$
-是一个线性表示。特别地，由于每个 $\rho(s)$ 保持 $\inn$ 不变，$\rho(W)$ 也保持 $\inn$ 不变。即 $\rho(W)$ 是正交群 $O(V)$ 的子群。
+1. $\rho_s(\alpha_s)=-\alpha_s$；
+2. $\rho_s$ 保持超平面 $\{v\in V\mid (v,\alpha_s)=0\}$ 上的点不动；
+3. $\rho_s$ 保持 $\inn$ 不变：$(\rho_s(u),\rho_s(v)) = (u,v),\,\forall u,v\in V$。
 
-证明的方法当然还是使用商群的泛性质。我们只要证明 $\{\rho_s\}$ 之间满足与 $(W,S)$ 相同的生成关系即可：
+即 $\rho_s\in \mathrm{O}(V)$ 是以 $\alpha$ 为法向量的镜面反射。
+
+我们来证明 $s\to\rho_s$ 实际上给出了 $(W,S)$ 到 $\mathrm{O}(V)$ 的群同态，从而
+$$\rho: W\to\rho(W)\leqslant\mathrm{O}(V)$$
+是一个线性表示。为此只要证明 $\{\rho_s\mid s\in S\}$ 满足与 $(W,S)$ 相同的生成关系即可，这样根据商群的泛性质，即得存在群同态 $W\to \langle\,\rho_s\mid s\in S\,\rangle$ 将每个 $s$ 被映射到 $\rho_s$。即我们只要证明：
 
 ::: Proposition
 $(\rho_s\rho_t)^{m_{s,t}}=1$ 对任何 $s,t\in S$ 成立。
@@ -192,8 +194,8 @@ $(\rho_s\rho_t)^{m_{s,t}}=1$ 对任何 $s,t\in S$ 成立。
 :::
 
 1. $m<\infty$。这时 $\inn$ 限制在 $V_{s,t}$ 上的 Gram 矩阵是
-$$\begin{pmatrix}1&-\cos\theta\\-\cos\theta&1\end{pmatrix},\qquad \theta=\frac{\pi}{m}.$$
-这个矩阵是正定的，从而 $\inn\mid_{V_{s,t}}$ 非退化，这时 $V=V_{s,t}\oplus V_{s,t}^\bot$ 是成立的，而 $\sigma$ 限制在正交补 $V_{s,t}^\bot$ 上是恒等变换，所以 $\sigma$ 在 $V$ 上的阶就等于它在 $V_{s,t}$ 上的阶。容易验证 $\rho_s(\alpha_s)=-\alpha_s$ 和 $\rho_s(\alpha_t)=2\cos\theta\cdot\alpha_s+\alpha_t$，以及关于 $\rho_t$ 的类似表达式。为了简化记号（否则我们的表达式会超出页面），令 $a_k=\sin (k\theta)/\sin\theta$，我们有
+$$\begin{pmatrix}1&-\cos\theta\\-\cos\theta&1\end{pmatrix},\quad \theta=\frac{\pi}{m}.$$
+这个矩阵是正定的，从而 $\inn\mid_{V_{s,t}}$ 非退化，这时 $V=V_{s,t}\oplus V_{s,t}^\bot$ 是成立的，而 $\sigma$ 限制在正交补 $V_{s,t}^\bot$ 上是恒等变换，所以 $\sigma$ 在 $V$ 上的阶就等于它在 $V_{s,t}$ 上的阶。为了简化记号（否则我们的表达式会超出页面），令 $a_k=\sin (k\theta)/\sin\theta$，直接计算不难得到
 $$\begin{align*}&\alpha_s\xrightarrow{\ \rho_t\ }a_1\alpha_s+a_2\alpha_t\xrightarrow{\ \rho_s\ }a_3\alpha_s+a_2\alpha_t\xrightarrow{\ \rho_t\ }a_3\alpha_s+a_4\alpha_t\xrightarrow{\ \rho_s\ }\cdots\\
 &\alpha_t\xrightarrow{\ \rho_s\ }a_2\alpha_s+a_1\alpha_t\xrightarrow{\ \rho_t\ }a_2\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_s\ }a_4\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_t\ }\cdots\end{align*}
 $$
@@ -203,7 +205,7 @@ $$a_{2m+1}\alpha_s+a_{2m}\alpha_t=\sthe{(2m+1)}\alpha_s+\sthe{(2m)}\alpha_t=\alp
 $$a_{2m}\alpha_s+a_{2m+1}\alpha_t=\sthe{(2m)}\alpha_s+\sthe{(2m+1)}\alpha_t=\alpha_t.$$
 又回到了各自的第一项。所以 $\sigma$ 的阶等于 $m$。
 
-2. $m=\infty$。这时未必有 $V=V_{s,t}\oplus V_{s,t}^\bot$。但我们可以论证 $\sigma$ 在 $V_{s,t}$ 上的阶是无穷，那么自然它在 $V$ 上的阶也是无穷。
+2. $m=\infty$。这时未必有 $V=V_{s,t}\oplus V_{s,t}^\bot$。但我们可以证明 $\sigma$ 在 $V_{s,t}$ 上的阶是无穷，那么自然它在 $V$ 上的阶也是无穷。
 设 $\theta\geq0$ 使得 $a_{s,t}=\cosh\theta$。同样为了简化记号，令 $b_k=\sinh(k\theta)/\sinh\theta$，不难验证有
 $$\begin{align*}&\alpha_s\xrightarrow{\ \rho_t\ }b_1\alpha_s+b_2\alpha_t\xrightarrow{\ \rho_s\ }b_3\alpha_s+b_2\alpha_t\xrightarrow{\ \rho_t\ }b_3\alpha_s+b_4\alpha_t\xrightarrow{\ \rho_s\ }\cdots\\
 &\alpha_t\xrightarrow{\ \rho_s\ }b_2\alpha_s+b_1\alpha_t\xrightarrow{\ \rho_t\ }b_2\alpha_s+b_3\alpha_t\xrightarrow{\ \rho_s\ }b_4\alpha_s+b_3\alpha_t\xrightarrow{\ \rho_t\ }\cdots\end{align*}
@@ -212,11 +214,6 @@ $$（当 $a_{s,t}=1$ 时 $\theta=0$，$b_k$ 应当理解为 $\lim_{\theta\to0}\s
    这两个链条都是永不重复的，所以 $\sigma$ 的阶是无穷。
 
 至此命题得证。$\blacksquare$
-
-:::{.note}
-我知道你肯定不喜欢看到这种涉及繁琐计算的证明。但我的经验是，慢就是快。花大量时间在掌握例子上是值得的。
-:::
-
 
 后面我们会看到 $\rho$ 实际是一个同构，这样就把抽象的 Coxeter 群 $W$ 实现为具体的反射群 $\rho(W)$。由于 $\rho$ 是同构，研究 $\rho(W)$ 并不会丢失 $W$ 的信息。
 

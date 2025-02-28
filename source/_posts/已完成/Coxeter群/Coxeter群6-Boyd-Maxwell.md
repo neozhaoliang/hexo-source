@@ -37,8 +37,12 @@ url: "coxeter-groups-boyd-maxwell"
 \newcommand{\PL}{\mathrm{P}(\mathbb{L}^{n+1})}
 \newcommand{\LR}{\mathbb{R}^{n+1,1}}
 \newcommand{\ER}{\overline{\mathbb{R}^n}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\a}{\mathbf{a}}
+\newcommand{\n}{\mathbf{n}}
 
-本文的内容主要来自 [@Maxwell82] 和 [@Maxwell89]，并修复了一些错误。Maxwell 在 [@Maxwell82, pp 81] 中写到：（采用我们的记号）
+本文的内容主要来自 [@Maxwell82] 和 [@Maxwell89]，并修复了一些错误。Maxwell 在 [@Maxwell82, pp 81] 中写到：
 
 :::{.simple}
 When $\Gamma$ is hyperbolic, the cone
@@ -49,24 +53,25 @@ has two connected components (after deleting 0), which are also the equivalent c
 $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 :::
 
-这显然是错误的，因为对 light-like 的向量 $u$，$u$ 和 $-u$ 属于不同的分支。这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一些修改。详情见下面的 @Pre:thm-sphere-packing。
+这显然是错误的，因为如果 $u$ 是 light-like 的向量，$u$ 和 $-u$ 属于不同的分支。这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一些修改。详情见下面的 @Pre:thm-sphere-packing。
 
 
 # 射影模型
 
 在这一节中，我们约定 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，即在这组基下内积的 Gram 矩阵为
 $$\begin{pmatrix}I_{n+1} &\\ & -1\end{pmatrix}.$$
-任何 $v\in V$ 可以写成如下形式：
-$$v = y + ce_{n+2},\quad y\in\span\{e_1,\ldots,e_{n+1}\},\, c\in\R$$
-其中 $y$ 是一个 space-like 的向量。我们用 $|y|$ 表示 $y$ 的范数。 
-
-采用另一组基在处理球面时更方便。令 $e_0=\frac{1}{2}(e_{n+2}-e_{n+1}),\, e_\infty=\frac{1}{2}(e_{n+2}+e_{n+1})$，则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组基下的 Gram 矩阵为
+令
+$$e_0=\frac{e_{n+2}-e_{n+1}}{2},\quad e_\infty=\frac{e_{n+2}+e_{n+1}}{2}.$$
+则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组基下的 Gram 矩阵为
 $$\begin{pmatrix}0&&&-\frac{1}{2}\\&I_n&&\\-\frac{1}{2}&&&0\end{pmatrix}.$$
-任何 $v\in V$ 可以写成如下形式，其中 $x$ 也是一个 space-like 的向量：
-$$v=ae_0 + x + be_\infty,\quad x\in\span\{e_1,\ldots,e_n\},\,a,b\in\R$$
-设 $w=ce_0 + z + de_\infty$ 是另一向量，则 $v,w$ 的内积为
-$$(v,w) = (x, z) - \frac{ad+bc}{2}.$$
-
+设
+$$\begin{aligned}
+v&=ae_0 + \x + be_\infty,\\
+w&=ce_0 + \y + de_\infty.
+\end{aligned}$$
+是两个向量，其中 $\x,\y\in\span\{e_1,\ldots,e_n\}$，$a,b\in\R$，则 $v,w$ 的内积为
+$$(v,w) = (\x, \y) - \frac{ad+bc}{2}.$$
+$\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基在处理 $\R^n$ 中的球时更方便一些。
 
 设 $v\in\R^{n+1,1}$，我们约定用 $[v]$ 表示 $v$ 在射影空间 $\PR$ 中的等价类。
 
@@ -78,23 +83,23 @@ $$\PL=\{[v]\mid v\in\L\setminus\{0\}\}.$$
 $\PL$ 是 $\L$ 中所有直线组成的集合。
 :::
 
-熟知 $\ER=\R^n\cup\{\infty\}$ 和 $\R^{n+1}$ 中的单位球 $S^n=\{x_1^2+x_2^2+\cdots+x_{n+1}^2=1\}$ 在球极投影下是一一对应的（北极点为 $e_{n+1}$）。我们来说明它们分别和 $\PL$ 是一一对应的，并且当 $x\in\ER$ 和 $y\in S^n$ 在球极投影下对应时，它们在 $\PL$ 中是同一个点。
+熟知 $\ER=\R^n\cup\{\infty\}$ 和 $\R^{n+1}$ 中的单位球 $S^n=\{x_1^2+x_2^2+\cdots+x_{n+1}^2=1\}$ 在球极投影下是一一对应的（北极点为 $e_{n+1}$）。我们来说明它们分别和 $\PL$ 是一一对应的，并且当 $\x\in\ER$ 和 $\y\in S^n$ 在球极投影下对应时，它们在 $\PL$ 中是同一个点。
 
 :::{.simple}
 **$\PL$ 的第一种参数化表示** \
 
 我们在 $\{e_1,\ldots,e_{n+2}\}$ 这组基下计算。
 
-设 $y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in\R^{n+1}$，$|y|$ 是 $y$ 的 Euclidean 范数，则
-$$y\in S_n\Leftrightarrow |y|=1\Leftrightarrow y+e_{n+2}\in\L.$$
+设 $\y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in\R^{n+1}$，则
+$$\y\in S_n\Leftrightarrow |\y|=1\Leftrightarrow \y+e_{n+2}\in\L.$$
 即我们有一一映射：
 $$
 \begin{aligned}
 S^n&\mapsto S^n_1\\
-y &\mapsto y+e_{n+2}.
+\y &\mapsto \y+e_{n+2}.
 \end{aligned}$$
 其中 $S^n_1$ 是平面 $y_{n+2}=1$ 与 $\L$ 相交给出的截线。由于 $\PL$ 中每个元素在 $S^n_1$ 中有唯一代表元，所以
-$$\jmath\colon\ S^n\to\PL: y\to [y+e_{n+2}],$$
+$$\jmath\colon\ S^n\to\PL: \y\to [\y+e_{n+2}],$$
 是一一对应，此即为 $\PL$ 的第一种参数化表示。
 :::
 
@@ -104,45 +109,45 @@ $$\jmath\colon\ S^n\to\PL: y\to [y+e_{n+2}],$$
 我们在 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基下计算。对 $[v]\in\PL$：
 
 + 如果 $v$ 的 $e_0$ 分量不为 0，则 $v$ 形如
-$$v=e_0 + x + be_\infty,\quad x\in\span\{e_1,\ldots,e_n\}.$$
-由于 $v\in\L$ 所以 $b=|x|^2$，即 $v=e_0 + x + |x|^2e_\infty$。
+$$v=e_0 + \x + be_\infty,\quad \x\in\span\{e_1,\ldots,e_n\}.$$
+由于 $v\in\L$ 所以 $b=|\x|^2$，即 $v=e_0 + \x + |\x|^2e_\infty$。
 + 如果 $v$ 的 $e_0$ 分量等于 0，则 $v$ 形如
-$$v=x+be_\infty,\quad x\in\span\{e_1,\ldots,e_n\}.$$
-$v\in\L$ 说明 $x=0$，从而 $[v] = [(0,0,b)]=[e_\infty]$。
+$$v=\x+be_\infty,\quad \x\in\span\{e_1,\ldots,e_n\}.$$
+$v\in\L$ 说明 $\x=0$，从而 $[v] = [(0,0,b)]=[e_\infty]$。
 
 于是我们可以定义如下从 $\ER$ 到 $\PL$ 的一一对应:
 $$
-\imath(x)=\begin{cases}[e_0 + x + |x|^2e_\infty] & x\in\R^n,\\
-[e_\infty] & x = \infty.
+\imath(\x)=\begin{cases}[e_0 + \x + |\x|^2e_\infty] & \x\in\R^n,\\
+[e_\infty] & \x = \infty.
 \end{cases}
 $$
 此即为 $\PL$ 的第二种参数化表示。
 :::
 
-我们来验证当 $x\in\overline{\R^n}$ 和 $y\in S^n$ 是以 $e_{n+1}$ 为北极的球极投影下的对应点时，$x,y$ 在这两种参数化表示下给出 $\PL$ 的同一个点。
+我们来验证当 $\x\in\overline{\R^n}$ 和 $\y\in S^n$ 是以 $e_{n+1}$ 为北极的球极投影下的对应点时，$\x,\y$ 在这两种参数化表示下给出 $\PL$ 的同一个点。
 
-设 $y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in S^n$，$y$ 在以 $e_{n+1}$ 为北极的球极投影下对应的 $x\in\overline{\R^n}$ 是
-$$x=\begin{cases}
+设 $\y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in S^n$，$\y$ 在以 $e_{n+1}$ 为北极的球极投影下对应的 $\x\in\overline{\R^n}$ 是
+$$\x=\begin{cases}
 \sum\limits_{i=1}^n\dfrac{y_i}{1-y_{n+1}}e_i & y_{n+1}\ne1,\\
 \infty & y_{n+1}=1.
 \end{cases}
 $$
-我们来验证 $\jmath(y)=\imath(x)$，即
-$$[y + e_{n+2}] = \begin{cases}[e_0 + x + |x|^2e_\infty] & y_{n+1}\ne1\\
+我们来验证 $\jmath(\y)=\imath(\x)$，即
+$$[\y + e_{n+2}] = \begin{cases}[e_0 + \x + |\x|^2e_\infty] & y_{n+1}\ne1\\
 [e_\infty] & y_{n+1}=1.
 \end{cases}.$$
 
-+ $y_{n+1}=1$ 时 $y=e_{n+1}$ 从而 $y+e_{n+2}= e_{n+1}+e_{n+2}=2e_\infty$，显然与 $e_\infty$ 射影等价。
++ $y_{n+1}=1$ 时 $\y=e_{n+1}$ 从而 $\y+e_{n+2}= e_{n+1}+e_{n+2}=2e_\infty$，显然与 $e_\infty$ 射影等价。
 
-+ $y_{n+1}\ne 1$ 时，由 $y\in S^n$ 可得 $\sum_{i=1}^ny_i^2=1-y_{n+1}^2$，从而
-$$|x|^2=\frac{\sum_{i=1}^n y_i^2}{(1-y_{n+1})^2}= \frac{1+y_{n+1}}{1-y_{n+1}}.$$
-把 $y+e_{n+2}$ 转化为 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基下的表示：
-$$y+e_{n+2} = \sum_{i=1}^ny_ie_i + (1-y_{n+1})e_0+(1+y_{n+1})e_\infty.$$
++ $y_{n+1}\ne 1$ 时，由 $\y\in S^n$ 可得 $\sum_{i=1}^ny_i^2=1-y_{n+1}^2$，从而
+$$|\x|^2=\frac{\sum_{i=1}^n y_i^2}{(1-y_{n+1})^2}= \frac{1+y_{n+1}}{1-y_{n+1}}.$$
+把 $\y+e_{n+2}$ 转化为 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基下的表示：
+$$\y+e_{n+2} = \sum_{i=1}^ny_ie_i + (1-y_{n+1})e_0+(1+y_{n+1})e_\infty.$$
 从而
-$$[y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}}{1-y_{n+1}}e_\infty\right] = [e_0 + x + |x|^2e_\infty].$$
+$$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}}{1-y_{n+1}}e_\infty\right] = [e_0 + \x + |\x|^2e_\infty].$$
 
 
-## 球面
+# 球面
 
 :::{.simple}
 **记号**
@@ -152,54 +157,65 @@ $$[y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}}
 
 这一小节我们来建立 $\R^n$ 中的球/超平面和 $\S$ 之间的一一对应。
 
-设 $B(a,r)=\{x\in\R^n\mid |x-a|=|r|\}$ 是 $\R^n$ 中以 $a$ 为中心，半径为 $r\ne 0$ 的球，我们允许 $r$ 是负数以区分 $B$ 的内部和外部：$r>0$ 时 $B$ 的内部就是通常意义下满足 $|x-a|< r$ 的有界集合；$r<0$ 时 $B$ 的内部是满足 $|x-a|>|r|$ 的无界集合。如果用球极投影转移到 $S^n$ 中来看的话，$\R^n$ 中的球的内/外之分在 $S^n$ 上其实没有意义，它们不过是 $S^n$ 中某个圆两侧的球帽。所以把球的内部和外部统一处理是很自然的。
+设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，我们允许 $r$ 是负数以区分 $B$ 的内部和外部：$r>0$ 时 $B$ 的内部就是通常意义下满足 $|\x-\a|< r$ 的有界集合；$r<0$ 时 $B$ 的内部是满足 $|\x-\a|>|r|$ 的无界集合。如果用球极投影转移到 $S^n$ 中来看的话，$\R^n$ 中的球的内/外之分在 $S^n$ 上其实没有意义，它们不过是 $S^n$ 中某个圆两侧的球帽。所以把球的内部和外部统一处理是很自然的。
 
-我们把 $a$ 看作 $\span\{e_1,\ldots,e_n\}$ 中的点，记
-$$ k_B = \frac{e_0}{r} + \frac{a}{r} + \frac{|a|^2 - r^2}{r}e_\infty.$$
+我们把 $\a$ 看作 $\span\{e_1,\ldots,e_n\}\cong\R^n$ 中的点，记
+$$k_B = \frac{e_0}{r} + \frac{\a}{r} + \frac{|\a|^2 - r^2}{r}e_\infty.$$
 不难验证 $k_B$ 满足 $(k_B,k_B)=1$，所以 $k_B\in\mathcal{S}$。
 
+对 $\x\in\R^n$，$\imath(\x)=e_0+\x+|\x|^2e_\infty\in\L$，则
+$$(\imath(\x),k_B)=\frac{r^2-|\x-\a|^2}{2r}.$$
 
-对 $x\in\R^n$，设 $\imath(x)=e_0+x+ |\x|^2e_\infty$ 是 $x$ 在 $\L$ 的截线 $H_1$ 中对应的点，则
-$$(\imath(x),k_B)=\frac{r^2-|x-a|^2}{2r}.$$
+于是 $\x\in B$ 当且仅当 $(\imath(\x),k_B)=0$，以及 $\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k_B)>0$。鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k_B$ 是指向 $B$ 的正半空间的单位法向量。
 
-于是 $\x\in B$ 当且仅当 $(\imath(\x),k_B)=0$，以及 $\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k_B)>0$。
+注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k_B)=0$。$V$ 中所有形如 $(\jmath(\x),k_B)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k_B^\bot$ 的截线。
 
-注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k_B)=0$，这是 $S^n_1$ 与超平面 $k_B^\bot$ 的截线，其围成的内部是 $S^n_1$ 上的一个球帽。
-
-
-当 $B$ 是超平面时，设其方程为 $(\n,\x)=d$，其中 $(\n,\n)=1$ 是超平面的单位法向量，$d\in\R$。我们将其对应到
-$$k_B=(\n, 0, 2d).$$
-不难验证 $(k_B,k_B)=1$，从而 $k_B\in\S$，并且对 $\imath(\x)=(\x,1,|\x|^2)$ 有
+当 $B$ 是 $\R^n$ 中的超平面时，设其方程为 $(\x,\n)=d\,(d\in\R)$，其中 $(\n,\n)=1$ 是 $B$ 的单位法向量，指向正半空间 $(\x,\n)>d$。我们将 $B$ 对应到
+$$k_B=\n + 2d e_\infty.$$
+不难验证 $(k_B,k_B)=1$，从而 $k_B\in\S$，并且对 $\imath(\x)=e_0+\x+|\x|^2e_\infty$ 有
 $$(\imath(\x),k_B)=(\x,\n)-d.$$
-同理 $\x\in B$ 等价于 $(\imath(x),k_B)=0$，$\x$ 属于 $B$ 的正半空间 $(\n,\x)> d$ 当且仅当 $(\imath(\x),k_B)>0$。
+于是 $\x\in B$ 当且仅当 $(\imath(\x),k_B)=0$，$\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k_B)>0$。
 
-反之任何 $k\in\S$ 也都唯一确定了 $\R^n$ 中的某个球或者超平面。为此只要设 $k=(\a, a, b)\in\S$，并根据 $a$ 是否等于 0 将 $k$ 对应为球 $B(\a/a ,1/a)$ 或者超平面 $H(\a, b/2)$ 即可。
+反之任何 $k\in\S$ 也都唯一确定了 $\R^n$ 中的某个球或者超平面。为此只要设
+$$k=be_\infty+\a+ce_\infty\in\S,\quad b,c\in\R.$$
+并根据 $b$ 是否等于 0 将 $k$ 对应为球 $B(\a/b ,1/b)$ 或者超平面 $H(\a, c/2)$ 即可。
 
-最后，我们注意到 $k$ 和 $-k$ 分别对应一对内外互相翻转的球。
+# 球面的 seperation
 
-## 球面的 seperation
-
-设 $B_1,B_2$ 是 $\R^n$ 中的两个球，球心分别为 $\a_1,\a_2$，半径分别为 $r_1,r_2$。记
-$$k_1=\sph{\a_1}{r_1},\quad k_2=\sph{\a_2}{r_2}$$
-分别是它们在 $\S$ 中对应的点，不难验证有
+设 $B_1(\a_1,r_1),B_2(\a_2,r_2)$ 是 $\R^n$ 中的两个球，它们对应的 $\S$ 向量分别是
+$$\begin{aligned}
+k_1&=\frac{1}{r_1}e_0 + \frac{\a_1}{r_1} + \frac{|\a_1|^2-r_1^2}{r_1}e_\infty,\\
+k_1&=\frac{1}{r_2}e_0 + \frac{\a_2}{r_2} + \frac{|\a_2|^2-r_2^2}{r_2}e_\infty.\\
+\end{aligned}.$$
+不难验证有
 $$(k_1,k_2)=\frac{r_1^2+r_2^2 - |\a_1-\a_2|^2}{2r_1r_2}.$$
-我们称如上的内积 $(k_1,k_2)$ 为 $B_1$ 和 $B_2$ 的 **seperation**。
+我们称内积 $(k_1,k_2)$ 为 $B_1$ 和 $B_2$ 的 **seperation**。
 
-1. $B_1$ 和 $B_2$ 相交当且仅当 $|(k_1,k_2)|\leq1$，这时 $(k_1,k_2)=\cos\theta$，$\theta$ 是它们球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。当 $(k_1,k_2)=-1$ 时两球外切，$(k_1,k_2)=1$ 时两球内切。
-2. $B_1$ 和 $B_2$ 不交当且仅当 $|(k_1,k_2)|>1$，这时 $|(k_1,k_2)|=\cosh\eta$，$\eta$ 是 $k_1,k_2$ 对应的双曲空间中测地线的双曲距离。两球在 $(k_1,k_2)<-1$ 时没有公共的内部，在 $(k_1,k_2)>1$ 时一个完全包含另一个。[见 @ratcliffe section 3.2]
+:::{.note}
+
+[见 @ratcliffe section 3.2]
+
+在 Lorentzinian 内积下，两个 space-like 的单位向量 $k_1,k_2$ 之间的 seperation 有两种含义：
+
+1. 如果 $|(k_1,k_2)|\leq1$，则 $(k_1,k_2)=\cos\theta$，$\theta$ 是分别以 $x,y$ 为切向量的两条测地线之间的夹角；
+2. 如果 $|(k_1,k_2)|>1$，则 $(k_1,k_2)=\pm\cosh\eta$，$\eta$ 是分别以 $x,y$ 为法向量的两个超平面之间的双曲距离。
+:::
+
+1. $B_1$ 和 $B_2$ 相交或者相切当且仅当 $|(k_1,k_2)|\leq1$，这时 $(k_1,k_2)=\cos\theta$，$\theta$ 是它们球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。当 $(k_1,k_2)=-1$ 时两球外切，$(k_1,k_2)=1$ 时两球内切。
+2. $B_1$ 和 $B_2$ 不相交也不相切当且仅当 $|(k_1,k_2)|>1$，这时 $|(k_1,k_2)|=\cosh\eta$，$\eta$ 是 $k_1,k_2$ 对应的双曲空间中测地线的双曲距离。两球在 $(k_1,k_2)<-1$ 时没有公共的内部，在 $(k_1,k_2)>1$ 时一个完全包含另一个。
 
 |   |   |
 |:---:|:---:|
-| $(k_1,k_2)=\cos\theta$ |  $(k_1,k_2)=\cosh d(\ell_1,\ell_2)$  |
-|![](images/image0.jpg){width=150} | ![](images/image1.jpg){width=150}  |
+| $(k_1,k_2)=\cos\theta(\ell_1,\ell_2)$ |  $(k_1,k_2)=\cosh d(\ell_1,\ell_2)$  |
+|![](/images/coxeter/image0.jpg){width=150} | ![](/images/coxeter/image1.jpg){width=150}  |
 | $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$    | $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$|
-|![](images/image2.jpg){width=150} | ![](images/image3.jpg){width=150}|
+|![](/images/coxeter/image2.jpg){width=150} | ![](/images/coxeter/image3.jpg){width=150}|
 
-上面的结论同样适用于 $B_1$ 和 $B_2$ 中有平面的情形。例如设 $B_1,B_2$ 相交，并且 $B_1$ 是球面，$B_2$ 是超平面，其方程为 $(\x,\n)=d$，则 $k_2=(\n, 0, 2d)$，
+上面的结论同样适用于 $B_1$ 和 $B_2$ 中有平面的情形。例如设 $B_1,B_2$ 相交，并且 $B_1$ 是球面，$B_2$ 是超平面，$k_2=(0,\n, 2d)$，则
 $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
-这时 $(k_1,k_2)$ 等于 $B_1$ 在球面交点处的内法向量和平面法向量夹角的余弦。
+这时 $(k_1,k_2)$ 等于 $B_1$ 在球面交点处的内法向量和 $B_2$ 的法向量 $\n$ 夹角的余弦。
 
-此外，当 $B_1,B_2$ 都是超平面时，$(k_1,k_2)=(\n_1,\n_2)$ 是它们法向量的夹角。
+类似地，当 $B_1,B_2$ 都是超平面时，$(k_1,k_2)=(\n_1,\n_2)$ 是它们法向量夹角的余弦。
 
 ::: {.proposition #suff-for-disjoint}
 设 $B_1,B_2$ 是两个球，且 $B_1,B_2$ 的内部不相交。设 $(k_1,k_2)$ 分别是它们对应的 space-like 的单位向量，则 $(k_1,k_2)\leq-1$。
@@ -216,10 +232,9 @@ $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
 3. $B_1$ 是球，其半径 $r_1>0$；$B_2$ 是超平面，且 $B_1$ 位于 $B_2$ 的负半空间，从而其球心 $\a_1$ 到 $(\n,\x)=d$ 的有向距离 $\leq-r_1$，即 $(\a_1,\n)-d\leq -r_1$。
 4. $B_1,B_2$ 是互相平行的超平面，且法向量相反的，即 $(\n_1,\n_2)=-1$。
 
-不难验证这些都可以推出 $(k_1,k_2)\leq-1$。
+不难验证这些都可以推出 $(k_1,k_2)\leq-1$。$\blacksquare$
 
-
-## 球面的反演
+# 球面的反演
 
 ::: definition
 设 $B$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r$ 的球。关于 $B$ 的反演 $\tau:\ER\to\ER$ 定义为
@@ -227,11 +242,11 @@ $$\tau(\x)=\frac{r^2}{|\x-\a|^2}(\x-\a) +\a.$$
 :::
 $\tau$ 是 $\R^n$ 中关于球面镜 $B$ 的反射，它保持 $B$ 的球面不动，将 $B$ 的内部映射为外部（反之亦然），并且 $\tau^2=1$。
 
-![](images/cartoon_mirror.png){width=400}
+![](/images/coxeter/cartoon_mirror.png){width=400 .fig}
 
-我们来说明 $\tau$ 可以实现为 $n+1$ 维射影空间 $\PR$ 中的射影正交变换。
+我们来说明 $\tau$ 可以实现为 $\PR$ 中的射影正交变换。
 
-设 $\x\in\R^n$，$\imath(x)=(\x,1,|\x|^2)\in\L$。记 $k_B=\left(\frac{\a}{r},\frac{1}{r},\frac{|\a|^2-r^2}{r}\right)$ 为 $B$ 对应的单位向量，考虑反射 $\rho_B:\LR\to\LR$：
+设 $\x\in\R^n$，$\imath(x)=(1,\x,|\x|^2)\in\L$。记 $k_B=\left(\frac{\a}{r},\frac{1}{r},\frac{|\a|^2-r^2}{r}\right)$ 为 $B$ 对应的单位向量，考虑反射 $\rho_B:\LR\to\LR$：
 $$\rho_B(v) = v - 2(v,k_B)k_B,\quad v\in V.$$
 注意到 $(\imath(x),k_B)=\frac{r^2-|\x-\a|^2}{2r}$，我们来验证
 $$\begin{align*}

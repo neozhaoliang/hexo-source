@@ -29,7 +29,7 @@ url: "coxeter-groups-level"
 
 本文主要改写自 [@Maxwell82] 和[@Maxwell89]。
 
-我们来介绍 Coxeter 群的 level 的概念，并证明 level 等于 1 或 2 的群都是双曲的。我们约定 $(W,S)$ 是一个 Coxeter 系，$\Gamma$ 是其 Coxeter 图。$|S|=n$。
+我们来介绍 Coxeter 群的 level 的概念，并证明 level 等于 1 或 2 的群都是双曲的。
 
 # level 的定义
 
@@ -458,4 +458,4 @@ $$I_+=\{s\in S\mid v_s>0\},\quad I_-=\{s\in S\mid v_s<0\},\quad I_0=\{s\in S\mid
 
 至此断言 2 得证，从而定理得证。$\blacksquare$
 
-[^1]: 这里解释下为什么在 $K$ 中一定可以找到一个非平凡的元素。由于 $\Gamma\setminus\{s\}$ 是不可约仿射的，$\rad(V_I)=\R\omega_s$，所以 $\inn$ 在 $V_I/\R\omega_s$ 上诱导了一个正定内积。商群 $W_I/K$ 是 $V_I/\R\omega_s$ 中的反射群，并且保持这个正定内积不变，所以根据 [@Humphreys90 section 6.4] 的结论，$W_I/K$ 是有限群，而 $W_I$ 作为仿射 Coxeter 群是无限群，从而 $K$ 也是无限群。
+[^1]: 这里解释下为什么在 $K$ 中一定可以找到一个非平凡的元素。由于 $\Gamma\setminus\{s\}$ 是不可约仿射的，$\rad(V_I)=\R\omega_s$，所以 $\inn$ 在 $V_I/\R\omega_s$ 上诱导了一个正定内积。商群 $W_I/K$ 是 $V_I/\R\omega_s$ 中的反射群，并且保持这个正定内积不变，所以根据 [@Humphreys90 section 6.4] 的结论，$W_I/K$ 是有限群。于是 $W_I$ 作为仿射 Coxeter 群是无限群，对 $K$ 取商群是有限群，所以 $K$ 必然是无限群。
