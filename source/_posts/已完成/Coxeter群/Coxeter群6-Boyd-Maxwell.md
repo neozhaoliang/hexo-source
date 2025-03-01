@@ -152,7 +152,7 @@ $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}
 :::{.simple}
 **记号**
 
-规定 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 单位向量组成的集合。
+令 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 单位向量组成的集合。
 :::
 
 这一小节我们来建立 $\R^n$ 中的球/超平面和 $\S$ 之间的一一对应。
@@ -160,7 +160,7 @@ $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}
 设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，我们允许 $r$ 是负数以区分 $B$ 的内部和外部：$r>0$ 时 $B$ 的内部就是通常意义下满足 $|\x-\a|< r$ 的有界集合；$r<0$ 时 $B$ 的内部是满足 $|\x-\a|>|r|$ 的无界集合。如果用球极投影转移到 $S^n$ 中来看的话，$\R^n$ 中的球的内/外之分在 $S^n$ 上其实没有意义，它们不过是 $S^n$ 中某个圆两侧的球帽。所以把球的内部和外部统一处理是很自然的。
 
 我们把 $\a$ 看作 $\span\{e_1,\ldots,e_n\}\cong\R^n$ 中的点，记
-$$k_B = \frac{e_0}{r} + \frac{\a}{r} + \frac{|\a|^2 - r^2}{r}e_\infty.$$
+$$k_B = \frac{e_0 + \a + (|\a|^2 - r^2)e_\infty}{r}.$$
 不难验证 $k_B$ 满足 $(k_B,k_B)=1$，所以 $k_B\in\mathcal{S}$。
 
 对 $\x\in\R^n$，$\imath(\x)=e_0+\x+|\x|^2e_\infty\in\L$，则
@@ -170,13 +170,13 @@ $$(\imath(\x),k_B)=\frac{r^2-|\x-\a|^2}{2r}.$$
 
 注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k_B)=0$。$V$ 中所有形如 $(\jmath(\x),k_B)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k_B^\bot$ 的截线。
 
-当 $B$ 是 $\R^n$ 中的超平面时，设其方程为 $(\x,\n)=d\,(d\in\R)$，其中 $(\n,\n)=1$ 是 $B$ 的单位法向量，指向正半空间 $(\x,\n)>d$。我们将 $B$ 对应到
+当 $B$ 是 $\R^n$ 中的超平面时，设其方程为 $(\x,\n)=d\,(d\in\R)$，其中 $\n$ 是 $B$ 的单位法向量。我们将 $B$ 对应到
 $$k_B=\n + 2d e_\infty.$$
 不难验证 $(k_B,k_B)=1$，从而 $k_B\in\S$，并且对 $\imath(\x)=e_0+\x+|\x|^2e_\infty$ 有
 $$(\imath(\x),k_B)=(\x,\n)-d.$$
 于是 $\x\in B$ 当且仅当 $(\imath(\x),k_B)=0$，$\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k_B)>0$。
 
-反之任何 $k\in\S$ 也都唯一确定了 $\R^n$ 中的某个球或者超平面。为此只要设
+反之任何 $k\in\S$ 也都唯一确定了 $\R^n$ 中的某个球或者超平面。为此只要将 $k$ 表示为
 $$k=be_\infty+\a+ce_\infty\in\S,\quad b,c\in\R.$$
 并根据 $b$ 是否等于 0 将 $k$ 对应为球 $B(\a/b ,1/b)$ 或者超平面 $H(\a, c/2)$ 即可。
 
@@ -211,7 +211,7 @@ $$(k_1,k_2)=\frac{r_1^2+r_2^2 - |\a_1-\a_2|^2}{2r_1r_2}.$$
 | $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$    | $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$|
 |![](/images/coxeter/image2.jpg){width=150} | ![](/images/coxeter/image3.jpg){width=150}|
 
-上面的结论同样适用于 $B_1$ 和 $B_2$ 中有平面的情形。例如设 $B_1,B_2$ 相交，并且 $B_1$ 是球面，$B_2$ 是超平面，$k_2=(0,\n, 2d)$，则
+上面的结论同样适用于 $B_1$ 和 $B_2$ 中有平面的情形。例如设 $B_1,B_2$ 相交，并且 $B_1$ 是球面，$B_2$ 是超平面，$k_2=\n+2de_\infty$，则
 $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
 这时 $(k_1,k_2)$ 等于 $B_1$ 在球面交点处的内法向量和 $B_2$ 的法向量 $\n$ 夹角的余弦。
 
@@ -237,25 +237,32 @@ $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
 # 球面的反演
 
 ::: definition
-设 $B$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r$ 的球。关于 $B$ 的反演 $\tau:\ER\to\ER$ 定义为
-$$\tau(\x)=\frac{r^2}{|\x-\a|^2}(\x-\a) +\a.$$
+关于球 $B(\a, r)$ 的反演定义为
+$$\begin{aligned}
+\tau\colon\ \ER&\mapsto\ER\\
+\tau(\x)&=\frac{r^2}{|\x-\a|^2}(\x-\a) +\a.
+\end{aligned}$$
 :::
-$\tau$ 是 $\R^n$ 中关于球面镜 $B$ 的反射，它保持 $B$ 的球面不动，将 $B$ 的内部映射为外部（反之亦然），并且 $\tau^2=1$。
+$\tau$ 是 $\ER$ 中关于球面镜 $B$ 的反射，它保持 $B$ 的表面不动，将 $B$ 的内部映射为外部（反之亦然），并且 $\tau^2=1$。
 
 ![](/images/coxeter/cartoon_mirror.png){width=400 .fig}
 
 我们来说明 $\tau$ 可以实现为 $\PR$ 中的射影正交变换。
 
-设 $\x\in\R^n$，$\imath(x)=(1,\x,|\x|^2)\in\L$。记 $k_B=\left(\frac{\a}{r},\frac{1}{r},\frac{|\a|^2-r^2}{r}\right)$ 为 $B$ 对应的单位向量，考虑反射 $\rho_B:\LR\to\LR$：
-$$\rho_B(v) = v - 2(v,k_B)k_B,\quad v\in V.$$
-注意到 $(\imath(x),k_B)=\frac{r^2-|\x-\a|^2}{2r}$，我们来验证
+考察以 $k_B$ 为法向量的镜面反射
+$$\begin{aligned}
+\rho_B\colon\ \LR&\mapsto\LR\\
+\rho_B(v) &= v - 2(v,k_B)k_B.
+\end{aligned}$$
+我们来计算 $\rho_B$ 作用在 $\imath(\x)\,(\x\in\R^n)$ 上的效果：（注意 $(\imath(\x),k_B)=\frac{r^2-|\x-\a|^2}{r}$）
 $$\begin{align*}
-\begin{pmatrix}\x\\1\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho_B}
-\begin{pmatrix}\x\\1\\ |\x|^2\end{pmatrix} -\frac{r^2-|\x-\a|^2}{r}\begin{pmatrix}\frac{\a}{r}\\\frac{1}{r}\\ \frac{|\a|-r^2}{r}\end{pmatrix}\\
-&=\begin{pmatrix}\x+\left(\frac{|\x-\a|^2}{r^2}-1\right)\a\\\frac{|\x-\a|^2}{r^2}\\ \ast \end{pmatrix}\\
-&\sim \begin{pmatrix}\a+\frac{r^2}{|\x-\a|^2}(\x-\a)\\1\\ \ast \end{pmatrix}.
+\begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho_B}
+\begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} -\frac{r^2-|\x-\a|^2}{r}\begin{pmatrix}\frac{1}{r}\\\frac{\a}{r}\\ \frac{|\a|-r^2}{r}\end{pmatrix}\\
+&=\begin{pmatrix}\frac{|\x-\a|^2}{r^2}\\\x+\left(\frac{|\x-\a|^2-r^2}{r^2}\right)\a\\ \ast \end{pmatrix}\\
+&\sim \begin{pmatrix}1\\\a+\frac{r^2}{|\x-\a|^2}(\x-\a)\\ \ast \end{pmatrix}\\
+&=\begin{pmatrix}1\\\tau(\x)\\ |\tau(\x)|^2 \end{pmatrix}.
 \end{align*}$$
-这里我们不用关心 $\ast$ 是什么，最后的 $\sim$ 表示两个向量是射影等价的。注意到最后一步使用的归一化因子是 $\frac{|\x-\a|^2}{r^2}\geq0$，所以还是正射影等价的。
+这里我们不用关心 $\ast$ 是什么，中间的 $\sim$ 表示两个向量是射影等价的。实际上我们是对所有分量同时除以了 $\frac{|\x-\a|^2}{r^2}$，所以 $\sim$ 还是正射影等价。
 
 即我们有如下的交换图：
 
@@ -266,12 +273,13 @@ $$\require{amsCd}
 \ER @>{\imath}>> \PL
 \end{CD}$$
 
-不仅如此，球和球之间的反演也可以通过 $\rho_B$ 来计算。设 $k$ 是球 $B'$ 对应的 space-like 的单位向量，则 $\rho_B(k)$ 也是 space-like 的单位向量，从而对应另一个球 $B''$。对 $\x\in\R^n$，根据上面的交换图有 $\rho_B\imath=\imath\tau$，从而
-$$\x\in B''\Leftrightarrow (\imath(\x), \rho_B(k))=0
-\Leftrightarrow(\rho_B(\imath(\x)), k)=0
-\Leftrightarrow(\imath(\tau(\x)), k)=0
-\Leftrightarrow \tau(\x)\in B'.
+更进一步，将一个球关于另一个球作反演也可以通过 $\rho_B$ 来计算。设 $k'$ 是球 $B'$ 对应的 space-like 的单位向量，则 $\rho_B(k')$ 也是 space-like 的单位向量，从而对应另一个球 $B''$。对 $\x\in\R^n$，根据上面的交换图有 $\rho_B\imath=\imath\tau$，从而
+$$\x\in B'\Leftrightarrow (\imath(\x), k')=0
+\Leftrightarrow(\rho_B(\imath(\x)), \rho_B(k'))=0
+\Leftrightarrow(\imath(\tau(\x)), \rho_B(k'))=0
+\Leftrightarrow \tau(\x)\in B''.
 $$
+即关于 $B$ 的反演 $\tau$ 将 $B'$ 映射为 $B''$。
 
 
 # 双曲球堆

@@ -71,7 +71,7 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 由于 $\Gamma$ 的 level 是 $l$，所以 $\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}$ 是一个仿射的连通子图，这个仿射子图删除 $i_{l+1}$ 后得到的 $\Gamma'$ 仍然是仿射的，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
 
-# 关于 $\omega_s$ 的恒等式
+# 准备
 
 这一节是纯技术性的，我会指明几个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和对偶基 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
 
@@ -151,18 +151,22 @@ $$\barfd_s= \{v\in V_I\mid (v, \alpha_t)\geq0,\, t\in I\}=\cone{\{\omega_t\mid t
 
 我们有如下两个断言：
 
+:::{.simple}
+**断言** \
+
 1. 任何满足 $(u,u)<0$ 的向量 $u=\sum_{s\in S}u_s\alpha_s$ 其系数 $u_s$ 都非零且同号。
 2. 任何满足 $(v,v)=0$ 的向量 $v=\sum_{s\in S}v_s\alpha_s$ 其系数 $v_s$ 至多只有一个为 0，其余都同号。
+:::
 
 我把这两个断言的证明放在附录中，先承认它们是正确的，用它们来导出矛盾：
 
-取 $s\in S$ 使得 $v_s\ne 0$，则 $u'=v_su-u_sv$ 满足 $(u',u')=v_s^2(u,u)<0$，且 $u'$ 的 $\alpha_s$ 项系数 $u'_s=0$。但根据断言 1，$u'$ 的系数必须非零且同号，这就导致了矛盾，所以 $\Gamma$ 必然是双曲的，从而结论 1 成立。
+取 $s\in S$ 使得 $v_s\ne 0$，则 $u'=v_su-u_sv$ 满足 $(u',u')=v_s^2(u,u)<0$，且 $u'$ 的 $\alpha_s$ 项系数 $u'_s=0$，这与断言 1 矛盾。所以 $\Gamma$ 必然是双曲的。
 
-再来证明结论 2。
+再来证明 2。
 
-由于 $\Gamma$ 的 level 是 1，对任何 $s\in S$，子空间 $U=(\R\omega_s)^\bot=\span\{\alpha_t\mid t\ne s\}$ 是有限或者仿射的，从而 [$\omega_s$ 不是 space-like 的](/coxeter-groups-three-cases/#orth-complement-lorentzian)，即 $(\omega_s,\omega_s)\leq 0$。这就证明了任何 $\omega_s\,(s\in S)$ 都不是实的。
+由于 $\Gamma$ 的 level 是 1，对任何 $s\in S$，子空间 $\omega_s^\bot=\span\{\alpha_t\mid t\ne s\}$ 是有限或者仿射的，从而 [$\omega_s$ 不是 space-like 的](/coxeter-groups-three-cases/#orth-complement-lorentzian)，即 $(\omega_s,\omega_s)\leq 0$。于是任何 $\omega_s\,(s\in S)$ 都不是实的。
 
-再来证明结论 3。
+再来证明 3。
 
 观察恒等式 $(\ref{eq:idII})$：
 $$\omega_s = (\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.$$
