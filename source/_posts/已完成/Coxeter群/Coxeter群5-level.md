@@ -188,11 +188,11 @@ $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)
 
 **证明**：由于 level 1 的群是双曲的，根据 [双曲情形 Tits 锥的结论](/coxeter-groups-three-cases#tits-closure)，$\tc$ 包含 $\N_+,\N_-$ 之一，不妨设为 $\tc\supset\N_+$，则 $\cl{\tc}\supset\cl{\N_+}=\Q_+$。还要再证明反向的包含关系。为此只要证明 $\cl{\tc}\subset\Q$ 和 $\cl{\tc}\cap\Q_-=\{0\}$。
 
-根据 @Pre:level-1，所有的基本权 $\{\omega_s\}$ 都不是实的且两两分离，所以它们都属于 $\Q$。对任意 $x\in\barfd$，设 $x=\sum_{s\in S}c_s\omega_s$，其中每个 $c_s\geq0$，则
+根据 @Pre:level-1，所有的基本权 $\{\omega_s\}$ 都不是实的且两两分离。设 $x=\sum_{s\in S}c_s\omega_s\,(c_s\geq0)$ 是 $\barfd$ 中任意一点，则
 $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 即 $\barfd\subset\Q$。$W$ 作为正交变换群保持 $\Q$ 不变，所以 $\tc=\bigcup\limits_{w\in W}w\barfd\subset\Q$，从而 $\cl{\tc}\subset\Q$。
 
-再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。我们知道 [$\tc^\ast\ne\{0\}$](/coxeter-groups-three-cases/#dual-cone-non-trivial)。我们断言 $\tc^\ast$ 必然包含某个 time-like 的向量 $(z,z)<0$。否则 [$\tc^\ast$ 中的非零向量都是 light-like 的](/coxeter-groups-tits-cone#dual-cone-nonspace)。但是 $\tc^\ast$ 不能包含两个线性无关的 light-like 的向量（否则由于 [它们属于 $\Q$ 的同一个分支](/coxeter-groups-three-cases/#dual-cone-belongs-branch) 从而 [内积小于 0](/coxeter-groups-three-cases/#connected-component-dot)，从而它们的和是属于 $\tc^\ast$ 的 time-like 的向量），再结合 $\tc^\ast$ 是 [点锥](/coxeter-groups-tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast=\R_{\geq0}\delta$，其中 $\delta$ 是一个 light-like 的向量。取对偶得到
+再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。我们知道 [$\tc^\ast\ne\{0\}$](/coxeter-groups-three-cases/#dual-cone-non-trivial)。我们断言 $\tc^\ast$ 必然包含某个 time-like 的向量 $(z,z)<0$。否则 [$\tc^\ast$ 中的非零向量都是 light-like 的](/coxeter-groups-tits-cone#dual-cone-nonspace)。但是 $\tc^\ast$ 不能包含两个线性无关的 light-like 的向量（否则由于 [它们属于 $\Q$ 的同一个分支](/coxeter-groups-three-cases/#dual-cone-belongs-branch) 从而 [内积小于 0](/coxeter-groups-three-cases/#connected-component-dot)，从而它们的任何正线性组合是属于 $\tc^\ast$ 的 time-like 的向量），再结合 $\tc^\ast$ 是 [点锥](/coxeter-groups-tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast=\R_{\geq0}\delta$，其中 $\delta$ 是一个 light-like 的向量。取对偶得到
 $$\cl{\tc}=\tc^{\ast\ast}=\{v\in V\mid (v,\delta)\geq0\}.$$
 这是一个半空间，显然包含 space-like 的向量，这与 $\cl{\tc}\subset\Q$ 矛盾。所以确实存在 $z\in\tc^\ast$ 满足 $(z,z)<0$，于是 $(z,\cl{\tc})\geq0$。又因为 $\Q_+\subset\cl{\tc}$，所以 $z\in\Q_-$。
 
