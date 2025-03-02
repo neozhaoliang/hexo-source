@@ -73,14 +73,14 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 # 准备
 
-这一节是纯技术性的，我会指明几个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和对偶基 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
+这一节是纯技术性的，我会介绍几个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和对偶基 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
 
 在本节中我们都假定内积 $\inn$ 是非退化的，于是我们可以通过 $\inn$ 将 $V$ 和 $V^\ast$ 等同起来：对任何 $\alpha_s\in\Delta$ 和 $\omega_t\in\Delta^\ast$ 有 $(\alpha_s,\omega_t)=\delta_{st}$。
 
 内积 $\inn$ 在 $\Delta$ 这组基下的 Gram 矩阵记作
-$$A=\big((\alpha_s,\alpha_t)\big)_{s,t\in S}.$$
+$$A=\big((\alpha_s,\alpha_t)\big)_{s,t\in S}\ .$$
 则 $\inn$ 在 $\Delta^\ast$ 这组基下的 Gram 矩阵就是
-$$A^{-1}=\big((\omega_s,\omega_t)\big)_{s,t\in S}.$$
+$$A^{-1}=\big((\omega_s,\omega_t)\big)_{s,t\in S}\ .$$
 $A$ 的第 $s$ 行与 $A^{-1}$ 的第 $s$ 列的点积是 1，所以
 $$1=\sum_{t\in S}(\alpha_s,\alpha_t)\cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)+\sum_{t\ne s}(\omega_t,\omega_s)\cdot(\alpha_s,\alpha_t).\tag{I}\label{eq:idI}$$
 这是我们的第一个恒等式。
@@ -97,14 +97,12 @@ $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)
 
 接下来是一个有用的观察：
 
-对任何 $s\in S$，记 $I = S\setminus\{s\}$，$W_I$ 是标准椭圆子群，$V_I=\span\{\alpha_t\mid t\ne s\}$ 是 $V$ 的 $n-1$ 维子空间。
-
-当 $(\omega_s,\omega_s)\ne0$ 时，记 $\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)$，显然 $(\alpha_s',\omega_s)=0$，于是
+给定 $s\in S$，记 $I = S\setminus\{s\}$，$W_I$ 是标准椭圆子群，$V_I=\span\{\alpha_t\mid t\ne s\}$ 是 $n-1$ 维子空间。当 $(\omega_s,\omega_s)\ne0$ 时，记 $\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)$，显然 $(\alpha_s',\omega_s)=0$，于是
 $$\alpha_s'\in \omega_s^\bot = V_I.$$
 并且对任何 $t\in I$ 有
 $$(\alpha_s',\alpha_t)= (\alpha_s,\alpha_t)\leq0.$$
 这说明 $-\alpha_s'$ 属于 $W_I$ 在 $V_I$ 上作用的基本区域的闭包
-$$\barfd_s= \{v\in V_I\mid (v, \alpha_t)\geq0,\, t\in I\}=\cone{\{\omega_t\mid t\in I\}}.$$
+$$\barfd_s= \{v\in V_I\mid (v, \alpha_t)\geq0,\, \forall t\in I\}=\cone{\{\omega_t\mid t\in I\}}.$$
 这个观察虽然很简单，但是后面很有用。
 
 # Level 1 是双曲的
@@ -160,7 +158,7 @@ $$\barfd_s= \{v\in V_I\mid (v, \alpha_t)\geq0,\, t\in I\}=\cone{\{\omega_t\mid t
 
 我把这两个断言的证明放在附录中，先承认它们是正确的，用它们来导出矛盾：
 
-取 $s\in S$ 使得 $v_s\ne 0$，则 $u'=v_su-u_sv$ 满足 $(u',u')=v_s^2(u,u)<0$，且 $u'$ 的 $\alpha_s$ 项系数 $u'_s=0$，这与断言 1 矛盾。所以 $\Gamma$ 必然是双曲的。
+取 $s\in S$ 使得 $v_s\ne 0$，则 $u'=v_su-u_sv$ 满足 $(u',u')=v_s^2(u,u)<0$，且 $u'$ 的 $\alpha_s$ 项系数 $u'_s=0$，这与断言 1 矛盾。所以 $\Gamma$ 是双曲的。
 
 再来证明 2。
 
@@ -194,11 +192,9 @@ $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 
 再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。我们知道 [$\tc^\ast\ne\{0\}$](/coxeter-groups-three-cases/#dual-cone-non-trivial)。我们断言 $\tc^\ast$ 必然包含某个 time-like 的向量 $(z,z)<0$。否则 [$\tc^\ast$ 中的非零向量都是 light-like 的](/coxeter-groups-tits-cone#dual-cone-nonspace)。但是 $\tc^\ast$ 不能包含两个线性无关的 light-like 的向量（否则由于 [它们属于 $\Q$ 的同一个分支](/coxeter-groups-three-cases/#dual-cone-belongs-branch) 从而 [内积小于 0](/coxeter-groups-three-cases/#connected-component-dot)，从而它们的任何正线性组合是属于 $\tc^\ast$ 的 time-like 的向量），再结合 $\tc^\ast$ 是 [点锥](/coxeter-groups-tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast=\R_{\geq0}\delta$，其中 $\delta$ 是一个 light-like 的向量。取对偶得到
 $$\cl{\tc}=\tc^{\ast\ast}=\{v\in V\mid (v,\delta)\geq0\}.$$
-这是一个半空间，显然包含 space-like 的向量，这与 $\cl{\tc}\subset\Q$ 矛盾。所以确实存在 $z\in\tc^\ast$ 满足 $(z,z)<0$，于是 $(z,\cl{\tc})\geq0$。又因为 $\Q_+\subset\cl{\tc}$，所以 $z\in\Q_-$。
+这是一个半空间，显然包含 space-like 的向量，这与 $\cl{\tc}\subset\Q$ 矛盾。所以确实存在 $z\in\tc^\ast$ 满足 $(z,z)<0$。又因为 $\Q_+\subset\cl{\tc}$，所以 $z\in\Q_-$。
 
-设 $x\ne0\in\cl{\tc}\cap\Q_-$，则 $z\in\tc^\ast$ 和 $x\in\cl{\tc}$ 说明 $(z,x)\geq0$；但另一方面 $x$ 和 $z$ 同时属于 $\Q_-$ 并且 $z$ 是 time-like 的导致 $(z,x)<0$，矛盾。所以 $\cl{\tc}\cap\Q_-=\{0\}$。$\blacksquare$
-
-下面的结论来自 @Maxwell89。
+设 $x\ne0\in\cl{\tc}\cap\Q_-$，则 $(x,z)<0$，这与 $z\in\tc^\ast$ 和 $x\in\cl{\tc}$ 矛盾。所以 $\cl{\tc}\cap\Q_-=\{0\}$。$\blacksquare$
 
 :::{.proposition #ideal-vertex}
 [@Maxwell89, proposition 5.15]
@@ -213,9 +209,9 @@ $$\cl{\tc}=\tc^{\ast\ast}=\{v\in V\mid (v,\delta)\geq0\}.$$
 :::
 
 :::note
-注意这里没有要求 $W$ 必须是双曲的，也没有限制 $W$ 的 level。
+这里没有限制 $W$ 的 level。
 
-此外 $\bigcup_{w\in W_I}wp$ 是一个无限集，$\cone{\bigcup_{w\in W_I}}$ 由 $\bigcup_{w\in W_I}$ 中所有的有限、非负线性组合生成，未必是闭集，因此闭包记号不可少。
+此外 $\bigcup_{w\in W_I}wp$ 是无限集，$\cone{\bigcup_{w\in W_I}}$ 未必是闭集，因此闭包记号不可少。
 
 当 $W$ 的 level 是 1 时，若 $\omega_s$ 是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时经过 $\omega_s$ 的那些镜面生成的椭圆子群会把基本区域无限压缩到 $\omega_s$ 附近，如下图所示：
 
@@ -226,7 +222,7 @@ $$\cl{\tc}=\tc^{\ast\ast}=\{v\in V\mid (v,\delta)\geq0\}.$$
 $$\omega_s = \underbrace{(\omega_s,\omega_s)}_{=0}\alpha_s +  \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t = \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t\in V_I$$
 可得 $\rad(V_I)=\R\omega_s$。于是 $W_I$ 保持 $\omega_s$ 不动，即
 $$\R\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.$$
-从而 $W_I$ 同样作用在商空间 $V_I/\R\omega_s$ 上，此作用给出了一个同态 $W_I\to\gl(V_I/\R\omega_s)$。令 $K$ 为此同态的核，则对任何 $w\in K$，
+$W_I$ 同样作用在商空间 $V_I/\R\omega_s$ 上，此作用给出了一个同态 $W_I\to\gl(V_I/\R\omega_s)$。令 $K$ 为此同态的核，则对任何 $w\in K$，
 $$w(v + \R\omega_s) = v + \R\omega_s,\quad v\in V_I.$$
 即 $wv-v\in\R\omega_s$，从而
 $$V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.$$
@@ -240,7 +236,7 @@ $$V\xrightarrow{\ K-1\ } V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ K-1\
 
 取 $w\in K$ 且 $w\ne 1$ [^1]，由于 $w$ 在 $V_I$ 上不是恒等变换，所以存在 $t\in I$ 使得 $w\alpha_t\ne\alpha_t$。设
 $$\beta = w\alpha_t=\alpha_t+a\omega_s\,(a\ne 0).$$
-则 $s_\beta=wtw^{-1}$，从而对任何一点 $p\in V$，
+则 $s_\beta=wtw^{-1}$，从而对任何 $p\in V$，
 $$\begin{align*}
 s_\beta(p)&=p - 2(p,\beta)\beta\\
 &=p-2(p,\alpha_t+a\omega_s)(\alpha_t+a\omega_s)\\
@@ -279,7 +275,7 @@ $$w_1^N(p)=(1 + w_1-1)^N(p)= p + \binom{N}{1}(w_1-1)(p) + \binom{N}{2}b\omega_s,
 本节我们在上一小节的结论中再进一步，证明 level 2 的群也是双曲的。论证会更加繁琐一些。
 
 ::: {.theorem #level-2}
-level 等于 2 的群都是双曲的，所有的基本权两两分离。$\omega_s\in\Delta^\ast$ 是实的当且仅当 $T\setminus\{s\}$ 的 level 等于 1，且对这样的 $\omega_s$ 有 $0<(\omega_s,\omega_s)\leq 1$。
+level 等于 2 的群都是双曲的，所有的基本权 $\{\omega_s\mid s\in S\}$ 两两分离。$\omega_s$ 是实的当且仅当 $T\setminus\{s\}$ 的 level 等于 1，且对这样的 $\omega_s$ 有 $0<(\omega_s,\omega_s)\leq 1$。
 :::
 
 **证明**：我们先来证明 $\Gamma$ 是双曲的。
@@ -301,7 +297,7 @@ $$1 - a^2 + 2abc - b^2-c^2 = 1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 1. 任何满足 $(u,u)<0$ 的向量 $u=\sum_{s\in S}u_s\alpha_s$ 除去至多一个系数 $u_j$ 之外，其它的 $u_s$ 都非零且同号。
 2. 任何满足 $(v,v)=0$ 的向量 $v=\sum_{s\in S}v_s\alpha_s$ 除了满足断言 1 的情形之外，还有一种情形是 $\{v_s\}$ 中有两个是 0，其余的非零且同号。
 
-我们仍然把断言的证明放在附录中，先承认它们是正确的并完成证明。
+我仍然把断言的证明放在附录中，先承认它们是正确的并完成证明。
 
 由于 $u$ 的系数 $\{u_s\}$ 中至多只有一个是 0，$v$ 的系数 $\{v_s\}$ 中至多只有两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。于是 $u'=v_iu-u_iv$ 仍然满足 $u'$ 与 $v$ 正交和 $(u',u')<0$，但是它的下标 $i$ 的系数 $u'_i=0$，所以我们不妨一开始就取 $u$ 为 $u'$，于是 $u$ 有一个系数 $u_i=0$，其它系数都非 0 且同号，不妨假设这些非零系数都大于 0。
 
