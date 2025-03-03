@@ -419,7 +419,7 @@ $$I_+=\{s\in S\mid u_s>0\},\quad I_-=\{s\in S\mid u_s<0\},\quad I_0=\{s\in S\mid
 $$(u,u)=(u_+,u_+) + (u_-,u_-) + 2(u_+,u_-)<0.$$
 但是注意到
 $$(u_+, u_-)=\sum_{s\in I_+}\sum_{t\in I_-}\underbrace{u_s}_{>0}\underbrace{u_t}_{<0}\underbrace{(\alpha_s,\alpha_t)}_{\leq0}\geq 0.$$
-所以 $(u_+, u_+) < 0$ 和 $(u_-, u_-)<0$ 中至少有一个成立，不妨设 $(u_+, u_+)<0$。如果 $I_-\cup I_0$ 不是空集，那么 $I_+$ 作为从 $\Gamma$ 中删去 $I_-\cup I_0$ 后得到的真子图包含 time-like 的向量 $u_+$，这与 $\Gamma$ 的 level 等于 1 矛盾。所以 $I=I_+$，即所有系数 $u_s$ 都大于 0。相应地如果是 $(u_-,u_-)<0$ 的话则所有 $u_s$ 都小于 0。
+所以 $(u_+, u_+) < 0$ 和 $(u_-, u_-)<0$ 至少有一个成立，不妨设 $(u_+, u_+)<0$。如果 $I_-\cup I_0\ne\emptyset$，那么 $I_+$ 作为从 $\Gamma$ 中删去 $I_-\cup I_0$ 后得到的真子图包含 time-like 的向量 $u_+$，这与 $\Gamma$ 的 level 等于 1 矛盾。所以 $I=I_+$，即所有系数 $u_s$ 都大于 0。相应地如果是 $(u_-,u_-)<0$ 的话则所有 $u_s$ 都小于 0。
 
 对断言 2 我们仍然采用类似的记号，记
 $$I_+=\{s\in S\mid v_s>0\},\quad I_-=\{s\in S\mid v_s<0\},\quad I_0=\{s\in S\mid v_s=0\}.$$
@@ -429,22 +429,19 @@ $$I_+=\{s\in S\mid v_s>0\},\quad I_-=\{s\in S\mid v_s<0\},\quad I_0=\{s\in S\mid
 
 如果 $|I_0|\geq2$，那么 $(v, v)=0$ 说明删除 $I_0$ 以后得到的子图不是有限的，这与 $\Gamma$ 的 level 是 1 和 @Pre:level-l 矛盾。所以 $|I_0|\leq 1$。
 
-如果 $I_+,\,I_-$ 都不是空集的话，则 $v_+,v_-$ 都非零，并且必然有 $(v_+, v_+)\geq0$ 且 $(v_-, v_-)\geq0$，否则删掉 $I_+$ 或者 $I_-$ 以后剩下的子图不是有限或者仿射的，与 $\Gamma$ 的 level 是 1 矛盾。然而
+如果 $I_+,\,I_-$ 都不是空集的话，则 $v_+,v_-$ 都非零，并且必然有 $(v_+, v_+)\geq0$ 和 $(v_-, v_-)\geq0$ 成立，否则删掉 $I_+$ 或者 $I_-$ 以后剩下的子图不是有限或者仿射的，与 $\Gamma$ 的 level 是 1 矛盾。然而
 $$0=(v, v) = (v_+,v_+) + (v_-,v_-) + 2(v_+,v_-).$$
 三个非负数的和等于 0，只能是 $(v_+,v_+) = (v_-,v_-) =(v_+, v_-)=0$。现在分情况讨论：
 
-1. 如果 $|I_0|=1$，那么删掉 $I_-\cup I_0$ 会至少删掉两个顶点，但 $(v_+,v_+)=0$ 说明剩下的子图不是有限的，与 $\Gamma$ 的 level 是 1 和 @Pre:level-l 矛盾。
-2. 如果 $I_0=\emptyset$，则 $S=I_+\cup I_-$。然而 $(v_+,v_-)=\sum_{s\in I_+,\,t\in I_-}v_sv_t(\alpha_s,\alpha_t)=0$ 说明对任何 $s\in I_+,\,t\in I_-$ 有 $(\alpha_s,\alpha_t)=0$，从而 $I_+$ 和 $I_-$ 将 $\Gamma$ 分成互不连通的两个集合，这与 $\Gamma$ 连通矛盾。
+1. 如果 $|I_0|=1$，那么删掉 $I_-\cup I_0$ 会至少删掉两个顶点，但 $(v_+,v_+)=0$ 说明 $I_+$ 不是有限的，与 $\Gamma$ 的 level 是 1 和 @Pre:level-l 矛盾。
+2. 如果 $I_0=\emptyset$，则 $S=I_+\cup I_-$。然而 $(v_+,v_-)=\sum_{s\in I_+,\,t\in I_-}v_sv_t(\alpha_s,\alpha_t)=0$ 说明对任何 $s\in I_+,\,t\in I_-$ 有 $(\alpha_s,\alpha_t)=0$，从而 $I_+$ 和 $I_-$ 互不连通，这与 $\Gamma$ 连通矛盾。
 
 总之 $I_+$ 和 $I_-$ 必有一个是空集，断言 2 得证。
 
 ## level 2 情形断言的证明
 
 
-
-首先是断言 1 的证明。和 level 1 那里的证明一样，我们仍然记
-$$I_+=\{s\in S\mid u_s>0\},\quad I_-=\{s\in S\mid u_s<0\},\quad I_0=\{s\in S\mid u_s=0\}.$$
-并记 $u_+=\sum_{s\in I_+}u_s\alpha_s$，$u_-=\sum_{t\in I_-}u_t\alpha_t$。则 $(u,u)<0$ 和 $(u_+,u_-)\geq0$ 说明 $(u_+, u_+) < 0$ 和 $(u_-, u_-)<0$ 中至少有一个成立。
+首先是断言 1 的证明。记 $I_+,I_-,I_0$ 如前，并记 $u_+=\sum_{s\in I_+}u_s\alpha_s$，$u_-=\sum_{t\in I_-}u_t\alpha_t$。则 $(u,u)<0$ 和 $(u_+,u_-)\geq0$ 说明 $(u_+, u_+) < 0$ 和 $(u_-, u_-)<0$ 中至少有一个成立。
 
 如果 $|I_0|\geq2$，则 $(u,u)<0$ 与 $\Gamma$ 的 level 是 2 矛盾。所以 $|I_0|\leq 1$。
 
@@ -453,9 +450,7 @@ $$I_+=\{s\in S\mid u_s>0\},\quad I_-=\{s\in S\mid u_s<0\},\quad I_0=\{s\in S\mid
 
 总之我们证明了除去至多一个系数之外，其它的系数均非 0 且同号。断言 1 得证。
 
-对断言 2，类似地我们记
-$$I_+=\{s\in S\mid v_s>0\},\quad I_-=\{s\in S\mid v_s<0\},\quad I_0=\{s\in S\mid v_s=0\}.$$
-并记 $v_+=\sum_{s\in I_+}v_s\alpha_s$，$v_-=\sum_{t\in I_-}v_t\alpha_t$。
+对断言 2，类似地，我们记 $v_+=\sum_{s\in I_+}v_s\alpha_s$，$v_-=\sum_{t\in I_-}v_t\alpha_t$。
 
 首先 $|I_0|\leq2$ 是显然的，否则 $(v,v)=0$ 与 $\Gamma$ 的 level 是 2 和 @Pre:level-l 矛盾。
 
