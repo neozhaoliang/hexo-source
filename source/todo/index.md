@@ -68,3 +68,6 @@ url: todo
 - Modular flow
 - 格点参数化　https://www.shadertoy.com/view/fllXzl
 - 纸壳制作多面体?
+- sl3 shdertoy?
+- shadertoy 里面画 3d 球堆插图？
+- 分形盒子
