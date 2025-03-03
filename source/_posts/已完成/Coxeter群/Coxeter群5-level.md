@@ -39,6 +39,8 @@ url: "coxeter-groups-level"
 $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删去任何 $l$ 个顶点后，剩下的部分每个连通分支都是仿射或者有限的。
 :::
 
+<!--more-->
+
 根据定义有限和仿射 Coxeter 群的 level 都是 0（因为不需要删去任何顶点）。
 
 我们来看几个 level 大于 0 的例子：
@@ -285,7 +287,7 @@ $$\begin{aligned}
 &(\alpha_s',\alpha_s')=1-\frac{1}{(\omega_s,\omega_s)}\leq0,\\
 &(-\alpha_s',\omega_t)=\frac{(\omega_s,\omega_t)}{(\omega_s,\omega_s)}\leq0 \text{ for all }t\in I.
 \end{aligned}$$
-从而有 $0<(\omega_s,\omega_s)\leq1$，以及 $(\omega_s,\omega_t)\leq0$ 对任何 $t\in I$ 成立。
+整理即得 $0<(\omega_s,\omega_s)\leq1$，以及 $(\omega_s,\omega_t)\leq0$ 对任何 $t\in I$ 成立。
 :::
 
 真不错！我们轻松得到了一个关于 level 2 情形实的基本权 $\omega_s$ 的重要结论。
@@ -405,7 +407,7 @@ $1\Rightarrow 2$：只要再证明对任何 $w\in W$，以及两个基本权 $\o
       其中最后一个不等号是利用了 @Pre:level-1 和 @Pre:level-2 的结论：若 $\Gamma$ 的 level 是 1 则 $(\omega_i, \omega_i)\leq0$，若 $\Gamma$ 的 level 是 2 则 $(\omega_i,\omega_i)\leq 1$。
 
     我们已经证明了 $(\omega_i,w(\omega_j))$ 总是 $\leq0$ 的。还需要说明 $\span\{\omega_i,w(\omega_j)\}$ 不是正定的。记 $U=\span\{\omega_i,w(\omega_j)\}$。用反证法，如果 $U$ 是正定的，则 $(\omega_i,\omega_i)>0$ 是实的。记
-    $$v_I = w(\omega_j) - \frac{(\omega_i,w(\omega_j))}{(\omega_i,\omega_i)} \omega_i$$ 
+    $$v_I = w(\omega_j) - \frac{(\omega_i,w(\omega_j))}{(\omega_i,\omega_i)} \omega_i$$
     是 $w(\omega_j)$ 在 $\omega_i^\bot$ 上的投影，则 $v_I\in U$ 是 space-like 的向量。但是根据 @Prev:observeB 中的讨论，$v_I\in\barfd_I$，从而 $(v_I, v_I)\leq0$，矛盾。
 
 $2\Rightarrow 1$：由于内积 $\inn$ 是双曲的，而子空间 $\span\{\omega_i,\omega_j\}$ 不是正定的，所以其正交补是正定或者半正定的。于是 $\Gamma\setminus\{i,j\}$ 是有限或者仿射的，从而 $\Gamma$ 的 level 等于 1 或 2。
@@ -423,9 +425,7 @@ $$(u,u)=(u_+,u_+) + (u_-,u_-) + 2(u_+,u_-)<0.$$
 $$(u_+, u_-)=\sum_{s\in I_+}\sum_{t\in I_-}\underbrace{u_s}_{>0}\underbrace{u_t}_{<0}\underbrace{(\alpha_s,\alpha_t)}_{\leq0}\geq 0.$$
 所以 $(u_+, u_+) < 0$ 和 $(u_-, u_-)<0$ 至少有一个成立，不妨设 $(u_+, u_+)<0$。如果 $I_-\cup I_0\ne\emptyset$，那么 $I_+$ 作为从 $\Gamma$ 中删去 $I_-\cup I_0$ 后得到的真子图包含 time-like 的向量 $u_+$，这与 $\Gamma$ 的 level 等于 1 矛盾。所以 $I=I_+$，即所有系数 $u_s$ 都大于 0。相应地如果是 $(u_-,u_-)<0$ 的话则所有 $u_s$ 都小于 0。
 
-对断言 2 我们仍然采用类似的记号，记
-$$I_+=\{s\in S\mid v_s>0\},\quad I_-=\{s\in S\mid v_s<0\},\quad I_0=\{s\in S\mid v_s=0\}.$$
-并记 $v_+=\sum_{s\in I_+}v_s\alpha_s$，$v_-=\sum_{t\in I_-}v_t\alpha_t$，则同样有 $(v_+,v_-)\geq0$。
+对断言 2 我们仍然采用类似的记号，记 $v_+=\sum_{s\in I_+}v_s\alpha_s$，$v_-=\sum_{t\in I_-}v_t\alpha_t$，则同样有 $(v_+,v_-)\geq0$。
 
 我们想证明 $|I_0|\leq1$，并且 $I_+$ 和 $I_-$ 中必有一个是空集。
 

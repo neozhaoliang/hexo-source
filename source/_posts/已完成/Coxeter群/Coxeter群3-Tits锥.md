@@ -28,6 +28,8 @@ url: "coxeter-groups-tits-cone"
 
 在获得了 $V$ 中关于根系的一些知识后，我们下面转移到 $V$ 的对偶空间 $V^\ast$ 中讨论万花筒的结构。
 
+<!--more-->
+
 设 $V^\ast$ 是 $V$ 的对偶空间，$V$ 和 $V^\ast$ 之间有一个自然的双线性映射
 $$V\times V^\ast\to\R: \lfun{v}{f}= f(v).$$
 注意 $\lfun{\,}{}$ 和内积 $\inn$ 的区别：$\lfun{\,}{}$ 是 $V\times V^\ast$ 的自然配对，用尖括号表示；$\inn$ 是 $V$ 上的内积。
@@ -59,9 +61,9 @@ $$\tc = \bigcup_{w\in W} w\barfd.$$
 
 Tits 锥 $\tc$ 可以理解为万花筒，它是由原像房间 $\barfd$ 在 $W$ 下的所有虚像构成的。容易看到 $\tc$ 是 $W$- 不变的。
 
-读者可能有疑问为什么 Tits 锥位于对偶空间 $V^\ast$ 中。一个看起来更自然的想法是，直接把 $V$ 中所有以 $\Delta$ 为法向量的正半空间之交
-$$\bigcap_{s\in S}\{v\in V\mid(\alpha_s, v)>0\}$$
-作为基本区域 $\fd$。在内积 $\inn$ 非退化时，这样做是可以的，但是在 $\inn$ 退化时，可能会出现 $\fd$ 是空集的问题。我们以仿射 $\widetilde{A_1}$ 为例，它的 Coxeter 矩阵是
+读者可能有疑问为什么 Tits 锥位于对偶空间 $V^\ast$ 中。看起来更自然的做法是，直接取以 $\Delta$ 为法向量的正半空间之交作为基本区域：
+$$\fd=\bigcap_{s\in S}\{v\in V\mid(\alpha_s, v)>0\}$$
+在内积 $\inn$ 非退化时，这样做是可以的，但是在 $\inn$ 退化时，可能会出现 $\fd$ 是空集的问题。以仿射 $\widetilde{A_1}$ 为例，它的 Coxeter 矩阵是
 $$\begin{pmatrix}1 & \infty\\\infty&1\end{pmatrix}.$$
 在 $a_{s,t}=1$ 时它给出的内积的 Gram 矩阵是
 $$\begin{pmatrix}(\alpha_s,\alpha_s) & (\alpha_s,\alpha_t)\\(\alpha_t,\alpha_t)& (\alpha_t,\alpha_t)\end{pmatrix} =\begin{pmatrix}1&-1\\-1&1\end{pmatrix}.$$

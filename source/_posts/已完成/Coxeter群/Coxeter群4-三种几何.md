@@ -30,9 +30,11 @@ url: "coxeter-groups-three-cases"
 
 书接 [上回](coxeter-groups-tits-cone)，我们来研究内积 $\inn$ 分别是有限、仿射和双曲三种情形时，其 Tits 锥 $\tc$ 和对偶锥 $\tc^\ast$ 的结构。
 
+<!--more-->
+
 # 有限
 
-一个熟知的结论是，内积 $\inn$ 是正定的当且仅当 $(W,S)$ 是有限群 [见 @Humphreys90 section 6.4]。我这里略过对此结论的证明（否则篇幅会拉的太长）。我们来证明这还等价于 $\tc=V^\ast$：
+一个熟知的结论是，内积 $\inn$ 是正定的当且仅当 $(W,S)$ 是有限群 [见 @Humphreys90 section 6.4]。我这里略过对此结论的证明（否则篇幅会拉的太长）。我们来证明这还等价于：
 
 :::{.theorem #finite-tits-V}
 $W$ 是有限群当且仅当 Tits 锥 $\tc=V^\ast$。

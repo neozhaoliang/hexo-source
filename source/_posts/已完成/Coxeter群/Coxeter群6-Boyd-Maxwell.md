@@ -55,6 +55,7 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 
 这显然是错误的，因为如果 $u$ 是 light-like 的向量，$u$ 和 $-u$ 属于不同的分支。这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一些修改。详情见下面的 @Pre:thm-sphere-packing。
 
+<!--more-->
 
 # 射影模型
 
