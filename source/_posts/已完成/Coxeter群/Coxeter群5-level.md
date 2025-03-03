@@ -93,18 +93,6 @@ $$(\omega_1,\ldots,\omega_n)=(\alpha_1,\ldots,\alpha_n)A^{-1}.$$
 $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.\tag{II}\label{eq:idII}$$
 这是我们的第二个恒等式。
 
-<div id="observation"></div>
-
-接下来是一个有用的观察：
-
-给定 $s\in S$，记 $I = S\setminus\{s\}$，$W_I$ 是标准椭圆子群，$V_I=\span\{\alpha_t\mid t\ne s\}$ 是 $n-1$ 维子空间。当 $(\omega_s,\omega_s)\ne0$ 时，记 $\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)$，显然 $(\alpha_s',\omega_s)=0$，于是
-$$\alpha_s'\in \omega_s^\bot = V_I.$$
-并且对任何 $t\in I$ 有
-$$(\alpha_s',\alpha_t)= (\alpha_s,\alpha_t)\leq0.$$
-这说明 $-\alpha_s'$ 属于 $W_I$ 在 $V_I$ 上作用的基本区域的闭包
-$$\barfd_s= \{v\in V_I\mid (v, \alpha_t)\geq0,\, \forall t\in I\}=\cone{\{\omega_t\mid t\in I\}}.$$
-这个观察虽然很简单，但是后面很有用。
-
 # Level 1 是双曲的
 
 本节来证明 level 等于 1 的群都是双曲的。
@@ -270,9 +258,54 @@ $$(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0 \text{ 且至少有一个 } 
 $$w_1^N(p)=(1 + w_1-1)^N(p)= p + \binom{N}{1}(w_1-1)(p) + \binom{N}{2}b\omega_s,$$
 可见 $\lim\limits_{N\to\infty}\dfrac{w_1^Np}{\binom{N}{2}b} = \omega_s$，即得所证。$\blacksquare$
 
-# Level 2 也是双曲的
 
-本节我们在上一小节的结论中再进一步，证明 level 2 的群也是双曲的。论证会更加繁琐一些。
+# 处理 level 2 的基本技巧
+
+本节我们在上一小节的结论中再进一步，证明 level 2 的群也是双曲的。由于接下来的证明篇幅更长，包含更多的细节，读者难免在阅读时感到吃力。我这里借鉴编程中的模块化思想，先解释接下来的证明中会用到的主要思想。
+
+处理 level 2 的情形的基本思路是转化为 level 1 的情形。具体讲，设 $\Gamma$ 是 level 为 2 的 Coxeter 图，取一个实的基本权 $(\omega_s,\omega_s)>0$，则子图 $\Gamma\setminus\{s\}$ 的 level 就是 1。记 $I = S\setminus\{s\}$，$W_I$ 是标准椭圆子群，
+$$V_I=\omega_s^\bot=\span\{\alpha_t\mid t\ne s\}.$$
+$W_I$ 在 $V_I$ 上作用的基本区域的闭包就是
+$$\barfd_I= \{v\in V_I\mid (v, \alpha_t)>0,\, \forall t\in I\}=\cone{\{\omega_t\mid t\in I\}}.$$
+
+根据 @Pre:level-1-tits，$\barfd_I$ 包含在 $\Q_I=\{v\in V_I\mid (v,v)\leq0\}$ 的上下两个分支之一中，所以任何 $x,y\in\barfd_I$ 之间的内积小于等于 0：
+$$(x,y)\leq0, \quad \forall x,y\in \barfd_I.$$
+特别地，对任何 $x\in\barfd_I$ 有
+$$(x,x)\leq0 \text{ and } (x,\omega_t)\leq0\text{ for all }t\in I.$$
+于是对 $v\in V$，如果它在 $V_I$ 上的投影 $v_I$ 满足 $v_I\in\barfd_I$，那么我们就可以利用上面的关系得出关于 $v$ 的信息来。
+
+:::{.example #observeA}
+**观察 A**
+
+
+取 $v=\alpha_s$，$\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)$ 是 $\alpha_s$ 在 $\omega_s^\bot=V_I$ 上的投影，则对任何 $t\in I$ 有
+$$(\alpha_s',\alpha_t)= (\alpha_s,\alpha_t)\leq0.$$
+这说明 $-\alpha_s'\in\barfd_I$，于是我们有
+$$\begin{aligned}
+&(\alpha_s',\alpha_s')=1-\frac{1}{(\omega_s,\omega_s)}\leq0,\\
+&(-\alpha_s',\omega_t)=\frac{(\omega_s,\omega_t)}{(\omega_s,\omega_s)}\leq0 \text{ for all }t\in I.
+\end{aligned}$$
+从而有 $0<(\omega_s,\omega_s)\leq1$，以及 $(\omega_s,\omega_t)\leq0$ 对任何 $t\in I$ 成立。
+:::
+
+真不错！我们轻松得到了一个关于 level 2 情形实的基本权 $\omega_s$ 的重要结论！
+
+:::{.example #observeB}
+**观察 B**
+
+这次我们取 $v\in\tc$ 是 Tits 锥中的一点，则 $v$ 形如 $v=wx\,(w\in W,x\in\barfd)$。并且
+$$v_I = v - \frac{(v,\omega_s)}{(\omega_s,\omega_s)}\omega_s.$$
+由于 $(v-v_I)\bot V_I$，所以对任何 $\alpha_k\,(k\ne i)$ 有
+$$(v_I,\alpha_k)=(v,\alpha_k) =(wx,\alpha_k)=(x,w^{-1}\alpha_k).$$
+为了保证让 $v_I$ 落在 $\barfd_I$ 中，我们需要让这些 $(x,w^{-1}\alpha_k)\geq0$。但是 $x\in\barfd$，所以只要让每个 $w^{-1}\alpha_k\,(k\in I)$ 都是负根，也就是让 $l(s_kw)<l(w)$ 即可。
+
+总结起来就是，如果对任何 $k\in I$ 有 $l(s_kw)<l(w)$，那么就有 $v_I\in\barfd_I$ 成立。
+:::
+
+这个例子看起来附加了比较强的条件，但是它确实会在后面用到。
+
+
+# Level 2 也是双曲的
 
 ::: {.theorem #level-2}
 level 等于 2 的群都是双曲的，所有的基本权 $\{\omega_s\mid s\in S\}$ 两两分离。$\omega_s$ 是实的当且仅当 $T\setminus\{s\}$ 的 level 等于 1，且对这样的 $\omega_s$ 有 $0<(\omega_s,\omega_s)\leq 1$。
@@ -332,23 +365,13 @@ $$1 - a^2 + 2abc - b^2-c^2 = 1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 
 分情况讨论：
 
++ 如果 $(\omega_s,\omega_s)>0$，由 @Prev:observeA 的讨论即得。
+
 + 如果 $(\omega_s,\omega_s)\leq0$，则根据 $(\ref{eq:idII})$，$\{(\omega_s,\omega_t)\}_{t\ne s}$ 中必然至少有一个严格小于 0，从而根据断言，在 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 中至多有一个为正。但我们将证明这不可能。否则不妨设 $k\ne s$ 使得 $(\omega_s,\omega_k)>0$。在 $(\ref{eq:idII})$ 两边用 $\alpha_k$ 内积得到
 $$0=(\omega_s,\omega_s)(\alpha_s,\alpha_k) +\sum_{t\ne s,k} (\omega_s,\omega_t)(\alpha_t,\alpha_k) + (\omega_s,\omega_k).$$
 上面的和项前两个都非负，最后一个大于 0，矛盾。所以所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都非正。
 
-+ 如果 $(\omega_s,\omega_s)>0$，则其正交补 $U=\omega_s^\bot=\span\{\alpha_t\mid t\ne s\}$ 是双曲的，即 $\Gamma\setminus\{s\}$ 的 level 是 1。根据我们前面的 [观察](#observation)，$\alpha_s$ 在 $U$ 上的正交投影 $$\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)$$
-满足 $-\alpha_s'$ 属于 $\Gamma\setminus\{s\}$ 的基本区域的闭包
-$\barfd_s$。根据 @Pre:level-1-tits，$\barfd_s$ 中的点都是 time-like 或者 light-like 的，且属于 $\Q\cap U=\{u\in U\mid (u,u)\leq0\}$ 的同一个分支，从而
-$$(\alpha_s',\alpha_s')= 1-(\omega_s,\omega_s)^{-1}\leq0.$$
-即 $0<(\omega_s,\omega_s)\leq1$。并且由于 $\barfd_s$ 在 $\Q\cap U$ 的同一分支中，所以其中任何两点的内积非正，特别地对任何 $t\ne s$ 有
-$$(-\alpha_s',\omega_t)=(\omega_s,\omega_t)/(\omega_s,\omega_s)\leq0.$$
-即 $(\omega_s,\omega_t)\leq 0$，同样所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都非正。
-
 又因为对任何 $s,t$，$\Gamma\setminus\{s,t\}$ 是有限或者仿射的，所以其正交补，即 $\{\omega_s,\omega_t\}$ 张成的二维子空间不是正定的，从而 $\{\omega_s\}$ 之间是两两分离的。
-
-:::note
-我们需要考虑 $\alpha_s$ 的投影 $\alpha_s'$ 是因为 $\alpha_s$ 不属于 $\span\{\alpha_t\mid t\ne s\}$，无法直接根据 $(\alpha_s,\alpha_t)\leq0$ 得出 $-\alpha_s$ 属于 $\Gamma\setminus\{s\}$ 的基本区域的闭包。
-:::
 
 # level = 1, 2 等价于双曲和分离
 
@@ -379,28 +402,11 @@ $1\Rightarrow 2$：只要再证明对任何 $w\in W$，以及两个基本权 $\o
       $$(\omega_i, w(\omega_j))=(\omega_i, s_i(\omega_i))\xrightarrow{\ s_i\ }(\omega_i-2\alpha_i,\omega_i)=(\omega_i, \omega_i)-2 <0.$$
       其中最后一个不等号是利用了 @Pre:level-1 和 @Pre:level-2 的结论：若 $\Gamma$ 的 level 是 1 则 $(\omega_i, \omega_i)\leq0$，若 $\Gamma$ 的 level 是 2 则 $(\omega_i,\omega_i)\leq 1$。
 
-    我们已经证明了 $(\omega_i,w(\omega_j))$ 总是 $\leq0$ 的。还需要说明 $\span\{\omega_i,w(\omega_j)\}$ 不是正定的。用反证法。
-
-    ![取 $w(\omega_j)$ 在 $U$ 上的投影 $v$，再取 $v$ 在 $U$ 中的正交补得到 $U_1$。$U_1$ 还等于 $w(\omega_j)^\bot\cap U$](/images/coxeter/proj.svg){width=300}
-
-    如果二维子空间 $\span\{\omega_i,w(\omega_j)\}$ 是正定的，设 $v$ 是 $w(\omega_j)$ 在
-    $$U=\omega_i^\bot={\rm span}\{\alpha_k\mid k\ne i\}$$
-    上的投影分量，$U_1$ 是 $v$ 在 $U$ 中的正交补，则
-    $$U_1=w(\omega_j)^\bot\cap U=w(\omega_j)^\bot\cap\omega_i^\bot=\{\omega_i,w(\omega_j)\}^\bot$$
-    是一个 time-like 的子空间，所以 $v\in U_1^\bot$ 是 space-like 的：$(v,v)>0$。
-
-    另一方面，由于任何 $\alpha_k\,(k\ne i)\in U$ 所以 $(w(\omega_j)-v,\alpha_k)=0$，即
-    $$(w(\omega_j),\alpha_k)=(v,\alpha_k).$$
-    对这些 $k$ 我们还有
-    $$l(s_kw)>l(w)\Rightarrow w^{-1}\alpha_k\in\Phi^+\Rightarrow(\omega_j, w^{-1}\alpha_k)\geq0\Rightarrow(w(\omega_j),\alpha_k)=(v,\alpha_k)\geq0.$$
-    即 $v$ 属于 $\Gamma\setminus\{i\}$ 的基本区域的闭包。根据反证假设 $\omega_i$ 是实的，所以 $\Gamma\setminus\{i\}$ 的 level 是 1，它的基本区域的闭包中的点都是 time-like 或者 light-like 的，从而必须有 $(v, v)\leq0$，这与 $v$ 是 space-like 的矛盾。
+    我们已经证明了 $(\omega_i,w(\omega_j))$ 总是 $\leq0$ 的。还需要说明 $\span\{\omega_i,w(\omega_j)\}$ 不是正定的。记 $U=\span\{\omega_i,w(\omega_j)\}$。用反证法，如果 $U$ 是正定的，则 $(\omega_i,\omega_i)>0$ 是实的。记
+    $$v_I = w(\omega_j) - \frac{(\omega_i,w(\omega_j))}{(\omega_i,\omega_i)} \omega_i$$ 
+    是 $w(\omega_j)$ 在 $\omega_i^\bot$ 上的投影，则 $v_I\in U$ 是 space-like 的向量。但是根据 @Prev:observeB 中的讨论，$v_I\in\barfd_I$，从而 $(v_I, v_I)\leq0$，矛盾。
 
 $2\Rightarrow 1$：由于内积 $\inn$ 是双曲的，而子空间 $\span\{\omega_i,\omega_j\}$ 不是正定的，所以其正交补是正定或者半正定的。于是 $\Gamma\setminus\{i,j\}$ 是有限或者仿射的，从而 $\Gamma$ 的 level 等于 1 或 2。
-
-:::note
-这里考虑 $w(\omega_j)$ 的投影分量 $v$ 的理由同样是因为 $w(\omega_j)$ 未必属于 $\span\{\alpha_k\mid k\ne i\}$，所以由 $(w(\omega_j),\alpha_k)\geq0$ 无法得出 $w(\omega_j)$ 属于 $\Gamma\setminus\{i\}$ 的基本区域。
-:::
-
 
 # 附录
 
