@@ -71,9 +71,9 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 由于 $\Gamma$ 的 level 是 $l$，所以 $\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}$ 是一个仿射的连通子图，这个仿射子图删除 $i_{l+1}$ 后得到的 $\Gamma'$ 仍然是仿射的，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
 
-# 准备
+# 两个恒等式
 
-这一节是纯技术性的，我会介绍几个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和对偶基 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
+这一节是纯技术性的，我会介绍两个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和对偶基 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
 
 在本节中我们都假定内积 $\inn$ 是非退化的，于是我们可以通过 $\inn$ 将 $V$ 和 $V^\ast$ 等同起来：对任何 $\alpha_s\in\Delta$ 和 $\omega_t\in\Delta^\ast$ 有 $(\alpha_s,\omega_t)=\delta_{st}$。
 
@@ -137,14 +137,14 @@ $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)
 
 我们有如下两个断言：
 
-:::{.simple}
+:::{.simple #assetA}
 **断言** \
 
 1. 任何满足 $(u,u)<0$ 的向量 $u=\sum_{s\in S}u_s\alpha_s$ 其系数 $u_s$ 都非零且同号。
 2. 任何满足 $(v,v)=0$ 的向量 $v=\sum_{s\in S}v_s\alpha_s$ 其系数 $v_s$ 至多只有一个为 0，其余都同号。
 :::
 
-我把这两个断言的证明放在附录中，先承认它们是正确的，用它们来导出矛盾：
+我把这两个断言的证明放在 [附录](#appendixA) 中，先承认它们是正确的，用它们来导出矛盾：
 
 取 $s\in S$ 使得 $v_s\ne 0$，则 $u'=v_su-u_sv$ 满足 $(u',u')=v_s^2(u,u)<0$，且 $u'$ 的 $\alpha_s$ 项系数 $u'_s=0$，这与断言 1 矛盾。所以 $\Gamma$ 是双曲的。
 
@@ -157,7 +157,7 @@ $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)
 观察恒等式 $(\ref{eq:idII})$：
 $$\omega_s = (\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.$$
 
-结论 2 中已经证明了必然有 $(\omega_s,\omega_s)\leq0$。根据断言 1 和 2 我们有：
+结论 2 中已经证明了必然有 $(\omega_s,\omega_s)\leq0$。根据 [断言](#assetA) 我们有：
 
 1. 如果 $(\omega_s,\omega_s)<0$，则后面所有的系数 $(\omega_s,\omega_t)$ 都小于 0。
 2. 如果 $(\omega_s,\omega_s)=0$，则后面所有的系数 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都不为 0 且同号。我们来确定它们的符号：根据恒等式 $(\ref{eq:idI})$
@@ -288,7 +288,7 @@ $$\begin{aligned}
 从而有 $0<(\omega_s,\omega_s)\leq1$，以及 $(\omega_s,\omega_t)\leq0$ 对任何 $t\in I$ 成立。
 :::
 
-真不错！我们轻松得到了一个关于 level 2 情形实的基本权 $\omega_s$ 的重要结论！
+真不错！我们轻松得到了一个关于 level 2 情形实的基本权 $\omega_s$ 的重要结论。
 
 :::{.example #observeB}
 **观察 B**
@@ -315,22 +315,24 @@ level 等于 2 的群都是双曲的，所有的基本权 $\{\omega_s\mid s\in S
 
 如果 $\Gamma$ 是不连通的，则 $\Gamma$ 必须是一个 level 为 1 的子图和一个孤立顶点的并，由于 @Pre:level-1 已经证明了 level 1 的群是双曲的，再加上一个孤立顶点仍然是双曲的，所以 $\Gamma$ 是双曲的。于是我们不妨假设 $\Gamma$ 是连通的。
 
-再针对 $\Gamma$ 的顶点个数是否大于 3 分别处理。在 $\Gamma$ 只包含 3 个顶点的情形，$\Gamma$ 的 level 是 2 说明其必然有一条边的 Vinberg 标号小于 -1。不妨设 $\inn$ 的 Gram 矩阵形如
+如果 $|\Gamma|=3$，$\Gamma$ 的 level 是 2 说明其必然有一条边的 Vinberg 标号小于 -1。不妨设 $\inn$ 的 Gram 矩阵形如
 $$\begin{pmatrix}1&a&b\\a&1&c\\b&c&1\end{pmatrix}.$$
 其中 $a,\,b,\,c\leq0$ 且 $a < -1$。这个矩阵的行列式是
-$$1 - a^2 + 2abc - b^2-c^2 = 1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
+$$1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 由于矩阵的迹等于 3，所以其符号必然是 $(2, 1)$，从而是双曲的。
 
-再处理 $\Gamma$ 包含至少 4 个顶点的情形。
-
-仍然根据 @Pre:lemma-uv，如果 $\Gamma$ 不是双曲的，则我们可以取两个非零且正交的向量 $u,v$ 满足 $(u, u)<0,\,(v, v)=0$。
+再处理 $|\Gamma|\geq4$ 的情形。仍然根据 @Pre:lemma-uv，如果 $\Gamma$ 不是双曲的，则可以取两个非零且正交的向量 $u,v$ 满足 $(u, u)<0,\,(v, v)=0$。
 
 我们也有如下两个断言：
 
+:::{.simple #assetB}
+**断言** \
+
 1. 任何满足 $(u,u)<0$ 的向量 $u=\sum_{s\in S}u_s\alpha_s$ 除去至多一个系数 $u_j$ 之外，其它的 $u_s$ 都非零且同号。
 2. 任何满足 $(v,v)=0$ 的向量 $v=\sum_{s\in S}v_s\alpha_s$ 除了满足断言 1 的情形之外，还有一种情形是 $\{v_s\}$ 中有两个是 0，其余的非零且同号。
+:::
 
-我仍然把断言的证明放在附录中，先承认它们是正确的并完成证明。
+我仍然把断言的证明放在 [附录](#appendixB) 中，先承认它们是正确的并完成证明。
 
 由于 $u$ 的系数 $\{u_s\}$ 中至多只有一个是 0，$v$ 的系数 $\{v_s\}$ 中至多只有两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。于是 $u'=v_iu-u_iv$ 仍然满足 $u'$ 与 $v$ 正交和 $(u',u')<0$，但是它的下标 $i$ 的系数 $u'_i=0$，所以我们不妨一开始就取 $u$ 为 $u'$，于是 $u$ 有一个系数 $u_i=0$，其它系数都非 0 且同号，不妨假设这些非零系数都大于 0。
 
@@ -367,7 +369,7 @@ $$1 - a^2 + 2abc - b^2-c^2 = 1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 
 + 如果 $(\omega_s,\omega_s)>0$，由 @Prev:observeA 的讨论即得。
 
-+ 如果 $(\omega_s,\omega_s)\leq0$，则根据 $(\ref{eq:idII})$，$\{(\omega_s,\omega_t)\}_{t\ne s}$ 中必然至少有一个严格小于 0，从而根据断言，在 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 中至多有一个为正。但我们将证明这不可能。否则不妨设 $k\ne s$ 使得 $(\omega_s,\omega_k)>0$。在 $(\ref{eq:idII})$ 两边用 $\alpha_k$ 内积得到
++ 如果 $(\omega_s,\omega_s)\leq0$，则根据 $(\ref{eq:idI})$，$\{(\omega_s,\omega_t)\}_{t\ne s}$ 中必须至少有一个严格小于 0，从而根据 [断言](#assetB)，在 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 中至多有一个为正。但我们将证明这不可能。否则不妨设 $k\ne s$ 使得 $(\omega_s,\omega_k)>0$。在 $(\ref{eq:idII})$ 两边用 $\alpha_k$ 内积得到
 $$0=(\omega_s,\omega_s)(\alpha_s,\alpha_k) +\sum_{t\ne s,k} (\omega_s,\omega_t)(\alpha_t,\alpha_k) + (\omega_s,\omega_k).$$
 上面的和项前两个都非负，最后一个大于 0，矛盾。所以所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都非正。
 
@@ -410,7 +412,7 @@ $2\Rightarrow 1$：由于内积 $\inn$ 是双曲的，而子空间 $\span\{\omeg
 
 # 附录
 
-## level 1 情形断言的证明
+## level 1 情形断言的证明 {#appendixA}
 
 首先是断言 1 的证明。记
 
@@ -438,7 +440,7 @@ $$0=(v, v) = (v_+,v_+) + (v_-,v_-) + 2(v_+,v_-).$$
 
 总之 $I_+$ 和 $I_-$ 必有一个是空集，断言 2 得证。
 
-## level 2 情形断言的证明
+## level 2 情形断言的证明 {#appendixB}
 
 
 首先是断言 1 的证明。记 $I_+,I_-,I_0$ 如前，并记 $u_+=\sum_{s\in I_+}u_s\alpha_s$，$u_-=\sum_{t\in I_-}u_t\alpha_t$。则 $(u,u)<0$ 和 $(u_+,u_-)\geq0$ 说明 $(u_+, u_+) < 0$ 和 $(u_-, u_-)<0$ 中至少有一个成立。
