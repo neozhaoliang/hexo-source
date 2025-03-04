@@ -400,3 +400,60 @@ $\blacksquare$
 **证明**：若 $\Gamma$ 的 level 是 2，则 [$\Omega_r$ 中的元素两两分离](/coxeter-groups-level#level-12)，将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。由于基本权是线性无关的，$\hat{\Omega}_r$ 显然是非平凡的球堆。如果存在某个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $k$ 对应的 $C_k$ 与 $\hat{\Omega}_r$ 中的任何球都没有公共内部的话，则有 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，自然就有 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups-tits-cone/#dual-cone-nonspace)，$(k,k)=(-k,-k)\leq0$，矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大球堆。
 
 反之若 $\hat{\Omega}_r$ 是一个非平凡球堆，则 $W$ 的 level 必然大于 1，且所有的实权之间两两分离。于是任何两个基本权生成的二维子空间 $\span\{\omega_i,\omega_j\}$ 都是 time-like 或者 light-like 的。又由于 $W$ 是双曲的，从而 $\Gamma\setminus\{i,j\}$ 是 space-like 或者 light-like 的，所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$
+
+
+# 计算例子
+
+
+本节我们来介绍怎样用程序绘制一个二维的极大球堆。
+
+以 $K_4$ 完全图为例，每条边的标号是 4，即 Coxeter 矩阵为
+$$
+M=\begin{pmatrix}
+1 & 4 & 4 & 4\\
+4 & 1 & 4 & 4\\
+4 & 4 & 1 & 4\\
+4 & 4 & 4 & 1\\
+\end{pmatrix}
+$$
+
+这个群的 rank 是 4，level 是 2，所以给出的是 $\R^2$ 上的二维极大球堆。
+
+1. $\Delta=\{\alpha_i\}_{i=1}^4$ 满足 $(\alpha_i,\alpha_i)=1$，它们对应 4 个（虚的）球面镜 $\{B_i\}_{i=1}^4$。关于它们的反演变换生成了 $(W,S)$。
+2. 由于删掉 $K_4$ 的任何顶点后，剩下的是三角形的边标号都是 4，仍然是双曲的，所以 $K_4$ 的每个顶点都是实的，即基本权 $\Delta^\ast = \{\omega_i\}_{i=1}^4$ 中每一个都是实的。将 $\Delta^\ast$ 归一化以后得到的 $\{\hat{\omega_i}\mid \omega_i\in\Delta^\ast\}$ 给出 4 个互相分离的（实的）球 $\{C_i\}_{i=1}^4$。
+3. 由于 $i\ne j$ 时 $(\alpha_i, \omega_j)=0$，所以球 $B_i$ 和 $C_j$ 正交。
+4. 又 $(\alpha_i,\omega_i)=1$，以及实权 $\omega_i$ 满足 $0<(\omega_i,\omega_i)\leq1$，所以归一化以后 $(\alpha_i,\hat{\omega_i})>1$，所以球 $B_i$ 和 $C_i$ 是不相交的。
+5. 将 $W$ 作用在 $\{C_i\}$ 上，得到的所有球即为球堆 $\P=\bigcup_{w\in W,\,1\leq i\leq 4}w(\hat{\omega_i})$。
+
+我们按照如下步骤来分别计算 $\{B_i\}$ 和 $\{C_j\}$：
+
+1. $C_1$ 总是可以取为单位球 $B(\mathbf{0},1)$。
+2. $B_3,B_4$ 可以取为过原点的两条直线，法向量分别为
+$$\begin{aligned}
+\n_3&=(1, 0),\\
+\n_4&=(-\cos\frac{\pi}{m_{3,4}},\sin\frac{\pi}{m_{3,4}})=(-\cos\frac{\pi}{4},\sin\frac{\pi}{4}).
+\end{aligned}$$
+3. $B_2(\a_2,r_2)$ 是一个无界球，即 $r_2<0$。我们可以认为 $r_2>0$，但是在列方程时将 $B_2$ 与其它球的内积取负：
+    + 由 $B_2$ 与 $C_1$ 正交可得 $|\a_2|^2=r_2^2+1$；
+    + 计算 $B_2$ 与 $B_3,B_4$ 的夹角可得（注意 $\cos$ 前面没有负号了）
+    $$\begin{aligned}
+    \frac{(\a_2,\n_3)}{r_2}&=\cos\frac{\pi}{m_{23}}=\cos\frac{\pi}{4},\\
+    \frac{(\a_2,\n_4)}{r_2}&=\cos\frac{\pi}{m_{24}}=\cos\frac{\pi}{4}.
+    \end{aligned}$$
+
+   由这三个方程可以解出 $\a_2$ 和 $r_2$。
+4. $B_1(\a_1,r_1)$ 也是一个无界球，即 $r_1<0$。
+   + 计算 $B_1$ 与 $B_3,B_4$ 夹角可得
+   $$\begin{aligned}
+    \frac{(\a_1,\n_3)}{r_1}&=\cos\frac{\pi}{m_{13}}=\cos\frac{\pi}{4},\\
+    \frac{(\a_1,\n_4)}{r_1}&=\cos\frac{\pi}{m_{14}}=\cos\frac{\pi}{4}.
+    \end{aligned}$$
+   + 计算 $B_1$ 与 $B_2$ 夹角可得
+   $$\frac{r_1^2+r_2^2-|\a_1-\a_2|^2}{2r_1r_2}=\cos\frac{\pi}{m_{12}}.$$
+   
+   由这三个方程可以得到一个二次方程，解出的 $r_1$ 有两个值，我们取较小的那一个。（原因在后面解释）
+5. 我们还剩下三个实球 $C_2,C_3,C_4$ 需要解出。$C_2$ 需要和 $B_3,B_4$ 正交，所以它是一个以原点为中心的球，而它又要和 $B_1$ 正交，所以 $C_2$ 的半径为 $\sqrt{|\a_1|^2-r_1^2}$。
+6. $C_3$ 与 $B_4$ 正交，于是 $\frac{(\a,\n_4)}=0$；$C_3$ 与 $B_1,B_2$ 正交，这又可以得出两个方程。三个方程联合可以解出 $C_3$。
+7. 利用 $C_4$ 与 $B_1,B_2,B_3$ 正交可以解出 $C_4$。
+
+结果如下图所示，$B_i$ 用实线绘制，$C_i$ 用虚线绘制，同一对 $(B_i,C_i)$ 使用同样的颜色。${\rm inv}$ 表示该圆被翻转，以无穷区域为内部。注意到每个 $C_i$ 都位于 $B_i$ 的内部（正半空间），这是因为 $(\alpha_i,\omega_i)\geq1$，所以它们一定是一个包含另一个。这也解释了为什么求解 $B_1$ 时要用较小的那个半径：它的内部（无穷区域）必须包含 $C_1$ 的内部（也是个无穷区域）。
