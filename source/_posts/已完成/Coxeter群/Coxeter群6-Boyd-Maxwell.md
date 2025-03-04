@@ -59,20 +59,18 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 
 # 射影模型
 
-在这一节中，我们约定 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，即在这组基下内积的 Gram 矩阵为
-$$\begin{pmatrix}I_{n+1} &\\ & -1\end{pmatrix}.$$
-令
+在这一节中，我们约定 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，即在这组基下内积的 Gram 矩阵为 $\left(\begin{smallmatrix}I_{n+1} &\\ & -1\end{smallmatrix}\right)$。令
 $$e_0=\frac{e_{n+2}-e_{n+1}}{2},\quad e_\infty=\frac{e_{n+2}+e_{n+1}}{2}.$$
 则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组基下的 Gram 矩阵为
 $$\begin{pmatrix}0&&&-\frac{1}{2}\\&I_n&&\\-\frac{1}{2}&&&0\end{pmatrix}.$$
-设
+任何两个向量 $v,w\in V$ 可以写成如下的形式：
 $$\begin{aligned}
 v&=ae_0 + \x + be_\infty,\\
 w&=ce_0 + \y + de_\infty.
 \end{aligned}$$
-是两个向量，其中 $\x,\y\in\span\{e_1,\ldots,e_n\}$，$a,b\in\R$，则 $v,w$ 的内积为
+其中 $\x,\y\in\span\{e_1,\ldots,e_n\},\,a,b\in\R$。则 $v,w$ 之间的内积为
 $$(v,w) = (\x, \y) - \frac{ad+bc}{2}.$$
-$\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基在处理 $\R^n$ 中的球时更方便一些。
+使用 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基在处理 $\R^n$ 中的球时更方便一些。
 
 设 $v\in\R^{n+1,1}$，我们约定用 $[v]$ 表示 $v$ 在射影空间 $\PR$ 中的等价类。
 
@@ -84,7 +82,11 @@ $$\PL=\{[v]\mid v\in\L\setminus\{0\}\}.$$
 $\PL$ 是 $\L$ 中所有直线组成的集合。
 :::
 
-熟知 $\ER=\R^n\cup\{\infty\}$ 和 $\R^{n+1}$ 中的单位球 $S^n=\{x_1^2+x_2^2+\cdots+x_{n+1}^2=1\}$ 在球极投影下是一一对应的（北极点为 $e_{n+1}$）。我们来说明它们分别和 $\PL$ 是一一对应的，并且当 $\x\in\ER$ 和 $\y\in S^n$ 在球极投影下对应时，它们在 $\PL$ 中是同一个点。
+熟知 $\ER=\R^n\cup\{\infty\}$ 和 $\R^{n+1}$ 中的单位球 $S^n=\{x_1^2+x_2^2+\cdots+x_{n+1}^2=1\}$ 在球极投影下是一一对应的（北极点为 $e_{n+1}$）。
+
+![$S^2$ 到 $\overline{\R^2}$ 的球极投影，by Keenan Crane](/images/coxeter/stereo-projection.svg){width=400}
+
+我们来说明它们分别和 $\PL$ 是一一对应的，并且当 $\x\in\ER$ 和 $\y\in S^n$ 在球极投影下对应时，它们在 $\PL$ 中是同一个点。
 
 :::{.simple}
 **$\PL$ 的第一种参数化表示** \
@@ -125,9 +127,9 @@ $$
 此即为 $\PL$ 的第二种参数化表示。
 :::
 
-我们来验证当 $\x\in\overline{\R^n}$ 和 $\y\in S^n$ 是以 $e_{n+1}$ 为北极的球极投影下的对应点时，$\x,\y$ 在这两种参数化表示下给出 $\PL$ 的同一个点。
+![红色的圆是超平面 $(\cdot, e_{n+2})=1$ 与光锥的截线，可以通过将 $S^n$ 沿着 $e_{n+2}$ 平移一个单位得到；$\ER$ 对应蓝色的 horosphere，它是超平面 $(\cdot, e_0)=\frac{1}{2}$ 与光锥的截线。$e_\infty$ 不在 horosphere 上](/images/coxeter/Horosphere.svg){width=500}
 
-设 $\y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in S^n$，$\y$ 在以 $e_{n+1}$ 为北极的球极投影下对应的 $\x\in\overline{\R^n}$ 是
+设 $\y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in S^n$，$\y$ 在以 $e_{n+1}$ 为北极的球极投影下对应的点是
 $$\x=\begin{cases}
 \sum\limits_{i=1}^n\dfrac{y_i}{1-y_{n+1}}e_i & y_{n+1}\ne1,\\
 \infty & y_{n+1}=1.
@@ -143,39 +145,34 @@ $$[\y + e_{n+2}] = \begin{cases}[e_0 + \x + |\x|^2e_\infty] & y_{n+1}\ne1\\
 + $y_{n+1}\ne 1$ 时，由 $\y\in S^n$ 可得 $\sum_{i=1}^ny_i^2=1-y_{n+1}^2$，从而
 $$|\x|^2=\frac{\sum_{i=1}^n y_i^2}{(1-y_{n+1})^2}= \frac{1+y_{n+1}}{1-y_{n+1}}.$$
 把 $\y+e_{n+2}$ 转化为 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基下的表示：
-$$\y+e_{n+2} = \sum_{i=1}^ny_ie_i + (1-y_{n+1})e_0+(1+y_{n+1})e_\infty.$$
+$$\y+e_{n+2} = (1-y_{n+1})e_0+\sum_{i=1}^ny_ie_i + (1+y_{n+1})e_\infty.$$
 从而
 $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}}{1-y_{n+1}}e_\infty\right] = [e_0 + \x + |\x|^2e_\infty].$$
 
 
 # 球面
 
-:::{.simple}
-**记号**
 
-令 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 单位向量组成的集合。
-:::
+记 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 单位向量组成的集合。我们来建立 $\R^n$ 中的球（包括超平面）和 $\S$ 之间的一一对应。
 
-这一小节我们来建立 $\R^n$ 中的球/超平面和 $\S$ 之间的一一对应。
+设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，它将 $\R^n$ 分成两个连通分支，一个有界，另一个无界。我们允许 $r$ 是负数以区分 $B$ 的内部和外部：$r>0$ 时 $B$ 的内部是满足 $|\x-\a|< r$ 的有界分支；$r<0$ 时 $B$ 的内部是满足 $|\x-\a|>|r|$ 的无界分支。
 
-设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，我们允许 $r$ 是负数以区分 $B$ 的内部和外部：$r>0$ 时 $B$ 的内部就是通常意义下满足 $|\x-\a|< r$ 的有界集合；$r<0$ 时 $B$ 的内部是满足 $|\x-\a|>|r|$ 的无界集合。如果用球极投影转移到 $S^n$ 中来看的话，$\R^n$ 中的球的内/外之分在 $S^n$ 上其实没有意义，它们不过是 $S^n$ 中某个圆两侧的球帽。所以把球的内部和外部统一处理是很自然的。
-
-我们把 $\a$ 看作 $\span\{e_1,\ldots,e_n\}\cong\R^n$ 中的点，记
-$$k_B = \frac{e_0 + \a + (|\a|^2 - r^2)e_\infty}{r}.$$
-不难验证 $k_B$ 满足 $(k_B,k_B)=1$，所以 $k_B\in\mathcal{S}$。
+把 $\a$ 看作 $\span\{e_1,\ldots,e_n\}\cong\R^n$ 中的点，记
+$$k = \frac{e_0 + \a + (|\a|^2 - r^2)e_\infty}{r}.$$
+不难验证 $(k,k)=1$，所以 $k\in\mathcal{S}$。
 
 对 $\x\in\R^n$，$\imath(\x)=e_0+\x+|\x|^2e_\infty\in\L$，则
-$$(\imath(\x),k_B)=\frac{r^2-|\x-\a|^2}{2r}.$$
+$$(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{2r}.$$
 
-于是 $\x\in B$ 当且仅当 $(\imath(\x),k_B)=0$，以及 $\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k_B)>0$。鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k_B$ 是指向 $B$ 的正半空间的单位法向量。
+于是 $\x\in B$ 当且仅当 $(\imath(\x),k)=0$，以及 $\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k)>0$。鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k$ 是指向 $B$ 的正半空间的单位法向量。
 
-注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k_B)=0$。$V$ 中所有形如 $(\jmath(\x),k_B)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k_B^\bot$ 的截线。
+注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k)=0$。$V$ 中所有形如 $(\jmath(\x),k)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k^\bot$ 的截线。
 
-当 $B$ 是 $\R^n$ 中的超平面时，设其方程为 $(\x,\n)=d\,(d\in\R)$，其中 $\n$ 是 $B$ 的单位法向量。我们将 $B$ 对应到
-$$k_B=\n + 2d e_\infty.$$
-不难验证 $(k_B,k_B)=1$，从而 $k_B\in\S$，并且对 $\imath(\x)=e_0+\x+|\x|^2e_\infty$ 有
-$$(\imath(\x),k_B)=(\x,\n)-d.$$
-于是 $\x\in B$ 当且仅当 $(\imath(\x),k_B)=0$，$\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k_B)>0$。
+设 $H(\n,d)=\{\x\in\R^n\mid (\x,\n)=d\}$ 是超平面，$\n$ 是 $B$ 的单位法向量。我们将 $H(\n,d)$ 对应到
+$$k=\n + 2d e_\infty.$$
+不难验证同样有 $k\in\S$，并且对 $\x\in\R^n$ 有
+$$(\imath(\x),k)=(\x,\n)-d.$$
+于是 $\x\in B$ 当且仅当 $(\imath(\x),k)=0$，$\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k)>0$。
 
 反之任何 $k\in\S$ 也都唯一确定了 $\R^n$ 中的某个球或者超平面。为此只要将 $k$ 表示为
 $$k=be_\infty+\a+ce_\infty\in\S,\quad b,c\in\R.$$
@@ -183,10 +180,10 @@ $$k=be_\infty+\a+ce_\infty\in\S,\quad b,c\in\R.$$
 
 # 球面的 seperation
 
-设 $B_1(\a_1,r_1),B_2(\a_2,r_2)$ 是 $\R^n$ 中的两个球，它们对应的 $\S$ 向量分别是
+设 $B_1(\a_1,r_1),\,B_2(\a_2,r_2)$ 是两个球，它们对应的 $\S$ 中向量分别是
 $$\begin{aligned}
 k_1&=\frac{1}{r_1}e_0 + \frac{\a_1}{r_1} + \frac{|\a_1|^2-r_1^2}{r_1}e_\infty,\\
-k_1&=\frac{1}{r_2}e_0 + \frac{\a_2}{r_2} + \frac{|\a_2|^2-r_2^2}{r_2}e_\infty.\\
+k_2&=\frac{1}{r_2}e_0 + \frac{\a_2}{r_2} + \frac{|\a_2|^2-r_2^2}{r_2}e_\infty.\\
 \end{aligned}.$$
 不难验证有
 $$(k_1,k_2)=\frac{r_1^2+r_2^2 - |\a_1-\a_2|^2}{2r_1r_2}.$$
@@ -196,13 +193,13 @@ $$(k_1,k_2)=\frac{r_1^2+r_2^2 - |\a_1-\a_2|^2}{2r_1r_2}.$$
 
 [见 @ratcliffe section 3.2]
 
-在 Lorentzinian 内积下，两个 space-like 的单位向量 $k_1,k_2$ 之间的 seperation 有两种含义：
+在 Lorentzinian 内积下，两个 space-like 的单位向量 $k_1,k_2$ 之间的内积有两种含义：
 
 1. 如果 $|(k_1,k_2)|\leq1$，则 $(k_1,k_2)=\cos\theta$，$\theta$ 是分别以 $x,y$ 为切向量的两条测地线之间的夹角；
 2. 如果 $|(k_1,k_2)|>1$，则 $(k_1,k_2)=\pm\cosh\eta$，$\eta$ 是分别以 $x,y$ 为法向量的两个超平面之间的双曲距离。
 :::
 
-1. $B_1$ 和 $B_2$ 相交或者相切当且仅当 $|(k_1,k_2)|\leq1$，这时 $(k_1,k_2)=\cos\theta$，$\theta$ 是它们球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。当 $(k_1,k_2)=-1$ 时两球外切，$(k_1,k_2)=1$ 时两球内切。
+1. $B_1$ 和 $B_2$ 相交或者相切当且仅当 $|(k_1,k_2)|\leq1$，这时 $(k_1,k_2)=\cos\theta$，$\theta$ 是两个球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。当 $(k_1,k_2)=-1$ 时两球外切，$(k_1,k_2)=1$ 时两球内切。
 2. $B_1$ 和 $B_2$ 不相交也不相切当且仅当 $|(k_1,k_2)|>1$，这时 $|(k_1,k_2)|=\cosh\eta$，$\eta$ 是 $k_1,k_2$ 对应的双曲空间中测地线的双曲距离。两球在 $(k_1,k_2)<-1$ 时没有公共的内部，在 $(k_1,k_2)>1$ 时一个完全包含另一个。
 
 |   |   |
@@ -212,14 +209,14 @@ $$(k_1,k_2)=\frac{r_1^2+r_2^2 - |\a_1-\a_2|^2}{2r_1r_2}.$$
 | $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$    | $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$|
 |![](/images/coxeter/image2.jpg){width=150} | ![](/images/coxeter/image3.jpg){width=150}|
 
-上面的结论同样适用于 $B_1$ 和 $B_2$ 中有平面的情形。例如设 $B_1,B_2$ 相交，并且 $B_1$ 是球面，$B_2$ 是超平面，$k_2=\n+2de_\infty$，则
+上面的结论同样适用于 $B_1$ 和 $B_2$ 一个是球面，另一个是超平面的情形。例如设 $B_1$ 是球面，$B_2$ 是超平面，$k_2=\n+2de_\infty$，则
 $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
-这时 $(k_1,k_2)$ 等于 $B_1$ 在球面交点处的内法向量和 $B_2$ 的法向量 $\n$ 夹角的余弦。
+如果 $B_1,B_2$ 相交，则 $(k_1,k_2)$ 等于 $B_1$ 在交点处的内法向量和 $B_2$ 的法向量 $\n$ 夹角的余弦；否则它是 $B_1$ 的球心到 $B_2$ 的有向距离除以 $r_1$。
 
-类似地，当 $B_1,B_2$ 都是超平面时，$(k_1,k_2)=(\n_1,\n_2)$ 是它们法向量夹角的余弦。
+类似地当 $B_1,B_2$ 都是超平面时，$(k_1,k_2)=(\n_1,\n_2)$ 是它们法向量夹角的余弦。
 
 ::: {.proposition #suff-for-disjoint}
-设 $B_1,B_2$ 是两个球，且 $B_1,B_2$ 的内部不相交。设 $(k_1,k_2)$ 分别是它们对应的 space-like 的单位向量，则 $(k_1,k_2)\leq-1$。
+设 $B_1,B_2$ 是两个球，且 $B_1,B_2$ 的内部不相交。设 $k_1,k_2$ 分别是它们对应的 space-like 的单位向量，则 $(k_1,k_2)\leq-1$。
 :::
 
 :::note
@@ -246,38 +243,38 @@ $$\begin{aligned}
 :::
 $\tau$ 是 $\ER$ 中关于球面镜 $B$ 的反射，它保持 $B$ 的表面不动，将 $B$ 的内部映射为外部（反之亦然），并且 $\tau^2=1$。
 
-![](/images/coxeter/cartoon_mirror.png){width=400 .fig}
+![](/images/coxeter/sphere-inversion.svg){width=400 .fig}
 
 我们来说明 $\tau$ 可以实现为 $\PR$ 中的射影正交变换。
 
-考察以 $k_B$ 为法向量的镜面反射
+设 $B(\a,r)$ 对应 $k\in\S$，考察以 $k$ 为法向量的镜面反射
 $$\begin{aligned}
-\rho_B\colon\ \LR&\mapsto\LR\\
-\rho_B(v) &= v - 2(v,k_B)k_B.
+\rho\colon\ \LR&\mapsto\LR\\
+\rho(v) &= v - 2(v,k)k.
 \end{aligned}$$
-我们来计算 $\rho_B$ 作用在 $\imath(\x)\,(\x\in\R^n)$ 上的效果：（注意 $(\imath(\x),k_B)=\frac{r^2-|\x-\a|^2}{r}$）
+则 $\rho$ 是 $\LR$ 上的正交变换，从而也给出 $\PR$ 上的射影变换。
+
+我们来计算 $\rho$ 作用在 $\imath(\x)\,(\x\in\R^n)$ 上的效果：（注意 $(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{r}$）
 $$\begin{align*}
-\begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho_B}
+\begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho}
 \begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} -\frac{r^2-|\x-\a|^2}{r}\begin{pmatrix}\frac{1}{r}\\\frac{\a}{r}\\ \frac{|\a|-r^2}{r}\end{pmatrix}\\
 &=\begin{pmatrix}\frac{|\x-\a|^2}{r^2}\\\x+\left(\frac{|\x-\a|^2-r^2}{r^2}\right)\a\\ \ast \end{pmatrix}\\
 &\sim \begin{pmatrix}1\\\a+\frac{r^2}{|\x-\a|^2}(\x-\a)\\ \ast \end{pmatrix}\\
 &=\begin{pmatrix}1\\\tau(\x)\\ |\tau(\x)|^2 \end{pmatrix}.
 \end{align*}$$
-这里我们不用关心 $\ast$ 是什么，中间的 $\sim$ 表示两个向量是射影等价的。实际上我们是对所有分量同时除以了 $\frac{|\x-\a|^2}{r^2}$，所以 $\sim$ 还是正射影等价。
-
-即我们有如下的交换图：
+这里我们不用关心 $\ast$ 是什么，中间的 $\sim$ 表示两个向量射影等价。即我们有如下的交换图：
 
 $$\require{amsCd}
 \begin{CD}
 \ER @>{\imath}>> \PL\\
-@V{\tau}VV  @VV{\rho_B}V \\
+@V{\tau}VV  @VV{\rho}V \\
 \ER @>{\imath}>> \PL
 \end{CD}$$
 
-更进一步，将一个球关于另一个球作反演也可以通过 $\rho_B$ 来计算。设 $k'$ 是球 $B'$ 对应的 space-like 的单位向量，则 $\rho_B(k')$ 也是 space-like 的单位向量，从而对应另一个球 $B''$。对 $\x\in\R^n$，根据上面的交换图有 $\rho_B\imath=\imath\tau$，从而
+进一步，将任意球 $B'$ 关于 $B$ 作反演也可以通过 $\rho$ 来计算。设 $k'$ 是 $B'$ 对应的 space-like 的单位向量，则 $\rho(k')$ 也是 space-like 的单位向量，从而 $\rho(k')$ 对应某个球 $B''$。根据上面的交换图有 $\rho\imath=\imath\tau$，于是
 $$\x\in B'\Leftrightarrow (\imath(\x), k')=0
-\Leftrightarrow(\rho_B(\imath(\x)), \rho_B(k'))=0
-\Leftrightarrow(\imath(\tau(\x)), \rho_B(k'))=0
+\Leftrightarrow(\rho\imath(\x), \rho(k'))=0
+\Leftrightarrow(\imath\tau(\x), \rho(k'))=0
 \Leftrightarrow \tau(\x)\in B''.
 $$
 即关于 $B$ 的反演 $\tau$ 将 $B'$ 映射为 $B''$。
@@ -286,16 +283,12 @@ $$
 # 双曲球堆
 
 ::: definition
-如果一个非空集合 $\P\subset V$ 满足下列条件，我们就称 $\P$ 是一个**球堆**：
-
-1. 对任何 $k\in\P$ 有 $(k,k)=1$。
-2. 对 $\P$ 中任何 $k\ne k'$ 有 $(k,k')\leq -1$。
+如果非空集合 $\P\subset \S$ 满足对 $\P$ 中任何 $k\ne k'$ 有 $(k,k')\leq -1$，我们就称 $\P$ 是一个**球堆**
 :::
 
+形如 $\P=\{k,-k\}$ 的球堆是平凡的，因为它由一个球的内部和外部组成。否则就称 $\P$ 是非平凡的。$-\P=\{-k\mid k\in\P\}$ 也是球堆，它是通过翻转 $\P$ 中每个球的内部和外部得到的。
 
-我们称形如 $\P=\{k,-k\}$ 的球堆是平凡的，因为它由一个球的内部和外部组成。否则就称 $\P$ 是非平凡的。非平凡的球堆中的点必然两两互不共线。如果 $\P$ 是非平凡的球堆，则 $-\P=\{-k\mid k\in\P\}$ 也是非平凡的，它是通过翻转 $\P$ 中每个球的内部和外部得到的。
-
-记 $\H$ 是超平面 $\{v_{n+2}=1\}$ 与 $\Q_+$ 的截面，对任何满足 $(k,k)=1$ 的点 $k$，定义球帽
+记 $\H$ 是超平面 $(\cdot, e_{n+2})=1$ 与 $\Q_+$ 的截面，对给定的 $k\in S$，定义球帽
 $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 
 ::: {.lemma #disjoint-pair}
@@ -303,10 +296,11 @@ $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 :::
 
 **证明**：设 $u\in C_{k_1}\cap C_{k_2}$，$v\in C_{-k_1}\cap C_{-k_2}$，则
-$$(u, k_1+k_2)\geq0\quad\text{and}\quad(v,k_1+k_2)\leq0.$$
-由于 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$，所以 $k_1+k_2$ 是 time-like 或者 light-like 的。如果 $k_1+k_2$ 是 time-like 的，则 $u\not\sim k_1+k_2$ 且 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以 $k_1+k_2$ 必须是 light-like 的，从而 $(k_1,k_2)=-1$。
+$$(u, k_1+k_2)\geq0\text{ and }(v,k_1+k_2)\leq0.$$
+由于 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$，所以 $k_1+k_2$ 是 time/light-like 的。
+如果上面两个不等号都是严格成立的，则 $v\sim k_1+k_2$ 且 $u\not\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以两个不等式至少有一个等号是成立的，即 $u,v$ 之中必有一个与 $k_1+k_2$ 共线，并且 $k_1+k_2$ 是 light-like 的向量，由此可得 $(k_1,k_2)=-1$。
 
-进一步如果 $(u,k_1+k_2)>0$ 且 $(v,k_1+k_2)<0$，则 $v\sim k_1+k_2$ 但是 $u\not\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以 $(u,k_1+k_2)$ 和 $(v,k_1+k_2)$ 中必然有一个是 0，即 $u$ 和 $v$ 中必有一个是 $k_1+k_2$ 的倍数，然而 $\H$ 中与 $k_1+k_2$ 共线的点是唯一确定的，所以 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多包含一个点，且此点与 $k_1+k_2$ 共线。$\blacksquare$
+然而 $\H$ 中与 $k_1+k_2$ 共线的点是唯一确定的，所以 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多包含一个点，且此点与 $k_1+k_2$ 共线。$\blacksquare$
 
 :::{.lemma #contain-time-like}
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。如果 $|C_{k_1}\cap C_{k_2}|>1$，则 $C_{k_1}\cap C_{k_2}$ 中必然包含某个 time-like 的向量。
@@ -317,7 +311,7 @@ $\blacksquare$
 
 :::{.lemma #intersect-pair}
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。如果 $v\in\H$ 满足
-$$(v,k_1)\geq0\quad \text{and}\quad (v,k_2)>0.$$
+$$(v,k_1)\geq0\text{ and } (v,k_2)>0.$$
 则 $|C_{k_1}\cap C_{k_2}|>1$。
 :::
 
@@ -331,7 +325,7 @@ $$\begin{aligned}
 所以 $(u',k_1)>0,\,(u',k_2)>0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。由于 $t\in(0,a)$ 有无穷多个取值，并且不难验证不同的 $t$ 给出的 $u'$ 互不相同，所以 $|C_{k_1}\cap C_{k_2}|=\infty>1$。$\blacksquare$
 
 ::: {.theorem #thm-sphere-packing}
-设 $\P$ 是 $V$ 的一个非空子集，则下面两点是等价的：
+设 $\P$ 是非空集合，则下面两点是等价的：
 
 1. $\P$ 是一个非平凡的球堆。
 2. 对 $\P$ 或者 $-\P$ 之一，其包含的任何两个球帽 $C_k$ 和 $C_{k'}$ 至多有一个公共点。
@@ -358,15 +352,12 @@ $$
 
 
 ::: definition
-记 $\Omega_r=\{\omega\in\Omega\mid (\omega,\omega)>0\}$ 是所有实权组成的集合，$\tc_r=\cone{\Omega_r}$ 是由所有实权生成的凸锥，以及
-$$\hat{\Omega}_r=\{\hat{\omega}\mid \omega\in\Omega_r\}.$$
-其中 $\hat{\omega}=\omega/\sqrt{(\omega,\omega)}$ 是将 $\omega$ 归一化得到的单位向量。
+记 $\Omega_r=\{\omega\in\Omega\mid (\omega,\omega)>0\}$ 是所有实权组成的集合，$\tc_r=\cone{\Omega_r}$ 是由所有实权生成的凸锥。
 :::
 
 ::: {.theorem #real-cone-closure}
 如果 $W$ 是不可约、双曲的，且 level 大于等于 2，则 $\tcr = \cl{\tc}$。
 :::
-
 
 **证明**：只要证明 $\tcr$ 包含那些非实的基本权 $(\omega_s, \omega_s)\leq 0$ 即可。若如此，则 $\tcr$ 包含全部基本权 $\Delta^\ast$，从而也包含 $\cone{\Delta^\ast}=\barfd$，再结合 $\tcr$ 是 $W$- 不变的，即得 $\tcr$ 包含 $\bigcup\limits_{w\in W}w\barfd=\tc$，从而包含 $\cl{\tc}$。
 
@@ -376,9 +367,9 @@ $(\omega_s,\omega_s)<0$ 的情形比较容易，这时 $\omega_s$ 是 time-like 
 $$v = \sum_{w\in W_I}w(\omega_t),$$
 显然 $v\in\tcr$，并且 $W_I$ 保持 $v$ 不动。特别地对任何 $t\in I$ 都有 $t(v)=v$。这是 $n-1$ 个独立的线性约束，其解空间是一维的，所以 $v$ 和 $\omega_s$ 共线：存在 $a\in\R$ 使得 $v=a\omega_k$。两边同时与 $\alpha_s$ 作内积得到
 $$a = (\alpha_s,v)=\sum_{w\in W_I}(\alpha_s,w(\omega_t))=\sum_{w\in W_I}(w^{-1}(\alpha_s), \omega_t)=\sum_{w\in W_I}(w(\alpha_s), \omega_t).$$
-对任何 $w\in W_I$，$w\alpha_s$ 形如 $w\alpha_s=\alpha_s+\sum_{i\in I}c_i\alpha_i$，所以 $w\alpha_s$ 仍然是正根，所有的系数 $c_i$ 都非负。所以上式右边的每一项
+对任何 $w\in W_I$，$w\alpha_s=\alpha_s+\sum_{i\in I}c_i\alpha_i$ 仍然是正根，所有的系数 $c_i$ 都非负。所以上式右边的每一项
 $$(w(\alpha_s), \omega_t)=\sum_{i\in I}c_i(\alpha_i, w_t) = c_t\geq0.$$
-我们来选择一个特殊的 $w\in W_I$ 使得 $c_t>0$：由于 $\Gamma$ 是连通的，所以 $\Gamma$ 中存在一条从 $s$ 到 $t$ 的路径 $s=s_0\sim s_1\sim\cdots\sim s_m=t$，其中每个 $s_i\,(i\geq1)\in I$  且互不相同。不难验证对 $w=s_m\cdots s_1\in W_I$，$w\alpha_s$ 的系数 $c_t>0$，所以 $a$ 严格大于 0，所以 $\omega_s=v/a\in\tcr$。
+我们来选择一个特殊的 $w\in W_I$ 使得 $c_t>0$：由于 $\Gamma$ 是连通的，所以 $\Gamma$ 中存在一条从 $s$ 到 $t$ 的路径 $s\sim s_1\sim\cdots\sim s_m=t$，其中每个 $s_i\,(i\geq1)\in I$  且互不相同。不难验证对 $w=s_m\cdots s_1\in W_I$，$w\alpha_s$ 的系数 $c_t>0$，所以 $a$ 严格大于 0，所以 $\omega_s=v/a\in\tcr$。
 
 $(\omega_s, \omega_s)=0$ 的情形稍微麻烦一些：这时 $\omega_s$ 的正交补 $\omega_s^\bot$ 是 light-like 的，即子图 $\Gamma\setminus\{s\}$ 是仿射的。特别地，$\Gamma\setminus\{s\}$ 由一些仿射或者有限的连通成分组成，并且有且恰有一个连通成分是仿射的（否则两个线性无关的 light-like 的向量的组合会给出 time-like 的向量）。任取一个实的基本权 $(\omega_t,\omega_t)>0$，我们需要讨论两种情况：
 
@@ -397,10 +388,15 @@ $$\omega_s\in\cl{\cone{\bigcup_{w\in W_I}w(\omega_t)}}\subset\tcr.$$
 
 $\blacksquare$
 
+
+:::{.definition}
+规定 $\hat{\Omega}_r=\{\hat{\omega}\mid \omega\in\Omega_r\}$，其中 $\hat{\omega}=\omega/\sqrt{(\omega,\omega)}$ 是将 $\omega$ 归一化得到的单位向量。
+:::
+
 ::: {.theorem #max-packing}
 若 $W$ 是双曲的，则 $\hat{\Omega}_r$ 是非平凡的球堆当且仅当 $\Gamma$ 的 level 是 2，这时 $\hat{\Omega}_r$ 还是极大球堆。
 :::
 
-**证明**：若 $\Gamma$ 的 level 是 2，则 [$\Omega_r$ 中的元素两两分离](/coxeter-groups-level#level-12)，将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。如果存在某个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $k$ 对应的球与 $\hat{\Omega}_r$ 中的任何球都没有公共内部的话，有 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，从而 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups-tits-cone/#dual-cone-nonspace)，$(k,k)=(-k,-k)\leq0$，矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大球堆。
+**证明**：若 $\Gamma$ 的 level 是 2，则 [$\Omega_r$ 中的元素两两分离](/coxeter-groups-level#level-12)，将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。由于基本权是线性无关的，$\hat{\Omega}_r$ 显然是非平凡的球堆。如果存在某个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $k$ 对应的 $C_k$ 与 $\hat{\Omega}_r$ 中的任何球都没有公共内部的话，则有 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，自然就有 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups-tits-cone/#dual-cone-nonspace)，$(k,k)=(-k,-k)\leq0$，矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大球堆。
 
 反之若 $\hat{\Omega}_r$ 是一个非平凡球堆，则 $W$ 的 level 必然大于 1，且所有的实权之间两两分离。于是任何两个基本权生成的二维子空间 $\span\{\omega_i,\omega_j\}$ 都是 time-like 或者 light-like 的。又由于 $W$ 是双曲的，从而 $\Gamma\setminus\{i,j\}$ 是 space-like 或者 light-like 的，所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$

@@ -127,6 +127,10 @@ $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)
 如果 $\Gamma$ 的 level 是 1，则 $\Gamma$ 是双曲的。所有的 [基本权](/coxeter-groups-tits-cone#fundamental-weights) 都不是实的并且两两分离。
 :::
 
+:::{.note}
+当 $|S|=4$ 时，level 1 的 Coxeter 群给出了三维双曲空间中的**紧** (compact) 和**仿紧** (paracompact) 的蜂巢结构。基本权不是实的意味着所有的权都不是实的，即蜂巢的顶点全部位于双曲空间的内部或者边界上。维基百科的 [这个页面](https://en.wikipedia.org/wiki/Uniform_honeycombs_in_hyperbolic_space) 上列出了所有紧和仿紧的蜂巢。
+:::
+
 **证明**：首先注意到 $\Gamma$ 的 level 是 1 蕴含了 $\Gamma$ 是连通的，若不然，设 $\Gamma=\Gamma_1\cup\cdots\cup\Gamma_k$ 是多于一个连通分支的并，则每个分支 $\Gamma_i$ 作为删去其它分支后剩下的子图必须都是有限或者仿射的，但这导致 $\Gamma$ 的 level 是 0，矛盾。
 
 我们需要证明三件事情：
@@ -172,6 +176,10 @@ $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)
 
 ::: {.corollary #level-1-tits}
 若 $W$ 的 level 为 1，则 Tits 锥的闭包 $\cl{\tc}$ 等于 $\Q_+$ 或者 $\Q_-$ 之一。
+:::
+
+:::{.note}
+这个结论告诉我们在 level 1 时空间的边界上没有球堆。
 :::
 
 **证明**：由于 level 1 的群是双曲的，根据 [双曲情形 Tits 锥的结论](/coxeter-groups-three-cases#tits-closure)，$\tc$ 包含 $\N_+,\N_-$ 之一，不妨设为 $\tc\supset\N_+$，则 $\cl{\tc}\supset\cl{\N_+}=\Q_+$。还要再证明反向的包含关系。为此只要证明 $\cl{\tc}\subset\Q$ 和 $\cl{\tc}\cap\Q_-=\{0\}$。
