@@ -419,11 +419,11 @@ $$
 
 这个群的 rank 是 4，level 是 2，所以给出的是 $\R^2$ 上的二维极大球堆。
 
-1. $\Delta=\{\alpha_i\}_{i=1}^4$ 满足 $(\alpha_i,\alpha_i)=1$，它们对应 4 个（虚的）球面镜 $\{B_i\}_{i=1}^4$。关于它们的反演变换生成了 $(W,S)$。
+1. $\Delta=\{\alpha_i\}_{i=1}^4$ 满足 $(\alpha_i,\alpha_i)=1$，它们对应 4 个（虚的）球面镜 $\{B_i\}_{i=1}^4$。单反射 $s_i$ 对应关于 $B_i$ 的反演变换，它们生成了 $(W,S)$。
 2. 由于删掉 $K_4$ 的任何顶点后，剩下的是三角形的边标号都是 4，仍然是双曲的，所以 $K_4$ 的每个顶点都是实的，即基本权 $\Delta^\ast = \{\omega_i\}_{i=1}^4$ 中每一个都是实的。将 $\Delta^\ast$ 归一化以后得到的 $\{\hat{\omega_i}\mid \omega_i\in\Delta^\ast\}$ 给出 4 个互相分离的（实的）球 $\{C_i\}_{i=1}^4$。
 3. 由于 $i\ne j$ 时 $(\alpha_i, \omega_j)=0$，所以球 $B_i$ 和 $C_j$ 正交。
-4. 又 $(\alpha_i,\omega_i)=1$，以及实权 $\omega_i$ 满足 $0<(\omega_i,\omega_i)\leq1$，所以归一化以后 $(\alpha_i,\hat{\omega_i})>1$，所以球 $B_i$ 和 $C_i$ 是不相交的。
-5. 将 $W$ 作用在 $\{C_i\}$ 上，得到的所有球即为球堆 $\P=\bigcup_{w\in W,\,1\leq i\leq 4}w(\hat{\omega_i})$。
+4. 又 $(\alpha_i,\omega_i)=1$，以及实权 $\omega_i$ 满足 $0<(\omega_i,\omega_i)\leq1$，所以归一化以后 $(\alpha_i,\hat{\omega}_i)>1$，所以球 $B_i$ 和 $C_i$ 是不相交的。
+5. 将 $W$ 作用在 $\{C_i\}$ 上，得到的所有球（即所有归一化的实权 $\hat{\Omega}_r$）即为球堆 $\P=\bigcup_{w\in W,\,1\leq i\leq 4}w(\hat{\omega}_i)$。
 
 我们按照如下步骤来分别计算 $\{B_i\}$ 和 $\{C_j\}$：
 
@@ -457,6 +457,6 @@ $$\begin{aligned}
 6. $C_3$ 与 $B_1,B_2,B_4$ 正交，这可以得到三个方程。联立解出 $C_3$。
 7. $C_4$ 与 $B_1,B_2,B_3$ 正交，也可以得到三个方程，联立解出 $C_4$。
 
-结果如下图所示，单根 $\alpha_i$ 对应的镜面 $B_i$ 用虚线绘制，归一化的实权 $\hat{\omega_i}$ 对应的球 $C_i$ 用实线绘制，$B_i$ 和 $C_i$ 使用同样的颜色。${\rm inv}$ 表示该圆被翻转，以无界区域为内部。注意到每个 $C_i$ 都位于 $B_i$ 的内部，这是因为 $(\alpha_i,\hat{\omega_i})\geq1$，所以它们一定是一个包含另一个。这就是为什么求解 $B_1$ 时要用较小的那个解：另一个解会与 $C_1$ 相交，不满足包含关系。
+结果如下图所示，单根 $\alpha_i$ 对应的镜面 $B_i$ 用虚线绘制，归一化的实权 $\hat{\omega}_i$ 对应的球 $C_i$ 用实线绘制，$B_i$ 和 $C_i$ 使用同样的颜色。上标 $\ast$ 表示该圆被翻转，以无界区域为内部。注意到每个 $C_i$ 都位于 $B_i$ 的内部，这是因为 $(\alpha_i,\hat{\omega}_i)\geq1$，所以它们一定是一个包含另一个。这就是为什么求解 $B_1$ 时要用较小的那个解：另一个解会与 $C_1$ 相交，不满足包含关系。
 
-![](/images/coxeter/compute_example.svg){width=400 .fig}
+![](/images/coxeter/compute_example.svg){width=600 .fig}
