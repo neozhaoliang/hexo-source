@@ -407,15 +407,9 @@ $\blacksquare$
 
 本节我们来介绍怎样用程序实际绘制一个二维的 Boyd-Maxwell 球堆。
 
-以 $K_4$ 完全图为例，每条边的标号是 4，即 Coxeter 矩阵为
-$$
-M=\begin{pmatrix}
-1 & 4 & 4 & 4\\
-4 & 1 & 4 & 4\\
-4 & 4 & 1 & 4\\
-4 & 4 & 4 & 1\\
-\end{pmatrix}
-$$
+以 $K_4$ 完全图为例，每条边的标号是 4：
+
+![](/images/coxeter/K4.svg){.fig width=150}
 
 这个群的 rank 是 4，level 是 2，所以给出的是 $\R^2$ 上的二维极大球堆。
 
@@ -457,12 +451,20 @@ $$\begin{aligned}
 6. $\hat{\omega}_3$ 与 $\alpha_1,\alpha_2,\alpha_4$ 正交，这可以得到三个方程。联立解出 $\hat{\omega}_3$。
 7. $\hat{\omega}_4$ 与 $\alpha_1,\alpha_2,\alpha_3$ 正交，也可以得到三个方程，联立解出 $\hat{\omega}_4$。
 
-结果如下图所示，单根 $\alpha_i$ 对应的虚球用虚线绘制，$\hat{\omega}_i$ 对应的实球用实线绘制，同样的 $i$ 使用同样的颜色。上标 $\ast$ 表示该球以无界区域为内部。
+结果如下图所示，单根 $\alpha_i$ 对应的虚球用虚线绘制，$\hat{\omega}_i$ 对应的实球用实线绘制，同样的 $i$ 使用同样的颜色。上标 $\ast$ 表示该球以无界区域为内部。所以我们有三个无界的球 $\alpha_1,\alpha_2,\omega_1$。
 
-![](/images/coxeter/compute_example.svg){width=600 .fig}
+![](/images/coxeter/compute_example_K4.svg){width=500 .fig}
 
-注意到关于 $\hat{\omega}_1$ 的反演保持虚球 $\alpha_2,\alpha_3,\alpha_4$ 不变，因为它们都与 $\hat{\omega}_1$ 正交；同时将 $\alpha_1$ 变成另一个关于 $\hat{\omega}_1$ 对称的球 $\gamma_1$。反演变换是保角的，所以 $\{\gamma_1,\alpha_2,\alpha_3,\alpha_4\}$ 也是一组夹角符合要求的镜面球，但是包含关系发生了改变，变成了 $\gamma_1$ 包含在 $\hat{\omega}_1$ 的内部。这是错误的。这就是为什么前面求解 $\alpha_1$ 的半径时我们要取那个较小的解（这两个解给出的球心形如 $r_1\x$ 和 $r_2\x$，这里 $\x\in\R^2$，所以半径较小者一定在单位球内部）。
+注意到关于 $\hat{\omega}_1$ 的反演保持虚球 $\alpha_2,\alpha_3,\alpha_4$ 不变，因为它们都与 $\hat{\omega}_1$ 正交；同时将 $\alpha_1$ 变成另一个关于 $\hat{\omega}_1$ 对称的球 $\gamma_1$。反演变换是保角的，所以 $\{\gamma_1,\alpha_2,\alpha_3,\alpha_4\}$ 也是一组夹角符合要求的镜面球，但是包含关系发生了改变，变成了 $\gamma_1$ 包含在 $\hat{\omega}_1$ 的内部。这是错误的。这就是为什么前面求解 $\alpha_1$ 的半径时我们要取那个较小的解（这两个解给出的球心形如 $r_1\x$ 和 $r_2\x\,(\x\in\R^2)$，所以半径较小者一定在单位球内部）。
+
+我们再举一个只有一个实权的例子：
+
+![](/images/coxeter/337.svg){.fig width=250}
+
+这个群只有第一个顶点是实的，所以整个球堆完全由一个实球 $\hat{\omega}_1$ 生成：
+
+![](/images/coxeter/compute_example_337.svg){width=500 .fig}
 
 具体的计算步骤可以参考下面的 shadertoy 项目代码中的注释：
 
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&t=0&paused=true&muted=false" allowfullscreen></iframe>
