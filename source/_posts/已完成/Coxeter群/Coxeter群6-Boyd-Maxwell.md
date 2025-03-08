@@ -469,4 +469,4 @@ $$\begin{aligned}
 
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
 
-可以看到，每个实球本身都是一个二维的 Poincaré 双曲空间。这很好理解，因为如果 $\omega_i$ 是实权，记 $I=S\setminus\{i\}$，则实球 $\hat{\omega}_i$ 与虚球 $\{\alpha_j\mid j\in I \}$ 都正交，这些虚球在 $\hat{\omega}_1$ 中围成一个测地三角形，关于这个三角形三条边的反射生成的群是标准椭圆子群 $W_I$。在 $W_I$ 的作用下，这个测地三角形的像密铺了整个实球 $\hat{\omega}_i$。在前面 [$K_4$ 的例子](#K4) 中，有四个不同的初始实球，它们每一个内部都是 $\Delta(4,4,4)$ 的双曲密铺；在 [${\rm\color{red}o\color{red}}-{\rm o}-{\rm o}\overset{7}{-}{\rm o}$ 的例子](#337) 中，只有一个初始实球，它的内部是 $\Delta(2,3,7)$ 的双曲密铺。
+可以看到，每个实球都呈现一个二维的 Poincaré 密铺图案。这很好理解，因为如果 $\omega_i$ 是实权，记 $I=S\setminus\{i\}$，则实球 $\hat{\omega}_i$ 与虚球 $\{\alpha_j\mid j\in I \}$ 都正交，这些虚球在 $\hat{\omega}_1$ 中围成一个测地三角形，关于这个三角形三条边的反射生成的群是标准椭圆子群 $W_I$。在 $W_I$ 的作用下，这个测地三角形的像密铺了整个实球 $\hat{\omega}_i$。这个密铺的对称群就是 $W_I$。在前面 [$K_4$ 的例子](#K4) 中，有 4 个初始实球，它们每一个都呈现 $\Delta(4,4,4)$ 的双曲密铺；在 [${\rm\color{red}o\color{red}}-{\rm o}-{\rm o}\overset{7}{-}{\rm o}$ 的例子](#337) 中，只有一个初始实球，它呈现 $\Delta(2,3,7)$ 的双曲密铺。
