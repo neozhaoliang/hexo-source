@@ -49,6 +49,13 @@
         "link": null
     },
     {
+        "image": "/images/gallery/circle-packing.jpg",
+        "align": "left",
+        "title": "2D hyperbolic sphere packing",
+        "subtitle": "",
+        "link": null
+    },
+    {
         "image": "/images/gallery/penrose_cooling.jpg",
         "align": "left",
         "title": "Penrose cooling process",
