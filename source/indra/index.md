@@ -390,3 +390,45 @@ Because the pattern of pairing circles is different, so is the arrangement in wh
 根据图 20 旁边的图示，我们有 $a(P) = R$ 和 $b(R) = P$，因此圆的四个切点分别为 $S = \text{Fix}(a)$, $Q = \text{Fix}(b)$, $P = \text{Fix}(ba)$ 和 $R = \text{Fix}(ab)$。类似于第 6 章的推理，为了使靠近 $S$ 和 $Q$ 的像圆收缩，生成元 $a$ 和 $b$ 必须是抛物型的。此外，$ba$ 也必须是抛物型的，以确保圆在 $P$ 处收缩。注意到 $ab$ 和 $ba$ 是共轭的（因为 $b(ab)b^{-1} = ba$），所以说 $ab$ 或 $ba$ 必须是抛物型的实际上是同一回事。美妙之处在于，正如我们在注释 7.1 中证明的那样，所有这三个元素为抛物型的群自动共轭。这对我们来说非常重要，因此我们在图 20 中总结了这一点。
 
 由于配对圆的模式不同，标记圆在平面上的排列方式也随之不同。图 7.11 中的 Schottky 圆按照我们通常的规则进行标记，例如，$C_{ba}$ 仍然表示圆 $C_a$ 在映射 $b$ 下的像。然而，如果你仔细观察，你会发现沿着这条线的圆的顺序与我们最初在边界上的顺序有所不同。
+
+
+# Playing with parameters 
+
+:::{.simple}
+I could spin a web if I tried.' said Wilbur, boasting. 'Ive just never tried.'
+
+‘Let’s see you do it,’ said Charlotte…
+
+‘OK.’ replied Wilhur. ‘You coach me and I’t’ spin one. It must be a lot of fun to spill a web. How do I start?
+
+
+“只要我愿意，我也能织网。”威尔伯吹嘘道，“我只是从来没试过。”
+
+“让我们看看你怎么做，”夏洛特说…
+
+“好的。”威尔赫回答，“你教我，我来织一个。织网一定很有趣。我该怎么开始？”
+:::
+
+
+:::{.simple}
+As any mathematician who has revealed his (or her) occupation to a neighbour on a plane flight has discovered, most people associate mathematics with something akin to the more agonizing forms of medieval torture. It seems indeed unlikely that mathematics would be done at all, were it not that a few people discover the play that lies at its heart. Most published mathematics appears long after the play is done, cloaked in lengthy technicalities which obscure the original fun. The book in hand is unfortunately scarcely an exception. Never mind; after a fairly detailed introduction to the art of creating tilings and fractal limit sets out of two very carefully chosen Möbius maps, we are finally set to embark on some serious mathematical play. The greatest rewards will be reaped by those who invest the time to set up their own programs and join us charting mathematical territory which is still only partially explored.
+:::
+
+
+正如任何一位在飞机上向邻座透露自己职业的数学家所发现的那样，大多数人将数学与某种类似于中世纪酷刑的痛苦形式联系在一起。如果不是少数人发现了数学核心的趣味，数学似乎确实不太可能被继续研究下去。大多数已发表的数学成果都是在趣味探索之后很久才出现的，被冗长的技术细节所包裹，掩盖了最初的乐趣。遗憾的是，手头的这本书也几乎未能例外。不过这也无妨；在相当详细地介绍了如何从两个精心挑选的莫比乌斯映射中创建平铺和分形极限集的艺术之后，我们终于准备好开始真正的数学探险了。那些投入时间自己动手实践的人，将收获最大的回报，尤其是那些愿意和我们一起探索那些尚未完全被揭示的数学领域的人。
+
+:::{.simple}
+All the limit sets we have constructed thus far began from a special arrangement of four circles, the Schottky circles, grouped into two pairs. For each pair, we found a Möbius map which moved the inside of one circle to the outside of the other. Our initial tile was the region outside these four circles. By iterating, we produced a tiling which covered the the plane minus the limit set, near which the tiles shrank to minute size. Depending on how we chose the initial Schottky circles, the limit set was either fractal dust, a very crinkled fractal loop we called a quasicircle or, in certain very special cases, a true circle.
+:::
+
+迄今为止，我们构建的所有极限集都源自四个圆的独特排列，这些圆被称为肖特基圆，分为两对。对于每一对圆，我们找到了一个莫比乌斯映射，将一个圆的内部映射到另一个圆的外部。我们的初始瓷砖是这四个圆外部的区域。通过不断迭代，我们生成了一种密铺，覆盖了平面上除了极限集以外的区域，在极限集附近，瓷砖逐渐缩小至微不可见的尺寸。根据我们选择的初始肖特基圆的不同，极限集有时呈现为分形尘埃，或者是我们称之为拟圆的极度弯曲的分形环，亦或在某些极其特殊的情况下，它可能呈现为一个真正的圆。
+
+:::{.simple}
+The problem with this approach is that it is just too time-consuming to set up the circles and maps which pair them. Free-spirited play shouldn’t be ruined by too much preparation. Why not throw the Schottky circles away, take any pair of $2\times 2$ matrices for our generators $a$ and $b$, run our limit point plotting program, and see what we get?
+
+Hold on though - how exactly will this work? The shrinking disks were so reassuring, and the limit set was so comfortably nestled within them, that it is hard to see why we won’t get chaos in their absence. No matter, the worst that is likely to happen is that the hard disk crashes, so why not give it a try? Luckily, on p. 182 ff. we already upgraded the DFS code to remove the calculation of Schottky disks from the branch termination procedure. All we need do is take the plunge and run the very same algorithm for any pair of transformations $a$ and $b$.
+:::
+
+这个方法的问题在于，设置这些圆和它们之间的配对映射实在太耗时了。自由奔放的玩耍不应该被过多的准备所束缚。为什么不抛开 Schottky 圆，随便选一对 $2 \times 2$ 矩阵作为我们的生成元 $a$ 和 $b$，然后运行我们的极限点绘图程序，看看会得到什么结果呢？
+
+不过，等一下——这究竟是怎么运作的呢？那些不断缩小的圆盘让人感到如此安心，极限集也紧密地嵌套在它们之中，以至于很难理解，若没有这些圆盘，我们为何不会陷入混乱。不过也没关系，最坏的情况可能就是硬盘崩溃，那为什么不尝试一下呢？幸运的是，在第 182 页及之后，我们已经对 DFS 代码进行了升级，移除了分支终止过程中的 Schottky 圆盘计算。我们只需鼓起勇气，直接运行同样的算法，对任何一对变换 $a$ 和 $b$ 进行计算。
