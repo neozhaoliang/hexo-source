@@ -1,85 +1,31 @@
 ---
-title: "Indra's pearls 中英双语对照"
+title: "The glowing gasket"
 subtitle: "The vision of Felix Klein"
 date: 2025-01-23
 url: "the-glowing-gasket"
 ---
 \DeclareMathOperator{\tr}{Tr}
-
-# 扉页
-
-![The ancient Buddhist dream of Indra’s Net 佛教古老的因陀罗网想象](/images/indra/inner-cover.jpg){.fig width=400}
+\newcommand{\fix}{\mathrm{Fix}}
 
 :::{.simple}
-In the heaven of the great god Indra is said to be a vast and shimmering net, finer than a spider’s web, stretching to the outermost reaches of space. Strung at the each intersection of its diaphanous threads is a reflecting pearl. Since the net is infinite in extent, the pearls are infinite in number. In the glistening surface of each pearl are reflected all the other pearls, even those in the furthest corners of the heavens. In each reflection, again are reflected all the infinitely many other pearls, so that by this process, reflections of reflections continue without end.
+Four circles to the kissing come. \
+The smafter are the benter. \
+The bend is just the inverse of The distance from the centre. \
+Though sheir intrigue left Euclid dumb There’s now no need for nule of thumb. \
+Since zero bend’s a dead straight line And concave bends have minus sign. \
+The sum of the squares of alt four bends Is half the square of their sum.
+
+The Kiss Precise, Sir Frederick Soddy
+
+四圆相吻巧相连，大小虽异自周全。\
+曲率正是心距倒，欧几里得愁煞然。\
+拇指法则今无用，零曲率者乃直线。\
+若为凹者曲率负，四曲率平方来加。 \
+其和平方恰一半。
+
+精确之吻，弗雷德里克·索迪爵士
 :::
 
-在印度教主神因陀罗的梵天之中，悬有一张璀璨绝伦的珍珠宝网，其纤细更胜蛛丝，绵延至宇宙的终极边际。这轻若云烟的罗网间，每一经纬交汇处皆垂缀明珠，因法界无尽，故明珠无量。每颗宝珠的莹润光华中，俱现十方世界一切珠影，纵使远在梵天极隅之珠亦纤毫毕现。更妙者，珠中所映万千珠影，复现重重无尽珠光，如镜镜相照，光光互摄，遂成华严玄境，映现大千世界之无穷法界。
-
-**Cover picture**: A mathematically generated picture foretold in the Buddhist myth of Indra’s net? We sometimes call these Klein Bubbles. The smallest ones are sehr klein.
-
-:::{.simple}
-**封面图片** 这幅由数学生成的瑰丽图案，是否暗合了佛教因陀罗网的古老寓言？我们称之为"克莱因泡泡"，其中最小的泡泡在德语中恰被称作 "sehr klein"　（“意为极小”）。
-:::
-
-
-# 前言
-
-## 这是什么类型的书？
-
-:::{.simple}
-This is a book about serious mathematics, but one which we hope will be enjoyed by as wide an audience as possible. It is the story of our computer aided explorations of a family of unusually symmetrical shapes, which arise when two spiral motions of a very special kind are allowed to interact. These shapes display intricate ‘fractal’ complexity on every scale from very large to very small. Their visualisation forms part of a century-old dream conceived by the great German geometer Felix Klein. Sometimes the interaction of the two spiral motions is quite regular and harmonious, sometimes it is total disorder and sometimes and this is the most intriguing case - it has layer upon layer of structure teetering on the very brink of chaos.
-:::
-
-这是一本关于严谨数学的著作，但我们希望它能以通俗易懂的方式吸引尽可能多的读者。本书讲述了我们通过计算机探索一系列具有独特对称性的几何形状的故事，这些形状源自两种特殊螺旋运动的相互作用。这些形状在从大到小的各个尺度上，都展示了精妙的分形复杂性。我们的可视化工作，部分实现了德国几何学大师菲利克斯·克莱因百年前的数学梦想。当两种螺旋运动相互作用时，有时它们会形成规则和谐的图案，有时则呈现完全的无序状态，最引人入胜的是它们在秩序与混乱的临界状态下，层层结构交织，令人着迷。
-
-:::{.simple}
-As we progressed in our explorations, the pictures that our computer programs produced were so striking that we wanted to tell our tale in a manner which could be appreciated beyond the narrow confines of a small circle of specialists. You can get a foretaste of their variety by taking a look at the Road Map on the final page. Mathematicians often use the word ‘beautiful’ in talking about their proofs and ideas, but in this case our judgment has been confirmed by a number of unbiassed and definitely non-mathematical people. The visual beauty of the pictures is a veneer which covers a core of important and elegant mathematical ideas; it has been our aspiration to convey some of this inner aesthetics as well. There is no religion in our book but we were amazed at how our mathematical constructions echoed the ancient Buddhist metaphor of Indra’s net, spontaneously creating reflections within reflections, worlds without end.
-:::
-
-随着我们探索的深入，计算机程序生成的几何图像展现出令人震撼的数学美感，这促使我们希望以一种超越专业圈子的方式讲述我们的故事。读者可以通过书末的“探索路线图”一窥其丰富的多样性。数学家常用“美”来形容他们的证明和思想，但在本研究中，我们的美学评价得到了众多非数学背景的客观评审者的认可。这些图像的视觉美感，就像是光滑的外壳，包裹着深刻而优雅的数学内核——我们一直致力于在展示这些图像的同时，也传达它们内在的数学美学。虽然本书并不涉及宗教，但我们惊讶地发现，我们的数学结构与佛教“因陀罗网”这一古老隐喻之间产生了意外的共鸣，层层反射自发地衍生出无尽的宇宙。
-
-:::{.simple}
-Most mathematics is accessible, as it were, only by crawling through a long tunnel in which you laboriously build up your vocabulary and skills as you abstract your understanding of the world. The mathematics behind our pictures, though, turned out not to need too much in the way of preliminaries. So long as you can handle high school algebra with confidence, we hope everything we say is understandable. Indeed given time and patience, you should be able to make programs to create new pictures for yourself. And if not, then browsing through the figures alone should give a sense of our journey. Our dream is that this book will reveal to our readers that mathematics is not alien and remote but just a very human exploration of the patterns of the world, one which thrives on play and surprise and beauty.
-:::
-
-大多数数学，仿佛只能通过爬行在漫长的隧道中来理解——在这个过程中，你不断积累词汇和技巧，同时抽象化你对世界的认知。然而，本书图像背后的数学却并不需要太多前置知识。只要你能自信地掌握高中代数，我们相信你能理解书中的所有内容。事实上，若有足够的时间和耐心，你应该能编写程序，自己创造新的图像。如果不进行编程实践，单纯浏览这些图像，也能让你感受到我们研究的历程。我们的梦想是通过这本书向读者展示，数学并非遥不可及的抽象领域，而是人类探索世界规律的一种方式——这是一种充满游戏、惊喜和美感的探索。
-
-## 我们是如何开始写它的？
-
-:::{.simple}
-**David M.'s story**. This book has been over twenty years in the writing. The project began when Benoit Mandelbrot visited Harvard in 1979/80, in the midst of his explorations of complex iteration - the ‘fractals’ known as Julia sets - and the now famous ‘Mandelbrot Set’. He had also looked at some nineteenth century figures produced by infinite repetitions of simple reflections in circles, a prototypical example of which had fascinated Felix Klein. David W. and I pooled our expertise and began to develop these ideas further in the Kleinian context. The computer rapidly began producing pictures like the ones you will find throughout the book.
-:::
-
-**戴维·芒福德（David Mumford）的故事**。本书的创作历时二十多年。项目始于 1979 至 1980 年间，当时贝努瓦·曼德布罗特（Benoit B. Mandelbrot）访问哈佛大学，他正处于对复迭代系统的研究之中——即著名的朱利亚集（Julia sets）和曼德布罗特集（Mandelbrot Set）。在此期间，曼德布罗特还关注了 19 世纪数学家通过圆反射的无限迭代所生成的几何图形，其中一个典型范例曾深深吸引了菲利克斯·克莱因（Felix Klein）。我与大卫·怀特（David W.）共同整合各自的专业知识，开始在克莱因几何学的框架下进一步发展这一研究方向。计算机程序很快就生成了许多类似于你在本书中所看到的图像。
-
-:::{.simple}
-What to do with the pictures? Two thoughts surfaced: the first was that they were unpublishable in the standard way. There were no theorems, only very suggestive pictures. They furnished convincing evidence for many conjectures and lures to further exploration, but theorems were the coin of the realm and the conventions of that day dictated that journals only publish theorems.
-The second thought was equally daunting: here was a piece of real mathematics that we could explain to our non-mathematical friends. This dangerous temptation prevailed, but it turned out to be much, much more difficult than we imagined.
-:::
-
-这些图像该如何处理呢？我们有了两个思路。第一个思路是，这些图像无法按照常规的学术方式发表——它们没有定理，只有一些充满启发性的图像。虽然这些图像为许多猜想提供了有力证据，也为进一步探索指引了方向，但在当时定理至上的学术体系中，期刊的传统要求只发表定理。
-
-第二个思路同样让人感到棘手：这些数学成果具有显著的科普价值，我们可以向非专业的朋友们加以解释。我们最终没有抵抗住这个充满风险的诱惑，然而，实际操作的困难远远超出了我们的预期。
-
-:::{.simple}
-We persevered off and on for a decade. One thing held us back: whenever we got together, it was so much more fun to produce more figures than to write what Dave W. named in his computer TheBook. I have fond memories of traipsing through sub-zero degree gales to the bunker-like supercomputer in Minneapolis to push our calculations still further. The one loyal believer in the project was our ever-faithful and patient editor, David Tranah. However, things finally took off when Caroline was recruited a bit more than a decade ago. It took a while to learn how to write together, not to mention spanning the gulfs between our three warring operating systems. But our publisher, our families and our friends told us in the end that enough was enough.
-:::
-
-这项研究我们断断续续地推进了十年。最大的障碍是：每当我们聚在一起时，绘制新图像总比撰写戴夫·W.电脑中的《天书》更有趣。我至今还记得，在明尼阿波利斯刺骨的寒风中，我们跋涉到堡垒般的超级计算机中心，只为将计算推向新的极限。唯一始终如一的支持者，是那位忠诚且耐心的编辑大卫·特拉纳。真正的转折出现在十多年前卡罗琳的加入——我们花了些时间学会了如何共同写作，并克服了三个互不兼容的操作系统之间的鸿沟。直到最后，出版商、家人和朋友们都告诉我们，“是时候结束了”。
-
-You know that ‘word problem’ you hated the most in elementary school? The one about ditch diggers. Ben digs a ditch in 4 hours, Ned in 5 and Ted in 6. How long do they take to dig it together? The textbook will tell you 1 hour, 37 minutes and 17 seconds. Baloney! We have uncovered incontrovertable evidence that the right answer is
-hours. This is a deep principle involving not merely mathematics but sociology, psychology, and economics. We have a remarkable proof of this but even Cambridge University Press’s generous margin allowance is too small to contain it.
-
-还记得小学时最让你头疼的“挖水沟问题”吗？本挖一条沟需要 4 小时，内德需要 5 小时，泰德需要 6 小时，那么他们三个人一起干，得多长时间才能完成？教科书上会告诉你标准答案是 1 小时 37 分 17 秒——纯粹胡说八道！我们已经通过实践得到了确凿的证据：真正的耗时应该是 4 + 5 + 6 = 15 小时。这背后蕴藏着一个深刻的原理，不仅仅涉及数学，还牵扯到社会学、心理学和经济学。我们有一个精彩的证明，只可惜即使剑桥大学出版社给出了超大的页边距，依然容不下它。
-
-:::{.note}
-Since then, the pioneering team of Klaus and Alice Peters have started the journal Experimental Mathematics.
-
-自那时起，Klaus 和 Alice Peters 的先锋团队创办了《实验数学》期刊。
-:::
-
-# 7 The glowing gasket
 
 ![Figure 7.1. The Apollonian gasket. The lacy web in the two pictures is the same: on the left, it is drawn in the complex plane and, on the right, on the sphere. As you might imagine, many people have tried calculating the Hausdorff dimension of the gasket. Curt McMullen has found the most accurate value, which is estimated as about 1.305688. \
 图 7.1. 阿波罗尼奥斯垫片。两幅图中的蕾丝网状结构是相同的：左边是在复平面上绘制的，右边是在球面上绘制的。你可能已经猜到，许多人都曾尝试计算该垫片的豪斯多夫维数。柯特·麦克马伦（Curt McMullen）给出了目前最精确的估计值，约为 1.305688。](/images/indra/fig-7.1.jpg){width=600 .fig #fig-7.1}
@@ -154,7 +100,7 @@ $$\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}\right)^2=2\left(\frac{1}
 $$\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}\right)^2=2\left(\frac{1}{a^2}+\frac{1}{b^2}+\frac{1}{c^2}+\frac{1}{d^2}\right).$$
 :::
 
-## Generating the gasket 生成垫片
+# Generating the gasket
 
 :::{.simple}
 The configuration of tangent circles which produced the gasket is shown in the right frame of Figure 7.4. The picture has been arranged so that $C_a$ goes through $\infty$, hence it appears in the figure as a straight line. In addition, $C_A$ and $C_a$ are tangent at 0 and $C_B$ and $C_b$ are tangent at $-i$. You can see how this picture is made by creating extra tangencies among a kissing chain of four circles by comparing with the nearby arrangement of four circles in the left hand frame.
@@ -197,7 +143,7 @@ This explains why it makes sense to talk about the Apollonian gasket, because up
 
 $$a=\begin{pmatrix}2&-i\\-i&0\end{pmatrix}\quad\text{and}\quad b=\begin{pmatrix}1&2\\0&1\end{pmatrix}.$$
 
-## Pinching tiles
+# Pinching tiles
 
 ![Figure 7.6. Dr. Stickler meets Apollonius. Placing Dr. Stickler in the Apollonian gasket, we let the group of symmetries carry him around. He appears exactly in those disks which were pink in Figure 7.4. If we had started him off in a white one, his images would fill the white disks instead. The symmetry $a$ is parabolic and on both sides of its fixed point 0, circles of Sticklers are streaming out. A startling feature is the circle of Sticklers streaming out from and into 1. Every alternate Stickler is standing on his head! The upright Sticklers are just powers of $abAB$
 (which fixes 1) applied to the Stickler standing on the right hand horizontal axis, while the upside down ones are the images of this same Stickler under $(abAB)^nA$. \
@@ -231,7 +177,7 @@ Now we can go back to the picture of Dr. Stickler meeting Apollonius. The party 
 
 现在我们可以回到 Stickler 博士与阿波罗尼奥斯相遇的画面。聚会正在“粉色”圆圈的残迹中举行。对照 [图 7.4](#fig-7.4) 中的半瓷砖，你会发现 Stickler 博士身上发生了一件相当奇怪的事——当原始瓷砖裂成两半时，原始瓷砖裂成两半时，他的头跑到了绿色半瓷砖里，而他的脚却留在了蓝色半瓷砖上。幸好，群中有一个变换（即 $B$）可以将蓝色的 Stickler 带到绿色 Stickler 的位置，把装着蓝色脚丫的蓝色半瓷砖挪到装着绿色脚丫的黄色半瓷砖上。要不是我们特意指出这种窘况，你可能根本没发现哪里不对劲。等到黄色半瓷砖和绿色半瓷砖粘合完毕，那位如释重负（却仍然带着一丝“绿意”）的 Stickler 博士终于又完整地站在了一块崭新的瓷砖上。通过群的映射，这块瓷砖的影像铺展开来，构成了画面中所有 Stickler 博士的身影。
 
-## And pinching surfaces
+# And pinching surfaces
 
 :::{.simple}
 What happened to the tiles in the last section, has, of course, also an interpretation in terms of surfaces. Looking back to the picture on p. 190 which showed how tiles were glued up in a kissing Schottky group, we can work out what happens when we bring the four circles together to make the gasket. It takes a bit of stretching and squeezing to do this, which we have illustrated in Figure 7.7.
@@ -284,13 +230,13 @@ Figure 7.7. Pinching curves. How gluing up the gasket configuration of tangent c
 直至每个弧线都坍缩为一点，形成两个三穿孔球面。](/images/indra/fig-7.7-9.jpg){width=200}
 :::
 
-## Tiling the inner disks
+# Tiling the inner disks
 
 :::{.simple}
 Figure 7.6 is made up of lots of disks full of Dr. Sticklers, each tiled by ideal triangles shown in grey. These disks are the remnants of the pink region in Figure 7.4. For most of the rest of this chapter, we shall be occupied with the tiling of just one of these disks. The same tiling fills out the insides of each of the glowing circles in Figure 7.3. The group of symmetries which goes with this very special disk tessellation is called the modular group and has been the well-spring of a huge body of mathematics.
 :::
 
-[图 7.6](#fig-7.6) 由无数布满 Sticklers 博士身影的圆盘构成，每个圆盘都被灰色的理想三角形所镶嵌。这些圆盘正是 [图 7.4](#fig-7.4) 中粉色区域的遗迹。在本章接下来的大部分篇幅里，我们将专注于研究其中一个圆盘的密铺结构。同样的密铺图案也出现在 [图 7.3](#fig-7.3) 中每个发光圆圈的内部。这种独特的圆盘镶嵌的对称群称为模群，它一直是众多数学成果的源泉。
+[图 7.6](#fig-7.6) 由无数布满 Sticklers 博士身影的圆盘构成，每个圆盘都被灰色的理想三角形所镶嵌。这些圆盘正是 [图 7.4](#fig-7.4) 中粉色区域的残迹。在本章接下来的大部分篇幅里，我们将专注于研究其中一个圆盘的密铺结构。同样的密铺图案也出现在 [图 7.3](#fig-7.3) 中每个发光圆圈的内部。这种独特的圆盘镶嵌的对称群称为模群，它一直是众多数学成果的源泉。
 
 
 :::{.simple}
@@ -337,13 +283,12 @@ $$
 This explains why there are so many circles in the gasket group, and why you get an identical tiling pattern in each one.
 :::
 
-你或许会认为我们需要完全重复上一章的研究过程。通过选取四个相切圆并采用这种新配对模式，我们理应会得到一大堆新的拟富克斯群。然而事实并非如此！事实证明，要求两个生成元及其乘积均为抛物型变换的刚性条件，实质上"冻结"了群的结构。我们在注记 7.1中 不涉及任何圆链概念，证明了如下引人注目的结论：所有满足此类配对条件的群在共轭意义下都是"相同"的。具体而言，设 $U$ 和 $V$ 是任意两个抛物型莫比乌斯变换，满足 $UV$ 仍为抛物型，且两者的不动点 ${\rm Fix}\,U $与 ${\rm Fix}\,V$$ 互异，则必存在共轭变换 $M$ 使得：
+你或许会以为，我们接下来要做的就是重复上一章的研究过程。毕竟，如果我们选取四个相切圆并按照这种新模式进行配对，似乎理所当然会得到一大堆新的拟富克斯群。然而并非如此！事实证明，要求两个生成元及其乘积都是抛物型变换这一刚性条件，实际上"冻结"了群的结构。在注记 7.1 中，我们甚至无需提及圆链的概念，就证明了这样一个惊人的结论：所有满足这种配对条件的群，在共轭意义下其实都是“相同”的。具体而言，设 $U$ 和 $V$ 是任意两个抛物型莫比乌斯变换，满足 $UV$ 仍为抛物型，且两者的不动点 ${\rm Fix}\,U $与 ${\rm Fix}\,V$$ 互异，那么，总存在一个共轭变换 $M$，使得：
 
 $$
 MUM^{-1} = \begin{pmatrix} 1 & 0 \\ -2 & 1 \end{pmatrix}, \quad MVM^{-1} = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}.
 $$
-这解释了垫片群中为什么有如此多的圆圈，以及每个圆内部都会呈现完全相同的密铺图案。
-
+这也解释了为何在垫片群（gasket group）中会出现那么多的圆，以及为何每个圆内的镶嵌图案都一模一样。
 
 :::{.note}
 **Note 7.1: Uniqueness of the modular group** \
@@ -391,7 +336,7 @@ $$
 :::
 
 
-## The modular group of arithmetic
+# The modular group of arithmetic
 
 :::{.simple}
 The result just discussed shows that the modular group is conjugate to a very famous group of great importance in number theory. It is made by arranging the four Schottky circles with their tangency points at $-1,0,1$ and $\infty$. You can see these, coloured red and green, in the left frame of Figure 7.9. Since one of the tangency points is the point at infinity, two of the circles show up as green vertical lines. These green lines are paired by $b=\begin{pmatrix}1&2\\0&1\end{pmatrix}$, while the two red circles tangent at 0 are paired by $a=\begin{pmatrix}1&0\\-2&1\end{pmatrix}$. Notice how $a$ and $b$ match adjacent circles in the chain in exactly the pattern of the red and green arrows in Figure 7.8. In fact, as you can easily calculate, $ab$ is the parabolic transformation $\begin{pmatrix}1&2\\-2&-3\end{pmatrix}$.
@@ -479,7 +424,7 @@ Now we have a choice: go to the 'left' and look in the interval between 0 and 1,
 通过完全相同的步骤，我们可以找到任意分数 $p/q$。我们每次选择向左或向右的决策就像一张“导航图”：例如，分数 $3/5$ 对应的指令是“左、右、左”。这种分数的排列方式和左右转向的序列，与将分数表示为连分数的写法密切相关，详见注释 7.2。
 
 
-## The pairing pattern of the modular group
+# The pairing pattern of the modular group
 
 :::{.simple}
 The modular group is a new kind of ‘necklace group’. It is still made by pairing four tangent circles, and the only difference from the kissing Schottky groups we met in the last chapter is that the generators pair not opposite circles but adjacent ones. Whenever we have an arrangement of paired tangent circles like this, something like the necklace condition on p. 168 must still be true, but because we are pairing the circles in a different pattern, we can expect that different elements must be parabolic to cause the image circles to shrink.
@@ -491,52 +436,107 @@ The modular group is a new kind of ‘necklace group’. It is still made by pai
 With the notation of the figure beside Box 20, we have $a(P) = R$ and $b(R) = P$, so that the four tangency points of the circles are $S = \text{Fix}(a)$, $Q = \text{Fix}(b)$, $P = \text{Fix}(ba)$, and $R = \text{Fix}(ab)$. By similar reasoning to that in Chapter 6, in order for the image circles near $S$ and $Q$ to shrink, the generators $a$ and $b$ must be parabolic. Moreover, $ba$ must also be parabolic, to make the circles shrink at $P$. Notice that $ab$ and $ba$ are conjugate (since $b(ab)b^{-1} = ba$), so saying that $ab$ or $ba$ must be parabolic is really one and the same thing. The wonderful thing is, that as we proved in Note 7.1, all groups with these three elements parabolic are automatically conjugate. This is so important to us that we summarize it in Box 20.
 
 Because the pattern of pairing circles is different, so is the arrangement in which the labelled circles are laid down in the plane. The Schottky circles in Figure 7.11 are labelled according to our usual rules, so for example, $C_{ba}$ still means the image of circle $C_a$ under the map $b$. However, if you look carefully, you will see that the order of the circles along the line is not the same as our original order round the boundary of the word tree on p. 104. The labels can be read off in their correct order from the revised version in Figure 7.12. (To see this you will have to twiddle the diagram around so the arrows from the vertex you are interested in are pointing ‘down’ rather than ‘up’.) There is a subtle difference from our original word tree, because there the cyclic order round a vertex was $a,B,A,b$ while now it is $a,A,b,B$. The ramifications of this seemingly minor change propagate down the tree.
-
 :::
 
-根据盒 20 旁的图示，我们有 $a(P) = R$ 且 $b(R) = P$，因此四个切点分别是：$S = \text{Fix}(a)$, $Q = \text{Fix}(b)$, $P = \text{Fix}(ba)$ 和 $R = \text{Fix}(ab)$。类似于第 6 章的推理，为了使靠近 $S$ 和 $Q$ 的映像圆缩小，生成元 $a$ 和 $b$ 必须是抛物型的。此外，$ba$ 也必须是抛物型的，才能确保圆在 $P$ 处缩小。需要注意的是，$ab$ 和 $ba$ 是共轭的（因为 $b(ab)b^{-1} = ba$），因此说 $ab$ 或 $ba$ 必须是抛物型的，实际上是同一回事。奇妙的是，正如我们在注释 7.1 中所证明的，所有包含这三个抛物型元素的群自动共轭。这一点对我们来说非常重要，因此我们在图 20 中专门进行了总结。
+根据 [盒 20](#box20) 旁的图示，我们有 $a(P) = R$ 且 $b(R) = P$，于是四个切点分别是：$S = \text{Fix}(a)$, $Q = \text{Fix}(b)$, $P = \text{Fix}(ba)$ 和 $R = \text{Fix}(ab)$。类似于第 6 章的论证逻辑，为使靠近 $S$ 和 $Q$ 的像圆收缩，生成元 $a$ 和 $b$ 必须是抛物型变换。此外，$ba$ 也必须是抛物型的，才能确保圆在 $P$ 处收缩。需要注意的是，$ab$ 和 $ba$ 是共轭的（因为 $b(ab)b^{-1} = ba$），所以要求 $ab$ 或 $ba$ 是抛物型本质上是同一条件。奇妙的是，正如我们在注释 7.1 中所证明的，所有包含这三个抛物型元素的群自动共轭。这一点对我们来说非常重要，因此我们在盒 20 中专门进行了总结。
 
-由于配对圆的模式不同，标记圆在平面上的排列方式也随之改变。[图 7.11](#fig-7.11) 中的 Schottky 圆仍按照我们通常的规则标记，例如，$C_{ba}$ 依然表示圆 $C_a$ 在映射 $b$ 下的像。然而，如果你仔细观察，就会发现这些圆沿着直线的排列顺序与我们最初在边界上的顺序并不相同。
+由于圆的配对模式改变，标记圆在平面上的排列方式也随之改变。[图 7.11](#fig-7.11) 中的 Schottky 圆仍按照我们通常的规则标记，例如，$C_{ba}$ 依然表示圆 $C_a$ 在映射 $b$ 下的像。然而，如果你仔细观察，就会发现这些圆沿着直线的排列顺序与第 104 页单词树边界上的原始顺序不同。[图 7.12](#fig-7.12) 的修订版展示了正确的标签顺序。（需要将图表旋转，使所关注顶点的箭头朝下而非朝上。）
+
+此差异源于顶点周围的循环顺序变化：原单词树中顶点周围的循环顺序是 $a, B, A, b$，而现在则是 $a, A, b, B$。这一细微调整的影响将沿树结构逐级传递。
+
+:::{.simple #box20}
+**Box 20. The modular necklace**
+
+**盒子 20：模群项链**
+
+![](/images/indra/box20.jpg){width=200 .fig}
+
+A modular necklace is a tangent chain of four circles in which adjacent disks are paired by two transformations $a$ and $b$ as in the figure in the margin. The transformations $a, b$ and $ab$ are all 
+parabolic and $S = Fix(a), Q = Fix(fc), a(P) = K, b(R) = P$ so that $P = \fix(ba)$ and $R = \fix(ab)$. The group generated by $a$ and $b$ is always conjugate to the 'standard' modular group generated by 
+$$
+\begin{pmatrix} 1 & 0 \\ -2 & 1 \end{pmatrix} \text{ and } \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}
+$$
+
+The four points $P, Q, R$ and $S$ always lie on a circle (or line) which is the limit set of the group. The limit circle is perpendicular to all circles in the chain. Both inner and outer tiles have their sides matched in the same way and the surfaces made by gluing up these tiles are each spheres with three punctures or cusps. 
+
+一个模群项链是由四个相切的圆组成的链条，其中相邻的圆盘通过两种变换 $a$ 和 $b$ 配对，正如旁边图中的所示。变换 $a$、$b$ 和 $ab$ 都是抛物型的，且有 $S = Fix(a)$, $Q = Fix(fc)$, $a(P) = K$, $b(R) = P$，从而得到 $P = \fix(ba)$ 和 $R = \fix(ab)$。由 $a$ 和 $b$ 生成的群总是与由
+$$
+\begin{pmatrix} 1 & 0 \\ -2 & 1 \end{pmatrix} \text{ and } \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}
+$$
+生成的“标准”模群共轭。
+
+四个点 $P$、$Q$、$R$ 和 $S$ 总是位于一个圆（或直线）上，这个圆（或直线）是该群的极限集。极限圆与链条中的所有圆都垂直。无论是内层还是外层的瓷砖，它们的边缘都以相同的方式匹配，通过将这些瓷砖拼接在一起形成的表面，都是具有三个孔或尖点的球面。
+:::
 
 
-# Playing with parameters
+![Figure 7.12. The tree of words rearranged in the pattern of the modular group. \
+图 7.12. 以模群模式重新排列的词汇树。](/images/indra/fig-7.12.jpg){width=600 #fig-7.12}
+
 
 :::{.simple}
-I could spin a web if I tried.' said Wilbur, boasting. 'Ive just never tried.'
-
-‘Let’s see you do it,’ said Charlotte…
-
-‘OK.’ replied Wilhur. ‘You coach me and I’t’ spin one. It must be a lot of fun to spill a web. How do I start?
-
-
-“要是我愿意，我也能织网。”威尔伯吹嘘道，“只是我从来没试过。”
-
-“那你来织一个给我们看看吧。”夏洛特说。
-
-“好啊。”威尔伯答道，“你来指导我，我就织一个。织网一定很好玩。我该怎么开始呢？”
+Because some elements in the modular group are parabolic, the infinite endpoints of certain paths down the word tree merge. For example, the path which starts at $a$ and heads always as far as possible to the left (from the viewpoint of a person walking down the branch) is $aaa\cdots$, ending at the attracting fixed point ${\rm Fix}^+a$. On the other hand, starting from $A$ and always turning right gives the path $AAA\cdots$, ending at ${\rm Fix}^+A$. Since $a$ is parabolic, the end points of these two paths are the same. In a similar way, other coincidences of endpoints are caused by the merging of the fixed points of $b$ and $ab$. You should compare the details with Figure 6.13.
 :::
+
+模群中存在抛物型元素，这导致词树中某些路径的无限端点会发生合并。例如，从 $a$ 出发并始终尽可能向左延伸的路径（从沿分支下行的视角来看）可表示为 $aaa\cdots$，最终到达 $a$ 的吸引不动点 $\fix^+a$。反之，从 $A$ 出发始终右转的路径则为 $AAA\cdots$，终止于 $\fix^+A$。由于 $a$ 是抛物型元素，这两条路径的终点完全重合。类似地，$b$ 与 $ab$ 的不动点合并也会导致其他端点重合的现象。建议将这些细节与 [图 6.13](#fig-6.13) 进行对照分析。 
+     
+:::{.simple}
+A similar phenomenon is repeated at all levels. For example, the extreme left and extreme right paths starting at $aB$ end at $aB\bar{a} = \text{Fix } aBabA$, and $aB\bar{A} = \text{Fix } aBAbA$. Notice that $(aBAbA)^{-1} = aBabA$ and that $aBabA$ must be parabolic because it can be written $(aB)a(aB)^{-1}$, so the two endpoints merge. Every tangency point of the many circles in Figure 7.9 comes about because of a similar conjugacy to one of the three basic parabolics $a$, $b$ or $ab$.
+:::
+
+类似的现象在各个层次上反复出现。例如，从 $aB$ 出发的极左和极右路径分别终止于 $aB\bar{a} = \fix^+ aBabA$ 和 $aB\bar{A} = \fix^+aBAbA$。注意，$(aBAbA)^{-1} = aBabA$，而且 $aBabA$ 必然是抛物型的，因为它可以写成 $(aB)a(aB)^{-1}$，因此这两个端点会合并。[图 7.9](#fig-7.9) 中众多圆的每一个切点的出现，都是由于某种与三个基本抛物型 $a$、$b$ 或 $ab$ 之一的共轭关系相似的原因。
+
+:::{.simple}
+Let’s mention one final difference from the kissing Schottky groups in Chapter 6. The chain of four initial circles still divides the Riemann sphere into two four-sided tiles. However, because the pairing is different, so is the result of glueing up the tiles. Dr. Stickler is puzzling this out in Figure 7.13. In contrast to the pair of once-punctured tori we got in Figure 6.16, the outcome is now a pair of triply-punctured spheres.
+:::
+让我们来谈谈与第 6 章中的亲吻 Schottky 群的最后一个不同之处。那四个最初的圆依然将黎曼球面分成了两个四边形的拼块。不过，由于配对方式发生了变化，拼块粘合后的结果也随之不同。Stickler 博士正在 [图 7.13](#fig-7.13) 中研究这个问题。与我们在 [图 6.16](#fig-6.16) 中得到的一对单孔环面不同，这次的结果是一对三孔球面。
+
+
+![Figure 7.13. The gluing construction for the modular group. We start from a chain of four kissing circles giving a tile with two pieces, each a rectangle with four cusps. After gluing according to the modular recipe, we get two spheres, each with three cuspidal ‘punctures’ where they are joined. \
+图 7.13. 模群的粘合构造。我们从一串相切的四个圆开始，得到一个由两部分组成的瓷砖，每一部分都是一个带有四个尖点的矩形。按照模群的粘合规则，将这些部分粘合后，我们得到两个球面，每个球面上都有三个尖点状的“穿孔”，两者正是通过这些穿孔相连的。](/images/indra/fig-7.13.png){width=600 #fig-7.13}
+
+
+# The problem of gaps
+
+:::{.simple}
+We end this chapter by returning to the gasket and programming, with the confession that we cheated slightly to make pictures like Figures 7.1 and 7.4. Figure 7.14 shows the same picture plotted with our current algorithm. It contains a slight but thoroughly annoying imperfection if you look closely, you will see that at many places where we allege the limit set is ‘pinched’, it does not actually quite meet itself, but contains what are in reality quite large gaps.
+:::
+
+本章的结尾，我们再次回到垫片和编程的话题，并坦白我们在绘制 [图 7.1](#fig-7.1) 和 [图 7.4](#fig-7.4) 这类图片时稍微“作弊”了一下。[图 7.14](#fig-7.14) 展示的是使用我们当前算法绘制的相同图像。仔细观察的话，你会发现其中有一个微小却颇为恼人的缺陷：在我们声称极限集“收缩”的许多地方，它实际上并未完全闭合，反而留下了肉眼可见的明显空隙。
+
+:::{.simple}
+Gaps and other imperfections in scientific pictures are a common nuisance, but they sometimes have greater significance. Mandelbrot recounted that his first detailed pictures of what later came to be known as the Mandelbrot set seemed to be plagued by specks of dirt. He and his assistant made a complete inspection of their program, computer system and printer, only to find that the specks were indeed correct. Investigating the specks led to the discovery of the vast and complicated spider web of filaments connecting all the various parts of that stunningly beautiful and now famous icon of the fractal world. 
+
+What is happening in the present case is that our algorithm develops tremendous inertia as it approaches the fixed points of parabolic or nearly parabolic words. It’s as if it starts to run in slow motion, simply not having the energy to go all the way out to the end. For this particular picture, the plotting threshold was a reasonably small 0.005 and the word length crept up to more than 400 as the plot approached the gaps. Still the visible gaps are substantially larger than 0.005.
+:::
+
+科学图片中的空隙和其他瑕疵常常令人头疼，但有时它们却蕴含着更深的意义。曼德勃罗回忆说，他最初绘制的、后来被称为曼德勃罗集的精细图像，似乎总是被一些小黑点困扰。他和助手对他们的程序、计算机系统以及打印机进行了全面检查，结果发现那些小点确实是正确的。进一步研究这些小点，揭示了那个令人惊叹、现已闻名于世的分形图标中，各个部分之间错综复杂、如蜘蛛网般的细丝结构。
+
+在当前的情况下，我们的算法在接近抛物线或近似抛物线词的固定点时，产生了巨大的惯性。就好像它开始“慢动作”运行，根本没有足够的能量一路走到底。在这幅特定的图像中，绘图阈值已设得相当小，仅为 0.005，而随着绘图逐渐接近空隙，词的长度悄悄增加到了 400 多。不过，那些可见的空隙仍然明显大于 0.005。
 
 
 :::{.simple}
-As any mathematician who has revealed his (or her) occupation to a neighbour on a plane flight has discovered, most people associate mathematics with something akin to the more agonizing forms of medieval torture. It seems indeed unlikely that mathematics would be done at all, were it not that a few people discover the play that lies at its heart. Most published mathematics appears long after the play is done, cloaked in lengthy technicalities which obscure the original fun. The book in hand is unfortunately scarcely an exception. Never mind; after a fairly detailed introduction to the art of creating tilings and fractal limit sets out of two very carefully chosen Möbius maps, we are finally set to embark on some serious mathematical play. The greatest rewards will be reaped by those who invest the time to set up their own programs and join us charting mathematical territory which is still only partially explored.
+We could make better plots if we modified the algorithm to take account of the fact that the words $a$ and $b$ are parabolic. The basic idea is that we should plot not only points with repetends which are
+cyclic permutations of the basic commutator abAB (itself parabolic), but in addition those whose repetends are any of $a, A, b$ or $B$. Pictures like Figure 7.4, plotted with the new algorithm, are the measure of our success.
+
+Here is a more detailed look at the modified algorithm. We start by telling the program that the three parabolic elements $a, b$ and $abAB$ are 'special'. For each generator, the program then determines the repetends it must consider when enumerating the infinite words. They are listed in Note 7.3. 
 :::
 
-正如任何一位曾在飞机上向邻座透露自己职业的数学家都会发现的那样，大多数人对数学的印象，似乎与某种中世纪酷刑的痛苦体验无异。倘若不是有少数人发现了数学的核心妙趣，数学恐怕早已无人问津。大多数已发表的数学成果，往往是在趣味探索结束许久之后才浮出水面的，而那些冗长繁复的技术细节，往往掩盖了最初的乐趣。遗憾的是，手头的这本书也未能完全例外。不过，别担心——在颇为详尽地介绍了如何用两个精心挑选的莫比乌斯变换来构造密铺图案和分形极限集之后，我们终于可以开始一场真正的数学探险了。那些愿意投入时间亲手编写程序、与我们一道探索这片尚未完全揭示的数学版图的读者，定将收获最丰厚的回报。
+如果我们修改算法，使其考虑到单词 $a$ 和 $b$ 是抛物线的这一事实，我们就能绘制出更好的图表。基本思想是，我们不仅要绘制那些重复部分是基本换位子 $abAB$（它本身也是抛物型）的循环排列的点，还要绘制那些重复部分是 $a, A, b$ 或 $B$ 中任意一个的点。使用新算法绘制的如 [图 7.4](#fig-7.4) 所示的图片，正是衡量我们成功与否的标准。
+
+下面是对修改后算法的更详细说明。我们首先告诉程序，三个抛物线元素 $a, b$ 和 $abAB$ 是“特殊的”。然后，程序会为每个生成元确定在枚举无限词时必须考虑的重复部分。它们列在注释 7.3 中。
 
 :::{.simple}
-All the limit sets we have constructed thus far began from a special arrangement of four circles, the Schottky circles, grouped into two pairs. For each pair, we found a Möbius map which moved the inside of one circle to the outside of the other. Our initial tile was the region outside these four circles. By iterating, we produced a tiling which covered the the plane minus the limit set, near which the tiles shrank to minute size. Depending on how we chose the initial Schottky circles, the limit set was either fractal dust, a very crinkled fractal loop we called a quasicircle or, in certain very special cases, a true circle.
+This chart is used in the following way. Suppose we are considering a word w which ends with the tag gens[l] = a, for example $w = BABaa$. We are trying to plot the part of the limit set corresponding to words with prefix $w$, so we want to look at those places where this segment of the limit curve unexpectedly gets stretched out. This section of limit set, the $w$-section as we may call it, consists of points corresponding to all the infinite words between $w\overline{bABa}$ and $w\overline{BAba}$.
 :::
 
-迄今为止，我们构造的所有极限集都源自四个圆的独特排列，这些圆被称为肖特基圆，分为两对。对于每一对圆，我们找到一个莫比乌斯映射，将一个圆的内部映射到另一个圆的外部。我们的初始瓷砖是这四个圆外部的区域。通过不断迭代，我们生成了一种密铺，覆盖了平面上除了极限集以外的区域，在极限集附近，瓷砖逐渐缩小至微不可见的尺寸。根据我们选择的初始肖特基圆的不同，极限集可能呈现为分形尘埃，或者是我们称之为拟圆的极度扭曲的分形环，亦或在某些极其特殊的情况下，成为一个真正的圆。
+此图表的使用方法如下。假设我们正在考虑一个以标签 `gens[l] = a` 结尾的单词，例如 $w = BABaa$。我们试图绘制极限集中对应于以 $w$ 为前缀的单词的那一部分，因此我们要关注这段极限曲线在意外拉伸的位置。我们可以称这部分极限集为 $w$-部分，它由所有位于 $w\overline{bABa}$ 和 $w\overline{BAba}$ 之间的无限单词所对应的点组成。
 
 :::{.simple}
-The problem with this approach is that it is just too time-consuming to set up the circles and maps which pair them. Free-spirited play shouldn’t be ruined by too much preparation. Why not throw the Schottky circles away, take any pair of $2\times 2$ matrices for our generators $a$ and $b$, run our limit point plotting program, and see what we get?
-
-Hold on though - how exactly will this work? The shrinking disks were so reassuring, and the limit set was so comfortably nestled within them, that it is hard to see why we won’t get chaos in their absence. No matter, the worst that is likely to happen is that the hard disk crashes, so why not give it a try? Luckily, on p. 182 ff. we already upgraded the DFS code to remove the calculation of Schottky disks from the branch termination procedure. All we need do is take the plunge and run the very same algorithm for any pair of transformations $a$ and $b$.
+Because $a$ is parabolic, the fixed points $\bar{a}$ and $\bar{A}$ are the same, and therefore, although the infinite words are different, the limit points corresponding to $w\bar{a}$ and $w\bar{A}$ are equal. Notice that the infinite word $w\bar{A}$ reduces slightly to
+$$w\bar{A} = BABaaAAAAA\cdots = BABAAA\cdots = BAB\bar{A}.$$
+These cancellations mean that, on the boundary of the word tree, $BAB\bar{A}$ is far outside the interval of infinite words which correspond to the $w$-section of the limit set. So the chances are that the point $w\hat{a}$ is going to be stretched way away from its expected position, and we had better check it out when we are making our plot. We explain in Note 7.3 why  it is only worth checking out the special repetends in the list and not, for example, words ending in $a$ followed by the repetend $b$. 
 :::
 
-这个方法的弊端在于，设置这些圆及其配对映射实在太耗时了。自由随性的探索不应该被繁杂的准备工作束缚住手脚。为什么不干脆抛开 Schottky 圆，随便挑一对 $2 \times 2$ 矩阵作为我们的生成元 $a$ 和 $b$，然后直接运行极限点绘图程序，看看会蹦出什么结果呢？
-
-不过，先别急——这真的行得通吗？那些嵌套收缩的圆盘曾给予我们清晰的秩序感，极限集恰如其分地安居其中。若失去这种结构约束，系统难道不会陷入混沌？但没关系，最糟糕的结果不过是硬盘崩溃罢了，那为什么不试试看呢？
-
-幸运的是，在第 182 页及后续章节中，我们已经对 DFS 算法进行改良，去掉了分支终止判定中对 Schottky 圆盘的计算。我们所需要的，只有一股冲劲——运行同样的算法，随便选一对变换 $a$ 和 $b$，放手一试就好。
+因为 $a$ 是抛物元素，固定点 $\bar{a}$ 和 $\bar{A}$ 是相同的，因此，尽管无限字串不一样，对应于 $w\bar{a}$ 和 $w\bar{A}$ 的极限点却是相同的。注意，无限字串 $w\bar{A}$ 可以稍微化简为
+$$w\bar{A} = BABaaAAAAA\cdots = BABAAA\cdots = BAB\bar{A}.$$
+这种抵消意味着，在字树的边界上，$BAB\bar{A}$ 远远落在与 $w$ 区段的极限集相对应的无限字串区间之外。因此，点 $w\hat{a}$ 很可能会被拉得远远偏离它的预期位置，因此在作图时最好检查一下。我们在 注 7.3 中解释了为什么只需检查列表中的特殊循环节，而不必检查例如以 $a$ 结尾、后接循环节 $b$ 的字串。
