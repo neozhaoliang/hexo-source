@@ -5,7 +5,7 @@ date: 2025-01-23
 url: "the-glowing-gasket"
 ---
 \DeclareMathOperator{\tr}{Tr}
-\newcommand{\fix}{\mathrm{Fix}}
+\newcommand{\fix}{\mathrm{Fix}\,}
 
 :::{.simple}
 Four circles to the kissing come. \
@@ -295,7 +295,7 @@ $$
 
 **注 7.1：模群的唯一性**
 
-Suppose that $U$, $V$ and $UV$ are all parabolic (and therefore not the identity!) and the fixed point of $U$ is $z_U$ and the fixed point of $V$ is $z_V$. We are trying to conjugate $U$ and $V$ to the generators of the modular group. We have seen that we can find a Möbius transformation $M$ that maps $z_U$ to $0$ and $z_V$ to $\infty$. Conjugating our original transformations $U$ and $V$ by $M$ arranges that $MUM^{-1}(0) = 0$ and $MVM^{-1}(\infty) = \infty$, and still the two transformations $MUM^{-1}$ and $MVM^{-1}$ are parabolic. Since we can simultaneously conjugate them in this way, we may just as well assume the original transformations $U$ and $V$ have fixed points $0$ and $\infty$, respectively.
+Suppose that $U$, $V$ and $UV$ are all parabolic (and therefore not the identity!) and the fixed point of $U$ is $z_U$ and the fixed point of $V$ is $z_V$. We are trying to conjugate $U$ and $V$ to the generators of the modular group. We have seen that we can find a Möbius transformation $M$ that maps $z_U$ to $0$ and $z_V$ to $\infty$. Conjugating our original transformations $U$ and $V$ by $M$ arranges that $MUM^{-1}(0)=0$ and $MVM^{-1}(\infty)=\infty$, and still the two transformations $MUM^{-1}$ and $MVM^{-1}$ are parabolic. Since we can simultaneously conjugate them in this way, we may just as well assume the original transformations $U$ and $V$ have fixed points $0$ and $\infty$, respectively.
 
 A parabolic transformation that fixes $\infty$ is always conjugate to any other, up to a minus sign. (See Chapter 3.) Let's arrange by conjugation and possibly multiplying by -1 that $V$ corresponds to the matrix $\begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}$.　Now all that’s left is $U$. Since $U(0)=0$, after again possibly multiplying by -1, we can conclude that the matrix of $U$ is
 $$
@@ -480,7 +480,7 @@ Because some elements in the modular group are parabolic, the infinite endpoints
 模群中存在抛物型元素，这导致词树中某些路径的无限端点会发生合并。例如，从 $a$ 出发并始终尽可能向左延伸的路径（从沿分支下行的视角来看）可表示为 $aaa\cdots$，最终到达 $a$ 的吸引不动点 $\fix^+a$。反之，从 $A$ 出发始终右转的路径则为 $AAA\cdots$，终止于 $\fix^+A$。由于 $a$ 是抛物型元素，这两条路径的终点完全重合。类似地，$b$ 与 $ab$ 的不动点合并也会导致其他端点重合的现象。建议将这些细节与 [图 6.13](#fig-6.13) 进行对照分析。 
      
 :::{.simple}
-A similar phenomenon is repeated at all levels. For example, the extreme left and extreme right paths starting at $aB$ end at $aB\bar{a} = \text{Fix } aBabA$, and $aB\bar{A} = \text{Fix } aBAbA$. Notice that $(aBAbA)^{-1} = aBabA$ and that $aBabA$ must be parabolic because it can be written $(aB)a(aB)^{-1}$, so the two endpoints merge. Every tangency point of the many circles in Figure 7.9 comes about because of a similar conjugacy to one of the three basic parabolics $a$, $b$ or $ab$.
+A similar phenomenon is repeated at all levels. For example, the extreme left and extreme right paths starting at $aB$ end at $aB\bar{a}=\fix aBabA$, and $aB\bar{A} = \fix aBAbA$. Notice that $(aBAbA)^{-1}=aBabA$ and that $aBabA$ must be parabolic because it can be written $(aB)a(aB)^{-1}$, so the two endpoints merge. Every tangency point of the many circles in Figure 7.9 comes about because of a similar conjugacy to one of the three basic parabolics $a$, $b$ or $ab$.
 :::
 
 类似的现象在各个层次上反复出现。例如，从 $aB$ 出发的极左和极右路径分别终止于 $aB\bar{a} = \fix^+ aBabA$ 和 $aB\bar{A} = \fix^+aBAbA$。注意，$(aBAbA)^{-1} = aBabA$，而且 $aBabA$ 必然是抛物型的，因为它可以写成 $(aB)a(aB)^{-1}$，因此这两个端点会合并。[图 7.9](#fig-7.9) 中众多圆的每一个切点的出现，都是由于某种与三个基本抛物型 $a$、$b$ 或 $ab$ 之一的共轭关系相似的原因。
