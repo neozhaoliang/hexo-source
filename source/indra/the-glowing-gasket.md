@@ -437,12 +437,12 @@ The process of turning a fraction into a continued fraction is very closely rela
 $$\frac{3}{10} = \frac{1}{3 + \frac{1}{3}}$$
 和
 $$\frac{2}{19} = \frac{1}{2 + \frac{1}{9}}$$
-被称为连分数。事实上，每个分数 $p/q$ 都可以以类似的方式书写。假设 $p/q$ 介于 0 与 1 之间，那么你就可以总是将其写成如下形式
+被称为连分数。事实上，任何分数 $p/q$ 都可以以类似的方式表示。假设 $p/q$ 介于 0 与 1 之间，那么你总能将其写成如下的形式
 
 $$\frac{p}{q} = \frac{1}{a + \frac{1}{b + \frac{1}{c + \frac{1}{\cdots}}}}$$
-其中 $a$，$b$，$c$ 等是正整数。实际上，你甚至可以对一个无理数做同样的事情。区别在于，如果原始数字是无理数，那么项 $a$，$b$，$c$ 等将无限延续下去。序列 $a, b, c, \ldots$ 始终对应于我们在正文中提到的 Farey 算法中的左右转弯次数。
+其中 $a$，$b$，$c$ 等是正整数。实际上，即使是无理数，你也可以用同样的方式表示。区别在于，如果原始数字是无理数，那么项 $a$，$b$，$c$ 等将无限延续下去。序列 $a, b, c, \ldots$ 始终对应于我们在正文中提到的 Farey 算法中的左右转弯次数。
 
-如果我们通过将连分数的最后一项减 1，直到值为 1，然后缩短其长度，连续地“简化”一个连分数，我们就恢复了用于逼近该分数的 Farey 过程。例如，对于分数 $3/5$，我们得到：
+如果我们通过将连分数的最后一项逐步减 1，直到其值为 1，然后缩短其长度，连续地“简化”一个连分数，我们就能恢复用于逼近该分数的 Farey 过程。以分数 $3/5$ 为例，经过这一过程，我们得到：
 
 $$\begin{aligned}
 \frac{3}{5} &= \frac{1}{2 + \frac{1}{2 + \frac{1}{2}}}\\
@@ -452,7 +452,7 @@ $$\begin{aligned}
 \end{aligned}
 $$
 
-将一个分数转换成连分数的过程与欧几里得算法非常密切相关。我们在项目 7.5 中提供了一些线索。
+将一个分数转换成连分数的过程与欧几里得算法密切相关。我们在项目 7.5 中提供了一些线索。
 :::
 
 
@@ -468,13 +468,13 @@ The modular group is a new kind of ‘necklace group’. It is still made by pai
 With the notation of the figure beside Box 20, we have $a(P) = R$ and $b(R) = P$, so that the four tangency points of the circles are $S = \text{Fix}(a)$, $Q = \text{Fix}(b)$, $P = \text{Fix}(ba)$, and $R = \text{Fix}(ab)$. By similar reasoning to that in Chapter 6, in order for the image circles near $S$ and $Q$ to shrink, the generators $a$ and $b$ must be parabolic. Moreover, $ba$ must also be parabolic, to make the circles shrink at $P$. Notice that $ab$ and $ba$ are conjugate (since $b(ab)b^{-1} = ba$), so saying that $ab$ or $ba$ must be parabolic is really one and the same thing. The wonderful thing is, that as we proved in Note 7.1, all groups with these three elements parabolic are automatically conjugate. This is so important to us that we summarize it in Box 20.
 :::
 
-根据 [框 20](#box20) 旁的图示，我们有 $a(P) = R$ 且 $b(R) = P$，于是四个切点分别是：$S＝\fix(a)$, $Q =\fix(b)$, $P =\fix(ba)$ 和 $R=\fix(ab)$。类似于第 6 章的论证逻辑，为使靠近 $S$ 和 $Q$ 的像圆收缩，生成元 $a$ 和 $b$ 必须是抛物型变换。此外，$ba$ 也必须是抛物型的，才能确保圆在 $P$ 处收缩。需要注意的是，$ab$ 和 $ba$ 是共轭的（因为 $b(ab)b^{-1} = ba$），所以要求 $ab$ 或 $ba$ 是抛物型本质上是同一条件。奇妙的是，正如我们在 [注记 7.1](#note-7.1) 中所证明的，所有包含这三个抛物型元素的群自动共轭。这一点对我们来说非常重要，因此我们在 [框 20](#box20) 中专门进行了总结。
+根据 [框 20](#box20) 旁的图示，我们有 $a(P) = R$ 且 $b(R) = P$，因此四个切点分别是：$S＝\fix(a)$, $Q =\fix(b)$, $P =\fix(ba)$ 和 $R=\fix(ab)$。类似于第 6 章的推理，为使靠近 $S$ 和 $Q$ 的像圆收缩，生成元 $a$ 和 $b$ 必须是抛物型变换。而且 $ba$ 也必须是抛物型的，以确保圆在 $P$ 处收缩。需要注意的是，$ab$ 和 $ba$ 是共轭的（因为 $b(ab)b^{-1} = ba$），所以要求 $ab$ 或 $ba$ 是抛物型本质上是一回事。奇妙的是，正如我们在 [注记 7.1](#note-7.1) 中所证明的，所有包含这三个抛物型元素的群自动共轭。这一点对我们来说非常重要，因此我们在 [框 20](#box20) 中专门进行了总结。
 
 :::{.simple}
 Because the pattern of pairing circles is different, so is the arrangement in which the labelled circles are laid down in the plane. The Schottky circles in Figure 7.11 are labelled according to our usual rules, so for example, $C_{ba}$ still means the image of circle $C_a$ under the map $b$. However, if you look carefully, you will see that the order of the circles along the line is not the same as our original order round the boundary of the word tree on p. 104. The labels can be read off in their correct order from the revised version in Figure 7.12. (To see this you will have to twiddle the diagram around so the arrows from the vertex you are interested in are pointing ‘down’ rather than ‘up’.) There is a subtle difference from our original word tree, because there the cyclic order round a vertex was $a,B,A,b$ while now it is $a,A,b,B$. The ramifications of this seemingly minor change propagate down the tree.
 :::
 
-由于圆的配对方式改变，标记圆在平面上的排列方式也随之改变。[图 7.11](#fig-7.11) 中的 Schottky 圆仍按照我们通常的规则标记，例如，$C_{ba}$ 依然表示圆 $C_a$ 在映射 $b$ 下的像。然而，如果你仔细观察，就会发现这些圆沿着直线的排列顺序与第 104 页单词树边界上的原始顺序不同。修订后的　[图 7.12](#fig-7.12) 展示了正确的标签顺序。（你需要稍微调整图表，使所关注顶点的箭头朝下而非朝上）。与原单词树相比，存在一个细微的差异，源于顶点周围的循环顺序变化：原单词树中顶点周围的循环顺序是 $a, B, A, b$，而现在则是 $a, A, b, B$。这一细微调整的影响将沿树结构逐级传递。
+由于圆的配对方式改变，标记圆在平面上的排列方式也随之改变。[图 7.11](#fig-7.11) 中的 Schottky 圆仍按照我们通常的规则标记，例如，$C_{ba}$ 依然表示圆 $C_a$ 在映射 $b$ 下的像。然而，如果你仔细观察，就会发现这些圆沿着直线的排列顺序与第 104 页单词树边界上的原始顺序不同。修订后的 [图 7.12](#fig-7.12) 显示了正确的标签顺序。（为了看清这一点，你需要稍微调整图形，使得你关注的顶点的箭头指向“下方”而非“上方”）。与原单词树相比，这里有一个微妙的差异，源于顶点周围的循环顺序变化：原单词树中的顺序是 $a, B, A, b$，而现在则是 $a, A, b, B$。这一看似微小的变化将沿树结构逐级向下传播。
 
 :::{.simple #box20}
 **Box 20. The modular necklace**
@@ -513,16 +513,16 @@ Because some elements in the modular group are parabolic, the infinite endpoints
 A similar phenomenon is repeated at all levels. For example, the extreme left and extreme right paths starting at $aB$ end at $aB\bar{a}=\fix aBabA$, and $aB\bar{A} = \fix aBAbA$. Notice that $(aBAbA)^{-1}=aBabA$ and that $aBabA$ must be parabolic because it can be written $(aB)a(aB)^{-1}$, so the two endpoints merge. Every tangency point of the many circles in Figure 7.9 comes about because of a similar conjugacy to one of the three basic parabolics $a$, $b$ or $ab$.
 :::
 
-类似的现象在各个层次上反复出现。例如，从 $aB$ 出发的极左和极右路径分别终止于 $aB\bar{a} = \fix^+ aBabA$ 和 $aB\bar{A} = \fix^+aBAbA$。注意，$(aBAbA)^{-1} = aBabA$，而且 $aBabA$ 必然是抛物型的，因为它可以写成 $(aB)a(aB)^{-1}$，因此这两个端点最终重合。[图 7.9](#fig-7.9) 中众多圆的每一个切点的出现，都是由于某种与三个基本抛物型 $a$、$b$ 或 $ab$ 之一的共轭关系相似的原因。
+类似的现象在各个层次上反复出现。例如，从 $aB$ 出发的极左和极右路径分别终止于 $aB\bar{a} = \fix^+ aBabA$ 和 $aB\bar{A} = \fix^+aBAbA$。注意，$(aBAbA)^{-1} = aBabA$，而且 $aBabA$ 必然是抛物型的，因为它可以写成 $(aB)a(aB)^{-1}$，因此这两个端点最终重合。[图 7.9](#fig-7.9) 中众多圆的切点的出现，本质上都源于群元素与三个基本抛物元 $a$、$b$ 或 $ab$ 之一类似的共轭关系。
 
 :::{.simple}
 Let’s mention one final difference from the kissing Schottky groups in Chapter 6. The chain of four initial circles still divides the Riemann sphere into two four-sided tiles. However, because the pairing is different, so is the result of glueing up the tiles. Dr. Stickler is puzzling this out in Figure 7.13. In contrast to the pair of once-punctured tori we got in Figure 6.16, the outcome is now a pair of triply-punctured spheres.
 :::
 
-让我们谈谈与第 6 章中亲吻 Schottky 群的最后一个不同之处。在那里，四个最初的圆仍然将黎曼球面分割成两个四边形的瓷砖。然而，由于配对方式不同，拼接后的结果也随之不同。Stickler 博士正在 [图 7.13](#fig-7.13) 中对此进行探讨。与我们在 [图 6.16](#fig-6.16) 中得到的一对单孔环面不同，这次的结果是一对三孔球面。
+让我们提到与第 6 章中亲吻 Schottky 群的最后一个不同之处。四个最初的圆依然将黎曼球面划分为两个四边形瓷砖。然而，由于配对方式的不同，拼接后的结果也发生了变化。Stickler 博士正在 [图 7.13](#fig-7.13) 中对此进行思考。与我们在 [图 6.16](#fig-6.16) 中得到的那一对单孔环面相比，这次的结果是两个三孔球面。
 
 ![Figure 7.13. The gluing construction for the modular group. We start from a chain of four kissing circles giving a tile with two pieces, each a rectangle with four cusps. After gluing according to the modular recipe, we get two spheres, each with three cuspidal ‘punctures’ where they are joined. \
-图 7.13. 模群的粘合构造。我们从首尾相接的四个相切圆开始，得到一个由两部分组成的瓷砖，每一部分都是一个带有四个尖点的矩形。遵循模群的粘合规则，将这些部分粘合后，我们得到两个球面，每个球面上都有三个尖点状的“穿孔”，两个球面通过这些穿孔相连。](/images/indra/fig-7.13.png){width=600 #fig-7.13}
+图 7.13. 模群的粘合构造。我们从一串四个相切的圆开始，得到一个由两块矩形瓷砖组成的图案，每块瓷砖上都有四个尖点。按照模群的粘合法则将这些部分粘合后，最终得到两个球面，每个球面上都有三个尖点状的“穿孔”，它们通过这些穿孔相连。](/images/indra/fig-7.13.png){width=600 #fig-7.13}
 
 # The problem of gaps
 
@@ -532,37 +532,37 @@ Let’s mention one final difference from the kissing Schottky groups in Chapter
 We end this chapter by returning to the gasket and programming, with the confession that we cheated slightly to make pictures like Figures 7.1 and 7.4. Figure 7.14 shows the same picture plotted with our current algorithm. It contains a slight but thoroughly annoying imperfection if you look closely, you will see that at many places where we allege the limit set is ‘pinched’, it does not actually quite meet itself, but contains what are in reality quite large gaps.
 :::
 
-本章的结尾，我们再次回到垫片和编程的话题，并坦白我们在绘制 [图 7.1](#fig-7.1) 和 [图 7.4](#fig-7.4) 这类图片时稍微“作弊”了一下。[图 7.14](#fig-7.14) 展示的是使用我们当前算法绘制的相同图像。仔细观察的话，你会发现其中有一个微小却颇为恼人的缺陷：在我们声称极限集“收缩”的许多地方，它实际上并未完全闭合，反而留下了肉眼可见的明显空隙。
+本章的结尾，我们再次回到垫片和编程的话题，并坦白在绘制 [图 7.1](#fig-7.1) 和 [图 7.4](#fig-7.4) 这类图像时，我们稍微做了一点“取巧”。[图 7.14](#fig-7.14) 展示的是使用我们当前算法绘制的同一图像。仔细观察的话，你会发现它存在一个微小但颇为恼人的缺陷：在许多地方，我们宣称极限集已经“收缩”的地方，实际上并没有完全闭合，反而留下一些肉眼可见的较大空隙。
 
 :::{.simple}
 Gaps and other imperfections in scientific pictures are a common nuisance, but they sometimes have greater significance. Mandelbrot recounted that his first detailed pictures of what later came to be known as the Mandelbrot set seemed to be plagued by specks of dirt. He and his assistant made a complete inspection of their program, computer system and printer, only to find that the specks were indeed correct. Investigating the specks led to the discovery of the vast and complicated spider web of filaments connecting all the various parts of that stunningly beautiful and now famous icon of the fractal world.
 :::
 
-科学图片中的空隙和其他瑕疵常常令人头疼，但有时它们却蕴含着更深的意义。曼德勃罗回忆说，他最初绘制的、后来被称为曼德勃罗集的精细图像，似乎总是被一些小黑点困扰。他和助手对他们的程序、计算机系统以及打印机进行了全面检查，结果发现那些小点确实是正确的。进一步研究这些小点，揭示了那个令人惊叹、现已闻名于世的分形图标中，各个部分之间错综复杂、如蜘蛛网般的细丝结构。
+科学图像中的空隙和其他瑕疵往往令人烦恼，但有时它们却蕴藏着更深的含义。曼德勃罗回忆道，他第一次绘制的、后来被称为曼德勃罗集的精细图像，总是被一些看似污点的斑点困扰。于是，他和助手对程序、计算机系统和打印机进行了彻底检查，结果发现这些斑点竟然是正确的。深入探究这些斑点，他们最终发现了一个复杂而庞大的蜘蛛网般的细丝结构，连接着曼德勃罗集各个部分，揭示了这个令人震撼、现已声名赫赫的分形世界象征的奇妙之处。
 
 :::{.simple}
 What is happening in the present case is that our algorithm develops tremendous inertia as it approaches the fixed points of parabolic or nearly parabolic words. It’s as if it starts to run in slow motion, simply not having the energy to go all the way out to the end. For this particular picture, the plotting threshold was a reasonably small 0.005 and the word length crept up to more than 400 as the plot approached the gaps. Still the visible gaps are substantially larger than 0.005.
 :::
 
-在当前的情况下，我们的算法在接近抛物型或近似抛物型词的不动点时，产生了巨大的惯性。就好像它开始以慢动作运行，根本没有足够的能量一路走到底。在这幅特定的图像中，绘图阈值已设得相当小，仅为 0.005，而随着绘图逐渐接近空隙，词的长度悄悄增加到超过 400。然而，尽管如此，仍然可以明显看到那些空隙远大于 0.005。
+在这个例子中，我们的算法在接近抛物型或近似抛物型词的固定点时，表现出极大的惯性。就像是进入了慢动作，似乎完全没有足够的能量继续前进，无法走到最后。对于这幅特定的图像，绘图的阈值被设置得相当小，仅为 0.005，而随着绘图接近空隙，词的长度悄然增加到了超过 400。然而，尽管如此，空隙的大小依然明显超过了 0.005。
 
 :::{.simple}
 We could make better plots if we modified the algorithm to take account of the fact that the words $a$ and $b$ are parabolic. The basic idea is that we should plot not only points with repetends which are cyclic permutations of the basic commutator abAB (itself parabolic), but in addition those whose repetends are any of $a, A, b$ or $B$. Pictures like Figure 7.4, plotted with the new algorithm, are the measure of our success.
 :::
 
-如果我们修改算法，使其考虑到单词 $a$ 和 $b$ 是抛物型的这一事实，我们就能绘制出更精确到图形。基本思想是，我们不仅要绘制那些以基本换位子 $abAB$（本身是抛物型）的循环排列为循环节的点，还要囊括循环节为 $a, A, b, B$ 之一的情形。采用新算法生成的图例如 [图 7.4](#fig-7.4)，正是我们取得成功的力证。
+如果我们修改算法，使其考虑到单词 $a$ 和 $b$ 是抛物型的这一特点，就能绘制出更精确的图形。基本思路是，我们不仅要绘制那些循环节为基本换位子 $abAB$（本身是抛物型）及其循环排列的点，还要包括那些循环节为 $a, A, b$ 或 $B$ 的点。采用新算法绘制的图像。比如 [图 7.4](#fig-7.4)，正是我们取得成功的标志。
 
 :::{.simple}
 Here is a more detailed look at the modified algorithm. We start by telling the program that the three parabolic elements $a, b$ and $abAB$ are 'special'. For each generator, the program then determines the repetends it must consider when enumerating the infinite words. They are listed in Note 7.3.
 :::
 
-下面是对修改后算法的更详细说明。我们首先告诉程序，三个抛物型元素 $a$、$b$ 和 $abAB$ 是“特殊的”。接着，程序会为每个生成元确定在枚举无限词时必须考虑的循环节。它们被列在 [注记 7.3](#note-7.3) 中。
+下面是对修改后算法的更详细说明。首先，我们告诉程序，三个抛物型元素 $a$、$b$ 和 $abAB$ 是“特殊的”。接下来，程序会为每个生成元确定在枚举无限词时需要考虑的循环节。这些循环节列在 [注记 7.3](#note-7.3) 中。
 
 :::{.simple}
 This chart is used in the following way. Suppose we are considering a word w which ends with the tag `gens[l] = a`, for example $w = BABaa$. We are trying to plot the part of the limit set corresponding to words with prefix $w$, so we want to look at those places where this segment of the limit curve unexpectedly gets stretched out. This section of limit set, the $w$-section as we may call it, consists of points corresponding to all the infinite words between $w\overline{bABa}$ and $w\overline{BAba}$.
 :::
+该图表的使用方法如下。假设我们正在考虑一个以标签 `gens[l] = a` 结尾的单词，比如 $w = BABaa$。我们希望绘制极限集中的一部分，这部分对应的是以 $w$ 为前缀的所有单词。因此，我们关注的是极限曲线中该段意外被拉伸的位置。这一段极限集，我们可以称之为 $w$-区段，包含了所有介于 $w\overline{bABa}$ 和 $w\overline{BAba}$ 之间的无限单词所对应的点。
 
-该图表的用法如下。假设我们正在考虑一个以标签 `gens[l] = a` 结尾的单词，例如 $w = BABaa$。我们试图绘制极限集中对应于以 $w$ 为前缀的所有词所组成的部分。此时，我们特别关注极限曲线中，该段落产生异常拉伸的位置。这部分极限集——我们不妨称之为 $w$-区段，由所有介于 $w\overline{bABa}$ 和 $w\overline{BAba}$ 之间的无限单词所对应的点组成。
 
 :::{.simple}
 Because $a$ is parabolic, the fixed points $\bar{a}$ and $\bar{A}$ are the same, and therefore, although the infinite words are different, the limit points corresponding to $w\bar{a}$ and $w\bar{A}$ are equal. Notice that the infinite word $w\bar{A}$ reduces slightly to
@@ -570,9 +570,9 @@ $$w\bar{A} = BABaaAAAAA\cdots = BABAAA\cdots = BAB\bar{A}.$$
 These cancellations mean that, on the boundary of the word tree, $BAB\bar{A}$ is far outside the interval of infinite words which correspond to the $w$-section of the limit set. So the chances are that the point $w\hat{a}$ is going to be stretched way away from its expected position, and we had better check it out when we are making our plot. We explain in Note 7.3 why  it is only worth checking out the special repetends in the list and not, for example, words ending in $a$ followed by the repetend $b$.
 :::
 
-因为 $a$ 是抛物元素，其不动点 $\bar{a}$ 与 $\bar{A}$ 重合，因此，尽管无限词 $w\bar{a}$ 和 $w\bar{A}$ 是不同的，它们对应的极限点却是相同的。注意，无限词 $w\bar{A}$ 可以稍微化简为
+由于 $a$ 是抛物元素，$\bar{a}$ 和 $\bar{A}$ 的不动点重合，因此，尽管无限词 $w\bar{a}$ 和 $w\bar{A}$ 不同，它们对应的极限点却是相同的。请注意，无限词 $w\bar{A}$ 可以简化为：
 $$w\bar{A} = BABaaAAAAA\cdots = BABAAA\cdots = BAB\bar{A}.$$
-这种抵消意味着，在词树的边界上，$BAB\bar{A}$ 的位置远远超出了 $w$-截面极限集对应的无限词的区间范围。因此，点 $w\hat{a}$ 极有可能被大幅拉伸偏离其预期位置，在绘制图形时我们必须仔细核查该点。我们在 [注记 7.3](#note-7.3) 中解释了为何只需核对列表中的特定循环节，而不必检查例如以 $a$ 结尾、后接循环节 $b$ 的词的情形。
+这种简化意味着，在词树的边界上，$BAB\bar{A}$ 超出了与 $w$-截面极限集对应的无限词区间的范围。因此，点 $w\hat{a}$ 很可能会被拉伸得远离预期位置，因此我们在绘制图形时需要特别留意这一点。在 [注记 7.3](#note-7.3) 中，我们解释了为何只需检查列表中的特定循环节，而不必关注像以 $a$ 结尾、后接循环节 $b$ 的词。
 
 :::{.note #note-7.3}
 **Note 7.3: Which repetends should be considered?** \
@@ -653,6 +653,219 @@ $$
 
 显然，当前列表存在一些遗漏。例如，生成元 $b$ 同样是抛物型的，因此 $w\overline{b}$ 和 $w\overline{B}$ 对应相同的点。那么，我们是否也应该检查 $w\overline{b}$ 呢？实际上，由于 $w$ 以 $a$ 结尾，$w\overline{b}$ 和 $w\overline{B}$ 都不会发生任何坍缩，因此二者均位于描述 $w$-区段波动形态的无限词集合中。根据绘图观察的经验，这类点并不会显著突出边界轮廓。换言之，如果 $w$ 以 $a$ 结尾，则无需考察以 $b$ 或 $B$ 结尾的循环节。通过类似推理可得图表中的模式规律：对于以标签 $c$（即 $a,b,A,B$ 之一）结尾的词 $w$，需重点考察的循环节恰是那些自身以 $c$ 结尾者。这是因为此类循环节的逆元将以 $C$ 开始（注意逆元中的字母顺序是反转的），从而在组合 $wC$ 时产生抵消效应。这意味着点 $w(\overline{C})$ 并不位于对应前缀 $w$ 的无限字所在词树边界区域。可以设想，该点的存在会将 $w(\overline{c})$（位于 $w$-区段内）拉向它，从而产生程序需要检查的扭曲效应。
 :::
+
+![Figure 7.15. Slow motion gasket. This is a piece of the Apollonian gasket plotted with `\epsilon=0.1`. The width and height of the frame are 0.4. We have started numbering the limit points at $1 = \overline{bABA}$ in the upper left corner. One has to run through quite a few limit points after number $20 = b\overline{A}$, before we return to that same point labelled by the different infinite word $b\overline{a}$ at number 128. The limit points through which the curve passes twice have repetends $a$, $A$, $b$ or $B$. \
+图 7.15. 慢动作的阿波罗涡旋。这是一个阿波罗涡旋的片段，使用了 $\epsilon = 0.1$ 进行绘制。框架的宽度和高度都是 0.4。我们从左上角的点 $1 = \overline{bABA}$ 开始为极限点编号。直到编号为 $20 = b\overline{A}$ 的点之后，才需要通过若干个极限点，才能返回到那个用不同无限单词 $b\overline{a}$ 标记的同一点——这个点的编号是 128。曲线经过两次的极限点，其重复部分包括 $a$、$A$、$b$ 或 $B$。](/images/indra/fig-7.14.jpg){width=500 #fig-7.15}
+
+
+:::{.simple}
+At the beginning of the program, our routine computes the attractive fixed point ${\rm fp}[i,j]$ of each of the repetends ${\rm repet[i,j]\}$ listed in the chart. The only parts of the running algorithm which need to be changed are the termination and plotting subroutines. Suppose we are at the finite word ending in the generator $gens[i]$. Then we compute the three points
+
+$$z_j = \text{word}({\rm fp}[i,j])$$
+
+for $j = 1, 2, 3$. Given the plotting gap $\epsilon$, we require both $|z_2 - z_1| \leq \epsilon$ and $|z_3 - z_2| \leq \epsilon$ in order to terminate the forward enumeration along that particular branch of the word tree. If the criterion is met, we draw a line segment from $z_1$ to $z_2$, and a line segment from $z_2$ to $z_3$. That is all the modification we need.
+:::
+
+在程序开始时，我们的例行步骤会计算出图表中每个循环节（repetend）${\rm repet[i,j]}$ 的吸引不动点（attractive fixed point）${\rm fp}[i,j]$。原有算法中，唯一需要修改的部分是终止条件和绘图子程序。假设我们当前位于一个以生成元 $gens[i]$ 结尾的有限字（finite word）。此时，我们计算以下三个点：
+zj=word(fp[i,j])zj​=word(fp[i,j])
+其中 $j = 1, 2, 3$。
+
+给定绘图精度 $\epsilon$，我们要求满足 $|z_2 - z_1| \leq \epsilon$ 且 $|z_3 - z_2| \leq \epsilon$，才能终止该分支在字树（word tree）上的正向枚举。若条件满足，我们依次绘制两条线段：一条从 $z_1$ 到 $z_2$，另一条从 $z_2$ 到 $z_3$。这就是我们所需的全部修改。
+
+:::{.simple}
+Figure 7.15 shows a slow motion execution of this special word algorithm for the gasket. As above, $a,b$ 
+and the commutator have been listed as special words. A piece of the gasket has been plotted at the rather large gap size of `epsilon=0.1`. As you can see, all the contact points between far away parts of the limit set curve are completely filled in and the algorithm produces limit sets with no visible gaps. You will see better how the special word algorithm works if you follow through the description in Note 7.4.
+:::
+
+图 7.15 展示了这种针对垫片的特殊词算法的慢动作执行过程。和上文一样， 特殊词中包括 $a,b$ 和换位子。图中绘制了垫片的一部分，采用了较大的间隙尺寸 `epsilon=0.1`。正如你所见，极限集曲线中远处部分之间的所有接触点都已被完全填充，算法生成的极限集不再存在可见的间隙。如果你参照 [注记 7.4](#note-7.4) 中的描述，将能更清楚地理解特殊词算法的工作原理。
+
+:::{.simple}
+Many fractals are created through a process of iteration which is not terribly sensitive to the order of execution of the program. Seeing limit sets like the gasket drawn as curves is too wonderful to leave to such a procedure. When testing your program it is essential to scrutinize with excruciating care the order of infinite words and corresponding limit points. For lack of space (it's already a crowded picture), not all the limit points in Figure 7.15 have been labelled. If you really wish to test your understanding of the algorithm, you should try to fill in some missing labels, which can be done given the dictionary ordering and the desired special words. 
+:::
+
+许多分形图形是通过迭代过程生成的，而这种过程对程序的执行顺序通常并不十分敏感。然而，像垫片（gasket）这样的极限集，如果仅仅以这种方式画成曲线，未免太过可惜——它的美妙远不止于此。
+
+在测试程序时，务必仔细审查无限词的顺序及其对应的极限点，做到一丝不苟。由于空间有限（图 7.15 已经非常拥挤），并未对其中的所有极限点标注。如果你真的想检验自己对算法的理解，不妨尝试补全其中缺失的标注。只要参考字典序和那些特殊的目标词，这项工作是完全可行的。
+
+:::{.note #note-7.4}
+**Note 7.4: Tracing the gasket**
+
+**注记 7.4：追踪垫片**
+
+To understand the workings of our special word algorithm better, you may like to try following along segments of the curve in Figure 7.15 carefully as we describe here.
+
+Let's focus on the segment of limit set between points 1 and 35. This is the segment corresponding to all words with prefix $bA$. As you can see by referring to our chart of repetends, $1 = bABabA$ and $35 = bAbaBA$. (In the figure, these points are written slightly differently, simply because we chose a different point starting point for cycling the repetend. So for example $bABabA$ is exactly the same sequence as $\overline{bABA}$.) As you can see by following the numbers closely, the segment of limit set between points $1 = bABabA$ and $35 = bAbaBA$ passes through the bad fixed point $20 = bAA$. At this scale the distortion is not too bad – in comparison to the distance between 1 and 35, the point 20 is not too far away. Things get worse when you go to the next level and study the subsegment corresponding to infinite words with prefix $bAA$. The initial point of this section of limit set is $15 = bAABabA$ and the final point is $25 = bAAbaBA$. The outlier is still 20, which can also be written as $bAAA$. See how 20 is pulled quite far out in comparison to the distance between 15 and 25. This is happening because in fact $20 = b\overline{A}$ is the same point as 128 = $b\overline{a}$, which is in quite a different section of the path round the boundary of the word tree. Our algorithm would only stop at this prefix if the distances from 15 to 20 and from 20 to 25 were both less than the cut-off value $\epsilon$. At the next stage, look at the interval between 17 = $bAAABabA$ and 23 = $bAAAbaBA$. The outlier is still 20 = $bAAAA$. Now the disproportion between the distances from 17 to 23, as opposed to the distances from 17 to 20 and 20 to 23, is really getting large. As you go further and further into the spike, the disproportion gets ever worse, so the finer you want to plot your pictures the more important it is to check out these outliers. If we weren't using the special words algorithm, the plot would terminate far too soon, chopping off the piece of limit set which sticks out into the spike.
+
+为了更好地理解我们的特殊单词算法的工作原理，不妨按照我们在此描述的内容，仔细沿着图 7.15 中曲线的某些部分追踪观察。
+
+让我们聚焦于点 1 和点 35 之间的极限集部分。这一部分对应于所有以 $bA$ 为前缀的单词。参照我们的循环节图表，可以看到 $1 = bABabA$，而 $35 = bAbaBA$。（图中这些点的表示稍有不同，仅仅是因为我们选择了一个不同的起始点来循环循环节。例如，$bABabA$ 与 $\overline{bABA}$ 实际上是完全相同的序列。）
+
+仔细观察编号，可以发现，从点 $1 = bABabA$ 到点 $35 = bAbaBA$ 的极限集部分经过了那个糟糕的不动点 $20 = bAA$。在这个尺度下，尽管存在一定的畸变，但相较于点 1 和点 35 之间的距离，点 20 也并不算太远。然而，情况在进一步深入时变得更糟。当研究对应于以 $bAA$ 为前缀的无限单词的子区段时，情况就更明显了。这个区段的起始点是 $15 = bAABabA$，终点是 $25 = bAAbaBA$。
+
+异常点依然是 20，它也可以写作 $bAAA$。注意点 20 在图中被拉出了相当远的距离，相较于点 15 到点 25 之间的距离，点 20 的偏离尤为显著。这种现象的根本原因在于，实际上 $20 = b\overline{A}$ 与 $128 = b\overline{a}$ 是同一个点，而该点在单词树边界路径的完全不同的部分。我们的算法仅在点 15 到点 20 以及点 20 到点 25 的距离都小于截断值 $\epsilon$ 时，才会在该前缀处停止。
+
+再往下一层观察区间时，查看点 17 = $bAAABabA$ 和点 23 = $bAAAbaBA$ 之间的区段。异常点依然是点 20 = $bAAAA$。此时，点 17 到点 23 的距离，与点 17 到点 20 以及点 20 到点 23 的距离之间的失衡变得更加明显。随着你在这根尖刺中不断深入，这种失衡愈加严重。因此，越是要精细地绘制图形，检查这些异常点就越重要。如果我们没有使用特殊单词算法，绘图将会过早终止，从而截断伸入尖刺的那一部分极限集。
+:::
+
+# Projects
+
+:::{.simple #proj-7.1}
+**7.1: Uniqueness of ideal triangles**
+
+**7.1：理想三角形的唯一性**
+
+How many ideal triangles can you draw with given vertices $P$, $Q$ and $R$? If the vertices are $0$, $1$ and $\infty$, show that the sides must be the two ‘vertical’ lines through $0$ and $1$ and the circle with centre $1/2$, radius $1/2$. Thus there are exactly two ideal triangles with these vertices, but only in the ‘upper’ triangle are the vertices $0$, $1$ and $\infty$ in anticlockwise order round the edge. Sometimes this is called the standard ideal triangle. Find its incircle.
+
+Suppose now you have another ideal triangle with vertices $P$, $Q$ and $R$ in anticlockwise order. Project 3.2 showed there is exactly one Möbius map $M$ which carries $0$, $1$ and $\infty$ to $P$, $Q$, $R$ in that order. What properties of Möbius maps show that $M$ carries the standard ideal triangle into the new one? If there were another other ideal triangle with the same vertices in the same order, what would happen when you applied $M^{-1}$? Why does any ideal triangle have exactly one incircle?
+
+给定顶点 $P$、$Q$ 和 $R$，可以画出多少个理想三角形？如果顶点是 $0$、$1$ 和 $\infty$，可以证明它们的边必须是通过 $0$ 和 $1$ 的两条“垂直”直线，以及以 $1/2$ 为圆心、$1/2$ 为半径的圆。因此，具有这些顶点的理想三角形恰好有两个，但只有在“上方”的三角形中，顶点 $0$、$1$ 和 $\infty$ 按逆时针顺序排列在边界上。有时这个三角形被称为标准理想三角形。找出它的内切圆。
+
+假设现在有另一个理想三角形，其顶点 $P$、$Q$ 和 $R$ 按逆时针顺序排列。项目 3.2 表明，存在唯一的莫比乌斯变换 $M$，将 $0$、$1$ 和 $\infty$ 依次映射到 $P$、$Q$、$R$。莫比乌斯变换的哪些性质表明 $M$ 将标准理想三角形映射到新的三角形？如果存在另一个具有相同顶点且按相同顺序排列的理想三角形，那么对其应用 $M^{-1}$ 会发生什么？为什么任何理想三角形都有且仅有一个内切圆？
+:::
+
+
+:::{.simple #proj-7.2}
+7.2: An instance of Soddy's formula
+
+**7.2：索迪公式的一个实例**
+
+Calculate the radius of the incircle $C_A$ in the right frame of Figure 7.4 using Soddy's formula, and check your answer with a more conventional computation using Pythagoras' theorem. Be careful: one circle has infinite radius! Use your result to show that the points $S$ and $R$ in the figure are at $\pm 0.2 - 0.4i$, and then check the generators pair the tangency points properly.
+
+使用索迪公式计算图 7.4 右侧框中的内切圆 $C_A$ 的半径，并通过应用勾股定理进行常规计算来验证你的结果。请小心：其中一个圆的半径是无限的！利用你的结果，证明图中的点 $S$ 和 $R$ 位于 $\pm 0.2 - 0.4i$，然后检查生成器是否正确地配对了切点。
+:::
+
+
+:::{.simple #proj-7.3}
+**7.3: The Ford circles**
+
+**7.3: 福特圆**
+
+There is a remarkable pattern for the radii of the circles which touch the real axis in Figure 7.5, commonly credited to Lester Ford. The pattern is easiest to analyze if we shift and scale so that the largest pink circles are tangent to the real axis at integer points, so they have diameter $1$, and the strip is $1$ unit high. Then there is exactly one circle (pink or white) tangent at every rational point $p/q$. Find the pattern that describes which rationals $p/q$ are tangent to a white circle, and which to a pink one.
+
+The formula for the radius of the circle tangent at $p/q$ is quite simple. It depends only on $q$. For example, at each integer point $n/1$ the denominator is $1$ and the radius is $1/2$. At each half-integer, $\pm 1/2, \pm 3/2$, etc., the denominator is $2$ and the radius is $1/8$. Those are all the hints we'll give.
+
+如图 7.5 所示，与实轴相切的圆的半径呈现出一个显著的规律，通常归功于 Lester Ford。最容易分析这个规律的方法是通过平移和缩放，使得最大的粉色圆与实轴在整数点相切，直径为 $1$，并且该条带的高度为 $1$ 单位。这样，恰好每个有理数点 $p/q$ 上都会有一个圆（无论是粉色还是白色）与实轴相切。接下来，找出描述哪些有理数 $p/q$ 与白色圆相切，哪些与粉色圆相切的规律。
+
+在 $p/q$ 处与实轴相切的圆的半径公式非常简单，它只与分母 $q$ 有关。例如，在每个整数点 $n/1$ 处，分母为 $1$，半径为 $1/2$；在每个半整数点 $\pm 1/2, \pm 3/2$ 等处，分母为 $2$，半径为 $1/8$。这些就是我们给出的所有提示。
+:::
+
+
+:::{.simple #proj-7.4}
+**7.4: Another modular group in the gasket group**
+
+**垫片群中的另一个模群**
+
+In the text (see p. 213), we focussed on the modular group acting in what were the pink disks in Figure 7.4. (The tiling of these disks is shown in Figure 7.6.) The modular group acts in the white disks too. In the right frame of Figure 7.4, look at the lower blue circles $C_B$ and $C_b$. Their images $a(C_B)$ and $a(C_b)$ are also tangent circles, actually the reflections of the first two in the real axis. These four circles are tangent and cut the white exterior of the unit disk into four quarters. Twist yourself inside out to see that in this white exterior we also have the gluing pattern for the modular group: four tangent circles with neighbouring circles being paired. Show that the two tangency points correspond to the parabolic elements $b$ and $abA$, while the other two are the products $abAB$ and $BabA$, which are parabolic with fixed points at $1$ and $-1$ respectively. The limit set for this subgroup is the unit circle.
+
+在文本中（见第 213 页），我们集中讨论了模群在图 7.4 中粉色圆盘上的作用。（这些圆盘的镶嵌方式见图 7.6。）模群同样作用于白色圆盘。在图 7.4 的右侧框架中，观察下方的蓝色圆圈 $C_B$ 和 $C_b$。它们的像 $a(C_B)$ 和 $a(C_b)$ 也是相切的圆，实际上是前两个圆关于实轴的对称映像。这四个圆相切，并且将单位圆的白色外部区域切割成四个部分。试着从另一个角度来理解，你会发现，在这片白色外部区域中，模群的拼接模式也显现出来：四个相切的圆，其中相邻的圆形成一对。证明这两个相切点对应于抛物线元 $b$ 和 $abA$，而另外两个则是乘积 $abAB$ 和 $BabA$，这两个也是抛物线元，分别在 $1$ 和 $-1$ 处有不动点。这个子群的极限集是单位圆。
+:::
+
+
+:::{.simple #proj-7.5}
+**7.5: Farey fractions and Euclid's algorithm**
+
+**7.5: 法雷分数与欧几里得算法**
+
+To show that every rational number $p/q$ is a vertex of the modular tiling in Figure 7.9 we need to find two other integers $r$ and $s$ such that $ps - qr = \pm 1$. Why will this do what we want?
+
+The procedure for finding $r$ and $s$ like this is exactly the famous Euclidean algorithm for finding the highest common factor of two numbers. In this case, we may as well suppose that $p/q$ is in its lowest terms so the highest common factor is 1. Let's suppose $p > q > 0$. The algorithm says we shall be able to find integers $a_1, r_1, a_2, r_2, \ldots$ and so on such that:
+
+$$\begin{aligned}
+& p = a_1 q + r_1, \quad 0 < r_1 < q, \\
+& q = a_2 r_1 + r_2, \quad 0 < r_2 < r_1, \\
+& r_1 = a_3 r_2 + r_3, \quad 0 < r_3 < r_2, \\
+& \vdots \\
+& r_{n-1} = a_{n+1} r_n + 1.
+\end{aligned}
+$$
+
+Using these equations you can work backwards to find $r$ and $s$. For example, if $p = 14$, $q = 3$ then $14 = 4 \cdot 3 + 2$, $3 = 2 \cdot 1 + 1$ and so $14 - 4 \cdot 3 = 2 = 3 - 1$ giving $14 - 5 \cdot 3 = -1$. Now try to spot the connection with continued fractions:
+
+$$\frac{14}{3} = 4 + \frac{2}{3} = 4 + \frac{1}{\frac{3}{2}} = 4 + \frac{1}{1 + \frac{1}{2}}.$$
+
+要证明每个有理数 $p/q$ 都是图 7.9 中模群镶嵌的一个顶点，我们需要找到两个整数 $r$ 和 $s$，使得 $ps - qr = \pm 1$。为什么这能达到我们的目标？
+
+这种寻找 $r$ 和 $s$ 的方法正是著名的欧几里得算法，用于求两个数的最大公因数。在这种情况下，我们可以假设 $p/q$ 已经化为最简分数，因此它们的最大公因数为 1。假设 $p > q > 0$。算法指出，我们可以找到整数 $a_1, r_1, a_2, r_2, \ldots$ 等，使得：
+
+$$\begin{aligned}
+& p = a_1 q + r_1, \quad 0 < r_1 < q, \\
+& q = a_2 r_1 + r_2, \quad 0 < r_2 < r_1, \\
+& r_1 = a_3 r_2 + r_3, \quad 0 < r_3 < r_2, \\
+& \vdots \\
+& r_{n-1} = a_{n+1} r_n + 1.
+\end{aligned}
+$$
+利用这些等式可以回溯找到 $r$ 和 $s$。例如，如果 $p = 14$，$q = 3$，则 $14 = 4 \cdot 3 + 2$，$3 = 2 \cdot 1 + 1$，因此 $14 - 4 \cdot 3 = 2 = 3 - 1$，从而 $14 - 5 \cdot 3 = -1$。现在尝试找到与连分数的联系：
+$$\frac{14}{3} = 4 + \frac{2}{3} = 4 + \frac{1}{\frac{3}{2}} = 4 + \frac{1}{1 + \frac{1}{2}}.$$
+:::
+
+:::{.simple #proj-7.6}
+**7.6: The modular group and odd-even fractions**
+
+**7.6：模群与奇偶分数**
+
+Show that if $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is in the (small) modular group then $a$ and $d$ are odd and $b$ and $c$ are even. Why is a fraction in the orbit of $0$ under the (small) modular group exactly when it is ‘even/odd’? What can you say about odd/odd and odd/even? (Notice that in any triple of Farey neighbours you get one fraction of each kind.)
+
+证明如果 $\begin{pmatrix} a & b \ c & d \end{pmatrix}$ 属于（小）模群，则 $a$ 和 $d$ 为奇数，$b$ 和 $c$ 为偶数。为什么当一个分数在（小）模群作用下的轨道中时，它恰好是“偶/奇”分数？关于奇/奇和奇/偶分数可以说些什么？（请注意，在任何一个 Farey 邻居三元组中，总会有一种类型的分数。）
+:::
+
+:::{.simple #proj-7.7}
+**7.7: The modular group or not?**
+
+**7.7：模群还是别的？**
+
+It is interesting to compare the group which generated Figure 6.5 in the last chapter with the modular group. The group in Chapter 6 has generators
+
+$$a = \begin{pmatrix} \sqrt{2} & i \\ -i & \sqrt{2} \end{pmatrix} \text{ and } b = \begin{pmatrix} \sqrt{2} & 1 \\ 1 & \sqrt{2} \end{pmatrix}.$$
+
+The conjugated picture of this group in frame (v) of Figure 6.10 looks exactly the same as the basic tile for the modular group in Figure 7.9. Are these two groups the same up to conjugation or not?
+
+将第 6 章中生成 [图 6.5](#fig-6.5) 的群与模群进行比较很有趣。第 6 章中的群的生成元为：
+$$a = \begin{pmatrix} \sqrt{2} & i \\ -i & \sqrt{2} \end{pmatrix} \text{ and } b = \begin{pmatrix} \sqrt{2} & 1 \\ 1 & \sqrt{2} \end{pmatrix}.$$
+在 [图 6.10](#fig-6.10) 的第 (v) 帧中，该群的共轭图看起来与 [图 7.9](#fig-7.9) 中模群的基本镶嵌完全相同。它们是否在共轭意义下相同？
+:::
+
+
+:::{.simple #proj-7.8}
+**7.8: A special Schottky group**
+
+**7.8：一个特殊的 Schottky 群**
+
+In Project 4.1 we introduced a family of Schottky groups depending on 2 real numbers $s$ and $t$ which mapped the real axis to itself. These groups were designed so that the order of the Schottky circles along the real axis was the same as for the modular group. In fact, we organised things so that when $s = 0$ and $t = 1$, we get the modular group itself! Just as we did on p. $179 ff$. in the last chapter, we can use this family to see explicitly what happens as we bring the four disjoint circles together until they touch.
+
+Check that if $s = 0$, then both generators are parabolic. Which of the four Schottky circles touch? Show that if $s = 0$ then $\text{Tr } ab = 2 - 4/t^2$ and the distance between its fixed points is $4\sqrt{1 - t^2}/t^2$. Hence verify directly that as $t$ tends to 1, $ab$ also becomes parabolic with trace $-2$ and fixed point at $-1$, the tangency point of $C_a$ and $C_b$. Which group element corresponds to the tangency point of $C_A$ and $C_b$? Why does it become parabolic at the same time as $ab$?
+
+在项目 4.1 中，我们介绍了一个取决于两个实数 $s$ 和 $t$ 的 Schottky 群族，这些群将实轴映射到自身。我们特意设计这些群，使得沿实轴的 Schottky 圆的排列顺序与模群相同。事实上，我们特意安排使得当 $s = 0$ 且 $t = 1$ 时，该群就是模群本身！正如上一章第 179 页及后续部分所讨论的那样，我们可以利用这个群族来直观地观察，当四个互不相交的圆逐渐靠近直至相切时会发生什么。
+
+验证当 $s = 0$ 时，这两个生成元都是抛物变换。此时，哪四个 Schottky 圆相切？证明如果 $s = 0$，则 $\tr{ab} = 2 - 4/t^2$，且其不动点之间的距离为 $4\sqrt{1 - t^2}/t^2$。从而可以直接验证，当 $t \to 1$ 时，$ab$ 也成为一个抛物变换，其迹为 $-2$，且不动点为 $-1$，即圆 $C_a$ 和 $C_b$ 的切点。哪个群元素与圆 $C_A$ 和 $C_b$ 的切点相关？为什么它会恰好在 $ab$ 变为抛物变换时同时成为抛物变换？
+:::
+
+
+:::{.simple #proj-7.9}
+**7.9: Nesting circles which don't shrink!**
+
+**7.9：不会收缩的嵌套圆！**
+
+It is not quite easy to find an explicit group whose generators $a$ and $b$ pair opposite Schottky circles in a tangent chain in such a way that $abAB$ is not parabolic. If instead we use circles paired according to the modular group pattern, it is much simpler. The non-parabolic element will be the product $ab$.
+
+We do it with a slight alteration to the modular group which is easiest to describe in terms of the vertices of the red and green ideal quadrilateral in Figure 7.9. Fix the vertices at $0$, $-1$ and $\infty$ but move the vertex $1$ to a point $r$ on the real axis slightly to its right (so $r > 1$). Check that
+
+$$b = \begin{pmatrix} 1 & 1 + r \\ 0 & 1 \end{pmatrix} \text{ and } a = \begin{pmatrix} 1 & 0 \\ -1 - 1/r & 1 \end{pmatrix}$$
+
+pair the new chain of tangent circles, matching tangency points correctly.
+
+Verify that $a$ and $b$ are parabolic with fixed points at $\infty$ and $0$. Now calculate $ab$ and show it is hyperbolic whenever $r > 1$. Where are its fixed points? If you have a suitable program up and running, you may wish to draw some pictures to check that the diameters of the nested circles do not shrink properly near $-1$ and $r$.
+
+要显式构造一个群，使其生成元 $a$ 和 $b$ 能将相切链中相对的 Schottky 圆配对，且使得 $abAB$ 不是抛物型变换，这并非易事。但若采用模群的圆配对方式，问题便大为简化——此时非抛物元素恰是乘积
+
+我们通过对模群稍作调整来实现这一点，最简单的方法是借助图 7.9 中红色和绿色理想四边形的顶点：将三个顶点固定于 $0,-1,\infty$ 处，并将顶点 $1$ 沿实轴向右侧略微移动至 $r$（即 $r > 1$）。可验证矩阵
+$$b = \begin{pmatrix} 1 & 1 + r \\ 0 & 1 \end{pmatrix} \text{ and } a = \begin{pmatrix} 1 & 0 \\ -1 - 1/r & 1 \end{pmatrix}$$
+
+能正确配对新生成的相切圆链，并精确匹配切点。
+
+验证这时 $a$ 和 $b$ 都是抛物型变换，其不动点分别位于 $\infty$ 和 $0$。然后计算 $ab$ 并证明当 $r > 1$ 时它是双曲变换。它的不动点在哪里？如果你有合适的程序运行，不妨绘制一些图像，检查靠近 $-1$ 和 $r$ 处的嵌套圆的直径是否未按预期缩小。
+:::
+
 
 [^1]: Reproduced from Nature, 137, 1936.
 [^2]: The refinement has to do with ensuring that circles appear with the desired visual accuracy.
