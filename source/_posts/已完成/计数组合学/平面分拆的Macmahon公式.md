@@ -8,12 +8,12 @@ url: "macmahon-formula-plane-partitions"
 :::{.question .unnumbered}
 一个边长为 $a\times b\times c$ 的平行六边形（$a,b,c$ 都是正整数），每个内角都是 120 度。用边长为 1 的菱形密铺，有多少种不同的方法？
 
-![$a\times b\times c$ 的六边形](/images/macmahon/hexagon.svg){width=400}
+![](/images/macmahon/hexagon.svg){width=400 .fig}
 :::
 
 下图是一种密铺的示例：
 
-![一个密铺的例子，顶部的数字表示高度，解释见下文](/images/macmahon/planepartition.svg){width=400}
+![](/images/macmahon/planepartition.svg){width=400 .fig}
 
 <!-- more -->
 
@@ -63,11 +63,11 @@ $$M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
 
 每个平面分拆的矩阵 $A$ 都对应 $c$ 条这样的路径，其中第 $k$ 条路径是高度为 $k\,(1\leq k\leq c)$ 的那一层的「等高线」：
 
-![等高线示意图](/images/macmahon/paths-on-cubes.svg){width=400}
+![](/images/macmahon/paths-on-cubes.svg){width=400 .fig}
 
 我们把这些路径投影到 2D，和矩阵 $A$ 画在一起。从最下方的路径开始，第 $i$ 条路径对应的是矩阵中 $\geq i$ 的那些方格构成的区域的边界：
 
-![等高线投影到 $xy$ 平面上的效果图](/images/macmahon/gauss_path.svg){width=500}
+![](/images/macmahon/gauss_path.svg){width=500 .fig}
 
 :::{.note}
 在上图中，我稍微移动了各个路径的位置，使得它们容易在视觉中区分，所以导致看起来它们的起点和终点是不同的。实际上它们都是从 $(0,0)$ 到 $(b,a)$ 的 Gauss 路径。
