@@ -14,7 +14,7 @@ url: "Rouche-theorem-winding-number"
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fdK3RD?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
 :::
 
-对应的数学结论是：两条闭曲线 $\gamma_1,\gamma_2$ 如果都不经过原点，且 $\gamma_1$ 可以在不碰触到原点的前提下通过连续的形变变为 $\gamma_2$（同伦），则 $\gamma_1,\gamma_2$ 关于原点的环绕数相等。
+对应的数学结论是：如果两条闭曲线 $\gamma_1,\gamma_2$ 都不经过原点，且 $\gamma_1$ 可以在不碰触到原点的前提下通过连续的形变变为 $\gamma_2$（同伦），则 $\gamma_1,\gamma_2$ 关于原点的环绕数相等。
 
 注意这个结论只要求 $\gamma_1,\gamma_2\colon\ [0,1]\to\mathbb{R}^2$ 是两条连续曲线，并不涉及解析性。因为环绕数和同伦都是拓扑概念，只涉及连续性。
 
@@ -26,7 +26,7 @@ $f(z)$ 在 $S^1$ 的内部有 3 个根 （我用红点标出来了），在 $S^1
 $$|f(z)| = |z - 2 - 2i| \geq 2\sqrt{2} - 1,\quad z\in S^1.$$
 所以只要绳子 $l(z)$ 满足 $|l(S^1)| < 2\sqrt{2}-1$，则狗走的路径 $g(S^1)=f(S^1)+l(S^1)$ 就不可能接触到原点。我这里取了 $l(z) = cz$，其中 $c$ 是一个小于 $2\sqrt{2}-1$ 的正实数。
 
-Needham 的书中还介绍了曲线 $\gamma$ 的环绕数在 $\mathbb{C}\setminus\gamma$ 的每个连通分支上都是常数。对不在 $\gamma$ 上的一点 $z$，我们可以稍稍移动 $z$ 到另一个点 $z'$，只要保持 $z'$ 仍然位于 $z$ 所在的连通分支内，$\gamma$ 关于 $z$ 和 $z'$ 的环绕数就一定相同。利用这个事实并结合幅角原理不难得出下面的结论：
+Needham 的书中还介绍了 $\gamma$ 的环绕数在 $\mathbb{C}\setminus\gamma$ 的每个连通分支上都是常数。对不在 $\gamma$ 上的一点 $z$，我们可以稍稍移动 $z$ 到另一个点 $z'$，只要保持 $z'$ 仍然位于 $z$ 所在的连通分支内，$\gamma$ 关于 $z$ 和 $z'$ 的环绕数就一定相同。利用这个事实并结合幅角原理不难得出下面的结论：
 
 :::{.corollary .unnumbered #connected-component}
 **推论**
@@ -41,7 +41,6 @@ $$\sharp\{z\in \Omega: f(z)=w_0\} = \sharp\{z\in \Omega: f(z)=w_1\}.$$
 :::
 
 **证明**：这是因为根据条件，从 $w_0$ 沿着线段 $[w_0,w_1]$ 移动到 $w_1$ 的过程中始终不会碰触到曲线 $f(\gamma)$，所以 $w_0,w_1$ 必然位于同一连通分支内。$\blacksquare$
-
 
 利用此推论我们不难得出复分析中的 [开映射定理](https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis))：
 

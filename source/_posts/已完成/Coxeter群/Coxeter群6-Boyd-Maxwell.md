@@ -59,9 +59,9 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 
 # 射影模型
 
-在这一节中，我们约定 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，即在这组基下内积的 Gram 矩阵为 $\left(\begin{smallmatrix}I_{n+1} &\\ & -1\end{smallmatrix}\right)$。令
+在本节中，我们记 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，于是内积在这组基下的 Gram 矩阵为 $\left(\begin{smallmatrix}I_{n+1} &\\ & -1\end{smallmatrix}\right)$。令
 $$e_0=\frac{e_{n+2}-e_{n+1}}{2},\quad e_\infty=\frac{e_{n+2}+e_{n+1}}{2}.$$
-则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组基下的 Gram 矩阵为
+则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组新基下的 Gram 矩阵为
 $$\begin{pmatrix}0&&&-\frac{1}{2}\\&I_n&&\\-\frac{1}{2}&&&0\end{pmatrix}.$$
 任何两个向量 $v,w\in V$ 可以写成如下的形式：
 $$\begin{aligned}
@@ -72,7 +72,7 @@ w&=ce_0 + \y + de_\infty.
 $$(v,w) = (\x, \y) - \frac{ad+bc}{2}.$$
 使用 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基在处理 $\R^n$ 中的球时更方便一些。
 
-设 $v\in\R^{n+1,1}$，我们约定用 $[v]$ 表示 $v$ 在射影空间 $\PR$ 中的等价类。
+设 $v\in\R^{n+1,1}$，用 $[v]$ 表示 $v$ 在射影空间 $\PR$ 中的等价类。
 
 ::: definition
 定义光锥 (light cone/null cone) 为

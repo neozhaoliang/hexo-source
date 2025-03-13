@@ -14,7 +14,7 @@ url: "Marden-theorem"
 
 1. 在复平面上三角形 $\Delta ABC$ 的三个顶点处各自放置一个单位正电荷，则平面上电场强度为 0 的点有两个（这两个点可能重合），它们位于 $\Delta ABC$ 的内部，并且是三次复多项式 $P(z) = (z-A)(z-B)(z-C)$ 的导数 $P'(z)$ 的零点。
 
-2. 不仅如此，这两个零点还是一个内切于 $\Delta ABC$ 的椭圆的两个焦点，此椭圆是所有内切于 $\Delta ABC$ 的椭圆中面积最大者，并且其与 $\Delta ABC$ 的三边的切点均为各边中点。这个椭圆叫做 [Steiner 内切椭圆](https://en.wikipedia.org/wiki/Steiner_inellipse)。
+2. 不仅如此，这两个零点还是一个内切于 $\Delta ABC$ 的椭圆的两个焦点，此椭圆是所有内切于 $\Delta ABC$ 的椭圆中面积最大者，其与 $\Delta ABC$ 三边的切点均为各边中点。这个椭圆叫做 [Steiner 内切椭圆](https://en.wikipedia.org/wiki/Steiner_inellipse)。
 
 这个动画是受几天前 Albert Chern 的 [一篇推文](https://twitter.com/theAlbertChern/status/1395468792788967428?s=20) 启发所作，John Baez 也写了一篇关于这个话题的 [文章](https://johncarlosbaez.wordpress.com/2021/05/24/electrostatics-and-the-gauss-lucas-theorem/)。我是由此才了解到 Marden 定理还有如此有趣的物理学解释，的确大开眼界！
 

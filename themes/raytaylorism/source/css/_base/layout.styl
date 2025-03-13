@@ -157,11 +157,16 @@ object
     margin-right: auto;
     display: block;
 
+figure
+    margin: 0 auto;
+    text-align: center;
+
 figcaption
-    display: block; /* 确保标题单独一行 */
+    display: inline-block; /* 确保标题单独一行 */
     margin: 0.5em auto 2em;/* 调整标题与图片的间距 */
     font-size: 0.8em; /* 调整标题字体大小 */
     color: #666; /* 调整标题颜色 */
     max-width: 75%
     overflow-wrap: break-word
-    text-align: left;
+    text-align: justify;
+    text-align-last: left;
