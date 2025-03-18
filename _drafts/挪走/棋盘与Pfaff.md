@@ -42,11 +42,11 @@ $$\mathrm{wt}(\pi)=\text{sgn}(\pi)\cdot a_\pi.$$
 $$a_\pi=a_{i_1j_1}a_{i_2j_2}\cdots a_{i_nj_n}.$$
 于是 $\mathrm{wt}(\pi)$ 是一个次数为 $n$ 的单项式。
 
-$\mathrm{wt}(\pi)$ 的定义是合理无歧义的吗？注意一个匹配 $\pi$ 可以有多种不同的置换表示：你可以按任意的顺序排列这些 $(i_k,j_k)$ 对，比如
+但是，$\mathrm{wt}(\pi)$ 的定义是合理无歧义的吗？注意一个匹配 $\pi$ 可以有多种不同的置换表示：你可以按任意的顺序排列这些 $(i_k,j_k)$ 对，比如
 $$\pi=\begin{pmatrix}1&2&3&4&\cdots&2n-1&2n\\i_2&j_2&i_3&j_3&\cdots&i_1&j_1\end{pmatrix}.$$
 或是交换某一对中 $i_k$ 和 $j_k$ 的位置：
 $$\pi=\begin{pmatrix}1&2&\cdots&2k-1&2k&\cdots&2n-1&2n\\i_1&j_1&\cdots&j_k&i_k&\cdots&i_n&j_n\end{pmatrix}.$$
-不难验证，虽然不同的置换表示给出的 $\text{sgn}(\pi)$ 和 $a_\pi$ 的值可能不同，但是二者的乘积 $\mathrm{wt}(\pi)$ 的值总是一样的。比如把某个 $(i_k,j_k)$ 改写成 $(j_k,i_k)$，那么 $\text{sgn}(\pi)$ 和 $a_\pi$ 都同时变号，乘积保持不变。总之 $\mathrm{wt}(\pi)$ 的定义只与匹配 $\pi$ 有关，并不依赖于具体置换的选择。
+不难验证，虽然不同的置换表示给出的 $\text{sgn}(\pi)$ 和 $a_\pi$ 可能不同，但是二者的乘积 $\mathrm{wt}(\pi)$ 总是一样的。比如把某个 $(i_k,j_k)$ 改写成 $(j_k,i_k)$，那么 $\text{sgn}(\pi)$ 和 $a_\pi$ 都同时变号，乘积保持不变。总之 $\mathrm{wt}(\pi)$ 的定义只与匹配 $\pi$ 有关，并不依赖于具体置换的选择。
 
 :::{.definition .unnumbered}
 设 $\mathcal{M}_{2n}$ 为 $[2n]$ 的所有匹配组成的集合，矩阵 $A$ 的 Pfaffian 多项式 $\text{pf}(A)$ 定义为
@@ -64,7 +64,7 @@ $$\det A=\sum_{\sigma\in S_{2n}}\text{sgn}(\sigma)a_{\sigma}=\sum_{\sigma\in S_{
 
 回忆任何置换 $\sigma$ 都可以表示为若干不相交的轮换的乘积：
 $$\sigma = (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.$$
-其中 $k,l,\ldots$ 是各个轮换的长度。设 $\mathcal{E}_{2n}$ 为轮换长度都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，$\sigma$ 只跑遍 $\mathcal{E}_{2n}$，不属于 $\mathcal{E}_{2n}$ 的那些置换整体对行列式的贡献为 0。
+设 $\mathcal{E}_{2n}$ 为轮换长度 $k,l,\cdots$ 都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，$\sigma$ 只跑遍 $\mathcal{E}_{2n}$，不属于 $\mathcal{E}_{2n}$ 的那些置换整体对行列式的贡献为 0。
 
 分两种情况：
 
@@ -72,15 +72,15 @@ $$\sigma = (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.$$
 2. 如果 $\sigma$ 没有不动点，但是包含长度为奇数的轮换，选择其中含有最小元素的那个，设为 $C=(i_1i_2\cdots i_k)$，这里 $k$ 为奇数且大于等于 3。定义置换 $\sigma'$ 如下：$\sigma'$ 的其它轮换与 $\sigma$ 完全相同，只是把 $C$ 整个倒过来变成 $(i_k\cdots i_2i_1)$。显然 $\sigma'$ 对应的和项与 $\sigma$ 抵消，而且如果对 $\sigma'$ 执行此操作又会回到 $\sigma$。于是所有没有不动点，而且包含长度是奇数的轮换的置换可以两两配对抵消。
 
 :::{.example}
-$\sigma=(1\,3)(2\,4\,6)(5\,7\,8)(9\,10)$ 有 2 个长度为奇数的轮换 $(246)$ 和 $(578)$，这两个轮换中最小的元素是 $2$，它出现在 $(2\,4\,6)$ 中，所以 $\sigma'=(1\,3)(6\,4\,2)(5\,7\,8)(9\,10)$。
+$\sigma=(1\,3)(2\,4\,6)(5\,7\,8)(9\,10)$ 有 2 个长度为奇数的轮换 $(246)$ 和 $(578)$，最小的元素 $2$ 出现在 $(2\,4\,6)$ 中，所以 $\sigma'=(1\,3)(6\,4\,2)(5\,7\,8)(9\,10)$。
 :::
 
-这就证明了在行列式的求和中，我们只需要考虑那些轮换分解长度都是偶数的置换。
+这就证明了在行列式的求和中，$\sigma$ 只跑遍那些轮换分解长度都是偶数的置换。
 
 于是为了证明 $\det A=[{\rm pf}(A)]^2$，只要证明
 $$\sum_{\pi\in\mathcal{M}_{2n}}\sum_{\pi'\in\mathcal{M}_{2n}}{\rm wt}(\pi){\rm wt}(\pi')=\sum_{\sigma\in\mathcal{E}_{2n}}{\rm sgn}(\sigma) a_\sigma.$$
 
-为此我们来建立一个双射
+为此我们来证明存在双射
 $$\mathcal{M}_{2n}\times \mathcal{M}_{2n}\rightarrow \mathcal{E}_{2n}:\quad (\pi,\pi')\rightarrow \sigma.$$
 而且这个双射还保持权的相等，即
 $$\mathrm{wt}(\pi)\cdot \mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.$$
@@ -126,11 +126,13 @@ $$\det A=\left(\sum_{\pi\in\mathcal{M}_{2n}}\mathrm{wt}(\pi)\right)^2=\left(\sum
 
 回忆在证明 @Pre:pfaff 时，我们有结论
 $$\mathrm{wt}(\pi)\cdot \mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.$$
-要使得所有非零的 $\mathrm{wt}(\pi)$ 都同为 +1 或者同为 -1，只要让每个非零的 $\text{sgn}(\sigma)a_{\sigma}$ 都等于 1 即可。设 $\sigma$ 是一个使得 $a_\sigma\ne0$ 的置换且 $\sigma$ 的轮换分解为 $\sigma=C_1\cdots C_l$，则 $\text{sgn}(\sigma)=(-1)^l$，$a_\sigma=a_{C_1}\cdots a_{C_l}$。这里记号 $a_{C_i}$ 的含义是，如果 $C_i=(i_1i_2\cdots i_k)$，则 $a_{C_i}=a_{i_1i_2}\cdots a_{i_ki_1}$。如果我们能够使得每个 $a_{C_i}=-1$，那么就有
+要使得所有非零的 $\mathrm{wt}(\pi)$ 都同为 +1 或者同为 -1，只要让每个非零的 $\text{sgn}(\sigma)a_{\sigma}$ 都等于 1 即可。设 $\sigma$ 是一个使得 $a_\sigma\ne0$ 的置换且 $\sigma$ 的轮换分解为 $\sigma=C_1\cdots C_l$，这里每个 $C_i$ 的长度都是偶数，则
+$$\text{sgn}(\sigma)=(-1)^l,\quad a_\sigma=a_{C_1}\cdots a_{C_l}.$$
+这里规定 $C_i=(i_1i_2\cdots i_k)$ 时 $a_{C_i}=a_{i_1i_2}\cdots a_{i_ki_1}$。如果我们能够使得每个 $a_{C_i}=-1$，那么就有
 $$\text{sgn}(\sigma)\cdot a_\sigma = (-1)^l\cdot (-1)^l=1.$$
-怎么才能让 $a_{C_i}$ 都等于 -1 呢？注意 $a_{C_i}$ 不等于 0 说明 $i_1\to i_2\to\cdots\to i_k\to i_1$ 是 $\dg$ 中的一个回路。又注意 $\sigma$ 的每个轮换的长度都是偶数，所以 $k$ 是偶数，即回路的长度是偶数。要使得 $a_{C_i}$ 等于 -1，我们需要 $\{a_{i_1i_2},\ldots,a_{i_ki_1}\}$ 中 -1 出现的次数是奇数。换句话说，当在 $\dg$ 中沿着回路
+而 $a_{C_i}$ 等于 -1 意味着，当在 $\dg$ 中沿着回路
 $$i_1\rightarrow i_2\rightarrow \cdots \rightarrow i_k\rightarrow i_1$$
-绕 $C_i$ 一圈时，有奇数条边在 $\dg$ 中的定向与行走方向一致，当然也就有奇数条边的定向与行走方向相反。
+绕 $C_i$ 一圈时，有奇数条边在与 $\dg$ 的定向一致（由于轮换长度 $k$ 是偶数，这也等价于有奇数条边与 $\dg$ 的定向相反）。
 
 :::{.definition .unnumbered}
 设 $G$ 是有限图。如果 $G$ 的一个回路 $C$ 的长度是偶数，且删除 $C$ 后剩下的部分仍然存在匹配，就称 $C$ 是一个好的回路。如果 $G$ 的一个定向 $\dg$ 使得 $G$ 的所有好的回路都是奇定向的，即沿着回路的任一方向行走都有奇数条边的定向与行走方向一致，就称 $\dg$ 是一个 Pfaffian 定向。

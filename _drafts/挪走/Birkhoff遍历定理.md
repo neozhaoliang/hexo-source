@@ -21,7 +21,11 @@ Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 
 # 准备工作
 
 
+<<<<<<< HEAD:source/_posts/已完成/Durrett/Birkhoff遍历定理.md
 给定一个概率空间 $(\Omega,\F,\mu)$，我们称两个可测集 $A,B\in F$ 几乎处处相等，是指它们的示性函数 $\ind_A,\ind_B$ 几乎处处相等，记作 $A\aeq B$。等价的说法是 $A,B$ 只差一个零测集，又或者说差集 $A\Delta B$ 是零测集。
+=======
+给定一个概率空间 $(\Omega,\mathcal{F},\mu)$，我们称两个可测集 $A,B\in F$ 几乎处处相等，是指它们的示性函数 $\ind_A,\ind_B$ 几乎处处相等，记作 $A\aeq B$。等价的说法是 $A,B$ 只差一个零测集，或者再换一个说法，差集 $A\Delta B$ 是零测集。
+>>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Birkhoff遍历定理.md
 
 设 $T:\Omega\rightarrow \Omega$ 是一个可测变换，即对任何 $E\in\F$ 有 $T^{-1}E\in\F$。
 
@@ -57,7 +61,7 @@ $$X\circ T=X\quad \text{a.e.}$$
 成立。这时我们称 $X$ 是 $T$- 不变的随机变量。
 :::
 
-这是 Durrett 书中的一道习题，我一直觉得它很平凡，其实之前文章中的处理有问题，这个结论还是需要论证一番的。
+这是 Durrett 书中的一道习题，我一直觉得它很平凡，其实这个结论还是需要论证一番的。
 
 **证明**：
 
