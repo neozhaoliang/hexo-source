@@ -12,11 +12,7 @@ url: "coxeter-element"
 
 <img style="margin:0px auto;display: block" src="/images/coxeter-element/e8.svg" width="350"/>
 
-<<<<<<< HEAD:source/_posts/已完成/pywonderland/Coxeter元.md
-它展示的是 Lie 代数 $E_8$ 的根系图。$E_8$ 的根系由 8 维欧式空间 $\R^8$ 中的 240 个向量组成，将这 240 个向量投影到一个特殊的 2 维平面 ( 叫做 Coxeter 平面 ) 上就会呈现出一个具有旋转对称性的图案。在上图中可以看到，240 个投影点分布在 8 个圆周上，每个圆周包含 30 个均匀分布的点，整个图案在角度为 $2\pi/30$ 的旋转下是不变的。$h=30$ 是 $E_8$ 的 Coxeter 数。
-=======
 它展示的是 Lie 代数 $E_8$ 的根系图。$E_8$ 的根系由 8 维欧式空间 $\R^8$ 中的 240 个向量组成，将这 240 个向量投影到一个特殊的 2 维平面 ( 称作 Coxeter 平面 ) 上就会呈现出一个具有旋转对称性的图案。图中 240 个投影点分布在 8 个圆周上，每个圆周包含 30 个均匀分布的点，整个图案在角度为 $2\pi/30$ 的旋转下保持不变。$h=30$ 正是 $E_8$ 的 Coxeter 数。
->>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Coxeter元.md
 
 本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python 中编写一个程序绘制上面的投影图案。我主要参考了 [@Humphreys90] 和 [@CasselmanCoxeterElement]。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。
 
@@ -61,15 +57,9 @@ Coxeter 元的重要性质之一是：
 
 设 $\gamma$ 是一个 Coxeter 元，由于 $\gamma$ 满足 $\gamma^h=1$，所以 $\gamma$ 的特征值必然都是 $h$ 次单位根，并且成对共轭出现：
 $$\{\zeta^{m_1},\ldots,\zeta^{m_n},0\leq m_i<h\}.$$
-<<<<<<< HEAD:source/_posts/已完成/pywonderland/Coxeter元.md
-其中 $\zeta$ 是本原 $h$- 次单位根。[@Humphreys90, sec. 3.16] 证明了 1 不可能是 $\gamma$ 的特征值，所以实际上每个指数 $1\leq m_i\leq h-1$。$\gamma$ 如果有实特征值的话只可能是 $-1$( 对应 $\zeta^{h/2}$ ) 。
-
-我们取一个特殊的 Coxeter 元如下：设 $(W,S)$ 的 Coxeter 图为 $\Gamma$，$\Gamma$ 是一个树。任取 $\Gamma$ 的一个顶点作为 $s_n$，将 $\Gamma$ 的顶点按照与 $s_n$ 的图距离分成两个不相交的集合 $\Gamma=I\sqcup J$：$I$ 由所有与 $s_n$ 的距离为偶数的顶点组成（包含 $s_n$）；$J$ 由所有与 $s_n$ 的距离为奇数的顶点组成。$\Gamma$ 是树这一点保证了顶点之间的距离是唯一确定的。于是 $I$ 中的生成元两两不相邻从而两两交换。$J$ 也是如此。记
-=======
 其中 $\zeta$ 是本原 $h$ 次单位根。[@Humphreys90, sec. 3.16] 证明了 1 不可能是 $\gamma$ 的特征值，所以每个指数 $1\leq m_i\leq h-1$。此外，$\gamma$ 如果有实特征值的话只能是 $-1$( 对应 $\zeta^{h/2}$ ) 。
 
 我们取一种特殊的 Coxeter 元如下：设 $(W,S)$ 的 Coxeter 图为 $\Gamma$，由于 $W$ 有限且不可约，$\Gamma$ 是一个树。任取 $\Gamma$ 的一个顶点作为 $s_n$，将 $\Gamma$ 的顶点按照与 $s_n$ 的图距离划分为两个不相交的集合 $\Gamma=I\sqcup J$：$I$ 包含所有与 $s_n$ 的距离为偶数的顶点（包括 $s_n$）；$J$ 包含所有与 $s_n$ 的距离为奇数的顶点。由于 $\Gamma$ 是树，顶点之间的距离是唯一确定的，因此 $I$ 中任何两个顶点不相邻，从而  $I$ 中的生成元两两交换。$J$ 也是如此。记
->>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Coxeter元.md
 $$x=\prod_{i\in I}s_i,\quad y=\prod_{j\in J}s_j.$$
 则 $\gamma=xy$ 是 Coxeter 元。下面对 $\gamma$ 进行分析。
 
@@ -79,21 +69,16 @@ $$x=\prod_{i\in I}s_i,\quad y=\prod_{j\in J}s_j.$$
 $$(\alpha_i\bullet\omega_j)=\delta_{ij}.$$
 ${\bf A}$ 是把每个 $\omega_i$ 映射为 $\alpha_i$ 的线性变换：
 $${\bf A}\omega_i=\alpha_i,\quad \forall 1\leq i\leq n.$$
-则 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下的矩阵就是 Cartan 矩阵 $A$。由于 $A$ 是对称矩阵，所以 ${\bf A}$ 是可对角化的线性变换，并且不同特征值对应的特征向量互相正交。
+则 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下的矩阵就是 Cartan 矩阵 $A$。由于 $A$ 是对称矩阵，所以 ${\bf A}$ 是可对角化的线性变换，其不同特征值对应的特征向量互相正交。
 
-<<<<<<< HEAD:source/_posts/已完成/pywonderland/Coxeter元.md
-[@Humphreys90, section 2.6] 证明了矩阵 $A$ 的极小特征值 $c>0$ 的重数是 1，并且对应的特征向量 ${\bf c}=(c_1,\ldots,c_n)$ 的所有分量都是正的。于是
+[@Humphreys90, section 2.6] 证明了矩阵 $A$ 的极小特征值 $c>0$ 的重数是 1，并且对应的特征向量 ${\bf c}=(c_1,\ldots,c_n)$ 的所有分量都是正的。我们将变换 ${\bf A}$ 的特征向量 $\sum_{i=1}^nc_i\omega_i$ 写成两个向量之和：
+$$\sum_{i=1}^nc_i\omega_i=\sum_{i\in I} c_i\omega_i+\sum_{i\in J}c_i\omega_i=\lambda+\mu.$$
+[@Humphreys90, section 3.17] 证明了如下事实：
 
-$${\bf A}\sum_{i=1}^nc_i\omega_i = c\left(\sum_{i=1}^nc_i\omega_i\right).$$
++ $\lambda,\mu$ 张成一个二维子空间 $P$，$x$ 和 $y$ 限制在 $P$ 上分别是保持直线 $\mathbb{R}\mu$ 和 $\mathbb{R}\lambda$ 不动的反射，从而 $\gamma=xy$ 限制在 $P$ 上是一个旋转；
++ 这个旋转在 $P$ 上的阶与 $\gamma$ 在 $\R^8$ 上的阶相同，也是 $h$，从而旋转的角度等于 $2\pi/h$。
 
-特征向量 $\sum_{i=1}^nc_i\omega_i$ 可以写成两个向量 $\lambda,\mu$ 的和，$\lambda$ 的支集是 $I$，$\mu$ 的支集是 $J$：
-$$\lambda=\sum_{i\in I} c_i\omega_i,\quad \mu=\sum_{j\in J}c_j\omega_j.$$
-[@Humphreys90, section 3.17] 证明了 $\lambda,\mu$ 张成一个二维子空间 $P$，$x$ 和 $y$ 限制在 $P$ 上分别是保持直线 $\mathbb{R}\mu$ 和 $\mathbb{R}\lambda$ 不动的反射，从而 $\gamma=xy$ 限制在 $P$ 上是一个旋转，并且这个旋转在 $P$ 上的阶与 $\gamma$ 在 $\mathbb{R}^8$ 上的阶相同，也是 $h$，从而旋转的角度等于 $2\pi/h$。由于 $\gamma$ 置换根系 $\Phi$，所以如果我们把 $\Phi$ 投影到 $P$ 上，就会看到一个具有 $h$ 阶旋转对称性的图案。
-=======
-[@Humphreys90, section 2.6] 证明了矩阵 $A$ 的极小特征值 $c>0$ 的重数是 1，并且对应的特征向量 ${\bf c}=(c_1,\ldots,c_n)$ 的所有分量都是正的。于是变换 ${\bf A}$ 的特征向量 $\sum_{i=1}^nc_i\omega_i$ 可以写成两个向量 $\lambda,\mu$ 的和，其中
-$$\lambda=\sum_{i\in I} c_i\omega_i,\quad \mu=\sum_{j\in J}c_j\omega_j.$$
-[@Humphreys90, section 3.17] 证明了 $\lambda,\mu$ 张成一个二维子空间 $P$，$x$ 和 $y$ 限制在 $P$ 上分别是保持直线 $\mathbb{R}\mu$ 和 $\mathbb{R}\lambda$ 不动的反射，从而 $\gamma=xy$ 限制在 $P$ 上是一个旋转，并且这个旋转在 $P$ 上的阶与 $\gamma$ 在 $\R^8$ 上的阶相同，也是 $h$，从而旋转的角度等于 $2\pi/h$。由于 $\gamma$ 置换根系 $\Phi$，所以如果我们把 $\Phi$ 投影到 $P$ 上，就会看到一个具有 $h$ 阶旋转对称性的图案。
->>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Coxeter元.md
+由于 $\gamma$ 置换根系 $\Phi$，所以如果我们把 $\Phi$ 投影到 $P$ 上，就会看到一个具有 $h$ 阶旋转对称性的图案。
 
 不过直接使用上面 $\lambda,\mu$ 的定义来计算 $P$ 是很不方便的，因为其中涉及了对偶基 $\{\omega_i\}$。我们可以绕开对偶基的计算。[@Humphreys90, p. 78] 中提供了以下公式
 $$\begin{aligned}
@@ -143,32 +128,21 @@ $2I-A$ 和 $A-2I$ 有同样的特征多项式。
 
 由于 $2I-A$ 的 $\pm2\cos(\theta/2)$ 特征子空间对应的是 $A$ 的 $2\mp2\cos(\theta/2)$ 特征子空间，所以我们得到了下面的推论：
 
-<<<<<<< HEAD:source/_posts/已完成/pywonderland/Coxeter元.md
-:::{.corollary}
-$A$ 的不等于 2 的特征值成对出现，它们形如 $2\mp2\cos(\theta/2)$，并且它们对应的特征子空间 $U_{\mp}$ 的维数是相等的。$U_{\pm}$ 分别是 $\gamma$ 的一对共轭的复特征值 $e^{\pm i\theta}$ 对应的特征子空间。
-=======
 :::{.corollary #eigenspace-pair}
 $A$ 的不等于 2 的特征值成对出现，它们形如 $2\mp2\cos(\theta/2)$，并且对应的特征子空间 $U_{\pm}$ 的维数是相等的。$U_{\pm}$ 是 $\gamma$ 的共轭复特征值 $e^{\pm i\theta}$ 对应的特征子空间。
->>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Coxeter元.md
 :::
 
 一般来说 $U=U_+\oplus U_-$ 的维数未必是 2，所以 $U$ 不一定是平面。
 
 设 $c_\min=2-2\cos(\theta_0/2)$ 是 $A$ 的极小特征值，则 $c_\max=2+2\cos(\theta_0/2)$ 是 $A$ 的极大特征值。我们知道 $c_\min$ 的重数是 1，根据 @Pre:eigenspace-pair，$c_\max$ 的重数也是 1，这时 $U$ 就是一个二维平面，并且 $\gamma$ 在 $U$ 上的作用是一个旋转。我们来说明这个旋转的阶等于 $\gamma$ 的阶 $h$，从而 $U$ 就是要找的 Coxeter 平面：
 
-<<<<<<< HEAD:source/_posts/已完成/pywonderland/Coxeter元.md
-于是计算 $P$ 归结为计算线性变换 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下极小/极大特征值对应的特征向量。设 $(c_1,\ldots,c_n)$ 和 $(c_1',\ldots,c_n')$ 分别是矩阵 $A$ 对应 $c_\min,c_\max$ 的特征向量，则 $\sum_{i=1}^nc_i\omega_i$ 和 $\sum_{i=1}^nc_i'\omega_i$ 就是变换 ${\bf A}$ 对应 $c_\min,c_\max$ 的特征向量。它们被 ${\bf A}$ 作用以后与自身相差一个常数倍，从而 $P$ 由这两个向量张成：
-$$P=\span\left\{\sum_{i=1}^nc_i\alpha_i,\,\sum_{i=1}^nc_i'\alpha_i\right\}.$$
-这样我们就找到了只用 Cartan 矩阵和单根系 $\Delta$ 计算 $P$ 的方法。
-=======
 :::{.proposition}
-设 $u,v$ 分别是 ${\bf A}$ 的极小和极大特征值 $c_\min,c_\max$ 对应的特征向量，$U=\span\{u,v\}$，则 $\gamma$ 在 $U$ 上的作用是一个旋转，此旋转的阶等于 $\gamma$ 的阶 $h$，从而 $U$ 是所求的 Coxeter 平面。
+设 $u,v$ 分别是 $c_\min,c_\max$ 对应的特征向量，$U=\span\{u,v\}$，则 $\gamma$ 作为 $U$ 上的旋转的阶等于 $\gamma$ 的阶 $h$。
 :::
->>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Coxeter元.md
 
 **证明**：设 $u=\sum_{i=1}^nc_i\omega_i$，$\gamma$ 限制在 $P$ 上的阶是 $k$。由于 $u\in P$，所以 $\gamma^k u=u$。
 
-另一方面，[@Humphreys90, section 2.6] 证明了每个 $c_i>0$，所以 $(u\bullet\alpha_s)>0$ 对任何单根 $\alpha_s$ 成立，即 $u$ 属于 $W$ 在 $V$ 上作用的基本区域 $C$ 的内部。然而根据 [@Humphreys90, section 1.12]，在 $W$ 中只有单位元 1 可以保持 $u\in C$ 不动，所以 $\gamma^k=1$，从而 $k=h$。$\blacksquare$
+由于每个 $c_i>0$ [@Humphreys90, section 2.6]，所以 $(u\bullet\alpha_s)>0$ 对任何单根 $\alpha_s$ 成立，即 $u$ 属于 $W$ 在 $V$ 上作用的基本区域 $C$。然而根据 [@Humphreys90, section 1.12]，在 $W$ 中只有单位元 1 可以保持 $u\in C$ 不动，所以 $\gamma^k=1$，从而 $k=h$。$\blacksquare$
 
 于是计算 $P$ 归结为计算 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下极小/极大特征值对应的特征向量。设
 $$u=\sum_{i=1}^nc_i\omega_i\quad\text{and}\quad v=\sum_{i=1}^nd_i\omega_i$$
@@ -180,22 +154,16 @@ $${\bf A}u=\sum_{i=1}^nc_i\alpha_i\quad\text{and}\quad {\bf A}v=\sum_{i=1}^nd_i\
 
 在这一节中，我们以 $E_8$​ 为例，应用上述理论进行实际计算。
 
-设 $e_i=(0,\ldots,1,\ldots,0)$ 是 $\R^8$ 中第 $i$ 个分量为 1，其它分量都是 0 的坐标方向。$\bullet$ 是标准 Euclidean 内积，即对 $x=\sum_{i=1}^8 x_ie_i$ 和 $y=\sum_{i=1}^8 y_ie_i$ 有
-$$x\bullet y= \sum_{i=1}^8 x_iy_i.$$
-$\{e_i\}_{i=1}^8$ 是内积 $\bullet$ 下的一组标准正交基。
-
 $E_8$ 的 Coxeter 图如下：
 
 ![](/images/coxeter-element/e8-dynkin.svg){width=400 .fig}
 
-图中编号为 $i$ 的顶点对应单根 $\alpha_i$，$\alpha_i$ 在 $\{e_i\}_{i=1}^8$ 这组基下的系数由下面矩阵的第 $i$ 行给出：
+我们第一步需要取 $\mathbb{R}^8$ 的一组基 $\Delta=\{\alpha_i\}_{1\leq i\leq 8}$ 作为单根系，并规定它们之间的内积 $\bullet$ 使得
+$$(\alpha_i\bullet\alpha_j)_{1\leq i,j\leq 8}=\begin{pmatrix}2&-1&0&0&0&0&0&0\\-1&2&-1&0&0&0&0&0\\0&-1&2&-1&0&0&0&0\\0&0&-1&2&-1&0&0&0\\0&0&0&-1&2&-1&0&-1\\0&0&0&0&-1&2&-1&0\\0&0&0&0&0&-1&2&0\\0&0&0&0&-1&0&0&2\end{pmatrix}.$$
+注意这里每个单根 $\alpha_i\bullet\alpha_i=2$，并不是单位向量，这样主要是为了书写代码更方便。
+
+由于 $\bullet$ 是正定的，所以我们可以选择 $\Delta$ 使得 $\bullet$ 就是标准的 Euclidean 内积。例如，取 $\alpha_i$ 为下面矩阵的第 $i$ 行：
 $$\begin{bmatrix}1&-1&0&0&0&0&0&0\\0&1&-1&0&0&0&0&0\\0&0&1&-1&0&0&0&0\\0&0&0&1&-1&0&0&0\\0&0&0&0&1&-1&0&0\\0&0&0&0&0&1&1&0\\-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}\\0&0&0&0&0&1&-1&0\end{bmatrix}.$$
-所有 8 个单根 $\{\alpha_i\}_{i=1}^8$ 构成 $E_8$ 的单根系 $\Delta$。
-
-注意这里每个单根的长度是 $\sqrt{2}$，并不是单位向量，这样主要是为了书写代码更方便。
-
-Cartan 矩阵 $A$ 由单根之间两两内积给出：
-$$A=(\alpha_i\bullet\alpha_j)_{1\leq i,j\leq 8}=-2\cos\frac{\pi}{m_{ij}}=\begin{pmatrix}2&-1&0&0&0&0&0&0\\-1&2&-1&0&0&0&0&0\\0&-1&2&-1&0&0&0&0\\0&0&-1&2&-1&0&0&0\\0&0&0&-1&2&-1&0&-1\\0&0&0&0&-1&2&-1&0\\0&0&0&0&0&-1&2&0\\0&0&0&0&-1&0&0&2\end{pmatrix}.$$
 
 用代码来写的话，就是
 
@@ -280,11 +248,7 @@ v = np.dot(v, delta)
 $$0.01095621 \approx 2-2\cos\frac{\theta_0}{2},\quad \theta_0\approx 2\arccos0.994521895\approx\frac{2\pi}{30}.$$
 所以我们验证了 $\gamma$ 在 $P$ 上的作用是一个 30 阶的旋转，即 $W$ 的 Coxeter 数是 30。
 
-<<<<<<< HEAD:source/_posts/已完成/pywonderland/Coxeter元.md
-根据上一节末尾的介绍，$\sum_{i=1}^8u_i\alpha_i$ 和 $\sum_{i=1}^8v_i\alpha_i$ 构成 $P$ 的一组基。作为对称变换 ${\bf A}$ 的不同特征值对应的特征向量，它们在内积 $\bullet$ 下一定是正交的。把它们归一化为单位向量后，$u,v$ 构成 Coxeter 平面 $P$ 的一组标准正交基。通过计算根系中的向量与 $u,v$ 的内积，就可以得到根系中 240 个向量在 $P$ 上的投影坐标：
-=======
 根据上一节末尾的介绍，$\sum_{i=1}^8u_i\alpha_i$ 和 $\sum_{i=1}^8v_i\alpha_i$ 构成 $P$ 的一组正交基。把它们归一化为单位向量，然后计算根系 `roots` 到 $P$ 的投影：
->>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Coxeter元.md
 
 ```python
 u /= np.linalg.norm(u)
