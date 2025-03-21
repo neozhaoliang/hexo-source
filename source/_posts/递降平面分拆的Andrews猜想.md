@@ -1,16 +1,6 @@
 ---
 title: "递降平面分拆的 Andrews 猜想"
 date: 2015-08-30
-tags:
-  - Plane partitions
-  - Descending plane partitions
-  - Enumerative combinatorics
-  - q- binomial theorem
-  - Gessel-Viennot lemma
-  - Alternating sign matrices
-  - Andrews's conjecture
-  - Non-intersecting path systems
-  - Gauss lattice paths
 categories: [计数组合学]
 url: "descending-plane-partitions"
 ---

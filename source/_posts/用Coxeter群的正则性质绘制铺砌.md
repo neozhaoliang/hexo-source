@@ -1,16 +1,5 @@
 ---
 title: "Coxeter 群，有限状态机与均匀密铺"
-tags:
-  - Coxeter group
-  - Uniform tilings
-  - POV-Ray
-  - Automata
-  - Minimal roots
-  - Regular language
-  - DFA minimization
-  - Hyperbolic tilings
-  - Spherical tilings
-  - Euclidean tilings
 categories: [pywonderland 项目]
 date: 2019-12-15
 url: "coxeter-groups-and-uniform-tilings"

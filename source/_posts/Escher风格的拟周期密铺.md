@@ -2,13 +2,6 @@
 title: "Escher 风格的非周期密铺"
 date: 2020-12-06
 categories: [Shadertoy]
-tags:
-  - shadertoy
-  - de Bruijn
-  - Penrose tiling
-  - Aperiodic tiling
-  - Escher
-  - Rhombus
 url: "debruijn-rhombus-tiling"
 ---
 周末刚完成了一个有点烧脑的 Shadertoy 项目，Escher 风格的 [非周期密铺](https://en.wikipedia.org/wiki/Aperiodic_tiling)：

@@ -2,18 +2,6 @@
 title: "有限维复半单李代数的 Weyl 特征公式"
 date: 2014-07-27
 categories: [代数]
-tags:
-  - Complex semisimple Lie algebra
-  - Weyl character formula
-  - Cartan subalgebra
-  - Root system
-  - Weyl group
-  - Highest weight module
-  - Universal enveloping algebra
-  - Casimir element
-  - Verma module
-  - Dominant integral weight
-  - Integral representation
 url: "weyl-character-formula"
 ---
 \DeclareMathOperator{\ch}{ch}

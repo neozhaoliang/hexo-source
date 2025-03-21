@@ -2,12 +2,6 @@
 title: "Poncelet 定理与 Blaschke 乘积"
 date: 2021-08-27
 categories: ["可视化复分析"]
-tags:
-  - Visual Complex analysis
-  - Poncelet porism
-  - Blaschke product
-  - shadertoy
-  - Caustics
 url: "poncelet-blaschke"
 ---
 
