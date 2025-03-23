@@ -34,7 +34,7 @@ Needham 的书中还介绍了 $\gamma$ 的环绕数在 $\mathbb{C}\setminus\gamm
 设 $\gamma$ 是一条简单闭曲线，内部围的区域为 $\Omega$，$f(z)$ 是一个非常数的解析函数，$f$ 在包含 $\gamma$ 的某个区域内解析。假设有两棵树分别位于 $w_0,\,w_1$ 两点，且人行走的路线 $f(\gamma)$ 到 $w_0$ 的距离始终大于两棵树之间的距离：
 $$|f(z)-w_0| > |w_0-w_1|,\quad\forall z\in\gamma.$$
 
-![注意两棵树位于 $\mathbb{C}\backslash f(\gamma)$ 的同一个连通分支中](/images/rouche/winding_number.svg){width=250}
+![注意两棵树位于 $\mathbb{C}\setminus f(\gamma)$ 的同一个连通分支中](/images/rouche/winding_number.svg){width=250}
 
 则 $f(\gamma)$ 关于 $w_0,w_1$ 的环绕数相等，从而 $w_0,w_1$ 在 $\gamma$ 内部的原像个数相同：
 $$\sharp\{z\in \Omega: f(z)=w_0\} = \sharp\{z\in \Omega: f(z)=w_1\}.$$
