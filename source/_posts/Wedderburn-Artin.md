@@ -137,15 +137,13 @@ $$a^k=a^kaq(a)=a^{k+2}q^2(a)=a^{k+3}q^3(a)=\cdots=a^{2k}q^{k}(a).$$
 设 $R$ 是半单环，$L\subset I$ 都是 $R$ 的左理想并且 $L$ 还是极小左理想，则存在 $R$ 的左理想 $J$ 满足 $I=L\oplus J$。
 :::
 
-**证明**： 根据 @Pre:L-proj，设幂等元 $e\in L$ 满足 $I=Le$。考虑 $J=I(1-e)$，这也是一个包含在 $I$ 中的左理想。显然
-$$I=Ie\oplus I(1-e)=L\oplus J.$$
-$\blacksquare$
+**证明**： 根据 @Pre:L-proj，设幂等元 $e\in L$ 满足 $I=Le$。考虑 $J=I(1-e)$，这也是一个包含在 $I$ 中的左理想。显然 $I=Ie\oplus I(1-e)=L\oplus J$。$\blacksquare$
 
 ::: {.theorem #decompose-minimal}
 半单环 $R$ 一定可以分解为有限个极小左理想的直和 $R=L_1\oplus\cdots\oplus L_n$。
 :::
 
-**证明**：设 $L_1$ 是 $R$ 的任一极小左理想，在 @Pre:ideal-decomp 中取 $L=L_1,I=R$ 可得存在 $R$ 的左理想 $J$ 使得 $R=L_1\oplus J$。如果 $J$ 非零，则它包含 $R$ 的某个极小左理想 $L_2$。根据 @Pre:ideal-decomp $J$ 可以进一步分解为 $J=L_2\oplus K$。其中 $K$ 也是 $R$ 的左理想。这样继续分解下去，由于左 Artinian 条件这样的分解只能进行有限多次，于是
+**证明**：设 $L_1$ 是 $R$ 的任一极小左理想，在 @Pre:ideal-decomp 中取 $L=L_1,I=R$ 可得存在 $R$ 的左理想 $J$ 使得 $R=L_1\oplus J$。如果 $J$ 非零，则它包含 $R$ 的某个极小左理想 $L_2$。同样地 $J$ 可以进一步分解为 $J=L_2\oplus K$。其中 $K$ 也是 $R$ 的左理想。这样继续分解下去，由于 $R$ 是左 Artinian 环，这样的分解只能进行有限多次，所以
 $$R=L_1\oplus J =L_1\oplus L_2\oplus K = \cdots = L_1\oplus L_2\oplus\cdots\oplus L_n.$$
 $\blacksquare$
 
