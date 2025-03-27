@@ -11,7 +11,7 @@ url: "coupling-from-the-past"
 :::{.question .unnumbered}
 下图是一个边长分别为 $a,b,c$ 的平行六边形，其中 $a,b,c$ 都是正整数，内角均为 120 度：
 
-<img style="margin:0px auto;display:block" width=400 src="/images/cftp/hexagon.svg">
+![](/images/cftp/hexagon.svg){width=400 .fig}
 
 请问：用边长为 1 的菱形密铺它，有多少种不同的方法？
 :::
@@ -20,7 +20,7 @@ url: "coupling-from-the-past"
 
 比如下图就是一种密铺的示例：
 
-<img style="margin:0px auto;display:block" width=400 src="/images/cftp/random_lozenge_tiling.svg"/>
+![](/images/cftp/random_lozenge_tiling.svg){width=400 .fig}
 
 图中三种不同摆放角度的菱形被染成了不同的颜色。
 
@@ -69,18 +69,20 @@ $$s_{-n}\xrightarrow{f(s_{-n+1},\,U_{-n+1})}s_{-n+1}\xrightarrow{f(s_{-n+2},\,U_
 
 设 $M$ 是一个有限遍历的 Markov 链，状态空间为 $S$，$f: S\times [0, 1]\to S$ 是其随机映射表示。$U_0,U_{-1},\ldots$ 是一列随机数，它们分别来自一列独立且服从 $[0, 1]$ 上均匀分布的随机变量。记 $(N_1,N_2,\ldots)=(1,2,4,8,\ldots)$，$-N_{m}$ 将作为我们第 $m$ 次重启的出发时间。
 
-> **Coupling from the past 算法**：
->
-> 1. 令 $m=1$。
-> 2. 对每个 $s\in S$，以 $s$ 为初始状态，以 $-N_m$ 为初始时刻向时刻 0 的方向运行 Markov 链 $M$，所有 $|S|$ 个链使用的随机数流是一样的，都是 $(U_{-N_m+1},\ldots,U_{-1},U_0)$。
-> 3. 如果步骤 2 中的 $|S|$ 个链在时刻 0 给出的状态相同，记此状态为 $s^\ast$，则输出 $s^\ast$ 并退出程序。否则将 $m$ 的值加 1 并重复步骤 2。
->
-> 下图显示了算法的每个重启时刻，相同颜色的随机数是在同一批中生成的。
->
-> <img style="margin:0px auto;display:block" src="/images/cftp/random_numbers.svg">
->
-> **断言**：如果上述步骤以概率 1 在有限时间内结束，则其返回值 $s^\ast$ 服从平稳分布 $\pi$:
-> $$\mathbb{P}(s^\ast = s) = \pi(s),\quad \forall s\in S.$$
+:::{.simple}
+**Coupling from the past 算法**：
+
+1. 令 $m=1$。
+2. 对每个 $s\in S$，以 $s$ 为初始状态，以 $-N_m$ 为初始时刻向时刻 0 的方向运行 Markov 链 $M$，所有 $|S|$ 个链使用的随机数流是一样的，都是 $(U_{-N_m+1},\ldots,U_{-1},U_0)$。
+3. 如果步骤 2 中的 $|S|$ 个链在时刻 0 给出的状态相同，记此状态为 $s^\ast$，则输出 $s^\ast$ 并退出程序。否则将 $m$ 的值加 1 并重复步骤 2。
+
+下图显示了算法的每个重启时刻，相同颜色的随机数是在同一批中生成的。
+
+![](/images/cftp/random_numbers.svg){.fig}
+
+**断言**：如果上述步骤以概率 1 在有限时间内结束，则其返回值 $s^\ast$ 服从平稳分布 $\pi$:
+$$\mathbb{P}(s^\ast = s) = \pi(s),\quad \forall s\in S.$$
+:::
 
 注意这里的两个细节：
 
@@ -90,12 +92,9 @@ $$s_{-n}\xrightarrow{f(s_{-n+1},\,U_{-n+1})}s_{-n+1}\xrightarrow{f(s_{-n+2},\,U_
 **证明**：任取 $s_i\in S$，只要证明对任何 $\epsilon>0$ 都有
 $$|\mathbb{P}(s^\ast=s_i) - \pi(s_i)|<\epsilon.$$
 设 $\Omega=\{(U_{-1},U_{-2},\ldots)\mid U_i \text{ i.i.d on } [0,1]\}$ 是所有随机数流组成的样本空间，
-$$A=\{\text{the algorithm terminates in finite time}\}.$$
-即 $A$ 为那些可以使得算法在有限时间内结束的序列组成的集合，则 $\mathbb{P}(A)=1$。
-
-又记
-$$A_i = \{ \text{the algorithm does not need to try starting times earlier than} -N_i\}.$$
-即 $A_i$ 为事件「算法从 $-N_i$ 或者更早的时间出发可以结束」。
+$$A=\{\omega\in\Omega\mid \text{算法在有限时间内结束}\}.$$
+则由已知有 $\mathbb{P}(A)=1$。又记
+$$A_i = \{ \omega\in\Omega\mid \text{算法从某个 $\geq -N_i$ 的时刻出发可以结束}\}.$$
 
 显然我们有 $A_i\uparrow A$，$\mathbb{P}(A_i)\uparrow\mathbb{P}(A)=1$。因此对充分大的 $K$ 有 $\mathbb{P}(A_K) \geq 1-\epsilon$。取定这样的 $K$，则在事件 $A_K$ 上，所有的链在时刻 0 耦合到相同的状态 $s^\ast$。
 
