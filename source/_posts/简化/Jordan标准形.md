@@ -70,7 +70,7 @@ $$T=J_{\mu_1}\oplus\cdots\oplus J_{\mu_s},$$
 
 ## 分解存在性 1：转化为幂零的情形
 
-首先我们需要另一个重要的定理：准素分解定理。准素分解定理是一个初步的分解，它把 $V$ 分解为若干 $T$- 不变子空间 $V_i$ 的直和，使得 $T$ 在每个 $V_i$ 上的作用是一个数乘变换 $\lambda_iI$ 加上一个幂零线性变换 $N$。借助准素分解定理，我们把 Jordan 标准形的存在性转化为论证任何幂零线性变换可以分解为一些零特征值的 Jordan 块的直和。
+首先我们需要另一个重要的定理：准素分解定理。准素分解定理是一个初步的分解，它把 $V$ 分解为若干 $T$- 不变子空间 $V_i$ 的直和，使得 $T$ 在每个 $V_i$ 上只有单一的特征值 $\lambda_i$。于是 $N=T-\lambda_i I$ 是 $V_i$ 上的幂零线性变换。这样就把目标简化为论证任何幂零线性变换总是可以分解为一些零特征值的 Jordan 块的直和。
 
 :::{.theorem .unnumbered #primary-decomposition}
 **准素分解定理** 设 $T$ 的特征多项式为 $f(x)$，且 $f(x)$ 在复数域上分解为一次因式的乘积
@@ -146,7 +146,7 @@ $$\cdots+c_{n_i}v_{i,n_i}+\cdots+\sum_{j=q+1}^K d_jw_j=0.$$
 
 ## 分解唯一性的证明
 
-要证明分解的唯一性，我们只要证明对任一特征值 $\lambda_i$，$T$ 限制在 $U=\ker(T-\lambda_i)^{n_i}$ 上分解为 Jordan 块的方式是唯一的。我们可以不妨假设 $\lambda_i=0$。记 $N=T\mid_U$，则 $N$ 是 $U$ 上的幂零线性变换。根据存在性的证明，在 $U$ 上我们有如下的链图：
+要证明分解的唯一性，我们只要证明任何幂零线性变换 $N$ 分解为 Jordan 块的方式是唯一的。根据 Jordan 标准形存在性的证明，我们有如下的链图：
 $$\begin{array}{r}v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow 0.&\\v_{2,1}\rightarrow v_{2,2}\rightarrow\cdots\rightarrow v_{2,n_2}\rightarrow 0.&\\\cdots\cdots&\\ v_{q,1}\rightarrow v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow 0.\end{array}$$
 这里每个链代表一个 Jordan 块，按照 $n_1\geq\cdots\geq n_q$ 的顺序排列。我们要证明链图中行数 $q$ 和行的长度 $(n_1,\ldots,n_q)$ 都是唯一确定的，不依赖于基的选择。
 
@@ -163,7 +163,7 @@ $$\begin{array}{r}
 注意到在链图中，从右边数起，从第 $1$ 到第 $i$ 列，都会被 $N^i$ 变成零向量。这些向量构成了 $\ker N^i$ 的一组基。例如在上面例子中，$\{ {\color{red}{\bullet}} \}$ 的列构成了 $\ker N$ 的一组基，$\{ {\color{green}{\bullet}}\mid {\color{red}{\bullet}}\}$ 的列构成了 $\ker N^2$ 的一组基，等等。
 
 于是我们有子空间的升链：
-$$(0)\subset \underbrace{\ker N}_{\{ {\color{red}{\bullet}} \}}\subset \underbrace{\ker N^2}_{\{ {\color{green}{\bullet}}\mid {\color{red}{\bullet}}\}} \subset \underbrace{\ker N^3}_{\{ {\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid {\color{red}{\bullet}}\}} \subset \underbrace{\ker N^4}_{\{ \bullet\mid {\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid {\color{red}{\bullet}}\}}=U.$$
+$$(0)\subset \underbrace{\ker N}_{\{ {\color{red}{\bullet}} \}}\subset \underbrace{\ker N^2}_{\{ {\color{green}{\bullet}}\mid {\color{red}{\bullet}}\}} \subset \underbrace{\ker N^3}_{\{ {\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid {\color{red}{\bullet}}\}} \subset \underbrace{\ker N^4}_{\{ \bullet\mid {\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid {\color{red}{\bullet}}\}}=V.$$
 不难看到右边的第 $i$ 列正好构成商空间 $\ker N^{i}/\ker N^{i-1}$ 的一组基。
 $$\begin{aligned}
 \ker N: \quad &  \{ {\color{red}{\bullet}} \}\\
@@ -174,10 +174,10 @@ $$\begin{aligned}
 $$
 所以右边第 $i$ 列的长度等于 $\dim\ker N^i - \dim\ker N^{i-1}$。
 
-另一方面右边第 $i$ 列的长度还等于「长度 $\geq i$ 的链的个数」。所以长度恰好等于 $k$ 的链，即大小恰好为 $k$ 的 Jordan 块的个数，等于
+另一方面右边第 $i$ 列的长度还等于“长度 $\geq i$ 的链的个数”。所以长度恰好等于 $i$ 的链，即 $i$ 阶 Jordan 块的个数，等于
 $$\begin{aligned}
-&(\dim\ker N^k - \dim\ker N^{k-1})-(\dim\ker N^{k+1} - \dim\ker N^k)\\
-&=2\dim\ker N^k - \dim\ker N^{k-1}-\dim\ker N^{k+1}.\end{aligned}$$
+&(\dim\ker N^i - \dim\ker N^{i-1})-(\dim\ker N^{i+1} - \dim\ker N^i)\\
+=&\,2\dim\ker N^i - \dim\ker N^{i-1}-\dim\ker N^{i+1}.\end{aligned}$$
 这是一个由 $N$ 完全确定的值。这就证明了分解的唯一性。
 
 # 进一步的思考

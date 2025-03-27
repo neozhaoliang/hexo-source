@@ -48,8 +48,7 @@ $A$ 有如下特点：
 设答案为 $M(a,b,c)$，则我们有一个非常令人吃惊的表达式：
 
 :::{.theorem .unnumbered}
-
-（**Macmahon 公式**）
+**Macmahon 公式** \
 
 $$M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
 :::
@@ -83,66 +82,64 @@ $$M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
 
 于是我们的问题又进一步转化为
 
-:::{.question .unnumbered}
-设
-$$\{A_i=(1-i,i-1) ,\, 1\leq i\leq c\}$$
-和
-$$\{B_j=(b+1-j,a-1+j),\, 1\leq j\leq c\}$$
-是平面上两组顶点集，求出所有不相交的路径组 $\mathcal{P}=\{p_i,1\leq i\leq c\}$ 的数目，其中 $p_i$ 是从 $A_i$ 出发到 $B_i$ 的 Gauss 路径。
+:::{.question .unnumbered #paths-problem}
+设 $\{A_i=(1-i,i-1)\}$ 和 $\{B_j=(b+1-j,a-1+j)\}$ 是平面上两组顶点集，计算所有不相交路径组 $\mathcal{P}=\{p_i,1\leq i\leq c\}$ 的数目，其中 $p_i$ 是从 $A_i$ 出发到 $B_i$ 的 Gauss 路径。
 :::
 
 
 # Gessel-Viennot 的巧妙方法
 
-考虑这样一个 $c\times c$ 的矩阵 $M$，其元素 $m_{ij}$ 是从点 $A_i$ 出发到达点 $B_j$ 的所有 Gauss 路径的数目。由于点 $A_i$ 坐标为 $(1-i,i-1)$，点 $B_j$ 坐标为 $(b+1-j,a-1+j)$，所以
+考虑 $c\times c$ 的矩阵 $M$，其元素 $m_{ij}$ 是从 $A_i$ 出发到达 $B_j$ 的所有 Gauss 路径的数目。由于 $A_i$ 坐标为 $(1-i,i-1)$，$B_j$ 坐标为 $(b+1-j,a-1+j)$，所以
 $$m_{ij}=\binom{a+b}{b+i-j}.$$
 这里如果 $b+i-j<0$ 则规定 $m_{ij}=0$。Gessel-Viennot 引理非常意外地告诉我们：
 
 ::: {.lemma .unnumbered}
 
-（**Gessel-Viennot 引理**）
+**Gessel-Viennot 引理** \
 
-记 $\mathcal{A}=\{A_i,1\leq i\leq c\}$ 和 $\mathcal{B}=\{B_j,1\leq j\leq c\}$ 是如上所述的两个顶点集合，对 $c$ 元组上的任一置换 $\sigma$，记 $\mathcal{P}_\sigma=\{p_i:A_i\to B_{\sigma(i)}\}$ 为一个路径组。则所有不相交路径组的个数为
+记 $\mathcal{A}=\{A_i,1\leq i\leq c\}$ 和 $\mathcal{B}=\{B_j,1\leq j\leq c\}$ 是 [问题中所述](#paths-problem) 的两个顶点集，则所有不相交路径组的个数为
 $$\det M=\det_{1\leq i,j\leq c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right).$$
 :::
 
 Gessel-Viennot 引理对更一般的带权的图也成立，它在许多组合问题中都有精彩的应用。关于这方面可以参看 [@thebook]。
 
-**证明**：把 $\det M$ 按照行列式的定义展开：
+**证明**：对 $c$ 元组上的任一置换 $\sigma\in S_c$，记路径组 $\mathcal{P}_\sigma=\{p_i:A_i\rightarrow B_{\sigma(i)},1\leq i\leq c\}$。
+
+把 $\det M$ 按照行列式的定义展开：
 
 $$\begin{aligned}\det M&=\sum_{\sigma}\text{sgn}(\sigma)m_{1\sigma(1)}\cdots m_{c\sigma(c)}\\&=\sum_{\sigma}\text{sgn}(\sigma)\left(\sum_{p_1:A_1\to B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to B_{\sigma(c)}}1\right).\end{aligned}$$
 
-其中 $\sigma$ 跑遍对称群 $S_c$ 的所有置换。取出其中的一项
+其中 $\sigma$ 跑遍对称群 $S_c$。取出其中的一个因子
 
 $$\left(\sum_{p_1:A_1\to B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to B_{\sigma(c)}}1\right),$$
 
-把它展开得到很多个 1，每个 1 对应一个路径组 $\mathcal{P}_\sigma=\{p_i:A_i\rightarrow B_{\sigma(i)},1\leq i\leq c\}$，因此
+把它展开得到很多个 1，每个 1 对应一个路径组 $\mathcal{P}_\sigma$，因此
 
 $$\det M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma). \tag{$\ast$}\label{eq:det}$$
 
 这个求和是对每个置换 $\sigma$，跑遍所有可能的路径组 $P_\sigma$。
 
-我们来证明在上面的求和中，相交的路径组对应的项可以两两抵消，剩下的只有不相交的路径组。
+我们来证明在 $(\ref{eq:det})$ 的求和中，相交路径组对应的项可以两两抵消，剩下的只有不相交的路径组。
 
-设 $\mathcal{P}$ 是一个相交的路径组，我们构造与之抵消的路径组 $\mathcal{P}'$ 如下：
+设 $\mathcal{P}=\mathcal{P}_\sigma$ 是一个相交的路径组，我们构造与之抵消的路径组 $\mathcal{P}'$ 如下：
 
-1. 在 $\mathcal{P}$ 的所有交点中，首先选择横坐标最大的那个，如果这样的交点有多个，就选择纵坐标最大的那个，将其记作 $C$。
-1. 在经过 $C$ 的所有路径中，首先选择最大的 $i$ 使得 $p_i:A_i\rightarrow B_{\sigma(i)}$ 经过 $C$，再选择最大的 $j\ne i$ 使得 $p_j$ 也经过 $C$。
+1. 在 $\mathcal{P}$ 的所有交点中，选择位于最“东北”方向的那一个，将其记作 $C$。
+1. 选择最大的 $i$ 使得 $p_i$ 经过 $C$，再选择最大的 $j<i$ 使得 $p_j$ 也经过 $C$。
 4. 交换 $p_i$ 和 $p_j$ 在 $C$ 点之后的部分，保持路径组其它部分不动。记得到的新路径组为 $\mathcal{P}'$。
 
 直观上，你可以想象两个人分别从 $A_i$ 和 $A_j$ 出发沿着路径 $p_i$ 和 $p_j$ 前往目的地 $B_{\sigma(i)}$ 和 $B_{\sigma(j)}$。当他们到达 $C$ 时改变路线，沿着对方剩下的路径前往对方的目的地。
 
 ![](/images/macmahon/gessel_viennot.svg){width=550 .fig}
 
-于是 $\mathcal{P}'$ 对应的置换 $\sigma'$ 与 $\mathcal{P}$ 对应的置换 $\sigma$ 只差一个对换 $(ij)$，因此 $\text{sgn}(\sigma')=-\text{sgn}(\sigma)$。更重要的是，如果对 $\mathcal{P}'$ 也进行上述操作的话，又会回到 $\mathcal{P}$，因此相交的路径组确实可以两两配对抵消。
+于是 $\mathcal{P}'$ 对应的置换 $\sigma'$ 与 $\sigma$ 只差一个对换 $(ij)$，因此 $\text{sgn}(\sigma')=-\text{sgn}(\sigma)$。更重要的是，如果对 $\mathcal{P}'$ 也进行上述操作的话，又会回到 $\mathcal{P}$，因此相交的路径组确实可以两两配对抵消。
 
 于是我们可以把 $(\ref{eq:det})$ 改写为
-$$\det M=\sum_{\sigma,\mathcal{P}_\sigma \text{ non-intersecting}}\text{sgn}(\sigma).$$
+$$\det M=\sum_{\sigma,\,\mathcal{P}_\sigma \text{ non-intersecting}}\text{sgn}(\sigma).$$
 
 但是注意，不相交的路径组只有在 $\sigma=1$ 时才可能发生，即每个 $A_i$ 的目的地必须是 $B_i$。所以我们进一步得到
 $$
 \det M=\sum_{\sigma=1\text{ and } \mathcal{P}_\sigma \text{ non-intersecting}}1.$$
-这正是所有不相交路径组的个数。$\blacksquare$
+这正是所求的不相交路径组的个数。$\blacksquare$
 
 # Dodgson's condensation method
 

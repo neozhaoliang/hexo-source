@@ -24,7 +24,7 @@ url: "Marden-theorem"
 $$V(z) =\sum_{i=1}^n\ln|z-a_i|=\ln\prod_{i=1}^n|z-a_i|=\ln|P(z)|.$$
 其中 $P(z)=(z-a_1)(z-a_2)\cdots(z-a_n)$ 是以 $a_1,\ldots,a_n$ 为根的多项式。
 
-此外 $\mathbf{E}(z) = -\nabla V(z)$ 为电势的梯度向量取负。
+此外 $\mathbf{E} = -\nabla V$ 为电势的梯度向量取负。
 
 > **问题**：怎样确定平面上场强为 0 的点呢？
 
@@ -32,13 +32,13 @@ $$V(z) =\sum_{i=1}^n\ln|z-a_i|=\ln\prod_{i=1}^n|z-a_i|=\ln|P(z)|.$$
 
 答案有点出人意料：平衡点必然是 $P'(z)$ 的零点，而且这些点都属于 $a_1,\ldots,a_n$ 的凸包！
 
-注意 $V(z)$ 是 $\ln P(z) = \ln |P(z)| + i\arg{P(z)}$ 的实部，由 Cauchy-Riemann 方程不难看出使得亚纯函数实部梯度为 0 的点一定是其导数的零点，即满足 $\nabla V=0$ 的点都是 $(\ln P(z))'=P'(z)/P(z)$ 的零点，所以平衡点都是 $P'(z)$ 的零点。平衡点属于 $\{a_1,\ldots,a_n\}$ 的凸包是根据 [Gauss-Lucas 定理](https://en.wikipedia.org/wiki/Gauss%E2%80%93Lucas_theorem)：任何复多项式 $f$ 的导数的零点都属于 $f$ 的零点构成的凸包！
+注意 $V(z)$ 是 $\ln P(z) = \ln |P(z)| + i\arg{P(z)}$ 的实部，由 Cauchy-Riemann 方程不难看出满足 $\nabla V=0$ 的点都是 $(\ln P(z))'=P'(z)/P(z)$ 的零点，所以平衡点都是 $P'(z)$ 的零点。平衡点属于 $\{a_1,\ldots,a_n\}$ 的凸包是根据 [Gauss-Lucas 定理](https://en.wikipedia.org/wiki/Gauss%E2%80%93Lucas_theorem)：任何复多项式 $f$ 的导数的零点都属于 $f$ 的零点构成的凸包！
 
 John Baez 的文章中利用凸集分离定理给出了 Gauss-Lucas 定理的一个简洁证明。
 
-需要注意的是，反过来 $P'(z)$ 的零点未必都是电场的平衡点，当 $P(z)$ 有重根时，重根也是 $P'(z)$ 的零点，但不是 $P'(z)/P(z)$ 的零点，所以不是平衡点。
+需要注意的是，反过来 $P'(z)$ 的零点未必都是电场的平衡点，当 $P(z)$ 有重根时，重根是 $P'(z)$ 的零点但不是 $P'(z)/P(z)$ 的零点，所以不是平衡点。
 
-此外平衡点是鞍点 (saddle point) 是由于 $V(z)$ 的调和性质，其不存在局部的极大极小值，所以使得 $\nabla V=0$ 的点都是鞍点。
+平衡点是鞍点 (saddle point) 是由于 $V(z)$ 的调和性质，其不存在局部的极大极小值，所以使得 $\nabla V=0$ 的点都是鞍点。
 
 在三个点电荷 $A,B,C$ 的情形，平衡点有两个，它们位于 $\Delta ABC$ 的内部，且是多项式 $P(z) = (z-A)(z-B)(z-C)$ 的导数 $P'(z)$ 的零点。那关于这两个点的具体位置我们可以说什么吗？这就是优美的 Marden 定理，要表述这个定理，我们需要先介绍 Steiner 内切椭圆的概念：
 
