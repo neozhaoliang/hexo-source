@@ -16,7 +16,7 @@ url: "coxeter-element"
 
 本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python 中编写一个程序绘制上面的投影图案。我主要参考了 [@Humphreys90] 和 [@CasselmanCoxeterElement]。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。
 
-本文的代码在 [Github 上](https://github.com/neozhaoliang/pywonderland/raw/master/src/misc/E8.py) 。David Madore 也有一个很棒的 [交互式网页](http://www.madore.org/~david/math/e8w.html) 可以绘制 $E_8$ 的多种不同风格的图案。
+本文的代码在 [Github 上](https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py) 。David Madore 也有一个很棒的 [交互式网页](http://www.madore.org/~david/math/e8w.html) 可以绘制 $E_8$ 的多种不同风格的图案。
 
 <!--more-->
 
@@ -124,17 +124,17 @@ $$( 2I-A )^2 ( u ) = ( 2+e^{i\theta}+e^{-i\theta} ) u= 4\cos^2(\theta/2) u.$$
 $2I-A$ 和 $A-2I$ 有同样的特征多项式。
 :::
 
-这个引理告诉我们，若 $\lambda$ 是 $A-2I$ 的特征值，则 $-\lambda$ 也是，并且二者对应的特征子空间的维数相同（注意 $A-2I$ 是可对角化的）。于是 $\dim U_+=\dim U_-$。@Pre:u-pm 得证。$\blacksquare$
+这个引理告诉我们，若 $\lambda$ 是 $A-2I$ 的特征值，则 $-\lambda$ 也是，并且二者的特征子空间维数相等（$A-2I$ 是可对角化的，特征值的几何重数等于代数重数）。于是 $\dim U_+=\dim U_-$。@Pre:u-pm 得证。$\blacksquare$
 
 由于 $2I-A$ 的 $\pm2\cos(\theta/2)$ 特征子空间对应的是 $A$ 的 $2\mp2\cos(\theta/2)$ 特征子空间，所以我们得到了下面的推论：
 
 :::{.corollary #eigenspace-pair}
-$A$ 的不等于 2 的特征值成对出现，它们形如 $2\mp2\cos(\theta/2)$，并且对应的特征子空间 $U_{\pm}$ 的维数是相等的。$U_{\pm}$ 是 $\gamma$ 的共轭复特征值 $e^{\pm i\theta}$ 对应的特征子空间。
+$A$ 的不等于 2 的特征值成对出现，它们形如 $2\mp2\cos(\theta/2)$，并且对应的特征子空间 $U_{\pm}$ 的维数是相等的。
 :::
 
 一般来说 $U=U_+\oplus U_-$ 的维数未必是 2，所以 $U$ 不一定是平面。
 
-设 $c_\min=2-2\cos(\theta_0/2)$ 是 $A$ 的极小特征值，则 $c_\max=2+2\cos(\theta_0/2)$ 是 $A$ 的极大特征值。我们知道 $c_\min$ 的重数是 1，根据 @Pre:eigenspace-pair，$c_\max$ 的重数也是 1，这时 $U$ 就是一个二维平面，并且 $\gamma$ 在 $U$ 上的作用是一个旋转。我们来说明这个旋转的阶等于 $\gamma$ 的阶 $h$，从而 $U$ 就是要找的 Coxeter 平面：
+然而对 $A$ 的极小特征值 $c_\min=2-2\cos(\theta_0/2)$，我们知道 $c_\min$ 的重数是 1。根据 @Pre:eigenspace-pair，$A$ 的极大特征值 $c_\max=2+2\cos(\theta_0/2)$ 的重数也是 1，这时 $U$ 就是一个二维平面，并且 $\gamma$ 在 $U$ 上的作用是一个旋转。我们来说明这个旋转的阶等于 $\gamma$ 的阶 $h$，从而 $U$ 就是要找的 Coxeter 平面：
 
 :::{.proposition}
 设 $u,v$ 分别是 $c_\min,c_\max$ 对应的特征向量，$U=\span\{u,v\}$，则 $\gamma$ 作为 $U$ 上的旋转的阶等于 $\gamma$ 的阶 $h$。
