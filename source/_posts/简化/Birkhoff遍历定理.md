@@ -21,11 +21,7 @@ Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 
 # 准备工作
 
 
-<<<<<<< HEAD:source/_posts/已完成/Durrett/Birkhoff遍历定理.md
-给定一个概率空间 $(\Omega,\F,\mu)$，我们称两个可测集 $A,B\in F$ 几乎处处相等，是指它们的示性函数 $\ind_A,\ind_B$ 几乎处处相等，记作 $A\aeq B$。等价的说法是 $A,B$ 只差一个零测集，又或者说差集 $A\Delta B$ 是零测集。
-=======
 给定一个概率空间 $(\Omega,\mathcal{F},\mu)$，我们称两个可测集 $A,B\in F$ 几乎处处相等，是指它们的示性函数 $\ind_A,\ind_B$ 几乎处处相等，记作 $A\aeq B$。等价的说法是 $A,B$ 只差一个零测集，或者再换一个说法，差集 $A\Delta B$ 是零测集。
->>>>>>> 9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Birkhoff遍历定理.md
 
 设 $T:\Omega\rightarrow \Omega$ 是一个可测变换，即对任何 $E\in\F$ 有 $T^{-1}E\in\F$。
 
@@ -34,7 +30,6 @@ Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 
 $$\I=\{E\in F\mid T^{-1}E\aeq E\}$$
 构成 $\F$ 的一个子 $\sigma$- 代数。
 :::
-
 
 ::: {.definition #def-2}
 如果对任何可测集 $E\in\F$ 有 $\mu(T^{-1}E)=\mu(E)$，就称 $T$ 是一个保测变换。
@@ -76,8 +71,7 @@ $$S_n(\omega)= \sum_{k=0}^{n-1} f(T^k(\omega)).$$
 我们有如下的定理：
 
 ::: {.theorem #birkhoff}
-
-（Birkhoff 遍历定理）
+**Birkhoff 遍历定理** \
 
 设 $T$ 是概率空间 $(\Omega,\F,\mu)$ 上的保测变换，则对任何 $f\in L^1(\Omega)$ 有
 $$\lim_{n\to\infty}\frac{S_n}{n}\rightarrow \mathbb{E}[f\,|\,\I]\quad\text{a.e.}$$
@@ -86,8 +80,7 @@ $$\lim_{n\to\infty}\frac{S_n}{n}\rightarrow \mathbb{E}[f\,|\,\I]\quad\text{a.e.}
 证明 Birkhoff 遍历定理定理的关键是证明如下的极大遍历定理：（极大遍历定理这个名字来源于分析中的 Hardy-Littlewood 极大函数，这一类的不等式统称为极大不等式）
 
 ::: {.theorem #max-ergodic}
-
-**极大遍历定理**
+**极大遍历定理** \
 
 定义极大算子
 $$M_f(\omega)=\sup_{n\geq 1}\frac{1}{n}S_n(\omega),$$
