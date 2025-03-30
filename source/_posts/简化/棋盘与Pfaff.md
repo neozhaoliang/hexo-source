@@ -42,11 +42,7 @@ $$\mathrm{wt}(\pi)=\text{sgn}(\pi)\cdot a_\pi.$$
 $$a_\pi=a_{i_1j_1}a_{i_2j_2}\cdots a_{i_nj_n}.$$
 于是 $\mathrm{wt}(\pi)$ 是一个次数为 $n$ 的单项式。
 
-但是，$\mathrm{wt}(\pi)$ 的定义是合理无歧义的吗？注意一个匹配 $\pi$ 可以有多种不同的置换表示：你可以按任意的顺序排列这些 $(i_k,j_k)$ 对，比如
-$$\pi=\begin{pmatrix}1&2&3&4&\cdots&2n-1&2n\\i_2&j_2&i_3&j_3&\cdots&i_1&j_1\end{pmatrix}.$$
-或是交换某一对中 $i_k$ 和 $j_k$ 的位置：
-$$\pi=\begin{pmatrix}1&2&\cdots&2k-1&2k&\cdots&2n-1&2n\\i_1&j_1&\cdots&j_k&i_k&\cdots&i_n&j_n\end{pmatrix}.$$
-不难验证，虽然不同的置换表示给出的 $\text{sgn}(\pi)$ 和 $a_\pi$ 可能不同，但是二者的乘积 $\mathrm{wt}(\pi)$ 总是一样的。比如把某个 $(i_k,j_k)$ 改写成 $(j_k,i_k)$，那么 $\text{sgn}(\pi)$ 和 $a_\pi$ 都同时变号，乘积保持不变。总之 $\mathrm{wt}(\pi)$ 的定义只与匹配 $\pi$ 有关，并不依赖于具体置换的选择。
+但是，$\mathrm{wt}(\pi)$ 的定义是合理无歧义的吗？注意一个匹配 $\pi$ 可以有多种不同的置换表示：你可以按任意的顺序排列这些 $(i_k,j_k)$ 对，或是交换某一对中 $i_k$ 和 $j_k$ 的位置。不难验证，这些改变不会影响乘积 $\mathrm{wt}(\pi)$。比如把某个 $(i_k,j_k)$ 改写成 $(j_k,i_k)$，那么 $\text{sgn}(\pi)$ 和 $a_\pi$ 都同时变号，乘积不变。总之 $\mathrm{wt}(\pi)$ 的定义只与匹配 $\pi$ 有关，并不依赖于具体置换的选择。
 
 :::{.definition .unnumbered}
 设 $\mathcal{M}_{2n}$ 为 $[2n]$ 的所有匹配组成的集合，矩阵 $A$ 的 Pfaffian 多项式 $\text{pf}(A)$ 定义为
@@ -64,7 +60,7 @@ $$\det A=\sum_{\sigma\in S_{2n}}\text{sgn}(\sigma)a_{\sigma}=\sum_{\sigma\in S_{
 
 回忆任何置换 $\sigma$ 都可以表示为若干不相交的轮换的乘积：
 $$\sigma = (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.$$
-设 $\mathcal{E}_{2n}$ 为轮换长度 $k,l,\cdots$ 都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，$\sigma$ 只跑遍 $\mathcal{E}_{2n}$，不属于 $\mathcal{E}_{2n}$ 的那些置换整体对行列式的贡献为 0。
+设 $\mathcal{E}_{2n}$ 为所有轮换的长度 $k,l,\cdots$ 都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，$\sigma$ 只跑遍 $\mathcal{E}_{2n}$，不属于 $\mathcal{E}_{2n}$ 的那些置换整体对行列式的贡献为 0。
 
 分两种情况：
 
@@ -86,7 +82,7 @@ $$\mathcal{M}_{2n}\times \mathcal{M}_{2n}\rightarrow \mathcal{E}_{2n}:\quad (\pi
 $$\mathrm{wt}(\pi)\cdot \mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.$$
 这样就证明了定理。
 
-对任何两个匹配 $(\pi,\pi')\in\mathcal{M}_{2n}\times\mathcal{M}_{2n}$，我们把它俩画在同一张图上，图的顶点集合就是 $[2n]$，两个顶点 $i,j$ 如果在 $\pi$ 中配成一对就在它们之间连一条红色边，或者如果 $i,j$ 在 $\pi'$ 中配成一对就在它们之间连一条蓝色边。这样我们得到的是一个每个顶点恰好有一条红边和一条蓝边的图，即每个顶点度数都是 2 的正则图。这个图一定可以表示为若干条不相交的回路的并 [^1]，在一个回路中，红边和蓝边是交错出现的，因此每个回路的长度都是偶数。
+对任何两个匹配 $(\pi,\pi')\in\mathcal{M}_{2n}\times\mathcal{M}_{2n}$，我们把它俩画在同一张图上，图的顶点集合就是 $[2n]$，$\pi$ 的边染成红色，$\pi'$ 的边染成蓝色。这样得到一个 2- 正则图，每个顶点恰有一条红色和一条蓝边与之相邻。这个图一定可以表示为若干条不相交的回路的并 [^1]，在每个回路中，红蓝边交错出现，因此每个回路的长度都是偶数。
 
 设 $C$ 是这样的一条回路，$i_1$ 是 $C$ 中最小的元素，从 $i_1$ 出发，沿着红色的边，即 $\pi$ 的方向绕 $C$ 一圈：
 $$i_1\,{\color{red}{\xrightarrow{\pi}}}\,i_2\,{\color{blue}{\xrightarrow{\pi'}}}\,i_3\,{\color{red}{\xrightarrow{\pi}}}\,\cdots\,{\color{blue}{\xrightarrow{\pi'}}}\,i_1.$$
