@@ -350,28 +350,15 @@ $$\{0,1,\ldots,h_{k1}\}=\{h_{i1} \mid k\leq i\leq r\}\sqcup \{h_{k1} - h_{kj}\mi
 同时用 $h_{k1}$ 减去两边的集合，得到不交并
 $$\{0,1,\ldots,h_{k1}\}=\{h_{k1}-h_{i1} \mid k\leq i\leq r\}\sqcup \{h_{kj}\mid 1\leq j\leq\lambda_k\}.$$
 
-前者正是集合 $\{\mu_k-\mu_i,k\leq i\leq r\}$，这就证明了 @Pre:lemmaB。$\blacksquare$
+前者正是集合 $\{\mu_k-\mu_i\mid k\leq i\leq r\}$，这就证明了 @Pre:lemmaB。$\blacksquare$
 
-最后我们来完成钩长公式的证明：这里使用了一个小技巧：考虑无穷多个变元的对称多项式环 $\Lambda[x_1,\ldots,x_n,\ldots]$，任何 $k$ 变元的 Schur 多项式都是 $\Lambda$ 中的元素。$\Lambda$ 到有理数域上的单变元形式幂级数环 $\mathbb{Q}[[t]]$ 有一个同态 $\theta$：
+最后我们来完成钩长公式的证明：这里使用了一个小技巧：考虑关于无穷多个变元的对称多项式环 $\Lambda[x_1,\ldots,x_n,\ldots]$，任何 $k$ 变元的 Schur 多项式都是 $\Lambda$ 中的元素。$\Lambda$ 到有理数域上的单变元形式幂级数环 $\mathbb{Q}[t]$ 有一个同态 $\theta$：
 $$\theta(f) = \sum_{k=0}^\infty f_k \frac{t^k}{k!}.$$
-其中 $f_k$ 是 $f$ 中单项式 $x_1x_2\cdots x_k$ 的系数。$\theta$ 显然是线性的，要验证它是代数同态，对任何 $f,g\in\Lambda$ 我们计算
-$$\begin{align*}
-\theta(f)\theta(g) &= \left(\sum_{k=0}^\infty f_k\frac{t^k}{k!}\right)\left(\sum_{l=0}^\infty g_l\frac{t^l}{l!}\right)\\
-&=\sum_{n=0}^\infty \left(\sum_{k+l=n}\frac{f_kg_l}{k!l!}\right) t^n\\
-&=\sum_{n=0}^\infty \left(\sum_{k=0}^n f_kg_{n-k} C_n^k\right) \frac{t^n}{n!}
-\end{align*}$$
-另一方面 $fg$ 中单项式 $x_1x_2\cdots x_n$ 的系数等于
-$$\sum_{k=0}^n\sum_{\{i_1,\ldots,i_k\}\subseteq\{1,2,\ldots,n\}} f_{i_1\cdots i_k}g_{j_1\cdots j_{n-k}}.$$
-其中 $f_{i_1\cdots i_k}$ 为单项式 $x_{i_1}\cdots x_{i_k}$ 在 $f$ 中的系数，$g_{j_1\cdots j_{n-k}}$ 为单项式 $x_{j_1}\cdots x_{j_{n-k}}$ 在 $g$ 中的系数，并且
-$\{j_1,\ldots,j_{n-k}\}$ 是 $\{i_1,\ldots, i_k\}$ 在 $\{1,2,\ldots, n\}$ 中的补集。
-
-由于 $f,g$ 都是对称多项式，所以 $f_{i_1\cdots i_k}$ 对任何 $\{i_1,\ldots,i_k\}$ 都相同，都等于 $f_k$，同理 $g_{j_1\cdots j_{n-k}}$ 都等于 $g_{n-k}$，所以
-$$(fg)_k=\sum_{k=0}^n\sum_{\{i_1,\ldots,i_k\}\subseteq\{1,2,\ldots,n\}} f_{i_1\cdots i_k}g_{j_1\cdots j_{n-k}}=\sum_{k=0}^nC_n^k f_kg_{n-k}.$$
-这就证明了 $\theta$ 确实是代数同态。
+其中 $f_k$ 是 $f$ 中单项式 $x_1x_2\cdots x_k$ 的系数。不难验证 $\theta$ 是 $\Lambda\to \mathbb{Q}[t]$ 的代数同态 [^1]。
 
 在齐次对称多项式 $h_k$ 中，其形如 $x_1x_2\cdots x_n$ 的项只有一个，就是 $x_1x_2\cdots x_k$，并且这一项的系数是 1，所以 $\theta(h_k)=\frac{t^k}{k!}$。
 
-我们再来分析 $\theta$ 作用在 Schur 多项式上的结果 $\theta(s_\lambda(x_1,\ldots,x_n))$。注意 这里要求 $n=|\lambda|$，即将数字 $\{1,2,\ldots,n\}$ 填入形状为 $\lambda\vdash n$ 的 Ferrers 图得到的半标准 Young 表的生成函数。单项式 $x_1x_2\cdots x_k$ 在 $s_\lambda(x_1,\ldots,x_n)$ 中的系数等于每个数字 $\{1,2,\ldots,k\}$ 都恰好使用一次的不同填法的个数，这只能是 $k=n$ 且得到的是标准 Young 表，这样的填法有 $f_\lambda$ 种，所以
+我们再来分析 $\theta$ 作用在 $n$ 变元 Schur 多项式上的结果 $\theta(s_\lambda(x_1,\ldots,x_n))$。这里我们要求 $\lambda$ 满足 $|\lambda|=n$，即 $\lambda$ 的 Ferrers 图恰好包含 $n$ 个方格。单项式 $x_1x_2\cdots x_k$ 在 $s_\lambda(x_1,\ldots,x_n)$ 中的系数等于每个数字 $\{1,2,\ldots,k\}$ 都恰好使用一次的不同填法的个数，这只能是 $k=n$ 且得到的是标准 Young 表，这样的填法有 $f_\lambda$ 种，所以
 $$\theta(s_\lambda(x_1,\ldots,x_n))=f_\lambda \frac{t^n}{n!}.$$
 
 在 Jacobi-Trudi 恒等式两边同时用 $\theta$ 作用，得到
@@ -385,7 +372,7 @@ $$f_\lambda = n!\cdot \det\begin{pmatrix}
 \cdots & \cdots &\cdots&\cdots\\
 \frac{1}{(\lambda_r-r+1)!} & \frac{1}{(\lambda_r-r+2)!} & \cdots & \frac{1}{\lambda_r!}
 \end{pmatrix}.$$
-它的最后一列恰好是 $\{\mu_i!,1\leq i\leq r\}$，提出来以后得到
+它的最后一列恰好是 $\{\mu_i!\mid 1\leq i\leq r\}$，提出来以后得到
 $$f_\lambda = \frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot \det\begin{pmatrix}
 \mu_1^{\underline{r-1}}& \mu_1^{\underline{r-2}} & \cdots & \mu_1^{\underline{0}}\\
 \mu_2^{\underline{r-1}} & \mu_2^{\underline{r-2}} & \cdots & \mu_2^{\underline{0}}\\
@@ -395,9 +382,21 @@ $$f_\lambda = \frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot \det\begin{pmatrix}
 其中采用了类似 @aigner07 中的记号
 $$x^{\underline{k}}=x(x-1)\cdots(x-k+1).$$
 
-不难证明 $\det(\mu_i^{\underline{r-j}})$ 这个行列式与 Vandermonde 行列式 $\det(\mu_i^{r-j})$ 的值是一样的，都等于 $\prod\limits_{i<j}(\mu_i-\mu_j)$。实际上我们可以考虑 $n$ 个变元 $X_1,\ldots,X_n$ 的行列式
-$\det(X_i^{\underline{r-j}})$，这个多项式在 $X_i=X_j$ 时是 0，所以它有因子 $\prod_{1\leq i<j\leq r}(X_i-X_j)$。另一方面它的行列式展开以后每一项次数都不超过 $\sum_{i=1}^r(r-i)=\frac{r(r-1)}{2}$，所以比较次数即得它必然等于 $\prod_{1\leq i<j\leq r}(X_i-X_j)$ 乘以一个常数。再比较 $X_1^{r-1}X_2^{r-2}\cdots X_r^0$ 的系数（来自主对角线）即得这个常数是 1。
-
-于是
+不难证明 $\det(\mu_i^{\underline{r-j}})$ 这个行列式与 Vandermonde 行列式 $\det(\mu_i^{r-j})$ 的值是一样的，都等于 $\prod\limits_{i<j}(\mu_i-\mu_j)$ [^2]。于是
 $$f_\lambda = \frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot\prod\limits_{i<j}(\mu_i-\mu_j) = \frac{n!}{\prod\limits_{v\in F_\lambda}h_v}.$$
 这就完成了钩长公式的证明。
+
+[^1]: 你可以直接手算验证 $\theta$ 是代数同态。但这个同态背后还有更深的来历：记
+$$p_k=x_1^k+\cdots+x_n^k+\cdots\in\Lambda.$$
+$p_k$ 叫做**幂和对称多项式**。对称多项式的基本定理有一个版本是说，任何 $f\in\Lambda$ 可以唯一地写成关于 $\{p_k\mid k\geq1\}$ 的有理系数多项式：
+$$f=g(p_1,p_2,\ldots).$$
+其中 $g$ 是关于无穷多个变元 $x_1,\ldots,x_n$ 的有理系数多项式。考虑赋值映射
+$$\begin{aligned}
+{\rm ex}:\ \Lambda&\mapsto\mathbb{Q}[t]\\
+g(p_1,p_2,\ldots) &\to g(t, 0, 0,\ldots)
+\end{aligned}$$
+则 ${\rm ex}$ 是代数同态。${\rm ex}$ 实际上就是 $\theta$：
+$${\rm ex}(f) = \sum_{n\geq 0}f_n\frac{t^n}{n!}.$$
+详情可以参考 [@Stanley_Fomin_1999]。 
+[^2]: 考虑 $n$ 个变元 $X_1,\ldots,X_n$ 的行列式
+$\det(X_i^{\underline{r-j}})$，这个多项式在 $X_i=X_j$ 时是 0，所以它有因子 $\prod_{1\leq i<j\leq r}(X_i-X_j)$。另一方面它的行列式展开以后每一项次数都不超过 $\sum_{i=1}^r(r-i)=\frac{r(r-1)}{2}$，所以比较次数即得它等于 $\prod_{1\leq i<j\leq r}(X_i-X_j)$ 乘以一个常数。再比较 $X_1^{r-1}X_2^{r-2}\cdots X_r^0$ 的系数（来自主对角线）即得这个常数是 1。
