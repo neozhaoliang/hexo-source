@@ -345,9 +345,10 @@ $$(z,x)=\sum_{s\in S}z_s(\alpha_s, x)\geq1.$$
 所以必有某个 $\alpha_s$ 使得 $z_s(\alpha_s,x)\geq 1/n$。由于 $z_s\leq S(z)\leq M$，我们有 $(\alpha_s,x)\geq 1/(nz_s)\geq 1/(nM)=\epsilon/2$。
 
 考察
-$$y=sx=x-2(x,\alpha_s)\alpha_s.
-$$
-由于 $x\in\tc^\ast$ 以及 $\tc^\ast$ 是 $W-$ 不变的所以 $y\in\tc^\ast$。又注意到 $S(y)=S(x)-2(x,\alpha_s)\leq S(x)-\epsilon$，所以要证明 $y$ 符合要求，只要再找到某个 $z'\in\tc^\ast$ 满足 $S(z')\leq M$ 和 $(z',y)\geq1$ 即可。
+$$y=sx=x-2(x,\alpha_s)\alpha_s.$$
+由于 $x\in\tc^\ast$ 以及 $\tc^\ast$ 是 $W-$ 不变的所以 $y\in\tc^\ast$。又注意到
+$$S(y)=S(x)-2(x,\alpha_s)\leq S(x)-\epsilon.$$
+所以要证明 $y$ 符合要求，只要再找到某个 $z'\in\tc^\ast$ 满足 $S(z')\leq M$ 和 $(z',y)\geq1$ 即可。
 
 如果 $(z,\alpha_s)<0$，那么 $z'=z$ 就满足要求，因为这时
 $$(z,y)=(z,x-2(x,\alpha_s)\alpha_s)=(z,x)-2\underbrace{(x,\alpha_s)}_{\geq\epsilon/2}\underbrace{(z,\alpha_s)}_{<0}>(z,x)\geq1.$$
