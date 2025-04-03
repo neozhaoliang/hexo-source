@@ -338,7 +338,7 @@ $$\prod_{j=1}^{\lambda_k}h_{kj}=\frac{\mu_k!}{\prod\limits_{k<i}(\mu_k-\mu_i)}.$
 
 我们从 $F_\lambda$ 的左下角开始，沿着边界，每一步向右或者向上行走，直到第 $k$ 行最右边的方格右上角为止，总共要走 $h_{k1}+1$ 步。将经过的边依次标号为 $0,1,\ldots,h_{k1}$。
 
-![图中只显示了 $F_\lambda$ 第 $k$ 行及以下的部分](/images/schur/hook_length_lemma.svg){width=400 .fig}
+![图中只显示了 $F_\lambda$ 第 $k$ 行及以下的部分。向右走的步数等于第 $k$ 行的方格个数，向上走的步数等于第 1 列中 $\geq k$ 行的方格个数，所以总共走了 $h_{k1}+1$ 步。](/images/schur/hook_length_lemma.svg){width=400 .fig}
 
 不难看出：
 
@@ -397,6 +397,6 @@ g(p_1,p_2,\ldots) &\to g(t, 0, 0,\ldots)
 \end{aligned}$$
 则 ${\rm ex}$ 是代数同态。${\rm ex}$ 实际上就是 $\theta$：
 $${\rm ex}(f) = \sum_{n\geq 0}f_n\frac{t^n}{n!}.$$
-详情可以参考 [@Stanley_Fomin_1999]。 
+详情可以参考 [@Stanley_Fomin_1999]。
 [^2]: 考虑 $n$ 个变元 $X_1,\ldots,X_n$ 的行列式
 $\det(X_i^{\underline{r-j}})$，这个多项式在 $X_i=X_j$ 时是 0，所以它有因子 $\prod_{1\leq i<j\leq r}(X_i-X_j)$。另一方面它的行列式展开以后每一项次数都不超过 $\sum_{i=1}^r(r-i)=\frac{r(r-1)}{2}$，所以比较次数即得它等于 $\prod_{1\leq i<j\leq r}(X_i-X_j)$ 乘以一个常数。再比较 $X_1^{r-1}X_2^{r-2}\cdots X_r^0$ 的系数（来自主对角线）即得这个常数是 1。
