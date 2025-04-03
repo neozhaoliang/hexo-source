@@ -365,13 +365,13 @@ $$
 
 $(\omega_s,\omega_s)<0$ 的情形比较容易，这时 $\omega_s$ 是 time-like 的，其正交补 $V_I=\span\{\alpha_t\mid t\ne s\}$ 是 space-like 的，从而 $W_I$ 是有限群。任取一个实的基本权 $(\omega_t,\omega_t)>0\,(t\in I)$ 并考虑
 $$v = \sum_{w\in W_I}w(\omega_t),$$
-显然 $v\in\tcr$，并且 $W_I$ 保持 $v$ 不动。特别地对任何 $t\in I$ 都有 $t(v)=v$。这是 $n-1$ 个独立的线性约束，其解空间是一维的，所以 $v$ 和 $\omega_s$ 共线：存在 $a\in\R$ 使得 $v=a\omega_k$。两边同时与 $\alpha_s$ 作内积得到
+显然 $v\in\tcr$，并且 $W_I$ 保持 $v$ 不动。特别地对任何 $t\in I$ 都有 $t(v)=v$。这是 $n-1$ 个独立的线性约束，其解空间是一维的，所以 $v$ 和 $\omega_s$ 共线：存在 $a\in\R$ 使得 $v=a\omega_s$。两边同时与 $\alpha_s$ 作内积得到
 $$a = (\alpha_s,v)=\sum_{w\in W_I}(\alpha_s,w(\omega_t))=\sum_{w\in W_I}(w^{-1}(\alpha_s), \omega_t)=\sum_{w\in W_I}(w(\alpha_s), \omega_t).$$
 对任何 $w\in W_I$，$w\alpha_s=\alpha_s+\sum_{i\in I}c_i\alpha_i$ 仍然是正根，所有的系数 $c_i$ 都非负。所以上式右边的每一项
 $$(w(\alpha_s), \omega_t)=\sum_{i\in I}c_i(\alpha_i, w_t) = c_t\geq0.$$
 我们来选择一个特殊的 $w\in W_I$ 使得 $c_t>0$：由于 $\Gamma$ 是连通的，所以 $\Gamma$ 中存在一条从 $s$ 到 $t$ 的路径 $s\sim s_1\sim\cdots\sim s_m=t$，其中每个 $s_i\,(i\geq1)\in I$  且互不相同。不难验证对 $w=s_m\cdots s_1\in W_I$，$w\alpha_s$ 的系数 $c_t>0$，所以 $a$ 严格大于 0，所以 $\omega_s=v/a\in\tcr$。
 
-$(\omega_s, \omega_s)=0$ 的情形稍微麻烦一些：这时 $\omega_s$ 的正交补 $\omega_s^\bot$ 是 light-like 的，即子图 $\Gamma\setminus\{s\}$ 是仿射的。特别地，$\Gamma\setminus\{s\}$ 由一些仿射或者有限的连通成分组成，并且有且恰有一个连通成分是仿射的（否则两个线性无关的 light-like 的向量的组合会给出 time-like 的向量）。任取一个实的基本权 $(\omega_t,\omega_t)>0$，我们需要讨论两种情况：
+$(\omega_s, \omega_s)=0$ 的情形稍微麻烦一些：这时 $\omega_s$ 的正交补 $\omega_s^\bot$ 是 light-like 的，即子图 $\Gamma\setminus\{s\}$ 是仿射的。特别地，$\Gamma\setminus\{s\}$ 由一些仿射或者有限的连通成分组成，并且有且恰有一个连通成分是仿射的。任取一个实的基本权 $(\omega_t,\omega_t)>0$，我们需要讨论两种情况：
 
 1. 如果 $\omega_t$ 属于某个有限型的连通成分 $Y$，类似上面的讨论，$v = \sum_{w\in W_Y}w(\omega_t)\in\tcr$ 满足对任何 $t\ne s$ 都有 $t(v)=v$，从而 $v$ 等于 $\omega_s$ 乘以一个正实数，从而 $\omega_s\in\tcr$。
 
