@@ -31,19 +31,23 @@ In the heaven of the great god Indra is said to be a vast and shimmering net, fi
 This is a book about serious mathematics, but one which we hope will be enjoyed by as wide an audience as possible. It is the story of our computer aided explorations of a family of unusually symmetrical shapes, which arise when two spiral motions of a very special kind are allowed to interact. These shapes display intricate ‘fractal’ complexity on every scale from very large to very small. Their visualisation forms part of a century-old dream conceived by the great German geometer Felix Klein. Sometimes the interaction of the two spiral motions is quite regular and harmonious, sometimes it is total disorder and sometimes and this is the most intriguing case - it has layer upon layer of structure teetering on the very brink of chaos.
 :::
 
-这是一本关于严谨数学的著作，但我们希望它能以通俗易懂的方式吸引尽可能多的读者。本书讲述了我们通过计算机探索一系列具有独特对称性的几何形状的故事，这些形状源自两种特殊螺旋运动的相互作用。这些形状在从大到小的各个尺度上，都展示了精妙的分形复杂性。我们的可视化工作，部分实现了德国几何学大师菲利克斯·克莱因百年前的数学梦想。当两种螺旋运动相互作用时，有时它们会形成规则和谐的图案，有时则呈现完全的无序状态，最引人入胜的是它们在秩序与混乱的临界状态下，层层结构交织，令人着迷。
+这是一本关于严谨数学的著作，但我们希望尽可能多的读者都能从中获得乐趣。本书讲述了我们借助计算机，对一类具有非同寻常对称性的图形进行探索的过程。这些图形源自两种特殊螺旋运动的相互作用，展现出在从宏观到微观各个尺度上都极为复杂的“分形”结构。它们的可视化工作实现了德国伟大几何学家菲利克斯·克莱因一个百年前的数学梦想。有时候，这两种螺旋运动的相互作用是规律而和谐的；有时则是完全无序的，最引人入胜的是它们在秩序与混乱的临界状态下，层层结构交织，令人着迷。
 
 :::{.simple}
 As we progressed in our explorations, the pictures that our computer programs produced were so striking that we wanted to tell our tale in a manner which could be appreciated beyond the narrow confines of a small circle of specialists. You can get a foretaste of their variety by taking a look at the Road Map on the final page. Mathematicians often use the word ‘beautiful’ in talking about their proofs and ideas, but in this case our judgment has been confirmed by a number of unbiassed and definitely non-mathematical people. The visual beauty of the pictures is a veneer which covers a core of important and elegant mathematical ideas; it has been our aspiration to convey some of this inner aesthetics as well. There is no religion in our book but we were amazed at how our mathematical constructions echoed the ancient Buddhist metaphor of Indra’s net, spontaneously creating reflections within reflections, worlds without end.
 :::
 
-随着我们探索的深入，计算机程序生成的几何图像展现出令人震撼的数学美感，这促使我们希望以一种超越专业圈子的方式讲述我们的故事。读者可以通过书末的“探索路线图”一窥其丰富的多样性。数学家常用“美”来形容他们的证明和思想，但在本研究中，我们的美学评价得到了众多非数学背景的客观评审者的认可。这些图像的视觉美感，就像是光滑的外壳，包裹着深刻而优雅的数学内核——我们一直致力于在展示这些图像的同时，也传达它们内在的数学美学。虽然本书并不涉及宗教，但我们惊讶地发现，我们的数学结构与佛教“因陀罗网”这一古老隐喻之间产生了意外的共鸣，层层反射自发地衍生出无尽的宇宙。
+随着我们探索的深入，计算机程序生成的几何图像展现出令人震撼的数学美感，这促使我们渴望以一种超越专业圈子，为更广泛读者所欣赏的方式来讲述这个故事。读者可以通过书末的“探索路线图”先睹为快，感受这些图像的多样风貌。
+
+数学家在谈论他们的证明理念时常常使用“美”这个词，但这一次，不只是我们这样认为——许多并不具数学背景的外行人也认同这些图像具有非凡的美感。图像的视觉美只是一层表面，它所覆盖的内核是重要而优雅的数学思想；我们也希望能够传达这种深层次的美。
+
+虽然本书并不涉及宗教，但我们惊讶地发现，我们的数学结构与佛教“因陀罗网”这一古老隐喻之间产生了意外的共鸣，层层反射自发地衍生出无尽的宇宙。
 
 :::{.simple}
 Most mathematics is accessible, as it were, only by crawling through a long tunnel in which you laboriously build up your vocabulary and skills as you abstract your understanding of the world. The mathematics behind our pictures, though, turned out not to need too much in the way of preliminaries. So long as you can handle high school algebra with confidence, we hope everything we say is understandable. Indeed given time and patience, you should be able to make programs to create new pictures for yourself. And if not, then browsing through the figures alone should give a sense of our journey. Our dream is that this book will reveal to our readers that mathematics is not alien and remote but just a very human exploration of the patterns of the world, one which thrives on play and surprise and beauty.
 :::
 
-大多数数学，仿佛只能通过爬行在漫长的隧道中来理解——在这个过程中，你不断积累词汇和技巧，同时抽象化你对世界的认知。然而，本书图像背后的数学却并不需要太多前置知识。只要你能自信地掌握高中代数，我们相信你能理解书中的所有内容。事实上，若有足够的时间和耐心，你应该能编写程序，自己创造新的图像。如果不进行编程实践，单纯浏览这些图像，也能让你感受到我们研究的历程。我们的梦想是通过这本书向读者展示，数学并非遥不可及的抽象领域，而是人类探索世界规律的一种方式——这是一种充满游戏、惊喜和美感的探索。
+大多数数学的学习过程就像是在一条漫长的隧道中缓慢前行。在这个过程中，你不断积累词汇和技巧，一步步抽象出对世界的理解。然而，本书图像背后的数学却并不需要太多前置知识。只要你能自信地掌握高中代数，我们相信你能理解书中的所有内容。事实上，若有足够的时间和耐心，你应该能编写程序，自己创造新的图像。即使不这样，仅仅浏览这些图像，也能感受到我们这段旅程的魅力。我们的梦想是通过这本书让读者意识到，数学并非遥远而陌生的事物，而是人类探索世界规律的一种方式，是对世界中各种模式的追寻，它源于游戏、惊喜与美的激发。
 
 ## 我们是如何开始写它的？
 
@@ -51,27 +55,29 @@ Most mathematics is accessible, as it were, only by crawling through a long tunn
 **David M.'s story**. This book has been over twenty years in the writing. The project began when Benoit Mandelbrot visited Harvard in 1979/80, in the midst of his explorations of complex iteration - the ‘fractals’ known as Julia sets - and the now famous ‘Mandelbrot Set’. He had also looked at some nineteenth century figures produced by infinite repetitions of simple reflections in circles, a prototypical example of which had fascinated Felix Klein. David W. and I pooled our expertise and began to develop these ideas further in the Kleinian context. The computer rapidly began producing pictures like the ones you will find throughout the book.
 :::
 
-**戴维·芒福德（David Mumford）的故事**。本书的创作历时二十多年。项目始于 1979 至 1980 年间，当时贝努瓦·曼德布罗特（Benoit B. Mandelbrot）访问哈佛大学，他正处于对复迭代系统的研究之中——即著名的朱利亚集（Julia sets）和曼德布罗特集（Mandelbrot Set）。在此期间，曼德布罗特还关注了 19 世纪数学家通过圆反射的无限迭代所生成的几何图形，其中一个典型范例曾深深吸引了菲利克斯·克莱因（Felix Klein）。我与大卫·怀特（David W.）共同整合各自的专业知识，开始在克莱因几何学的框架下进一步发展这一研究方向。计算机程序很快就生成了许多类似于你在本书中所看到的图像。
+**戴维·芒福德（David Mumford）的故事**。本书的写作历时二十余年。项目的起点可以追溯到 1979/80 年，当时贝努瓦·曼德布罗特（Benoit B. Mandelbrot）正在访问哈佛大学。彼时他正在探索复迭代系统——即后来被称为朱利亚集的“分形”以及如今广为人知的“曼德布洛特集合”。在此期间，曼德布罗特还研究了一些 19 世纪的图形，这些图形是通过圆反射的无限迭代所生成的，其中一个原型曾经让菲利克斯·克莱因（Felix Klein）深感着迷。大卫·怀特（David W.）和我结合了各自的专业知识，开始在克莱因群的框架下进一步发展这些想法。计算机很快就生成了类似本书中随处可见的那些图像。
 
 :::{.simple}
 What to do with the pictures? Two thoughts surfaced: the first was that they were unpublishable in the standard way. There were no theorems, only very suggestive pictures. They furnished convincing evidence for many conjectures and lures to further exploration, but theorems were the coin of the realm and the conventions of that day dictated that journals only publish theorems.
 The second thought was equally daunting: here was a piece of real mathematics that we could explain to our non-mathematical friends. This dangerous temptation prevailed, but it turned out to be much, much more difficult than we imagined.
 :::
 
-这些图像该如何处理呢？我们有了两个思路。第一个思路是，这些图像无法按照常规的学术方式发表——它们没有定理，只有一些充满启发性的图像。虽然这些图像为许多猜想提供了有力证据，也为进一步探索指引了方向，但在当时定理至上的学术体系中，期刊的传统要求只发表定理。
+这些图像该如何处理呢？我脑海中浮现出两个念头：首先，它们无法以传统方式发表。它们没有定理，只有一些极具启发性的图像。虽然它们为许多猜想提供了令人信服的证据，也为进一步探索指引了方向，但定理才是数学界通行的“硬通货”，而当时的惯例是，期刊只发表包含定理的文章。
 
-第二个思路同样让人感到棘手：这些数学成果具有显著的科普价值，我们可以向非专业的朋友们加以解释。我们最终没有抵抗住这个充满风险的诱惑，然而，实际操作的困难远远超出了我们的预期。
+第二个念头同样令人生畏：这是一段真正的数学内容，而我们竟然可以把它讲给非数学背景的朋友听。这种危险的诱惑最终占了上风，但我们很快发现，这远比我们想象的要困难得多。
 
 :::{.simple}
 We persevered off and on for a decade. One thing held us back: whenever we got together, it was so much more fun to produce more figures than to write what Dave W. named in his computer TheBook. I have fond memories of traipsing through sub-zero degree gales to the bunker-like supercomputer in Minneapolis to push our calculations still further. The one loyal believer in the project was our ever-faithful and patient editor, David Tranah. However, things finally took off when Caroline was recruited a bit more than a decade ago. It took a while to learn how to write together, not to mention spanning the gulfs between our three warring operating systems. But our publisher, our families and our friends told us in the end that enough was enough.
 :::
 
-这项研究我们断断续续地推进了十年。最大的障碍是：每当我们聚在一起时，绘制新图像总比撰写戴夫·W.电脑中的《天书》更有趣。我至今还记得，在明尼阿波利斯刺骨的寒风中，我们跋涉到堡垒般的超级计算机中心，只为将计算推向新的极限。唯一始终如一的支持者，是那位忠诚且耐心的编辑大卫·特拉纳。真正的转折出现在十多年前卡罗琳的加入——我们花了些时间学会了如何共同写作，并克服了三个互不兼容的操作系统之间的鸿沟。直到最后，出版商、家人和朋友们都告诉我们，“是时候结束了”。
+我们断断续续坚持了十年。最大的障碍是，每次见面时，大家都觉得创作新图比写 David W. 在他的电脑里命名为 “The Book” 的那本书要有趣得多。我至今仍清晰记得，在明尼阿波利斯刺骨的寒风中，我们跋涉到堡垒般的超级计算机中心，只为将计算推向新的极限。始终对这个项目抱有信心的，是我们忠诚而耐心的编辑 David Tranah。但真正的转折点，是十多年前 Caroline 的加入。我们花了好一阵子才学会如何一起写作，更别提如何在三个“势不两立”的操作系统之间架起桥梁。不过最终，我们的出版商、家人和朋友都对我们说：够了，该收尾了。
 
+:::{.simple}
 You know that ‘word problem’ you hated the most in elementary school? The one about ditch diggers. Ben digs a ditch in 4 hours, Ned in 5 and Ted in 6. How long do they take to dig it together? The textbook will tell you 1 hour, 37 minutes and 17 seconds. Baloney! We have uncovered incontrovertable evidence that the right answer is
 hours. This is a deep principle involving not merely mathematics but sociology, psychology, and economics. We have a remarkable proof of this but even Cambridge University Press’s generous margin allowance is too small to contain it.
+:::
 
-还记得小学时最让你头疼的“挖水沟问题”吗？本挖一条沟需要 4 小时，内德需要 5 小时，泰德需要 6 小时，那么他们三个人一起干，得多长时间才能完成？教科书上会告诉你标准答案是 1 小时 37 分 17 秒——纯粹胡说八道！我们已经通过实践得到了确凿的证据：真正的耗时应该是 4 + 5 + 6 = 15 小时。这背后蕴藏着一个深刻的原理，不仅仅涉及数学，还牵扯到社会学、心理学和经济学。我们有一个精彩的证明，只可惜即使剑桥大学出版社给出了超大的页边距，依然容不下它。
+你还记得你小学时最讨厌的那道“应用题”吗？就是关于挖沟工人的那题。Ben 4 小时能挖完一条沟，Ned 需要 5 小时，Ted 要 6 小时。那他们一起挖，要多久才能挖完？课本会告诉你答案是 1 小时 37 分 17 秒。胡说八道！我们已经通过实践得到了确凿的证据，真正的耗时应该是 4 + 5 + 6 = 15 小时。这背后蕴藏着一个深刻的原理，不仅仅涉及数学，还牵扯到社会学、心理学和经济学。我们有一个精彩绝伦的证明过程，但即使是剑桥大学出版社那慷慨的版面，也无法容纳它。
 
 :::{.note}
 Since then, the pioneering team of Klaus and Alice Peters have started the journal Experimental Mathematics.

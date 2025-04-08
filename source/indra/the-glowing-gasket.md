@@ -34,34 +34,30 @@ The Kiss Precise, Sir Frederick Soddy [^1]
 The lacy web in Figure 7.1 is called the Apollonian gasket. Usually, it is constructed by a simple geometric procedure, dating back to those most famous of geometers, the ancient Greeks. We shall start by explaining the traditional construction, but as we shall disclose shortly, the gasket also represents another remarkable way in which the Schottky dust can congeal. The pictures you see here were actually all drawn using a refinement [^2] of the DFS algorithm for tangent Schottky circles.
 :::
 
-[图 7.1](#fig-7.1) 中的镂空结构被称为阿波罗尼奥斯分形。其构造基于一种简单的几何方法，可追溯至古希腊著名的几何学家。我们将首先解释传统的构造方法，但稍后也会揭示，这个分形结构同样展现了肖特基尘埃凝聚的另一种独特形式。此处所见的所有图像，实际上都是通过一种改进版的 DFS 算法绘制的，该算法专门用于处理相切肖特基圆的情况。
+[图 7.1](#fig-7.1) 中蕾丝状的图案被称为阿波罗尼奥斯垫片。其构造基于一种简单的几何方法，这种方法可以追溯到最著名的几何学家——古希腊人。我们将首先解释这种传统的构造方式，但很快你会看到，这种圆垫其实还展现了另一个非同寻常的形式，即所谓的 Schottky 尘埃如何聚集成形。你所看到的这些图像，实际上都是使用一种针对相切 Schottky 圆的 DFS 算法改进版本 [^2] 绘制出来的。
 
 :::{.simple}
 The starting point of the traditional construction is a chain of three non-overlapping disks, each tangent to both of the others. A region between three tangent disks is a ‘triangle’ with circular arcs for sides. This shape is often called an ideal triangle: the sides are tangent at each of the three vertices so the angle between them is zero degrees.[^3] The gasket is activated by the fact that in the middle of each ideal triangle there is always a unique ‘inscribed disk’ or incircle, tangent to the three outer circles. It is really better to think of the gasket as a construction on the sphere. Insides and outsides don’t matter any more, so we may as well start with any three mutually tangent circles. You can see lots of disks and incircles in Figure 7.2.
 :::
 
-传统构造的起点是三个互不重叠且两两相切的圆盘，呈链状排列。三个相切圆盘围成的区域，形状类似一个以圆弧为边的“三角形”。这种几何图形通常被称为理想三角形：由于其三条边在顶点处相切，因此每个顶点的夹角恰为零度。阿波罗尼奥斯垫片的构造正是由这一特性触发的：每个理想三角形的中心都有且仅有一个内切圆，它同时与这三个外接圆相切。更直观的理解方式是将这一构造置于球面上来考察。这样一来，“内外”之分已无意义，因此我们大可从任意三个两两相切的圆开始。在 [图 7.2](#fig-7.2) 中，你会看到许多这样的圆盘及其内切圆结构。
+传统构造的起点是由三个互不重叠的圆盘组成的一条链，每个圆盘都与另外两个相切。三个相切圆盘之间的区域构成了一个“三角形”，其边界是由圆弧构成的。这种形状常被称为理想三角形：由于其三条边在三个顶点处相切，因此它们之间的夹角为零度。该垫片（gasket）的关键在于，每个理想三角形的中间总存在一个唯一的“内切圆”，即同时与三个外接圆相切的圆。事实上，更好的理解方式是将这个垫片看作是在球面上的一种构造。在球面上，内侧与外侧的区别已不复存在，因此我们可以从任意三个两两相切的圆开始。你可以在 [图 7.2](#fig-7.2) 中看到大量的圆盘和它们的内切圆。
 
 ![Figure 7.2. Activating the gasket. On the top left, the three largest disks which activate the gasket are shown in blue. One of the three disks appears as the outer blue region which frames the picture, because it contains the point $\infty$, the North Pole on the Riemann sphere. On the top right, two of the disks are tangent at $\infty$, so that you see them in the picture as parallel blue strips. Removing the blue circles leaves two red ideal triangles. Inside each ideal triangle is an incircle, coloured yellow. Below, we see more levels of incircles. \
 图 7.2. 激活垫片。左上图中，标出的三个最大圆盘以蓝色呈现，正是它们激活了垫片。其中一个圆盘显示为环绕整幅图像的外部蓝色区域，这是因为它包含了点 $\infty$，即黎曼球面上的北极点。右上图中，其中两个圆盘在 $\infty$ 处相切，因此在图中呈现为两条平行的蓝色带状区域。当我们移除这些蓝色圆盘后，图中便显现出两个红色的理想三角形。每个理想三角形内部都嵌有一个黄色内切圆。下方图示进一步展示了更深层次的内切圆结构。](/images/indra/fig-7.2.jpg){width=600 .fig #fig-7.2}
 
 :::{.simple}
-In the figure, we show two initial configurations of three tangent blue disks. When you take out the three blue disks you are left with two red ideal triangles. Each red ideal triangle has a yellow incircle. See how each yellow incircle divides the red triangle into three more triangles.
+In the figure, we show two initial configurations of three tangent blue disks. When you take out the three blue disks you are left with two red ideal triangles. Each red ideal triangle has a yellow incircle. See how each yellow incircle divides the red triangle into three more triangles. For repetitive people (a necessary quality in this subject, you might say), it is only natural to draw the incircles in these new triangles, resulting, of course, in even more triangles of the same kind. The bottom frame shows this subdivision carried out twice more, with green and then even smaller purple disks. In The Cat in the Hat Comes Back,’ the cat takes off his hat to reveal Little Cat, who then removes his hat and releases Little Cat, who then uncovers Little Cat, and so on. Now imagine there are not one but three new cats inside each cat’s hat. That gives a good impression of the explosive proliferation of these tiny ideal triangles. Carry out this process to infinity, and Voom, the Apollonian Gasket appears.
 :::
 
-在图中，我们展示了三个相切的蓝色圆盘的两种初始排布。当你移除这三个蓝色圆盘后，会留下两个红色的理想三角形。每个红色理想三角形各含一个黄色内切圆。仔细观察这些黄色的内切圆如何将红色三角形进一步分割为三个子三角形。
+图中展示了三个相切蓝色圆盘的两种初始配置。当你移除这三个蓝色圆盘时，剩下的是两个红色理想三角形。每个红色理想三角形都有一个黄色的内切圆。观察每个黄色内切圆如何将红色三角形分割成三个更小的三角形。
 
-:::{.simple}
-For repetitive people (a necessary quality in this subject, you might say), it is only natural to draw the incircles in these new triangles, resulting, of course, in even more triangles of the same kind. The bottom frame shows this subdivision carried out twice more, with green and then even smaller purple disks. In The Cat in the Hat Comes Back,’ the cat takes off his hat to reveal Little Cat, who then removes his hat and releases Little Cat, who then uncovers Little Cat, and so on. Now imagine there are not one but three new cats inside each cat’s hat. That gives a good impression of the explosive proliferation of these tiny ideal triangles. Carry out this process to infinity, and Voom, the Apollonian Gasket appears.
-:::
-
-对于那些乐此不疲的人（或许正是研究这一主题的必备素质），在新三角形中继续绘制内切圆简直是顺理成章的事。这当然会催生出更多相似的三角形。下方的子图展示了这种细分过程再重复两次的结果——先是绿色圆盘，接着是更小的紫色圆盘，密密层层地堆叠起来。这让我想起《戴帽子的猫又来了》中的情节——大猫摘下帽子，露出一只小猫；小猫摘下自己的帽子，又冒出一只更小的小猫；接着更小的小猫再摘帽……如此反复，仿佛无穷无尽。现在，试着想象每顶帽子里不是藏着一只，而是三只小猫，那你就能体会这些微型理想三角形是如何爆炸式增长的了。让这一过程无限延续，砰——阿波罗尼奥斯分形便瞬间跃然眼前。
+对于那些乐此不疲的人（或许正是研究这一主题的必备素质），在新三角形中继续绘制内切圆简直是顺理成章的事。这当然会催生出更多相似的三角形。下方的子图展示了这种细分过程再执行两次的结果——先是绿色圆盘，接着是更小的紫色圆盘，密密层层地堆叠起来。这让我想起《戴帽子的猫又来了》中的情节——大猫摘下帽子，露出一只小猫；小猫摘下自己的帽子，又冒出一只更小的小猫；接着更小的小猫再摘帽……如此反复进行。现在，想象每顶帽子里不是藏着一只，而是三只小猫，那你就能体会这些微型理想三角形是如何爆炸式增长的了。让这一过程无限延续，砰——阿波罗尼奥斯分形就出现了。
 
 :::{.simple}
 The Apollonian gasket is indeed very pretty, but the reason for introducing it here is that, remarkably, it is also the limit set of a Schottky group made by pairing tangent circles. Exactly the same intricate mathematical object can created by completely different means! You can see better how this works in the beautiful glowing version in Figure 7.3. The solid red circles in this picture are the initial Schottky circles in a very special configuration which we will look at closely in the next section. The glowing yellow limit set can be recognized as the same as the Apollonian gasket of Figure 7.1. The picture was made by pairing four tangent circles arranged in the configuration shown in Figure 7.4. The four circles are tangent not only in a chain; there are also extra tangencies between $C_a$ and $C_A$, and between $C_b$ and $C_B$.
 :::
 
-阿波罗尼奥斯分形确实非常美丽，但我们在此介绍它的原因是：令人惊讶的是，它也是由切圆配对生成的肖特基群的极限集。这一精妙的数学对象，竟然能通过完全不同的方式构造出来！您可以通过 [图 7.3](#fig-7.3) 中的荧光渲染图，看到这一过程是如何运作的。图中的实心红色圆环是以一种特殊配置排列的初始肖特基圆（具体分析请参见下一节），其荧黄色的极限集与 [图 7.1](#fig-7.1) 中的阿波罗尼奥斯垫片完全一致。这幅图像是通过配对四个相切圆生成的，排列方式如 [图 7.4](#fig-7.4) 所示：这些圆不仅形成了链式相切的关系，而且在 $C_a$ 和 $C_A$、$C_b$ 和 $C_B$ 之间还存在额外的切点。
+阿波罗尼奥斯分形确实非常美丽，但我们在此介绍它的原因是：令人惊讶的是，它也是由切圆配对生成的肖特基群的极限集。完全不同的方式也能创造出完全相同的复杂数学对象！您可以通过 [图 7.3](#fig-7.3) 中的荧光渲染图更好地理解它是如何运作的。图中的实心红色圆环是以一种特殊配置排列的初始肖特基圆（具体分析请参见下一节），其荧黄色的极限集与 [图 7.1](#fig-7.1) 中的阿波罗尼奥斯垫片完全一致。这幅图像是通过配对四个相切圆生成的，排列方式如 [图 7.4](#fig-7.4) 所示：这些圆不仅形成了链式相切的关系，而且在 $C_a$ 和 $C_A$、$C_b$ 和 $C_B$ 之间还存在额外的切点。
 
 ![Figure 7.3. (Overleaf.) The glowing gasket. This picture was created by applying the generating transformations $a,A,b,B$ to the chain of four solid red disks bounding the black ideal triangles. At higher levels, the image circles tone from red to orange to yellow, through green to blue, finally cycling back to red. Don’t let the picture fool you - the red circles are not the circles which activate the gasket in the traditional construction. The ones which appear in the traditional construction are the ‘dual’ circles with the yellow glow. \
 图 7.3. 荧光垫片。此图像是通过对围绕黑色理想三角形的四个实心红色圆盘施加生成变换 $a,A,b,B$ 而生成的。在更高的层级中，图像中的圆环色调从红色渐变为橙色、黄色，接着是绿色，再到蓝色，最终循环回红色。需要特别注意的是：图中的红色圆并非传统阿波罗尼奥斯构造中激活垫片的圆——在传统构造中，起激活作用的是发出黄色光辉的“对偶圆”。](/images/indra/fig-7.3.jpg){width=600 #fig-7.3}
@@ -673,14 +669,14 @@ zj=word(fp[i,j])zj​=word(fp[i,j])
 给定绘图精度 $\epsilon$，我们要求满足 $|z_2 - z_1| \leq \epsilon$ 且 $|z_3 - z_2| \leq \epsilon$，才能终止该分支在字树（word tree）上的正向枚举。若条件满足，我们依次绘制两条线段：一条从 $z_1$ 到 $z_2$，另一条从 $z_2$ 到 $z_3$。这就是我们所需的全部修改。
 
 :::{.simple}
-Figure 7.15 shows a slow motion execution of this special word algorithm for the gasket. As above, $a,b$ 
+Figure 7.15 shows a slow motion execution of this special word algorithm for the gasket. As above, $a,b$
 and the commutator have been listed as special words. A piece of the gasket has been plotted at the rather large gap size of `epsilon=0.1`. As you can see, all the contact points between far away parts of the limit set curve are completely filled in and the algorithm produces limit sets with no visible gaps. You will see better how the special word algorithm works if you follow through the description in Note 7.4.
 :::
 
 图 7.15 展示了这种针对垫片的特殊词算法的慢动作执行过程。和上文一样， 特殊词中包括 $a,b$ 和换位子。图中绘制了垫片的一部分，采用了较大的间隙尺寸 `epsilon=0.1`。正如你所见，极限集曲线中远处部分之间的所有接触点都已被完全填充，算法生成的极限集不再存在可见的间隙。如果你参照 [注记 7.4](#note-7.4) 中的描述，将能更清楚地理解特殊词算法的工作原理。
 
 :::{.simple}
-Many fractals are created through a process of iteration which is not terribly sensitive to the order of execution of the program. Seeing limit sets like the gasket drawn as curves is too wonderful to leave to such a procedure. When testing your program it is essential to scrutinize with excruciating care the order of infinite words and corresponding limit points. For lack of space (it's already a crowded picture), not all the limit points in Figure 7.15 have been labelled. If you really wish to test your understanding of the algorithm, you should try to fill in some missing labels, which can be done given the dictionary ordering and the desired special words. 
+Many fractals are created through a process of iteration which is not terribly sensitive to the order of execution of the program. Seeing limit sets like the gasket drawn as curves is too wonderful to leave to such a procedure. When testing your program it is essential to scrutinize with excruciating care the order of infinite words and corresponding limit points. For lack of space (it's already a crowded picture), not all the limit points in Figure 7.15 have been labelled. If you really wish to test your understanding of the algorithm, you should try to fill in some missing labels, which can be done given the dictionary ordering and the desired special words.
 :::
 
 许多分形图形是通过迭代过程生成的，而这种过程对程序的执行顺序通常并不十分敏感。然而，像垫片（gasket）这样的极限集，如果仅仅以这种方式画成曲线，未免太过可惜——它的美妙远不止于此。
