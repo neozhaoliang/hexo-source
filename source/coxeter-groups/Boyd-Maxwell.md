@@ -127,7 +127,7 @@ $$
 此即为 $\PL$ 的第二种参数化表示。
 :::
 
-![红色的圆是超平面 $(\cdot, e_{n+2})=1$ 与光锥的截线，可以通过将 $S^n$ 沿着 $e_{n+2}$ 平移一个单位得到；$\ER$ 对应蓝色的 horosphere，它是超平面 $(\cdot, e_0)=\frac{1}{2}$ 与光锥的截线。$e_\infty$ 不在 horosphere 上](/images/coxeter/Horosphere.svg){width=500}
+![红色的圆是超平面 $(\cdot, e_{n+2})=1$ 与光锥的截线，可以通过将 $S^n$ 沿着 $e_{n+2}$ 平移一个单位得到；$\ER$ 对应蓝色的 horosphere，它是超平面 $(\cdot, e_0)=\frac{1}{2}$ 与光锥的截线。$e_\infty$ 不在 horosphere 上](/images/coxeter/Horosphere.svg){width=500 .fig}
 
 设 $\y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in S^n$，$\y$ 在以 $e_{n+1}$ 为北极的球极投影下对应的点是
 $$\x=\begin{cases}
@@ -219,7 +219,7 @@ $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
 设 $B_1,B_2$ 是两个球，且 $B_1,B_2$ 的内部不相交。设 $k_1,k_2$ 分别是它们对应的 space-like 的单位向量，则 $(k_1,k_2)\leq-1$。
 :::
 
-:::note
+:::{.note}
 这个命题反过来是不对的。
 :::
 
@@ -234,7 +234,7 @@ $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
 
 # 球的反演
 
-::: definition
+:::{.definition}
 关于球 $B(\a, r)$ 的反演定义为
 $$\begin{aligned}
 \tau\colon\ \ER&\mapsto\ER\\
@@ -282,7 +282,7 @@ $$
 
 # 双曲球堆
 
-::: definition
+:::{.definition}
 如果非空集合 $\P\subset \S$ 满足对 $\P$ 中任何 $k\ne k'$ 有 $(k,k')\leq -1$，我们就称 $\P$ 是一个**球堆**
 :::
 
@@ -351,7 +351,7 @@ $$
 2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。则对任何 $k_1,k_2\in\P$，内积 $\inn$ 限制在二维子空间 $U=\span\{k_1,k_2\}$ 上肯定不是正定的，否则的话 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，从而 $C_{k_1}$ 和 $C_{k_2}$ 会在 $\H$ 的内部有交点，所以 $|(k_1,k_2)|\geq1$。如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
 
 
-::: definition
+:::{.definition}
 记 $\Omega_r=\{\omega\in\Omega\mid (\omega,\omega)>0\}$ 是所有实权组成的集合，$\tc_r=\cone{\Omega_r}$ 是由所有实权生成的凸锥。
 :::
 
