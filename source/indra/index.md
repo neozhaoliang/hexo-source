@@ -2,7 +2,6 @@
 title: "Indra's pearls 中英双语对照"
 subtitle: "The vision of Felix Klein"
 date: 2025-01-23
-url: "the-glowing-gasket"
 ---
 \DeclareMathOperator{\tr}{Tr}
 
@@ -79,11 +78,119 @@ hours. This is a deep principle involving not merely mathematics but sociology, 
 
 你还记得你小学时最讨厌的那道“应用题”吗？就是关于挖沟工人的那题。Ben 4 小时能挖完一条沟，Ned 需要 5 小时，Ted 要 6 小时。那他们一起挖，要多久才能挖完？课本会告诉你答案是 1 小时 37 分 17 秒。胡说八道！我们已经通过实践得到了确凿的证据，真正的耗时应该是 4 + 5 + 6 = 15 小时。这背后蕴藏着一个深刻的原理，不仅仅涉及数学，还牵扯到社会学、心理学和经济学。我们有一个精彩绝伦的证明过程，但即使是剑桥大学出版社那慷慨的版面，也无法容纳它。
 
-:::{.note}
-Since then, the pioneering team of Klaus and Alice Peters have started the journal Experimental Mathematics.
 
-自那时起，Klaus 和 Alice Peters 的先锋团队创办了《实验数学》期刊。
+:::{.simple}
+**David W.'s story**. This is a book of a thousand beginnings and for a long time apparently no end. For me, though, the first beginning was in 1979 when my friend and fellow grad student at Harvard Mike Stillman told me about a problem that his teacher David Mumford had described to him: Take two very simple transformations of the plane and apply all possible combinations of these transformations to a point in the plane. What does the resulting collection of points look like?
+
+Of course, the thing was not just to think about the shapes but to actually draw them with the computer. Mike knew I was interested in discrete groups, and we shared a common interest in programming. Also, thanks to another friend and grad student Max Benson, I was alerted to a very nice C library for drawing on the classic Tektronix 4014 graphics terminal. The only missing ingredient was happily filled by a curious feature of a Harvard education: I had passed my qualifying exams, and then I had nothing else to do except write my doctoral thesis. I have a very distinct memory of feeling like I had a lot of time on my hands. As time has passed, I have been astonished to discover that that was the last time I felt that way.
 :::
+
+**David W. 的故事**。这是一本拥有千百种开端、却似乎长久没有结局的书。对我来说，最初的开端是在 1979 年，那时我在哈佛的朋友、也是研究生同学的 Mike Stillman 跟我讲了一个问题，这是他的老师 David Mumford 描述给他的：取平面上的两种非常简单的变换，将这些变换以各种可能的组合作用在平面上的某个点上。最终得到的这一系列点组成的集合，会是什么样子呢？
+
+当然，事情不仅仅是思考这些图形的形状，而是要真正用计算机把它们画出来。Mike 知道我对离散群感兴趣，我们在编程方面也有共同爱好。此外，多亏了另一位朋友兼研究生 Max Benson 的提醒，我发现了一个非常棒的 C 语言库，可以在经典的 Tektronix 4014 图形终端上进行绘图。最后一个缺失的要素，恰好被哈佛教育中一个颇为特别的安排所填补：我已经通过了资格考试，接下来除了写博士论文之外，几乎没有其他事可做。我清楚地记得当时有一种“手头时间充裕”的感觉。随着时间流逝，我愈发惊讶地意识到，那竟然是我最后一次有那种感觉。
+
+:::{.simple}
+Anyway, as a complete lark, I tagged along with David M. while he built a laboratory of computer programs to visualize Kleinian groups. It was a mathematical joy-ride. As it so happened, in the summer of 1980 , there was a great opportunity to share the results of these computer explorations with the world at the historic Bowdoin College conference in which Thurston presented his revolutionary results in three-dimensional topology and hyperbolic geometry. We arranged for a Tektronix terminal to be set up in Maine, and together with an acoustically coupled modem at the blazing speed of 300 bits per second displayed several limit sets. The reaction to the limit curves wiggling their way across the screen was very positive, and several mathematicians there also undertook the construction of various computer programs to study different aspects of Kleinian groups.
+
+That left us with the task of writing an explanation of our algorithms and computations. However, at that point it was certainly past time for me to complete my thesis. Around 1981, I had the very good fortune of chatting with a new grad student at Harvard by the name of Curt McMullen who had intimate knowledge of the computer systems at the Thomas J. Watson Research Center of IBM, thanks to summer positions there. After roping Curt in, and at the invitation and encouragement of Benoit Mandelbrot, Curt and David M. made a set of extremely high quality and beautiful black-and-white graphics of limit sets. I would like to express my gratitude for Curt’s efforts of that time and his friendship over the years; he has had a deep influence on my own efforts on the project.
+:::
+
+总之，出于一种完全随性的心态，我跟着 David M. 一起参与了一个项目，他正在构建一个用于可视化 Kleinian 群的计算机程序实验室。这段经历堪称一次数学上的狂欢之旅。恰巧在 1980 年夏天，出现了一个极好的机会，可以在一场意义非凡的会议上向世人展示这些计算机探索的成果——那就是在鲍登学院（Bowdoin College）举办的历史性会议上，Thurston 发表了他在三维拓扑和双曲几何方面的革命性成果。我们设法在缅因州安装了一台 Tektronix 终端，并通过一台声耦合调制解调器，以惊人的 300 比特每秒的速度，展示了多个极限集。当这些极限曲线在屏幕上蜿蜒浮现时，反响非常热烈。与会的几位数学家也纷纷投身其中，开始构建各类计算机程序，以研究 Kleinian 群的不同方面。
+
+接下来，我们需要撰写一份关于我们算法和计算过程的说明。然而，那时我确实已经到了必须完成论文的最后期限了。大约在 1981 年，我非常幸运地结识了哈佛的一位新晋研究生 Curt McMullen，他因为暑期曾在 IBM 的 Thomas J. Watson 研究中心工作，对那里的计算机系统非常熟悉。在 Benoit Mandelbrot 的邀请与鼓励下，我拉上了 Curt 一起参与项目，Curt 和 David M. 一同制作了一组非常高质量且精美的极限集黑白图像。在此，我要感谢 Curt 当时的辛勤付出，以及多年来给予我的友谊；他对我在这个项目上的努力产生了深远的影响。
+
+:::{.simple}
+Unfortunately, as we moved on to new and separate institutions, with varying computing facilities, it was difficult to maintain the programs and energy to pursue this project. I would like to acknowledge the encouragement I received from many people including my friend Bill Goldman while we were at M.I.T., Peter Tatian and James Russell, who worked with me while they were undergraduates at M.I.T., Al Marden and the staff of the Geometry Center, Charles Matthews, who worked with me at Oklahoma State, and many other mathematicians in the Kleinian groups community. I would also like to thank Jim Cogdell and the Southwestern Bell Foundation for some financial support in the final stages. The serious and final beginning of this book took place when Caroline agreed to contribute her own substantial research work in this area and her expository gifts, and also step into the middle between the first and third authors to at least moderate their tendency to keep programming during our sporadic meetings to find the next cool picture. At last, we actually wrote some text.
+:::
+
+遗憾的是，随着我们各自前往新的、彼此独立的机构，计算设施也各不相同，这使得我们难以维持继续推进这个项目所需的程序和热情。我想对许多人表达感谢，他们给予了我鼓励，包括我在麻省理工时的朋友比尔·戈德曼，以及在本科期间与我一同工作的彼得·塔廷和詹姆斯·拉塞尔，还有几何中心的艾尔·马登和工作人员，曾与我在俄克拉荷马州立大学共事的查尔斯·马修斯，以及许多来自克莱因群研究领域的数学家。我还要感谢吉姆·科格德尔和西南贝尔基金会在本书最后阶段给予的一些资金支持。
+
+这本书真正意义上的严肃开端，是在卡罗琳同意贡献她在该领域的重要研究成果和她出色的讲解才能之后。同时，她还在第一作者和第三作者之间起到了“缓冲”作用——至少能抑制他们在我们偶尔聚会时总想继续编程、寻找下一幅炫酷图像的冲动。最终，我们终于开始真正动笔写作了。
+
+:::{.simple}
+We have witnessed a revolution in computing and graphics during the years of this project, and it has been difficult to keep pace. I would also like to thank the community of programmers around the world for creating such wonderful free software such as TEX, Gnu Emacs, X Windows and Linux, without which it would have been impossible to bring this project to its current end.
+
+During the years of this project, the most momentous endings and beginnings of my life have happened, including the loss of my mother Elizabeth, my father William, and my grandmother and family’s matriarch Elizabeth, as well as the birth of my daughters Julie and Alexandra. I offer my part in these pictures and text in the hope of new beginnings for those who share our enjoyment of the human mind’s beautiful capacity to puzzle through things. Programming these ideas is both vexing and immensely fun. Every little twiddle brings something fascinating to think about. But for now I’ll end.
+:::
+
+在这个项目进行的这些年里，我们见证了计算和图形领域的一场革命，步伐之快令人难以跟上。我也想感谢全球程序员社区，他们创造了如此出色的免费软件，如 TeX、Gnu Emacs、X Windows 和 Linux。没有这些软件，这个项目根本无法走到今天这一步。
+
+在这个项目进行的岁月里，我人生中最重大的结束与开始也相继发生了：我失去了母亲伊丽莎白、父亲威廉、祖母兼家族的女族长伊丽莎白，也迎来了我两个女儿朱莉和亚历山德拉的出生。我献上这些图画与文字，是希望在新的开始中，与同样热爱人类思维之美的人们分享这份乐趣。将这些思想转化为程序既令人头疼，又妙趣横生。每一个微小的调整，都会带来值得深思的趣味。不过，现在，我将告一段落。
+
+
+:::{.simple}
+**Caroline’s story**. I first saw some of David M. and David W.'s pictures in the mid-80s, purloined by my colleague David Epstein on one of his periodic visits to the Geometry Center in Minneapolis. I was struck by how pretty they were - they reminded me of the kind of lace work called tatting, which in another lifetime I would have liked to make myself.
+
+I presumed that everyone else understood all about the pictures, and didn’t pay too much attention, until a little while later Linda Keen and I were looking round for a new project. I had spent many years working on Fuchsian groups (see Chapter 6), and was wanting something which would lead me in to the Kleinian realm where at that time it was all go, developing Thurston’s wonderful new ideas about three-dimensional non-Euclidean geometry (see Chapter 12). By that time, I had somehow got hold of Dave W.'s preprint which described the explorations reported in Chapter 9. I suggested to Linda that it might fit the bill.
+:::
+
+**卡罗琳的故事**。我第一次看到 David M. 和 David W. 的一些图像是在 80 年代中期，那是我同事 David Epstein 去明尼阿波利斯的几何中心定期访问时偷偷带回来的。我被这些图像的美丽深深吸引——它们让我想起一种叫做梭编（tatting）的蕾丝工艺，如果我换一种人生路径，或许也会喜欢亲手做这种东西。
+
+我原以为其他人都已经完全理解这些图像的意义，因此起初也没有太在意。直到后来，我和 Linda Keen 正在寻找一个新的研究课题。当时我已经在 Fuchs 群（见第 6 章）上工作了很多年，想要转向 Kleinian 群的研究领域——那时这个领域正如火如荼地发展，围绕 Thurston 提出的关于三维非欧几何的奇妙新思想（见第 12 章）。那时，我不知怎么搞到了一份 Dave W. 的预印本，里面描述了第 9 章中提到的探索。我于是向 Linda 提议：或许我们可以从这里入手。
+
+:::{.simple}
+The first year was one of frustration, staring at pictures like the ones in Chapter 9 without being able to get any real handle on what was going on. Then one morning one of us woke up with an idea. We tried a few hand calculations and it seemed promising, so we asked Dave W. to draw us a picture of what we called the ‘real trace rays’. What came back was a rudimentary version of the last picture in this book the one we have called ‘The end of the rainbow’. For me it was more like ‘The beginning of the rainbow’, one of the defining moments of my mathematical life. Here we were, having made a total shot in the dark, having no idea what the rays could mean, but knowing they had absolutely no right to be arranged in such a nice way. It was obvious we had stumbled on something important, and from that moment, I was hooked.
+
+For another year we struggled to fit the rays into the one mathematical straight-jacket we could think of, but it just didn’t quite work. One day, I ran into Curt McMullen and mentioned to him what we were playing with. ‘Real trace’, he pondered, ‘That’s the convex hull boundary’.’ And with that clue, we were off. What Curt had told us was that to understand the two dimensional pictures we had to look in threedimensional non-Euclidean space, real Thurston stuff, as you might say. Finally we were able to verify at least most of the two Dave’s conjectures theoretically.
+:::
+
+第一年充满了挫败感，我们盯着第 9 章那样的图看了许久，却始终无法真正理解其中的奥秘。直到某天早上，我们中的一个人突然灵光一现。我们做了一些手工计算，结果看起来很有希望，于是就请 Dave W. 帮我们画一张图，描绘我们所说的“真实迹线射线”（real trace rays）。他给我们画回来的，是本书最后一幅图的雏形——我们称之为“彩虹的尽头”。对我而言，那更像是“彩虹的起点”，是我数学生涯中一个具有决定性意义的时刻。那时我们完全是摸着黑前进，根本不知道这些射线意味着什么，但我们清楚它们绝不可能如此巧妙地排列在一起。这太不可思议了，我们知道自己撞上了某个重要的东西。就在那一刻，我被彻底吸引住了。
+
+接下来的一年里，我们努力尝试将这些射线纳入我们所能想到的某种数学框架中，但始终无法完美契合。某天，我碰巧遇到 Curt McMullen，并向他提起我们正在研究的东西。“真实迹线？”他若有所思地说，“那是凸包的边界。”有了这个提示，我们一下子豁然开朗。Curt 告诉我们，若想理解这些二维图像，我们需要在三维的非欧几里得空间中去观察——说得直白点，就是研究真正的 Thurston 理论。从那以后，我们终于能够在理论上验证 Dave 提出的两个猜想中的大部分内容了。
+
+:::{.simple}
+When the 19th century mathematician Mary Somerville received a letter inviting her to make a translation, with commentary, of Laplace’s great book Mécanique Céléste, she was so surprised she almost returned the letter thinking there must have been some mistake. I suppose I wasn’t quite so surprised to get a letter from David M. asking me to help them write about their pictures, but it wasn’t quite an everyday occurrence either. Although I may perhaps write another book, I am unlikely ever again to have the chance to work on one which will be so much trouble and so much fun.
+
+And don’t think this book is the end of the story. If you flick through you will see cartoons of a rather portly character gluing up pieces of rubber into things like doughnuts. In fact all our present tale revolves about ‘one-holed doughnuts with a puncture’. For the last few years, I have been trying to understand what happens when the doughnuts acquire more holes. The main thing I can report is - it’s a lot more complicated! But the same wonderful structures, yet more intricate and inviting, are out there waiting to be tamed.
+
+I would like to thank the EPSRC for the generous support of a Senior Research Fellowship, which has recently allowed me to devote much time to both the mathematical and literary aspects of this challenging project.
+:::
+
+当当 19 世纪的数学家玛丽·萨默维尔收到一封信，邀请她翻译并评论拉普拉斯的巨著《天体力学》时，她惊讶得几乎要退回信件，认为一定是出了什么差错。我想，我收到大卫·M. 写信邀请我帮忙为他们的图片撰文时，虽说没有那么惊讶，但这绝非日常小事。尽管我或许还会写另一本书，但恐怕再也不会有机会参与一本既如此费神又如此有趣的书了。
+
+不过别以为这本书就讲完了全部的故事。如果你随手翻一翻，会看到一位略显圆润的角色，正在把橡胶片粘成类似甜甜圈的东西。事实上，我们整个故事都围绕着“打了一个洞的单孔甜甜圈”展开。过去几年里，我一直在试图理解当甜甜圈获得更多洞时会发生什么。我目前唯一能汇报的是——事情会复杂得多！但同样奇妙的结构，更加错综复杂且引人入胜，依然在那里，等着我们去驾驭。
+
+我衷心感谢英国工程与自然科学研究委员会（EPSRC）的慷慨资助，这使我近期能够投入大量时间，专注于这个充满挑战的项目中的数学与文学两个方面。
+
+## 读者指南
+
+:::{.simple}
+This is a book which can be read on many levels. Like most mathematics books, it builds up in sequence, but the best way to read it may be skipping around, first skimming through to look at the pictures, then dipping in to the text to get the gist and finally a return to understand some of the details. We have tried to make the first part of each chapter relatively simple, giving the essence of the ideas and postponing the technicalities until later. The more technical parts of the discussion have been relegated to the Notes and can be skipped as desired. Material important for later reference is displayed in Boxes.
+
+The first two chapters, on Euclidean symmetries and complex numbers respectively, contain material which may be partially familiar to many readers. We have aimed to present it in a form suited to our viewpoint, at the same time introducing as clearly as possible and with complementary graphics the mathematical terminology which will be used throughout the book. Chapter 3 introduces the basic double spiral maps, called Möbius symmetries, on which all of our later constructions rest. From then on, we build up ever more complicated ways in which a pair of Möbius maps can interact, generating more and more convoluted and intricate fractals, until in Chapters 10 and 11 we actually reach the frontiers of current research. The entire development is summarised in the Road Map on the final page.
+:::
+
+这是一本可以从多个层次阅读的书。像大多数数学书一样，它是按顺序逐步展开的，但最佳的阅读方式可能是跳跃式阅读：先快速浏览一遍，看一下插图，然后跳入文本抓住大意，最后再回头理解一些细节。我们尽力让每一章的前半部分相对简单，传达思想的精髓，技术性的内容则推迟到后面再讲。更为技术性的部分被放在了注释中，可以根据需要跳过。对以后参考很重要的内容会以框框的形式展示。
+
+前两章分别讨论了欧几里得对称性和复数，内容对于许多读者来说可能部分熟悉。我们旨在以符合我们视角的形式呈现这些内容，同时尽可能清晰地引入并配以补充图形，介绍本书中将使用的数学术语。第三章介绍了基本的双螺旋映射，称为莫比乌斯对称性，所有后续构建都基于此。从这一章开始，我们逐步构建出越来越复杂的莫比乌斯映射对相互作用的方式，生成越来越复杂、精巧的分形，直到第十章和第十一章，我们实际上达到了当前研究的前沿。整个发展过程在最后一页的路线图中进行了总结。
+
+:::{.simple}
+Words which have a precise mathematical meaning are in bold face the first time they appear. We have not always spelled out the intricacies of the precise mathematical definition, but we have also tried not to say anything which is mathematically incorrect. We have used a small amount of our own terminology, but in so far as possible have stuck to standard usage. Non-professional readers will therefore have to forgive us such terms as quasifuchsian and modular group, while readers with a mathematical training should be able to follow what we mean.
+
+The book is written as a guide to actually coding the algorithms which we have used to generate the figures. A vast set of further explorations is possible for those readers who invest the time to program. This is prime hacking country! Because we hope for a wide variety of readers with many different platforms at their disposal, we have sketched each step in ‘pseudo-code’, the universal programming pidgin.
+:::
+
+具有精确数学含义的数学术语在首次出现时以粗体显示。我们并不总是详细阐述这些数学定义的复杂性，但我们也尽量避免说出任何数学上不正确的内容。我们使用了一些自己的术语，但尽可能遵循标准用法。因此，非专业读者可能需要原谅我们使用诸如准富克斯群（quasifuchsian）和模群（modular group）等术语，而具有数学背景的读者应该能够理解我们的意思。
+
+本书的目的是作为编写实际算法的指南，这些算法用于生成我们所展示的图形。对于那些愿意投入时间编程的读者来说，仍有大量的进一步探索空间。这是编程爱好者的天堂！由于我们希望能吸引各种平台上的读者，我们已经以“伪代码”形式勾画了每个步骤，这是编程的通用语言。
+
+:::{.simple}
+Inevitably we have suppressed a good deal of relevant mathematics and anyone wishing to pursue these ideas seriously will doubtless sooner or later have to resort to more technical works. Actually there are no very accessible books about Kleinian group limit sets’, but there are plenty of texts which discuss the basics of symmetry and complex numbers. Some complex analysis books touch on Möbius maps and there is more in modern books on two-dimensional hyperbolic geometry. In the later part of the book we have cited a rather random collection of recent research papers which have important bearing on our work. These are absolutely not meant to be exhaustive, but should serve to help professional readers find their way round the literature.
+
+Finally our Projects need some comment. They can be ignored: we aren’t going to grade them or supply answers! Rather, we intend them as ‘explorations’ to tempt you if you enjoy the material and want to take it further. Some are fairly straightforward extensions or elucidations of material in the text and some involve open-ended questions for which there is no definite answer. A few are definitely research problems. Others again explain details which are needed for full understanding or verification of the more technical points in our story. We have to leave it to the reader to pick and choose which ones suit their taste and mathematical experience.
+:::
+
+不可避免地，我们压缩了许多相关的数学内容，任何希望深入研究这些想法的人无疑迟早都需要参考更专业的著作。实际上，关于克莱因群极限集的可读性强的书籍并不多，但有许多书籍讨论了对称性和复数的基础知识。一些复分析的书籍会涉及莫比乌斯变换，现代的二维双曲几何书籍则有更多的相关内容。在本书后部分，我们列举了一些与我们工作密切相关的近期研究论文。这些引用绝不是详尽无遗的，但应该能够帮助专业读者在文献中找到方向。
+
+最后，我们的项目需要做些说明。它们可以被忽略：我们不会给它们打分或提供答案！相反，我们将其作为“探索”，如果你喜欢这些内容并希望深入了解，它们将激发你的兴趣。有些项目是对书中材料的简单扩展或阐述，有些则是开放性问题，没有确切答案。少数是明确的研究问题。还有一些则是解释书中更技术性内容的细节，帮助理解或验证我们的故事中的关键点。我们只能留给读者自己选择，决定哪些项目适合他们的兴趣和数学经验。
+
+## 致谢
+
+:::{.simple}
+We thank especially our cartoonist Larry Gonick for his uncanny ability to translate a complicated three-dimensional manipulation into an immediately evident cartoon. For historical background we are indebted to the St. Andrews History of Maths web site, tempered with many erudite details and healthy doses of scholarly scepticism from our friends David Fowler and Paddy Patterson. (All remaining errors, are, of course, our own.) Klein’s own book Entwicklung der Mathematikim 19. Jahrhundert has also been an important source. We have read the Hua-Yen Sutra in the translation The Flower Ornament Scripture by Thomas Cleary, Shambhala Publications, 1993, and quotations are reproduced here with thanks. We should like to thank the Mathematics Departments of Brown, Oklahoma State, Warwick, Harvard and Minnesota for their hospitality. We should like to thank the NSF through its grant to the Geometry Center and EPSRC from their Public Understanding of Science budget for financial support. Finally we should like to thank our publisher David Tranah of Cambridge University Press, without whose constant prodding and encouragement this book would almost certainly never have seen the light of day.
+:::
+
+我们特别感谢我们的漫画家 Larry Gonick，他拥有将复杂的三维操作转化为一目了然的漫画的神奇能力。关于历史背景，我们要感谢圣安德鲁斯数学历史网站，并且我们特别感谢我们的朋友 David Fowler 和 Paddy Patterson 提供了许多博学的细节和健康的学术怀疑态度。（当然，所有剩余的错误都是我们自己的。）Klein 的《19世纪数学发展》一书也是一个重要的参考来源。我们阅读了 Thomas Cleary 翻译的《华严经》，由 Shambhala 出版社于1993年出版，引用的内容在此谨表示感谢。我们还要感谢布朗大学、俄克拉荷马州立大学、沃里克大学、哈佛大学和明尼苏达大学的数学系对我们的热情接待。感谢美国国家科学基金会（NSF）通过其对几何中心的资助，以及英国工程与物理学研究委员会（EPSRC）从其公共科学传播预算中提供的资助。最后，我们要感谢剑桥大学出版社的出版人 David Tranah，如果没有他不断的督促和鼓励，这本书几乎不可能问世。
 
 # 7 The glowing gasket
 
