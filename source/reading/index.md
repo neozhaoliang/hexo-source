@@ -1,4 +1,4 @@
 ---
-title: 读书
+title: "Sporadic Groups"
 layout: reading
 ---

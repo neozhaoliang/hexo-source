@@ -511,7 +511,7 @@ $$
 \sum_{i\leq k\leq j}(-1)^{k-i}q^{\binom{k-i}{2}}\binom{n+1}{k-i}_q
 \binom{n+j-k}{j-k}_q =\delta_{ij}.
 $$
-采用之前 $\binom{a}{-m}_q=0$ 的约定的话，上式可以写成
+采用我们之前的约定 $\binom{a}{-m}_q=0$，上式可以写成
 $$
 \sum_{1\leq k\leq n}(-1)^{k-i}q^{\binom{k-i}{2}}\binom{n+1}{k-i}_q
 \binom{n+j-k}{j-k}_q=\delta_{ij}.

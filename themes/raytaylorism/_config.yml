@@ -21,6 +21,10 @@ menu:
     link: /about
     icon: user
     class: menu-about
+  - id: reading
+    link: /reading
+    icon: link
+    class: menu-reading
   # 搜索
   - id: search
     link: "#search"

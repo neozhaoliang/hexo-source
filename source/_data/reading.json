@@ -1,24 +1,37 @@
 {
     "define": {
-	    "readed": "Scenes and simulations in Taichi"
-
+        "fractals": "分形",
+        "topology": "拓扑",
+        "group-theory": "群论",
+        "combinatocis": "组合"
     },
     "contents": {
-        "readed": [{
-            "title": "Poisson disk sampling",
-            "cover": "https://user-images.githubusercontent.com/23307174/171776193-1b73c948-c7c9-4c30-a4bd-bac3db4de06f.png",
-            "review": "Bridson's fast Poisson disk sampling algorithm",
-            "doubanLink": "https://github.com/neozhaoliang/awesome-shaders-in-taichi/blob/main/poisson_disk_sampling.py"
-        }, {
-            "title": "Poisson disk sampling",
-            "cover": "https://user-images.githubusercontent.com/23307174/171776193-1b73c948-c7c9-4c30-a4bd-bac3db4de06f.png",
-            "review": "推荐非UI人士了解UI阅读。",
-            "doubanLink": "https://github.com/neozhaoliang/awesome-shaders-in-taichi/blob/main/poisson_disk_sampling.py"
-        }, {
-            "title": "Poisson disk sampling",
-            "cover": "https://user-images.githubusercontent.com/23307174/171776193-1b73c948-c7c9-4c30-a4bd-bac3db4de06f.png",
-            "review": "推荐非UI人士了解UI阅读。",
-            "doubanLink": "https://github.com/neozhaoliang/awesome-shaders-in-taichi/blob/main/poisson_disk_sampling.py"
-        }]
+        "fractals": [
+            {
+                "title": "The beauty of Schottky groups",
+                "cover": "https://peterefrancis.com/schottky-groups/img/coloredgasket.svg",
+                "review": "Schottky 群的简短入门",
+                "doubanLink": "https://peterefrancis.com/schottky-groups/"
+            },
+            {
+                "title": "Kleinian and Quasi-Fuchsian Limit Sets: An Open Source Toolbox",
+                "review": "Indra's pearls 书中算法的开源实现",
+                "cover": "https://dhushara.com/DarkHeart/quasif/img/61s.gif",
+                "doubanLink": "https://dhushara.com/DarkHeart/quasif/quasi.htm"
+            },
+            {
+                "title": "Un ensemble-limite",
+                "cover": "https://images-archive.math.cnrs.fr/IMG/png/Fricke-Klein-AC-3.png",
+                "review": "Chéritat 复现 Klein 书中的一副插图",
+                "doubanLink": "https://images-archive.math.cnrs.fr/Un-ensemble-limite.html?lang=fr"
+            }
+        ],
+        "topology": [
+            {
+                "title": "Topology and Groups",
+                "review": "很棒的拓扑课程",
+                "doubanLink": "http://jde27.uk/tg/index.html"
+            }
+        ]
     }
 }

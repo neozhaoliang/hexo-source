@@ -48,3 +48,5 @@ Our frontispiece is a modern rendering of one of Klein’s new symmetrical world
 Klein’s tilings were now seen to have intimate connections with modern ideas about self-similar scaling behaviour, ideas which had their origin in statistical mechanics, phase transitions and the study of turbulence. There, the self-similarity involved random perturbations, but in Klein’s work, one finds self-similarity obeying precise and simple laws.
 
 克莱因的镶嵌图案如今被视为与现代自相似缩放行为的概念密切相关，这些概念起源于统计力学、相变和湍流研究。在那里，自相似性涉及随机扰动，但在克莱因的工作中，人们发现自相似性遵循精确而简单的规律。
+
+
