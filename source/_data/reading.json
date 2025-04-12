@@ -73,6 +73,17 @@
                 "cover": "https://i0.wp.com/math.ucr.edu/home/baez/mathematical/%7B6%2C3%2C3%7D_honeycomb_roice_bright_small.png",
                 "review": "John Baez 讨论各种六边形双曲蜂巢",
                 "doubanLink": "https://johncarlosbaez.wordpress.com/2014/05/14/hexagonal-hyperbolic-honeycombs/"
+            },
+            {
+                "title": "The harmonic triangle",
+                "review": "一个有意思的动画",
+                "cover": "https://www.geogebra.org/resource/gksmkmxx/vDKMfEfIdgdbWHqs/material-gksmkmxx-thumb@l.png",
+                "doubanLink": "https://www.geogebra.org/m/x99nwwrd"
+            },
+            {
+                "title": "Uniform polyhedra, Aztec diamond, etc",
+                "review": "一些动画",
+                "doubanLink": "https://bustercopley.github.io/"
             }
         ]
     }
