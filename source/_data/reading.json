@@ -1,12 +1,9 @@
 {
     "define": {
-        "fractals": "分形",
-        "topology": "拓扑",
-        "group-theory": "群论",
-        "combinatocis": "组合"
+        "all": "大杂烩"
     },
     "contents": {
-        "fractals": [
+        "all": [
             {
                 "title": "The beauty of Schottky groups",
                 "cover": "https://peterefrancis.com/schottky-groups/img/coloredgasket.svg",
@@ -24,13 +21,58 @@
                 "cover": "https://images-archive.math.cnrs.fr/IMG/png/Fricke-Klein-AC-3.png",
                 "review": "Chéritat 复现 Klein 书中的一副插图",
                 "doubanLink": "https://images-archive.math.cnrs.fr/Un-ensemble-limite.html?lang=fr"
-            }
-        ],
-        "topology": [
+            },
             {
-                "title": "Topology and Groups",
+                "title": "Mandelbrot set",
+                "cover": "https://www.math.univ-toulouse.fr/~cheritat/wiki-draw/images/0/05/M_iter_1E6.png",
+                "review": "Chéritat 介绍怎么绘制 Mandelbrot 集，包含了许多技术细节",
+                "doubanLink": "https://www.math.univ-toulouse.fr/~cheritat/wiki-draw/index.php/Mandelbrot_set"
+            },
+            {
+                "title": "Schmidt Arrangements by Katherine E. Stange",
+                "cover": "https://math.katestange.net/wp-content/uploads/2020/01/schmidt-hallway-1024x768.jpg",
+                "review": "Schmidt 排列",
+                "doubanLink": "https://math.katestange.net/illustration/schmidt-arrangements/"
+            },
+            {
+                "title": "Topology and Groups by Jonathan Evans",
                 "review": "很棒的拓扑课程",
+                "cover": "https://img.youtube.com/vi/0-c4pxa9lBY/sddefault.jpg",
                 "doubanLink": "http://jde27.uk/tg/index.html"
+            },
+            {
+                "title": "Artinian algebras",
+                "review": "Wedderburn-Artin 定理的证明",
+                "doubanLink": "https://dec41.user.srcf.net/h/III_L/algebras/1_1"
+            },
+            {
+                "title": "The complex Farey fraction tessellation",
+                "cover": "https://westy31.nl/ComplexFarey/ModularComplex1.jpg",
+                "doubanLink": "https://westy31.nl/ComplexFarey/ComplexFarey.html"
+            },
+            {
+                "title": "Crystallographic Sphere Packings",
+                "cover": "https://sites.math.rutgers.edu/~alexk/crystallographic/tetrahedron/packing.png",
+                "review": "晶体球堆的不同构造方式",
+                "doubanLink": "https://sites.math.rutgers.edu/~alexk/crystallographic/"
+            },
+            {
+                "title": "Quantum Mechanics and the Dodecahedron",
+                "cover": "https://i0.wp.com/math.ucr.edu/home/baez/mathematical/dodecahedron_spinning.gif",
+                "review": "John Baez 讨论 dodecahedron 群的不变量",
+                "doubanLink": "https://johncarlosbaez.wordpress.com/2017/12/31/quantum-mechanics-and-the-dodecahedron/"
+            },
+            {
+                "title": "Captain Einstein: Experience relativity in Virtual Reality",
+                "review": "在 VR 中体验相对论",
+                "cover": "https://img.youtube.com/vi/i6AouFHLb2g/sddefault.jpg",
+                "doubanLink": "http://captaineinstein.org"
+            },
+            {
+                "title": "Hexagonal hyperbolic honeycombs",
+                "cover": "https://i0.wp.com/math.ucr.edu/home/baez/mathematical/%7B6%2C3%2C3%7D_honeycomb_roice_bright_small.png",
+                "review": "John Baez 讨论各种六边形双曲蜂巢",
+                "doubanLink": "https://johncarlosbaez.wordpress.com/2014/05/14/hexagonal-hyperbolic-honeycombs/"
             }
         ]
     }
