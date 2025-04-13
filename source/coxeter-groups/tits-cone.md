@@ -342,7 +342,8 @@ $$X=\{x\in\tc^\ast\mid S(x)\leq S(v) \text{ and $(z,x)\geq1$ for some $z\in\tc^\
 
 对 $x\in X$，设 $z=\sum_{s\in S}z_s\alpha_s\in\tc^\ast$ 满足 $S(z)\leq M$ 和 $(z,x)\geq1$，则
 $$(z,x)=\sum_{s\in S}z_s(\alpha_s, x)\geq1.$$
-所以必有某个 $\alpha_s$ 使得 $z_s(\alpha_s,x)\geq 1/n$。由于 $z_s\leq S(z)\leq M$，我们有 $(\alpha_s,x)\geq 1/(nz_s)\geq 1/(nM)=\epsilon/2$。
+所以必有某个 $\alpha_s$ 使得 $z_s(\alpha_s,x)\geq 1/n$。由于 $z_s\leq S(z)\leq M$，我们有
+$$(\alpha_s,x)\geq 1/(nz_s)\geq 1/(nM)=\epsilon/2.$$
 
 考察
 $$y=sx=x-2(x,\alpha_s)\alpha_s.$$
