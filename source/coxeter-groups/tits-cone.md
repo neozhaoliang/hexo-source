@@ -330,7 +330,7 @@ $$
 我是在与 [Bob Howlett](https://www.maths.usyd.edu.au/u/bobh/) 教授的邮件交流中学到这个结论的。这个证明我相信改进自 [@Maxwell82]。
 :::
 
-**证明**：由于 $\Delta$ 构成 $V$ 的一组基，所以任何 $v\in V$ 可以表示为 $\Delta$ 的线性组合：$v = \sum_{s\in S}c_s\alpha_s$。定义 $S(v)=\sum_{s\in S}c_s$ 为所有系数的和。特别地，当 $v\in\tc^\ast\subset\cone{\Delta}$ 时，每个 $c_s$ 都是非负的，所以 $S(v)\geq0$。
+**证明**：对 $v = \sum_{s\in S}c_s\alpha_s\in V$，定义 $S(v)=\sum_{s\in S}c_s$ 为所有系数的和。注意当 $v\in\tc^\ast\subset\cone{\Delta}$ 时，每个 $c_s$ 都是非负的，所以 $S(v)\geq0$。
 
 用反证法，设 $u,v\in\tc^\ast$ 满足 $(u,v)>0$，不妨设 $(u,v)=1$。记 $n=|S|$ 和 $M=S(u)$。定义
 
