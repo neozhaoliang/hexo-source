@@ -106,7 +106,7 @@ $$\jmath\colon\ S^n\to\PL: \y\to [\y+e_{n+2}],$$
 是一一对应，此即为 $\PL$ 的第一种参数化表示。
 :::
 
-:::{.simple}
+:::{.simple #second-param}
 $\PL$ **的第二种参数化表示** \
 
 我们在 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基下计算。对 $[v]\in\PL$：
@@ -161,10 +161,10 @@ $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}
 $$k = \frac{e_0 + \a + (|\a|^2 - r^2)e_\infty}{r}.$$
 不难验证 $(k,k)=1$，所以 $k\in\mathcal{S}$。
 
-对 $\x\in\R^n$，$\imath(\x)=e_0+\x+|\x|^2e_\infty\in\L$，则
+对 $\x\in\R^n$，不难验证对 $\PL$ 的 [第二种](#second-param) 参数化表示，
 $$(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{2r}.$$
 
-于是 $\x\in B$ 当且仅当 $(\imath(\x),k)=0$，以及 $\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k)>0$。鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k$ 是指向 $B$ 的正半空间的单位法向量。
+于是 $\x\in B$ 当且仅当 $(\imath(\x),k)=0$；$\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k)>0$。鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k$ 是指向 $B$ 的正半空间的单位法向量。
 
 注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k)=0$。$V$ 中所有形如 $(\jmath(\x),k)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k^\bot$ 的截线。
 
@@ -180,7 +180,7 @@ $$k=be_\infty+\a+ce_\infty\in\S,\quad b,c\in\R.$$
 
 # 球面的 seperation
 
-设 $B_1(\a_1,r_1),\,B_2(\a_2,r_2)$ 是两个球，它们对应的 $\S$ 中向量分别是
+设 $B_1(\a_1,r_1),\,B_2(\a_2,r_2)$ 是两个球，它们对应的 $\S$- 向量分别是
 $$\begin{aligned}
 k_1&=\frac{1}{r_1}e_0 + \frac{\a_1}{r_1} + \frac{|\a_1|^2-r_1^2}{r_1}e_\infty,\\
 k_2&=\frac{1}{r_2}e_0 + \frac{\a_2}{r_2} + \frac{|\a_2|^2-r_2^2}{r_2}e_\infty.\\
@@ -383,7 +383,7 @@ $$(\omega_s, \omega_s)=0\Rightarrow (v_1+v_2,v_1+v_2)=0\Rightarrow (v_1,v_1) + (
 $$\omega_s=\sum_{i\in X} (\omega_s,\omega_i)\alpha_i$$
 两边同时用 $\alpha_s$ 作内积有
 $$1=(\omega_s,\alpha_s)=\sum_{i\in X} (\omega_s, \omega_i)\underbrace{(\alpha_s,\alpha_i)}_{\leq0}.$$
-所以必须所有 $(\omega_s, \omega_i)<0$。所以 $X\cup \{s\}$ 构成的子图满足 [这个结论](/coxeter-groups-level/#ideal-vertex) 的条件，于是我们得到
+所以必须所有 $(\omega_s, \omega_i)<0$。所以 $X\cup \{s\}$ 构成的子图满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件，于是我们得到
 $$\omega_s\in\cl{\cone{\bigcup_{w\in W_I}w(\omega_t)}}\subset\tcr.$$
 
 $\blacksquare$
@@ -397,7 +397,7 @@ $\blacksquare$
 若 $W$ 是双曲的，则 $\hat{\Omega}_r$ 是非平凡的球堆当且仅当 $\Gamma$ 的 level 是 2，这时 $\hat{\Omega}_r$ 还是极大球堆。
 :::
 
-**证明**：若 $\Gamma$ 的 level 是 2，则 [$\Omega_r$ 中的元素两两分离](/coxeter-groups-level#level-12)，将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。由于基本权是线性无关的，$\hat{\Omega}_r$ 显然是非平凡的球堆。如果存在某个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $k$ 对应的 $C_k$ 与 $\hat{\Omega}_r$ 中的任何球都没有公共内部的话，则有 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，自然就有 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups-tits-cone/#dual-cone-nonspace)，$(k,k)=(-k,-k)\leq0$，矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大球堆。
+**证明**：若 $\Gamma$ 的 level 是 2，则 [$\Omega_r$ 中的元素两两分离](/coxeter-groups/level#level-12)，将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。由于基本权是线性无关的，$\hat{\Omega}_r$ 显然是非平凡的球堆。如果存在某个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $k$ 对应的 $C_k$ 与 $\hat{\Omega}_r$ 中的任何球都没有公共内部的话，则有 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，自然就有 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$(k,k)=(-k,-k)\leq0$，矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大球堆。
 
 反之若 $\hat{\Omega}_r$ 是一个非平凡球堆，则 $W$ 的 level 必然大于 1，且所有的实权之间两两分离。于是任何两个基本权生成的二维子空间 $\span\{\omega_i,\omega_j\}$ 都是 time-like 或者 light-like 的。又由于 $W$ 是双曲的，从而 $\Gamma\setminus\{i,j\}$ 是 space-like 或者 light-like 的，所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$
 
