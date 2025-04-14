@@ -124,7 +124,7 @@ $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)
 ::: {.theorem #level-1}
 @Maxwell82
 
-如果 $\Gamma$ 的 level 是 1，则 $\Gamma$ 是双曲的。所有的 [基本权](/coxeter-groups-tits-cone#fundamental-weights) 都不是实的并且两两分离。
+如果 $\Gamma$ 的 level 是 1，则 $\Gamma$ 是双曲的。所有的 [基本权](/coxeter-groups/tits-cone#fundamental-weights) 都不是实的并且两两分离。
 :::
 
 :::{.note}
@@ -156,7 +156,7 @@ $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)
 
 再来证明 2。
 
-由于 $\Gamma$ 的 level 是 1，对任何 $s\in S$，子空间 $\omega_s^\bot=\span\{\alpha_t\mid t\ne s\}$ 是有限或者仿射的，从而 [$\omega_s$ 不是 space-like 的](/coxeter-groups-three-cases/#orth-complement-lorentzian)，即 $(\omega_s,\omega_s)\leq 0$。于是任何 $\omega_s\,(s\in S)$ 都不是实的。
+由于 $\Gamma$ 的 level 是 1，对任何 $s\in S$，子空间 $\omega_s^\bot=\span\{\alpha_t\mid t\ne s\}$ 是有限或者仿射的，从而 [$\omega_s$ 不是 space-like 的](/coxeter-groups/three-geometries/#orth-complement-lorentzian)，即 $(\omega_s,\omega_s)\leq 0$。于是任何 $\omega_s\,(s\in S)$ 都不是实的。
 
 再来证明 3。
 
@@ -182,36 +182,36 @@ $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)
 这个结论告诉我们在 level 1 时空间的边界上没有球堆。
 :::
 
-**证明**：由于 level 1 的群是双曲的，根据 [双曲情形 Tits 锥的结论](/coxeter-groups-three-cases#tits-closure)，$\tc$ 包含 $\N_+,\N_-$ 之一，不妨设为 $\tc\supset\N_+$，则 $\cl{\tc}\supset\cl{\N_+}=\Q_+$。还要再证明反向的包含关系。为此只要证明 $\cl{\tc}\subset\Q$ 和 $\cl{\tc}\cap\Q_-=\{0\}$。
+**证明**：由于 level 1 是双曲的，根据 [双曲情形 Tits 锥的结论](/coxeter-groups/three-geometries#tits-closure)，$\tc$ 包含 $\N_+,\N_-$ 之一，不妨设 $\tc\supset\N_+$，则 $\cl{\tc}\supset\cl{\N_+}=\Q_+$。为了证明反向包含关系，只要证 $\cl{\tc}\subset\Q$ 和 $\cl{\tc}\cap\Q_-=\{0\}$。
 
 根据 @Pre:level-1，所有的基本权 $\{\omega_s\}$ 都不是实的且两两分离。设 $x=\sum_{s\in S}c_s\omega_s\,(c_s\geq0)$ 是 $\barfd$ 中任意一点，则
 $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 即 $\barfd\subset\Q$。$W$ 作为正交变换群保持 $\Q$ 不变，所以 $\tc=\bigcup\limits_{w\in W}w\barfd\subset\Q$，从而 $\cl{\tc}\subset\Q$。
 
-再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。我们知道 [$\tc^\ast\ne\{0\}$](/coxeter-groups-three-cases/#dual-cone-non-trivial)。我们断言 $\tc^\ast$ 必然包含某个 time-like 的向量 $(z,z)<0$。否则 [$\tc^\ast$ 中的非零向量都是 light-like 的](/coxeter-groups-tits-cone#dual-cone-nonspace)。但是 $\tc^\ast$ 不能包含两个线性无关的 light-like 的向量（否则由于 [它们属于 $\Q$ 的同一个分支](/coxeter-groups-three-cases/#dual-cone-belongs-branch) 从而 [内积小于 0](/coxeter-groups-three-cases/#connected-component-dot)，从而它们的任何正线性组合是属于 $\tc^\ast$ 的 time-like 的向量），再结合 $\tc^\ast$ 是 [点锥](/coxeter-groups-tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast=\R_{\geq0}\delta$，其中 $\delta$ 是一个 light-like 的向量。取对偶得到
+再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。我们知道 [$\tc^\ast\ne\{0\}$](/coxeter-groups/three-geometries/#dual-cone-non-trivial)。我们断言 $\tc^\ast$ 必然包含某个 time-like 的向量 $(z,z)<0$。若不然，[$\tc^\ast$ 中的非零向量都是 light-like 的](/coxeter-groups/tits-cone#dual-cone-nonspace)。但是 $\tc^\ast$ 不能包含两个线性无关的 light-like 的向量（否则由于 [它们属于 $\Q$ 的同一个分支](/coxeter-groups/three-geometries/#dual-cone-belongs-branch)，从而其正线性组合是 $\tc^\ast$ 中 time-like 的向量，矛盾），再结合 $\tc^\ast$ 是 [点锥](/coxeter-groups/tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast=\R_{\geq0}\delta$，其中 $\delta$ 是一个 light-like 的向量。取对偶得到
 $$\cl{\tc}=\tc^{\ast\ast}=\{v\in V\mid (v,\delta)\geq0\}.$$
 这是一个半空间，显然包含 space-like 的向量，这与 $\cl{\tc}\subset\Q$ 矛盾。所以确实存在 $z\in\tc^\ast$ 满足 $(z,z)<0$。又因为 $\Q_+\subset\cl{\tc}$，所以 $z\in\Q_-$。
 
 设 $x\ne0\in\cl{\tc}\cap\Q_-$，则 $(x,z)<0$，这与 $z\in\tc^\ast$ 和 $x\in\cl{\tc}$ 矛盾。所以 $\cl{\tc}\cap\Q_-=\{0\}$。$\blacksquare$
 
 :::{.proposition #ideal-vertex}
-[@Maxwell89, proposition 5.15]
+[@Maxwell89, proposition 5.15] \
 
-设 $s\in S$ 使得如下条件成立：
+设 $s\in S$，$I=S\setminus\{s\}$，如果有如下条件成立：
 
 1. $(\omega_s,\omega_s)=0$。
-2. 子图 $\Gamma\setminus\{s\}$ 是不可约、仿射的。
-3. 对任何 $t\ne s$ 有 $(\omega_s,\omega_t)<0$。
+2. 标准椭圆子群 $W_I$ 是不可约、仿射的。
+3. 对任何 $t\in I$ 有 $(\omega_s,\omega_t)<0$。
 
-记 $I=S\setminus\{s\}$，则对任意点 $p\in\barfd$ 都有 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$。
+则对任意 $p\in\barfd$ 都有 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$。
 :::
 
 :::note
 这里没有限制 $W$ 的 level。
 
-此外 $\bigcup_{w\in W_I}wp$ 是无限集，$\cone{\bigcup_{w\in W_I}}$ 未必是闭集，因此闭包记号不可少。
+由于 $\bigcup_{w\in W_I}wp$ 是无限集，$\cone{\bigcup_{w\in W_I}}$ 未必是闭集，因此闭包记号不可少。
 
-当 $W$ 的 level 是 1 时，若 $\omega_s$ 是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时经过 $\omega_s$ 的那些镜面生成的椭圆子群会把基本区域无限压缩到 $\omega_s$ 附近，如下图所示：
+当 $W$ 的 level 是 1 时，若 $\omega_s$ 是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时 $W_I$ 是经过 $\omega_s$ 的那些镜面生成的标准椭圆子群，$W_I$ 会把基本区域无限压缩到 $\omega_s$ 附近，如下图所示：
 
 ![](/images/coxeter/ideal-vertex.jpg){.fig width=350}
 :::
@@ -469,4 +469,4 @@ $$0=(v, v) = (v_+,v_+) + (v_-,v_-) + 2(v_+,v_-).$$
 
 至此断言 2 得证，从而定理得证。$\blacksquare$
 
-[^1]: 这里解释下为什么在 $K$ 中一定可以找到一个非平凡的元素。由于 $\Gamma\setminus\{s\}$ 是不可约仿射的，$\rad(V_I)=\R\omega_s$，所以 $\inn$ 在 $V_I/\R\omega_s$ 上诱导了一个正定内积。商群 $W_I/K$ 是 $V_I/\R\omega_s$ 中的反射群，并且保持这个正定内积不变，所以根据 [@Humphreys90 section 6.4] 的结论，$W_I/K$ 是有限群。于是 $W_I$ 作为仿射 Coxeter 群是无限群，对 $K$ 取商群是有限群，所以 $K$ 必然是无限群。
+[^1]: 这里解释下为什么在 $K$ 中一定可以找到一个非平凡的元素。由于 $W_I$ 是不可约仿射的，$\rad(V_I)=\R\omega_s$，$\inn$ 在 $V_I/\R\omega_s$ 上诱导的内积是正定的。商群 $W_I/K$ 是 $V_I/\R\omega_s$ 中的反射群，并且保持这个正定内积不变，所以根据 [@Humphreys90 section 6.4] 的结论，$W_I/K$ 是有限群。由于 $W_I$ 是无限群，所以 $K$ 也是无限群。
