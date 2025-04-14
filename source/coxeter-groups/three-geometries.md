@@ -42,7 +42,7 @@ $W$ 是有限群当且仅当 Tits 锥 $\tc=V^\ast$。
 
 **证明**：
 
-$\Rightarrow$: 由 $\tc=V^\ast$ 可得 $-\fd\in\tc$（$\fd$ 是基本区域），而对任何 $x\in-\fd$ 都有 $\Phi^+\subseteq \negf{x}$，根据 [Tits 锥的刻画](/coxeter-groups-tits-cone/#tits-neg-finite)，$|\Phi^+|=|\negf{x}|<\infty$，[从而 $W$ 是有限群](/coxeter-groups-root-system/#w-phi-both-finite-infinite)。
+$\Rightarrow$: 由 $\tc=V^\ast$ 可得 $-\fd\in\tc$（$\fd$ 是基本区域），而对任何 $x\in-\fd$ 都有 $\Phi^+\subseteq \negf{x}$，根据 [Tits 锥的刻画](/coxeter-groups/tits-cone/#tits-neg-finite)，$|\Phi^+|=|\negf{x}|<\infty$，[从而 $W$ 是有限群](/coxeter-groups/root-system/#w-phi-both-finite-infinite)。
 
 $\Leftarrow$: $W$ 是有限群说明 $\Phi$ 也是有限的，从而对任何 $x\in V^\ast$ 都有 $|\negf{x}|\leq |\Phi^+|<\infty$，从而 $x\in\tc$。$\blacksquare$
 
@@ -128,7 +128,7 @@ $$|\Phi^+\setminus\Phi^+_J|\leq |\negf{w}|=l(w)<\infty.$$
 在仿射的情形 $\tc^\ast$ 是一条射线：$\tc^\ast=\R_{\geq0}\delta$，Tits 锥 $\tc$ 是以 $\delta$ 为法向量的半空间加上原点：$\tc=\{0\}\cup\{\delta > 0\}$。
 :::
 
-**证明**：根据 @Pre:dual-cone-non-trivial $\tc^\ast\ne\{0\}$。结合 [对偶锥中的向量范数非正](/coxeter-groups-tits-cone/#dual-cone-nonspace) 以及 $\inn$ 半正定可得 $\tc^\ast\subseteq\mathbb{R}\delta$。又因为 [$\tc^\ast$ 是点锥](/coxeter-groups-tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast$ 等于 $\R_{\geq0}\delta$ 或者 $\R_{\leq0}\delta$ 之一。由于 [$\tc^\ast\subset\cone{\Delta}$](/coxeter-groups-tits-cone/#tits-cone-dual)，以及 $\delta$ 是 $\Delta$ 的正线性组合，所以 $\tc^\ast=\R_{\geq0}\delta$。这就给出了对偶锥 $\tc^\ast$ 的刻画。
+**证明**：根据 @Pre:dual-cone-non-trivial $\tc^\ast\ne\{0\}$。结合 [对偶锥中的向量范数非正](/coxeter-groups/tits-cone/#dual-cone-nonspace) 以及 $\inn$ 半正定可得 $\tc^\ast\subseteq\mathbb{R}\delta$。又因为 [$\tc^\ast$ 是点锥](/coxeter-groups/tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast$ 等于 $\R_{\geq0}\delta$ 或者 $\R_{\leq0}\delta$ 之一。由于 [$\tc^\ast\subset\cone{\Delta}$](/coxeter-groups/tits-cone/#tits-cone-dual)，以及 $\delta$ 是 $\Delta$ 的正线性组合，所以 $\tc^\ast=\R_{\geq0}\delta$。这就给出了对偶锥 $\tc^\ast$ 的刻画。
 
 再来分析 Tits 锥 $\tc$。取对偶得到 $\overline{\tc}=\tc^{\ast\ast}=\{\delta\geq0\}$。由于一个凸集的内点和它的闭包的内点集相同，所以 $\tc^\circ=\{\delta>0\}$，于是
 $$\{\delta>0\}\subset\tc\subset\cl{\tc}=\{\delta\geq0\}.$$
@@ -211,7 +211,7 @@ $\blacksquare$
 
 由于 Lorentzinian 内积是非退化的，所以我们可以把 $V$ 和 $V^\ast$ 等同起来，这样 $\tc$ 和 $\tc^\ast$ 都在 $V$ 中。我们将证明这时 Tits 锥的闭包 $\cl{\tc}$ 必然包含 $\Q_+,\,\Q_-$ 中的一个，同时与另一个的交只有 $\{0\}$。
 
-首先由 [前文中证明的结论](/coxeter-groups-tits-cone/#dual-cone-nonspace)，$\tc^\ast$ 中的向量相互之间的内积非正，特别地对任何 $v\in\tc^\ast$ 有 $(v,v)\leq0$，所以 $\tc^\ast\subset\Q$。
+首先由 [前文中证明的结论](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$\tc^\ast$ 中的向量相互之间的内积非正，特别地对任何 $v\in\tc^\ast$ 有 $(v,v)\leq0$，所以 $\tc^\ast\subset\Q$。
 
 ::: {.proposition #dual-cone-trivial-intersection}
 在 $W$ 不可约且双曲的情形，$\tc^\ast\cap \Q_+,\,\tc^\ast\cap\Q_-$ 中必有一个是 $\{0\}$。
@@ -220,7 +220,7 @@ $\blacksquare$
 这个结论应该是很直观的，如果 $\tc^\ast$ 同时包含 $\Q_+,\Q_-$ 中的非零向量的话，由于 $\tc^\ast$ 是点锥，这两个向量必然不共线，从而它们的非负线性组合可以给出 space-like 的向量，这与 $\tc^\ast$ 不含 space-like 的向量矛盾。
 
 **证明**：若不然，设 $u\in\tc^\ast\cap\Q_+,\,u'\in \tc^\ast\cap\Q_-$ 是非零向量，$u=x+cz,\,u'=y+dz$ 是 [如前所述的分解](#lorentzinian-decomposition)，则 $c>0,\,d<0$。考察 $$v=cu'-du=cy-dx\in(\R z)^\bot.$$
-$v$ 是 $u$ 和 $u'$ 的非负线性组合，所以 $v$ 也属于 $\tc^\ast$，从而 [$(v,v)\leq0$](/coxeter-groups-tits-cone/#dual-cone-nonspace)。结合 $(\R z)^\bot$ 是 space-like 的可得 $v=0$，于是 $cu'=du$。由于 $c,d$ 异号所以 $u$ 和 $-u$ 同时属于 $\tc^\ast$，但 $\tc^\ast$ 是点锥，所以 $u=0$。从而 $\tc^\ast\cap\Q_+$ 和 $\tc^\ast\cap\Q_-$ 中必有一个等于 $\{0\}$。$\blacksquare$
+$v$ 是 $u$ 和 $u'$ 的非负线性组合，所以 $v$ 也属于 $\tc^\ast$，从而 [$(v,v)\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)。结合 $(\R z)^\bot$ 是 space-like 的可得 $v=0$，于是 $cu'=du$。由于 $c,d$ 异号所以 $u$ 和 $-u$ 同时属于 $\tc^\ast$，但 $\tc^\ast$ 是点锥，所以 $u=0$。从而 $\tc^\ast\cap\Q_+$ 和 $\tc^\ast\cap\Q_-$ 中必有一个等于 $\{0\}$。$\blacksquare$
 
 ::: {.corollary #dual-cone-belongs-branch}
 在双曲的情形，必有 $\tc^\ast\subset\Q_+$ 或者 $\tc^\ast\subset\Q_-$ 之一成立。
@@ -234,7 +234,7 @@ $v$ 是 $u$ 和 $u'$ 的非负线性组合，所以 $v$ 也属于 $\tc^\ast$，�
 
 **证明**：首先注意到对任何 $x\in\Q_+$ 和 $y\in\Q_-$ 有 $(x,y)\geq0$，所以 $\Q_+$ 和 $\Q_-$ 互相包含在对方的对偶锥中。
 
-由 @Pre:dual-cone-belongs-branch，不妨设 $\tc^\ast\subseteq\Q_+$，[取对偶以后有](/coxeter-groups-tits-cone/#dual-dual-cone) $\overline{\tc}=\tc^{\ast\ast}\supseteq \Q_+^\ast\supseteq\Q_-$，即 $\overline{\tc}\supset\Q_-$。由于凸集的内点等于其闭包的内点，所以 $$\tc^\circ=(\cl{\tc})^\circ\supset\Q_-^\circ=\N_-.$$
+由 @Pre:dual-cone-belongs-branch，不妨设 $\tc^\ast\subseteq\Q_+$，[取对偶以后有](/coxeter-groups/tits-cone/#dual-dual-cone) $\overline{\tc}=\tc^{\ast\ast}\supseteq \Q_+^\ast\supseteq\Q_-$，即 $\overline{\tc}\supset\Q_-$。由于凸集的内点等于其闭包的内点，所以 $$\tc^\circ=(\cl{\tc})^\circ\supset\Q_-^\circ=\N_-.$$
 $\blacksquare$
 
 :::{.example}

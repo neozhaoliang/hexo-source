@@ -20,9 +20,9 @@ url: "coxeter-groups-root-system"
 \newcommand{\gl}{\mathrm{GL}}
 \newcommand{\R}{\mathbb{R}}
 
-我们先回顾 [第一篇笔记](/coxeter-groups-geometric-realization/) 的主要内容。
+我们先回顾 [第一篇笔记](/coxeter-groups/geometric-realization/) 的主要内容。
 
-设 $(W,S)$ 是一个 Coxeter 系。在 [上文](/coxeter-groups-geometric-realization/) 中，我们按照如下方式，将 $(W,S)$ 表示为一个实向量空间 $V$ 上的正交反射群：
+设 $(W,S)$ 是一个 Coxeter 系。在 [上文](/coxeter-groups/geometric-realization/) 中，我们按照如下方式，将 $(W,S)$ 表示为一个实向量空间 $V$ 上的正交反射群：
 
 1. 取一个 $n=|S|$ 维实向量空间 $V$，$V$ 的一组基为 $\{\alpha_s\mid s\in S\}$；
 2. 规定了 $V$ 上的内积 $\inn$；
@@ -107,7 +107,7 @@ $$w\alpha_s=vv_I\alpha_s=v(a\alpha_s + b\alpha_t)=av\alpha_s + bv\alpha_t\in\Phi
 $$l(ws)=l(vv_Is)\leq l(v) + l(v_Is)\leq l(v)+l_I(v_Is)=l(v)+l_I(v_I)-1=l(w)-1.$$
 这与 $l(ws) > l(w)$ 矛盾！
 
-于是 $v_I$ 形如 $v_I=st\cdots t$ 或者 $v_I=ts\cdots t$，问题归结为分析这样的 $v_I$ 在 $\alpha_s$ 上的作用。这个我们已经在 [前一篇文章中计算过了](/coxeter-groups-geometric-realization#rank2-roots)：
+于是 $v_I$ 形如 $v_I=st\cdots t$ 或者 $v_I=ts\cdots t$，问题归结为分析这样的 $v_I$ 在 $\alpha_s$ 上的作用。这个我们已经在 [前一篇文章中计算过了](/coxeter-groups/geometric-realization#rank2-roots)：
 
 1. $m=m_{s,t}<\infty$ 时，$$\alpha_s\xrightarrow{\ t\ }\sthe{}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ s\ }\sthe{3}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ t\ }\cdots$$
 其中 $\theta=\pi/m$。这个链的第 $k$ 项形如

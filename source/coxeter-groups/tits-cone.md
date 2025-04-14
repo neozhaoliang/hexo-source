@@ -52,7 +52,7 @@ $\fd$ 总是 $V^\ast$ 中的非空开集，其闭包记作 $\barfd$。你可以�
 
 $W$ 同样作用在 $V^\ast$ 上：
 $$\lfun{v}{w f} = \lfun{w^{-1}v}{f}.\quad v\in V,\,f\in V^\ast.$$
-在 [上文](/coxeter-groups-root-system/#faithful) 中我们已经证明了 $W$ 忠实地作用在 $V$ 上。不难验证在此定义下，$W$ 也忠实地作用在 $V^\ast$ 上，即如果 $wf=f$ 对任何 $f\in V^\ast$ 成立，则 $w=1$。
+在 [上文](/coxeter-groups/root-system/#faithful) 中我们已经证明了 $W$ 忠实地作用在 $V$ 上。不难验证在此定义下，$W$ 也忠实地作用在 $V^\ast$ 上，即如果 $wf=f$ 对任何 $f\in V^\ast$ 成立，则 $w=1$。
 
 ::: definition
 定义 **Tits 锥**为
@@ -136,7 +136,7 @@ $\Leftarrow$：反之若 $|\negf{x}|<\infty$，我们来论证存在 $w\in W$ �
 
 严格的论证如下：
 
-若 $\negf{x}=\emptyset$ 这显然成立，因为这时 $x$ 本身就落在 $\barfd$ 中。当 $\negf{x}\ne\emptyset$ 时，$\negf{x}$ 中一定包含一个单根 $\alpha_s\in\Delta$，于是 $\lfun{\alpha_s}{x}< 0$。考虑 $x$ 关于 $\alpha_s$ 的镜像点 $sx$，$sx$ 位于 $\alpha_s$ 的正面，所以 $\alpha_s\notin\negf{sx}$，从而对任何 $\lambda\in\negf{sx}$，[$s\lambda$ 仍然是正根](/coxeter-groups-root-system/#simple-ref)。于是
+若 $\negf{x}=\emptyset$ 这显然成立，因为这时 $x$ 本身就落在 $\barfd$ 中。当 $\negf{x}\ne\emptyset$ 时，$\negf{x}$ 中一定包含一个单根 $\alpha_s\in\Delta$，于是 $\lfun{\alpha_s}{x}< 0$。考虑 $x$ 关于 $\alpha_s$ 的镜像点 $sx$，$sx$ 位于 $\alpha_s$ 的正面，所以 $\alpha_s\notin\negf{sx}$，从而对任何 $\lambda\in\negf{sx}$，[$s\lambda$ 仍然是正根](/coxeter-groups/root-system/#simple-ref)。于是
 $$\lambda\in\negf{sx}\Rightarrow\lfun{\lambda}{sx}<0\Rightarrow\lfun{s\lambda}{x}<0\Rightarrow s\lambda\in\negf{x}.$$
 当然 $s\lambda\ne\alpha_s$，否则 $\lambda=-\alpha_s$ 与 $\lambda$ 是正根矛盾，所以上式说明$$s\cdot\negf{sx}\subseteq\negf{x}\setminus\{\alpha_s\}.$$
 从而 $\negf{sx}$ 的元素个数严格小于 $\negf{x}$。
@@ -211,7 +211,7 @@ $\Leftarrow$：反之若 $W_J$ 是有限群，仍然任取 $y\in\fd$。
 
 对任何镜面 $s\in S\setminus J$，由于 $x$ 不属于此镜面，所以 $\lfun{\alpha_s}{x}>0$。
 
-另一方面对任何 $w\in W_J$，[$w^{-1}\alpha_s$ 仍然是正根](/coxeter-groups-root-system#remain-positive-root)，所以
+另一方面对任何 $w\in W_J$，[$w^{-1}\alpha_s$ 仍然是正根](/coxeter-groups/root-system#remain-positive-root)，所以
 $$\lfun{\alpha_s}{wy}=\lfun{w^{-1}\alpha_s}{y}>0.$$
 于是
 $$\delta = \min\left\{\frac{\lfun{\alpha_s}{x}}{\lfun{\alpha_s}{wy}}\,\middle|\, \alpha_s\in S\setminus J,\, w\in W_J\right\}>0.$$
