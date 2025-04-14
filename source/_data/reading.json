@@ -23,21 +23,8 @@
                 "doubanLink": "https://images-archive.math.cnrs.fr/Un-ensemble-limite.html?lang=fr"
             },
             {
-                "title": "Mandelbrot set",
-                "cover": "https://www.math.univ-toulouse.fr/~cheritat/wiki-draw/images/0/05/M_iter_1E6.png",
-                "review": "Chéritat 介绍怎么绘制 Mandelbrot 集，包含了许多技术细节",
-                "doubanLink": "https://www.math.univ-toulouse.fr/~cheritat/wiki-draw/index.php/Mandelbrot_set"
-            },
-            {
-                "title": "Schmidt Arrangements by Katherine E. Stange",
-                "cover": "https://math.katestange.net/wp-content/uploads/2020/01/schmidt-hallway-1024x768.jpg",
-                "review": "Schmidt 排列",
-                "doubanLink": "https://math.katestange.net/illustration/schmidt-arrangements/"
-            },
-            {
-                "title": "Topology and Groups by Jonathan Evans",
-                "review": "很棒的拓扑课程",
-                "cover": "https://img.youtube.com/vi/0-c4pxa9lBY/sddefault.jpg",
+                "title": "Topology and Groups",
+                "review": "Jonny Evans 的拓扑课程",
                 "doubanLink": "http://jde27.uk/tg/index.html"
             },
             {

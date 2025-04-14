@@ -28,7 +28,7 @@ url: "coxeter-groups-three-cases"
 
 本文主要参考了 [@Howlett1997]。
 
-书接 [上回](coxeter-groups-tits-cone)，我们来研究内积 $\inn$ 分别是有限、仿射和双曲三种情形时，其 Tits 锥 $\tc$ 和对偶锥 $\tc^\ast$ 的结构。
+书接 [上回](coxeter-groups-tits-cone)，我们来研究内积 $\inn$ 分别是有限、仿射和双曲三种情形时，Tits 锥 $\tc$ 和对偶锥 $\tc^\ast$ 的结构。
 
 <!--more-->
 
@@ -84,7 +84,7 @@ $$\Phi_i^+=\{\lambda\mid \lambda\in\Phi^+,\ \lambda=\sum_{j=i}^nc_j\alpha_j,\ c_
 @Pre:phi-J-finite 有如下的推论：
 
 :::{.corollary #tits-cone-pointed}
-如果 $W$ 不可约且是无限群，则 Tits 锥 $\tc$ 满足 $\tc\cap-\tc=\{0\}$，从而 $\tc$ 是一个点锥 (pointed cone)。
+如果 $W$ 不可约且无限，则 Tits 锥 $\tc$ 满足 $\tc\cap-\tc=\{0\}$，从而 $\tc$ 是一个点锥 (pointed cone)。
 :::
 
 **证明**：由于
@@ -100,7 +100,7 @@ $$|\Phi^+\setminus\Phi^+_J|\leq |\negf{w}|=l(w)<\infty.$$
 由 @Pre:phi-J-finite $W$ 是有限群，这与已知矛盾。$\blacksquare$
 
 :::{.corollary #dual-cone-non-trivial}
-如果 $W$ 不可约且是无限群，则对偶锥 $\tc^\ast\ne\{0\}$。
+如果 $W$ 不可约且无限，则对偶锥 $\tc^\ast\ne\{0\}$。
 :::
 
 **证明**：用反证法，若不然，则 $\bartc=\tc^{\ast\ast}=V^\ast$ 是全空间。由于一个凸集的内点和它的闭包的内点集相同（证明见这个 [附件](/papers/sCONVs.pdf)），所以 $\tc=V$，这与 @Pre:tits-cone-pointed 的结论 $\tc$ 是点锥矛盾。$\blacksquare$
@@ -128,7 +128,7 @@ $$|\Phi^+\setminus\Phi^+_J|\leq |\negf{w}|=l(w)<\infty.$$
 在仿射的情形 $\tc^\ast$ 是一条射线：$\tc^\ast=\R_{\geq0}\delta$，Tits 锥 $\tc$ 是以 $\delta$ 为法向量的半空间加上原点：$\tc=\{0\}\cup\{\delta > 0\}$。
 :::
 
-**证明**：根据 @Pre:dual-cone-non-trivial 可知 $\tc^\ast\ne\{0\}$。结合 [对偶锥中的向量范数非正](/coxeter-groups-tits-cone/#dual-cone-nonspace) 以及 $\inn$ 半正定可得 $\tc^\ast\subseteq\mathbb{R}\delta$。又因为 [$\tc^\ast$ 是点锥](/coxeter-groups-tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast$ 等于 $\R_{\geq0}\delta$ 或者 $\R_{\leq0}\delta$ 之一。由于 [$\tc^\ast\subset\cone{\Delta}$](/coxeter-groups-tits-cone/#tits-cone-dual)，以及 $\delta$ 是 $\Delta$ 的正线性组合，所以 $\tc^\ast=\R_{\geq0}\delta$。这就给出了对偶锥 $\tc^\ast$ 的刻画。
+**证明**：根据 @Pre:dual-cone-non-trivial $\tc^\ast\ne\{0\}$。结合 [对偶锥中的向量范数非正](/coxeter-groups-tits-cone/#dual-cone-nonspace) 以及 $\inn$ 半正定可得 $\tc^\ast\subseteq\mathbb{R}\delta$。又因为 [$\tc^\ast$ 是点锥](/coxeter-groups-tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast$ 等于 $\R_{\geq0}\delta$ 或者 $\R_{\leq0}\delta$ 之一。由于 [$\tc^\ast\subset\cone{\Delta}$](/coxeter-groups-tits-cone/#tits-cone-dual)，以及 $\delta$ 是 $\Delta$ 的正线性组合，所以 $\tc^\ast=\R_{\geq0}\delta$。这就给出了对偶锥 $\tc^\ast$ 的刻画。
 
 再来分析 Tits 锥 $\tc$。取对偶得到 $\overline{\tc}=\tc^{\ast\ast}=\{\delta\geq0\}$。由于一个凸集的内点和它的闭包的内点集相同，所以 $\tc^\circ=\{\delta>0\}$，于是
 $$\{\delta>0\}\subset\tc\subset\cl{\tc}=\{\delta\geq0\}.$$

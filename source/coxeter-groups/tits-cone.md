@@ -357,5 +357,5 @@ $$(z,y)=(z,x-2(x,\alpha_s)\alpha_s)=(z,x)-2\underbrace{(x,\alpha_s)}_{\geq\epsil
 反之如果 $(z,\alpha_s)>0$，我们来验证 $z'=sz=z-2(z,\alpha_s)\alpha_s$ 满足要求：由于 $z\in\tc^\ast$ 所以 $z'\in\tc^\ast$，并且 $S(z')=S(z)-2(z,\alpha_s)<S(z)$，以及
 $$(z', y)=(sz, sx)=(z,x)\geq1.$$
 
-所以从 $v=x$ 开始出发，我们经过有限次后取到 $y\in X$ 使得 $S(y)$ 是负数，这与 $y\in\tc^\ast$ 矛盾。$\blacksquare$
+于是从 $v$ 出发，我们可以经过有限次取 $y\in X$ 的操作使得 $S(y)$ 是负数，但这与 $y\in X\subset\tc^\ast$ 矛盾。$\blacksquare$
 
