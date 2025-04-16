@@ -5,13 +5,15 @@ categories: [计数组合学]
 url: "descending-plane-partitions"
 ---
 
+\newcommand{\dpp}{\mathrm{dpp}}
+
 你可能经常听到这样一句话：“做数学要大胆假设，小心求证”。我们今天要介绍的故事主角平面分拆中的 Andrews 猜想就完美地符合这一点。两个看似风马牛不相及的计数对象，因为有着相同的计数序列，冥冥中被联系在了一起，启发三位数学家 Mill, Robins 和 Rumsey 解决了一个困难的组合学猜想。整个过程并无高深的内容，但是其中的“信仰一跃”和“灵魂一猜”构成了故事的高潮，而那些繁琐的计算过程不过是小心求证的注脚而已。
 
 本文来自我几年前读 David Bressoud 的 [@Bressoud1999]
 
 > Proofs and Confirmations: The Story of the Alternating Sign Matrix Conjecture
 
-一书时的读书笔记。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 $q-$ 二项式定理作为工具。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud 是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 $q-$ 超几何级数一起解决的。Macdonald 猜想的证明似乎无法避免使用超几何级数的理论，但 Andrews 猜想是完全可以用初等的 $q-$ 多项式解决的。
+一书时的读书笔记。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 $q$- 二项式定理作为工具。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud 是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 $q$- 超几何级数一起解决的。Macdonald 猜想的证明似乎无法避免使用超几何级数的理论，但 Andrews 猜想是完全可以用初等的 $q$- 多项式解决的。
 
 <!-- more -->
 
@@ -54,15 +56,15 @@ $$
 
 你可以看到数组的每一行与方块的每一层一一对应。由于 $\pi$ 是严格错位平面分拆，所以每一层相对于下面一层在两个方向上分别缩进一个单位以后仍然可以被下面一层托住，从而不会出现“悬空”的方块。
 
-设 $\mathrm{dpp}(n)$ 为所有数字均不超过 $n$ 的 DPP 组成的集合，这样的 DPP 最多有 $n-1$ 行，每一行长度最多是 $n-1$，每个元素不大于 $n$，所以必然能装进一个大小为 $n\times n\times n$ 的空间 （当然不可能填满）。我们的目标是求出生成函数
+设 $\dpp(n)$ 为所有数字均不超过 $n$ 的 DPP 组成的集合，这样的 DPP 最多有 $n-1$ 行，每一行长度最多是 $n-1$，每个元素不大于 $n$，所以必然能装进一个大小为 $n\times n\times n$ 的空间 （当然不可能填满）。我们的目标是求出生成函数
 $$
-\sum_{\pi\in {\rm dpp}(n)} q^{|\pi|}.
+\sum_{\pi\in \dpp(n)} q^{|\pi|}.
 $$
 
 :::{.example}
-$\mathrm{dpp}(3)$ 总共包含 7 种不同的分拆 （空分拆也算一种）：
+$\dpp(3)$ 总共包含 7 种不同的分拆 （空分拆也算一种）：
 $$
-\mathrm{dpp}(3)=\big\{
+\dpp(3)=\big\{
   \begin{array}{ccccccc}
   \emptyset,
   &\begin{matrix}3&3\\&2\end{matrix},
@@ -74,33 +76,37 @@ $$
   \end{array}
   \big\}.
 $$
-所以其 $q-$ 计数为
+所以其 $q$- 计数为
 $$
-\sum_{\pi\in {\rm dpp}(3)} q^{|\pi|}=1+q^2+q^3+q^4+q^5+q^6+q^8.
+\sum_{\pi\in \dpp(3)} q^{|\pi|}=1+q^2+q^3+q^4+q^5+q^6+q^8.
 $$
 :::
 
-[George Andrews](https://en.wikipedia.org/wiki/George_Andrews_(mathematician)) 发现，这个生成函数可以表示为一个 $q-$ 行列式：
+[George Andrews](https://en.wikipedia.org/wiki/George_Andrews_(mathematician)) 发现，这个生成函数可以表示为一个 $q$- 行列式：
 $$
-\sum_{\pi\in {\rm dpp}(n)} q^{|\pi|}=
+\sum_{\pi\in \dpp(n)} q^{|\pi|}=
 \det\left(
   \delta_{ij}+q^{i+1}
     \binom{i+j}{j-1}_q
     \right)_{1\leq i,j\leq n-1}.
 $$
-Andrews 会求 DPP 的计数序列，即 $q=1$ 的情形，但是不会算这个 $q-$ 行列式。事实上这个问题最难的地方就在求 $q-$ 行列式这一步上！不过 Andrews 猜出了这个行列式的表达式：
+Andrews 会求 DPP 的计数序列，即 $q=1$ 的情形，但是不会算这个 $q$- 行列式。事实上这个问题最难的地方就在求 $q$- 行列式这一步上！不过 Andrews 猜出了这个行列式的表达式：
 
-:::{.simple}
+:::{.simple #Andrews-conjecture}
 **Andrews 猜想** \
 
-$$\det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq i,j\leq n-1}=\prod_{1\leq i,j\leq n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}}.$$
+$$\det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq i,j\leq n-1}=\prod_{1\leq i\leq j\leq n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}}.$$
+:::
+
+:::{.note}
+注意上式右边下标 $i,j$ 的范围是 $1\leq i\leq j\leq n$！
 :::
 
 这个猜想最终在 80 年代由 Mills, Robbins, Rumsey 三人解决 [@Mills1983]，整个证明过程可谓一波三折，既需要缜密细心的推理，也不乏大胆的猜测，本文接下来就来介绍他们的证明。
 
 # 故事的开始
 
-了解 DPP 背后的故事对理解证明是很有帮助的。对第一次接触递降平面分拆这个名词的读者来说，可能会纳闷：“数学家们为什么要考虑这种看起来很奇怪的计数问题呢？它似乎不像代数几何、数论中的问题那么有分量，而且还有一些不明所以的限制条件”。这是一种错觉，平面分拆简单的外表背后有许多深刻而有趣的理论。DPP 最初是上世纪 70 年代 Andrews 在研究另一类平面分拆循环对称平面分拆 （简称 CSPP） 时得到的副产品，我们之前提到 Andrews 会算 DPP 计数序列在 $q=1$ 的情形，也猜出了 $q-$ 计数的正确答案，但是没有给出证明，不过那时 DPP 作为众多平面分拆猜想之一并不显得特别重要。
+了解 DPP 背后的故事对理解证明是很有帮助的。对第一次接触递降平面分拆这个名词的读者来说，可能会纳闷：“数学家们为什么要考虑这种看起来很奇怪的计数问题呢？它似乎不像代数几何、数论中的问题那么有分量，而且还有一些不明所以的限制条件”。这是一种错觉，平面分拆简单的外表背后有许多深刻而有趣的理论。DPP 最初是上世纪 70 年代 Andrews 在研究另一类平面分拆循环对称平面分拆 （简称 CSPP） 时得到的副产品，我们之前提到 Andrews 会算 DPP 计数序列在 $q=1$ 的情形，也猜出了 $q$- 计数的正确答案，但是没有给出证明，不过那时 DPP 作为众多平面分拆猜想之一并不显得特别重要。
 
 差不多在与 Andrews 研究 DPP 同样的时期，数学家 Mills, Robbins, Rumsey 三人正在为 [交错符号矩阵](https://en.wikipedia.org/wiki/Alternating_sign_matrix) （Alternating Sign Matrix，以下简称 ASM） 猜想而苦苦挣扎，他们考虑的 $n$ 阶的交错符号矩阵是指满足如下条件的 $n\times n$ 矩阵：
 
@@ -128,7 +134,7 @@ $$
 
 Mills 等人通过直观的杨辉三角法猜出了 ${\rm ASM}(n)$ 的计数序列，但是对怎样证明它毫无头绪，于是他们求助于 MIT 的组合学大师 Stanley。Stanley 告诉他们自己也不知道答案，但是 Mills 等人给出的 ASM 的计数序列**看起来**与 Andrews 得到的 DPP 的计数序列是相同的：
 $$
-|\mathrm{dpp}(n)|=|\mathrm{ASM}(n)|=\prod_{j=0}^{n-1}\frac{(3j+1)!}{(n+j+1)!}=1,2,7,42,429,\ldots
+|\dpp(n)|=|\mathrm{ASM}(n)|=\prod_{j=0}^{n-1}\frac{(3j+1)!}{(n+j+1)!}=1,2,7,42,429,\ldots
 $$
 于是 Mills 等人很自然地转而研究 DPP，希望从中找到解决 ASM 猜想的办法。有趣的是他们没能解决 ASM 猜想 （1995/96 年由 Zeilberger 和 Kuperberg 分别解决），倒是解决了 DPP 的 Andrews 猜想以及 CSPP 的 Macdonald 猜想，这不能不说是“失之东隅，收之桑榆”。
 
@@ -139,9 +145,9 @@ $$
   \frac{(2n-k-1)!}{(n-k)!}
   \prod_{j=0}^{n-2}\frac{(3j+1)!}{(n+j)!}.
 $$
-既然 ${\rm dpp}(n)$ 和 ${\rm ASM}(n)$ **看起来**是一样大小的，那是不是意味着它也应该有一个参数，将 ${\rm dpp}(n)$ 对应地分为 $n$ 个不同的子集呢？
+既然 $\dpp(n)$ 和 ${\rm ASM}(n)$ **看起来**是一样大小的，那是不是意味着它也应该有一个参数，将 $\dpp(n)$ 对应地分为 $n$ 个不同的子集呢？
 
-很自然地，Mills 等人猜测在一个 $\pi\in\mathrm{dpp}(n)$ 中数字 $n$ 出现的次数就是对应的参数，而且他们猜测恰好含有 $k-1(1\leq k\leq n)$ 个 $n$ 的 DPP 的个数等于 $|A_{n,k}|$，这个猜测在他们的证明中起着关键的作用。注意在一个 $\pi\in\mathrm{dpp}(n)$ 中 $n$ 出现的次数至多是 $n-1$，否则由于这些 $n$ 必然都在第一行，不满足 DPP 的行首严格大于该行长度的限制。
+很自然地，Mills 等人猜测在一个 $\pi\in\dpp(n)$ 中数字 $n$ 出现的次数就是对应的参数，而且他们猜测恰好含有 $k-1(1\leq k\leq n)$ 个 $n$ 的 DPP 的个数等于 $|A_{n,k}|$，这个猜测在他们的证明中起着关键的作用。注意在一个 $\pi\in\dpp(n)$ 中 $n$ 出现的次数至多是 $n-1$，否则由于这些 $n$ 必然都在第一行，不满足 DPP 的行首严格大于该行长度的限制。
 
 证明的第一步是把计数问题转化为行列式的求值，为此我们需要一些关于 Gauss 二项式系数的结论。
 
@@ -149,8 +155,8 @@ $$
 
 本文需要的预备知识大致分为三点：
 
-1. $q-$ 二项式定理。
-2. Gauss 路径的 $q-$ 计数。
+1. $q$- 二项式定理。
+2. Gauss 路径的 $q$- 计数。
 3. 格点图上不相交路径组计数的 Gessel-Viennot 引理。
 
 其中 Gessel-Viennot 引理由于详细叙述起来比较占篇幅，这里就省略了，读者可以参考 [@thebook] 的 "Lattice paths and determinants" 一节。
@@ -175,7 +181,7 @@ $$
 $$
 :::
 
-Gauss 二项式系数有不少等价的描述方式，我们这里要用到的是它等于 Gauss 路径的 $q-$ 计数。
+Gauss 二项式系数有不少等价的描述方式，我们这里要用到的是它等于 Gauss 路径的 $q$- 计数。
 
 考虑格点图 $\mathbb{Z}^2$，并设 $A=(0, m)$，$B=(n,0)$。一条从 $A$ 到 $B$ 的 Gauss 路径 $P$ 是一个从 $A$ 出发，每一步向右或者向下一个单位距离，经过 $m+n$ 步后到达 $B$ 的格点路径，如下图所示：
 
@@ -192,7 +198,7 @@ $$
 
 # 将问题转化为行列式求值
 
-设 $\pi\in\mathrm{dpp}(n)$ 的行首**从下到上**分别为 $2\leq a_1 <\cdots < a_m\leq n$，注意 $a_1$ 是必须大于 1 的，因为每一行的第一个元素必须大于该行的长度。我们的策略是先固定行首 $\{a_1,\ldots,a_m\}$，求出行首恰好为集合 $\{a_1,\ldots,a_m\}$ 的那些 DPP 的生成函数，然后再对 $\{a_1,\ldots,a_m\}$ 的所有可能求和。
+设 $\pi\in\dpp(n)$ 的行首**从下到上**分别为 $2\leq a_1 <\cdots < a_m\leq n$，注意 $a_1$ 是必须大于 1 的，因为每一行的第一个元素必须大于该行的长度。我们的策略是先固定行首 $\{a_1,\ldots,a_m\}$，求出行首恰好为集合 $\{a_1,\ldots,a_m\}$ 的那些 DPP 的生成函数，然后再对 $\{a_1,\ldots,a_m\}$ 的所有可能求和。
 
 :::{.note}
 我们这里对 $a_1,\ldots,a_m$ 的标记顺序与前面 DPP 定义中的行的顺序是反着来的，$a_1$ 是第 $m$ 行的行首，$a_2$ 是第 $m-1$ 行的行首，以此类推，$a_m$ 是第一行的行首。这样做看起来有些奇怪，其实是为了后面记号方便，下面很快就会看到原因。
@@ -222,13 +228,13 @@ $$
 $$
 其中矩阵的 $(i,j)$ 位置的元素为从 $A_i=(0,a_i)$ 到 $B_j=(a_j-2,0)$ 的 Gauss 路径的个数，这当然是 $\binom{a_i+a_j-2}{a_j-2}$。
 
-对所有的 $2\leq a_1 <\cdots < a_m\leq n$ 求和即为 ${\rm dpp}(n)$ 的个数：
+对所有的 $2\leq a_1 <\cdots < a_m\leq n$ 求和即为 $\dpp(n)$ 的个数：
 $$
-|{\rm dpp}(n)|=\sum_{2\leq a_1<\cdots< a_m\leq n}\det\left(\binom{a_i+a_j-2}{a_j-2}\right)_{1\leq i,j\leq m}.
+|\dpp(n)|=\sum_{2\leq a_1<\cdots< a_m\leq n}\det\left(\binom{a_i+a_j-2}{a_j-2}\right)_{1\leq i,j\leq m}.
 $$
 为了把这个表达式化简，我们用 $a_i-1$ 代替每个 $a_i$，于是
 $$
-|{\rm dpp}(n)|=\sum_{1\leq a_1<\cdots< a_m\leq n-1}\det\left(\binom{a_i+a_j}{a_j-1}\right).
+|\dpp(n)|=\sum_{1\leq a_1<\cdots< a_m\leq n-1}\det\left(\binom{a_i+a_j}{a_j-1}\right).
 $$
 现在我们只需要一个线性代数的引理：
 
@@ -238,11 +244,11 @@ $$
 其中 $A[a_1a_2\cdots a_m]$ 是下标 $\{a_1,\ldots,a_m\}$ 决定的 $A$ 的 $m$ 阶子矩阵。
 :::
 
-由此我们得到 $$|{\rm dpp}(n)|=\det\left(\delta_{ij}+\binom{i+j}{j-1}\right)_{1\leq i,j\leq n-1}.
+由此我们得到 $$|\dpp(n)|=\det\left(\delta_{ij}+\binom{i+j}{j-1}\right)_{1\leq i,j\leq n-1}.
 $$
-至此我们就得到了 $q=1$ 时 ${\rm dpp}(n)$ 的计数序列的行列式形式。
+至此我们就得到了 $q=1$ 时 $\dpp(n)$ 的计数序列的行列式形式。
 
-得到 $q-$ 计数的表达式需要多做一点微小的工作：我们不能简单地把上面的行列式直接替换为 $q-$ 版本。我们需要说明在 Gessel-Viennot 引理中，在交换路径操作前后，路径组的权重是保持不变的，否则无法直接使用 Gessel-Viennot 引理（Bressoud 的书插图 3.4 给出了针对通常平面分拆的一个反例）。
+得到 $q$- 计数的表达式需要多做一点微小的工作：我们不能简单地把上面的行列式直接替换为 $q$- 版本。我们需要说明在 Gessel-Viennot 引理中，在交换路径操作前后，路径组的权重是保持不变的，否则无法直接使用 Gessel-Viennot 引理（Bressoud 的书插图 3.4 给出了针对通常平面分拆的一个反例）。
 
 注意到一个长度为 $l$ 的 Gauss 路径可以用一个长度为 $l$ 的 0-1 序列 $\sigma$ 来表示，0 表示垂直向下的一步，1 表示水平向右的一步，路径的权重，即其下方的方格数目等于序列 $\sigma$ 的“逆序数” $\mathrm{inv}(\sigma)$：
 $$
@@ -265,7 +271,7 @@ $$
 $$|P'|+|Q'|=|P|+|Q|.$$
 因此路径权重之积 $q^{|P|}\cdot q^{|Q|}=q^{|P'|}\cdot q^{|Q'|}$ 保持不变，从而 Gessel-Viennot 引理仍然可用。
 
-现在顶点集合 $\{A_i=(0,a_i)\}$，$\{B_j=(a_j-2,0)\}$，而从 $A_i$ 到 $B_j$ 的 Gauss 路径的 $q-$ 计数为 $\binom{a_i+a_j-2}{a_j-2}_q$，于是行首分别为 $\{a_1,\ldots,a_m\}$ 的 DPP 的 $q-$ 计数为
+现在顶点集合 $\{A_i=(0,a_i)\}$，$\{B_j=(a_j-2,0)\}$，而从 $A_i$ 到 $B_j$ 的 Gauss 路径的 $q$- 计数为 $\binom{a_i+a_j-2}{a_j-2}_q$，于是行首分别为 $\{a_1,\ldots,a_m\}$ 的 DPP 的 $q$- 计数为
 $$
 q^{\sum_{i=1}^m a_i}\cdot\det\left(\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}=
 \det\left(q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}.
@@ -273,26 +279,26 @@ $$
 通过用 $a_i-1$ 代替 $a_i$ 并使用 @Pre:linalg1，我们得到
 
 :::{.theorem}
-${\rm dpp}(n)$ 的 $q-$ 计数为
+$\dpp(n)$ 的 $q$- 计数为
 $$
 \det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq i,j\leq n-1}.
 $$
 :::
 
-（这里你需要小心 ${\rm dpp}(n)$ 对应的是一个 $n-1$ 阶矩阵，这在记号上确实会带来一些困扰）
+（这里你需要小心 $\dpp(n)$ 对应的是一个 $n-1$ 阶矩阵，这在记号上确实会带来一些困扰）
 
 
 现在剩下的任务就是求这个行列式的值了，而这才是整个故事中最困难的部分，到目前为止我们的路才走了一小半呢。
 
 # 用关键参数将行列式分解
 
-在上一节中我们已经把 ${\rm dpp}(n)$ 的 $q-$ 计数归结为计算行列式 $\det(I_{n-1}+H_{n-1})$，其中
+在上一节中我们已经把 $\dpp(n)$ 的 $q$- 计数归结为计算行列式 $\det(I_{n-1}+H_{n-1})$，其中
 $$H_{n-1}=\left(q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq i,j\leq n-1}.$$
 
-Mills 等人认为，在一个 $\pi\in{\rm dpp}(n)$ 中，$n$ 出现的次数是一个重要的参数，根据 $n$ 出现的次数 $k$ 可以把 ${\rm dpp}(n)$ 分成 $n$ 个子集 $\{S_k\}_{0\leq k\leq n-1}$，解决问题的关键在于分别求出每个 $S_k$ 的 $q-$ 计数对应的行列式表示，并找到这些行列式满足的递推关系。
+Mills 等人认为，在一个 $\pi\in\dpp(n)$ 中，$n$ 出现的次数是一个重要的参数，根据 $n$ 出现的次数 $k$ 可以把 $\dpp(n)$ 分成 $n$ 个子集 $\{S_k\}_{0\leq k\leq n-1}$，解决问题的关键在于分别求出每个 $S_k$ 的 $q$- 计数对应的行列式表示，并找到这些行列式满足的递推关系。
 
 :::{.theorem #theorem-Hkn}
-$S_k$ 的 $q-$ 计数为 $\det H_{k,n-1}$，其中 $H_{k,n-1}$ 在 $k=0$ 时是把 $I_{n-1}+H_{n-1}$ 的最后一行用 $(0,\ldots,0,1)$ 替换得到的矩阵，而在 $k>0$ 时则是把 $I_{n-1}+H_{n-1}$ 的最后一行用向量
+$S_k$ 的 $q$- 计数为 $\det H_{k,n-1}$，其中 $H_{k,n-1}$ 在 $k=0$ 时是把 $I_{n-1}+H_{n-1}$ 的最后一行用 $(0,\ldots,0,1)$ 替换得到的矩阵，而在 $k>0$ 时则是把 $I_{n-1}+H_{n-1}$ 的最后一行用向量
 $$
 q^{kn}
 \left(\binom{n+0-k}{1-k}_q,\binom{n+1-k}{2-k}_q,\cdots,\binom{n+n-2-k}{n-1-k}_q\right)
@@ -302,7 +308,7 @@ $$
 
 和之前一样，我们规定当 $m<0$ 时有 $\binom{a}{m}_q=0$。
 
-**证明**：$k=0$ 的情形其实就是 ${\rm dpp}(n-1)$ 的 $q-$ 计数，它等于 $I_{n-2}+H_{n-2}$，正好是 $I_{n-1}+H_{n-1}$ 的左上角 $n-2$ 阶子矩阵，所以这个情形很简单，下面考虑 $k>0$ 的情形。
+**证明**：$k=0$ 的情形其实就是 $\dpp(n-1)$ 的 $q$- 计数，它等于 $I_{n-2}+H_{n-2}$，正好是 $I_{n-1}+H_{n-1}$ 的左上角 $n-2$ 阶子矩阵，所以这个情形很简单，下面考虑 $k>0$ 的情形。
 
 我们还是先**从下到上**固定每一行的行首 $\{a_1,\ldots,a_m\}$，求出行首固定时的生成函数，再对所有可能的行首相加。
 
@@ -312,14 +318,14 @@ $$
 
 ![](/images/dpp/dpp-path2.svg){width=400 .fig}
 
-这里最上面的路径是从 $(0,n)$ 出发，向右走 $k-1$ 步到达 $(k-1,n)$，然后向下走到 $(k-1,n-1)$。我们把这部分截去，只保留剩下的部分，这相当于把起点 $A_m=(0, n)$ 换成了 $(k-1,n-1)$，其余的起点和终点保持不变。注意由于终点都在 $x$ 轴上因此 Gesssel-Viennot 引理仍然可用，于是新顶点集 $\{A_i\}$ 和 $\{B_j\}$ 之间的不相交的路径组的 $q-$ 计数为 $\det X=\det(x_{ij})$，其中
+这里最上面的路径是从 $(0,n)$ 出发，向右走 $k-1$ 步到达 $(k-1,n)$，然后向下走到 $(k-1,n-1)$。我们把这部分截去，只保留剩下的部分，这相当于把起点 $A_m=(0, n)$ 换成了 $(k-1,n-1)$，其余的起点和终点保持不变。注意由于终点都在 $x$ 轴上因此 Gesssel-Viennot 引理仍然可用，于是新顶点集 $\{A_i\}$ 和 $\{B_j\}$ 之间的不相交的路径组的 $q$- 计数为 $\det X=\det(x_{ij})$，其中
 $$x_{ij}=\left\{\begin{align*}
 &\binom{a_i+a_j-2}{a_j-2}_q, \quad & i < m\\
 &\binom{n+a_j-k-2}{a_j-k-1}_q, \quad & i=m
 \end{align*}
 \right.
 $$
-把因子 $q^{\sum_{i=1}^{m-1}a_i+kn}$ 补回去，其中 $q^{a_i}$ 补在 $X$ 的第 $i$ 行上，$kn$ 补在 $X$ 的第 $m$ 行，我们就得到行首为 $\{a_1,\ldots,a_m\}$ 且恰好含有 $k$ 个 $n$ 的 DPP 的 $q-$ 计数为 $\det Y=\det(y_{ij})$，其中
+把因子 $q^{\sum_{i=1}^{m-1}a_i+kn}$ 补回去，其中 $q^{a_i}$ 补在 $X$ 的第 $i$ 行上，$kn$ 补在 $X$ 的第 $m$ 行，我们就得到行首为 $\{a_1,\ldots,a_m\}$ 且恰好含有 $k$ 个 $n$ 的 DPP 的 $q$- 计数为 $\det Y=\det(y_{ij})$，其中
 $$y_{ij}=
 \left\{\begin{align*}
 &q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q, \quad & i<m\\
@@ -349,29 +355,45 @@ $$ 这里求和项跑遍由下标 $\{a_1,\ldots,a_{m-1},n-1\}$ 决定的 $A$ 的
 
 # Mills, Robbins, Rumsey 的巧妙想法
 
-记 $h_n=\det(I_n+H_n)$ 为 ${\rm dpp}(n+1)$ 的 $q-$ 计数，$h_{kn}=\det H_{kn}$ 是其中 $n+1$ 恰好出现 $k(0\leq k\leq n)$ 次的 $q-$ 计数，则 $\sum_{k=0}^n h_{kn}=h_n$。特别地 $h_{0n}$ 是 $n+1$ 出现 0 次的 $q-$ 计数，因而等于 ${\rm dpp}(n)$ 的 $q-$ 计数，即 $h_{0n}=h_{n-1}$。总之我们有一个三角形的二维数组，其每一行的和等于下一行的首元素。
+记 $h_n=\det(I_n+H_n)$ 为 $\dpp(n+1)$ 的 $q$- 计数，$h_{kn}=\det H_{kn}$ 是其中 $n+1$ 恰好出现 $k(0\leq k\leq n)$ 次的 $q$- 计数，从上节的讨论我们知道，
+$$h_n=\sum_{k=0}^n h_{kn}.$$
 
-| ${\rm dpp}(n+1)$ | $h_n$ | $h_{0n}$ | $h_{1n}$ |$h_{2n}$ |
+:::{.note}
+注意 $H_{kn}$，$h_{kn}$ 这些记号来自 $n$ 阶矩阵，但它们对应的都是 $\dpp(n+1)$ 中的分拆。
+:::
+
+$h_{0n}$ 是 $n+1$ 出现 0 次的 $q$- 计数，因而等于 $\dpp(n)$ 的 $q$- 计数，即 $h_{0n}=h_{n-1}$。$\{h_{kn}\}$ 构成一个三角阵列，其每一行的和等于下一行的首元素。
+
+|  | $h_n$ | $h_{0n}$ | $h_{1n}$ |$h_{2n}$ |
 |:-----:|:-----:|:-----:|:-----:|:-----:|
 | $n=0$ | $h_0$ | $1$ |$\phantom{}$|$\phantom{}$ |
 | $n=1$ | $h_1$ | $1$| $q^2$ | $\phantom{}$|
 | $n=2$ | $h_2$ | $1+q^2$ | $q^3+q^4+q^5$ | $q^6+q^8$|
 
-:::{.note}
-注意 $H_{kn}$，$h_{kn}$ 这些记号来自 $n$ 阶矩阵，但它们对应的都是 ${\rm dpp}(n+1)$ 中的分拆。
-:::
+由此我们可以得到 $\dpp(n+1)$ 与 $\dpp(n)$ 的 $q$- 计数之间的递推关系：
+$$\frac{h_n}{h_{n-1}} = 1 + \sum_{k=1}^n\frac{h_{kn}}{h_{0n}}.$$
+
+另一方面，@Prev:Andrews-conjecture 给出的递推关系是
+$$\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\,\bigg/ \prod_{1\leq i\leq j\leq n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}} = \prod_{i=1}^n\frac{1-q^{2n+i+1}}{1-q^{n+i}}.$$
+并且在 @Prev:Andrews-conjecture 中分别取 $n=0$ 和 $n=1$ 可得
+$$\left.\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=0}=1=h_0,\quad \left.\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=1}=1+q^2=h_1.$$
+所以我们只要证明
+$$1 + \sum_{k=1}^n\frac{h_{kn}}{h_{0n}}=\prod_{i=1}^n\frac{1-q^{2n+i+1}}{1-q^{n+i}}.$$
+即可验证 Andrews 猜想成立。
+
+我们已经设定好了目标，现在我们从一段“平平无奇”的线性代数操作开始，逐步触及证明的核心。
 
 由于 $I_n+H_n$ 和所有的 $\{H_{kn}\}_{0\leq k\leq n}$ 的前 $n-1$ 行都相同，仅最后一行不同，所以它们最后一行有共同的代数余子式。设 $R_k$ 是 $H_{kn}$ 的最后一行，列向量 $C=(c_1,\ldots,c_n)^{T}$ 是 $R_k$ 对应的代数余子式，$C$ 对所有 $0\leq k\leq n$ 都是一样的。则
 $$R_k\cdot C=\det H_{kn}=h_{kn}.$$
-设 $R$ 是由 $R_1,\ldots,R_n$ 为行向量排成的 $n\times n$ 矩阵 （不含 $k=0$），则
+将 $R_1,\ldots,R_n$ 以行向量依次排成 $n\times n$ 矩阵，记作 $R$，则
 $$
 RC = \begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
 $$
-**注意到 $R$ 是一个对角线上都是 1 的上三角矩阵** （在 @Pre:theorem-Hkn 中对 $n+1$ 的情形依次令 $k=1,\ldots,n$），所以 $R$ 是可逆的，从而
+**不难看出 $R$ 是一个对角线上都是 1 的上三角矩阵** （在 @Pre:theorem-Hkn 中对 $n+1$ 的情形依次令 $k=1,\ldots,n$），所以 $R$ 可逆，从而
 $$
 C = R^{-1}\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
 $$
-对矩阵 $H_{0n}$，其最后一行 $R_0$ 满足 $R_0\cdot C=\det H_{0n}=h_{0n}$，它的其它行与 $C$ 的内积是 0，所以
+由于矩阵 $H_{0n}$ 满足最后一行 $R_0\cdot C=\det H_{0n}=h_{0n}$，并且其它行与 $C$ 的内积是 0，所以
 $$
 H_{0n}C=\begin{pmatrix}0\\0\\\vdots\\h_{0n}\end{pmatrix}=
 h_{0n}\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix}.
@@ -392,7 +414,7 @@ A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
 \end{equation}
 \label{eq:recurrent}\tag{1}$$
 
-到目前为止这些都是寻常的线性代数操作，并无出彩之处。$A_n$ 和 $V_n$ 都是可以计算出来的（你从右边目录栏里面可以看到这一点），而 $\{h_{kn}\}$ 是我们要求的序列。Mills 等人的想法是：
+到目前为止这些都是寻常的线性代数操作，并无出彩之处。$A_n$ 和 $V_n$ 都是可以计算出来的（你从右边目录里可以看出来），而 $\{h_{kn}\}$ 是我们要求的序列。Mills 等人的想法是：
 
 :::{.simple}
 **想法** \
@@ -406,14 +428,16 @@ $(\ref{eq:recurrent})$ 中给出的递推关系，加上初始条件 $h_1=1+q^2$
 如果序列 $\{b_{kn},n\geq1,0\leq k\leq n\}$ 满足
 
 1. 初始条件 $b_1=h_1$。
-2. 每一行的和等于下一行的首元素，即对任何 $n\geq1$ 有 $\sum_{k=0}^nb_{kn}=b_n=b_{0,n+1}$ 成立。
+2. 每一行的和等于下一行的首元素，即对任何 $n\geq1$ 有
+$$\sum_{k=0}^nb_{kn}=b_n=b_{0,n+1}$$
+成立。
 3. 设 $A_n,V_n$ 如前，且
 $$A_n\begin{pmatrix}b_{1n}\\b_{2n}\\\vdots\\b_{nn}\end{pmatrix}=b_{0n}V_n.$$
 
 则对任何 $k,n$ 都有 $b_{kn}=h_{kn}$ 成立。
 :::
 
-**证明**：对 $n$ 归纳，$b_1=h_1$ 是已知的，设 $b_i=h_i$ 对所有 $i<n$ 成立，则 $b_{0n}=h_{0n}$，于是 $(b_{1n},\ldots,b_{nn})^T$ 和 $(h_{1n},\ldots,h_{nn})^T$ 都是线性方程组 $A_nX=h_{0n}V_n$的解，由于 $A_n$ 是可逆矩阵，此方程组有唯一解，从而 $b_{kn}=h_{kn}$ 对任何 $k,n$ 成立。$\blacksquare$
+**证明**：对 $n$ 归纳，$b_1=h_1$ 是已知的。设 $b_{ik}=h_{ik}$ 对所有 $k<n$ 和 $0\leq i\leq k$ 成立，则 $b_{0n}=h_{0n}$，于是 $(b_{1n},\ldots,b_{nn})^T$ 和 $(h_{1n},\ldots,h_{nn})^T$ 都是线性方程组 $A_nX=h_{0n}V_n$的解，由于 $A_n$ 是可逆矩阵，此方程组有唯一解，从而 $b_{kn}=h_{kn}$ 也对任何 $0\leq k\leq n$ 成立。$\blacksquare$
 
 所以如果我们能构造出一个满足 @Pre:lemma-bn 中三个条件的序列来，那么它必然就是我们要求的 $\{h_{kn}\}$。怎么构造好呢？我们观察 $(\ref{eq:recurrent})$：
 $$\begin{equation}
@@ -467,7 +491,7 @@ $$
 $$
 |A_{n,k}|=\binom{n+k-2}{k-1}\frac{(2n-k-1)!}{(n-k)!}\prod_{j=0}^{n-2}\frac{(3j+1)!}{(n+j)!}.
 $$
-而且他们直觉认为这就是 ${\rm dpp}(n)$ 中恰好含有 $k-1$ 个 $n$ 的 DPP 的个数，即 $h_{k-1,n-1}$，所以他们猜测特征向量 $v_n$ 的第 $k$ 个分量 $v_{kn}$ 应该形如
+而且他们直觉认为这就是 $\dpp(n)$ 中恰好含有 $k-1$ 个 $n$ 的 DPP 的个数，即 $h_{k-1,n-1}$，所以他们猜测特征向量 $v_n$ 的第 $k$ 个分量 $v_{kn}$ 应该形如
 $$
 q^{\text{some power}}\times\binom{n+k}{k}_q\binom{2n-k}{n-k}_q.
 $$
@@ -485,7 +509,7 @@ $$\lambda_{n+1} v_{0,n+1} = h_{0,n+1}=\sum_{k=0}^{n}h_{k,n}=\lambda_{n}v_n.$$
 $$\lambda_{n+1} = \lambda_{n}\frac{v_n}{v_{0,n+1}}=\lambda_{n}\frac{\binom{3n+1}{n}_q}{\binom{2n+2}{n+1}_q}.$$
 结合 $\lambda_0=0$，$\lambda_1 = v_{01} / h_{01} = \binom{2}{1}_q$，我们得到
 $$h_n=\lambda_n v_n = v_n\cdot \prod_{k=1}^n \frac{\lambda_k}{\lambda_{k-1}}=\prod_{k=1}^n\frac{\binom{3k+1}{k}_q}{\binom{2k}{k}_q}.$$
-此即为 ${\rm dpp}(n+1)$ 的 $q-$ 计数。
+此即为 $\dpp(n+1)$ 的 $q$- 计数。
 
 不难验证连乘积 $\prod\limits_{k=1}^n\dfrac{\binom{3k+1}{k}_q}{\binom{2k}{k}_q}$ 确实等于 Andrews 猜想中给出的表达式
 $$\prod\limits_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}.$$
