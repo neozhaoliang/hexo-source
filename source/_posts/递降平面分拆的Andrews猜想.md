@@ -13,7 +13,7 @@ url: "descending-plane-partitions"
 
 > Proofs and Confirmations: The Story of the Alternating Sign Matrix Conjecture
 
-一书时的读书笔记。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 $q$- 二项式定理作为工具。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud 是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 $q$- 超几何级数一起解决的。Macdonald 猜想的证明似乎无法避免使用超几何级数的理论，但 Andrews 猜想是完全可以用初等的 $q$- 多项式解决的。
+一书时的读书笔记。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud 是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 $q$- 超几何级数一起解决的。Macdonald 猜想的证明似乎无法避免使用超几何级数的知识，但 Andrews 猜想是完全可以仅使用初等的 $q$- 多项式解决的。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 $q$- 二项式定理作为工具。
 
 <!-- more -->
 
@@ -147,9 +147,10 @@ $$
 $$
 既然 $\dpp(n)$ 和 ${\rm ASM}(n)$ **看起来**是一样大小的，那是不是意味着它也应该有一个参数，将 $\dpp(n)$ 对应地分为 $n$ 个不同的子集呢？
 
-很自然地，Mills 等人猜测在一个 $\pi\in\dpp(n)$ 中数字 $n$ 出现的次数就是对应的参数，而且他们猜测恰好含有 $k-1(1\leq k\leq n)$ 个 $n$ 的 DPP 的个数等于 $|A_{n,k}|$，这个猜测在他们的证明中起着关键的作用。注意在一个 $\pi\in\dpp(n)$ 中 $n$ 出现的次数至多是 $n-1$，否则由于这些 $n$ 必然都在第一行，不满足 DPP 的行首严格大于该行长度的限制。
+注意在一个 $\pi\in\dpp(n)$ 中 $n$ 出现的次数 $k$ 满足 $0\leq k\leq n-1$，不可能大于等于 $n$。否则由于这些 $n$ 必然都在第一行，不满足 DPP 的行首严格大于该行长度的限制。很自然地，Mills 等人猜测在一个 $\pi\in\dpp(n)$ 中数字 $n$ 出现的次数就是对应的参数，而且他们猜测恰好含有 $k\,(0\leq k\leq n-1)$ 个 $n$ 的 DPP 的个数等于 $|A_{n,k}|$，这个猜测在他们的证明中起着关键的作用。
 
 证明的第一步是把计数问题转化为行列式的求值，为此我们需要一些关于 Gauss 二项式系数的结论。
+
 
 # 一点预备知识
 
@@ -187,7 +188,7 @@ Gauss 二项式系数有不少等价的描述方式，我们这里要用到的�
 
 ![图中的圆圈标注了 $P$ 的权重方格](/images/dpp/gausspath.svg){width=350}
 
-熟知这样的 Gauss 路径一共有 $\binom{m+n}{n}$ 条，它们组成的集合记作 $\mathcal{G}(m,n)$。
+这样的 Gauss 路径一共有 $\binom{m+n}{n}$ 条，它们组成的集合记作 $\mathcal{G}(m,n)$。
 
 我们规定路径 $P$ 的权重为 $q^{|P|}$，其中 $|P|$ 等于 $P$ 与坐标轴所围成的区域中包含的方格的个数，上图中用圆圈标出了这些方格，一共有 21 个，所以其权重为 $q^{21}$。
 
@@ -374,11 +375,11 @@ $h_{0n}$ 是 $n+1$ 出现 0 次的 $q$- 计数，因而等于 $\dpp(n)$ 的 $q$-
 $$\frac{h_n}{h_{n-1}} = 1 + \sum_{k=1}^n\frac{h_{kn}}{h_{0n}}.$$
 
 另一方面，@Prev:Andrews-conjecture 给出的递推关系是
-$$\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\,\bigg/ \prod_{1\leq i\leq j\leq n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}} = \prod_{i=1}^n\frac{1-q^{2n+i+1}}{1-q^{n+i}}.$$
+$$\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\,\bigg/ \prod_{1\leq i\leq j\leq n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}} = \prod_{i=1}^n\frac{1-q^{2n+i+1}}{1-q^{n+i}}=\frac{\binom{3n+1}{n}}{\binom{2n}{n}}.$$
 并且在 @Prev:Andrews-conjecture 中分别取 $n=0$ 和 $n=1$ 可得
 $$\left.\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=0}=1=h_0,\quad \left.\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=1}=1+q^2=h_1.$$
 所以我们只要证明
-$$1 + \sum_{k=1}^n\frac{h_{kn}}{h_{0n}}=\prod_{i=1}^n\frac{1-q^{2n+i+1}}{1-q^{n+i}}.$$
+$$1 + \sum_{k=1}^n\frac{h_{kn}}{h_{0n}}=\frac{\binom{3n+1}{n}}{\binom{2n}{n}}.$$
 即可验证 Andrews 猜想成立。
 
 我们已经设定好了目标，现在我们从一段“平平无奇”的线性代数操作开始，逐步触及证明的核心。
@@ -411,6 +412,10 @@ $$
 则我们有
 $$\begin{equation}
 A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
+\end{equation}$$
+我们把它改写成“特征值为 1” 的形式：
+$$\begin{equation}
+A_n\begin{pmatrix}h_{1n}/h_{0n}\\h_{2n}/h_{0n}\\\vdots\\h_{nn}/h_{0n}\end{pmatrix}=V_n.
 \end{equation}
 \label{eq:recurrent}\tag{1}$$
 
@@ -432,12 +437,12 @@ $(\ref{eq:recurrent})$ 中给出的递推关系，加上初始条件 $h_1=1+q^2$
 $$\sum_{k=0}^nb_{kn}=b_n=b_{0,n+1}$$
 成立。
 3. 设 $A_n,V_n$ 如前，且
-$$A_n\begin{pmatrix}b_{1n}\\b_{2n}\\\vdots\\b_{nn}\end{pmatrix}=b_{0n}V_n.$$
+$$A_n\begin{pmatrix}b_{1n}/b_{0n}\\b_{2n}/b_{0n}\\\vdots\\b_{nn}/b_{0n}\end{pmatrix}=V_n.$$
 
 则对任何 $k,n$ 都有 $b_{kn}=h_{kn}$ 成立。
 :::
 
-**证明**：对 $n$ 归纳，$b_1=h_1$ 是已知的。设 $b_{ik}=h_{ik}$ 对所有 $k<n$ 和 $0\leq i\leq k$ 成立，则 $b_{0n}=h_{0n}$，于是 $(b_{1n},\ldots,b_{nn})^T$ 和 $(h_{1n},\ldots,h_{nn})^T$ 都是线性方程组 $A_nX=h_{0n}V_n$的解，由于 $A_n$ 是可逆矩阵，此方程组有唯一解，从而 $b_{kn}=h_{kn}$ 也对任何 $0\leq k\leq n$ 成立。$\blacksquare$
+**证明**：对 $n$ 归纳，$b_1=h_1$ 是已知的。设 $b_{ik}=h_{ik}$ 对所有 $k<n$ 和 $0\leq i\leq k$ 成立，则 $b_{0n}=h_{0n}$，于是 $(b_{1n},\ldots,b_{nn})/b_{0n}$ 和 $(h_{1n},\ldots,h_{nn})/h_{0n}$ 都是线性方程组 $A_nX=V_n$ 的解，由于 $A_n$ 可逆，此方程组有唯一解，从而 $b_{kn}=h_{kn}$ 也对任何 $0\leq k\leq n$ 成立。$\blacksquare$
 
 所以如果我们能构造出一个满足 @Pre:lemma-bn 中三个条件的序列来，那么它必然就是我们要求的 $\{h_{kn}\}$。怎么构造好呢？我们观察 $(\ref{eq:recurrent})$：
 $$\begin{equation}
@@ -485,13 +490,16 @@ $$
 
 **这一步即为 Mills 等人的“信仰一跃”**。
 
-然而看到 $K_n$ 的表达式还是不免让人倒吸一口凉气，这么复杂的矩阵，Mills 等人是怎么得出它的特征值是 1 的特征向量来的呢？
+然而看到 $K_n$ 的表达式还是不免让人倒吸一口凉气，这么复杂的矩阵，Mills 等人是怎么得出它的特征值 1 对应的特征向量来的呢？
 
 我们之前说过，Mills 等人研究 DPP 的目的是为了解决 ASM 的计数。他们正确的猜出了 ${\rm ASM}(n)$ 中第一行的 1 恰好出现在第 $1\leq k\leq n$ 列的 ASM 个数为
 $$
 |A_{n,k}|=\binom{n+k-2}{k-1}\frac{(2n-k-1)!}{(n-k)!}\prod_{j=0}^{n-2}\frac{(3j+1)!}{(n+j)!}.
 $$
-而且他们直觉认为这就是 $\dpp(n)$ 中恰好含有 $k-1$ 个 $n$ 的 DPP 的个数，即 $h_{k-1,n-1}$，所以他们猜测特征向量 $v_n$ 的第 $k$ 个分量 $v_{kn}$ 应该形如
+而且他们直觉认为这就是 $\dpp(n)$ 中恰好含有 $k-1$ 个 $n$ 的 DPP 的个数，即 $h_{k-1,n-1}$。把下标换成 $k+1$ 和 $n+1$，即他们猜测
+$$|A_{n+1,k+1}|=h_{kn}=\binom{n+k}{k}\frac{(2n-k)!}{(n-k)!}\prod_{j=0}^{n-1}\frac{(3j+1)!}{(n+j+1)!}.$$
+
+所以他们猜测特征向量 $v_n$ 的第 $k$ 个分量 $v_{kn}$ 应该形如
 $$
 q^{\text{some power}}\times\binom{n+k}{k}_q\binom{2n-k}{n-k}_q.
 $$
@@ -503,18 +511,7 @@ $$
 
 记 $v_n=\sum_{k=0}^{n} v_{kn}$。经过计算可以得到
 $$v_{0n}=\binom{2n}{n}_q,\quad v_n=\binom{3n+1}{n}_q.$$
-前面说过，$\{v_{kn}\}_{0\leq k\leq n}$ 与 $\{h_{kn}\}_{0\leq k\leq n}$ 只差一个倍数，不妨设 $h_{kn}=\lambda_n v_{kn}$。由于三角数组 $\{h_{kn}\}$ 满足每一行的和等于下一行的首元素，所以
-$$\lambda_{n+1} v_{0,n+1} = h_{0,n+1}=\sum_{k=0}^{n}h_{k,n}=\lambda_{n}v_n.$$
-从而我们有递推关系
-$$\lambda_{n+1} = \lambda_{n}\frac{v_n}{v_{0,n+1}}=\lambda_{n}\frac{\binom{3n+1}{n}_q}{\binom{2n+2}{n+1}_q}.$$
-结合 $\lambda_0=0$，$\lambda_1 = v_{01} / h_{01} = \binom{2}{1}_q$，我们得到
-$$h_n=\lambda_n v_n = v_n\cdot \prod_{k=1}^n \frac{\lambda_k}{\lambda_{k-1}}=\prod_{k=1}^n\frac{\binom{3k+1}{k}_q}{\binom{2k}{k}_q}.$$
-此即为 $\dpp(n+1)$ 的 $q$- 计数。
 
-不难验证连乘积 $\prod\limits_{k=1}^n\dfrac{\binom{3k+1}{k}_q}{\binom{2k}{k}_q}$ 确实等于 Andrews 猜想中给出的表达式
-$$\prod\limits_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}.$$
-
-（检查它们满足同样的递推关系）
 
 # 详细计算步骤
 
