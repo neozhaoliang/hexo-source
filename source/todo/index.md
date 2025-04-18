@@ -73,3 +73,5 @@ url: todo
 - 分形盒子
 - shadertoy 实现 Z^d 齿轮？
 - shadertoy 画算术 Coxeter 群 (3, 4, 4), (6, 3, 3)
+- epstein 说的扫描线，gifmaze 能画？
+- Knuth-Bendix 约化，模群和 indra's pearls
