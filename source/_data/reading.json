@@ -71,6 +71,11 @@
                 "title": "Js animations of Uniform polyhedra, Aztec diamond, etc",
                 "review": "一些动画",
                 "doubanLink": "https://bustercopley.github.io/"
+            },
+            {
+                "title": "The symmetric group, 3",
+                "review": "Peter Cameron 讨论为什么只有 $S_6$ 有非平凡的外自同构",
+                "doubanLink": "https://cameroncounts.wordpress.com/2010/05/11/the-symmetric-group-3/"
             }
         ]
     }
