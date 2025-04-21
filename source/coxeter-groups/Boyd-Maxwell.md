@@ -234,6 +234,8 @@ $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
 
 # 球的反演
 
+这一节读者可以参考 [@Iversen_1992, section I.7]。
+
 :::{.definition}
 关于球 $B(\a, r)$ 的反演定义为
 $$\begin{aligned}
@@ -259,10 +261,10 @@ $$\begin{align*}
 \begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho}
 \begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} -\frac{r^2-|\x-\a|^2}{r}\begin{pmatrix}\frac{1}{r}\\\frac{\a}{r}\\ \frac{|\a|-r^2}{r}\end{pmatrix}\\
 &=\begin{pmatrix}\frac{|\x-\a|^2}{r^2}\\\x+\left(\frac{|\x-\a|^2-r^2}{r^2}\right)\a\\ \ast \end{pmatrix}\\
-&\sim \begin{pmatrix}1\\\a+\frac{r^2}{|\x-\a|^2}(\x-\a)\\ \ast \end{pmatrix}\\
+&\stackrel{+}{\sim} \begin{pmatrix}1\\\a+\frac{r^2}{|\x-\a|^2}(\x-\a)\\ \ast \end{pmatrix}\\
 &=\begin{pmatrix}1\\\tau(\x)\\ |\tau(\x)|^2 \end{pmatrix}.
 \end{align*}$$
-这里我们不用关心 $\ast$ 是什么，中间的 $\sim$ 表示两个向量射影等价。即我们有如下的交换图：
+这里我们不用关心 $\ast$ 是什么，中间的 $\stackrel{+}{\sim}$ 表示两个向量**正**射影等价。于是我们有如下的交换图：
 
 $$\require{amsCd}
 \begin{CD}
@@ -291,7 +293,7 @@ $$
 记 $\H$ 是超平面 $(\cdot, e_{n+2})=1$ 与 $\Q_+$ 的截面，对给定的 $k\in S$，定义球帽
 $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 
-根据定义，$C_k$ 中的点都属于 $\Q_+$，所以对任何 $k,k'\in\P$ 和 $u\in C_k,v\in C_{k'}$ 有 $u\sim v$。 
+根据定义，$C_k$ 中的点都属于 $\Q_+$，所以对任何 $k,k'\in\P$ 和 $u\in C_k,v\in C_{k'}$ 有 $u\sim v$。
 
 ::: {.lemma #disjoint-pair}
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$，则集合 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多只包含一个点。并且当这两个集合中的某个恰好只含一个点时，此点与 $k_1+k_2$ 共线，并且有 $(k_1,k_2)=-1$ 成立。
