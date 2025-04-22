@@ -188,11 +188,7 @@ $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)
 $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 即 $\barfd\subset\Q$。$W$ 作为正交变换群保持 $\Q$ 不变，所以 $\tc=\bigcup\limits_{w\in W}w\barfd\subset\Q$，从而 $\cl{\tc}\subset\Q$。
 
-再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。我们知道 [$\tc^\ast\ne\{0\}$](/coxeter-groups/three-geometries/#dual-cone-non-trivial)。我们断言 $\tc^\ast$ 必然包含某个 time-like 的向量 $(z,z)<0$。若不然，[$\tc^\ast$ 中的非零向量都是 light-like 的](/coxeter-groups/tits-cone#dual-cone-nonspace)。但是 $\tc^\ast$ 不能包含两个线性无关的 light-like 的向量（否则由于 [它们属于 $\Q$ 的同一个分支](/coxeter-groups/three-geometries/#dual-cone-belongs-branch)，从而其正线性组合是 $\tc^\ast$ 中 time-like 的向量，矛盾），再结合 $\tc^\ast$ 是 [点锥](/coxeter-groups/tits-cone/#tits-cone-dual-pointed)，所以 $\tc^\ast=\R_{\geq0}\delta$，其中 $\delta$ 是一个 light-like 的向量。取对偶得到
-$$\cl{\tc}=\tc^{\ast\ast}=\{v\in V\mid (v,\delta)\geq0\}.$$
-这是一个半空间，显然包含 space-like 的向量，这与 $\cl{\tc}\subset\Q$ 矛盾。所以确实存在 $z\in\tc^\ast$ 满足 $(z,z)<0$。又因为 $\Q_+\subset\cl{\tc}$，所以 $z\in\Q_-$。
-
-设 $x\ne0\in\cl{\tc}\cap\Q_-$，则 $(x,z)<0$，这与 $z\in\tc^\ast$ 和 $x\in\cl{\tc}$ 矛盾。所以 $\cl{\tc}\cap\Q_-=\{0\}$。$\blacksquare$
+再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。若不然，设 $z\ne0\in \cl{\tc}\cap\Q_-$。任取 $x\in\N_+\subset\tc$ 使得 $x$ 与 $z$ 线性无关，仿照 [这个命题的证明](/coxeter-groups/three-geometries/#dual-cone-trivial-intersection)，可得 $x$ 和 $z$ 的某个正线性组合是 space-like 的向量，此向量仍在 $\cl{\tc}$ 中，这与 $\cl{\tc}\subset\Q$ 矛盾。$\blacksquare$
 
 :::{.proposition #ideal-vertex}
 [@Maxwell89, proposition 5.15] \
