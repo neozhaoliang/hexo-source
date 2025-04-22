@@ -389,7 +389,7 @@ $$(\omega_s, \omega_s)=0\Rightarrow (v_1+v_2,v_1+v_2)=0\Rightarrow (v_1,v_1) + (
 $$\omega_s=v_1=\sum_{i\in X} (\omega_s,\omega_i)\alpha_i$$
 两边同时用 $\alpha_s$ 作内积有
 $$1=(\omega_s,\alpha_s)=\sum_{i\in X} (\omega_s, \omega_i)\underbrace{(\alpha_s,\alpha_i)}_{\leq0}.$$
-所以必须所有 $(\omega_s, \omega_i)<0$。所以 $X\cup \{s\}$ 构成的子图满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件，于是我们得到
+所以必须所有 $(\omega_s, \omega_i)<0$。于是 $X\cup \{s\}$ 构成的子图满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件，于是我们得到
 $$\omega_s\in\cl{\cone{\bigcup_{w\in W_X}w(\omega_t)}}\subset\tcr.$$
 
 $\blacksquare$

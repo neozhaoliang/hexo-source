@@ -185,13 +185,12 @@ $\Q$ 由上、下两个分支 $\Q_+,\,\Q_-$ 组成，它们分别由 $\Q$ 中满
 设 $u,v$ 是两个非零向量，我们用记号 $u\sim v$ 表示 $u,v$ 属于同一个分支，即 $u,v$ 同时属于 $\Q_+$ 或者同时属于 $\Q_-$；用记号 $u\not\sim v$ 表示 $u,v$ 属于不同的分支，即 $u,v$ 一个属于 $\Q_+$，另一个属于 $\Q_-$。
 
 ::: {.proposition #connected-component-dot}
-[@ratcliffe, thm. 3.1.1] \
-
 设 $u,v\in \Q-\{0\}$。
 
 1. 如果 $u\sim v$ 则 $(u,v)\leq0$。
 2. $(u,v)=0$ 当且仅当 $u,v$ 是共线的 light-like 的向量。
 3. 如果 $u,v$ 中至少有一个是 time-like 的向量，则 $u\sim v$ 当且仅当 $(u,v)<0$。
+4. 若 $u\in\Q_+,\,v\in\Q_-$ 线性无关，则存在 $a,b>0$ 使得 $au + bv$ 是 space-like 的。
 :::
 
 **证明**：
@@ -204,8 +203,7 @@ $$(u,v)=(x,y)-cd\leq \sqrt{(x,x)\cdot (y,y)}-cd \leq \sqrt{c^2d^2}-cd=|cd|-cd=0.
 $$(w,w)=a^2(u,u) + b^2(v,v)\leq0.$$
 即 $U$ 不包含 space-like 的向量。这与 $\dim U=2$ 和 $V$ 的 Sylvester 符号是 $(n-1,1)$ 矛盾，所以 $u,v$ 必须共线。进一步显然 $u,v$ 都是 light-like 的。反方向是显然的。
 3. 不妨设 $u$ 是 time-like 的向量。$\Rightarrow$：如果 $u\sim v$，1 证明了 $(u,v)\leq0$。结合 $u$ 是 time-like 的和 2 的结论，严格的不等号成立。$\Leftarrow$：如果 $u\not\sim v$ 则 $u\sim -v$，根据 1 的结论，$(u,-v)\leq0$，从而 $(u,v)\geq0$，矛盾。
-
-$\blacksquare$
+4. 由已知 $c>0,\,d<0$。取 $(-d)u + cv = -dx+cy\in(\R z)^\bot$ 即可。$\blacksquare$
 
 记 $\Q_+$ 和 $\Q_-$ 的内点分别为 $\N_+$ 和 $\N_-$，$\N_+$ 和 $\N_-$ 分别是 $\N=\{v\in V\mid (v,v)<0\}$ 的两个连通分支。
 
@@ -219,8 +217,7 @@ $\blacksquare$
 
 这个结论应该是很直观的，如果 $\tc^\ast$ 同时包含 $\Q_+,\Q_-$ 中的非零向量的话，由于 $\tc^\ast$ 是点锥，这两个向量必然不共线，从而它们的非负线性组合可以给出 space-like 的向量，这与 $\tc^\ast$ 不含 space-like 的向量矛盾。
 
-**证明**：若不然，设 $u\in\tc^\ast\cap\Q_+,\,u'\in \tc^\ast\cap\Q_-$ 是非零向量，$u=x+cz,\,u'=y+dz$ 是 [如前所述的分解](#lorentzinian-decomposition)，则 $c>0,\,d<0$。考察 $$v=cu'-du=cy-dx\in(\R z)^\bot.$$
-$v$ 是 $u$ 和 $u'$ 的非负线性组合，所以 $v$ 也属于 $\tc^\ast$，从而 [$(v,v)\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)。结合 $(\R z)^\bot$ 是 space-like 的可得 $v=0$，于是 $cu'=du$。由于 $c,d$ 异号所以 $u$ 和 $-u$ 同时属于 $\tc^\ast$，但 $\tc^\ast$ 是点锥，所以 $u=0$。从而 $\tc^\ast\cap\Q_+$ 和 $\tc^\ast\cap\Q_-$ 中必有一个等于 $\{0\}$。$\blacksquare$
+**证明**：若不然，设 $u\in\tc^\ast\cap\Q_+,\,v\in \tc^\ast\cap\Q_-$ 是非零向量，由于 $\tc^\ast$ 是点锥，所以 $u,v$ 线性无关。根据 @Pre:connected-component-dot，$u,v$ 的正线性组合可以给出 space-like 的向量，这与 $\tc^\ast\subset\Q$ 矛盾。$\blacksquare$
 
 ::: {.corollary #dual-cone-belongs-branch}
 在双曲的情形，必有 $\tc^\ast\subset\Q_+$ 或者 $\tc^\ast\subset\Q_-$ 之一成立。

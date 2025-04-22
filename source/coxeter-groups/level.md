@@ -193,7 +193,7 @@ $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 :::{.proposition #ideal-vertex}
 [@Maxwell89, proposition 5.15] \
 
-设 $s\in S$，$I=S\setminus\{s\}$，如果有如下条件成立：
+假定几何实现的内积 $\inn$ 非退化。设 $s\in S$，$I=S\setminus\{s\}$，如果有如下条件成立：
 
 1. $(\omega_s,\omega_s)=0$。
 2. 标准椭圆子群 $W_I$ 是不可约、仿射的。
@@ -212,9 +212,9 @@ $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 ![](/images/coxeter/ideal-vertex.jpg){.fig width=350}
 :::
 
-**证明**：由已知子空间 $V_I=\span\{\alpha_t\mid t\ne s\}$ 是仿射的，并且 $\rad(V_I)$ 是一维的。根据恒等式 $(\ref{eq:idII})$
-$$\omega_s = \underbrace{(\omega_s,\omega_s)}_{=0}\alpha_s +  \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t = \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t\in V_I$$
-可得 $\rad(V_I)=\R\omega_s$。于是 $W_I$ 保持 $\omega_s$ 不动，即
+**证明**：由已知子空间 $V_I=\span\{\alpha_t\mid t\ne s\}$ 是仿射的，并且 $\rad(V_I)$ 是一维的。由于内积 $\inn$ 非退化，从而恒等式 $(\ref{eq:idII})$ 成立：
+$$\omega_s = \underbrace{(\omega_s,\omega_s)}_{=0}\alpha_s +  \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t = \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t\in V_I.$$
+由此可得 $\rad(V_I)=\R\omega_s$。于是 $W_I$ 保持 $\omega_s$ 不动，即
 $$\R\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.$$
 $W_I$ 同样作用在商空间 $V_I/\R\omega_s$ 上，此作用给出了一个同态 $W_I\to\gl(V_I/\R\omega_s)$。令 $K$ 为此同态的核，则对任何 $w\in K$，
 $$w(v + \R\omega_s) = v + \R\omega_s,\quad v\in V_I.$$
