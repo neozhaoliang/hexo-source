@@ -75,24 +75,18 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 # 两个恒等式
 
-这一节是纯技术性的，我会介绍两个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和对偶基 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
+这一节是纯技术性的，我会介绍两个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
 
-在本节中我们都假定内积 $\inn$ 是非退化的，于是我们可以通过 $\inn$ 将 $V$ 和 $V^\ast$ 等同起来：对任何 $\alpha_s\in\Delta$ 和 $\omega_t\in\Delta^\ast$ 有 $(\alpha_s,\omega_t)=\delta_{st}$。
+在本文中，我们总假定 $\inn$ 是非退化的，从而我们可以将 $V$ 和 $V^\ast$ 等同起来。这时对偶基 $\{\omega_t\}\subset V$ 满足 $(\alpha_s,\omega_t)=\delta_{st}$。
 
-内积 $\inn$ 在 $\Delta$ 这组基下的 Gram 矩阵记作
-$$A=\big((\alpha_s,\alpha_t)\big)_{s,t\in S}\ .$$
-则 $\inn$ 在 $\Delta^\ast$ 这组基下的 Gram 矩阵就是
-$$A^{-1}=\big((\omega_s,\omega_t)\big)_{s,t\in S}\ .$$
-$A$ 的第 $s$ 行与 $A^{-1}$ 的第 $s$ 列的点积是 1，所以
-$$1=\sum_{t\in S}(\alpha_s,\alpha_t)\cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)+\sum_{t\ne s}(\omega_t,\omega_s)\cdot(\alpha_s,\alpha_t).\tag{I}\label{eq:idI}$$
+固定 $s\in S$，设
+$$\omega_s = \sum_{t\in S}c_t\alpha_t,\quad c_t\in\R.$$
+两边与 $\omega_t$ 作内积，可得 $c_t=(\omega_s,\omega_t)$，于是
+$$\omega_s = \sum_{t\in S}(\omega_s,\omega_t)\alpha_t=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.\tag{I}\label{eq:idI}$$
 这是我们的第一个恒等式。
 
-设 $\bfA$ 是 $V$ 上的线性变换，满足对每个 $s\in S$ 有 $\bfA(\omega_s)=\alpha_s$，则 $\bfA$ 在 $\{\omega_s\}$ 这组基下的矩阵就是 $A$：
-$$(\alpha_1,\ldots,\alpha_n)= (\omega_1,\ldots,\omega_n)A.$$
-于是
-$$(\omega_1,\ldots,\omega_n)=(\alpha_1,\ldots,\alpha_n)A^{-1}.$$
-在两边取下标为 $s$ 的列，得到
-$$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.\tag{II}\label{eq:idII}$$
+进一步，在 $(\ref{eq:idI})$ 两边与 $\alpha_s$ 作内积，可得
+$$1=\sum_{t\in S}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t)=(\omega_s,\omega_s)+\sum_{t\ne s}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t).\tag{II}\label{eq:idII}$$
 这是我们的第二个恒等式。
 
 # Level 1 是双曲的
@@ -160,13 +154,13 @@ $$\omega_s = \sum_{t\in S}\alpha_t \cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)
 
 再来证明 3。
 
-观察恒等式 $(\ref{eq:idII})$：
+观察恒等式 $(\ref{eq:idI})$：
 $$\omega_s = (\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.$$
 
 结论 2 中已经证明了必然有 $(\omega_s,\omega_s)\leq0$。根据 [断言](#assetA) 我们有：
 
 1. 如果 $(\omega_s,\omega_s)<0$，则后面所有的系数 $(\omega_s,\omega_t)$ 都小于 0。
-2. 如果 $(\omega_s,\omega_s)=0$，则后面所有的系数 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都不为 0 且同号。我们来确定它们的符号：根据恒等式 $(\ref{eq:idI})$
+2. 如果 $(\omega_s,\omega_s)=0$，则后面所有的系数 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都不为 0 且同号。我们来确定它们的符号：根据恒等式 $(\ref{eq:idII})$
 $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)=\sum_{t\ne s} (\omega_s,\omega_t)\underbrace{(\alpha_t,\alpha_s)}_{\leq0},$$
 显然只能是 $(\omega_s,\omega_t)<0$。
 
@@ -190,81 +184,6 @@ $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 
 再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。若不然，设 $v\ne0\in\cl{\tc}\cap\Q_-$，取 $u\in\N_+$ 使得 $u,v$ 线性无关， [则 $u,v$ 的某个正线性组合是 space-like 的](/coxeter-groups/three-geometries/#connected-component-dot)，此向量仍在 $\cl{\tc}$ 中，这与 $\cl{\tc}\subset\Q$ 矛盾。$\blacksquare$
 
-:::{.proposition #ideal-vertex}
-[@Maxwell89, proposition 5.15] \
-
-假定几何实现的内积 $\inn$ 非退化。设 $s\in S$，$I=S\setminus\{s\}$，如果有如下条件成立：
-
-1. $(\omega_s,\omega_s)=0$。
-2. 标准椭圆子群 $W_I$ 是不可约、仿射的。
-3. 对任何 $t\in I$ 有 $(\omega_s,\omega_t)<0$。
-
-则对任意 $p\in\barfd$ 都有 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$。
-:::
-
-:::note
-这里没有限制 $W$ 的 level。
-
-由于 $\bigcup_{w\in W_I}wp$ 是无限集，$\cone{\bigcup_{w\in W_I}}$ 未必是闭集，因此闭包记号不可少。
-
-当 $W$ 的 level 是 1 时，若 $\omega_s$ 是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时 $W_I$ 是经过 $\omega_s$ 的那些镜面生成的标准椭圆子群，$W_I$ 会把基本区域无限压缩到 $\omega_s$ 附近，如下图所示：
-
-![](/images/coxeter/ideal-vertex.jpg){.fig width=350}
-:::
-
-**证明**：由已知子空间 $V_I=\span\{\alpha_t\mid t\ne s\}$ 是仿射的，并且 $\rad(V_I)$ 是一维的。由于内积 $\inn$ 非退化，从而恒等式 $(\ref{eq:idII})$ 成立：
-$$\omega_s = \underbrace{(\omega_s,\omega_s)}_{=0}\alpha_s +  \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t = \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t\in V_I.$$
-由此可得 $\rad(V_I)=\R\omega_s$。于是 $W_I$ 保持 $\omega_s$ 不动，即
-$$\R\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.$$
-$W_I$ 同样作用在商空间 $V_I/\R\omega_s$ 上，此作用给出了一个同态 $W_I\to\gl(V_I/\R\omega_s)$。令 $K$ 为此同态的核，则对任何 $w\in K$，
-$$w(v + \R\omega_s) = v + \R\omega_s,\quad v\in V_I.$$
-即 $wv-v\in\R\omega_s$，从而
-$$V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.$$
-由于 $K\leqslant W_I$，所以
-$$V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ K-1\ }0.$$
-即 $(K-1)^2$ 在整个 $V_I$ 上恒为 0。
-
-更进一步，对任何 $w\in K$，$w\alpha_s$ 形如 $w\alpha_s=\alpha_s+\sum\limits_{t\ne s}c_t\alpha_t$，所以 $(w-1)\alpha_s\in V_I$，从而 $w-1$ 将整个 $V$ 也映入 $V_I$，于是
-$$V\xrightarrow{\ K-1\ } V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ K-1\ }0.$$
-即 $(K-1)^2V\subset\R\omega_s$，$(K-1)^3V\equiv0$。
-
-取 $w\in K$ 且 $w\ne 1$ [^1]，由于 $w$ 在 $V_I$ 上不是恒等变换，所以存在 $t\in I$ 使得 $w\alpha_t\ne\alpha_t$。设
-$$\beta = w\alpha_t=\alpha_t+a\omega_s\,(a\ne 0).$$
-则 $s_\beta=wtw^{-1}$，从而对任何 $p\in V$，
-$$\begin{align*}
-s_\beta(p)&=p - 2(p,\beta)\beta\\
-&=p-2(p,\alpha_t+a\omega_s)(\alpha_t+a\omega_s)\\
-&=p-2(p,\alpha_t)\alpha_t- 2a(p, \omega_s)\alpha_t - c\omega_s\\
-&=t(p) - 2a(p, \omega_s)\alpha_t - c\omega_s.
-\end{align*}$$
-其中 $c=2(p,\alpha_t+a\omega_s)a$ 是实数。$c$ 具体是多少不用关心。
-
-构造换位子 $w_1=twtw^{-1}\in K$，则由 $(K-1)^2V\subset\R\omega_s$ 有 $(w_1-1)^2p=b\omega_s\,(b\in\R)$。我们来计算 $b$。首先，
-
-$$(w_1-1)p=ts_\beta(p)-p=-2a(p,\omega_s)\alpha_t - c\omega_s.\label{eq:wp1}\tag{1}$$
-其中我们利用了 $t(\alpha_t)=-\alpha_t$ 和 $t(\omega_s)=\omega_s$。
-
-到目前为止，我们的计算对任何 $p\in V$ 都是成立的。我们可以在 $(\ref{eq:wp1})$ 式中取 $p=\alpha_t$，得到
-$$(w_1-1)\alpha_t=2a\underbrace{(\alpha_t,\omega_s)}_{=0}\alpha_t -c\omega_s=-c\omega_s= -2(\alpha_t,\alpha_t+a\omega_s)a\omega_s=-2a\omega_s.\label{eq:wp2}\tag{2}$$
-
-继续，将 $w_1-1$ 作用在 $(\ref{eq:wp1})$ 两端，由于 $(w_1-1)\omega_s=0$，所以
-$$(w_1-1)^2p = 2a(p,\omega_s)(w_1-1)\alpha_t.\label{eq:wp3}\tag{3}$$
-
-将 $(\ref{eq:wp2})$ 代入 $(\ref{eq:wp3})$ 的右边，我们得到
-$$(w_1-1)^2p=-4a^2(p,\omega_s)\omega_s.$$
-即 $b=-4a^2(\omega_s,p)$。
-
-我们来判断 $b$ 的符号。这里要用到 $p\in\barfd=\cone{\Delta^\ast}$ 的条件。如果 $p$ 是 $\omega_s$ 的正倍数，显然 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$，命题自然成立。所以我们可以假设 $p$ 与 $\omega_s$ 不共线。
-
-设 $p=\sum_{t\in S} c_t\omega_t\,(c_t\geq0)$，则至少有一个 $t\ne s$ 满足 $c_t>0$。于是
-$$(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0 \text{ 且至少有一个 } >0}\ \cdot\ \underbrace{(\omega_s,\omega_t)}_{\text{已知 }<0}<0.$$
-从而 $b>0$。
-
-最后利用 $(w_1-1)^3=0$ 和 $(w_1-1)^2p=b\omega_s$ 我们得到对任何 $N\geq 1$ 有
-$$w_1^N(p)=(1 + w_1-1)^N(p)= p + \binom{N}{1}(w_1-1)(p) + \binom{N}{2}b\omega_s,$$
-可见 $\lim\limits_{N\to\infty}\dfrac{w_1^Np}{\binom{N}{2}b} = \omega_s$，即得所证。$\blacksquare$
-
-
 # 处理 level 2 的基本技巧
 
 本节我们在上一小节的结论中再进一步，证明 level 2 的群也是双曲的。由于接下来的证明篇幅更长，包含更多的细节，读者难免在阅读时感到吃力。我这里借鉴编程中的模块化思想，先解释接下来的证明中会用到的主要思想。
@@ -282,7 +201,6 @@ $$(x,x)\leq0 \text{ and } (x,\omega_t)\leq0\text{ for all }t\in I.$$
 
 :::{.example #observeA}
 **观察 A**
-
 
 取 $v=\alpha_s$，$\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)$ 是 $\alpha_s$ 在 $\omega_s^\bot=V_I$ 上的投影，则对任何 $t\in I$ 有
 $$(\alpha_s',\alpha_t)= (\alpha_s,\alpha_t)\leq0.$$

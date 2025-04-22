@@ -290,7 +290,7 @@ $$
 \begin{align}
 \tc^\ast &=\{v\in V \mid \lfun{v}{x}\geq 0 \text{ for all } x \in \tc\}\\
 &= \{v\in V \mid \lfun{v}{wz}\geq0 \text{ for all } z\in\barfd \text{ and } w \in W\}\\
-&= \{v\in V \mid \lfun{w^{-1}v}{z}\geq0 \text{ for all } v\in\barfd \text{ and } w \in W\}\\
+&= \{v\in V \mid \lfun{w^{-1}v}{z}\geq0 \text{ for all }z\in\barfd \text{ and } w \in W\}\\
 &= \{v\in V \mid w^{-1}v\in (\barfd)^\ast \text{ for all } w \in W\}\\
 &\stackrel{(\ast)}{=} \{v\in V \mid w^{-1}v\in \cone{\Delta} \text{ for all } w \in W\}\\
 &= \{v\in V \mid v\in w(\cone{\Delta}) \text{ for all } w \in W\}.
