@@ -188,7 +188,7 @@ $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)
 $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 即 $\barfd\subset\Q$。$W$ 作为正交变换群保持 $\Q$ 不变，所以 $\tc=\bigcup\limits_{w\in W}w\barfd\subset\Q$，从而 $\cl{\tc}\subset\Q$。
 
-再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。若不然，取 $v\in\cl{\tc}\cap\Q_-$ 和 $u\in\N_+$ 使得 $u,v$ 线性无关，仿照 [这个命题的证明](/coxeter-groups/three-geometries/#dual-cone-trivial-intersection)，可得 $u,v$ 的某个正线性组合是 space-like 的向量，此向量仍在 $\cl{\tc}$ 中，这与 $\cl{\tc}\subset\Q$ 矛盾。$\blacksquare$
+再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。若不然，设 $v\ne0\in\cl{\tc}\cap\Q_-$，取 $u\in\N_+$ 使得 $u,v$ 线性无关， [则 $u,v$ 的某个正线性组合是 space-like 的](/coxeter-groups/three-geometries/#connected-component-dot)，此向量仍在 $\cl{\tc}$ 中，这与 $\cl{\tc}\subset\Q$ 矛盾。$\blacksquare$
 
 :::{.proposition #ideal-vertex}
 [@Maxwell89, proposition 5.15] \
