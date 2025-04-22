@@ -256,6 +256,8 @@ $$\begin{aligned}
 \end{aligned}$$
 则 $\rho$ 是 $\LR$ 上的正交变换，从而也给出 $\PR$ 上的射影变换。
 
+实际上 $\rho$ 还保持光锥的上下两个分支不变，即 $\rho(\Q_+)\subset\Q_+$ 和 $\rho(\Q_-)\subset\Q_-$。这是因为，如果 $v\in\Q_+$，则 $(v,v)\leq0$，并且 $(v, \rho(v)) = (v,v) - 2(v,k)^2\leq0$。若严格的不等号成立，自然有 $v\sim\rho(v)$。若等号成立，则只能是 $(v,v)=(v,k)=0$，从而 $\rho(v)=v$。
+
 我们来计算 $\rho$ 作用在 $\imath(\x)\,(\x\in\R^n)$ 上的效果：（注意 $(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{r}$）
 $$\begin{align*}
 \begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho}
