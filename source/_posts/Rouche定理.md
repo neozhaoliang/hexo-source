@@ -18,7 +18,7 @@ url: "Rouche-theorem-winding-number"
 
 注意这个结论只要求 $\gamma_1,\gamma_2\colon\ [0,1]\to\mathbb{R}^2$ 是两条连续曲线，并不涉及解析性。因为环绕数和同伦都是拓扑概念，只涉及连续性。
 
-当 $\gamma_1=f(S^1),\gamma_2=g(S^1)$ 分别是单位圆 $S^1\colon\ \{z\in\mathbb{C}:|z|=1\}$ 在两个解析函数 $f,g$ 下的像时，[幅角原理](https://en.wikipedia.org/wiki/Argument_principle) 告诉我们 $\gamma_1,\gamma_2$ 关于原点的环绕数分别等于 $f,g$ 在 $S^1$ 内部的零点个数。进一步 [Rouché 定理](https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem) 告诉我们，如果对任何 $z\in S^1$ 都有 $|f(z)|>|f(z)-g(z)|$ 成立，即可保证 $\gamma_1,\gamma_2$ 关于原点有相同的环绕数，从而 $f,g$ 在 $S^1$ 内部的零点个数也是相同的。Rouché 定理的条件说的就是，假设人的位置是 $f(z)$，狗的位置是 $g(z)$，绳子 $l(z)=f(z)-g(z)$ 的长度 $|l(z)|$ 始终小于人到原点的距离 $|f(z)|$，就可以保证狗始终够不到原点。
+当 $\gamma_1=f(S^1),\gamma_2=g(S^1)$ 分别是单位圆 $S^1\colon\ \{z\in\mathbb{C}:|z|=1\}$ 在两个解析函数 $f,g$ 下的像时，[幅角原理](https://en.wikipedia.org/wiki/Argument_principle) 告诉我们 $\gamma_1,\gamma_2$ 关于原点的环绕数分别等于 $f,g$ 在 $S^1$ 内部的零点个数。进一步 [Rouché 定理](https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem) 指出，如果对任何 $z\in S^1$ 都有 $|f(z)|>|f(z)-g(z)|$ 成立，即可保证 $\gamma_1,\gamma_2$ 关于原点有相同的环绕数，从而 $f,g$ 在 $S^1$ 内部的零点个数也是相同的。Rouché 定理的几何直观是，假设人的位置是 $f(z)$，狗的位置是 $g(z)$，绳子 $l(z)=f(z)-g(z)$ 的长度 $|l(z)|$ 始终小于人到原点的距离 $|f(z)|$，就可以保证狗始终够不到原点。
 
 动画中左下角的圆周是 $S^1$，动画右边红、绿两条路径分别是 $f(S^1)$ 和 $g(S^1)$。这里的 $f$ 我取的形如
 $$f(z) =\frac{z-a}{1-\overline{a}z}\frac{z-b}{1-\overline{b}z}\frac{z-c}{1-\overline{c}z} (z-2-2i),\quad |a|,|b|,|c|<1.$$
@@ -40,7 +40,7 @@ $$|f(z)-w_0| > |w_0-w_1|,\quad\forall z\in\gamma.$$
 $$\sharp\{z\in \Omega: f(z)=w_0\} = \sharp\{z\in \Omega: f(z)=w_1\}.$$
 :::
 
-**证明**：这是因为根据条件，从 $w_0$ 沿着线段 $[w_0,w_1]$ 移动到 $w_1$ 的过程中始终不会碰触到曲线 $f(\gamma)$，所以 $w_0,w_1$ 必然位于同一连通分支内。$\blacksquare$
+**证明**：根据条件，从 $w_0$ 沿着线段 $[w_0,w_1]$ 移动到 $w_1$ 的过程中始终不会碰触到曲线 $f(\gamma)$，所以 $w_0,w_1$ 必然位于同一连通分支内。$\blacksquare$
 
 利用此推论我们不难得出复分析中的 [开映射定理](https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis))：
 

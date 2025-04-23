@@ -124,17 +124,19 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 当 $|S|=4$ 时，level 1 的 Coxeter 群给出了三维双曲空间中的**紧** (compact) 和**仿紧** (paracompact) 的蜂巢结构。基本权不是实的意味着所有的权都不是实的，即蜂巢的顶点全部位于双曲空间的内部或者边界上。维基百科的 [这个页面](https://en.wikipedia.org/wiki/Uniform_honeycombs_in_hyperbolic_space) 上列出了所有紧和仿紧的蜂巢。
 :::
 
-**证明**：首先注意到 $\Gamma$ 的 level 是 1 蕴含了 $\Gamma$ 是连通的，若不然，设 $\Gamma=\Gamma_1\cup\cdots\cup\Gamma_k$ 是多于一个连通分支的并，则每个分支 $\Gamma_i$ 作为删去其它分支后剩下的子图必须都是有限或者仿射的，但这导致 $\Gamma$ 的 level 是 0，矛盾。
+**证明**：首先注意到 $\Gamma$ 的 level 是 1 蕴含了 $\Gamma$ 是连通的，若不然，设 $\Gamma=\Gamma_1\cup\cdots\cup\Gamma_k$ 有多个连通分支，则每个 $\Gamma_i$ 作为删去其它分支后剩下的子图，都应该是有限或者仿射的，但这导致 $\Gamma$ 的 level 是 0，矛盾。
 
 我们需要证明三件事情：
 
-1. 内积 $\inn$ 的正负惯性指数是 $(n-1, 1)$；
+1. 内积 $\inn$ 的惯性指数是 $(n-1, 1)$；
 2. 任何基本权 $\omega_s$ 满足 $(\omega_s,\omega_s)\leq0$；
 3. 任何两个基本权 $\omega_s,\omega_t$ 满足 $(\omega_s,\omega_t)\leq0$ 并且它们生成的二维子空间 $\span\{\omega_i,\omega_j\}$ 不是正定的。
 
-先证明 1。用反证法，如果 $\Gamma$ 的 level 是 1 但不是双曲的，则根据 @Pre:lemma-uv 我们可以取两个正交的非零向量 $u,v$ 满足 $(u,u)<0,\, (v,v)=0$。
+**1. 证明 $\inn$ 是双曲的**。
 
-我们有如下两个断言：
+用反证法，如果 $\Gamma$ 的 level 是 1 但不是双曲的，则根据 @Pre:lemma-uv 我们可以取两个正交的非零向量 $u,v$ 满足 $(u,u)<0,\, (v,v)=0$。
+
+我们有如下两个断言（证明见 [附录 A](#appendixA)）：
 
 :::{.simple #assetA}
 **断言** \
@@ -143,29 +145,24 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 2. 若向量 $v=\sum_{s\in S} v_s \alpha_s$ 满足 $(v,v)=0$，则至多一个 $v_s$ 为零，其余同号。
 :::
 
-我把这两个断言的证明放在 [附录](#appendixA) 中，先承认它们是正确的，用它们来导出矛盾：
-
 取 $s\in S$ 使得 $v_s\ne 0$，则 $u'=v_su-u_sv$ 满足 $(u',u')=v_s^2(u,u)<0$，且 $u'$ 的 $\alpha_s$ 项系数 $u'_s=0$，这与断言 1 矛盾。所以 $\Gamma$ 是双曲的。
 
-再来证明 2。
+**2. 证明 $(\omega_s,\omega_s)\leq0$**
 
-由于 $\Gamma$ 的 level 是 1，对任何 $s\in S$，子空间 $\omega_s^\bot=\span\{\alpha_t\mid t\ne s\}$ 是有限或者仿射的，从而 [$\omega_s$ 不是 space-like 的](/coxeter-groups/three-geometries/#orth-complement-lorentzian)，即 $(\omega_s,\omega_s)\leq 0$。于是任何 $\omega_s\,(s\in S)$ 都不是实的。
+由于 $\Gamma$ 的 level 是 1，删除任意一个顶点 $s$ 后的子图 $\Gamma \setminus\{s\}$ 是有限或仿射型。因此子空间 $\omega_s^\perp = \span\{\alpha_t \mid t \ne s\}$ 是正定或者半正定的。由于我们刚刚已经证明了 $\inn$ 是双曲的，所以 $\omega_s$ 不是 space-like 的，即 $(\omega_s, \omega_s) \leq 0$。于是任何 $\omega_s\,(s\in S)$ 都不是实的。
 
-再来证明 3。
+**3. 证明 $(\omega_s,\omega_t)\leq0$ 且 $\span\{\omega_i,\omega_j\}$ 非正定**
 
-观察恒等式 $(\ref{eq:idI})$：
-$$\omega_s = (\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.$$
+由于 $(\omega_s,\omega_s)\leq0$，结合恒等式 $(\ref{eq:idI})$ 和 [断言](#assetA) 我们有：
 
-结论 2 中已经证明了必然有 $(\omega_s,\omega_s)\leq0$。根据 [断言](#assetA) 我们有：
-
-1. 如果 $(\omega_s,\omega_s)<0$，则后面所有的系数 $(\omega_s,\omega_t)$ 都小于 0。
-2. 如果 $(\omega_s,\omega_s)=0$，则后面所有的系数 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都不为 0 且同号。我们来确定它们的符号：根据恒等式 $(\ref{eq:idII})$
+1. 如果 $(\omega_s,\omega_s)<0$，则所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都小于 0。
+2. 如果 $(\omega_s,\omega_s)=0$，则所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都不为 0 且同号。我们来确定它们的符号：根据恒等式 $(\ref{eq:idII})$
 $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)=\sum_{t\ne s} (\omega_s,\omega_t)\underbrace{(\alpha_t,\alpha_s)}_{\leq0},$$
 显然只能是 $(\omega_s,\omega_t)<0$。
 
-总之我们说明了对任何 $s\ne t$ 都有 $(\omega_s,\omega_t)<0$。此外二维子空间 $U_{s,t}={\rm span}\{\omega_s,\omega_t\}$ 的正交补是 $U_{s,t}^\bot=\span\{\alpha_{k}\mid k\ne s,t\}$，根据 @Pre:level-l $U_{s,t}^\bot$ 是 space-like 的，从而 $U_{s,t}$ 是 time-like 的，从而 $\{\omega_s,\omega_t\}$ 是分离的。
+因此对任何 $s\ne t$ 都有 $(\omega_s,\omega_t)<0$。进一步，考虑二维子空间 $U_{s,t}={\rm span}\{\omega_s,\omega_t\}$，其正交补是 $U_{s,t}^\bot=\span\{\alpha_{k}\mid k\ne s,t\}$，根据 @Pre:level-l $U_{s,t}^\bot$ 是 space-like 的，说明 $U_{s,t}$ 是 time-like 的，从而 $\{\omega_s,\omega_t\}$ 是分离的。
 
-至此定理得证。$\blacksquare$
+综上，三点均得证，定理成立。$\blacksquare$
 
 ::: {.corollary #level-1-tits}
 若 $W$ 的 level 为 1，则 Tits 锥的闭包 $\cl{\tc}$ 等于 $\Q_+$ 或者 $\Q_-$ 之一。
@@ -181,15 +178,15 @@ $$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)
 $$(x,x)=\sum_{s,t\in S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.$$
 即 $\barfd\subset\Q$。$W$ 作为正交变换群保持 $\Q$ 不变，所以 $\tc=\bigcup\limits_{w\in W}w\barfd\subset\Q$，从而 $\cl{\tc}\subset\Q$。
 
-再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。若不然，设 $v\ne0\in\cl{\tc}\cap\Q_-$，取 $u\in\N_+$ 使得 $u,v$ 线性无关， [则 $u,v$ 的某个正线性组合是 space-like 的](/coxeter-groups/three-geometries/#connected-component-dot)，此向量仍在 $\cl{\tc}$ 中，这与 $\cl{\tc}\subset\Q$ 矛盾。$\blacksquare$
+再来说明 $\cl{\tc}\cap\Q_-=\{0\}$。若存在 $v\in\cl{\tc}\cap\Q_-$ 且 $v\ne0$，取某个 $u\in\N_+$ 使得 $u,v$ 线性无关，[则 $u,v$ 的某个正线性组合是 space-like 的](/coxeter-groups/three-geometries/#connected-component-dot)，此向量仍在 $\cl{\tc}$ 中，这与 $\cl{\tc}\subset\Q$ 矛盾。$\blacksquare$
 
 # 处理 level 2 的基本技巧
 
-本节我们在上一小节的结论中再进一步，证明 level 2 的群也是双曲的。由于接下来的证明篇幅更长，包含更多的细节，读者难免在阅读时感到吃力。我这里借鉴编程中的模块化思想，先解释接下来的证明中会用到的主要思想。
+在上一节的基础上，我们进一步讨论 level 2 的 Coxeter 群，并证明它们同样是双曲的。由于接下来的证明较为复杂，细节较多，读者阅读时可能会感到吃力。因此，我借鉴编程中的“模块化”思路，先解释一下接下来的核心思想。
 
-处理 level 2 的情形的基本思路是转化为 level 1 的情形。具体讲，设 $\Gamma$ 是 level 为 2 的 Coxeter 图，取一个实的基本权 $(\omega_s,\omega_s)>0$，则子图 $\Gamma\setminus\{s\}$ 的 level 就是 1。记 $I = S\setminus\{s\}$，$W_I$ 是标准椭圆子群，
+我们处理 level 2 的情形的基本策略是转化为 level 1 的情形。设 $\Gamma$ 是 level 为 2 的 Coxeter 图，取一个实的基本权 $(\omega_s,\omega_s)>0$，则子图 $\Gamma\setminus\{s\}$ 的 level 是 1。记 $I = S\setminus\{s\}$，$W_I$ 是标准椭圆子群，此时有
 $$V_I=\omega_s^\bot=\span\{\alpha_t\mid t\ne s\}.$$
-$W_I$ 在 $V_I$ 上作用的基本区域的闭包就是
+$W_I$ 在 $V_I$ 上作用的基本区域的闭包是
 $$\barfd_I= \{v\in V_I\mid (v, \alpha_t)>0,\, \forall t\in I\}=\cone{\{\omega_t\mid t\in I\}}.$$
 
 根据 @Pre:level-1-tits，$\barfd_I$ 包含在 $\Q_I=\{v\in V_I\mid (v,v)\leq0\}$ 的上下两个分支之一中，所以任何 $x,y\in\barfd_I$ 之间的内积小于等于 0：
@@ -216,11 +213,11 @@ $$\begin{aligned}
 :::{.example #observeB}
 **观察 B**
 
-这次我们取 $v\in\tc$ 是 Tits 锥中的一点，则 $v$ 形如 $v=wx\,(w\in W,x\in\barfd)$。并且
+设 $v\in\tc$ 是 Tits 锥中一点，则 $v$ 可以写成 $v=wx\,(w\in W,x\in\barfd)$。其在 $V_I$ 上的投影为
 $$v_I = v - \frac{(v,\omega_s)}{(\omega_s,\omega_s)}\omega_s.$$
-由于 $(v-v_I)\bot V_I$，所以对任何 $\alpha_k\,(k\ne i)$ 有
+由于 $(v-v_I)\perp V_I$，所以对任何 $\alpha_k\,(k\ne i)$ 有
 $$(v_I,\alpha_k)=(v,\alpha_k) =(wx,\alpha_k)=(x,w^{-1}\alpha_k).$$
-为了保证让 $v_I$ 落在 $\barfd_I$ 中，我们需要让这些 $(x,w^{-1}\alpha_k)\geq0$。但是 $x\in\barfd$，所以只要让每个 $w^{-1}\alpha_k\,(k\in I)$ 都是负根，也就是让 $l(s_kw)<l(w)$ 即可。
+为了保证让 $v_I$ 落在 $\barfd_I$ 中，我们需要让这些 $(x,w^{-1}\alpha_k)\geq0$。由于 $x\in\barfd$，所以只要让每个 $w^{-1}\alpha_k\,(k\in I)$ 都是负根，也就是让 $l(s_kw)<l(w)$ 即可。
 
 总结起来就是，如果对任何 $k\in I$ 有 $l(s_kw)<l(w)$，那么就有 $v_I\in\barfd_I$ 成立。
 :::
@@ -236,8 +233,6 @@ level 等于 2 的群都是双曲的，所有的基本权 $\{\omega_s\mid s\in S
 
 **证明**：我们先来证明 $\Gamma$ 是双曲的。
 
-如果 $\Gamma$ 是不连通的，则 $\Gamma$ 必须是一个 level 为 1 的子图和一个孤立顶点的并，由于 @Pre:level-1 已经证明了 level 1 的群是双曲的，再加上一个孤立顶点仍然是双曲的，所以 $\Gamma$ 是双曲的。于是我们不妨假设 $\Gamma$ 是连通的。
-
 如果 $|\Gamma|=3$，$\Gamma$ 的 level 是 2 说明其必然有一条边的 Vinberg 标号小于 -1。不妨设 $\inn$ 的 Gram 矩阵形如
 $$\begin{pmatrix}1&a&b\\a&1&c\\b&c&1\end{pmatrix}.$$
 其中 $a,\,b,\,c\leq0$ 且 $a < -1$。这个矩阵的行列式是
@@ -246,20 +241,18 @@ $$1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 
 再处理 $|\Gamma|\geq4$ 的情形。仍然根据 @Pre:lemma-uv，如果 $\Gamma$ 不是双曲的，则可以取两个非零且正交的向量 $u,v$ 满足 $(u, u)<0,\,(v, v)=0$。
 
-我们也有如下两个断言：
+我们也有如下两个断言（证明见 [附录 B](#appendixB) ）：
 
 :::{.simple #assetB}
 **断言** \
 
-1. 任何满足 $(u,u)<0$ 的向量 $u=\sum_{s\in S}u_s\alpha_s$ 除去至多一个系数 $u_j$ 之外，其它的 $u_s$ 都非零且同号。
-2. 任何满足 $(v,v)=0$ 的向量 $v=\sum_{s\in S}v_s\alpha_s$ 除了满足断言 1 的情形之外，还有一种情形是 $\{v_s\}$ 中有两个是 0，其余的非零且同号。
+1. 若向量 $u=\sum_{s\in S} u_s \alpha_s$ 满足 $(u,u)<0$，则除去至多一个系数 $u_j$ 之外，其它的 $u_s$ 都非零且同号。
+2. 若向量 $v=\sum_{s\in S} v_s \alpha_s$ 满足 $(v,v)=0$，则除了断言 1 的情形之外，还有一种情形是 $v_s$ 中有两个是 0，其余的非零且同号。
 :::
 
-我仍然把断言的证明放在 [附录](#appendixB) 中，先承认它们是正确的并完成证明。
+由于 $u$ 的系数 $\{u_s\}$ 中至多一个是 0，$v$ 的系数 $\{v_s\}$ 中至多两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。$u'=v_iu-u_iv$ 仍然满足 $u'\perp v$ 和 $(u',u')<0$，但是系数 $u'_i=0$，所以我们不妨一开始就取 $u$ 为 $u'$，使得 $u$ 有一个系数 $u_i=0$，其它系数都非 0 且同号，不妨假设这些非零系数都大于 0。
 
-由于 $u$ 的系数 $\{u_s\}$ 中至多只有一个是 0，$v$ 的系数 $\{v_s\}$ 中至多只有两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。于是 $u'=v_iu-u_iv$ 仍然满足 $u'$ 与 $v$ 正交和 $(u',u')<0$，但是它的下标 $i$ 的系数 $u'_i=0$，所以我们不妨一开始就取 $u$ 为 $u'$，于是 $u$ 有一个系数 $u_i=0$，其它系数都非 0 且同号，不妨假设这些非零系数都大于 0。
-
-现在我们已经有了 $v_i\ne0$，由于 $\{v_s\}$ 中至多只有两个为 0，而 $|\Gamma|\geq4$，所以 $\{v_j,\,j\ne i\}$ 中至少还有一个非零。
+由于 $\{v_s\}$ 中至多只有两个为 0，而 $|\Gamma|\geq4$，所以 $\{v_j,\,j\ne i\}$ 中至少还有一个非零。
 
 + 如果 $\{v_j,\,j\ne i\}$ 中仅有一个非零，则这时必有 $|\Gamma|=4$ 且 $v$ 形如 $v=v_i\alpha_i + v_j\alpha_j$。根据 @Pre:level-l ${\rm span}\{\alpha_i,\alpha_j\}$ 是有限/或者仿射的，但是由于此平面包含 $(v,v)=0$，所以是仿射的，从而 $(\alpha_i,\alpha_j)=-1$。我们可以不妨把 $v$ 取为 $v=\alpha_i+\alpha_j$。
 
@@ -291,12 +284,11 @@ $$1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 分情况讨论：
 
 + 如果 $(\omega_s,\omega_s)>0$，由 @Prev:observeA 的讨论即得。
-
-+ 如果 $(\omega_s,\omega_s)\leq0$，则根据 $(\ref{eq:idI})$，$\{(\omega_s,\omega_t)\}_{t\ne s}$ 中必须至少有一个严格小于 0，从而根据 [断言](#assetB)，在 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 中至多有一个为正。但我们将证明这不可能。否则不妨设 $k\ne s$ 使得 $(\omega_s,\omega_k)>0$。在 $(\ref{eq:idII})$ 两边用 $\alpha_k$ 内积得到
++ 如果 $(\omega_s,\omega_s)\leq0$，则根据 $(\ref{eq:idII})$，$\{(\omega_s,\omega_t)\}_{t\ne s}$ 中必须至少有一个严格小于 0，从而根据 [断言](#assetB)，在 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 中至多有一个为正。但我们将证明这不可能。否则不妨设 $k\ne s$ 使得 $(\omega_s,\omega_k)>0$。在 $(\ref{eq:idI})$ 两边用 $\alpha_k$ 内积得到
 $$0=(\omega_s,\omega_s)(\alpha_s,\alpha_k) +\sum_{t\ne s,k} (\omega_s,\omega_t)(\alpha_t,\alpha_k) + (\omega_s,\omega_k).$$
 上面的和项前两个都非负，最后一个大于 0，矛盾。所以所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都非正。
 
-又因为对任何 $s,t$，$\Gamma\setminus\{s,t\}$ 是有限或者仿射的，所以其正交补，即 $\{\omega_s,\omega_t\}$ 张成的二维子空间不是正定的，从而 $\{\omega_s\}$ 之间是两两分离的。
+又因为对任何 $s,t$，$\Gamma\setminus\{s,t\}$ 是有限或者仿射的，所以其正交补，即 $\{\omega_s,\omega_t\}$ 张成的二维子空间不是正定的，从而 $\{\omega_s\}$ 之间是两两分离的。$\blacksquare$
 
 # level = 1, 2 等价于双曲和分离
 
