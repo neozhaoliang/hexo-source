@@ -20,43 +20,39 @@ url: "coxeter-groups-root-system"
 \newcommand{\gl}{\mathrm{GL}}
 \newcommand{\R}{\mathbb{R}}
 
-我们先回顾 [第一篇笔记](/coxeter-groups/geometric-realization/) 的主要内容。
+我们先简要回顾 [第一篇笔记](/coxeter-groups/geometric-realization/) 的核心内容。
 
-设 $(W,S)$ 是一个 Coxeter 系。在 [上文](/coxeter-groups/geometric-realization/) 中，我们按照如下方式，将 $(W,S)$ 表示为一个实向量空间 $V$ 上的正交反射群：
+设 $(W,S)$ 是一个 Coxeter 系。我们在该文中将其实现为一个实向量空间 $V$ 上的正交反射群，方式如下：
 
-1. 取一个 $n=|S|$ 维实向量空间 $V$，$V$ 的一组基为 $\{\alpha_s\mid s\in S\}$；
-2. 规定了 $V$ 上的内积 $\inn$；
-2. 对每个生成元 $s\in S$，规定 $s$ 在 $V$ 上的作用为关于 $\alpha_s$ 的反射 $\rho_s$；
-3. 我们证明了 $\rho$ 是从 $W\to\mathrm{O}(V)$ 的群同态。
+1. 取 $n=|S|$ 维实向量空间 $V$，并设其一组基为 $\{\alpha_s\mid s\in S\}$；
+2. 定义 $V$ 上的内积 $\inn$；
+2. 对每个生成元 $s\in S$ 在 $V$ 上的作用是以 $\alpha_s$ 为法向量的反射 $\rho_s$；
+3. 最后，我们证明了 $\rho\,\colon\ W\to\mathrm{O}(V)$ 是群同态。
 
-但是我们还有一个未完成的工作：证明 $\rho$ 是同构。本文会完成它。此外我还会介绍关于根系的一些知识。如果你直接翻到本文后面，会发现我罗列了很多关于根系的推论。这并不是我在故故意掉书袋，这些推论每一条后面都会用到。不过读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。
+但是我们还有一个未完成的工作：证明 $\rho$ 是同构。本文会完成它。此外我还会介绍一些关于根系的知识。如果你直接翻到本文后面，会看到我罗列了很多关于根系的推论。这并不是我在故意掉书袋，这些推论每一条后面都会用到。不过读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。
 
 <!--more-->
 
 # 根系
 
-记 $\Delta=\{\alpha_s\mid s\in S\}$ 是如前所取的 $V$ 的一组基。
-
-::: Definition
+:::{.definition}
 我们称集合
 $$\Phi=W\cdot\Delta=\{w\alpha_s\mid w\in W, \, \alpha_s\in\Delta\}$$
 为 $(W, S)$ 的**根系**，任何 $\lambda\in\Phi$ 叫做根向量，简称为**根**。$\Delta$ 叫做 **单根系**，$\Delta$ 中的元素叫做**单根**。
 :::
 
-一个简单观察是，任何 $\lambda\in\Phi$ 都是内积 $\inn$ 下的单位向量：设 $\lambda=w\alpha_s,\,w\in W,\alpha_s\in\Delta$。由于 $w$ 保持 $\inn$，所以
-$$(\lambda,\lambda) = (w\alpha_s,w\alpha_s)=(\alpha_s,\alpha_s)=1.$$
+我们可以立刻观察到以下几点：
 
-紧跟着的另一个简单观察是，如果两个根 $\alpha,\beta\in\Phi$ 共线则必有 $\alpha=\pm\beta$。这是因为设 $\alpha=k\beta,\,k\in\R$，利用 $\alpha,\beta$ 都是单位向量可得
-$$1=(\alpha,\alpha)=k^2(\beta,\beta)=k^2.$$
-所以 $k\in\pm1$。
++ 每个根 $\lambda=w\alpha_s$ 都是内积 $\inn$ 下的单位向量，因为群 $W$ 的作用保持内积；
++ 若 $\alpha, \beta \in \Phi$ 共线，则 $\alpha = \pm \beta$。这是因为它们都是单位向量，$\alpha = k\beta\Rightarrow k^2 = 1$。
 
-由于 $\Delta$ 构成 $V$ 的一组基，所以 $\Phi$ 中任何根 $\lambda$ 都是单根的线性组合：
+由于 $\Delta$ 构成 $V$ 的一组基，所以每个根 $\Phi\in\lambda$ 都是单根的线性组合：
 $$\lambda = \sum_{s\in S}c_s\alpha_s,\quad c_s\in\mathbb{R}.$$
 如果上面的所有系数 $c_s$ 都非负，就称 $\lambda$ 是**正根**；若所有系数 $c_s$ 都非正，就称 $\lambda$ 是**负根**。正根和负根组成的集合分别记作 $\Phi^+$ 和 $\Phi^-$。显然 $\Phi^+\cap\Phi^-=\emptyset$。
 
 这就引出了一个问题：每个根都必然是正根或者负根吗？即是否有 $\Phi=\Phi^+\cup\Phi^-$ 成立？虽然答案是肯定的，但这并不显然。为此我们需要一个关键引理。这个引理的证明有点长，但是它非常重要，Coxeter 群的几乎所有性质的证明多少都会用到它。在引入它之前，我们需要做一点小小的准备。
 
-设 $I\subseteq S$ 是 $S$ 的子集，$I$ 中的生成元在 $(W,S)$ 中生成一个子群 $W_I \leqslant (W,S)$，$W_I$ 叫做**标准椭圆子群**。记 $l_I(\cdot)$ 是 $W_I$ 上的长度函数，则显然对任何 $w\in W_I$ 有 $l(w)\leq l_I(w)$ 成立（因为 $W_I$ 中的既约表示放到 $W$ 里可能进一步缩短）。我们后面会看到 $l_I=l\mid_{W_I}$，但现在我们暂时还证明不了它。
+设 $I\subseteq S$，$I$ 中的生成元在 $(W,S)$ 中生成一个子群 $W_I \leqslant (W,S)$，$W_I$ 叫做**标准椭圆子群**。记 $l_I(\cdot)$ 是 $W_I$ 上的长度函数，则显然对任何 $w\in W_I$ 有 $l(w)\leq l_I(w)$ 成立（因为 $W_I$ 中的既约表示放到 $W$ 中可能不是既约的）。我们后面会证明其实有 $l_I=l\mid_{W_I}$。
 
 现在请出我们的重要引理：
 
