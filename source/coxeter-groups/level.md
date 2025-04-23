@@ -31,6 +31,20 @@ url: "coxeter-groups-level"
 
 我们来介绍 Coxeter 群的 level 的概念，并证明 level 等于 1 或 2 的群都是双曲的。
 
+在本文中，我们总假定 $\inn$ 是非退化的，从而我们可以将 $V$ 和 $V^\ast$ 等同起来。在这种情况下，根系、[基本权](/coxeter-groups/tits-cone/#fundamental-weights) $\Delta^\ast$、Tits 锥 $\tc$ 都在 $V$ 中。$\Delta^\ast$ 满足 $(\alpha_s,\omega_t)=\delta_{st}\,(\forall s,t\in S)$。
+
+我先介绍两个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
+
+固定 $s\in S$，设
+$$\omega_s = \sum_{t\in S}c_t\alpha_t,\quad c_t\in\R.$$
+两边与 $\omega_t$ 作内积，可得 $c_t=(\omega_s,\omega_t)$，于是
+$$\omega_s = \sum_{t\in S}(\omega_s,\omega_t)\alpha_t=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.\tag{I}\label{eq:idI}$$
+这是我们的第一个恒等式。
+
+进一步，在 $(\ref{eq:idI})$ 两边与 $\alpha_s$ 作内积，可得
+$$1=\sum_{t\in S}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t)=(\omega_s,\omega_s)+\sum_{t\ne s}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t).\tag{II}\label{eq:idII}$$
+这是我们的第二个恒等式。
+
 # level 的定义
 
 :::{.definition}
@@ -73,21 +87,6 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 由于 $\Gamma$ 的 level 是 $l$，所以 $\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}$ 是一个仿射的连通子图，这个仿射子图删除 $i_{l+1}$ 后得到的 $\Gamma'$ 仍然是仿射的，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
 
-# 两个恒等式
-
-这一节是纯技术性的，我会介绍两个关于 $\Delta=\{\alpha_s\mid s\in S\}$ 和 $\Delta^\ast=\{\omega_s\mid s\in S\}$ 之间关系的显然等式，这样下文用到它们时就不必再重复说明。
-
-在本文中，我们总假定 $\inn$ 是非退化的，从而我们可以将 $V$ 和 $V^\ast$ 等同起来。这时对偶基 $\{\omega_t\}\subset V$ 满足 $(\alpha_s,\omega_t)=\delta_{st}$。
-
-固定 $s\in S$，设
-$$\omega_s = \sum_{t\in S}c_t\alpha_t,\quad c_t\in\R.$$
-两边与 $\omega_t$ 作内积，可得 $c_t=(\omega_s,\omega_t)$，于是
-$$\omega_s = \sum_{t\in S}(\omega_s,\omega_t)\alpha_t=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.\tag{I}\label{eq:idI}$$
-这是我们的第一个恒等式。
-
-进一步，在 $(\ref{eq:idI})$ 两边与 $\alpha_s$ 作内积，可得
-$$1=\sum_{t\in S}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t)=(\omega_s,\omega_s)+\sum_{t\ne s}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t).\tag{II}\label{eq:idII}$$
-这是我们的第二个恒等式。
 
 # Level 1 是双曲的
 
@@ -140,8 +139,8 @@ $$1=\sum_{t\in S}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t)=(\omega_s,\omega_s)
 :::{.simple #assetA}
 **断言** \
 
-1. 任何满足 $(u,u)<0$ 的向量 $u=\sum_{s\in S}u_s\alpha_s$ 其系数 $u_s$ 都非零且同号。
-2. 任何满足 $(v,v)=0$ 的向量 $v=\sum_{s\in S}v_s\alpha_s$ 其系数 $v_s$ 至多只有一个为 0，其余都同号。
+1. 若向量 $u=\sum_{s\in S} u_s \alpha_s$ 满足 $(u,u)<0$，则所有 $u_s$ 非零且同号。
+2. 若向量 $v=\sum_{s\in S} v_s \alpha_s$ 满足 $(v,v)=0$，则至多一个 $v_s$ 为零，其余同号。
 :::
 
 我把这两个断言的证明放在 [附录](#appendixA) 中，先承认它们是正确的，用它们来导出矛盾：
