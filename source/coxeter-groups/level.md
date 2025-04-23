@@ -156,11 +156,9 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 由于 $(\omega_s,\omega_s)\leq0$，结合恒等式 $(\ref{eq:idI})$ 和 [断言](#assetA) 我们有：
 
 1. 如果 $(\omega_s,\omega_s)<0$，则所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都小于 0。
-2. 如果 $(\omega_s,\omega_s)=0$，则所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都不为 0 且同号。我们来确定它们的符号：根据恒等式 $(\ref{eq:idII})$
-$$1 = (\omega_s,\omega_s) + \sum_{t\ne s} (\omega_s,\omega_t)(\alpha_t,\alpha_s)=\sum_{t\ne s} (\omega_s,\omega_t)\underbrace{(\alpha_t,\alpha_s)}_{\leq0},$$
-显然只能是 $(\omega_s,\omega_t)<0$。
+2. 如果 $(\omega_s,\omega_s)=0$，则所有的 $\{(\omega_s,\omega_t)\}_{t\ne s}$ 都不为 0 且同号。根据恒等式 $(\ref{eq:idII})$ 不难确定它们都小于 0。
 
-因此对任何 $s\ne t$ 都有 $(\omega_s,\omega_t)<0$。进一步，考虑二维子空间 $U_{s,t}={\rm span}\{\omega_s,\omega_t\}$，其正交补是 $U_{s,t}^\bot=\span\{\alpha_{k}\mid k\ne s,t\}$，根据 @Pre:level-l $U_{s,t}^\bot$ 是 space-like 的，说明 $U_{s,t}$ 是 time-like 的，从而 $\{\omega_s,\omega_t\}$ 是分离的。
+总之对任何 $s\ne t$ 都有 $(\omega_s,\omega_t)<0$。进一步，考虑二维子空间 $U_{s,t}={\rm span}\{\omega_s,\omega_t\}$，其正交补是 $U_{s,t}^\bot=\span\{\alpha_{k}\mid k\ne s,t\}$，根据 @Pre:level-l $U_{s,t}^\bot$ 是 space-like 的，说明 $U_{s,t}$ 是 time-like 的，从而 $\{\omega_s,\omega_t\}$ 是分离的。
 
 综上，三点均得证，定理成立。$\blacksquare$
 
@@ -246,11 +244,11 @@ $$1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 :::{.simple #assetB}
 **断言** \
 
-1. 若向量 $u=\sum_{s\in S} u_s \alpha_s$ 满足 $(u,u)<0$，则除去至多一个系数 $u_j$ 之外，其它的 $u_s$ 都非零且同号。
+1. 若向量 $u=\sum_{s\in S} u_s \alpha_s$ 满足 $(u,u)<0$，则除去至多一个系数 $u_j$ 之外，其它的 $u_s\,(s\ne j)$ 都非零且同号。
 2. 若向量 $v=\sum_{s\in S} v_s \alpha_s$ 满足 $(v,v)=0$，则除了断言 1 的情形之外，还有一种情形是 $v_s$ 中有两个是 0，其余的非零且同号。
 :::
 
-由于 $u$ 的系数 $\{u_s\}$ 中至多一个是 0，$v$ 的系数 $\{v_s\}$ 中至多两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。$u'=v_iu-u_iv$ 仍然满足 $u'\perp v$ 和 $(u',u')<0$，但是系数 $u'_i=0$，所以我们不妨一开始就取 $u$ 为 $u'$，使得 $u$ 有一个系数 $u_i=0$，其它系数都非 0 且同号，不妨假设这些非零系数都大于 0。
+由于 $(u,u)<0$ 和 $(v,v)=0$，所以 $\{u_s\}$ 中至多一个是 0，$\{v_s\}$ 中至多两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。$u'=v_iu-u_iv$ 仍然满足 $u'\perp v$ 和 $(u',u')<0$，但是系数 $u'_i=0$，所以我们不妨一开始就取 $u$ 为 $u'$，使得 $u$ 有一个系数 $u_i=0$，其它 $u_s\,(s\ne i)$ 都非 0 且同号，不妨假设它们都大于 0。
 
 由于 $\{v_s\}$ 中至多只有两个为 0，而 $|\Gamma|\geq4$，所以 $\{v_j,\,j\ne i\}$ 中至少还有一个非零。
 
