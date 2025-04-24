@@ -81,7 +81,7 @@ $$
 
 对 $l(w)$ 归纳：$l(w)=0$ 时 $w=1$，结论显然成立。下面设结论对所有长度小于 $l(w)$ 的元素成立。
 
-我们总是可以取 $t\in S$ 使得 $l(wt)<l(w)$，比如 $t$ 取为 $w$ 的某个既约表达式的最后一项。显然 $t\ne s$，因为 $l(ws)>l(w)$。令 $I=\{s,t\}$，定义
+我们总是可以取 $t\in S$ 使得 $l(wt)<l(w)$，比如 $t$ 取为 $w$ 的某个既约表达式的最后一项。由于 $l(ws)>l(w)$，故 $t\ne s$。令 $I=\{s,t\}$，定义集合
 $$A = \{(x,x_I)\in W\times W_I\mid w=xx_I,\,l(w)=l(x)+l_I(x_I)\}.$$
 由于 $(wt,t)\in A$ 所以 $A$ 非空。取 $(v,v_I)\in A$ 使得 $l(v)$ 是最小的，则
 $$l(v)\leq l(wt)=l(w)-1.$$
@@ -99,28 +99,17 @@ l(w)&=l(vu\cdot uv_I)\leq l(vu) + l(uv_I) = (l(v) -1) + l(uv_I)\\
 $$w\alpha_s=vv_I\alpha_s=v(a\alpha_s + b\alpha_t)=av\alpha_s + bv\alpha_t\in\Phi^+.$$
 这就证明了结论。
 
-首先注意到 $v_I\in W_I$ 的任何既约表示都是 $s,t$ 的交错乘积，而且不能以 $s$ 结尾，否则 $l_I(v_Is)=l_I(v_I)-1$，从而
+注意到 $v_I\in W_I$ 的任何既约表示都是 $s,t$ 的交错乘积，而且不能以 $s$ 结尾，否则 $l_I(v_Is)=l_I(v_I)-1$，从而
 $$l(ws)=l(vv_Is)\leq l(v) + l(v_Is)\leq l(v)+l_I(v_Is)=l(v)+l_I(v_I)-1=l(w)-1.$$
 这与 $l(ws) > l(w)$ 矛盾！
 
-于是 $v_I$ 形如 $v_I=st\cdots t$ 或者 $v_I=ts\cdots t$，问题归结为分析这样的 $v_I$ 在 $\alpha_s$ 上的作用。这个我们已经在 [前一篇文章中计算过了](/coxeter-groups/geometric-realization#rank2-roots)：
+于是 $v_I$ 形如 $v_I=st\cdots t$ 或者 $v_I=ts\cdots t$，问题归结为分析这样的 $v_I$ 在 $\alpha_s$ 上的作用。我们在 [前文](/coxeter-groups/geometric-realization#rank2-roots) 中已经有过计算：
 
-1. $m=m_{s,t}<\infty$ 时，$$\alpha_s\xrightarrow{\ t\ }\sthe{}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ s\ }\sthe{3}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ t\ }\cdots$$
-其中 $\theta=\pi/m$。这个链的第 $k$ 项形如
-$$
-\begin{cases}
-\sthe{k}\alpha_s + \sthe{(k-1)}\alpha_t, & \text{$k$ odd},\\
-\newline
-\sthe{(k-1)}\alpha_s + \sthe{k}\alpha_t, & \text{$k$ even}.
-\end{cases}
-$$
-看起来并不是每一项都是 $\alpha_s,\alpha_t$ 的非负线性组合，但是它的前 $m$ 项确实都是 $\alpha_s,\alpha_t$ 的非负线性组合，这就足够了：由于 $v_I$ 的任何既约表示不能以 $s$ 结尾，所以 $v_I$ 可能的取值是二面体群 $D_m$ 中所有长度小于 $m$ 且以 $t$ 结尾的那些元素：
-$$1,\ t,\ st,\ \ldots,\ \overbrace{\ast\cdots st}^{m-1},$$
-这些元素作用在 $\alpha_s$ 上正好给出序列的前 $m$ 项。
-
-    为什么 $v_I$ 的长度不能等于 $m$？因为根据辫关系
-    $$\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}.$$
-    即 $v_I$ 会等于以 $s$ 结尾的另一个既约表示，与 $v_I$ 的任何既约表示不能以 $s$ 结尾矛盾。
+1. $m=m_{s,t}<\infty$ 时，$W_I$ 是有限二面体群 $D_m$。$W_I$ 中所有长度 $\leq m-1$ 且以 $t$ 结尾的元素罗列如下（包含恒等元）：
+$$1,\ t,\ st,\ \ldots,\ \overbrace{\ast\cdots st}^{m-1}.$$
+它们作用在 $\alpha_s$ 上给出如下链条的前 $m$ 项：
+$$\alpha_s\xrightarrow{\ t\ }\sthe{}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ s\ }\sthe{3}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ t\ }\cdots$$
+其中 $\theta=\pi/m$。这 $m$ 项都是 $\alpha_s,\alpha_t$ 的非负线性组合。
 
 :::{.example}
 以 $m=5$ 为例，所有 $m$ 个正根都位于 $\alpha_s,\alpha_t$ 张成的楔形区域内：
@@ -133,18 +122,19 @@ $$\sthe{(k-1)}\alpha_s+\sthe{k}\alpha_t,\quad k=1,2,\ldots,m.$$
 当 $k$ 跑遍 $1,\ldots,m$ 时，第一个序列从 $\alpha_s$ 开始过渡到 $\alpha_t$，第二个序列从 $\alpha_t$ 开始过渡到 $\alpha_s$。它们最接近的位置是在 $k=\lfloor(m+1)/2\rfloor$ 处（$m$ 为奇数时重合）。这两个序列的前 $\lfloor(m+1)/2\rfloor$ 项合起来正好给出全部 $m$ 个正根。这 $m$ 个正根可以通过将 $1,t,st,\ldots,\overbrace{\ast\cdots st}^{m-1}$ 这 $m$ 个元素作用在 $\alpha_s$ 上得到。
 :::
 
-
-2. $m=m_{s,t}=\infty$ 时，仍然记 $\cosh\theta=a_{s,t},\,\theta\geq0$，则
+2. $m=m_{s,t}=\infty$ 时，记 $\cosh\theta=a_{s,t}\,(\theta\geq0)$，则
 $$\alpha_s\xrightarrow{\ t\ }\shthe{}\alpha_s+\shthe{2}\alpha_t\xrightarrow{\ s\ }\shthe{3}\alpha_s+\shthe{2}\alpha_t\xrightarrow{\ t\ }\cdots$$
 每一项都是 $\alpha_s,\alpha_t$ 的非负线性组合。
 
-当 $\theta=0$ 时，$W_{s,t}$ 是一维直线上两个平行镜面生成的（仿射）反射群（包含了平移），它可以处理成二维平面上的线性反射群：
+:::{.example}
+当 $\theta=0$ 时，$W_I$ 是一维直线上两个平行镜面生成的（仿射）反射群（包含了平移），它可以处理成二维平面上的线性反射群：
 
 ![](/images/coxeter/affine2d.svg){.fig width=500}
 
-当 $\theta>0$ 时，$W_{s,t}$ 是双曲空间中两个超平行的镜面生成的双曲反射群，它也可以处理成二维平面上的线性反射群：
+当 $\theta>0$ 时，$W_I$ 是双曲空间中两个超平行的镜面生成的双曲反射群，它也可以处理成二维平面上的线性反射群：
 
 ![](/images/coxeter/hyperbolic2d.svg){.fig width=400}
+:::
 
 必要性的证明：
 
@@ -153,7 +143,7 @@ $$\alpha_s\xrightarrow{\ t\ }\shthe{}\alpha_s+\shthe{2}\alpha_t\xrightarrow{\ s\
 从 @Pre:key-lemma 出发我们可以得到许多重要推论：
 
 :::{.corollary #faithful}
-如果 $w\in W$ 满足对任何 $v\in V$ 有 $wv=v$ 则 $w=1$。即表示 $\rho: W\to{\rm GL}(V)$ 是忠实的。
+如果 $w\in W$ 满足对任何 $v\in V$ 都有 $wv=v$，则 $w$ 必然是恒等元。换言之，表示 $\rho: W\to{\rm O}(V)$ 是忠实的。
 :::
 
 **证明**：若 $w\ne 1$，则存在 $s\in S$ 使得 $l(ws)<l(w)$，从而 $w\alpha_s\in\Phi^-$，这与 $w\alpha_s=\alpha_s$ 矛盾。$\blacksquare$
@@ -162,13 +152,13 @@ $$\alpha_s\xrightarrow{\ t\ }\shthe{}\alpha_s+\shthe{2}\alpha_t\xrightarrow{\ s\
 每个根不是正根就是负根，即 $\Phi=\Phi^+\cup\Phi^-$。
 :::
 
-**证明**：由 $\Phi$ 的定义任何 $\lambda\in\Phi$ 可以表示为 $\lambda=w\alpha_s$。若 $l(ws)>l(w)$ 则 $\lambda\in\Phi^+$，否则 $\lambda\in\Phi^-$。$\blacksquare$
+**证明**：任取 $\lambda \in \Phi$，则存在 $w \in W$ 与 $s \in S$ 使得 $\lambda = w\alpha_s$。若 $l(ws) > l(w)$，则 $\lambda \in \Phi^+$，否则 $\lambda \in \Phi^-$。$\blacksquare$
 
 :::{.corollary #simple-ref}
 任何单反射 $s$ 置换 $\Phi^+\setminus\{\alpha_s\}$ 中的正根，同时将 $\alpha_s$ 变为 $-\alpha_s$。
 :::
 
-**证明**：这是因为对任何正根 $\lambda\ne\alpha_s\in\Phi^+$，$\lambda$ 不可能与 $\alpha_s$ 共线，所以其作为单根的线性组合 $\lambda=\sum_{t\in S}c_t\alpha_t$ 中必有某个 $t\ne s$ 使得 $c_t>0$，于是 $s\lambda=\lambda-2(\lambda,\alpha_s)\alpha_s$ 的 $\alpha_t$ 分量保持不动仍然为正，从而根据 @Pre:pos-neg $s\lambda$ 必须仍然是正根。$\blacksquare$
+**证明**：对任一正根 $\lambda\ne\alpha_s\in\Phi^+$，$\lambda$ 不可能与 $\alpha_s$ 共线，所以其作为单根的线性组合 $\lambda=\sum_{t\in S}c_t\alpha_t$ 中必有某个 $t\ne s$ 使得 $c_t>0$，于是 $s\lambda=\lambda-2(\lambda,\alpha_s)\alpha_s$ 的 $\alpha_t$ 分量保持不动仍然为正，于是根据 @Pre:pos-neg $s\lambda$ 仍然是正根。$\blacksquare$
 
 :::{.corollary #lw-nw}
 对 $w\in W$，定义 $N(w)$ 为被 $w$ 变成负根的那些正根组成的集合：
@@ -176,7 +166,9 @@ $$N(w)=\{\lambda\in\Phi^+\mid w\lambda\in\Phi^-\}.$$
 则 $|N(w)|=l(w)$。
 :::
 
-**证明**：对 $l(w)$ 归纳。$l(w)=0$ 时 $w=1$，结论成立。下设 $l(w)>0$ 且结论对长度小于 $l(w)$ 的元素成立。取 $s\in S$ 使得 $w=w's$ 且 $l(w')<l(w)$。由 @Pre:key-lemma，$\alpha_s\in N(w)$ 但是 $\alpha_s\notin N(w')$。对任何正根 $\lambda\ne\alpha_s$，$s\lambda$ 仍然是正根。由恒等式
+**证明**：对 $l(w)$ 归纳。$l(w)=0$ 时 $w=1$，结论成立。若 $l(w)>0$，取 $s\in S$ 使得 $w=w's$ 且 $l(w')<l(w)$。由 @Pre:key-lemma，$\alpha_s\in N(w)$ 但是 $\alpha_s\notin N(w')$。
+
+对任何正根 $\lambda\ne\alpha_s$，$s\lambda$ 仍然是正根。由恒等式
 $$w'\lambda\in\Phi^- \Leftrightarrow w(s\lambda)\in\Phi^-$$
 可得 $\lambda\leftrightarrow s\lambda$ 给出了 $N(w')$ 和 $N(w)\setminus\{\alpha_s\}$ 之间的一一对应，即
 $$N(w)=s\cdot N(w')\cup\{\alpha_s\}.$$
@@ -212,14 +204,14 @@ $|W|<\infty$ 当且仅当 $|\Phi|<\infty$。
 设 $I\subsetneqq S$ 是真子集，$\lambda\in \Phi^+\setminus\Phi^+_I$ 是正根，则对任何 $w\in W_I$，$w\lambda$ 仍然是正根。
 :::
 
-**证明**：由于 $w$ 是 $I$ 中生成元的乘积，所以 $w\lambda$ 是 $\lambda$ 和 $\{\alpha_t\mid t\in I\}$ 中向量的线性组合：
+**证明**：$w\lambda$ 是 $\lambda$ 和 $\{\alpha_t\mid t\in I\}$ 中向量的线性组合：
 $$w\lambda=\lambda + \sum_{t\in I}c_t\alpha_t.$$
 $\lambda\in\Phi^+\setminus\Phi^+_I$ 说明将 $\lambda$ 表示为单根的线性组合时，其至少有一项 $\alpha_s\,(s\notin I)$ 的系数大于 0，从而 $w\lambda$ 的 $\alpha_s$ 项的系数也大于 0，所以 $w\lambda$ 必然是正根。$\blacksquare$
 
 ::: {.corollary #lI-equals-l}
-设 $w\in W_I$，则对 $w$ 的任何既约表示 $w=s_1\cdots s_k$ 都有 $s_1,\ldots,s_k\in I$，特别地 $l_I(w)=l(w)$。
+设 $w\in W_I$，则其任何既约表示 $w=s_1\cdots s_k$ 中，每个 $s_i\in I$，特别地 $l_I(w)=l(w)$。
 :::
 
-**证明**：我们从右到左依次验证 $s_k,\ldots,s_1\in I$。记 $s=s_k$，由于 $l(ws)<l(w)$ 所以 $w\alpha_s\in\Phi^-$。又由于 $w\in W_I$ 所以 $w\alpha_s$ 是 $\alpha_s$ 和一些 $\{\alpha_t\mid t\in I\}$ 的线性组合：
+**证明**：从右到左依次验证 $s_k,\ldots,s_1\in I$。记 $s=s_k$。由于 $w\in W_I$ 所以 $w\alpha_s$ 是 $\alpha_s$ 和一些 $\{\alpha_t\mid t\in I\}$ 的线性组合：
 $$w\alpha_s=\alpha_s+\sum_{t\in I} c_t\alpha_t.$$
-由于 $w\alpha_s<0$ 所以必然有某个 $t\in I$ 使得 $s=t$，即 $s\in I$。对 $ws=s_1\cdots s_{k-1}\in W_I$ 重复此论证即得每个 $s_i\in I$。$\blacksquare$
+由于 $w\alpha_s\in\Phi^-$ 所以必然有某个 $t\in I$ 使得 $s=t$，即 $s\in I$。对 $ws=s_1\cdots s_{k-1}\in W_I$ 重复此论证即得每个 $s_i\in I$。$\blacksquare$
