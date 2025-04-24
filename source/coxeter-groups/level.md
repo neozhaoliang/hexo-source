@@ -27,9 +27,7 @@ url: "coxeter-groups-level"
 \newcommand{\cone}[1]{\mathrm{cone}(#1)}
 \newcommand{\bfA}{\mathbf{A}}
 
-本文主要改写自 [@Maxwell82] 和[@Maxwell89]。
-
-我们来介绍 Coxeter 群的 level 的概念，并证明 level 等于 1 或 2 的群都是双曲的。
+本文主要改写自 [@Maxwell82] 和[@Maxwell89]，介绍 Coxeter 群的 level 的概念，并证明 level 等于 1 或 2 的群都是双曲的。
 
 在本文中，我们总假定 $\inn$ 是非退化的，从而我们可以将 $V$ 和 $V^\ast$ 等同起来。在这种情况下，根系、[基本权](/coxeter-groups/tits-cone/#fundamental-weights) $\Delta^\ast$、Tits 锥 $\tc$ 都在 $V$ 中。$\Delta^\ast$ 满足 $(\alpha_s,\omega_t)=\delta_{st}\,(\forall s,t\in S)$。
 
@@ -37,27 +35,27 @@ url: "coxeter-groups-level"
 
 固定 $s\in S$，设
 $$\omega_s = \sum_{t\in S}c_t\alpha_t,\quad c_t\in\R.$$
-两边与 $\omega_t$ 作内积，可得 $c_t=(\omega_s,\omega_t)$，于是
+两边同时与 $\omega_t$ 作内积，可得 $c_t=(\omega_s,\omega_t)$，于是
 $$\omega_s = \sum_{t\in S}(\omega_s,\omega_t)\alpha_t=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.\tag{I}\label{eq:idI}$$
-这是我们的第一个恒等式。
+这是第一个恒等式。
 
 进一步，在 $(\ref{eq:idI})$ 两边与 $\alpha_s$ 作内积，可得
 $$1=\sum_{t\in S}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t)=(\omega_s,\omega_s)+\sum_{t\ne s}(\omega_s,\omega_t)\cdot(\alpha_s,\alpha_t).\tag{II}\label{eq:idII}$$
-这是我们的第二个恒等式。
+这是第二个恒等式。
 
 # level 的定义
 
 :::{.definition}
 @Maxwell82
 
-$(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删去任何 $l$ 个顶点后，剩下的部分每个连通分支都是仿射或者有限的。
+$(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删去任何 $l$ 个顶点后，剩下的每个连通分支都是有限或者仿射的。
 :::
 
 <!--more-->
 
-根据定义有限和仿射 Coxeter 群的 level 都是 0（因为不需要删去任何顶点）。
+根据定义，有限和仿射 Coxeter 群的 level 都是 0（因为不需要删去任何顶点）。
 
-我们来看几个 level 大于 0 的例子：
+下面是几个 level 大于 0 的例子：
 
 ::: example
 
@@ -66,9 +64,9 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 | level=1 | level=2 | level=3 |
 |![](/images/coxeter/level1.svg){.fig width=120}|![](/images/coxeter/level2.svg){.fig width=120}|![](/images/coxeter/level3.svg){.fig width=120}|
 
-+ 左图的三条边标号分别是 $(3,3,7)$，它是双曲的；但是删去任何一个顶点后剩下的两个顶点给出一个有限二面体群，所以其 level 等于 1。
-+ 中间图的三条边标号（采用了 Vinberg 记号）分别是 $(3, 4, -1.1)$，它删去红色顶点以后剩下的两个顶点仍然构成一个双曲群，所以 level 大于 1；删去任何两个顶点的话只剩一个顶点当然是有限的，所以这个群的 level 就是 2。
-+ 右图删去两个红色顶点以后剩下的两个顶点仍然构成一个 Vinberg 记号下的双曲群，所以 level 大于 2；删去任何三个顶点以后只剩一个顶点当然是有限的，所以这个群的 level 等于 3。
++ 左图：三条边标号是 $(3,3,7)$，是双曲的；删去任何一个顶点后，剩下的是一个有限二面体群，因此 level = 1。
++ 中图：三条边标号（采用了 Vinberg 记号）是 $(3, 4, -1.1)$，删去红色顶点后，剩下的两个顶点构成一个双曲群，说明 level > 1；删去任何两个顶点的话只剩一个顶点，当然是有限的，因此 level = 2。
++ 右图：删去两个红色顶点以后，剩下的两个顶点构成一个 Vinberg 记号下的双曲群，说明 level > 2；删去任何三个顶点以后只剩一个顶点，当然是有限的，所以 level = 3。
 :::
 
 :::{.theorem #level-l}
@@ -79,13 +77,13 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 假设结论对所有小于 $l$ 的正整数成立，考虑 $l$ 的情形。用反证法。
 
-假设从 $\Gamma$ 中删去 $\{i_1,\ldots,i_{l+1}\}$ 这 $l+1$ 个顶点后，剩下的部分中某个连通分支是仿射的。不妨设 $\Gamma\setminus\{i_1,\ldots,i_{l+1}\}=\Gamma'\cup\Gamma''$，其中 $\Gamma'$ 是一个仿射的连通分支，$\Gamma''$（可能为空集）和 $\Gamma'$ 之间没有边相连。
+假设从 $\Gamma$ 中删去 $\{i_1,\ldots,i_{l+1}\}$ 这 $l+1$ 个顶点后，剩下的部分中，连通分支 $\Gamma'$ 是仿射的。不妨设 $\Gamma\setminus\{i_1,\ldots,i_{l+1}\}=\Gamma'\cup\Gamma''$，其中 $\Gamma''$（可能为空集）和 $\Gamma'$ 之间没有边相连。
 
 ![](/images/coxeter/lemma.svg){.fig width=400}
 
 由于 $\Gamma$ 是连通的，所以 $\Gamma'$ 必然和 $\{i_1,\ldots,i_{l+1}\}$ 中某个顶点有边连接，不妨设为 $i_{l+1}$。
 
-由于 $\Gamma$ 的 level 是 $l$，所以 $\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}$ 是一个仿射的连通子图，这个仿射子图删除 $i_{l+1}$ 后得到的 $\Gamma'$ 仍然是仿射的，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
+$\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}$ 是一个仿射的连通子图，这个子图删除 $i_{l+1}$ 后得到的 $\Gamma'$ 仍然是仿射的，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
 
 
 # Level 1 是双曲的
