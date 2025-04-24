@@ -30,7 +30,7 @@ url: "coxeter-groups-tits-cone"
 
 <!--more-->
 
-设 $V^\ast$ 是 $V$ 的对偶空间，$V$ 和 $V^\ast$ 之间有一个自然的双线性映射
+设 $V^\ast$ 是 $V$ 的对偶空间，$V$ 和 $V^\ast$ 之间存在自然的双线性映射
 $$V\times V^\ast\to\R: \lfun{v}{f}= f(v).$$
 注意 $\lfun{\,}{}$ 和内积 $\inn$ 的区别：$\lfun{\,}{}$ 是 $V\times V^\ast$ 的自然配对，用尖括号表示；$\inn$ 是 $V$ 上的内积。
 
@@ -48,38 +48,38 @@ $$\lfun{sv}{f} = \lfun{v}{sf}.$$
 
 由于 $V$ 和 $V^\ast$ 互为对偶空间，所以 $\Delta=\{\alpha_s\}$ 是 $V^\ast$ 上的一组线性无关的泛函，定义它们的正半空间的交为
 $$\fd = \bigcap_{s\in S}\{x\in V^\ast\mid \lfun{\alpha_s}{x} > 0\}.$$
-$\fd$ 总是 $V^\ast$ 中的非空开集，其闭包记作 $\barfd$。你可以把 $\fd$ 理解为万花筒中原像所在的房间，超平面的集合 $\{\alpha_s=0\}$ 是房间的墙壁。$\barfd$ 就是 $\fd$ 加上了房间四周的墙壁。
+$\fd$ 总是 $V^\ast$ 中的非空开集，其闭包记作 $\barfd$。你可以把 $\fd$ 理解为万花筒中被镜子围起来的原像房间，超平面的集合 $\{\alpha_s=0\}$ 是房间的墙壁。$\barfd$ 就是 $\fd$ 加上了房间四周的墙壁。
 
-$W$ 同样作用在 $V^\ast$ 上：
+$W$ 也作用在 $V^\ast$ 上：
 $$\lfun{v}{w f} = \lfun{w^{-1}v}{f}.\quad v\in V,\,f\in V^\ast.$$
-在 [上文](/coxeter-groups/root-system/#faithful) 中我们已经证明了 $W$ 忠实地作用在 $V$ 上。不难验证在此定义下，$W$ 也忠实地作用在 $V^\ast$ 上，即如果 $wf=f$ 对任何 $f\in V^\ast$ 成立，则 $w=1$。
+在 [上文](/coxeter-groups/root-system/#faithful) 中我们已经证明了 $W$ 忠实地作用在 $V$ 上。不难验证在此定义下，$W$ 也忠实地作用在 $V^\ast$ 上，即若 $wf=f$ 对任何 $f\in V^\ast$ 成立，则 $w=1$。
 
-::: definition
-定义 **Tits 锥**为
+:::{.definition}
+Tits 锥定义为
 $$\tc = \bigcup_{w\in W} w\barfd.$$
 :::
 
-Tits 锥 $\tc$ 可以理解为万花筒，它是由原像房间 $\barfd$ 在 $W$ 下的所有虚像构成的。容易看到 $\tc$ 是 $W$- 不变的。
+显然 $\tc$ 是 $W$- 不变的。$\tc$ 可以理解为万花筒，它由原像房间 $\barfd$ 在 $W$ 下的所有虚像构成。
 
 读者可能有疑问为什么 Tits 锥位于对偶空间 $V^\ast$ 中。看起来更自然的做法是，直接取以 $\Delta$ 为法向量的正半空间之交作为基本区域：
 $$\fd=\bigcap_{s\in S}\{v\in V\mid(\alpha_s, v)>0\}$$
-在内积 $\inn$ 非退化时，这样做是可以的，但是在 $\inn$ 退化时，可能会出现 $\fd$ 是空集的问题。以仿射 $\widetilde{A_1}$ 为例，它的 Coxeter 矩阵是
+在内积 $\inn$ 非退化时，这样做是可以的；但是在 $\inn$ 退化时，这样定义可能导致 $\fd$ 是空集。以仿射 $\widetilde{A_1}$ 为例，它的 Coxeter 矩阵是
 $$\begin{pmatrix}1 & \infty\\\infty&1\end{pmatrix}.$$
-在 $a_{s,t}=1$ 时它给出的内积的 Gram 矩阵是
-$$\begin{pmatrix}(\alpha_s,\alpha_s) & (\alpha_s,\alpha_t)\\(\alpha_t,\alpha_t)& (\alpha_t,\alpha_t)\end{pmatrix} =\begin{pmatrix}1&-1\\-1&1\end{pmatrix}.$$
-假设 $v=a\alpha_s+b\alpha_t\in\fd$ 满足 $(v,\alpha_s)>0$ 且 $(v,\alpha_t)>0$，你会发现这要求 $a>b$ 且 $b>a$，不存在这样的 $v$！但是通过区分 $W$ 在 $V$ 和 $V^\ast$ 上的作用就可以避免这个问题。因为 $\Delta$ 作为 $V$ 的一组基构成 $V^\ast$ 上一组线性无关的泛函，它们在 $V^\ast$ 中正半空间的交是非空的拓扑开集。
+在 $a_{s,t}=1$ 时对应的 Gram 矩阵是
+$$\begin{pmatrix}1&-1\\-1&1\end{pmatrix}.$$
+设 $v=a\alpha_s+b\alpha_t$ 满足 $(v,\alpha_s)>0$ 且 $(v,\alpha_t)>0$，你会发现这要求 $a>b$ 且 $b>a$，即 $\fd$ 是空集！但是通过区分 $W$ 在 $V$ 和 $V^\ast$ 上的作用就可以避免这个问题。因为 $\Delta$ 作为 $V$ 的一组基构成 $V^\ast$ 上一组线性无关的泛函，它们在 $V^\ast$ 中正半空间的交是非空的拓扑开集。
 
-读者可能注意到了：我们使用了 Tits 锥这个称呼，但 $\tc$ 真的是一个锥吗？这可不显然。要证明 Tits 锥确实是锥，我们需要它的另一种等价刻画。
+读者可能注意到了：我们使用了 Tits 锥这个称呼，但 $\tc$ 真的是一个锥吗？这可不显然。要证明 $\tc$ 确实是锥，我们需要它的另一种等价刻画。
 
-我们先回顾一下锥的概念：
+我们回顾锥的定义：
 
 ::: definition
 设 $C$ 是某实向量空间的子集。如果对任何实数 $\alpha\geq0$ 都有 $\alpha C\subset C$，就称 $C$ 是一个**锥**。如果 $C$ 还是凸集，就称 $C$ 是**凸锥**。凸锥满足对任何 $x,y\in C$ 和非负实数 $\alpha,\beta\geq0$，$\alpha x + \beta y$ 仍然属于 $C$。
 :::
 
-设 $X$ 是某实向量空间的子集，我们用记号 $\cone{X}$ 表示 $X$ 中元素的所有有限非负线性组合：
-$$\cone{X} = \left\{\sum_{i=1}^n c_ix_i,\, x_1,\ldots,x_n\in X,\, c_i\geq0.\right\}.$$
-显然 $\cone{X}$ 总是凸锥，并且它还是包含 $X$ 的最小凸锥。
+设 $X$ 是某实向量空间的子集，定义其生成的凸锥为：
+$$\cone{X} = \left\{\sum_{i=1}^n c_ix_i\mid x_1,\ldots,x_n\in X,\, c_i\geq0.\right\}.$$
+显然 $\cone{X}$ 是包含 $X$ 的最小凸锥。
 
 :::{.note}
 当 $X$ 是有限集时，$\cone{X}$ 总是闭集；但是当 $X$ 是无限集时则未必。例如当 $X$ 是 $\R^2$ 中直线 $y=1$ 上的全体整点时，$\cone{X}=\{y>0\}\cup\{0\}$ 不是闭集。
@@ -95,25 +95,25 @@ $\Omega$ 中的元素叫做**权**。
 $\barfd=\cone{\Delta^\ast}$。
 :::
 
-**证明**：对 $x\in V^\ast$，设 $x=\sum_{s\in S}c_s\omega_s$，注意到 $c_s=\lfun{\alpha_s}{x}$，所以
-$$x\in\cone{\Delta^\ast}\Leftrightarrow c_s\geq0 \text{ for all } s \in S \Leftrightarrow \lfun{\alpha_s}{x}\geq 0 \text{ for all } s\in S \Leftrightarrow x\in\barfd.
+**证明**：任何 $x\in V^\ast$ 可以表示为 $x=\sum_{s\in S}c_s\omega_s$，其中 $c_s=\lfun{\alpha_s}{x}$，于是
+$$x\in\cone{\Delta^\ast}\Leftrightarrow c_s\geq0,\ \forall s \in S \Leftrightarrow \lfun{\alpha_s}{x}\geq 0,\ \forall s\in S \Leftrightarrow x\in\barfd.
 $$
 $\blacksquare$
 
 :::{.definition}
-对任一 $x\in V^\ast$，定义
+对任意 $x\in V^\ast$，定义
 $$\negf{x}= \{\lambda\in \Phi^+\mid \lfun{\lambda}{x}<0\}.$$
 $\negf{x}$ 是正根 $\Phi^+$ 的子集，表示 $x$ 位于哪些镜子的「背面」。即这些镜子挡在 $x$ 和基本区域 $\fd$ 之间。
 :::
 
-显然 $\barfd=\{x\in V^\ast\mid\negf{x}=\emptyset\}$。房间 $\barfd$ 和它在镜子中的所有虚像构成了 Tits 锥 $\tc$。$\tc$ 中每个点都是 $\barfd$ 中某个点经过有限次反射后得到的。这启发我们给出 $\tc$ 的另一种刻画：
+显然 $\barfd=\{x\in V^\ast\mid\negf{x}=\emptyset\}$。
 
 :::{.theorem #tits-neg-finite}
 Tits 锥 $\tc = \{x\in V^\ast \mid |\negf{x}| < \infty\}$。
 :::
 
 ::: note
-这个定理的几何意义是，Tits 锥恰好由那些和基本区域 $\barfd$ 之间只隔着有限多个镜子的点组成，这样的点一定可以通过有限次单反射变换到 $\barfd$ 中。换言之，Tits 锥中的点使得下面的 `while` 循环可以在有限次后结束：
+这个定理的几何意义是，Tits 锥恰好由那些和基本区域 $\barfd$ 之间只隔着有限多个镜子的点组成，这样的点一定可以通过有限次单反射变换到 $\barfd$ 中，即下面的 `while` 循环可以在有限次后结束：
 
 ```python
 while dot(x, alpha_s) < 0 for some s in S:
@@ -134,22 +134,25 @@ $$|\negf{x}|\leq |N(w^{-1})|=l(w)<\infty.$$
 
 $\Leftarrow$：反之若 $|\negf{x}|<\infty$，我们来论证存在 $w\in W$ 使得 $wx\in\barfd$。这里的想法是，每次选择一个单根 $\alpha_s$ 对应的镜面，使得 $x$ 落在这个镜子的背面，然后将 $x$ 关于 $\alpha_s$ 反射过去变到 $\alpha_s$ 的正面，这个操作会将遮挡在 $x$ 和 $\barfd$ 之间的镜子个数严格减少 1。如此这般直到 $x$ 落入 $\barfd$ 为止。
 
-严格的论证如下：
+具体论证如下：
 
-若 $\negf{x}=\emptyset$ 这显然成立，因为这时 $x$ 本身就落在 $\barfd$ 中。当 $\negf{x}\ne\emptyset$ 时，$\negf{x}$ 中一定包含一个单根 $\alpha_s\in\Delta$，于是 $\lfun{\alpha_s}{x}< 0$。考虑 $x$ 关于 $\alpha_s$ 的镜像点 $sx$，$sx$ 位于 $\alpha_s$ 的正面，所以 $\alpha_s\notin\negf{sx}$，从而对任何 $\lambda\in\negf{sx}$，[$s\lambda$ 仍然是正根](/coxeter-groups/root-system/#simple-ref)。于是
-$$\lambda\in\negf{sx}\Rightarrow\lfun{\lambda}{sx}<0\Rightarrow\lfun{s\lambda}{x}<0\Rightarrow s\lambda\in\negf{x}.$$
-当然 $s\lambda\ne\alpha_s$，否则 $\lambda=-\alpha_s$ 与 $\lambda$ 是正根矛盾，所以上式说明$$s\cdot\negf{sx}\subseteq\negf{x}\setminus\{\alpha_s\}.$$
+若 $\negf{x}=\emptyset$，则 $x\in\barfd$，结论显然成立。
+
+若 $\negf{x}\ne\emptyset$，$\negf{x}$ 中一定包含某个单根 $\alpha_s$。考虑 $x$ 关于 $\alpha_s$ 的镜像 $sx$，$sx$ 位于 $\alpha_s$ 的正面，所以 $\alpha_s\notin\negf{sx}$。于是对任何正根 $\lambda\in\negf{sx}$，[$s\lambda$ 仍然是正根且 $s\lambda\ne\alpha_s$](/coxeter-groups/root-system/#simple-ref)。对这样的 $\lambda$，我们有
+$$0>\lfun{\lambda}{sx}=\lfun{s\lambda}{x}\Rightarrow s\lambda\in\negf{x}.$$
+这说明
+$$s\cdot\negf{sx}\subseteq\negf{x}\setminus\{\alpha_s\}.$$
 从而 $\negf{sx}$ 的元素个数严格小于 $\negf{x}$。
 
-重复此过程我们可以取一组 $s_1,\ldots,s_k$ 使得 $y=s_1\cdots s_k\cdot x$ 满足 $\negf{y}=\emptyset$，从而 $y\in\barfd$，这就证明了结论。$\blacksquare$
+记 $y=sx$，对 $y$ 重复此过程，我们可以逐步将 $\negf{y}$ 减少为空集，即最终 $y$ 落在 $\barfd$ 中。于是存在 $s_1,\ldots,s_k$ 使得 $y=(s_1\cdots s_k)\cdot x\in\barfd$。取 $w=s_1\cdots s_k$，则 $x= w^{-1}y\in\tc$。这就证明了结论。$\blacksquare$
 
 :::{.corollary #tits-convex}
 Tits 锥 $\tc$ 是凸锥。
 :::
 
-**证明**：设 $x, y\in\tc$ 和 $\alpha,\beta\geq0$，我们需要证明 $z=\alpha x+\beta y$ 也属于 $\tc$。但是
+**证明**：设 $x, y\in\tc$ 和 $\alpha,\beta\geq0$，我们要证明 $z=\alpha x+\beta y\in\tc$。由于
 $$\negf{z}\subseteq\negf{x}\cup\negf{y},$$
-根据 @Pre:tits-neg-finite $\negf{x},\,\negf{y}$ 都有限，所以 $\negf{z}$ 也有限，从而 $z\in\tc$，即 $\tc$ 是凸锥。$\blacksquare$
+根据 @Pre:tits-neg-finite，$\negf{x},\,\negf{y}$ 都是有限集，所以 $\negf{z}$ 也有限，从而 $z\in\tc$，即 $\tc$ 是凸锥。$\blacksquare$
 
 ::: {.corollary}
 $\tc=\cone{\Omega}$。
@@ -157,7 +160,7 @@ $\tc=\cone{\Omega}$。
 
 **证明**：由于 $\Omega\supset\Delta^\ast$，以及根据 @Pre:fund-cone 有 $\cone{\Delta^\ast}=\barfd$，所以
 $$\cone{\Omega}\supset\cone{\Delta^\ast}=\barfd.$$
-再结合 $\cone{\Omega}$ 是 $W$- 不变的，所以它包含 $\bigcup_{w\in W}w\barfd=\tc$。
+又因为 $\cone{\Omega}$ 是 $W$- 不变的，所以它包含 $\bigcup_{w\in W}w\barfd=\tc$。
 
 另一方面 $\tc\supset\barfd\supset\Delta^\ast$，并且 $\tc$ 也是 $W$- 不变的，所以
 $$\tc\supset\bigcup_{w\in W}w\Delta^\ast=\Omega.$$
@@ -173,45 +176,45 @@ $$\tc^\circ = \{x\in V^\ast \mid |\stab{x}| < \infty\}.$$
 :::
 
 ::: note
-这个定理的含义是，对原像房间 $\barfd$ 中的一点 $x$，其稳定化子群 $\stab{x}$ 是一个标准椭圆子群，由那些包含 $x$ 的镜子 $\{\alpha_s\in\Delta \mid \lfun{\alpha_s}{x}=0\}$ 对应的反射生成。
+这个定理的含义是，在原像房间 $\barfd$ 中，每个点的稳定化子群是一个标准椭圆子群，由包含该点的那些镜子生成。
 :::
 
 **证明**：
 
-对任何 $s\in J$ 和 $v\in V$ 我们有
-$$\lfun{v}{sx} = \lfun{sv}{x}=\lfun{v-2(v,\alpha_s)\alpha_s}{x}=\lfun{v}{x}-2(v,\alpha_s)\lfun{\alpha_s}{x}=\lfun{v}{x}.$$
+任取 $s\in J$ 和 $v\in V$，我们有
+$$\lfun{v}{sx} = \lfun{sv}{x}=\lfun{v-2(v,\alpha_s)\alpha_s}{x}=\lfun{v}{x}.$$
 由 $v$ 的任意性可得 $sx=x$，从而 $W_J\subseteq\stab{x}$。
 
-为了证明反向的包含关系，设 $w=s_1\cdots s_k\in\stab{x}$ 是一个既约表示，我们从最末一个元素 $s_k$ 开始，向左逐个验证它们属于 $J$。
+再证明反向包含关系。设 $w=s_1\cdots s_k\in\stab{x}$ 是一个既约表示，我们从最末一个元素 $s_k$ 开始，向左逐个验证它们属于 $J$。
 
-记 $w'=s_1\cdots s_{k-1}$，则 $l(ws_k)=l(w')<l(w)$，于是 $w\alpha_k\in\Phi^-$。我们有
-$$0\geq \lfun{w\alpha_k}{x} = \lfun{\alpha_k}{wx} = \lfun{\alpha_k}{x}\geq0.$$
-其中第一个不等号是因为 $w\alpha_k$ 是负根和 $x\in\barfd$。于是上面的不等式中等号都成立，从而 $\lfun{\alpha_k}{x}=0$，即 $s_k\in J$ 且 $s_kx=x$。进一步 $w'$ 也满足 $w'x=x$。对 $w'$ 重复此论证，便得到 $s_1,\ldots,s_k$ 都属于 $J$，从而定理得证。$\blacksquare$
-
+记 $w'=s_1\cdots s_{k-1}$，则 $l(ws_k)=l(w')<l(w)$，于是 $w\alpha_k\in\Phi^-$。由于 $x\in\barfd$，我们有
+$$0\geq \lfun{w\alpha_k}{x} = \lfun{\alpha_k}{w^{-1}x} = \lfun{\alpha_k}{x}\geq0.$$
+于是上面的不等式中等号都成立，从而 $\lfun{\alpha_k}{x}=0$，即 $s_k\in J$ 且 $s_kx=x$。进一步 $w'$ 也满足 $w'x=x$。对 $w'$ 重复此论证，便得到 $s_1,\ldots,s_k$ 都属于 $J$。$\blacksquare$
 
 ::: {.proposition #fd-finite-stabilizer}
-设 $x\in\barfd$，$J$ 的定义如 @Pre:stabilizer-parabolic-subgroup，则 $x\in\tc^\circ$ 当且仅当 $W_J$ 是有限群。
+设 $x\in\barfd$，则 $x\in\tc^\circ$ 当且仅当 $\stab{x}$ 是有限群。
 :::
 
 **证明**：
 
 $\Rightarrow$：思路：如果 $x$ 是 $\tc$ 的内点，并且经过 $x$ 的镜面有无穷多个，那么可以在 $x$ 的附近取一点 $z$，$z$ 仍然是 $\tc$ 的内点，使得这无穷多个镜子都挡在基本区域和 $z$ 之间，从而 $\negf{z}$ 是无限集，从而 $z\notin\tc$，导致矛盾。
 
-严格的论证如下：
+具体论证如下：
+
+记 $J$ 和 $W_J$ 如 @Pre:stabilizer-parabolic-subgroup，则 $\stab{x}=W_J$。
 
 ![一个示意图，$z$ 落在所有 $\Phi_J$ 中镜子的背面](/images/coxeter/WJ.svg){width=300}
 
 任取 $y\in\fd$。由于 $x\in\tc^\circ$，所以在线段 $\overline{[y, x]}$ 上我们可以朝着 $x$ 的方向延伸一点点，得到点 $z$，使得 $z$ 仍然位于 $\tc^\circ$ 中。$z$ 可以表示为
 $$z=(1-t)x+ty,\quad t<0.$$
-于是对所有 $s\in J$ 都有 $\lfun{\alpha_s}{z}=t\lfun{\alpha_s}{y} < 0$，从而 $\Phi_J^+\subset\negf{z}$。如果 $W_J$ 是无限群那么 $\Phi_J^+$ 也是无限的，从而 $\negf{z}$ 是无限集，从而 $z\notin\tc^\circ$，矛盾！
+
+于是对所有 $s\in J$ 都有 $\lfun{\alpha_s}{z}=t\lfun{\alpha_s}{y} < 0$，从而 $\Phi_J^+\subset\negf{z}$。如果 $W_J$ 是无限群，那么 $\Phi_J^+$ 也无限，从而 $\negf{z}$ 无限，这与 $z\in\tc$ 矛盾！
 
 $\Leftarrow$：反之若 $W_J$ 是有限群，仍然任取 $y\in\fd$。
 
 ![$y$ 在 $W_J$ 下的像全部位于镜面 $\alpha_s=0$ 的正侧，故 $\lfun{\alpha_s}{wy}$ 对 $w\in W_J$ 总为正](/images/coxeter/WJ2.svg){width=300}
 
-对任何镜面 $s\in S\setminus J$，由于 $x$ 不属于此镜面，所以 $\lfun{\alpha_s}{x}>0$。
-
-另一方面对任何 $w\in W_J$，[$w^{-1}\alpha_s$ 仍然是正根](/coxeter-groups/root-system#remain-positive-root)，所以
+设 $s\in S\setminus J$，则 $\lfun{\alpha_s}{x}>0$。对任何 $w\in W_J$，[$w^{-1}\alpha_s$ 仍然是正根](/coxeter-groups/root-system#remain-positive-root)，所以
 $$\lfun{\alpha_s}{wy}=\lfun{w^{-1}\alpha_s}{y}>0.$$
 于是
 $$\delta = \min\left\{\frac{\lfun{\alpha_s}{x}}{\lfun{\alpha_s}{wy}}\,\middle|\, \alpha_s\in S\setminus J,\, w\in W_J\right\}>0.$$
@@ -219,13 +222,13 @@ $$\delta = \min\left\{\frac{\lfun{\alpha_s}{x}}{\lfun{\alpha_s}{wy}}\,\middle|\,
 $$\delta\cdot\lfun{\alpha_s}{\sum_{w\in W_J}wy}\leq \lfun{\alpha_s}{x}\cdot |W_J| < 2\lfun{\alpha_s}{x}\cdot |W_J|,\quad s\in S\setminus J.\tag{1}\label{eq:strict}$$
 注意这个不等式两边关于 $\alpha_s$ 都是线性的。
 
-既然对 $s\in S\setminus J$ 上面的不等式是严格的，那么对 $s\in J$ 又如何呢？这时右边 $\lfun{\alpha_s}{x}=0$。又因为 $\sum_{w\in W_J}wy$ 在 $W_J$ 下保持不变，所以根据 @Pre:stabilizer-parabolic-subgroup 可得 $\lfun{\alpha_{s}}{\sum_{w\in W_J}wy}=0$，从而上面的不等式变成了等式（两边都是 0）：
+既然对 $s\in S\setminus J$ 上面的不等式是严格的，那么对 $s\in J$ 又如何呢？这时右边 $\lfun{\alpha_s}{x}=0$。又因为 $\sum_{w\in W_J}wy$ 在 $W_J$ 下保持不动，所以根据 @Pre:stabilizer-parabolic-subgroup 可得 $\lfun{\alpha_{s}}{\sum_{w\in W_J}wy}=0$，从而上面的不等式变成了等式（两边都是 0）：
 $$0=\delta\cdot\lfun{\alpha_s}{\sum_{w\in W_J}wy}= 2\lfun{\alpha_s}{x}\cdot |W_J|,\quad s\in J.\tag{2}\label{eq:equal}$$
 对任何 $\lambda\in\Phi^+\setminus\Phi_J^+$，设
-$$\lambda=\sum_{s\in S\setminus J}c_s\alpha_s + \sum_{t\in J}d_t\alpha_t,\quad c_s,d_t\geq0.$$
+$$\lambda=\sum_{s\in S\setminus J}c_s\alpha_s + \sum_{t\in J}d_t\alpha_t,\quad c_s,\,d_t\geq0.$$
 其中至少有一项 $c_s$ 严格大于 0。将 $\lambda$ 代入 $(\ref{eq:strict})$ 中 $\alpha_s$ 的位置，严格不等式仍然成立。即
 $$\delta\cdot\lfun{\lambda}{\sum_{w\in W_J}wy}< 2\lfun{\lambda}{x}\cdot |W_J|.$$
-注意对 $w\in W_J$，$w^{-1}\lambda$ 作为 $\lambda$ 和 $\{\alpha_s\mid s\in J\}$ 的线性组合仍然是正根，并且不在 $\Phi_J^+$ 中，所以上面的求和中每一项 $\lfun{\lambda}{wy}=\lfun{w^{-1}\lambda}{y}>0$，我们可以只取 $w=1$ 的一项，其余全扔掉，得到
+注意对 $w\in W_J$，$w^{-1}\lambda$ 作为 $\lambda$ 和 $\{\alpha_s\mid s\in J\}$ 的线性组合仍然是正根，并且不在 $\Phi_J^+$ 中，所以上面的求和中每一项 $\lfun{\lambda}{wy}=\lfun{w^{-1}\lambda}{y}>0$，我们可以只取 $w=1$ 对应的项，其余全扔掉，得到
 $$\delta\cdot\lfun{\lambda}{y}< 2\lfun{\lambda}{x}\cdot |W_J|.$$
 记 $z = 2|W_J|x - \delta y$，我们得到 $\lfun{\lambda}{z}>0$ 对任何 $\lambda\in\Phi^+\setminus\Phi_J^+$ 成立。
 
@@ -237,7 +240,7 @@ $$\lfun{\alpha_s}{v}=\lfun{w\alpha_s}{wv}=\lfun{w\alpha_s}{z}\ne0$$
 
 ![我们证明 $z$ 只落在 $\Phi_J$ 中镜面的背面，从而 $z\in\tc$；并证明 $z$ 不属于任何镜面，从而 $z\in\tc^\circ$](/images/coxeter/WJ3.svg){width=300}
 
-现在 $x$ 是 $z$ 和 $y$ 的线性组合 $x = \frac{1}{2|W_J|}(z + \delta y)$。我们来说明 $x$ 也属于 $\tc^\circ$。由于 $z,y\in\tc^\circ$，所以 $\frac{1}{2|W_J|}z, \frac{\delta}{2|W_J|}y\in\tc^\circ$，即存在开集 $A,B$ 满足 $\frac{1}{2|W_J|}z\in A\subset\tc^\circ$，$\frac{\delta}{2|W_J|}y\in B\subset \tc^\circ$，于是 $x\in A+B=\cup_{p\in B}(A+p)$，这是一组开集的并，所以 $x\in\tc^\circ$。$\blacksquare$
+现在 $x$ 是 $z$ 和 $y$ 的线性组合 $x = \frac{1}{2|W_J|}(z + \delta y)$。由于 $z,y\in\tc^\circ$ 而 $\tc$ 是凸锥，所以 $\frac{1}{2|W_J|}z, \frac{\delta}{2|W_J|}y\in\tc^\circ$，即存在开集 $A,B$ 满足 $\frac{1}{2|W_J|}z\in A\subset\tc^\circ$，$\frac{\delta}{2|W_J|}y\in B\subset \tc^\circ$。于是 $x\in A+B=\cup_{p\in B}(A+p)$，这是一组开集的并，每个 $A+p$ 都在 $\tc$ 中，所以 $x\in\tc^\circ$。$\blacksquare$
 
 :::{.theorem #tits-int-finite-stabilizer}
 设 $y\in\tc$，则 $y\in\tc^\circ$ 当且仅当 $\stab{y}$ 是有限群。
@@ -271,21 +274,17 @@ $C^{\ast\ast} = \overline{C}$。其中 $\overline{C}$ 是 $C$ 的拓扑闭包。
 $f$ 在 $t=0$ 时取得最小值： $$ |u-x|^2 \leq |u-x|^2 + 2t(u-x, z-u) + t^2|z-u|^2.$$ 即 $$0\leq t\cdot\left(2(u-x,z-u) + t|z-u|^2\right)\leq 2(u-x,z-u) + t|z-u|^2.$$ 令 $t\to0^+$ 可得 $(u-x,z-u)\geq 0$。 这个式子对任何 $z\in\overline{C}$ 成立，特别地取 $z=tu$ 代入有 $$(1-t)\cdot(u-x, u)\geq0.$$ 上式对任何 $t\geq0$ 成立必须只能是 $(u-x, u)=0$。于是不等式 $$(u-x,z-u)\geq 0$$ 可以改写为 $$(u-x,z)\geq0$$ 对任何 $z\in\overline{C}$ 成立。而 $(u-x,x)=-(u-x,u-x)<0$。所以 $u-x$ 即为所求的法向量 $n$。
 :::
 
-回到 Tits 锥 $\tc$ 的讨论上来。由于 $\tc\in V^\ast$ 所以 $\tc^\ast\in V$。我们有如下定理：
+回到 Tits 锥 $\tc$ 的讨论上来。记 $\tc^\ast$ 是 $\tc$ 的对偶锥，则 $\tc^\ast\in V$。我们有如下定理：
 
 :::{.theorem #tits-cone-dual}
-Tits 锥 $\tc$ 的对偶锥为 $\tc^\ast=\bigcap\limits_{w\in W}w(\cone{\Delta})$。
+$\tc^\ast=\bigcap\limits_{w\in W}w(\cone{\Delta})$。
 :::
 
-显然 $\cone{\Delta}$ 是 $V$ 中的一个闭凸锥，它在 $V^\ast$ 中的对偶锥正是基本区域的闭包 $\barfd$：
+可见 $\tc^\ast$ 也是 $W$- 不变的。
+
+**证明**：显然 $\cone{\Delta}$ 是 $V$ 中的一个闭凸锥，它在 $V^\ast$ 中的对偶锥是 $\barfd$：
 $$\barfd = \{x\in V^\ast\mid \lfun{\lambda}{x}\geq0,\ \forall \lambda\in\cone{\Delta}\}.$$
-
-:::note
-由定理结论可见 Tits 锥的对偶锥同样是 $W$- 不变的。
-:::
-
-**证明**：
-
+我们有
 $$
 \begin{align}
 \tc^\ast &=\{v\in V \mid \lfun{v}{x}\geq 0 \text{ for all } x \in \tc\}\\
@@ -311,7 +310,9 @@ $\tc^\ast$ 是点锥：$\tc^\ast\cap -\tc^\ast=\{0\}$。
 如果 $v\in\cone{\Delta}$ 满足对任何 $\alpha_s\in\Delta$ 有 $(v,\alpha_s)\leq0$，则 $v\in\tc^\ast$。
 :::
 
-**证明**：只要证明对任何 $w$ 都有 $wv\in\cone{\Delta}$ 即可。对 $l(w)$ 归纳：$l(w)=0$ 的情形是已知，假设结论对小于 $l(w)$ 都成立，对 $l(w)$ 的情形设 $w=w's$，其中 $l(w')<l(w)$，则 $w'\alpha_s\in\Phi^+$。于是
+**证明**：根据 @Pre:tits-cone-dual，只要证明对任何 $w$ 都有 $wv\in\cone{\Delta}$ 即可。
+
+对 $l(w)$ 归纳：$l(w)=0$ 的情形是已知。当 $l(w)>0$ 时，设 $w=w's$，其中 $l(w')<l(w)$，则 $w'\alpha_s\in\Phi^+\subset\cone{\Delta}$。于是
 
 $$
 \begin{align}wv &= w'sv\\
@@ -320,7 +321,7 @@ $$
 \end{align}
 $$
 
-根据归纳假设 $w'v\in\cone{\Delta}$，再结合 $w'\alpha_s\in\Phi^+\subset\cone{\Delta}$，所以结论成立。$\blacksquare$
+根据归纳假设 $w'v\in\cone{\Delta}$，所以 $wv$ 是 $\cone{\Delta}$ 中两个向量的非负线性组合，从而 $wv\in\cone{\Delta}$。$\blacksquare$
 
 :::{.proposition #dual-cone-nonspace}
 对任何 $u,v\in\tc^\ast$ 有 $(u,v)\leq 0$。
