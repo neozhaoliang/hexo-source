@@ -59,11 +59,11 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 
 # 射影模型
 
-在本节中，我们记 $V=\R^{n+1,1}$ 是 $n+2$ 维的 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是 $V$ 的一组标准正交基，于是内积在这组基下的 Gram 矩阵为 $\left(\begin{smallmatrix}I_{n+1} &\\ & -1\end{smallmatrix}\right)$。令
+设 $V=\R^{n+1,1}$ 是 $n+2$ 维 Lorentzian 空间，$\{e_1,e_2,\ldots,e_{n+2}\}$ 是一组标准正交基，对应的 Gram 矩阵为 $\left(\begin{smallmatrix}I_{n+1} &\\ & -1\end{smallmatrix}\right)$。令
 $$e_0=\frac{e_{n+2}-e_{n+1}}{2},\quad e_\infty=\frac{e_{n+2}+e_{n+1}}{2}.$$
 则 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 也构成 $V$ 的一组基，内积在这组新基下的 Gram 矩阵为
 $$\begin{pmatrix}0&&&-\frac{1}{2}\\&I_n&&\\-\frac{1}{2}&&&0\end{pmatrix}.$$
-任何两个向量 $v,w\in V$ 可以写成如下的形式：
+任何 $v,w\in V$ 可以表示为：
 $$\begin{aligned}
 v&=ae_0 + \x + be_\infty,\\
 w&=ce_0 + \y + de_\infty.
@@ -72,7 +72,7 @@ w&=ce_0 + \y + de_\infty.
 $$(v,w) = (\x, \y) - \frac{ad+bc}{2}.$$
 使用 $\{e_0,e_1,\ldots,e_n,e_\infty\}$ 这组基在处理 $\R^n$ 中的球时更方便一些。
 
-设 $v\in\R^{n+1,1}$，用 $[v]$ 表示 $v$ 在射影空间 $\PR$ 中的等价类。
+记 $[v]$ 为向量 $v\in\R^{n+1,1}$ 在射影空间 $\PR$ 中的等价类。
 
 ::: definition
 定义光锥 (light cone/null cone) 为
@@ -86,7 +86,7 @@ $\PL$ 是 $\L$ 中所有直线组成的集合。
 
 ![$S^2$ 到 $\overline{\R^2}$ 的球极投影，by Keenan Crane](/images/coxeter/stereo-projection.svg){width=400}
 
-我们来说明它们分别和 $\PL$ 是一一对应的，并且当 $\x\in\ER$ 和 $\y\in S^n$ 在球极投影下对应时，它们在 $\PL$ 中是同一个点。
+我们将看到，$\PL$ 同时与 $\ER$ 和 $S^n$ 一一对应，并且当 $\x\in\ER$ 和 $\y\in S^n$ 在球极投影下对应时，它们在 $\PL$ 对应中同一个点。
 
 :::{.simple}
 $\PL$ **的第一种参数化表示** \
@@ -135,7 +135,7 @@ $$\x=\begin{cases}
 \infty & y_{n+1}=1.
 \end{cases}
 $$
-我们来验证 $\jmath(\y)=\imath(\x)$，即
+我们来验证 $\jmath(\y)=\imath(\x)$，即：
 $$[\y + e_{n+2}] = \begin{cases}[e_0 + \x + |\x|^2e_\infty] & y_{n+1}\ne1\\
 [e_\infty] & y_{n+1}=1.
 \end{cases}.$$
@@ -149,22 +149,28 @@ $$\y+e_{n+2} = (1-y_{n+1})e_0+\sum_{i=1}^ny_ie_i + (1+y_{n+1})e_\infty.$$
 从而
 $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}}{1-y_{n+1}}e_\infty\right] = [e_0 + \x + |\x|^2e_\infty].$$
 
-
 # 球面
 
+记 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 的单位向量组成的集合。我们来建立 $\R^n$ 中的球（包括超平面）和 $\S$ 之间的一一对应。
 
-记 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 单位向量组成的集合。我们来建立 $\R^n$ 中的球（包括超平面）和 $\S$ 之间的一一对应。
+设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，它将 $\R^n$ 分成有界和无界两个连通分支。我们允许 $r$ 是负数以区分 $B$ 的内部和外部：
 
-设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，它将 $\R^n$ 分成两个连通分支，一个有界，另一个无界。我们允许 $r$ 是负数以区分 $B$ 的内部和外部：$r>0$ 时 $B$ 的内部是满足 $|\x-\a|< r$ 的有界分支；$r<0$ 时 $B$ 的内部是满足 $|\x-\a|>|r|$ 的无界分支。
++ $r>0$ 时 $B$ 的内部是满足 $|\x-\a|< r$ 的有界分支；
++ $r<0$ 时 $B$ 的内部是满足 $|\x-\a|>|r|$ 的无界分支。
 
 把 $\a$ 看作 $\span\{e_1,\ldots,e_n\}\cong\R^n$ 中的点，记
 $$k = \frac{e_0 + \a + (|\a|^2 - r^2)e_\infty}{r}.$$
-不难验证 $(k,k)=1$，所以 $k\in\mathcal{S}$。
+不难验证 $(k,k)=1$，因此 $k\in\mathcal{S}$。
 
-对 $\x\in\R^n$，不难验证对 $\PL$ 的 [第二种](#second-param) 参数化表示，
+对 $\x\in\R^n$，根据 $\PL$ 的 [第二种](#second-param) 参数化表示，有
 $$(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{2r}.$$
 
-于是 $\x\in B$ 当且仅当 $(\imath(\x),k)=0$；$\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k)>0$。鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k$ 是指向 $B$ 的正半空间的单位法向量。
+于是：
+
++ $\x\in B$ 当且仅当 $(\imath(\x),k)=0$；
++ $\x$ 落在 $B$ 的内部当且仅当 $(\imath(\x),k)>0$。
+
+鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k$ 是指向 $B$ 的正半空间的单位法向量。
 
 注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k)=0$。$V$ 中所有形如 $(\jmath(\x),k)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k^\bot$ 的截线。
 
@@ -172,9 +178,12 @@ $$(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{2r}.$$
 $$k=\n + 2d e_\infty.$$
 不难验证同样有 $k\in\S$，并且对 $\x\in\R^n$ 有
 $$(\imath(\x),k)=(\x,\n)-d.$$
-于是 $\x\in B$ 当且仅当 $(\imath(\x),k)=0$，$\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k)>0$。
+于是：
 
-反之任何 $k\in\S$ 也都唯一确定了 $\R^n$ 中的某个球或者超平面。为此只要将 $k$ 表示为
++ $\x\in B$ 当且仅当 $(\imath(\x),k)=0$；
++ $\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k)>0$。
+
+反过来，任意 $k\in\S$ 都唯一对应 $\R^n$ 中的某个球或者超平面。具体方法是将 $k$ 表示为
 $$k=be_\infty+\a+ce_\infty\in\S,\quad b,c\in\R.$$
 并根据 $b$ 是否等于 0 将 $k$ 对应为球 $B(\a/b ,1/b)$ 或者超平面 $H(\a, c/2)$ 即可。
 
