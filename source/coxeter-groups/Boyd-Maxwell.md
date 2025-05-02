@@ -359,23 +359,34 @@ $$\begin{aligned}
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们来证明任何两个球帽 $k\ne k'\in\P$ 之间至多只有一个公共点。不妨设 $k\notin\{k_1,k_2\}$。用反证法，若 $|C_k\cap C_{k'}|>1$，我们来说明这时同样也有 $|C_{-k}\cap C_{-k'}|>1$，从而与 @Pre:disjoint-pair 矛盾。
+1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，存在 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们要证明，对任何 $k\ne k'\in\P$，球帽 $k\ne k'\in\P$ 之间至多只有一个公共点。
+
+不妨设 $k\notin\{k_1,k_2\}$，用反证法。若 $|C_k\cap C_{k'}|>1$，我们来证明也有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。
 
 根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。我们来找 $w\sim v$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$，这样的话 $w$ 的某个正倍数 $w'\in\H$ 并且 $(w',-k)>0,\,(w',-k')\geq0$，根据 @Pre:intersect-pair 即得 $|C_{-k}\cap C_{-k'}|>1$。
 
-$w$ 的构造很容易，$w=k_1-(k_1,k_2)k_2$ 就满足要求。不难验证 $(w, k)<0$ 和 $(w,k')\leq0$。麻烦的地方在于证明 $w\sim v$。由于 $v$ 是 time-like 的，所以只要 $(v,w)\leq0$ 即可保证 $w\sim v$（实际上严格的不等号成立）。我们有
+构造 $w=k_1-(k_1,k_2)k_2$，容易验证它满足 $(w, k)<0$ 和 $(w,k')\leq0$。麻烦的地方在于证明 $w\sim v$。由于 $v$ 是 time-like 的，所以只要 $(v,w)\leq0$ 即可保证 $w\sim v$。
+
+我们有
 $$(v,w)=(v,k_1)-(k_1,k_2)(v,k_2)=(v-(v,k_2)k_2, k_1).$$
 记 $u=v-(v, k_2)k_2$，则目标变为证明 $(u,k_1)\leq0$。注意到
 
 $$\begin{aligned}
-(u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
-(u,u)&=(u,v),\\
-(u,u)&=\underbrace{(v,v)}_{<0}-\underbrace{(v,k_2)^2}_{\leq0} <0.
+(u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0.\\
+(u,u)&=(u,v)-(v,k_2)\underbrace{(u,k_2)}_{=0}=(u,v).\\
+(u,u)&=(v,v)-(v,k_2)^2 <0.
 \end{aligned}
 $$
-即 $(u,u)=(u,v)<0$，从而 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话由 @Pre:intersect-pair 可得 $|C_{k_1}\cap C_{k_2}|>1$，矛盾。从而 $(v,w)\leq0$。这就证明了 $w\sim v$。
+即 $(u,u)=(u,v)<0$，从而 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话由 @Pre:intersect-pair 可得 $|C_{k_1}\cap C_{k_2}|=\infty$，矛盾。因此 $(u,k_1)\leq0$，从而 $(v,w)\leq0$。这就证明了 $w\sim v$。
 
-2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。则对任何 $k_1,k_2\in\P$，内积 $\inn$ 限制在二维子空间 $U=\span\{k_1,k_2\}$ 上肯定不是正定的，否则的话 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，从而 $C_{k_1}$ 和 $C_{k_2}$ 会在 $\H$ 的内部有交点，所以 $|(k_1,k_2)|\geq1$。如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
+2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。对 $k_1\ne k_2\in\P$，$U=\span\{k_1,k_2\}$ 肯定不是 space-like 的，否则 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，从而存在 time-like 的向量 $v$ 满足 $(v,k_1)=(v,k_2)=0$。给 $v$ 乘以适当实数后可以使得 $v\in\H$，从而 $v\in C_{k_1}\cap C_{k_2}$。考虑 $u=v-a(k_1+k_2)$，直接计算可得
+$$\begin{aligned}
+(u,k_1)&=(u,k_2)=a((k_1,k_2) - 1)\geq0.\\
+(u,v)&=(v,v)<0.
+\end{aligned}$$
+于是 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in C_{k_1}\cap C_{k_2}$。
+
+如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
 
 
 :::{.definition}
