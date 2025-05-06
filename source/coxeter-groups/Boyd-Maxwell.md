@@ -326,30 +326,38 @@ $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 由于 $\H$ 中与 $k_1+k_2$ 共线的点是唯一的，所以 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多包含一个点，且此点与 $k_1+k_2$ 共线。$\blacksquare$
 
 :::{.lemma #contain-time-like}
-设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。如果 $|C_{k_1}\cap C_{k_2}|>1$，则 $C_{k_1}\cap C_{k_2}$ 中必然包含 time-like 的向量。
+设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。则以下三点等价：
+
+1. $|C_{k_1}\cap C_{k_2}|>1$；
+2. 存在 $v\in C_{k_1}\cap C_{k_2}$ 且 $v$ 是 time-like 的；
+3. 存在 $v\in C_{k_1}\cap C_{k_2}$ 使得不等式 $(v,k_1)\geq0$ 和 $(v,k_2)\geq0$ 至少有一个严格成立。
 :::
 **证明**：
-设 $u\ne v\in C_{k_1}\cap C_{k_2}$，则 $u\sim v$ 且 $u,v$ 线性无关，从而 $(u,v)<0$。$z=u+v$ 满足 $z\sim u$ 和 $(z,z)<0$，从而 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
-$\blacksquare$
 
-:::{.lemma #intersect-pair}
-设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。如果 $v\in\H$ 满足
-$$(v,k_1)\geq0,\quad (v,k_2)>0.$$
-则 $|C_{k_1}\cap C_{k_2}|=\infty$。
-:::
+$1\Rightarrow 2$：
 
-**证明**：记 $a=(v,k_2)>0$，考虑 $u=v-tk_2$，其中 $t\in(0, a)$ 是实数。
+设 $u\ne v\in C_{k_1}\cap C_{k_2}$，则 $u,v$ 是线性无关的，从而 $(u,v)<0$。记 $z=u+v$，则 $z$ 的某个正倍数 $z'$ 属于 $\H$。又因为 $(z,z)\leq (u,v)<0$ 和 $(z,k_1)\geq0,\,(z,k_2)\geq0$，所以 $z'$ 即为所求。
 
-由于
-$$(u,u)=(v,v)+t^2-2at\leq t(t-2a)<0$$
-是 time-like 的，以及
-$$(u,v)=(v,v)-at\leq-at<0.$$
-所以 $u\sim v$。从而 $u$ 的某个正倍数 $u'=cu\in\H\,(c>0)$。又因为
+$2\Rightarrow 3$：
 
+设 $v\in C_{k_1}\cap C_{k_2}$ 是 time-like 的，则 $(v,k_1)\geq0,\, (v,k_2)\geq0$。我们断言这两个不等式至少有一个是严格的。若不然，则 $(v,(k_1+k_2))=0$。然而 $k_1+k_2$ 是 time/light-like 的，而 $v$ 是 time-like 的，这不可能。
+
+$3\Rightarrow 1$：
+
+不妨设 $a=(v,k_1)>0$。考虑
+$$u=v-tk_1,\quad t\in(0, a).$$
+直接计算验证可得
 $$\begin{aligned}
-(u,k_1)&=\overbrace{(v,k_1)}^{\geq0} - \overbrace{t}^{>0}\cdot\overbrace{(k_1,k_2)}^{\leq-1}>0,\\
-(u,k_2)&=a-t>0.\end{aligned}$$
-所以 $(u',k_1)>0,\,(u',k_2)>0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。由于 $t\in(0,a)$ 有无穷多个取值，并且不难验证不同的 $t$ 给出的 $u'$ 互不相同，所以 $|C_{k_1}\cap C_{k_2}|=\infty$。$\blacksquare$
+(u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
+(u,v)&=(v,v)-at \leq at<0.
+\end{aligned}$$
+所以 $u\sim v$ 从而 $u$ 的某个正倍数 $u'\in\H$。又因为
+$$\begin{aligned}
+(u,k_1)&=a-t>0,\\
+(u,k_2)&=(v,k_2) - t\cdot (k_1,k_2)>0.
+\end{aligned}$$
+所以 $u'\in C_{k_1}\cap C_{k_2}$。显然不同的 $t$ 给出的 $u'$ 互不相同，从而 $|C_{k_1}\cap C_{k_2}|=\infty > 1$。
+$\blacksquare$
 
 ::: {.theorem #thm-sphere-packing}
 设 $\P$ 是非空集合，则下面两点是等价的：
@@ -361,32 +369,24 @@ $$\begin{aligned}
 
 1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，存在 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们要证明，对任何 $k\ne k'\in\P$，球帽 $k\ne k'\in\P$ 之间至多只有一个公共点。
 
-不妨设 $k\notin\{k_1,k_2\}$，用反证法。若 $|C_k\cap C_{k'}|>1$，我们来证明也有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。
+不妨设 $k\notin\{k_1,k_2\}$，用反证法，若 $|C_k\cap C_{k'}|>1$，我们来证明也有 $|C_{-k}\cap C_{-k'}|>1$，从而与 @Pre:disjoint-pair 矛盾。
 
-根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。我们来找 $w\sim v$ 满足 $(w, k)<0$ 和 $(w,k')\leq0$，这样的话 $w$ 的某个正倍数 $w'\in\H$ 并且 $(w',-k)>0,\,(w',-k')\geq0$，根据 @Pre:intersect-pair 即得 $|C_{-k}\cap C_{-k'}|>1$。
-
-构造 $w=k_1-(k_1,k_2)k_2$，容易验证它满足 $(w, k)<0$ 和 $(w,k')\leq0$。麻烦的地方在于证明 $w\sim v$。由于 $v$ 是 time-like 的，所以只要 $(v,w)\leq0$ 即可保证 $w\sim v$。
-
-我们有
+根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。构造 $w=k_1-(k_1,k_2)k_2$，我们有
 $$(v,w)=(v,k_1)-(k_1,k_2)(v,k_2)=(v-(v,k_2)k_2, k_1).$$
-记 $u=v-(v, k_2)k_2$，则目标变为证明 $(u,k_1)\leq0$。注意到
-
+记 $u=v-(v, k_2)k_2$，则计算可得
 $$\begin{aligned}
-(u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0.\\
-(u,u)&=(u,v)-(v,k_2)\underbrace{(u,k_2)}_{=0}=(u,v).\\
-(u,u)&=(v,v)-(v,k_2)^2 <0.
+(u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
+(u,v)&=(u,u)=(v,v)-(v,k_2)^2 <0.
 \end{aligned}
 $$
-即 $(u,u)=(u,v)<0$，从而 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话由 @Pre:intersect-pair 可得 $|C_{k_1}\cap C_{k_2}|=\infty$，矛盾。因此 $(u,k_1)\leq0$，从而 $(v,w)\leq0$。这就证明了 $w\sim v$。
+即 $(u,u)=(u,v)<0$，从而 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话则 $u'$ 是 time-like 的向量且 $u'\in C_{k_1}\cap C_{k_2}$，由 @Pre:contain-time-like 可得 $|C_{k_1}\cap C_{k_2}|>1$，矛盾。因此 $(u,k_1)\leq0$，从而 $(v,w)\leq0$，从而 $v\sim w$。于是 $w$ 的某个正倍数 $w'\in\H$。又因为 $w$ 满足 $(w,k)<0$ 和 $(w,k')\leq0$，所以 $w'$
 
-2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。对 $k_1\ne k_2\in\P$，$U=\span\{k_1,k_2\}$ 肯定不是 space-like 的，否则 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，从而存在 time-like 的向量 $v$ 满足 $(v,k_1)=(v,k_2)=0$。给 $v$ 乘以适当实数后可以使得 $v\in\H$，从而 $v\in C_{k_1}\cap C_{k_2}$。考虑 $u=v-a(k_1+k_2)$，直接计算可得
+2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。对 $k_1\ne k_2\in\P$，$U=\span\{k_1,k_2\}$ 肯定不是 space-like 的，否则若 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，则存在 time-like 的向量 $v$ 满足 $(v,k_1)=(v,k_2)=0$。给 $v$ 乘以适当实数后可以使得 $v\in\H$，从而 $v\in C_{k_1}\cap C_{k_2}$。考虑 $u=v-a(k_1+k_2)$，直接计算可得
 $$\begin{aligned}
-(u,k_1)&=(u,k_2)=a((k_1,k_2) - 1)\geq0.\\
+(u,k_1)&=(u,k_2)=-a((k_1,k_2) + 1)\geq0.\\
 (u,v)&=(v,v)<0.
 \end{aligned}$$
-于是 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in C_{k_1}\cap C_{k_2}$。
-
-如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
+于是 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in C_{k_1}\cap C_{k_2}$。又因为 $(v, k_1+k_2)=0$ 以及 $v$ 是 time-like 的向量，所以 $v$ 和 $k_1+k_2$ 不可能共线，于是不同的 $a>0$ 给出的 $u'$ 互不相同，从而 $|C_{k_1}\cap C_{k_2}|>1$，与已知矛盾。 所以 $U$ 不是 space-like 的，即 $(k_1,k_2)\geq1$。然而这时 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。$\blacksquare$
 
 
 :::{.definition}
