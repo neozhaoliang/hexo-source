@@ -344,9 +344,7 @@ $2\Rightarrow 3$：
 
 $3\Rightarrow 1$：
 
-不妨设 $a=(v,k_1)>0$。考虑
-$$u=v-tk_1,\quad t\in(0, a).$$
-直接计算验证可得
+不妨设 $a=(v,k_1)>0$。考虑 $u=v-tk_1,\ t\in(0, a)$，直接计算验证可得
 $$\begin{aligned}
 (u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
 (u,v)&=(v,v)-at \leq at<0.
@@ -356,7 +354,7 @@ $$\begin{aligned}
 (u,k_1)&=a-t>0,\\
 (u,k_2)&=(v,k_2) - t\cdot (k_1,k_2)>0.
 \end{aligned}$$
-所以 $u'\in C_{k_1}\cap C_{k_2}$。显然不同的 $t$ 给出的 $u'$ 互不相同，从而 $|C_{k_1}\cap C_{k_2}|=\infty > 1$。
+所以 $u'\in C_{k_1}\cap C_{k_2}$。显然不同的 $t$ 给出的 $u$ 互不共线，从而得到的 $u'$ 互不相同。于是 $|C_{k_1}\cap C_{k_2}|=\infty > 1$。
 $\blacksquare$
 
 ::: {.theorem #thm-sphere-packing}
