@@ -336,11 +336,11 @@ $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 
 $1\Rightarrow 2$：
 
-设 $u\ne v\in C_{k_1}\cap C_{k_2}$，则 $u,v$ 是线性无关的，从而 $(u,v)<0$。记 $z=u+v$，则 $z$ 的某个正倍数 $z'$ 属于 $\H$。又因为 $(z,z)\leq (u,v)<0$ 和 $(z,k_1)\geq0,\,(z,k_2)\geq0$，所以 $z'$ 即为所求。
+设 $u\ne v\in C_{k_1}\cap C_{k_2}$，记 $z=u+v$，则 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
 
 $2\Rightarrow 3$：
 
-设 $v\in C_{k_1}\cap C_{k_2}$ 是 time-like 的，则 $(v,k_1)\geq0,\, (v,k_2)\geq0$。我们断言这两个不等式至少有一个是严格的。若不然，则 $(v,(k_1+k_2))=0$。然而 $k_1+k_2$ 是 time/light-like 的，而 $v$ 是 time-like 的，这不可能。
+设 $v\in C_{k_1}\cap C_{k_2}$ 是 time-like 的，则 $(v,k_1)\geq0,\, (v,k_2)\geq0$。我们断言这两个不等式至少有一个是严格的。若不然，则 $(v,k_1+k_2)=0$。然而 $k_1+k_2$ 是 time/light-like 的，而 $v$ 是 time-like 的，这不可能。
 
 $3\Rightarrow 1$：
 
@@ -349,7 +349,7 @@ $$\begin{aligned}
 (u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
 (u,v)&=(v,v)-at \leq at<0.
 \end{aligned}$$
-所以 $u\sim v$ 从而 $u$ 的某个正倍数 $u'\in\H$。又因为
+从而 $u\sim v$，于是 $u$ 的某个正倍数 $u'\in\H$。又因为
 $$\begin{aligned}
 (u,k_1)&=a-t>0,\\
 (u,k_2)&=(v,k_2) - t\cdot (k_1,k_2)>0.
@@ -365,9 +365,9 @@ $\blacksquare$
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，存在 $k_1,k_2\in\P$ 使得 $C_{k_1}\cap C_{k_2}$ 至多包含一个点。我们要证明，对任何 $k\ne k'\in\P$，球帽 $k\ne k'\in\P$ 之间至多只有一个公共点。
+1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $|C_{k_1}\cap C_{k_2}|\leq1$。我们要证明对任何 $k\ne k'\in\P$ 同样有 $|C_k\cap C_{k'}|\leq1$。
 
-不妨设 $k\notin\{k_1,k_2\}$，用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。令 $w=k_1-(k_1,k_2)k_2$，则有
+如果 $\{k,k'\}=\{k_1,k_2\}$ 结论显然成立。所以不妨设 $k\notin\{k_1,k_2\}$，用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。令 $w=k_1-(k_1,k_2)k_2$，则有
 $$(w,w)=1-(k_1,k_2)^2\leq0,\quad (w, k)<0,\quad (w, k')\leq0.$$
 我们来证明有 $v\sim w$。若如此，则 $w$ 的某个正倍数 $w'\in\H$，从而由 @Pre:contain-time-like 有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。为此我们只要证明有 $(v,w)\leq0$ 成立即可。根据
 $$(v,w)=(v, k_1) - (v,k_2)(k_1,k_2) = (v-(v,k_2)k_2, k_1).$$
