@@ -28,7 +28,7 @@ glsl: true
 
 1. 首先将像素的 2D 坐标映射为空间中的某个 3D 点 `p`；
 2. 然后用一个 `fold` 函数，即所谓的 [迭代函数系统](https://en.wikipedia.org/wiki/Iterated_function_system)（iterated function system，简称 IFS）反复作用在 `p`上，将 `p` 变换到空间中另一个位置。每次迭代结束后，生成一个颜色并将其添加到当前的颜色 `color` 上。
-3. 当达到一定的迭代次数后，终止迭代，返回 `color` 的值作为像素最终的颜色。
+3. 经过若干次迭代后，终止迭代，返回 `color` 的值作为像素最终的颜色。
 
 下面是具体步骤的解释。
 

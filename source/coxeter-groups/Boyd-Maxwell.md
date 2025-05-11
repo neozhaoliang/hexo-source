@@ -307,10 +307,13 @@ $$
 
 形如 $\P=\{k,-k\}$ 的球堆是平凡的，因为它由一个球的内部和外部组成。否则称为非平凡球堆。$-\P=\{-k\mid k\in\P\}$ 也是球堆，它是通过翻转 $\P$ 中每个球的内部和外部得到的。
 
-记
+:::{.definition}
+记超平面 $\{v\in V\mid (v,e_{n+2})=1\}$ 与 $\Q_+$ 的“截面”为
 $$\H = \{v\in \Q_+\mid (v, e_{n+2})=1\}.$$
-对任意 $k\in S$，定义球帽
+给定 $k\in S$，定义球帽
 $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
+:::
+
 由于 $C_k\subset\Q_+$，因此对任何 $k,k'\in\P$，有 $u\sim v$ 对所有 $u\in C_k,v\in C_{k'}$ 成立。
 
 ::: {.lemma #disjoint-pair}
@@ -334,17 +337,11 @@ $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 :::
 **证明**：
 
-$1\Rightarrow 2$：
+$1\Rightarrow 2$：设 $u\ne v\in C_{k_1}\cap C_{k_2}$，记 $z=u+v$，则 $z$ 是 time-like 的，并且 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
 
-设 $u\ne v\in C_{k_1}\cap C_{k_2}$，记 $z=u+v$，则 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
+$2\Rightarrow 3$：设 $v\in C_{k_1}\cap C_{k_2}$ 是 time-like 的，则 $(v,k_1)\geq0,\, (v,k_2)\geq0$。我们断言这两个不等式至少有一个是严格的。若不然，则 $(v,k_1+k_2)=0$。然而 $k_1+k_2$ 是 time/light-like 的，而 $v$ 是 time-like 的，这不可能。
 
-$2\Rightarrow 3$：
-
-设 $v\in C_{k_1}\cap C_{k_2}$ 是 time-like 的，则 $(v,k_1)\geq0,\, (v,k_2)\geq0$。我们断言这两个不等式至少有一个是严格的。若不然，则 $(v,k_1+k_2)=0$。然而 $k_1+k_2$ 是 time/light-like 的，而 $v$ 是 time-like 的，这不可能。
-
-$3\Rightarrow 1$：
-
-不妨设 $a=(v,k_1)>0$。考虑 $u=v-tk_1,\ t\in(0, a)$，直接计算验证可得
+$3\Rightarrow 1$：不妨设 $a=(v,k_1)>0$。考虑 $u=v-tk_1,\ t\in(0, a)$，直接计算验证可得
 $$\begin{aligned}
 (u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
 (u,v)&=(v,v)-at \leq at<0.
