@@ -272,13 +272,13 @@ $$\begin{aligned}
 注意 $\rho$ 保持光锥的两个分支不变，即 $\rho(\Q_\pm)\subset\Q_\pm$。这是因为，如果 $v\in\Q_+$，则 $(v,v)\leq0$，并且 $(v, \rho(v)) = (v,v) - 2(v,k)^2\leq0$。若不等号严格成立，自然有 $v\sim\rho(v)$。若等号成立，则 $(v,v)=(v,k)=0$，从而 $\rho(v)=v$。
 
 我们来计算 $\rho$ 作用在 $\imath(\x)\,(\x\in\R^n)$ 上的效果：（注意 $(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{r}$）
-$$\begin{align*}
+$$\begin{aligned}
 \begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho}
 \begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} -\frac{r^2-|\x-\a|^2}{r}\begin{pmatrix}\frac{1}{r}\\\frac{\a}{r}\\ \frac{|\a|-r^2}{r}\end{pmatrix}\\
 &=\begin{pmatrix}\frac{|\x-\a|^2}{r^2}\\\x+\left(\frac{|\x-\a|^2-r^2}{r^2}\right)\a\\ \ast \end{pmatrix}\\
 &\stackrel{+}{\sim} \begin{pmatrix}1\\\a+\frac{r^2}{|\x-\a|^2}(\x-\a)\\ \ast \end{pmatrix}\\
 &=\begin{pmatrix}1\\\tau(\x)\\ |\tau(\x)|^2 \end{pmatrix}.
-\end{align*}$$
+\end{aligned}$$
 这里我们不用关心 $\ast$ 是什么，中间的 $\stackrel{+}{\sim}$ 表示两个向量**正**射影等价。
 
 于是我们有如下的交换图：
