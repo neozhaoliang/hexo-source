@@ -76,6 +76,12 @@
                 "title": "The symmetric group, 3",
                 "review": "Peter Cameron 讨论为什么只有 $S_6$ 有非平凡的外自同构",
                 "doubanLink": "https://cameroncounts.wordpress.com/2010/05/11/the-symmetric-group-3/"
+            },
+            {
+                "title": "Fractal Gallery of William Gilbert",
+                "review": "William Gilbert 的分形画廊",
+                "cover": "https://www.math.uwaterloo.ca/~wgilbert/FractalGallery/Inversive/Circles1.gif",
+                "doubanLink": "https://www.math.uwaterloo.ca/~wgilbert/FractalGallery/FractalGallery.html"
             }
         ]
     }
