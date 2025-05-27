@@ -102,6 +102,12 @@
                 "title": "Science Notes by Greg Egan",
                 "doubanLink": "https://www.gregegan.net/SCIENCE/SCIENCE.html",
                 "cover": "https://www.gregegan.net/SCIENCE/KleinQuartic/KQRsmall.gif"
+            },
+            {
+                "doubanLink": "https://www.mathematicalgemstones.com/",
+                "title": "Finding Gemstones: on the quest for mathematical beauty and truth",
+                "cover": "https://www.mathematicalgemstones.com/images/site-header-288x998.png",
+                "review": "关于几何表示论的博客，作者是 Maria Monks Gillespie"
             }
         ]
     }
