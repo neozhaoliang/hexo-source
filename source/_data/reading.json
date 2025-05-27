@@ -25,12 +25,14 @@
             {
                 "title": "Topology and Groups",
                 "review": "Jonny Evans 的拓扑课程",
+                "cover": "https://api.screenshotmachine.com?key=048629&url=http://jde27.uk/tg&dimension=480x360",
                 "doubanLink": "http://jde27.uk/tg/index.html"
             },
             {
                 "title": "Artinian algebras",
                 "review": "Wedderburn-Artin 定理的证明",
-                "doubanLink": "https://dec41.user.srcf.net/h/III_L/algebras/1_1"
+                "cover": "https://api.screenshotmachine.com?key=048629&url=https://dec41.user.srcf.net/h/III_L/algebras&dimension=480x360",
+                "doubanLink": "https://dec41.user.srcf.net/h/III_L/algebras/"
             },
             {
                 "title": "The complex Farey fraction tessellation",
@@ -70,10 +72,12 @@
             {
                 "title": "Js animations of Uniform polyhedra, Aztec diamond, etc",
                 "review": "一些动画",
+                "cover": "https://api.screenshotmachine.com?key=048629&url=https://bustercopley.github.io/&dimension=480x360",
                 "doubanLink": "https://bustercopley.github.io/"
             },
             {
                 "title": "The symmetric group, 3",
+                "cover": "https://api.screenshotmachine.com?key=048629&url=https://cameroncounts.wordpress.com/2010/05/11/the-symmetric-group-3/&dimension=480x360",
                 "review": "Peter Cameron 讨论为什么只有 $S_6$ 有非平凡的外自同构",
                 "doubanLink": "https://cameroncounts.wordpress.com/2010/05/11/the-symmetric-group-3/"
             },
