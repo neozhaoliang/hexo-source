@@ -82,6 +82,22 @@
                 "review": "William Gilbert 的分形画廊",
                 "cover": "https://www.math.uwaterloo.ca/~wgilbert/FractalGallery/Inversive/Circles1.gif",
                 "doubanLink": "https://www.math.uwaterloo.ca/~wgilbert/FractalGallery/FractalGallery.html"
+            },
+            {
+                "title": "MathPages",
+                "cover": "https://www.mathpages.com/home/pentgla4.jpg",
+                "doubanLink": "https://www.mathpages.com/"
+            },
+            {
+                "title": "Tony Phillips's Homepage",
+                "cover": "https://www.math.stonybrook.edu/~tony/tony-photo.jpg",
+                "review": "Tony Phillips 的主页，包含了很多有趣的数学资源",
+                "doubanLink": "https://www.math.stonybrook.edu/~tony"
+            },
+            {
+                "title": "Science Notes by Greg Egan",
+                "doubanLink": "https://www.gregegan.net/SCIENCE/SCIENCE.html",
+                "cover": "https://www.gregegan.net/SCIENCE/KleinQuartic/KQRsmall.gif"
             }
         ]
     }
