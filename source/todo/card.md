@@ -9,8 +9,8 @@
 9. Monotile
 10. 模群
 11. Lorentz 吸引子
-12. 三体周期解
-13. Mandelbrot
+12. ~~三体周期解~~
+13. ~~Mandelbrot~~
 14. 焦散
 15. Bruhat-Tits 树
 16. 双曲空间随机游动
