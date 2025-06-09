@@ -55,6 +55,7 @@ $$u\sim v\Leftrightarrow (u,v)\leq0.$$
 
 这显然是错误的，因为如果 $u$ 是 light-like 的向量，$u$ 和 $-u$ 属于不同的分支。这个错误导致后面 [@Maxwell82, prop 3.1] 的证明需要作一些修改。详情见下面的 @Pre:thm-sphere-packing。
 
+
 <!--more-->
 
 # 射影模型
@@ -316,18 +317,6 @@ $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 
 由于 $C_k\subset\Q_+$，因此对任何 $k,k'\in\P$，有 $u\sim v$ 对所有 $u\in C_k,v\in C_{k'}$ 成立。
 
-::: {.lemma #disjoint-pair}
-设 $\P$ 是球堆且 $k_1\ne k_2\in\P$，则集合 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多只包含一个点。并且当这两个集合中的某个恰好只含一个点时，此点与 $k_1+k_2$ 共线，并且有 $(k_1,k_2)=-1$ 成立。
-:::
-
-**证明**：首先由 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$ 可知 $k_1+k_2$ 是 time/light-like 的。
-
-设 $u\in C_{k_1}\cap C_{k_2}$，$v\in C_{-k_1}\cap C_{-k_2}$，则
-$$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
-如果上面两个不等号都是严格成立的，则 $u\not\sim k_1+k_2$ 但是 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以至少有一个等号是成立的，即 $u,v$ 之中必有一个与 $k_1+k_2$ 共线，并且 $k_1+k_2$ 是 light-like 的向量，由此可得 $(k_1,k_2)=-1$。
-
- $u\in C_{k_1}\cap C_{k_2}$ 和 $v\in C_{-k_1}\cap C_{-k_2}$ 使得 $u,v$ ，这和上面的证明矛盾，所以 $|C_{k_1}\cap C_{k_2}|\leq1$ 和 $|C_{-k_1}\cap C_{-k_2}|\leq1$ 中至少有一个成立。如果 $|C_{k_1}\cap C_{k_2}|=1$， 必有一个至多包含一个点，且此点与 $k_1+k_2$ 共线。$\blacksquare$
-
 :::{.lemma #contain-time-like}
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。则以下三点等价：
 
@@ -335,7 +324,8 @@ $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 2. 存在 $v\in C_{k_1}\cap C_{k_2}$ 且 $v$ 是 time-like 的；
 3. 存在 $v\in C_{k_1}\cap C_{k_2}$ 使得不等式 $(v,k_1)\geq0$ 和 $(v,k_2)\geq0$ 至少有一个严格成立。
 :::
-**证明**：
+
+**证明**：首先由 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$ 可知 $k_1+k_2$ 是 time/light-like 的。
 
 $1\Rightarrow 2$：设 $u\ne v\in C_{k_1}\cap C_{k_2}$，记 $z=u+v$，则 $z$ 是 time-like 的，并且 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
 
@@ -354,6 +344,38 @@ $$\begin{aligned}
 所以 $u'\in C_{k_1}\cap C_{k_2}$。显然不同的 $t$ 给出的 $u$ 互不共线，从而得到的 $u'$ 互不相同。于是 $|C_{k_1}\cap C_{k_2}|=\infty > 1$。
 $\blacksquare$
 
+:::{.note}
+给定 $v\in C_{k_1}\cap C_{k_2}$，我们想寻找一个不同的 $u'\ne v$ 也满足 $u'\in C_{k_1}\cap C_{k_2}$。@Pre:contain-time-like 采用的技巧可以概括如下：
+
+1. 考虑形如 $u=v+tk_1$ 的向量，其中 $t\ne0$ 是实数。$u$ 显然与 $v$ 线性无关。
+2. 验证 $(u,u)\leq 0$ 和 $(u,v)<0$，从而 $u\sim v$。
+3. 验证 $(u,k_1)\geq0$ 和 $(u,k_2)\geq0$，从而 $u$ 的某个正倍数 $u'\in  C_{k_1}\cap C_{k_2}$。
+
+这个证明策略在下面会反复用到。
+:::
+
+::: {.lemma #disjoint-pair}
+设 $\P$ 是球堆且 $k_1\ne k_2\in\P$，则集合 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多只包含一个点。并且当这两个集合中的某个恰好只含一个点时，此点与 $k_1+k_2$ 共线，并且有 $(k_1,k_2)=-1$ 成立。
+:::
+
+**证明**：
+若 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 均不为空，取 $u\in C_{k_1}\cap C_{k_2}$，$v\in C_{-k_1}\cap C_{-k_2}$，则
+$$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
+如果上面两个不等号都是严格成立的，则 $u\not\sim k_1+k_2$ 但是 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以至少有一个等号是成立的，即 $u,v$ 之中必有一个与 $k_1+k_2$ 共线，并且 $k_1+k_2$ 是 light-like 的向量。由此可得 $(k_1,k_2)=-1$ 并且 $|C_{k_1}\cap C_{k_2}|\leq1$ 和 $|C_{-k_1}\cap C_{-k_2}|\leq1$ 中至少有一个成立。
+
+如果这两个集合，不妨设为 $C_{k_1}\cap C_{k_2}$，恰好只有一个点。记这个点为 $u$。如果 $u$ 与 $k_1+k_2$ 不共线的话，则必有 $(u,k_1+k_2)>0$，从而 $(u,k_1)$ 和 $(u,k_2)$ 中至少有一个大于 0。不妨设 $a=(u, k_1)>0$，考虑 $z=u-ak_1$。我们来验证：
+$$\begin{aligned}
+(z,z)&=(u,u)-a^2<0,\\
+(z,u)&=(u,u)-a^2<0.
+\end{aligned}$$
+从而 $z$ 是 time-like 的并且 $z\sim u$。进一步
+$$\begin{aligned}
+(z,k_1)&=0,\\
+(z,k_2)&=(u,k_2)-a(k_1,k_2)\geq a >0.
+\end{aligned}$$
+从而 $z$ 的某个正倍数 $z'$ 属于 $\H$，即 $z'\in C_{k_1}\cap C_{k_2}$。显然 $z'\ne u$，这与 $|C_{k_1}\cap C_{k_2}|=1$ 矛盾。所以 $u$ 必然与 $k_1+k_2$ 共线。$\blacksquare$
+
+
 ::: {.theorem #thm-sphere-packing}
 设 $\P$ 是非空集合，则下面两点是等价的：
 
@@ -362,9 +384,7 @@ $\blacksquare$
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $|C_{k_1}\cap C_{k_2}|\leq1$。我们要证明对任何 $k\ne k'\in\P$ 同样有 $|C_k\cap C_{k'}|\leq1$。
-
-如果 $\{k,k'\}=\{k_1,k_2\}$ 结论显然成立。所以不妨设 $k\notin\{k_1,k_2\}$，用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。令 $w=k_1-(k_1,k_2)k_2$，则有
+1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $|C_{k_1}\cap C_{k_2}|\leq1$，我们要证明对任何 $k\ne k'\in\P$ 同样有 $|C_k\cap C_{k'}|\leq1$。如果 $\{k,k'\}=\{k_1,k_2\}$ 结论显然成立。所以不妨设 $k\notin\{k_1,k_2\}$。用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。令 $w=k_1-(k_1,k_2)k_2$，则有
 $$(w,w)=1-(k_1,k_2)^2\leq0,\quad (w, k)<0,\quad (w, k')\leq0.$$
 我们来证明有 $v\sim w$。若如此，则 $w$ 的某个正倍数 $w'\in\H$，从而由 @Pre:contain-time-like 有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。为此我们只要证明有 $(v,w)\leq0$ 成立即可。根据
 $$(v,w)=(v, k_1) - (v,k_2)(k_1,k_2) = (v-(v,k_2)k_2, k_1).$$
@@ -402,7 +422,7 @@ $$(w(\alpha_s), \omega_t)=\sum_{i\in I}c_i(\alpha_i, w_t) = c_t\geq0.$$
 
 $(\omega_s, \omega_s)=0$ 的情形稍微麻烦一些。这时 $\omega_s$ 的正交补 $\omega_s^\bot$ 是 light-like 的，即子图 $\Gamma\setminus\{s\}$ 是仿射的。所以 $\Gamma\setminus\{s\}$ 由一些仿射或者有限的连通成分组成，由于内积是双曲的，有且恰有一个连通成分是仿射的。任取一个实的基本权 $(\omega_t,\omega_t)>0$，分两种情况：
 
-1. 如果 $\omega_t$ 属于某个有限型的连通成分 $Y$，类似上面的讨论，$v = \sum_{w\in W_Y}w(\omega_t)\in\tcr$ 满足对任何 $t\ne s$ 都有 $t(v)=v$，从而 $v$ 等于 $\omega_s$ 乘以一个正实数，从而 $\omega_s\in\tcr$。
+1. 如果 $\omega_t$ 属于某个有限型的连通成分 $Y$，类似上面的讨论，$v$ 等于 $\omega_s$ 乘以一个正实数，从而 $\omega_s\in\tcr$。
 
 2. 如果 $\omega_t$ 属于某个仿射型的连通成分 $X$，设 $Y=\Gamma\setminus(X\cup\{s\})$ 是 $\Gamma\setminus\{s\}$ 除去 $X$ 以外其它连通成分的并，则 $Y$ 是有限型，并且 $X$ 和 $Y$ 互不连通，从而
 $$\omega_s = \underbrace{(\omega_s, \omega_s)}_{=0}\alpha_s + \sum_{t\ne s} (\omega_s, \omega_t)\alpha_t=\sum_{t\in X} (\omega_s,\omega_t)\alpha_t + \sum_{t\in Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.$$
@@ -412,11 +432,10 @@ $$(\omega_s, \omega_s)=0\Rightarrow (v_1+v_2,v_1+v_2)=0\Rightarrow (v_1,v_1) + (
 $$\omega_s=v_1=\sum_{i\in X} (\omega_s,\omega_i)\alpha_i$$
 两边同时用 $\alpha_s$ 作内积有
 $$1=(\omega_s,\alpha_s)=\sum_{i\in X} (\omega_s, \omega_i)\underbrace{(\alpha_s,\alpha_i)}_{\leq0}.$$
-所以必须所有 $(\omega_s, \omega_i)<0$。于是 $X\cup \{s\}$ 构成的子图满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件，于是我们得到
+所以必须所有 $(\omega_s, \omega_i)<0$。\
+记 $\Gamma_1=X\cup \{s\}$，我们已经看到 $\omega_s\in \span\{\alpha_i\mid i\in X\}$，所以 $\Gamma_1$ 满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件（取 $I=X,\,p=\omega_t,\,\omega_s=\omega_s$ 代入），从而我们得到
 $$\omega_s\in\cl{\cone{\bigcup_{w\in W_X}w(\omega_t)}}\subset\tcr.$$
-
 $\blacksquare$
-
 
 :::{.definition}
 规定 $\hat{\Omega}_r=\{\hat{\omega}\mid \omega\in\Omega_r\}$，其中 $\hat{\omega}=\omega/\sqrt{(\omega,\omega)}$ 是将 $\omega$ 归一化得到的单位向量。
