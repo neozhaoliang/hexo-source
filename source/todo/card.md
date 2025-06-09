@@ -25,3 +25,6 @@
 25. 复变函数和 airy flow? 或者 rreusser 的 potential flow?
 26. 黎曼曲面
 27. Voronoi?
+28. Hexagon lloyd 算法？
+29. Thurston circle packing
+30. Bianchi and polyhedra circle packing
