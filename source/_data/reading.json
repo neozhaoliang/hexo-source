@@ -108,6 +108,17 @@
                 "title": "Finding Gemstones: on the quest for mathematical beauty and truth",
                 "cover": "https://www.mathematicalgemstones.com/images/site-header-288x998.png",
                 "review": "关于几何表示论的博客，作者是 Maria Monks Gillespie"
+            },
+            {
+                "title": "使用 Pyglet 的“偷懒”OpenGL 入门",
+                "doubanLink": "https://wagtail.cds.tohoku.ac.jp/coda/python/pyglet/",
+                "cover": "https://api.screenshotmachine.com?key=048629&url=https://wagtail.cds.tohoku.ac.jp/coda/python/pyglet/&dimension=480x360",
+                "review": "怎样在 Pyglet 中使用着色器编程的很棒教程"
+            },
+            {
+                "title": "Mathematics of physics",
+                "doubanLink": "https://fgmarcelis.wordpress.com/",
+                "cover": "https://fgmarcelis.wordpress.com/wp-content/uploads/2021/07/klein_quartic_geogebra_dubbel_color_buiten.png"
             }
         ]
     }
