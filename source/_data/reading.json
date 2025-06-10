@@ -119,6 +119,16 @@
                 "title": "Mathematics of physics",
                 "doubanLink": "https://fgmarcelis.wordpress.com/",
                 "cover": "https://fgmarcelis.wordpress.com/wp-content/uploads/2021/07/klein_quartic_geogebra_dubbel_color_buiten.png"
+            },
+            {
+                "title": "Mcmullen's Gallery",
+                "doubanLink": "https://people.math.harvard.edu/~ctm/gallery/index.html",
+                "cover": "https://people.math.harvard.edu/~ctm/photos/cook.cropped.jpg"
+            },
+            {
+                "title": "Gallery of Mathematical Images",
+                "doubanLink": "https://www.dumas.io/gallery/",
+                "cover": "https://www.dumas.io/images/webheader.svg"
             }
         ]
     }

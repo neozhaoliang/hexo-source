@@ -28,3 +28,4 @@
 28. Hexagon lloyd 算法？
 29. Thurston circle packing
 30. Bianchi and polyhedra circle packing
+31. Mcmullen's gallery
