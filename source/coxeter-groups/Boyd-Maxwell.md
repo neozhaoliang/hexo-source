@@ -302,6 +302,7 @@ $$
 
 # 双曲球堆
 
+
 :::{.definition}
 如果非空集合 $\P\subset \S$ 满足对任意 $k\ne k'\in\P$ 有 $(k,k')\leq -1$，则称 $\P$ 是一个**球堆**。
 :::
@@ -366,7 +367,7 @@ $\blacksquare$
 $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 如果上面两个不等号都是严格成立的，则 $u\not\sim k_1+k_2$ 但是 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以至少有一个等号是成立的，即 $u,v$ 之中必有一个与 $k_1+k_2$ 共线，并且 $k_1+k_2$ 是 light-like 的向量。由此可得 $(k_1,k_2)=-1$ 并且 $|C_{k_1}\cap C_{k_2}|\leq1$ 和 $|C_{-k_1}\cap C_{-k_2}|\leq1$ 中至少有一个成立。
 
-如果这两个集合，不妨设为 $C_{k_1}\cap C_{k_2}$，恰好只有一个点。记这个点为 $u$。如果 $u$ 与 $k_1+k_2$ 不共线的话，则必有 $(u,k_1+k_2)>0$，从而 $(u,k_1)$ 和 $(u,k_2)$ 中至少有一个大于 0。不妨设 $a=(u, k_1)>0$，根据 @Pre:perturb，我们可以构造无穷多个 $u'\in C_{k_1}\cap C_{k_2}$，这与 $|C_{k_1}\cap C_{k_2}|=1$ 矛盾。所以 $u$ 必然与 $k_1+k_2$ 共线。$\blacksquare$
+如果这两个集合，不妨设为 $C_{k_1}\cap C_{k_2}$，恰好只有一个点。记这个点为 $u$。如果 $u$ 与 $k_1+k_2$ 不共线的话，则必有 $(u,k_1+k_2)>0$，从而 $(u,k_1)$ 和 $(u,k_2)$ 中至少有一个大于 0。根据 @Pre:contain-time-like 有 $|C_k\cap C_{k'}|=\infty$，矛盾。所以 $u$ 必然与 $k_1+k_2$ 共线。$\blacksquare$
 
 
 ::: {.theorem #thm-sphere-packing}
@@ -381,13 +382,14 @@ $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 $$(w,w)=1-(k_1,k_2)^2\leq0,\quad (w, k)<0,\quad (w, k')\leq0.$$
 我们来证明有 $v\sim w$。若如此，则 $w$ 的某个正倍数 $w'\in\H$，从而由 @Pre:contain-time-like 有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。为此我们只要证明有 $(v,w)\leq0$ 成立即可。利用
 $$(v,w)=(v, k_1) - (v,k_2)(k_1,k_2) = (v-(v,k_2)k_2, k_1).$$
-以及 $u=v-(v, k_2)k_2$，问题转化为证明 $(u,k_1)\leq0$。计算可得
+并记 $u=v-(v, k_2)k_2$，问题转化为证明 $(u,k_1)\leq0$。计算可得
 $$\begin{aligned}
 (u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
-(u,v)&=(u,u)=(v,v)-(v,k_2)^2 <0.
+(u,u)&=(u,v)-(v,k_2)(u,k_2) = (u,v),\\
+(u,v)&=(v,v)-(v,k_2)^2 \leq (v,v)<0.
 \end{aligned}
 $$
-即 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话则 $u'$ 是 time-like 的向量且满足 $(u',k_1)>0$ 和 $(u',k_2)=0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。但根据 @Pre:contain-time-like 这会导致 $|C_{k_1}\cap C_{k_2}|>1$，矛盾。因此 $(u,k_1)\leq0$。
+即 $u$ 是 time-like 的且 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话则 $u'$ 是 time-like 的向量且满足 $(u',k_1)>0$ 和 $(u',k_2)=0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。但根据 @Pre:contain-time-like 这会导致 $|C_{k_1}\cap C_{k_2}|>1$，矛盾。因此 $(u,k_1)\leq0$。
 
 2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。对 $k_1\ne k_2\in\P$，$U=\span\{k_1,k_2\}$ 肯定不是 space-like 的，否则 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，则存在 time-like 的向量 $v$ 满足 $(v,k_1)=(v,k_2)=0$。给 $v$ 乘以适当实数后可以使得 $v\in\H$，从而 $v\in C_{k_1}\cap C_{k_2}$，这与 @Pre:contain-time-like 矛盾。所以 $U$ 不是 space-like 的，即 $|(k_1,k_2)|\geq1$。如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。所以只能是 $(k_1,k_2)\leq-1$，从而 $\P$ 是球堆。
 $\blacksquare$
