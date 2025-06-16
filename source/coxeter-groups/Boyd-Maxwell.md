@@ -316,12 +316,12 @@ $$\H = \{v\in \Q_+\mid (v, e_{n+2})=1\}.$$
 $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 :::
 
-由于 $C_k\subset\Q_+$，因此对任何 $k,k'\in\P$，有 $u\sim v$ 对所有 $u\in C_k,v\in C_{k'}$ 成立。
+根据定义球帽总是位于同一个分支 $\Q_+$ 中，因此 $u\sim v$ 对所有 $u\in C_k,v\in C_{k'}$ 成立。
 
 下面的引理告诉我们，如果 $v$ 严格落在 $C_k$ 的内部，则我们可以稍微“扰动” $v$，得到无限多个落在 $C_k$ 中的 time-like 的向量。
 
 :::{.lemma #perturb}
-设 $\P$ 是球堆，$k\in\P$。设 $v\in C_k$ 满足 $(v,k)=a>0$。则对任何 $t\in(0,a]$，$u=v-tk$ 满足：
+设 $\P$ 是球堆，$k\in\P$。设 $v\in C_k$ 满足 $(v,k)=a>0$。则对任何 $0<t\leq a$，$u=v-tk$ 都满足：
 
 1. $u$ 是 time-like 的并且 $u\sim v$；
 2. $(u,k)>0$。
@@ -335,23 +335,23 @@ $$\begin{aligned}
 (u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
 (u,v)&=(v,v)-at \leq at<0.
 \end{aligned}$$
-即 $u$ 是 time-like 的并且 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in \H$。又因为 $(u,k)=a-t\geq0$，所以 $(u',k)\geq0$，从而 $u'\in C_k$。
+即 $u$ 是 time-like 的并且 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in \H$。又因为 $(u,k)=a-t\geq0$，所以也有 $(u',k)\geq0$，从而 $u'\in C_k$。
 
-进一步，如果存在 $k'\ne k$ 使得 $v\in C_{k'}$，则由于
+如果存在 $k'\ne k\in\P$ 使得 $v\in C_{k'}$，则 $(v,k')\geq0$，从而
 $$(u,k')=(v,k') - t(k,k')\geq t>0.$$
-所以 $u'$ 也属于 $C_{k'}$。$\blacksquare$
+于是 $(u',k')\geq0$，所以 $u'$ 也属于 $C_{k'}$。$\blacksquare$
 
 :::{.lemma #contain-time-like}
 设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。则以下三点等价：
 
 1. $|C_{k_1}\cap C_{k_2}|>1$；
 2. 存在 $v\in C_{k_1}\cap C_{k_2}$ 且 $v$ 是 time-like 的；
-3. 存在 $v\in C_{k_1}\cap C_{k_2}$ 使得不等式 $(v,k_1)\geq0$ 和 $(v,k_2)\geq0$ 至少有一个严格成立。
+3. 存在 $v\in C_{k_1}\cap C_{k_2}$ 使得不等式 $(v,k_1)>0$ 和 $(v,k_2)>0$ 至少有一个成立。
 :::
 
 **证明**：首先由 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$ 可知 $k_1+k_2$ 是 time/light-like 的。
 
-$1\Rightarrow 2$：设 $u\ne v\in C_{k_1}\cap C_{k_2}$，记 $z=u+v$，则 $z$ 是 time-like 的，并且 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
+$1\Rightarrow 2$：设 $u\ne v\in C_{k_1}\cap C_{k_2}$，则 $u,v$ 不共线，从而 $(u,v)<0$。记 $z=u+v$，$z$ 是 time-like 的，并且 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
 
 $2\Rightarrow 3$：设 $v\in C_{k_1}\cap C_{k_2}$ 是 time-like 的，则 $(v,k_1)\geq0,\, (v,k_2)\geq0$。我们断言这两个不等式至少有一个是严格的。若不然，则 $(v,k_1+k_2)=0$。然而 $k_1+k_2$ 是 time/light-like 的，而 $v$ 是 time-like 的，这不可能。
 
@@ -378,9 +378,11 @@ $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $|C_{k_1}\cap C_{k_2}|\leq1$，我们要证明对任何 $k\ne k'\in\P$ 同样有 $|C_k\cap C_{k'}|\leq1$。如果 $\{k,k'\}=\{k_1,k_2\}$ 结论显然成立。所以不妨设 $k\notin\{k_1,k_2\}$。用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。令 $w=k_1-(k_1,k_2)k_2$，则有
+1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $|C_{k_1}\cap C_{k_2}|\leq1$，我们要证明对任何 $k\ne k'\in\P$ 同样有 $|C_k\cap C_{k'}|\leq1$。如果 $\{k,k'\}=\{k_1,k_2\}$ 结论显然成立，所以不妨设 $k\notin\{k_1,k_2\}$。用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。令 $w=k_1-(k_1,k_2)k_2$，则有
 $$(w,w)=1-(k_1,k_2)^2\leq0,\quad (w, k)<0,\quad (w, k')\leq0.$$
-我们来证明有 $v\sim w$。若如此，则 $w$ 的某个正倍数 $w'\in\H$，从而由 @Pre:contain-time-like 有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。为此我们只要证明有 $(v,w)\leq0$ 成立即可。利用
+我们来证明 $v\sim w$。若如此，则 $w$ 的某个正倍数 $w'\in\H$，并且
+$$(w',-k)>0,\quad (w',-k')\geq0.$$
+从而由 @Pre:contain-time-like 有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。由于 $v$ 是 time-like 的，我们只要证明有 $(v,w)\leq0$ 成立即可。利用
 $$(v,w)=(v, k_1) - (v,k_2)(k_1,k_2) = (v-(v,k_2)k_2, k_1).$$
 并记 $u=v-(v, k_2)k_2$，问题转化为证明 $(u,k_1)\leq0$。计算可得
 $$\begin{aligned}
