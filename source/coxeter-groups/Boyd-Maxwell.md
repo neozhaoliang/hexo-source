@@ -303,10 +303,10 @@ $$
 # 双曲球堆
 
 :::{.definition}
-如果非空集合 $\P\subset \S$ 满足对任意 $k\ne k'\in\P$ 有 $(k,k')\leq -1$，则称 $\P$ 是一个**球堆**
+如果非空集合 $\P\subset \S$ 满足对任意 $k\ne k'\in\P$ 有 $(k,k')\leq -1$，则称 $\P$ 是一个**球堆**。
 :::
 
-形如 $\P=\{k,-k\}$ 的球堆是平凡的，因为它由一个球的内部和外部组成。否则称为非平凡球堆。$-\P=\{-k\mid k\in\P\}$ 也是球堆，它是通过翻转 $\P$ 中每个球的内部和外部得到的。
+如果 $\P$ 形如 $\P=\{k,-k\}$，就称 $\P$ 是平凡的，因为它由一个球的内部和外部组成。否则就称 $\P$ 是非平凡球堆。$-\P=\{-k\mid k\in\P\}$ 也是球堆，它是通过翻转 $\P$ 中每个球的内部和外部得到的。
 
 :::{.definition}
 记超平面 $\{v\in V\mid (v,e_{n+2})=1\}$ 与 $\Q_+$ 的“截面”为
@@ -320,7 +320,12 @@ $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 下面的引理告诉我们，如果 $v$ 严格落在 $C_k$ 的内部，则我们可以稍微“扰动” $v$，得到无限多个落在 $C_k$ 中的 time-like 的向量。
 
 :::{.lemma #perturb}
-设 $\P$ 是球堆，$k\in\P$。设 $v\in C_k$ 满足 $(v,k)=a>0$。则对任何 $t\in(0,a]$，$u=v-tk$ 是 time-like 的并且 $u\sim v$，以及 $(u,k)>0$，从而 $u$ 的某个正倍数 $u'\in C_k$。进一步，如果 $k'\ne k\in\P$ 满足 $v\in C_k\cap C_{k'}$，则同样有 $u'\in C_k\cap C_{k'}$。
+设 $\P$ 是球堆，$k\in\P$。设 $v\in C_k$ 满足 $(v,k)=a>0$。则对任何 $t\in(0,a]$，$u=v-tk$ 满足：
+
+1. $u$ 是 time-like 的并且 $u\sim v$；
+2. $(u,k)>0$。
+
+从而 $u$ 的某个正倍数 $u'\in C_k$。进一步，如果 $k'\ne k\in\P$ 满足 $v\in C_k\cap C_{k'}$，则同样有 $u'\in C_k\cap C_{k'}$。
 :::
 
 **证明**：直接计算可得：
@@ -329,10 +334,10 @@ $$\begin{aligned}
 (u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
 (u,v)&=(v,v)-at \leq at<0.
 \end{aligned}$$
-从而 $u$ 是 time-like 的并且 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in \H$。又因为 $(u,k)=a-t\geq0$，所以 $u'$ 也属于 $C_k$。
+即 $u$ 是 time-like 的并且 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in \H$。又因为 $(u,k)=a-t\geq0$，所以 $(u',k)\geq0$，从而 $u'\in C_k$。
 
 进一步，如果存在 $k'\ne k$ 使得 $v\in C_{k'}$，则由于
-$$(u,k')=a - t(k,k')\geq a+t>0.$$
+$$(u,k')=(v,k') - t(k,k')\geq t>0.$$
 所以 $u'$ 也属于 $C_{k'}$。$\blacksquare$
 
 :::{.lemma #contain-time-like}
