@@ -36,25 +36,44 @@ $$\dp{\beta}=\dp{\alpha}+l(w).$$
 :::
 
 :::{.lemma}
-设 $\alpha_s$ 是单根，$\beta\ne\alpha_s$ 是正根，则
-$$\dp{s\beta}=\begin{cases}
-\dp{\beta}-1 & \text{if } (\beta,\alpha_s)>0,\\
-\dp{\beta}   & \text{if } (\beta,\alpha_s)=0.\\
-\dp{\beta}+1 & \text{if } (\beta,\alpha_s)<0.
-\end{cases}$$
+$\preceq$ 是 $\Phi^+$ 上的偏序。
+:::
+
+**证明**：若 $\alpha,\beta\in\Phi^+$ 使得 $\alpha\prec\beta$，则必然有 $\dp{\beta}>\dp{\alpha}$，即 $\preceq$ 是反对称的。我们只要再证明 $\preceq$ 是传递的。
+
+设 $\alpha,\beta,\gamma\in\Phi^+$ 满足 $\alpha\preceq\beta$ 和 $\beta\preceq\gamma$，我们来证明 $\alpha\preceq\gamma$。为此我们设
+$$\begin{aligned}
+\beta &= u\alpha, &\dp{\beta} - \dp{\alpha} = l(u).\\
+\gamma &= v\beta, &\dp{\gamma} - \dp{\beta} = l(v).\\
+\end{aligned}
+$$
+显然 $\gamma=vu\alpha$ 且 $\dp{\gamma}-\dp{\alpha}= l(u)+l(v)$。只要再证明 $l(uv)=l(u)+l(v)$ 即可。
+
+设 $w\in W$ 满足 $w\alpha\in\Phi^-$ 且 $l(w)=\dp{\alpha}$。于是
+$$\gamma=vu\alpha\Rightarrow u^{-1}v^{-1}\gamma=\alpha \Rightarrow wu^{-1}v^{-1}\gamma\in\Phi^-.$$
+从而 $l(wu^{-1}v^{-1})\geq\dp{\gamma}$。
+
+另一方面
+$$l(wu^{-1}v^{-1})\leq l(w)+(l(u)+l(v))=\dp{\alpha}+(\dp{\gamma}-\dp{\alpha})=\dp{\gamma}.$$
+所以 $l(wu^{-1}v^{-1})=\dp{\gamma}$，特别地上式中所有的不等号都是等号，于是 $l(wu^{-1}v^{-1})= l(w)+l(u)+l(v)$，从而必然有 $l(uv)=l(u)+l(v)$。$\blacksquare$。
+
+:::{.lemma}
+设 $\alpha_s$ 是单根，$\alpha\ne\alpha_s$ 是正根，则
+$$\dp{s\alpha}=\begin{cases}\dp{\alpha}-1 & \text{if } (\alpha,\alpha_s)>0,\\\dp{\alpha} & \text{if } (\alpha,\alpha_s)=0.\\\dp{\alpha}+1 & \text{if } (\alpha,\alpha_s)<0.\end{cases}$$
 :::
 
 第二条是显然的，而第三条可以由第一条得出：只要对 $s\alpha$ 应用第一条的结论即可。所以我们只需要证明第一条。
 
-首先取 $w\in W$ 使得 $l(w)=\dp{\beta}$ 且 $w\beta\in\Phi^-$。
+首先取 $w\in W$ 使得 $l(w)=\dp{\alpha}$ 且 $w\alpha\in\Phi^-$。
 
-1. 如果 $w\alpha_s\in\Phi^-$，则 $l(ws)=l(w)-1$。由于 $(ws)(s\beta)=w\beta<0$，所以
-$$\dp{s\beta}\leq l(ws)=l(w)-1.$$
-从而 $\dp{s\beta}=l(w)-1$。
+1. 如果 $w\alpha_s\in\Phi^-$，则 $l(ws)<l(w)$，并且 $ws$ 满足 $(ws)(s\alpha)<0$，所以 $\dp{s\alpha}\leq l(ws)=l(w)-1$，从而 $\dp{s\alpha}=l(w)-1$。
 
-2. 如果 $w\alpha_s\in\Phi^+$，则
-$$w(s\beta)=w(\beta - 2(\beta,\alpha_s)\alpha_s)=w\beta-cw\alpha_s (c>0).$$
-可见 $w(s\beta)$ 是负根。由于 $\beta\ne\alpha_s$ 是不同的正根，所以它们不共线，从而 $w\beta$ 和 $w\alpha_s$ 也不共线，于是上式是两个不共线的负根的和，所以任何单反射不能将 $w(s\beta)$ 变成正根。取 $t\in S$ 使得 $l(tw)<l(w)$，则 $tw(s\beta)$ 仍然是负根，所以 $\dp{s\beta}\leq l(tw)=l(w)-1$，结论仍然得证。$\blacksquare$
+2. 如果 $w\alpha_s\in\Phi^+$，则 $w(s\alpha)$ 是负根，并且
+$$\begin{align*}
+w(s\alpha)&=w(\alpha - 2(\alpha,\alpha_s)\alpha_s)\\
+&=w\alpha-cw\alpha_s (c>0)
+\end{align*}$$
+由于 $\alpha\ne\alpha_s$ 是不同的正根，所以它们不共线，从而 $w\alpha$ 和 $w\alpha_s$ 也不共线，于是上式是两个不共线的负根的和，所以任何单反射不能将 $w(s\alpha)$ 变成正根。取 $t\in S$ 使得 $l(tw)<l(w)$，则 $(tw)(s\alpha)$ 仍然是负根，所以 $\dp{s\alpha}\leq l(tw)=l(w)-1$，结论仍然得证。
 
 :::{.corollary}
 若 $\alpha\preceq\beta$，则存在序列
