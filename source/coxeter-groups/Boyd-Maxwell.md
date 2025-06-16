@@ -415,20 +415,20 @@ $$a = (\alpha_s,v)=\sum_{w\in W_I}(\alpha_s,w(\omega_t))=\sum_{w\in W_I}(w^{-1}(
 $$(w(\alpha_s), \omega_t)=\sum_{i\in I}c_i(\alpha_i, w_t) = c_t\geq0.$$
 我们来选择一个特殊的 $w\in W_I$ 使得 $c_t>0$：由于 $\Gamma$ 是连通的，所以 $\Gamma$ 中存在一条从 $s$ 到 $t$ 的路径 $s\sim s_1\sim\cdots\sim s_m=t$，其中每个 $s_i\,(i\geq1)\in I$  且互不相同。不难验证对 $w=s_m\cdots s_1\in W_I$，$w\alpha_s$ 的系数 $c_t>0$，所以 $a$ 严格大于 0，从而 $\omega_s=v/a\in\tcr$。
 
-$(\omega_s, \omega_s)=0$ 的情形稍微麻烦一些。这时 $\omega_s$ 的正交补 $\omega_s^\bot$ 是 light-like 的，即子图 $\Gamma\setminus\{s\}$ 是仿射的。所以 $\Gamma\setminus\{s\}$ 由一些仿射或者有限的连通成分组成，由于内积是双曲的，有且恰有一个连通成分是仿射的。任取一个实的基本权 $(\omega_t,\omega_t)>0$，分两种情况：
+$(\omega_s, \omega_s)=0$ 的情形稍微麻烦一些。这时 $\omega_s$ 的正交补 $\omega_s^\bot$ 是 light-like 的，即子图 $\Gamma\setminus\{s\}$ 是仿射的。所以 $\Gamma\setminus\{s\}$ 由一些仿射或者有限的连通成分组成，由于内积是双曲的，这些连通成分中有且恰有一个是仿射的。任取一个实的基本权 $(\omega_t,\omega_t)>0\,(t\in I)$，分两种情况：
 
 1. 如果 $\omega_t$ 属于某个有限型的连通成分 $Y$，类似上面的讨论，$v$ 等于 $\omega_s$ 乘以一个正实数，从而 $\omega_s\in\tcr$。
 
-2. 如果 $\omega_t$ 属于某个仿射型的连通成分 $X$，设 $Y=\Gamma\setminus(X\cup\{s\})$ 是 $\Gamma\setminus\{s\}$ 除去 $X$ 以外其它连通成分的并，则 $Y$ 是有限型，并且 $X$ 和 $Y$ 互不连通，从而
+2. 如果 $\omega_t$ 属于某个仿射型的连通成分 $X$，记 $\Gamma_1=X\cup \{s\}$，$Y=\Gamma\setminus\Gamma_1$，则 $Y$ 是有限型，并且 $X$ 和 $Y$ 互不连通，从而
 $$\omega_s = \underbrace{(\omega_s, \omega_s)}_{=0}\alpha_s + \sum_{t\ne s} (\omega_s, \omega_t)\alpha_t=\sum_{t\in X} (\omega_s,\omega_t)\alpha_t + \sum_{t\in Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.$$
 这里 $v_1$ 和 $v_2$ 是正交的。于是
 $$(\omega_s, \omega_s)=0\Rightarrow (v_1+v_2,v_1+v_2)=0\Rightarrow (v_1,v_1) + (v_2,v_2) = 0.$$
-由于 $v_1\in V_X$ 来自不可约仿射型，$v_2\in V_Y$ 来自有限型，所以 $\R v_1=\rad(V_X)$ 并且 $v_2=0$，从而 $\omega_s=v_1$。于是 $\R \omega_s=\rad(V_X)$。从而 $\omega_s$ 表示为 $\{\alpha_i\mid i\in X\}$ 的线性组合时，所有的系数 $(\omega_s,\omega_i)$ 系数都是非零且同号的。我们断言它们都小于 0。实际上在
-$$\omega_s=v_1=\sum_{i\in X} (\omega_s,\omega_i)\alpha_i$$
+由于 $V_X$ 是不可约仿射的，$V_Y$ 是有限的，所以 $v_2=0$，并且 $\R v_1=\rad(V_X)$。从而 $\omega_s=v_1$，并且 $\R \omega_s=\rad(V_X)$。$\omega_s$ 表示为 $\{\alpha_i\mid i\in X\}$ 的线性组合时，所有的系数 $(\omega_s,\omega_i)$ 系数都是非零且同号的。我们断言它们都小于 0。实际上在
+$$\omega_s=\sum_{i\in X} (\omega_s,\omega_i)\alpha_i$$
 两边同时用 $\alpha_s$ 作内积有
-$$1=(\omega_s,\alpha_s)=\sum_{i\in X} (\omega_s, \omega_i)\underbrace{(\alpha_s,\alpha_i)}_{\leq0}.$$
+$$1=\sum_{i\in X} (\omega_s, \omega_i)\underbrace{(\alpha_s,\alpha_i)}_{\leq0}.$$
 所以必须所有 $(\omega_s, \omega_i)<0$。\
-记 $\Gamma_1=X\cup \{s\}$，我们已经看到 $\omega_s\in \span\{\alpha_i\mid i\in X\}$，所以 $\Gamma_1$ 满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件（取 $I=X,\,p=\omega_t,\,\omega_s=\omega_s$ 代入），从而我们得到
+于是 $\Gamma_1$ 满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件（取 $I=X,\,p=\omega_t,\,\omega_s=\omega_s$ 代入），从而我们得到
 $$\omega_s\in\cl{\cone{\bigcup_{w\in W_X}w(\omega_t)}}\subset\tcr.$$
 $\blacksquare$
 
