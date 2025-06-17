@@ -12,6 +12,8 @@ title: "Coxeter 群语言正则的证明"
 \newcommand{\no}{\mathrm{NO}}
 \newcommand{\shlex}{\mathcal{L}}
 \newcommand{\low}{\mathcal{R}}
+\newcommand{\fd}{\mathcal{D}}
+\newcommand{\barfd}{\overline{\mathcal{D}}}
 \DeclareMathOperator{\span}{span}
 
 
@@ -50,11 +52,13 @@ $$\dp{s\beta}=\begin{cases}
 
 1. 如果 $w\alpha_s\in\Phi^-$，则 $l(ws)=l(w)-1$。由于 $(ws)(s\beta)=w\beta<0$，所以
 $$\dp{s\beta}\leq l(ws)=l(w)-1.$$
-从而 $\dp{s\beta}=l(w)-1$。
+从而 $\dp{s\beta}=l(w)-1=\dp{\beta}-1$。
 
 2. 如果 $w\alpha_s\in\Phi^+$，则
 $$w(s\beta)=w(\beta - 2(\beta,\alpha_s)\alpha_s)=w\beta-cw\alpha_s (c>0).$$
-可见 $w(s\beta)$ 是负根。由于 $\beta\ne\alpha_s$ 是不同的正根，所以它们不共线，从而 $w\beta$ 和 $w\alpha_s$ 也不共线，于是上式是两个不共线的负根的和，所以任何单反射不能将 $w(s\beta)$ 变成正根。取 $t\in S$ 使得 $l(tw)<l(w)$，则 $tw(s\beta)$ 仍然是负根，所以 $\dp{s\beta}\leq l(tw)=l(w)-1$，结论仍然得证。$\blacksquare$
+可见 $w(s\beta)$ 是负根。由于 $\beta\ne\alpha_s$ 是不同的正根，所以它们不共线，从而 $w\beta$ 和 $w\alpha_s$ 也不共线，于是上式是两个不共线的负根的和，所以任何单反射不能将 $w(s\beta)$ 变成正根。取 $t\in S$ 使得 $l(tw)<l(w)$，则 $tw(s\beta)$ 仍然是负根，所以
+$$\dp{s\beta}\leq l(tw)=l(w)-1=\dp{\beta}-1.$$
+结论仍然得证。$\blacksquare$
 
 :::{.corollary}
 若 $\alpha\preceq\beta$，则存在序列
@@ -74,6 +78,9 @@ $$\alpha=\alpha_0\preceq\alpha_1\preceq\cdots\preceq\alpha_k=\beta$$
 对 $\alpha,\beta\in\Phi^+$，如果对任何 $w\in W$ 都有 $w\alpha\in\Phi^-\Rightarrow w\beta\in\Phi^-$，我们就称 $\alpha$ 支配 $\beta$，记作 $\alpha\dom\beta$。
 :::
 
+由于 $w\alpha\in\Phi^-$ 等价于 $(w\alpha,\fd)=(\alpha, w^{-1}\fd)<0$，所以这个定义也可以表述为：
+$\alpha\dom\beta$ 当且仅当 $(\alpha, w\fd)<0\Rightarrow (\beta, w\fd)<0$ 对任何 $w\in W$ 成立。即任何落在镜子 $\alpha$ 背面的房间，也必然落在镜子 $\beta$ 的背面。这意味着镜子 $\beta$ 完全挡在镜子 $\alpha$ 和基本区域 $\fd$ 之间，任何从 $\fd$ 出发走到 $\alpha$ 背面的路径都必须先穿过 $\beta$。
+
 :::{.lemma}
 设 $\alpha,\beta\in\Phi^+$ 且 $\alpha\dom\beta$，则：
 
@@ -89,7 +96,7 @@ $$\alpha=\alpha_0\preceq\alpha_1\preceq\cdots\preceq\alpha_k=\beta$$
 
 2. 显然。
 
-3. 只要对 $\dp{\alpha'}=\dp{\alpha}+1$ 进行证明即可。这时存在单反射 $s$ 使得 $\alpha'=s\alpha$，并且 $(\alpha_s,\alpha)<0$。根据 $\alpha\dom\beta$ 和 $(\alpha,\beta)>0$ 说明 $\beta\ne\alpha_s$，从而 $s\beta$ 是正根，从而 $\alpha'=s\alpha\dom s\beta$ 不是极小根。
+3. 只要对 $\dp{\alpha'}=\dp{\alpha}+1$ 进行证明即可。这时存在单反射 $s$ 使得 $\alpha'=s\alpha$，并且 $(\alpha_s,\alpha)<0$。$(\alpha,\beta)>0$ 说明 $\beta\ne\alpha_s$，从而 $s\beta$ 是正根，从而 $\alpha'=s\alpha\dom s\beta$ 不是极小根。
 
 4. $\alpha\dom\beta$ 显然意味着 $\dpa\geq\dp{\beta}$。设 $w\in W$ 使得 $w\alpha=-\alpha_s$ 是某个负的单根，则 $w\beta\in\Phi^-$。注意这时 $w^{-1}\alpha_s=-\alpha<0$，所以 $l(sw)<l(w)$。
 
@@ -101,10 +108,10 @@ $$\alpha=\alpha_0\preceq\alpha_1\preceq\cdots\preceq\alpha_k=\beta$$
 在有限 Coxeter 群中，所有根都是极小根。
 :::
 
-**证明**：设 $w_0$ 是最长元，则 $\alpha\to -w_0(\alpha)$ 置换 $\Phi^+$。我们来验证这个置换保持每个正根的深度不变：若 $w\alpha<0$，则 $w_0w\alpha>0$，从而 $(w_0ww_0)-w_0\alpha<0$，这说明 $\dp{-w_0\alpha}\geq l(w_0ww_0)=l(w)$。对 $-w_0\alpha$ 应用此结论可得 $\dpa\geq\dp{-w_0\alpha}$。从而二者相等。
+**证明**：设 $w_0$ 是最长元，则 $\alpha\to -w_0(\alpha)$ 置换 $\Phi^+$。我们来验证这个置换保持每个正根的深度不变：若 $w\alpha<0$，则 $w_0w\alpha>0$，从而 $(w_0ww_0)(-w_0\alpha)<0$，这说明 $\dp{-w_0\alpha}\leq l(w_0ww_0)=l(w)$。对 $-w_0\alpha$ 应用此结论可得 $\dpa\leq\dp{-w_0\alpha}$。从而二者相等。
 
 另一方面我们来验证它翻转 $\dom$ 这个偏序：若 $\alpha\dom\beta$，则
-$$\begin{align*}
+$$\begin{aligned}
 w\alpha<0&\Rightarrow w\beta<0\\
 &\Downarrow\\
 w\beta > 0&\Rightarrow w\alpha>0\\
@@ -112,7 +119,7 @@ w\beta > 0&\Rightarrow w\alpha>0\\
 ww_0\beta > 0&\Rightarrow ww_0\alpha>0\\
 &\Downarrow\\
 w(-w_0\beta) < 0&\Rightarrow w(-w_0\alpha)<0\\
-\end{align*}$$
+\end{aligned}$$
 即确实有 $-w_0\beta\dom -w_0\alpha$。
 
 :::{.proposition}

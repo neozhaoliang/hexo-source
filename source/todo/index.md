@@ -61,7 +61,7 @@ url: todo
 - Thurston 的圆堆算法
 - Conway's Topograph
 - magicavoxel and magicaCSG
-- matsuba
+- mitsuba
 - Bruhat 树
 - 正二十面体准晶
 - Voxel Turtle
