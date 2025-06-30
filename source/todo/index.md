@@ -75,3 +75,5 @@ url: todo
 - shadertoy 画算术 Coxeter 群 (3, 4, 4), (6, 3, 3)
 - epstein 说的扫描线，gifmaze 能画？
 - Knuth-Bendix 约化，模群和 indra's pearls
+- Python + shader 实现代数曲面
+- knighty 的四维多胞体 frag code
