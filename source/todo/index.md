@@ -77,3 +77,4 @@ url: todo
 - Knuth-Bendix 约化，模群和 indra's pearls
 - Python + shader 实现代数曲面
 - knighty 的四维多胞体 frag code
+- 笛沙格定理 shadertoy
