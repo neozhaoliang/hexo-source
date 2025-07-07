@@ -3,7 +3,42 @@ title: "Todd Kemp 概率论课程笔记"
 date: 2021-03-01
 url: todd-kemp
 ---
-<!-- md texcmd.md -->
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\O}{\Omega}
+\newcommand{\P}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\S}{\mathcal{S}}
+
+\newcommand{\io}{\mathrm{i.o.}}
+\newcommand{\ae}{\mathrm{a.e.}}
+\newcommand{\iid}{\mathrm{i.i.d}}
+
+\newcommand{\du}{\,\mathrm{d}\mu}
+\newcommand{\dv}{\,\mathrm{d}\nu}
+\newcommand{\dx}{\,\mathrm{d}x}
+\newcommand{\dy}{\,\mathrm{d}y}
+
+\newcommand{\triple}{(\Omega,\mathcal{F},\mathbb{P})}
+\newcommand{\Lone}{L^1(\Omega,\mathcal{F},\mathbb{P})}
+
+\newcommand{\ind}{\mathbb{1}}
+
+\newcommand{\ud}[1]{\mu(\mathrm{d}#1)}
+\newcommand{\vd}[1]{\nu(\mathrm{d}#1)}
+\newcommand{\uxuy}{\mu_X\otimes\mu_Y}
+\newcommand{\uxvy}{\mu_X\otimes\nu_Y}
+
+# 0 Banach Tarski
+
+:::{.example}
+**不可测集的例子**：记单位圆 $S^1=\{e^{it},\,t\in\R\}$，子群 $H=\{e^{iq},\,q\in\Q\}$，在每个左陪集 $S^1/H$ 中选择一个代表元组成集合 $E$，则 $E$ 是不可测集合。这是因为 $S^1 = \bigcup_{q\in\Q}Ee^{iq}$ 是可数多个互不相交的集合的并，这些集合两两之间只差乘以一个单位复数，即差一个旋转，所以测度均相等，于是
+$$1 = \sum_{q\in\Q}\mu(E) = \infty\cdot \mu(E)\Rightarrow E\text{ not measuabe.}$$
+:::
+
 # 1.1 Probability Motivation
 
 无要点
@@ -16,7 +51,9 @@ url: todd-kemp
 
 介绍了可测空间，以及测度的定义和基本性质。
 
-> **定义**：设 $\F$ 是一个 $\sigma$- 域，称 $\mu:\ \F\to[0,\infty]$ 是测度，如果对任何可数多个不交并有 $\mu(\uplus_{n=1}^\infty E_n)=\sum_{n=1}^\infty\mu(E_n)$ 成立。
+:::{.definition .unnumbered}
+设 $\F$ 是一个 $\sigma$- 域，称 $\mu:\ \F\to[0,\infty]$ 是测度，如果对任何可数多个不交并有 $\mu(\uplus_{n=1}^\infty E_n)=\sum_{n=1}^\infty\mu(E_n)$ 成立。
+:::
 
 测度的三个基本性质：
 
@@ -32,10 +69,10 @@ url: todd-kemp
 
 这一讲介绍了**有限可加测度**，**预测度 (pre-measure，即域上的可数可加测度)**，**半代数 (semi-algebra)** 等概念。
 
-> **定义 1**：
->
-> 1. 域上的可数可加测度叫做 **预测度**。
-> 2. 域上的有限可加测度叫做 **有限可加测度**。
+:::{.definition .unnumnered}
+1. 域上的可数可加测度叫做 **预测度**。
+2. 域上的有限可加测度叫做 **有限可加测度**。
+:::
 
 > **核心思想**：半代数 $\mathcal{S}$ 上的有限可加测度 $\Rightarrow$ 代数 $\mathcal{A}$ 上的有限可加测度 $\Rightarrow$ 代数 $\mathcal{A}$ 上的可数可加测度 $\Rightarrow$ $\sigma$- 域上的可数可加测度。
 
@@ -44,11 +81,14 @@ url: todd-kemp
 + 单调性、加法等式同可数可加的情形。
 + **超可数可加**：如果 $\{E_n\}_{n=1}^{\infty}$ 是一列不相交的集合，则 $\mu(\uplus_{n=1}^\infty E_n)\geq\sum_{n=1}^\infty\mu(E_n)$。这是由于单调性左边始终是右边部分和的上界。注意这里要求每个 $E_n\in\mathcal{A}$ 以及 $\mu(\uplus_{n=1}^\infty E_n)\in\mathcal{A}$。
 
-> **定义**：一个半代数 $\mathcal{S}$ 是指满足如下条件的集合族：
->
-> 1. $\emptyset\in\mathcal{S}$。
-> 2. 若 $A,\,B\in\mathcal{S}$ 则 $A\cap B\in\mathcal{S}$。
-> 3. 若 $A\in\mathcal{S}$ 则 $A^c$ 可以表示为 $\mathcal{S}$ 中有限多个成员的不交并。
+
+:::{.definition}
+一个半代数 $\mathcal{S}$ 是指满足如下条件的集合族：
+
+1. $\emptyset\in\mathcal{S}$。
+2. 若 $A,\,B\in\mathcal{S}$ 则 $A\cap B\in\mathcal{S}$。
+3. 若 $A\in\mathcal{S}$ 则 $A^c$ 可以表示为 $\mathcal{S}$ 中有限多个成员的不交并。
+:::
 
 半代数 $\mathcal{S}$ 生成一个代数 $\mathcal{A}$：
 $$\mathcal{A}=\{\text{all finite disjoint unions of sets from }\mathcal{S} \}.$$
@@ -69,7 +109,10 @@ $$\mathcal{A}=\{\text{all finite disjoint unions of sets from }\mathcal{S} \}.$$
 
 我们要从有限可加推出可数可加，而有限可加蕴涵了可数**超**可加，所以我们还缺少可数**次**可加。而 $\mathcal{A}(\mathcal{S})$ 上的可数次可加实际上可以由 $\mathcal{S}$ 上的可数次可加给出：
 
-> **引理**：代数 $\mathcal{A}(\mathcal{S})$ 上的有限可加测度 $\mu$ 是可数可加的，**当且仅当它限制在  $\mathcal{S}$ 上是次可数可加的**。这个话需要仔细解释清楚：$\mu$ 在 $\mathcal{S}$ 上次可数可加是指如果 $\{E_n\}$ 是半代数 $\mathcal{S}$ 中互不相交的集合，并且它们的可数并 $\uplus_{n} E_n$ 也在半代数 $\mathcal{S}$ 中，则 $\mu(\uplus_nE_n)\leq\sum_n\mu(E_n)$。
+:::{.lemma .unnumbered}
+代数 $\mathcal{A}(\mathcal{S})$ 上的有限可加测度 $\mu$ 是可数可加的，**当且仅当它限制在  $\mathcal{S}$ 上是次可数可加的**。
+:::
+这个话需要仔细解释清楚：$\mu$ 在 $\mathcal{S}$ 上次可数可加是指如果 $\{E_n\}$ 是半代数 $\mathcal{S}$ 中互不相交的集合，并且它们的可数并 $\uplus_{n} E_n$ 也在半代数 $\mathcal{S}$ 中，则 $\mu(\uplus_nE_n)\leq\sum_n\mu(E_n)$。
 
 **证明概要**：$\Rightarrow$ 是显然的，可数可加必然蕴含次可数可加。
 
@@ -83,7 +126,9 @@ $$\sum_{i=1}^{N_n}\mu(E_i^n\cap E_j)=\mu(A_n\cap E_j).$$
 $$\mu(\uplus_j E_j)=\sum_{j=1}^N\mu(E_j)\leq\sum_{j=1}^N\sum_{n=1}^\infty\mu(A_n\cap E_j)=\sum_{n=1}^\infty\sum_{j=1}^N\mu(A_n\cap E_j)=\sum_{n=1}^\infty\mu(A_n).$$
 即为所证。
 
-> **定理**：由单调右连续的函数 $F$ 给出的半代数 $\mathcal{S}=\{(a,b]\ -\infty\leq a<b\leq\infty\}$ 上的 Stieltjes 测度是次可数可加的，因而由上面引理它给出 $\mathcal{A}(\mathcal{S})$ 上的可数可加测度。
+:::{.theorem .unnumbered}
+由单调右连续的函数 $F$ 给出的半代数 $\mathcal{S}=\{(a,b]\ -\infty\leq a<b\leq\infty\}$ 上的 Stieltjes 测度是次可数可加的，因而由上面引理它给出 $\mathcal{A}(\mathcal{S})$ 上的可数可加测度。
+:::
 
 **Todd-Kemp 的精彩证明讲解**：设 $(a,b]=\uplus_{i=1}^\infty (a_i, b_i]$，我们要证明 $$F(b)-F(a)=\mu((a, b])\leq\sum_{i=1}^\infty\mu((a_i,b_i])=\sum_{i=1}^\infty (F(b_i)-F(a_i)).$$
 我们可以先假设 $a,b$ 都是有限的。
@@ -119,6 +164,27 @@ Todd Kemp 视频里面提到 $\mu^\ast$ 可以用来区别有限可加测度和�
 
 > 1. 如果 $(\mu, \mathcal{A})$ 是预测度，则**在 $\sigma(\mathcal{A})$ 上有 $\mu(E)\leq\mu^\ast(E)$，并且在 $\mathcal{A}$ 上有 $\mu=\mu^\ast$**。
 > 2. 如果 $(\mu, \mathcal{A})$ 是有限可加测度，则**在 $\mathcal{A}$ 上有 $\mu(E)\geq\mu^\ast(E)$**。
+
+# 4.1 Outer Pseudo-Metric
+
+这一节介绍了 Carathéodory 测度扩张定理。设 $(\Omega,\mathcal{A},\mu)$ 是一个预测度空间。即 $\mu$ 是定义在代数 $\mathcal{A}$ 上的可数可加测度。我们将把它扩充为 $\sigma(\mathcal{A})$ 上的可数可加测度。
+
+定义外测度 $\mu^\ast:2^\Omega\to[0,\infty]$ 为
+$$\mu^\ast(E)=\inf\left\{\sum_{n=1}^\infty\mu(A_n):E\subseteq\bigcup_{n=1}^\infty A_n,A_n\in\mathcal{A}\right\}$$
+
+:::{.theorem .unnumbered}
+存在 $\sigma$- 域 $\mathcal{M}\supset\mathcal{A}$ 使得 $\mu^\ast\mid_{\mathcal{M}}$ 是可数可加测度。
+:::
+
+:::{.note}
+Todd Kemp 评论说，$\mathcal{M}$ 最大可以是多大是一个非常深刻的技术问题。
+:::
+
+标准的证明途径是规定
+$$\mathcal{M}=\{E\in\Omega\mid \mu^\ast(T)=\mu^\ast(T\cap E)+\mu^\ast(T\cap E^c),\forall T\in\Omega\}.$$
+
+这里介绍了 Driver 的方法。这个方法稍微有一点缺陷，它要求 $\mu:\mathcal{A}\to[0,\infty)$ 是一个有限测度。稍后也可以扩展到 $\sigma$- 有限测度。在概率论中这足够了。
+
 
 # 5.1 Radon Measures
 

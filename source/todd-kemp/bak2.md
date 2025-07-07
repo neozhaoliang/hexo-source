@@ -5,10 +5,6 @@ url: todd-kemp
 ---
 <!-- md texcmd.md -->
 
-# 0 Banach Tarski
-
-**不可测集的例子**：记单位圆 $S^1=\{e^{it},\,t\in\R\}$，子群 $H=\{e^{iq},\,q\in\Q\}$，在每个左陪集 $S^1/H$ 中选择一个代表元组成集合 $E$，则 $E$ 是不可测集合。这是因为 $S^1 = \bigcup_{q\in\Q}Ee^{iq}$ 是可数多个互不相交的集合的并，这些集合两两之间只差乘以一个单位复数，即差一个旋转，所以测度均相等，于是
-$$1 = \sum_{q\in\Q}\mu(E) = \infty\cdot \mu(E)\Rightarrow E\text{\ is not measuabe.}$$
 
 
 
