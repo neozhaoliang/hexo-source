@@ -69,7 +69,6 @@ url: todo
 - 格点参数化　https://www.shadertoy.com/view/fllXzl
 - 纸壳制作多面体?
 - sl3 shdertoy?
-- shadertoy 里面画 3d 球堆插图？
 - 分形盒子
 - shadertoy 实现 Z^d 齿轮？
 - shadertoy 画算术 Coxeter 群 (3, 4, 4), (6, 3, 3)
