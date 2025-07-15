@@ -18,7 +18,9 @@ $$(x_1^2+y_1^2)(x_2^2+y_2^2)=(x_1x_2-y_1y_2)^2+(x_1y_2+x_2y_1)^2.$$
 1748 年 Euler 发现了如下的 4 平方和等式：
 $$(x_1^2+x_2^2+x_3^2+x_4^2)(y_1^2+y_2^2+y_3^2+y_4^2)=z_1^2+z_2^2+z_3^2+z_4^2.$$
 其中
-$$\begin{align*}&z_1=x_1y_1-x_2y_2-x_3y_3-x_4y_4,\\&z_2=x_1y_2+x_2y_1+x_3y_4-x_4y_3,\\&z_3=x_1y_3+x_3y_1-x_2y_4+x_4y_2,\\&z_4=x_1y_4+x_4y_1+x_2y_3-x_3y_2.\end{align*}$$
+$$\begin{aligned}
+&z_1=x_1y_1-x_2y_2-x_3y_3-x_4y_4,\\&z_2=x_1y_2+x_2y_1+x_3y_4-x_4y_3,\\&z_3=x_1y_3+x_3y_1-x_2y_4+x_4y_2,\\&z_4=x_1y_4+x_4y_1+x_2y_3-x_3y_2.
+\end{aligned}$$
 4 平方和等式说的是在 Hamilton 四元数体中范数仍然是乘性的。1848 年 Cayley 发现了八元数 [^1]，从而导出了类似的 8 平方和等式，当然具体写出来会很复杂，这里就按下不表了。
 
 一般地，如果能在 $n$ 维 Euclidean 空间 $\mathbb{R}^n$ 上定义向量之间的乘法：
@@ -72,5 +74,16 @@ $$ f_1=f_2=2^{\frac{n}{2}-1}.$$
 于是 $2^{\frac{n}{2}-1}\big| n$，设 $n=2^r\cdot s$，其中 $s$ 为奇数，则 $\frac{n}{2}-1\leq r$，从而
 $$ 2^r\leq n\leq 2r+2.$$
 注意 $n$ 是偶数，所以只能是 $n=4,6,8$，这就完成了 Hurwitz 定理的证明。
+
+# 如果范数不是 Euclidean 呢？
+
+我猜你很可能会提出进阶的问题：如果把 Euclidean 范数 $|\cdot|$ 换成一般的（非零）范数 $N$，但是仍然要求 $N(v\times w)=N(v)\cdot N(w)$，那么情况会如何呢？这个时候 "1, 2, 4, 8" 定理仍然成立，但是根据是否存在 $v\ne 0$ 使得 $N(v)=0$，有两种可能：
+
+1. 上面看到的
+$$\mathbb{R}\subset \mathbb{C}\subset \mathbb{H}\subset \mathbb{O}.$$
+对应任何 $v\ne 0$ 都有 $N(v)\ne 0$；
+2. 而另一种可能是
+$$\mathbb{R}\subset \mathbb{R}\times\mathbb{R}\subset\mathrm{Mat}_2(\mathbb{R})\subset \mathbb{O}_s.$$
+其中 $\mathbb{O}_s$ 是可裂八元数 (split octonion)。对后面三个代数，$N$ 形如 $N(a,b)=|a|^2-|b|^2$，其中 $a,b$ 具有相同的维数。
 
 [^1]: [https://en.wikipedia.org/wiki/Octonion#History](https://en.wikipedia.org/wiki/Octonion#History)
