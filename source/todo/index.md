@@ -37,6 +37,8 @@ url: todo
 - quaternions and polytopes
 - 概率论常用结论？单调类、Dynkin...
 - 双曲内积
+- Thurston 圆堆算法，常返与暂态
+- 可裂八元数，G2 与复合代数
 
 # 编程
 
