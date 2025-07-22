@@ -39,6 +39,7 @@ url: todo
 - 双曲内积
 - Thurston 圆堆算法，常返与暂态
 - 可裂八元数，G2 与复合代数
+- 双曲正十二面体怎么算面的配对
 
 # 编程
 
@@ -71,7 +72,7 @@ url: todo
 - 格点参数化　https://www.shadertoy.com/view/fllXzl
 - 纸壳制作多面体?
 - sl3 shdertoy?
-- 分形盒子
+- 会发光的分形盒子
 - shadertoy 实现 Z^d 齿轮？
 - shadertoy 画算术 Coxeter 群 (3, 4, 4), (6, 3, 3)
 - epstein 说的扫描线，gifmaze 能画？
@@ -80,3 +81,5 @@ url: todo
 - knighty 的四维多胞体 frag code
 - 笛沙格定理 shadertoy
 - shadertoy Jigsaw 版本的 monotile
+- Shadertoy 画 Escher circle limit
+- Shadertoy 画乐高小人镜面反射房间
