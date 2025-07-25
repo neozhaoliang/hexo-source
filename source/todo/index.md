@@ -30,7 +30,6 @@ url: todo
 - 蜂巢和 Gauss 整数的关系：https://twitter.com/roice713/status/1497252225785204738?s=20&t=WN0vB5s3eU_riCbC37nWiA
 - stable diffusion 学习
 - 互锁的折纸 origami 正十二面体 | Interlock 多面体
-- hyperbolic billiards and modular group  似乎可以用 compute shader
 - 局部中心极限定理 | 电流与同调 | 改写随机游动
 - quaternions and polytopes
 - 概率论常用结论？单调类、Dynkin...
