@@ -25,8 +25,7 @@ url: todo
 - 正的 Hausdoff 维数意味常返性 http://www.cmat.edu.uy/~lessa/resource/randomwalknotes.pdf
 - 准晶，Faraday 驻波。
 - 连分数，圆堆，Fary。
-- Fulton algebraic curves, Poncelet porism 的代数几何证明和 Jacobi 椭圆函数证明
-- G2 and the rolling ball 是啥回事。
+- Fulton algebraic curves, Poncelet porism 的代数几何证明和 Jacobi 椭圆函数证明。
 - Mobius gear 和 Quaternion 是啥关系，flockaroo 的 shadertoy
 - 蜂巢和 Gauss 整数的关系：https://twitter.com/roice713/status/1497252225785204738?s=20&t=WN0vB5s3eU_riCbC37nWiA
 - stable diffusion 学习
@@ -40,7 +39,7 @@ url: todo
 - Thurston 圆堆算法，常返与暂态
 - 可裂八元数，G2 与复合代数
 - 多连通空间上群作用怎么给出表现
-- Kepler 问题的四维对称性
+- John Baez 李群和四元数讲义, G2 and the rolling ball, Kepler 问题的四维对称性
 
 # 编程
 
