@@ -39,10 +39,11 @@ url: todo
 - 双曲内积
 - Thurston 圆堆算法，常返与暂态
 - 可裂八元数，G2 与复合代数
-- 双曲正十二面体怎么算面的配对
+- 多连通空间上群作用怎么给出表现
 
 # 编程
 
+- shadertoy 里面画 icosahedral 准晶
 - Python + cairo 实现 hyperbolic tiling 矢量绘图库。
 - shadertoy 实现 sphere gears，并解释与 SO3 的表示的关系
 - shaderoty 演示相对论
