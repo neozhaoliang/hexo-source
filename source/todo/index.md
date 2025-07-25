@@ -32,7 +32,6 @@ url: todo
 - 互锁的折纸 origami 正十二面体 | Interlock 多面体
 - hyperbolic billiards and modular group  似乎可以用 compute shader
 - 局部中心极限定理 | 电流与同调 | 改写随机游动
-- 手臂旋转翻面、旋转到底能不能给出反射？
 - quaternions and polytopes
 - 概率论常用结论？单调类、Dynkin...
 - 双曲内积
