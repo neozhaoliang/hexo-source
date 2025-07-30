@@ -55,8 +55,6 @@ url: todo
 - 把 gifmaze 中 hilbert 曲线的例子改成对输入图像生成 hilbert 曲线图
 - 二维随机游动常返，如双曲、Penrose 等的判断。
 - 继续可视化项目系列，可视化复分析 + indra's pearls，可视化 circle packings，可视化双曲空间 (Hee Oh)。
-- 把 creative blocks 改改，渲染 mobius 变换
-- Shadertoy 实现双曲 dodecaheron space
 - Shadertoy 实现 hyperbolic weave
 - 相对论 + 机器猫
 - Faraday 驻波模拟
