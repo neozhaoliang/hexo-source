@@ -80,3 +80,4 @@ url: todo
 - shadertoy Jigsaw 版本的 monotile
 - Shadertoy 画 Escher circle limit
 - Shadertoy 画乐高小人镜面反射房间
+- Klein quartic 曲面上打台球
