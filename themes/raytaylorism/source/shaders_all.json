@@ -1,14 +1,14 @@
 {
  "userName": "neozhaoliang",
- "date": "2025-07-30T03:31:33.450Z",
- "numShaders": 53,
+ "date": "2025-07-30T14:04:30.985Z",
+ "numShaders": 47,
  "shaders": [
   {
    "ver": "0.1",
    "info": {
     "id": "4scfR2",
     "date": "1525866410",
-    "viewed": 41186,
+    "viewed": 41221,
     "name": "Mobius trans in hyper 3-space",
     "description": "This shader is based on Roice Nelson's work at https://www.shadertoy.com/view/MstcWr",
     "likes": 76,
@@ -91,7 +91,7 @@
    "info": {
     "id": "WdGBz3",
     "date": "1607739529",
-    "viewed": 3166,
+    "viewed": 3168,
     "name": "Boyd-Maxwell 2D circle packing",
     "description": "Limit set of rank 4 hyperbolic Coxeter groups, drawn both on the boundary sphere and the stereo-projected plane.",
     "likes": 76,
@@ -149,7 +149,7 @@
    "info": {
     "id": "3sVBWV",
     "date": "1608739422",
-    "viewed": 743,
+    "viewed": 744,
     "name": "Uniform 3D hyperbolic honeycombs",
     "description": "Exploring the fun of hyperbolic geometry with hyperbolic honeycombs. Sorry for the low fps.\nThis is a somewhat simplified version of https://github.com/neozhaoliang/Hyperbolic-Honeycombs/",
     "likes": 12,
@@ -548,7 +548,7 @@
    "info": {
     "id": "7dcXDB",
     "date": "1633863097",
-    "viewed": 1196,
+    "viewed": 1197,
     "name": "Hyperbolic tilings: intro",
     "description": "This is similar to Shane's work https://www.shadertoy.com/view/WlBczG but uses a different approach.",
     "likes": 26,
@@ -582,7 +582,7 @@
    "info": {
     "id": "NstSDs",
     "date": "1634176278",
-    "viewed": 6171,
+    "viewed": 6173,
     "name": "Hyperbolic Group Limit Set",
     "description": "old version of https://www.shadertoy.com/view/WdGBz3",
     "likes": 175,
@@ -706,7 +706,7 @@
    "info": {
     "id": "ss2cz3",
     "date": "1643890479",
-    "viewed": 702,
+    "viewed": 703,
     "name": "Neo three worlds",
     "description": "Motivated by Escher's artwork \"three worlds\", try to combine spherical, Euclidean, hyperbolic geometry in one scene. See three worlds through the mirrors at the same time.",
     "likes": 26,
@@ -863,135 +863,6 @@
   {
    "ver": "0.1",
    "info": {
-    "id": "7tVcRK",
-    "date": "0",
-    "viewed": 0,
-    "name": "Fork Pathtraced neozhaolia 255",
-    "description": "A pathtraced voxel terrain using traversal algorithm.\n\nFeatures:\n- motion blur\n- depth of field\n- antialiasing\n- global illumination\n- reflections",
-    "likes": 0,
-    "published": "Private",
-    "usePreview": 0,
-    "tags": [
-     "3d",
-     "raytracing",
-     "raytracer",
-     "ray",
-     "terrain",
-     "voxels",
-     "raycasting",
-     "voxel",
-     "reflections",
-     "pathtracing",
-     "pathtracer",
-     "path",
-     "traversal"
-    ]
-   },
-   "renderpass": [
-    {
-     "inputs": [],
-     "outputs": [
-      {
-       "id": "4dfGRr",
-       "channel": 0
-      }
-     ],
-     "code": "#define PI 3.141592\n#define TAU 6.283185\n#define SAMPLES 4\n#define ANTIALIAS\n#define MOTION_BLUR\n#define DEPTH_OF_FIELD\n\n#define MAX_BOUNCES 12\n#define MAX_DIST 40.\n\nfloat seed;\n\n// hash functions by Nimitz: https://www.shadertoy.com/view/Xt3cDn\n\nuint hash(uvec2 p) {\n    p = 1103515245U*((p >> 1U)^(p.yx));\n    uint h32 = 1103515245U*((p.x)^(p.y>>3U));\n    return h32^(h32 >> 16);\n}\n\nfloat hash1(inout float seed) {\n    uint n = hash(floatBitsToUint(vec2(seed+=.1,seed+=.1)));\n    return float(n)*(1.0/float(0xffffffffU));\n}\n\nvec2 hash2(inout float seed) {\n    uint n = hash(floatBitsToUint(vec2(seed+=.1,seed+=.1)));\n    uvec2 rz = uvec2(n, n*48271U);\n    return vec2(rz.xy & uvec2(0x7fffffffU))/float(0x7fffffff);\n}\n\nvec3 hash3(inout float seed) {\n    uint n = hash(floatBitsToUint(vec2(seed+=.1,seed+=.1)));\n    uvec3 rz = uvec3(n, n*16807U, n*48271U);\n    return vec3(rz & uvec3(0x7fffffffU))/float(0x7fffffff);\n}\n\nfloat hash31(vec3 p) {\n    p = fract(p*vec3(234.342, 123.432, 432.234));\n    p += dot(p, p+118.432);\n    return fract(p.x*p.y*p.z);\n}\n\nmat2 rot(float a) {\n    float c = cos(a), s = sin(a);\n    return mat2(c, -s, s, c);\n}\n\n// random functions by reinder: https://www.shadertoy.com/view/XlGcWh\n\nvec2 random2D(inout float seed) {\n    vec2 h = hash2(seed) * vec2(1.,TAU);\n    float phi = h.y;\n    float r = sqrt(h.x);\n\treturn r * vec2(sin(phi), cos(phi));\n}\n\nvec3 random3D(inout float seed) {\n    vec3 h = hash3(seed) * vec3(2.,TAU,1.)-vec3(1,0,0);\n    float phi = h.y;\n    float r = pow(h.z, 1./3.);\n\treturn r * vec3(sqrt(1.-h.x*h.x)*vec2(sin(phi), cos(phi)), h.x);\n}\n\nstruct Ray {\n    vec3 o, d; // origin and direction\n};\n\nstruct Camera {\n    vec3 o, d; // origin and direction\n    float z, a; // zoom and aperture\n};\n\n// ray setup function\nRay getRay(vec2 uv, Camera c, float aspect) {\n    float lensRad = c.a * .5;\n    float focDist = length(c.o - c.d);\n    float hh = tan(radians(c.z)*.5);\n    float hw = aspect * hh;\n\n    vec3 f = normalize(c.o - c.d);\n    vec3 s = normalize(cross(vec3(0,1,0), f));\n    vec3 u = cross(f, s);\n    \n    vec3 r = c.o - hw*focDist*s - hh*focDist*u - focDist*f;\n    vec3 h = 2.*hw*focDist*s;\n    vec3 v = 2.*hh*focDist*u;\n    \n    vec2 d = lensRad*random2D(seed);\n    vec3 o = s*d.x + u*d.y;\n    \n    vec3 i = normalize(r + uv.x*h + uv.y*v - c.o - o);\n    \n    return Ray(c.o + o, i);\n}\n\n#define LAMB 0\n#define METAL 1\n\nstruct Material {\n    int type; // metal, lambertian\n    vec3 col; // color of the object\n    float k; // roughness\n};\n\nvec3 intersectPoint(Ray r, vec3 p, vec3 s) {\n    return (p - r.o + .5-.5*s) / r.d;\n}\n\n// intersections function\n\nfloat intersect(Ray r, out vec3 n, out Material mat) {\n    vec3 p = floor(r.o);\n    vec3 m = 1./abs(r.d);\n    \n    vec3 s, q;\n    \n    if (r.d.x < 0.) {s.x = -1.;q.x =    fract(r.o.x);}\n    else {           s.x =  1.;q.x = 1.-fract(r.o.x);}\n    if (r.d.y < 0.) {s.y = -1.;q.y =    fract(r.o.y);}\n    else {           s.y =  1.;q.y = 1.-fract(r.o.y);}\n    if (r.d.z < 0.) {s.z = -1.;q.z =    fract(r.o.z);}\n    else {           s.z =  1.;q.z = 1.-fract(r.o.z);}\n    \n    q *= m;\n    \n    float t = -1.;\n    for (int i = 0; i < 128; i++) {\n        if (q.x < q.y && q.x < q.z) {\n            q.x += m.x;\n            p.x += s.x;\n            t = intersectPoint(r, p, s).x;\n            n = vec3(-sign(r.d.x),0,0);\n        } else if (q.y < q.z) {\n            q.y += m.y;\n            p.y += s.y;\n            t = intersectPoint(r, p, s).y;\n            n = vec3(0,-sign(r.d.y),0);\n        } else {\n            q.z += m.z;\n            p.z += s.z;\n            t = intersectPoint(r, p, s).z;\n            n = vec3(0,0,-sign(r.d.z));\n        }\n        if (p.y*abs(1.*sin(.5*p.y)) < -4.-4.*sin(.35*p.x)*sin(.35*p.z) + 2.5*sin(.5*p.x)*sin(.5*p.z) || p.y < -7. || t > MAX_DIST) {\n            break;\n        }\n    }\n    \n    float v = hash31(p);\n    if (v < .5) {\n        mat = Material(LAMB, vec3(1,.8,.6), 0.);\n    } else if (v > .5) {\n        mat = Material(METAL, vec3(1,.3,.3), 0.);\n    } else {\n        mat = Material(METAL, vec3(.4,.6,1), .5);\n    }\n    if (p.y < -6.) {\n        mat = Material(METAL, vec3(.4,.5,.8), .05);\n    }\n    \n    return t;\n}\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord )\n{\n    vec2 mouse = iMouse.xy / iResolution.xy;\n    \n    vec3 tot = vec3(0);\n    for (int i = 0; i < SAMPLES; i++) {\n    \n        // antialiasing code by Reinder: https://www.shadertoy.com/view/llVcDz\n\n        seed = float(hash(floatBitsToUint(fragCoord)))/float(0xffffffffU)+float(i);\n        \n        #ifdef ANTIALIAS\n        vec2 o = hash2(seed) - .5;\n        #else\n        vec2 o = vec2(0);\n        #endif\n        \n        vec2 uv = (fragCoord + o) / iResolution.xy;\n        \n        #ifdef MOTION_BLUR\n        float time = iTime + .025*(hash1(seed)-.5);\n        #else\n        float time = iTime;\n        #endif\n        time += 10.*mouse.x;\n\n        // setup camera\n        \n        #ifdef DEPTH_OF_FIELD\n        Camera c = Camera(vec3(-.5,6.+2.*cos(time),-8), vec3(0,0,0), 90., .5);\n        #else\n        Camera c = Camera(vec3(-.5,6.+2.*cos(time),-8), vec3(0,0,0), 90., .0);\n        #endif\n        \n        c.o.xz *= rot(.25*sin(time));\n\n        Ray r = getRay(uv, c, iResolution.x/iResolution.y);\n        r.o.x += 5.*cos(time);\n        r.o.z += 7.*time;\n\n        vec3 n;\n        Material mat;\n    \n        vec3 col = vec3(1);\n        \n        // pathtrace\n        \n        for (int i = 0; i < MAX_BOUNCES; i++) {\n            float t = intersect(r, n ,mat);\n            if (t < MAX_DIST) {\n                col *= mat.col;\n                r.o += r.d * t;\n            \n                if (mat.type == LAMB) { // diffuse\n                    r.d = normalize(n + random3D(seed));\n                } else if (mat.type == METAL) { // reflection\n                    r.d = normalize(reflect(r.d, n) + mat.k*random3D(seed));\n                }\n            } else { // sky\n                col *= mix(vec3(1), vec3(.4,.6,1), .5+.5*r.d.y);\n            \n                break;\n            }\n        }\n        \n        col = pow(col, vec3(.4545)); // gamma correction\n        col = smoothstep(0.,1.,col); // exposure\n        \n        // vignetting\n        \n        uv = (fragCoord - .5*iResolution.xy) / iResolution.y;\n        col *= 1.-.2*dot(uv,uv);\n        \n        tot += col;\n    }\n    tot /= float(SAMPLES);\n    \n    // output\n    \n    fragColor = vec4(tot,1.0);\n}",
-     "name": "Image",
-     "description": "",
-     "type": "image"
-    }
-   ]
-  },
-  {
-   "ver": "0.1",
-   "info": {
-    "id": "mtSGzG",
-    "date": "0",
-    "viewed": 0,
-    "name": "Fork Volcano la neozhaolia 497",
-    "description": " Draws the 3d ball packing of the hyperbolic group",
-    "likes": 0,
-    "published": "Private",
-    "usePreview": 0,
-    "tags": [
-     "3d",
-     "fractal",
-     "limitset",
-     "hyperbolicspace",
-     "boydmaxwellballpacking"
-    ]
-   },
-   "renderpass": [
-    {
-     "inputs": [
-      {
-       "id": "4dXGR8",
-       "filepath": "/media/previz/buffer00.png",
-       "type": "buffer",
-       "channel": 0,
-       "sampler": {
-        "filter": "linear",
-        "wrap": "clamp",
-        "vflip": "true",
-        "srgb": "false",
-        "internal": "byte"
-       },
-       "published": 1
-      }
-     ],
-     "outputs": [
-      {
-       "id": "4dfGRr",
-       "channel": 0
-      }
-     ],
-     "code": "void mainImage( out vec4 fragColor, in vec2 fragCoord )\n{\n    vec2 uv = fragCoord/iResolution.xy;\n    vec4 tex = texelFetch(iChannel0, ivec2(gl_FragCoord.xy), 0);\n\tvec3 color = tex.rgb/tex.a;\n    fragColor = vec4(color,1.0);\n}",
-     "name": "Image",
-     "description": "",
-     "type": "image"
-    },
-    {
-     "inputs": [],
-     "outputs": [],
-     "code": "#define PI                 3.1415926535\n#define Iterations         50",
-     "name": "Common",
-     "description": "",
-     "type": "common"
-    },
-    {
-     "inputs": [
-      {
-       "id": "4dXGR8",
-       "filepath": "/media/previz/buffer00.png",
-       "type": "buffer",
-       "channel": 0,
-       "sampler": {
-        "filter": "linear",
-        "wrap": "clamp",
-        "vflip": "true",
-        "srgb": "false",
-        "internal": "byte"
-       },
-       "published": 1
-      }
-     ],
-     "outputs": [
-      {
-       "id": "4dXGR8",
-       "channel": 0
-      }
-     ],
-     "code": "vec4 orbitTrap;\n\nstruct Ball {\n    vec4 data;\n    bool isplane;\n    bool invert;\n};\n\nconst Ball[5] balls = Ball[5] (\n    Ball(vec4(0.12132034, 0.50730594, 2.3483438, 1.014611872354576), false, false),\n    Ball(vec4(0, 1.73205081, 0, 2.449489742783177), false, true),\n    Ball(vec4(0.8660254037844386,  -0.5, 0.0, 0.8660254037844386),  true, false),\n    Ball(vec4(-0.8660254037844386, -0.5, 0.0, 0.8660254037844386), true, false),\n    Ball(vec4(0, 1, 0, 0), true, false)\n);\n\n\nfloat distanceToBall(vec3 p, Ball B) {\n    if (B.isplane)\n        return dot(vec4(p, 1), B.data);\n    else\n        return length(p - B.data.xyz) - B.data.w;\n}\n\nbool try_reflect(inout vec3 p,\n                 in Ball B,\n                 inout float scale,\n                 inout vec4 orb) {\n    if (B.isplane) {\n        float k = dot(vec4(p, 1), B.data);\n        if (k >= 0.)\n            return true;\n        p -= 2.0 * k  * B.data.xyz;\n        return false;\n    }\n    else {\n        vec3 cen = B.data.xyz;\n        float r = B.data.w;\n        vec3 q = p - cen;\n        float d2 = dot(q, q);\n        float k = (r * r) / d2;\n        if ( (k < 1.0 && B.invert) || (k > 1. && !B.invert) )\n            return true;\n\n        orb = min(orb, vec4(abs(p), d2));\n        scale *= k;\n        p = k * q + cen;\n        return false;\n    }\n}\n\nfloat map(inout vec3 p, inout float scale, inout vec4 orb) {\n    orb = vec4(10000.0);\n    for (int i = 0; i < Iterations; i++) {\n        bool cond = true;\n        for (int k = 0; k < 5; k++) {\n            cond = cond && try_reflect(p, balls[k], scale, orb);\n        }\n        if (cond)\n            break;\n    }\n    return abs(p.z);\n}\n\n\nfloat DE(vec3 p) {\n    float DEfactor = 1.;\n    float d = map(p, DEfactor, orbitTrap);\n    return 0.25 * d / DEfactor;\n}\n\n\nvec3 getNormal(vec3 pos, float normalDistance) {\n\tnormalDistance = max(normalDistance * 0.5, 1e-5);\n\tvec3 e = vec3(0.0, normalDistance, 0.);\n\tvec3 n = vec3(\n        DE(pos + e.yxx) - DE(pos - e.yxx),\n\t\tDE(pos + e.xyx) - DE(pos - e.xyx),\n\t\tDE(pos + e.xxy) - DE(pos - e.xxy));\n\t\n    n = normalize(n);\n\treturn n == n ? n : vec3(0.0);\n}\n\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord )\n{\n    vec2 uv = fragCoord/iResolution.xy;\n\tfragColor += vec4(uv, 1., 1);\n}",
-     "name": "Buffer A",
-     "description": "",
-     "type": "buffer"
-    }
-   ]
-  },
-  {
-   "ver": "0.1",
-   "info": {
     "id": "cst3DH",
     "date": "0",
     "viewed": 0,
@@ -1092,54 +963,6 @@
       }
      ],
      "code": "#define PI        3.141592654\n\nmat2 rot2d(float a) {\n    float ca = cos(a), sa = sin(a);\n    return mat2(ca, -sa, sa, ca);\n}\n\nvec2 cmul(vec2 z, vec2 w) {\n    return vec2(\n        z.x * w.x - z.y * w.y,\n        z.x * w.y + z.y * w.x\n    );\n}\n\nvec2 cdiv(vec2 z, vec2 w) {\n    return vec2(\n        z.x * w.x + z.y * w.y,\n        -z.x * w.y + z.y * w.x\n    ) / dot(w, w);\n}\n\nvec2 cconj(vec2 z) {\n    return vec2(z.x, -z.y);\n}\n\nstruct Mobius {\n    vec2 A, B, C, D;\n};\n\nfloat hypot (vec2 z) {\n    float x = abs(z.x);\n    float y = abs(z.y);\n    float t = min(x, y);\n    x = max(x, y);\n    t = t / x;\n    return x * sqrt(1.0 + t * t);\n}\n\n\nfloat e2h(float r) {\n    return 2. * atanh(r);\n}\n\nfloat h2e(float r) {\n    return tanh(0.5 * r);\n}\n\nMobius mobInverse(Mobius m) {\n    return Mobius(\n        m.D, -m.B, -m.C, m.A\n    );\n}\n\nvec2 applyMobius(Mobius m, vec2 z) {\n    return cdiv(cmul(m.A, z) + m.B, cmul(m.C, z) + m.D);\n}\n\nMobius translation(vec2 p) {\n    return Mobius(\n        vec2(1, 0), -p, -cconj(p), vec2(1, 0)\n    );\n}\n\nMobius translation2(vec2 p) {\n    return Mobius(\n        vec2(1, 0), p, cconj(p), vec2(1, 0)\n    );\n}\n\nMobius rotation(float a) {\n    return Mobius(\n        vec2(cos(a), sin(a)), vec2(0), vec2(0), vec2(1, 0)\n    );\n}\n\nMobius composite(Mobius m1, Mobius m2) {\n    vec2 A = cmul(m1.A, m2.A) + cmul(m1.B, m2.C);\n    vec2 B = cmul(m1.A, m2.B) + cmul(m1.B, m2.D);\n    vec2 C = cmul(m1.C, m2.A) + cmul(m1.D, m2.C);\n    vec2 D = cmul(m1.C, m2.B) + cmul(m1.D, m2.D);\n    return Mobius(A, B, C, D);\n}\n\nMobius composite(Mobius m1, Mobius m2, Mobius m3) {\n    return composite(m1, composite(m2, m3));\n}\n\nMobius rotation(vec2 p, float a) {\n    Mobius m1 = translation(-p);\n    Mobius m2 = rotation(a);\n    Mobius m3 = translation(p);\n    return composite(m3, m2, m1);\n}\n\n\nvec2 recGrid(vec2 z, vec2 size) {\n    return mod(z + 0.5 * size, size) - 0.5 * size;\n}\n\nvec2 polarGrid(vec2 z, vec2 size) {\n    float theta = atan(z.y, z.x);\n    float r = e2h(hypot(z));\n    return recGrid(vec2(r, theta), size);\n}\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    vec2 c = vec2(0.2, 0.4);\n    Mobius m = translation(c);\n    vec2 uv = (2. * fragCoord - iResolution.xy) / iResolution.y;\n    uv *= 1.1;\n    vec2 p = uv;\n    vec3 col = vec3(1);\n    \n    if (length(p) < 1.) {\n\n        p = applyMobius(m, p);\n        p = rot2d(iTime / 3.) * p;\n        vec2 polar = polarGrid(p, vec2(.5, PI/6.));\n        float d1 = abs(polar.x);\n        float d2 = abs(polar.y);\n        \n                \n        float K = hypot(vec2(dFdx(e2h(length(p))), dFdy(e2h(length(p)))));\n        d1 /= K * iResolution.y / 2.;\n        \n       \n        \n        float L = hypot(vec2(dFdx(atan(p.y, p.x)), dFdy(atan(p.y, p.x))));\n        d2 /= L * iResolution.y / 2.;\n        \n        float d = hypot(vec2(d1, d2));\n\n        float sf = 2. / iResolution.y;\n        col = mix(col, vec3(0), 1. - smoothstep(0.00, sf, d1 - sf));\n        col = mix(col, vec3(0), 1. - smoothstep(0.00, sf, d2 - sf));\n       \n        col = mix(col, vec3(0), 1. - smoothstep(0.00, sf, d - 4.*sf));\n    }\n    \n    vec2 q = vec2(0.1, 0);\n             \n    q = applyMobius(m, q);\n  \n    col = mix(col, vec3(1, 0, 0), 1. - smoothstep(0.00, 0.01, abs(length(p-q)) - 0.03));\n    col = mix(col, vec3(0), 1. - smoothstep(0.00, 0.01, abs(length(p) - 1.0) - 0.01));\n\n    fragColor = vec4(sqrt(max(col, 0.)), 1.0);\n}",
-     "name": "Image",
-     "description": "",
-     "type": "image"
-    }
-   ]
-  },
-  {
-   "ver": "0.1",
-   "info": {
-    "id": "ddGXDy",
-    "date": "0",
-    "viewed": 0,
-    "name": "my fork Simple & Cheap Die SDF",
-    "description": "A simple SDF for a die with the correct mappings of dots to faces. Although it has a lot of branches, it's cheap in the way that it makes use of symmetries of the dots and faces instead of using loops and arrays of coordinates.",
-    "likes": 0,
-    "published": "Private",
-    "usePreview": 0,
-    "tags": [
-     "sdf",
-     "dice",
-     "die"
-    ]
-   },
-   "renderpass": [
-    {
-     "inputs": [
-      {
-       "id": "XdX3zn",
-       "filepath": "/media/a/488bd40303a2e2b9a71987e48c66ef41f5e937174bf316d3ed0e86410784b919.jpg",
-       "type": "cubemap",
-       "channel": 0,
-       "sampler": {
-        "filter": "mipmap",
-        "wrap": "clamp",
-        "vflip": "false",
-        "srgb": "false",
-        "internal": "byte"
-       },
-       "published": 1
-      }
-     ],
-     "outputs": [
-      {
-       "id": "4dfGRr",
-       "channel": 0
-      }
-     ],
-     "code": "// Fork of \"Simple & Cheap Die SDF\" by fizzer. https://shadertoy.com/view/csySDG\n// 2023-04-15 03:34:19\n\n// Distance to hemisphere-shaped hole in a plane.\nfloat hole(vec3 p, float r)\n{\n    float c = min(0., length(p.xz) - r);\n    return (p.y > 0.) ? length(vec2(c, p.y)) : r - length(p);\n}\n\nfloat sdRoundBox( vec3 p, vec3 b, float r )\n{\n  vec3 q = abs(p) - b;\n  return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0) - r;\n}\n\n// Die SDF.\nfloat die(vec3 p)\n{\n    // Get index of closest face on die, and local point b.\n    vec3 q = abs(p);\n\n    bvec3 dots = sign(p.z) > 0. ? bvec3(false, true, true) : bvec3(true, true, false);\n    vec3 b = p.xzy * sign(p.z);\n\n    if(q.x > q.y && q.x > q.z)\n    {\n        b = p.zxy * sign(p.x);\n        b.z = -b.z;\n        dots = sign(p.x) > 0. ? bvec3(false, true, false) : bvec3(true, true, true);\n    }\n    else if(q.y > q.z)\n    {\n        b = p.zyx * sign(p.y);\n        dots = sign(p.y) > 0. ? bvec3(false, false, true) : bvec3(false, false, false);\n    }\n    \n    // Some parameteric constants.\n    float r = .02, r2 = .04 ,r3 = .13;\n\n    b.y -= .5 - r;\n    \n    float d;\n\n    if(all(not(dots)))\n    {\n        // Special case for side 6.\n        b.x = abs(b.x);\n        b.z = mod(b.z + .3 / 2., .3) - .3 / 2.;\n        d = hole(b - vec3(.2, 0, 0), r3);\n    }\n    else\n    {\n        // The sides other than 6 have reflective symmetry in two lines.\n        if(b.x > -b.z)\n            b.xz = -b.zx;\n\n        if(b.x > b.z)\n            b.xz = b.zx;\n\n        // Thanks to this symmetry, the presence of only three dots account\n        // for all of the sides. So the effective LUT contains 3 bits per face.\n        if(b.z - b.x > .25)\n            d = dots.y ? hole(b - vec3(-1, 0, +1) / 4., r3) : b.y;\n        else if(-b.x - b.z > .25)\n            d = dots.x ? hole(b - vec3(-1, 0, -1) / 4., r3) : b.y;\n        else\n            d = dots.z ? hole(b, r3): b.y;\n    }\n    \n    // Use sdRoundBox to bevel the outer edges of the die.\n    return max(d - r, sdRoundBox(p, vec3(.5) - r2, r2));\n}\n\nfloat dist(vec3 p)\n{\n    return die(p);\n}\n\nvec3 norm(vec3 p)\n{\n    // The usual.\n    vec3 e = vec3(1e-4, 0, 0);\n    float d = dist(p);\n    return normalize(vec3(dist(p + e.xyy), dist(p + e.yxy), dist(p + e.yyx)) - d);\n}\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord )\n{\n    vec2 uv = (fragCoord - iResolution.xy * .5) / iResolution.y;\n\n    // Camera position and target.\n    vec3 campos = vec3(cos(iTime) * 2., sin(iTime / 2.) * 2., sin(iTime) * 2.);\n    \n    if(iMouse.z > 0.)\n    {\n        float u = -iMouse.x / iResolution.x * 6.;\n        float v = -(iMouse.y - iResolution.y / 2.) / iResolution.y * 3.;\n        campos = vec3(cos(u) * 2., v, sin(u) * 2.);\n    }\n    \n    vec3 camtarget = vec3(0);\n\tvec3 ro = campos, rd = normalize(vec3(uv, 1.));\n    \n    // Camera lookat.\n    vec3 w = normalize(camtarget - campos);\n    vec3 u = normalize(cross(vec3(0, 1, 0), w));\n    vec3 v = cross(w, u);\n    rd = mat3(u, v, w) * rd;\n    \n    float t = 0.;\n    for(int i = 0; i < 100; ++i)\n    {\n        float d = dist(ro + rd * t);\n        if(abs(d) < 1e-4 || t > 10.)\n            break;\n        t += d;\n    }\n\n    vec3 rp = ro + rd * t;\n    vec3 col = vec3(.12);\n        \n    if(t < 10.)\n    {\n        // Typical lighting and shading.\n        vec3 l = normalize(vec3(1, 2, 1.5));\n        vec3 n = norm(rp);\n        vec3 baseColour = mix(vec3(0), vec3(1), smoothstep(.01, .02, sdRoundBox(rp, vec3(.38), .1)));\n        vec3 rr = reflect(rd, n);\n        vec3 spec = textureLod(iChannel0, rr, 1.).rgb;\n        vec3 diff = vec3(0.5 + 0.5 * dot(n, l)) + vec3(0.5 + 0.5 * -n.y) * vec3(.1, .1, .2) * 1.5;\n        float fresnel = mix(0.01, .4, pow(clamp(1. + dot(rd, n), 0., 1.), 2.));\n\n        col = mix(baseColour * diff, spec, fresnel);\n    }\n\n    // Output and gamma correction.\n    fragColor = vec4(pow(col, vec3(1. / 2.2)), 1.);\n}",
      "name": "Image",
      "description": "",
      "type": "image"
@@ -1252,129 +1075,6 @@
      "name": "Image",
      "description": "",
      "type": "image"
-    }
-   ]
-  },
-  {
-   "ver": "0.1",
-   "info": {
-    "id": "dtdSD4",
-    "date": "0",
-    "viewed": 0,
-    "name": "3D Kleinian group limit set ",
-    "description": "3D Kleinian group limit set ",
-    "likes": 0,
-    "published": "Private",
-    "usePreview": 0,
-    "tags": [
-     "3d",
-     "raymarching",
-     "fractal",
-     "kleinian",
-     "limitset"
-    ]
-   },
-   "renderpass": [
-    {
-     "inputs": [
-      {
-       "id": "4dXGR8",
-       "filepath": "/media/previz/buffer00.png",
-       "type": "buffer",
-       "channel": 0,
-       "sampler": {
-        "filter": "linear",
-        "wrap": "clamp",
-        "vflip": "true",
-        "srgb": "false",
-        "internal": "byte"
-       },
-       "published": 1
-      }
-     ],
-     "outputs": [
-      {
-       "id": "4dfGRr",
-       "channel": 0
-      }
-     ],
-     "code": "float sigmoid(float t) {\n\tfloat K = 1.0 - 1. / (1.0 + exp(-2.5));\n\tt -= 0.5;\n\tfloat  x = 1./(1.0+exp(-t*5.))-K;\n\treturn x / (1.0 - 2.0*K);\n}\n\n\nvec3 sigmoid3(vec3 t) {\n\treturn vec3(sigmoid(t.x), sigmoid(t.y), sigmoid(t.z));\n}\n\n\nvec4 bloom(vec2 pos, vec2 quality) {\n\tint samples = 9;\n\tvec4 sum = vec4(0);\n\tint diff = (samples - 1) / 2;\n\tvec2 sizeFactor = quality;\n\tfor (int x = -diff; x <= diff; x++) {\n\t\tfloat wx=float(x)/float(diff); wx=1.-wx*wx; wx=wx*wx;\n\t\tfor (int y = -diff; y <= diff; y++) {\n\t\t\tfloat wy=float(y)/float(diff); wy=1.-wy*wy; wy=wy*wy;\n\t\t\tvec2 offset = vec2(x, y) * sizeFactor;\n\t\t\tsum += texture(iChannel0, (pos+offset))*wx*wy;\n\t\t}\n\t}\n\treturn (sum / float(samples * samples)); \n}\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord ) {\n    vec2 uv = fragCoord/iResolution.xy;\n    \n\tvec2 pixelsize = vec2(dFdx(uv.x), dFdy(uv.y)) * 6.58;\n\tvec4 tex = texture(iChannel0, uv);\n\tvec3 col = tex.xyz/ tex.a;\n\tvec4 b = bloom(uv, pixelsize);\n\tb = b / b.w;\n\tcol += 0.7331 * pow(b.xyz, vec3(5.22));\n    fragColor = vec4(col, 1.0);\n}",
-     "name": "Image",
-     "description": "",
-     "type": "image"
-    },
-    {
-     "inputs": [
-      {
-       "id": "4dXGR8",
-       "filepath": "/media/previz/buffer00.png",
-       "type": "buffer",
-       "channel": 0,
-       "sampler": {
-        "filter": "linear",
-        "wrap": "clamp",
-        "vflip": "true",
-        "srgb": "false",
-        "internal": "byte"
-       },
-       "published": 1
-      }
-     ],
-     "outputs": [
-      {
-       "id": "4dXGR8",
-       "channel": 0
-      }
-     ],
-     "code": "void mainImage( out vec4 fragColor, in vec2 fragCoord )\n{\n    // Normalized pixel coordinates (from 0 to 1)\n    vec2 uv = fragCoord/iResolution.xy;\n\n    // Time varying pixel color\n    vec3 col = 0.5 + 0.5*cos(uv.xyx+vec3(0,2,4));\n\n    // Output to screen\n    fragColor = vec4(col,1.0);\n}",
-     "name": "Buffer A",
-     "description": "",
-     "type": "buffer"
-    }
-   ]
-  },
-  {
-   "ver": "0.1",
-   "info": {
-    "id": "dsBfR3",
-    "date": "0",
-    "viewed": 0,
-    "name": "my fork Neo three worlds",
-    "description": "Motivated by Escher's artwork \"three worlds\", try to combine spherical, Euclidean, hyperbolic geometry in one scene. See three worlds through the mirrors at the same time.",
-    "likes": 0,
-    "published": "Private",
-    "usePreview": 0,
-    "tags": [
-     "3d",
-     "escher",
-     "geometry",
-     "tiling",
-     "polyhedra",
-     "hyperbolic",
-     "wythoff"
-    ]
-   },
-   "renderpass": [
-    {
-     "inputs": [],
-     "outputs": [
-      {
-       "id": "4dfGRr",
-       "channel": 0
-      }
-     ],
-     "code": "// Fork of \"Neo three worlds\" by neozhaoliang. https://shadertoy.com/view/ss2cz3\n// 2023-07-21 12:05:54\n\nvec3 get_floor_color(vec2 z) {\n    // Modify P, Q, R to change the tiling\n    const float P = 2.;\n    const float Q = 3.;\n    const float R = 7.;\n    const float cp = cos(PI / P), sp = sin(PI / P);\n    const vec2 mB = vec2(-cp, sp);\n    const float k1 = cos(PI / Q);\n    const float k2 = (cos(PI / R) + cp * k1) / sp;\n    const float rad = 1. / sqrt(k1 * k1 + k2 * k2 - 1.);\n    const vec2 cen = vec2(k1 * rad, k2 * rad);\n    const vec2 v0 = vec2(0, cen.y - sqrt(rad * rad - cen.x * cen.x));\n    const vec2 n_ = vec2(-mB.y, mB.x);\n    const float b_ = dot(cen, n_);\n    const float c_ = dot(cen, cen) - rad * rad;\n    const float k_ = b_ + sqrt(b_ * b_ - c_);\n    const vec2 m0 = k_ * n_;\n\n    vec2 p = square_to_disc(z);\n    vec2 invCtr = vec2(1);\n    float t = 1. / dot(p -invCtr, p - invCtr);\n    p = mix(invCtr, p, t);\n    p.x = -p.x;\n    p = rot2(iTime/12.)*p;\n\n    if (length(p) > 1.)\n        p /= dot(p, p);\n\n    float count = 0.;\n    for (int i = 0; i < MAX_TILING_REFLECTIONS; i++) {\n        if (p.x < 0.) {\n            p.x = -p.x;\n            count += 1.;\n        }\n        float k = dot(p, mB);\n        if (k < 0.) {\n            p -= 2. * k * mB;\n            count += 1.;\n        }\n        \n        float d = length(p - cen) - rad;\n        if (d < 0.) {\n            p -= cen;\n            p *= rad * rad / dot(p, p);\n            p += cen;\n            count += 1.;\n        }\n    }\n    \n    float ln = 1e5, ln2 = 1e5, pnt = 1e5;\n    ln = min(ln, lBox(p, vec2(0), v0, .007));    \n    ln = min(ln, lBox(p, vec2(0), m0, .007));\n    ln = min(ln, length(p - cen) - rad - 0.007);\n\n    ln2 = min(ln2, lBox(p, vec2(0), m0, .007));\n    pnt = min(pnt, length(p - v0)); \n    pnt = min(pnt, length(p - m0)); \n    \n    float sf = 2. / iResolution.y;\n    float rnd = smoothstep(.8, .97, sin(iTime*.5 + count)*.5 + .5);\n        \n    vec3 oCol = .55 + .45*cos(count * PI / 4. + vec3(0, 1, 2));\n    oCol = mix(oCol*.1, clamp(oCol*3.5, 0., 1.), rnd);\n     \n    float pat = smoothstep(0., .25, abs(fract(ln2*50. - .2) - .5)*2. -.2);\n   \n    float sh = clamp(.65 + ln/v0.y*4., 0., 1.);\n    vec3 col = min(oCol*(pat*.2 + .9)*sh, 1.);\n\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, ln));\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, -(ln - BlackRegionSize)));\n\n    pnt -= .032;\n    pnt = min(pnt, length(p) - .032);\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, pnt));\n    \n    rnd = smoothstep(.8, .97, sin(iTime * 1.5)*.5 + .5);\n    vec3 blink = vec3(1.3, 0.25, 0.35);\n    blink = mix(blink * 0.5, blink * 2.2, rnd);\n    col = mix(col, blink, 1. - smoothstep(0., sf, pnt + .02));\n    return col;\n}\n\nvec3 get_ceil_color(vec2 p) {\n    const float P = 3.;\n    const float Q = 3.;\n    const float R = 3.;\n    const float cp = cos(PI / P), sp = sin(PI / P);\n    const float cq = cos(PI / Q), cr = cos(PI / R);\n    const vec2 mB = vec2(-cp, sp);\n    const vec3 mC = vec3(-cr, -(cq + cr * cp) / sp, 1.);\n    const vec2 v0 = vec2(0, -1./mC.y);\n    const float k_ = mB.x / mB.y;\n    const float x_ = 1. / (k_ * mC.y - mC.x);\n    const float y_ = -k_ * x_;\n    const vec2 m0 = vec2(x_, y_);\n    \n    p = rot2(iTime/12.)*p;\n\n    float count = 0.;\n    for (int i = 0; i < MAX_TILING_REFLECTIONS; i++) {\n        if (p.x < 0.) {\n            p.x = -p.x;\n            count += 1.;\n        }\n        float k = dot(p, mB);\n        if (k < 0.) {\n            p -= 2. * k * mB;\n            count += 1.;\n        }\n        \n        k = dot(vec3(p, 1.), mC);\n        if (k < 0.) {\n            p -= 2. * k * mC.xy;\n            count += 1.;\n        }\n    }\n    \n    float ln = 1e5, ln2 = 1e5, pnt = 1e5;\n    //ln = min(ln, lBox(p, vec2(0), v0, .05));    \n    //ln = min(ln, lBox(p, vec2(0), m0, .05));\n    ln = min(ln, lBox(p, v0, m0, .05));\n\n    ln2 = min(ln2, lBox(p, vec2(0), m0, .007));\n    pnt = min(pnt, length(p - v0)); \n    pnt = min(pnt, length(p - m0)); \n    \n    float sf = 2. / iResolution.y;\n    float rnd = smoothstep(.8, .97, sin(iTime + count * PI)*.5 + .5);\n        \n    vec3 oCol = .55 + .45*cos(count * PI / 8. + vec3(0, 1, 2)).yzx;\n    oCol = mix(oCol*.1, clamp(oCol*1.5, 0., 1.), rnd);\n     \n    float pat = smoothstep(0., .25, abs(fract(ln2*15. - .2) - .5)*2. -.2);\n   \n    float sh = clamp(.65 + ln/v0.y*4., 0., 1.);\n    vec3 col = min(oCol*(pat*.2 + .9)*sh, 1.);\n\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, ln));\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, -(ln - BlackRegionSize * 16.)));\n\n    pnt -= .15;\n    pnt = min(pnt, length(p) - .15);\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, pnt));\n    \n    rnd = smoothstep(.4, .5, sin(iTime)*.5 + .5);\n    vec3 blink = vec3(1.3, 0.25, 0.35);\n    blink = mix(blink * 0.5, blink * 2.2, rnd);\n    col = mix(col, blink, 1. - smoothstep(0., sf, pnt + .02));\n    return col;\n}\n\n// distance to the four sides of mirrors \nfloat sdMirror(vec3 p) {\n    vec2 d = RoomSize.xz - abs(p.xz);\n    return min(d.x, d.y);\n}\n\n// the floor and the ceil\nfloat sdFloor(vec3 p) {\n    return RoomSize.y - abs(p.y);\n}\n\n// wood framework\nfloat sdRoomFrame(vec3 p) {\n    return sdBoxFrame(p, RoomSize, vec3(RoomFrameSize));\n}\n\nfloat sdMirrorFrame(vec3 p) {    \n    float d1 = sdBoxFrame(p, RoomSize, WindowFrameSize.xyy);\n    float d2 = sdBoxFrame(p, RoomSize, WindowFrameSize.yxy);\n    float d3 = sdBoxFrame(p, RoomSize, WindowFrameSize.yyx);\n    return min(d1, min(d2, d3));\n}\n\n// polyhedra with faces and edges\nvec2 sdPolyhedra(vec3 p) {\n    p *= RotObj;\n    p = fold_spherical(p);\n    p -= v0S;\n    float d1 = sdPolyhedraFaces(p);\n    float d2 = sdPolyhedraEdges(p);\n    float d = min(d1, d2);\n    float id = d1 < d2 ? 1. : 2.;\n    return vec2(d, id);\n}\n\nfloat sdScene(vec3 p) {\n    float d1 = sdMirror(p);\n    float d2 = sdFloor(p);\n    float d3 = sdRoomFrame(p);\n    float d4 = sdMirrorFrame(p);\n    float d5 = sdPolyhedra(p).x;\n    return min(d1, min(d2, min(d3, min(d4, d5))));\n}\n\nvec3 trace(vec3 pos, vec3 rd) {\n    float h = 1.0;\n    for (int i = 0; i < MAX_TRACE_STEPS; i++) {\n        if (h < PRECISION)\n            break;\n        h = sdScene(pos);\n        pos += rd * min(h, MAX_MARCH_STEP);\n    }\n    return pos;\n}\n\nfloat soft_shadow(vec3 pos, vec3 lp) {\n    const float softness = 16.;\n    const float shadowStartDistance = .1;\n    const int shadowLoopCount = 16;\n\n    vec3 ld = lp - pos;\n    float ldist = max(length(lp), 0.001);\n    ld /= ldist;\n    float epsilon = .001;\n    float t = shadowStartDistance;\n    float h = 1.;\n    float shade = 1.0;\n    for (int i=0; i < shadowLoopCount; i++ ) {\n        if (h < epsilon || t > ldist)\n            break;\n        h = sdScene(pos + ld * t);\n        shade = min(shade, smoothstep(0.0, 1.0, softness*h/t));\n        t += h;\n    }\n    return clamp(shade + 0.25, 0., 1.);\n}\n\nvec3 get_normal(vec3 p) {\n    const vec2 d = vec2(-1, 1) * .001;\n    return normalize(\n            sdScene(p + d.xxx)*d.xxx +\n            sdScene(p + d.yyx)*d.yyx +\n            sdScene(p + d.yxy)*d.yxy +\n            sdScene(p + d.xyy)*d.xyy);\n}\n\nstruct Light {\n    vec3 pos;\n    vec3 col;\n};\n\nLight lights[] = Light[] (\n    Light(vec3(2.5, 2.2, 2.5), vec3(1) * 5.),\n    Light(vec3(-1, -.5, -1), vec3(1)),\n    Light(vec3(-2.5,-1.9,-2.5), vec3(0, .3, 1))\n);\n\nvec4 wallColor(vec3 dir, vec3 nor, vec3 eds) {\n    float d = min3(eds.x, eds.y, eds.z);\n    \n    // Texturing of walls\n    vec3 albedo = texture(iChannel1, vec2(eds.xy * 2.0)).rgb;\n    albedo = pow(albedo, vec3(2.2)) * 0.5;\n    \n    // Simple diffuse lighting\n    float lighting = 0.2 + max(dot(nor, vec3(0.8, 0.5, 0.0)), 0.0);\n    \n    if (dot(dir, nor) < 0.0) {\n        // Outer walls, just add a black line to hide seams\n        float f = clamp(d * 1000.0 - 3.0, 0.0, 1.0);\n        albedo = mix(vec3(0.01), albedo, f);\n        return vec4(albedo * lighting, f);\n    } else {\n        // Inner walls, add fancy lights\n        float m = max3(eds.x, eds.y, eds.z);\n        vec2 a = fract(vec2(d, m) * 40.6) - 0.5;\n        float b = 1.0 - sqrt(dot(a, a));\n        b = 0.2 / (dot(a, a) + 0.2);\n        \n        float lightShape = 1.0 - clamp(d * 100.0 - 2.0, 0.0, 1.0);\n        lightShape *= b;\n        \n        vec3 emissive = vec3(3.5, 1.8, 1.0);\n        return vec4(mix(albedo * lighting, emissive, lightShape), 0.0);\n    }\n\treturn vec4(1.0);\n}\n\n\nvoid ray_bounce(in vec3 p,\n                in vec3 rd,\n                out vec3 diffuse,\n                out vec3 ref_dir,\n                out vec3 bounceTint,\n                in vec3 normal) {\n\n    vec3 bCol = vec3(0);\n    for( int i=0; i < lights.length(); i++ ) {\n        vec3 ld = lights[i].pos - p;\n        float ldist = max(length(ld), 0.001);\n        ld /= ldist;\n        float diff = max(0., dot(normal, ld));\n        float at = 1.5 / (1. + ldist * 0.3 + ldist * ldist * 0.1);\n        float sh = soft_shadow(p, lights[i].pos);\n        bCol += lights[i].col * sh * (.2 + diff) * at;\n    }\n    // ambient light\n    vec3 ao = vec3(.03,.05,.07);\n    // sample SDF to approximate occlusion\n    ao *= exp2(min(0., sdScene(p + normal * 0.3) / 0.3 - 1.));\n    ao *= exp2(min(0., sdScene(p + normal * .15) / .15 - 1.));\n    ao *= exp2(min(0., sdScene(p + normal * .07) / .07 - 1.));\n    bCol += ao;\n    \n    // https://www.shadertoy.com/view/tlBGR1\n    vec3 albedo = vec3(.3,.5,.6) * .4;\n    vec4 specLevel = vec4(0.9, 0.9, 0.9, 1);\n\n    float d1 = sdMirror(p);\n    float d2 = sdFloor(p);\n    float d3 = sdRoomFrame(p);\n    float d4 = sdMirrorFrame(p);\n    vec2 sdPoly = sdPolyhedra(p);\n    float d5 = sdPoly.x, id = sdPoly.y;\n    float d = min(d1, min(min(d2, d3), min(d4, d5)));\n    \n    if (d == d3) {  // room frame\n        albedo = vec3(.25);\n        specLevel = vec4(0.08);\n    }\n    else if (d == d4) {  // mirror border\n        albedo = vec3(0.01);\n        specLevel = vec4(0.2, 0.2, 0.2, 1.);\n    }\n    else if (d == d5) {  // polyhedra\n        if (id == 2.) {  // polyhedra edges\n            albedo = vec3(0.15, 0.3, 0.8);\n            specLevel = vec4(vec3(0.05), 1.);\n        }\n        else {  // polyhedra faces\n            specLevel = vec4(0.7);\n        }\n    }\n    else if (d == d2) {  // floor and ceil\n        vec2 uv = p.xz;\n        albedo = p.y < 0. ? get_floor_color(uv / (RoomSize.x - RoomFrameSize))\n                          : get_ceil_color(uv * 2.);\n        float ior = 1.33;\n        float schlick = pow((ior - 1.) / (ior + 1.), 2.);\n\t    specLevel = vec4(vec3(schlick), 1);\n    \tspecLevel *= mix(.2, .7, p.x);\n    \tnormal = normalize(normal + (texture(iChannel0, vec2(p.xz) /2.).rgb - .5) * .005);\n    }\n    \n    float fresnel = pow(dot(normal, rd) + 1., 5.);\n    vec3 spec = mix(specLevel.xyz, specLevel.www, fresnel);\n    \n    bounceTint = spec;\n    diffuse = albedo * (vec3(1) - spec) * bCol;\n    ref_dir = reflect(rd, normal);\n}\n\nvec3 get_ray_color(vec3 ro, vec3 rd) {\n    vec3 pos = ro;\n    vec3 tint = vec3(1);\n\n    vec3 col = vec3(0);\n    for (int i = 0; i < MAX_RAY_BOUNCES; i++) {\n        pos = trace(pos, rd);\n        vec3 normal = get_normal(pos);\n        vec3 bounceTint, diffuse;\n        ray_bounce(pos, rd, diffuse, rd, bounceTint, normal);\n        pos += normal * PRECISION * 2.;\n        col += diffuse * tint;\n        tint *= bounceTint;\n        if (length(tint) < .01)\n            break;\n    }\n    return col;\n}\n\nmat3 camera_matrix(vec3 eye, vec3 lookat, vec3 up) {\n    vec3 forward = normalize(lookat - eye);\n    vec3 right = normalize(cross(forward, up));\n    up = normalize(cross(right, forward));\n    return mat3(right, up, -forward);\n}\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord ) {\n    init_spherical();\n\n    vec2 uv = (2. * fragCoord - iResolution.xy) / iResolution.y;\n    vec2 movement = vec2(iTime * 0.2, sin(iTime * 0.2) * 0.5);\n    vec3 eye = 2.5 * vec3(\n        cos(movement.x) * cos(movement.y),\n        0.5*sin(movement.y),\n        sin(movement.x) * cos(movement.y));\n    eye += vec3(1, 0.3, 1) * cos(vec3(0.75, 0.3, 0.2) * iTime);\n   \n    vec2 mouse = vec2(0);\n    if (iMouse.x > 0.) {\n        mouse = 2. * iMouse.xy / iResolution.y - 1.;\n        eye = rot_y(mouse.x) * rot_x(mouse.y) * eye;\n    }\n    vec3 lookat = vec3(0);\n    vec3 up = vec3(0, 1, 0);\n    mat3 M = camera_matrix(eye, lookat, up);\n    \n    vec3 ray = M * normalize(vec3(uv, -2.));\n    vec3 col = get_ray_color(eye, ray);\n    fragColor = vec4(clamp(sqrt(col), 0., 1.), 1.);\n}",
-     "name": "Image",
-     "description": "",
-     "type": "image"
-    },
-    {
-     "inputs": [],
-     "outputs": [],
-     "code": "#define PI  3.141592654\n#define BlackRegionSize  0.03\n#define L2(x)  dot(x, x)\n#define RotObj  rot_x(iTime/2.)*rot_z(iTime/3.)\n#define PolyhedraEdgeSize  0.02\n#define PolyhedraFaceOffset  0.\n#define RoomSize  vec3(5, 2.5, 5)\n#define RoomFrameSize  0.5\n#define WindowFrameSize vec2(RoomFrameSize*1.2, 0)\n#define MAX_TILING_REFLECTIONS 12\n#define MAX_TRACE_STEPS  128\n#define MAX_RAY_BOUNCES  15\n#define PRECISION        1e-3\n#define MAX_MARCH_STEP   1.0\n#define min3(x, y, z)     (min(x, min(y, z)))\n#define max3(x, y, z)     (max(x, max(y, z)))\n\n\nconst vec3 pqr_wythoff = vec3(5, 2, 3);\nconst vec3 bary = vec3(1, 1, 1);\n\nmat3 matS, triS;\nvec3 v0S;\n\nvoid init_spherical() {\n    vec3 c = cos(PI / pqr_wythoff);\n    float sp = sin(PI / pqr_wythoff.x);\n    vec3 m1 = vec3(1, 0, 0);\n    vec3 m2 = vec3(-c.x, sp, 0);\n    float x3 = -c.z;\n    float y3 = -(c.y + c.x*c.z)/sp;\n    float z3 = sqrt(1.0 - x3*x3 - y3*y3);\n    vec3 m3 = vec3(x3, y3, z3);\n    matS = mat3(m1, m2, m3);\n    triS[0] = normalize(cross(m2, m3));\n    triS[1] = normalize(cross(m3, m1));\n    triS[2] = normalize(cross(m1, m2));\n    v0S = normalize(bary * inverse(matS));\n}\n\nvec3 fold_spherical(vec3 p) {\n    for (int i = 0; i < 5; i++)\n    for (int j = 0; j < 3; j++) {\n        p -= 2. * min(dot(p, matS[j]), 0.) * matS[j];\n    }\n    return p;\n}\n\nvec3 tex3D(sampler2D tex, in vec3 p, in vec3 n ) {\n    n = max(n * n, 0.001);\n    n /= (n.x + n.y + n.z ); \n\treturn (\n        texture(tex, p.yz) * n.x +\n        texture(tex, p.zx) * n.y +\n        texture(tex, p.xy) * n.z\n    ).xyz;\n}\n\nmat2 rot2(in float a) {\n    float c = cos(a), s = sin(a); return mat2(c, -s, s, c);\n}\n\nmat3 rot_x(in float t) {\n    float cx = cos(t), sx = sin(t);\n    return mat3(1., 0,  0, \n                0, cx, sx,\n                0, -sx, cx);\n}\n\nmat3 rot_y(in float t) {\n    float cy = cos(t), sy = sin(t);\n    return mat3(cy, 0, -sy,\n                0, 1., 0,\n                sy, 0, cy);\n}\n\nmat3 rot_z(in float t) {\n    float cz = cos(t), sz = sin(t);\n    return mat3(cz, -sz, 0.,\n                sz, cz, 0.,\n                0., 0., 1.);\n}\n\nfloat sBox(in vec2 p, in vec2 b) {\n    vec2 d = abs(p) - b;\n    return min(max(d.x, d.y), 0.) + length(max(d, 0.));\n}\n\nfloat lBox(vec2 p, vec2 a, vec2 b, float ew) {\n    float ang = atan(b.y - a.y, b.x - a.x);\n    p = rot2(ang)*(p - mix(a, b, .5));\n\n    vec2 l = vec2(length(b - a), ew);\n    return sBox(p, (l + ew)/2.) ;\n}\n\n// https://www.shadertoy.com/view/3ljcRh\n// I changed e to vec3 so it works for non-uniform edge size\nfloat sdBoxFrame(vec3 p, vec3 b, vec3 e) {\n    p = abs(p) - b;\n    vec3 q = abs(p + e) - e;\n    return min(min(\n        length(max(vec3(p.x,q.y,q.z),0.0))+min(max(p.x,max(q.y,q.z)),0.0),\n        length(max(vec3(q.x,p.y,q.z),0.0))+min(max(q.x,max(p.y,q.z)),0.0)),\n        length(max(vec3(q.x,q.y,p.z),0.0))+min(max(q.x,max(q.y,p.z)),0.0));\n}\n\nfloat sdPolyhedraEdges(vec3 p) {\n    float d = 1e5;\n    for (int i = 0; i < 3; i++) {\n        d = min(d, L2(p - min(0., dot(p, matS[i])) * matS[i]));\n    }\n\treturn sqrt(d) - PolyhedraEdgeSize;\n}\n\nfloat sdPolyhedraFaces(vec3 p) {\n   return max(dot(p, triS[0]), max(dot(p, triS[1]), dot(p, triS[2]))) - PolyhedraFaceOffset;\n}\n\n//complex multiplication\nvec2 cMul(vec2 a, vec2 b) {\n\treturn vec2(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x);\n}\n\n// complex inverse \nvec2 cDiv( vec2 a, vec2 b ) {\n  float d = dot(b, b);\n  return vec2(dot(a, b), a.y*b.x - a.x*b.y ) / d;\n}\n\n// complex inverse \nvec2 cInv(vec2 a) {\n\treturn vec2(a.x, -a.y) / dot(a, a);\n}\n\n// code below taken from @mla's https://www.shadertoy.com/view/Mlsfzs\nvoid sncndn(float u, float k2,\n            out float sn, out float cn, out float dn) {\n    float emc = 1.0 - k2;\n    float a = 1.0, b, c;\n    const int N = 4;\n    float em[N], en[N];\n    dn = 1.0;\n    for (int i = 0; i < N; i++) {\n        em[i] = a;\n        emc = sqrt(emc);\n        en[i] = emc;\n        c = 0.5*(a + emc);\n        emc *= a;\n        a = c;\n    }\n\n    u = c*u;\n    sn = sin(u);\n    cn = cos(u);\n    if (sn != 0.0) {\n        a = cn / sn;\n        c *= a;\n        for(int i = N - 1; i >= 0; i--) {\n            b = em[i];\n            a *= c;\n            c *= dn;\n            dn = (en[i] + a) / (b + a);\n            a = c/b;\n        }\n        a = 1.0 / sqrt(c*c + 1.0);\n        if (sn < 0.0)\n            sn = -a;\n        else\n            sn = a;\n        cn = c * sn;\n    }\n}\n\nvec2 cn(vec2 z, float k2) {\n  float snu, cnu, dnu, snv, cnv, dnv;\n  sncndn(z.x, k2, snu, cnu, dnu);\n  sncndn(z.y, 1.0-k2, snv, cnv, dnv);\n  return vec2(cnu * cnv, -snu*dnu*snv*dnv) / (1. - dnu*dnu*snv*snv);\n}\n\nvec2 square_to_disc(vec2 z) {     \n    z = cDiv(z, vec2(1));\n    z -= vec2(1, 0);\n    z *= 1.854;\n    z = cn(z, 0.5);\n    z = cMul(z, vec2(0.70711));\n    return z;\n}",
-     "name": "Common",
-     "description": "",
-     "type": "common"
     }
    ]
   },
@@ -1621,37 +1321,6 @@
       }
      ],
      "code": "/*\nhttps://been-jamming.github.io/topographs/\n*/\n#define debug_mirrors\n\n// comment out this to see the initial pattern\n//#define enableMouseInversion\n\n// change to Klein model\n//#define KleinModel\n\n// set inf = 1.0 for paracompact tiling\n// set inf > 1.0 for noncompact tiling\n#define inf       1.0\n\n#define PI\t\t  3.14159265\n#define TAU\t      6.28318531\n#define MAX_ITER  30\n\n\n// the smaller this value, the larger the black area\n#define BlackRegionSize   0.065\n\n// the first entry in PQR must be finite, other two entries can be either finite or infinite\n// for example (3, inf 4), (3, 4, inf), etc\nconst vec3 PQR = vec3(2, 3, inf);\n\n\n// reflection mirrors\nvec2 A, B;\nvec3 C;\n\n// two vertices of the fundamental triangle, the 3rd one is the origin\nvec2 v0, m0;\n\n// count the total number of reflections\nfloat count;\n\n// compute cos(PI / x) using Vinberg's convention for inf.\nfloat dihedral(float x) { return x == inf ? inf : cos(PI / x); }\n\nmat2 rot2(in float a){ float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }\n\n\nvoid init() {\n\n    float cAB = dihedral(PQR.x);\n    float sAB = sqrt(1. - cAB*cAB);\n    \n\tA = vec2(1, 0);\n    B = vec2(-cAB, sAB);\n    \n    float cAC = dihedral(PQR.y);\n    float cBC = dihedral(PQR.z);\n    \n    float k1 = cAC;\n    float k2 = (cBC + cAB*cAC) / sAB;\n    float r = 1. / sqrt(k1*k1 + k2*k2 - 1.);\n    \n    C = vec3(k1, k2, 1.)*r;\n    \n    if (r*r >= C.x*C.x)\n        v0 = vec2(0., C.y - sqrt(r*r - C.x*C.x));\n    else\n        v0 = vec2(0, 1);\n        \n    vec2 n = vec2(-B.y, B.x);\n    float b = dot(C.xy, n);\n    float c = dot(C.xy, C.xy) - r*r;\n    float k = -1.0;\n    \n    if (b*b >= c)\n        k = b + sqrt(b*b-c);\n    \n    m0 = k*n;\n}\n\n\nbool try_reflect(inout vec2 p, vec2 mirror, inout float count) {\n    float k = dot(p, mirror);\n    if (k >= 0.)\n        return true;\n    p -= 2. * k  * mirror;\n    count += 1.;\n    return false;\n}\n\n\nbool try_reflect(inout vec2 p, vec3 sphere, inout float count) {\n    vec2 cen = sphere.xy;\n    float r = sphere.z;\n    float d = length(p - cen) - r;\n    if (d >= 0.)\n        return true;\n    p -= cen;\n    p *= r * r/ dot(p, p);\n    p += cen;\n    count += 1.;\n    return false;\n}\n\n\nvoid fold(inout vec2 p, inout float count) {\n    count = 0.;\n    for (int k = 0; k < MAX_ITER; k++) {\n        try_reflect(p, A, count);\n        try_reflect(p, B, count);\n        try_reflect(p, C, count);\n    }\n}\n\n\nfloat sBox(in vec2 p, in vec2 b) {\n    vec2 d = abs(p) - b;\n    return min(max(d.x, d.y), 0.) + length(max(d, 0.));\n}\n\n\nfloat lBox(vec2 p, vec2 a, vec2 b, float ew) {\n    float ang = atan(b.y - a.y, b.x - a.x);\n    p = rot2(ang)*(p - mix(a, b, .5));\n\n    vec2 l = vec2(length(b - a), ew);\n    return sBox(p, (l + ew)/2.) ;\n}\n\n\nvec2 mouseInversion(vec2 p) {\n    vec2 m = vec2((2.*iMouse.xy - iResolution.xy)/iResolution.y);\n    if(length(m) < 1e-3) m += 1e-3; \n    if(abs(m.x)>.98*.7071 || abs(m.y)>.98*.7071) m *= .98;\n\n    float k = 1./dot(m, m);\n    vec2 invCtr = k*m;\n    float t = (k - 1.)/dot(p -invCtr, p - invCtr);\n    p = t*p + (1. - t)*invCtr;\n    p.x = -p.x;\n    return p;    \n}\n\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord ) {\n    vec2 uv = (2.*fragCoord - iResolution.xy)/iResolution.y;\n    uv *= 1.05;\n    vec2 p = uv;\n    \n#ifdef enableMouseInversion\n    p = mouseInversion(p);\n    p = rot2(iTime/16.)*p;\n#endif\n\n    init();   \n    \n    if(length(p)> 1.)\n        p /= dot(p, p);\n        \n#ifdef KleinModel\n    p = p / (1. + sqrt(1. - dot(p, p)));\n#endif\n  \n    fold(p, count);\n    \n    float ln = 1e5, ln2 = 1e5, pnt = 1e5;\n    ln = min(ln, lBox(p, vec2(0), v0, .007));    \n    //ln = min(ln, lBox(p, vec2(0), m0, .007));\n    //ln = min(ln, length(p-C.xy) - C.z - 0.007);\n\n    ln2 = min(ln2, lBox(p, vec2(0), m0, .007));\n    pnt = min(pnt, length(p - v0)); \n    pnt = min(pnt, length(p - m0)); \n    \n    float ssf = (2. - smoothstep(0., .25, abs(length(uv) - 1.) - .25));\n    float sf = 2./iResolution.y*ssf;\n        \n    vec3 oCol = .55 + .45*cos(count*TAU / 8. + vec3(0, 1, 2));\n    float pat = smoothstep(0., .25, abs(fract(ln2*50. - .2) - .5)*2. -.2);\n    float sh = clamp(.65 + ln/v0.y*4., 0., 1.);\n    \n    vec3 col = min(oCol*(pat*.2 + .9)*sh, 1.);\n    \n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, ln));\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, -(ln - BlackRegionSize)));\n\n    pnt -= .032;\n    //pnt = min(pnt, length(p) - .032);\n    col = mix(col, vec3(0), 1. - smoothstep(0., sf, pnt));\n    col = mix(col, vec3(1, .8, .3), 1. - smoothstep(0., sf, pnt + .02));\n    \n    vec3 bg = vec3(1, .2, .4);\n    bg *= .7*(mix(col, vec3(1)*dot(col, vec3(.299, .587, .114)), .5)*.5 + .5);\n    pat = smoothstep(0., .25, abs(fract((uv.x - uv.y)*43. - .25) - .5)*2. -.5);\n    bg *= max(1. - length(uv)*.5, 0.)*(pat*.2 + .9);\n    \n    float cir = length(uv);\n    col = mix(col, vec3(0), (1. - smoothstep(0., sf*10., abs(cir - 1.) - .05))*.7);\n    col = mix(col, vec3(0), (1. - smoothstep(0., sf*2., abs(cir - 1.) - .05)));\n    col = mix(col, vec3(.9) + bg, (1. - smoothstep(0., sf, abs(cir - 1.) - .03)));\n    col = mix(col, col*max(1. - length(uv)*.5, 0.), (1. - smoothstep(0., sf, -cir + 1.05)));\n    col = mix(col, bg, (1. - smoothstep(0., sf, -cir + 1.05)));\n    \n    col = mix(col, vec3(0), (1. - smoothstep(0., sf, abs(cir - 1.035) - .03))*.8);\n    col = mix(col, 1. - exp(-col), .35);\n\n#ifdef debug_mirrors\n    col = mix(col, vec3(1, 0, 0), 1. - smoothstep(0., 0.01, abs(dot(uv, A)) - 0.01));\n    col = mix(col, vec3(1, 0, 0), 1. - smoothstep(0., 0.01, abs(dot(uv, B)) - 0.01));\n    col = mix(col, vec3(1, 0, 0), 1. - smoothstep(0., 0.02, abs(length(uv-C.xy) - C.z))-0.01);\n#endif\n\n    fragColor = vec4(sqrt(max(col, 0.)), 1.);\n}",
-     "name": "Image",
-     "description": "",
-     "type": "image"
-    }
-   ]
-  },
-  {
-   "ver": "0.1",
-   "info": {
-    "id": "lXKGDK",
-    "date": "0",
-    "viewed": 0,
-    "name": "压缩映射 3D 分形",
-    "description": "3d",
-    "likes": 0,
-    "published": "Private",
-    "usePreview": 0,
-    "tags": [
-     "3d"
-    ]
-   },
-   "renderpass": [
-    {
-     "inputs": [],
-     "outputs": [
-      {
-       "id": "4dfGRr",
-       "channel": 0
-      }
-     ],
-     "code": "// Rodrigues' rotation formula\n#define R(p,a,r) mix(a*dot(p,a),p,cos(r))+sin(r)*cross(p,a)\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord)\n{\n    vec3 col = vec3(0);\n    float zoom = 0.0;\n    for(float k=1.0; k<100.0; k+=1.0) {\n       vec2 uv = (fragCoord - 0.5*iResolution.xy) / iResolution.y;\n       vec3 p = zoom * vec3(uv, 1.0);\n       p.z -= 1.0;\n       p = R(p,normalize(vec3(1,3,3)), iTime*.2);\n       float s = 3.0;\n       for (int i=0; i<5;i++) {\n            float e = 1.0 / min(1.0, dot(p, p));\n            s *= e;\n            p = abs(p) * e - 1.5;\n       }\n       float d = length(p.xy) / s;\n       zoom += d;\n       col += (cos(zoom * 6.28 + vec3(0, 22, 21)) * 0.24 + 0.56)\n               * float(d < 0.001) / k ;\n    }\n    fragColor = vec4(col, 1.0);\n}",
      "name": "Image",
      "description": "",
      "type": "image"
@@ -2051,43 +1720,6 @@
   {
    "ver": "0.1",
    "info": {
-    "id": "3cf3Ws",
-    "date": "0",
-    "viewed": 0,
-    "name": "Fork Extruded M neozhaolia 996",
-    "description": "An extruded double Mobius spiral.",
-    "likes": 0,
-    "published": "Private",
-    "usePreview": 0,
-    "tags": [
-     "raymarch",
-     "spiral",
-     "atan",
-     "mobius",
-     "complex",
-     "complex",
-     "extrude"
-    ]
-   },
-   "renderpass": [
-    {
-     "inputs": [],
-     "outputs": [
-      {
-       "id": "4dfGRr",
-       "channel": 0
-      }
-     ],
-     "code": "/*\n\n    Extruded Mobius Spiral\n    ----------------------\n    \n    As you can see, this is an extruded Mobius spiral pattern. It's an \n    extension of MLA's nicely written \"Complex Atanh\" example. If you're \n    interested in complex transformations, Mobius spirals etc, that \n    particular example is the one I'd recommend looking at.\n    \n    Technically, there's not a lot to this: Perform the required 2D\n    transformations then pass the results into an extrusion algorithm.\n    The code looks more complicated than it has to be due to the decision \n    on my part to both extrude the cells and cater for three different \n    pylon shapes -- It seemed like a good idea at the time. :)\n    \n    A double spiral is a simple addition to the regular Mobius spiral \n    combination that most people use, but I couldn't for the life of me \n    remember how to produce one, so was pretty happy to see how to do \n    that in MLA's original. \n    \n    I wasn't really sure whether this would work or not, since I figured \n    mutating space so much prior to raymarching would make the surface \n    very difficult to home in on, but relatively speaking, things came\n    together surprisingly well, and I can thank MLA's attention to \n    function order, scaling, etc. Even so, the hackory police and the \n    Lipschitz Surface Constraint Commission probably won't be happy with \n    this example at all. :D\n    \n    Anyway, there are a few define options below: SHAPE, ROW_OFFSET, etc.\n    When using the one spiral option, the surface kind of has the feel of \n    a traced out Doyle spiral, but I'd like to produce the real thing at \n    some stage. \n\n\n\tBased on the following:\n    \n\t// The original and cleaner looking 2D version.\n    Complex Atanh - mla\n\thttps://www.shadertoy.com/view/tsBXRW \n    \n    // Another one of those shaders that somehow slipped under\n    // radar. Some of the visuals are strikingly beautiful.\n    Complex Atanh Revisited - mla\n    https://www.shadertoy.com/view/fldGRB\n\n*/\n\n\n\n// Off the rows by half a cell to produce a brickwork feel. The staggered \n// effect can also make a quantized image look smoother.\n#define ROW_OFFSET\n\n// Pylon cross section shape.\n// Square: 0, Circle: 1, Hexagon: 2.\n#define SHAPE 1\n\n// Colorful face decorations.\n#define FACE_DECO\n\n// Double spiral. The single version is cleaner, but not as interesting. \n// Thanks to Mla for this addition.\n#define DOUBLE_SPIRAL\n\n// Boring out holes in the blocks.\n//#define HOLES\n\n// Raising the faces of the pylon tops. I find it can help bounce the light \n// off the surface in a more reflective way.\n//#define RAISED\n\n// Putting a ridge decoraction on the pylon tops.        \n//#define RIDGES\n\n// Originally for debug purposes, but it's decorative in its own way\n//#define VERT_LINES\n\n\n// The hexagons must use offset rows.\n#if SHAPE == 2\n#ifndef ROW_OFFSET\n#define ROW_OFFSET\n#endif\n#endif\n\n#ifdef ROW_OFFSET\n#if SHAPE >= 1\nconst vec2 rDim = vec2(1, 2.*.8660254);\n#else\nconst vec2 rDim = vec2(1, 2);\n#endif\n#else\nconst vec2 rDim = vec2(1, 2);\n#endif\n\n// Global tile scale.\nvec2 scale = vec2(1./8.);\n\n// Max ray distance.\n#define FAR 20.\n\n\n// Scene object ID to separate the mesh object from the terrain.\nfloat objID;\n\n\n// Standard 2D rotation formula.\nmat2 rot2(in float a){ float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }\n\n\nfloat hash21(vec2 p){ \n    \n    /*\n    // Attempting to fix accuracy problems on some systems by using\n    // a slight variation on Dave Hoskin's hash formula, here:\n    // https://www.shadertoy.com/view/4djSRW\n    vec3 p3 = fract(vec3(p.xyx)*.1031);\n    p3 += dot(p3, p3.yzx + 33.333);\n    return fract((p3.x + p3.y)*p3.z);\n    */\n    \n    //p = mod(p, (vec2(B, A)*K));\n    \n    // IQ's vec2 to float hash.\n    //p = floor(p*32768.)/32768.;\n    return fract(sin(dot(p, vec2(27.617, 57.743)))*43758.5453); \n    \n}\n\n/*\n// Commutative smooth maximum function. Provided by Tomkh, and taken \n// from Alex Evans's (aka Statix) talk: \n// http://media.lolrus.mediamolecule.com/AlexEvans_SIGGRAPH-2015.pdf\n// Credited to Dave Smith @media molecule.\nfloat smax(float a, float b, float k){\n    \n   float f = max(0., 1. - abs(b - a)/k);\n   return max(a, b) + k*.25*f*f;\n}\n*/\n\n// IQ's extrusion formula.\nfloat opExtrusion(in float sdf, in float pz, in float h){\n    \n    vec2 w = vec2( sdf, abs(pz) - h );\n  \treturn min(max(w.x, w.y), 0.) + length(max(w, 0.));\n\n    /*\n    // Slight rounding. A little nicer, but slower.\n    const float sf = .015;\n    vec2 w = vec2( sdf, abs(pz) - h) + sf;\n  \treturn min(max(w.x, w.y), 0.) + length(max(w, 0.)) - sf;\n    */\n}\n\n\n\n// Height map value.\nfloat hm(in vec2 p){ \n\n     return (sin(6.2831*(p.y*2. + p.x) + iTime*2.)*.5 + .5); \n    \n    // Regular random values.\n    // This won't work for the sqrt(3.) scaling, but there are\n    // ways around it. It's not used in this example anyway.\n    //float h = hash21(p);\n    //return (sin(6.2831*h + iTime*2.)*.5 + .5);\n    \n}\n\n// IQ's signed box formula.\nfloat sBoxS(in vec2 p, in vec2 b, in float sf){\n\n  vec2 d = abs(p) - b + sf;\n  return min(max(d.x, d.y), 0.) + length(max(d, 0.)) - sf;\n}\n\n\n// Global local 2D grid coordinates. Hacked in.\nvec2 gP; \n// A global responsible for tempering the height of the pylong near\n// the pylon center.\nfloat tempR;\n\n// A regular extruded block grid.\n//\n// The idea is very simple: Produce a normal grid full of packed square pylons.\n// That is, use the grid cell's center pixel to obtain a height value (read in\n// from a height map), then render a pylon at that height.\n\nvec4 blocks(vec3 q3){\n    \n    \n\n    // Brick dimension: Length to height ratio with additional scaling.\n    vec2 l = scale;\n\tvec2 s = scale*2.;\n    #if SHAPE == 2 // Hexagon.\n    vec2 hSc = vec2(1);//vec2(1, scale.y/scale.x*2./1.732);\n    #elif SHAPE == 1 // Circle with an offset.\n    #ifdef ROW_OFFSET\n    vec2 hSc = vec2(1);//vec2(1, scale.y/scale.x*2./1.732);\n    #endif\n    #endif\n    \n    \n    \n    float minSc = min(scale.x, scale.y);\n    \n    // Distance.\n    float d = 1e5;\n    // Cell center, local coordinates and overall cell ID.\n    vec2 p, ip;\n    \n    // Individual brick ID.\n    vec2 id = vec2(0); \n    \n    // Four block corner postions.\n    #ifdef ROW_OFFSET\n    // Offset rows.\n    vec2[4] ps4 = vec2[4](vec2(-.25, .25), vec2(.25), vec2(.5, -.25), vec2(0, -.25)); \n    #else\n    vec2[4] ps4 = vec2[4](vec2(-.25, .25), vec2(.25), vec2(.25, -.25), vec2(-.25)); \n    #endif\n    \n    float data = 0.; // Extra data.\n    \n    for(int i = min(0, iFrame); i<4; i++){\n\n\n        // Local coordinates.\n        p = q3.xy;\n        ip = floor(p/s - ps4[i]); // Local tile ID.\n        \n        // Correct positional individual tile ID.\n        vec2 idi = (ip + .5 + ps4[i])*s;\n        \n        p -= idi; // New local position.\n        \n \n        // The extruded block height. See the height map function, above.\n        // An extra line is needed for this example.\n        vec2 index = mod(idi, rDim.yx)/rDim.yx; \n        \n        // We also have an additional height tempering value for \n        // the spiral centers.\n        float h = hm(index)*tempR*.1;\n            \n         \n        #if SHAPE == 2\n        // Hexagon option: Multiply scale by \"vec2(1, 1.732/2.)\".\n        float di2D = sHexS(p, minSc/1.732 - .0035, .015);\n        #elif SHAPE == 1\n        // Circle.\n        #ifdef ROW_OFFSET\n        float di2D = length(p) - minSc/1.732 + .0035;\n        #else\n        float di2D = length(p) - l.x/2. + .0035;\n        #endif\n        #else\n        // Square.\n        float di2D = sBoxS(p, l/2. - .0035, .02);\n        #endif\n        \n        \n        \n        #ifdef HOLES\n        // Boring out the objects.\n        di2D = max(di2D, -(di2D + minSc/3.));\n        #endif\n        \n        // The extruded distance function value.\n        float di = opExtrusion(di2D, (q3.z + h - 1.), h + 1.);\n        \n         \n        \n        // Lego.\n        //float cap = opExtrusion(di2D + .0465, (q3.z + h - 1. + .035), h + 1.);\n        //di = min(di, cap);\n        \n        \n        #ifdef RAISED\n        // Raised tops.\n        di += di2D*.5*tempR;\n        #endif\n        \n        #ifdef RIDGES\n        // Putting ridges on the faces.\n        di += smoothstep(-.5, .5, sin(di2D/minSc*6.2831*3.))*.01;\n        #endif\n        \n         \n        \n\n        // If applicable, update the overall minimum distance value,\n        // ID, and box ID. \n        if(di<d){\n            d = di;\n            id = idi;         \n            // Extra data. In this case, the 2D distance field.\n            data = di2D;\n            \n            gP = p;\n        }\n        \n    }\n    \n    // Return the distance, position-base ID and box ID.\n    return vec4(d, id, data);\n}\n\n\n//////\n\n// Mla's complex functions: Most people have a copy of these lying\n// around. They're pretty easy to derive.\n//\nvec2 cMul(vec2 z, vec2 w){ return mat2(z, -z.y, z.x)*w; }\n\nvec2 cInv(vec2 z){ return vec2(z.x, -z.y)/dot(z, z); }\n\nvec2 cDiv(vec2 z, vec2 w){ return cMul(z, cInv(w)); }\n\nvec2 cLog(vec2 z){ return vec2(log(length(z)), atan(z.y, z.x)); }\n\n// Inverse hyperbolic tangent: The pattern looks loxodromic. I'm not \n// technically sure what you're supposed to call this particular \n// combination, but there's complex division and polar stuff, so it's\n// not surprising that it looks like a Mobius spiral combination. \nvec2 caTanh(vec2 z, float sc) {\n \n    // You could take the functions above and start grouping things if you \n    // wanted more compactness, and possibly speed, but I'm leaving it as is.\n    return cLog(cDiv(vec2(sc, 0) + z, vec2(sc, 0) - z));\n}\n\n//////\n\n\n// Block ID -- It's a bit lazy putting it here, but it works. :)\nvec4 gID;\n \n \n// The scene's distance function.\nfloat map(vec3 p){\n    \n   \n    // Back plane.\n    float fl = -p.z + .01;\n    \n    //////////////\n    // Complex transformations.\n\n    // Performing some complex operations on \"p.xy\" to make some cool looking\n    // Mobius spirals. Complex, as in the complex plane; The operations are\n    // actually quite simple. :)\n   \n    // Rotation about the XY plane. Equivalent to a 2D complex multiplication operation.\n    vec2 z = rot2(-sin(iTime/3.)*.65)*p.xy; // Same as: cmul(vec2(cos(a), sin(a))*c, z2);\n    // Tempering the extrusion height toward the spiral origins to lessen Moire effects\n    // and general artifacts.\n    const float sc = 1.5; // Effects spiral distance.\n    float r = min(length(z - vec2(sc, 0)), length(z - vec2(-sc, 0)));\n    tempR = r;\n    z = caTanh(-z, sc)/6.2831;\n \n    \n    #ifdef DOUBLE_SPIRAL\n    vec2 z2 = rot2(-cos(iTime/3.)*.65*2.)*p.xy;    \n    // Performing another inverse hyperbolic tangent operation. It's very simple\n    // to do, once someone shows you the answer. :)\n    const float sc2 = .75;\n    float r2 = min(length(z2.xy - vec2(sc2, 0)), length(z2.xy - vec2(-sc2, 0)));\n    tempR = min(tempR, r2);\n    z += caTanh(z2, sc2)/6.2831;\n    #endif \n    \n    // Tempering the height of the pylons eminating from the spiral centers.\n    // It looks way too messy if you don't do this.\n    tempR = smoothstep(.1, .5, tempR);\n\n    // More movement. Not necessary, but it looks more interesting.\n    z.y = fract(z.y + iTime*.1);\n    // More scaling.\n    z = cMul(rDim, z);\n    \n    // I like this addition, but I think it dizzies things too much.\n    //z.y -= iTime/6.;\n \n    // Set the XY plane coordinates to the new transformed ones.\n    p.xy = z;\n    \n    //////////////\n  \n \n    // Extrude.\n    vec4 d4 = blocks(p);\n    gID = d4; // Save the distance, cell ID, and 2D face distance.\n   \n    \n    // Object ID.\n    objID = d4.x < fl? 0. : 1.;\n    \n    // Minimum distance for the scene.\n    return min(d4.x, fl);\n    \n}\n\n// Basic raymarcher.\nfloat trace(in vec3 ro, in vec3 rd){\n\n    // Overall ray distance and scene distance.\n    float t = 0., d;\n    \n    for(int i = min(0, iFrame); i<128; i++){\n    \n        d = map(ro + rd*t);\n        // Note the \"t*b + a\" addition. Basically, we're putting less emphasis on accuracy, as\n        // \"t\" increases. It's a cheap trick that works in most situations... Not all, though.\n        if(abs(d)<.001 || t>FAR) break; // Alternative: 0.001*max(t*.25, 1.), etc.\n        \n        t += d*.8; \n    }\n\n    return min(t, FAR);\n}\n\n\n// Standard normal function. It's not as fast as the tetrahedral calculation, but more symmetrical.\nvec3 getNormal(in vec3 p, float t) {\n\t    //return normalize(vec3(map(p + e.xyy) - map(p - e.xyy), map(p + e.yxy) - map(p - e.yxy),\t\n    //                      map(p + e.yyx) - map(p - e.yyx)));\n    \n    // This mess is an attempt to speed up compiler time by contriving a break... It's \n    // based on a suggestion by IQ. I think it works, but I really couldn't say for sure.\n    float sgn = 1.;\n    vec3 e = vec3(.001, 0, 0), mp = e.zzz; // Spalmer's clever zeroing.\n    for(int i = min(iFrame, 0); i<6; i++){\n\t\tmp.x += map(p + sgn*e)*sgn;\n        sgn = -sgn;\n        if((i&1)==1){ mp = mp.yzx; e = e.zxy; }\n    }\n    \n    return normalize(mp);\n}\n\n\n// Cheap shadows are hard. In fact, I'd almost say, shadowing particular scenes with limited \n// iterations is impossible... However, I'd be very grateful if someone could prove me wrong. :)\nfloat softShadow(vec3 ro, vec3 lp, vec3 n, float k){\n\n    // More would be nicer. More is always nicer, but not always affordable. :)\n    const int maxIterationsShad = 32; \n    \n    ro += n*.0015; // Coincides with the hit condition in the \"trace\" function.  \n    vec3 rd = lp - ro; // Unnormalized direction ray.\n\n    float shade = 1.;\n    float t = 0.; \n    float end = max(length(rd), .0001);\n    //float stepDist = end/float(maxIterationsShad);\n    rd /= end;\n\n    // Max shadow iterations - More iterations make nicer shadows, but slow things down. Obviously, \n    // the lowest number to give a decent shadow is the best one to choose. \n    for (int i = min(iFrame, 0); i<maxIterationsShad; i++){\n\n        float d = map(ro + rd*t);\n        shade = min(shade, k*d/t);\n        //shade = min(shade, smoothstep(0., 1., k*h/dist)); // Thanks to IQ for this tidbit.\n        // So many options here, and none are perfect: dist += clamp(d, .01, stepDist), etc.\n        t += clamp(d, .01, .1); \n        \n        \n        // Early exits from accumulative distance function calls tend to be a good thing.\n        if (d<0. || t>end) break; \n    }\n\n    // Sometimes, I'll add a constant to the final shade value, which lightens the shadow a bit --\n    // It's a preference thing. Really dark shadows look too brutal to me. Sometimes, I'll add \n    // AO also just for kicks. :)\n    return max(shade, 0.); \n}\n\n\n// I keep a collection of occlusion routines. This one is pretty standard.\n// I'm assuming this one based on IQ's original.\nfloat calcAO(vec3 p, vec3 n){\n    \n    float occ = 1.; // Occlusion.\n    float ds = .01; // Analogous to sample spread. // .01*t           \n    float k = .05/ds;  // Intensity.\n    float dst = ds*2.; // Initial distance.          \n    \n    for(int i = 0; i<5; i++){\n        occ -= (dst - map(p + n*dst))*k;\n        dst += ds;\n        k *= .5;\n    }\n    \n    return clamp(occ, 0., 1.);\n}\n\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord ){\n\n    \n    // Screen coordinates.\n\tvec2 uv = (fragCoord - iResolution.xy*.5)/iResolution.y;\n    \n    #ifdef ROW_OFFSET\n    #if SHAPE >= 1\n    scale *= vec2(2./1.732, 1);\n    #endif\n    #endif\n    \n\t// Camera Setup.\n    // Slightly tilted camera, just to prove it's 3D. :)\n    vec3 ro = vec3(0, -1, -2.2); // Camera position, doubling as the ray origin.\n\tvec3 lk = ro + vec3(0, .1, .25); // \"Look At\" position.\n \n    // Light positioning. One is just in front of the camera, and the other is in front of that.\n \tvec3 lp = ro + vec3(-.5, 1, 1);// Put it a bit in front of the camera.\n\t\n\n    // Using the above to produce the unit ray-direction vector.\n    float FOV = 1.333; // FOV - Field of view.\n    vec3 fwd = normalize(lk-ro);\n    vec3 rgt = normalize(vec3(fwd.z, 0., -fwd.x )); \n    // \"right\" and \"forward\" are perpendicular, due to the dot product being zero. Therefore, I'm \n    // assuming no normalization is necessary? The only reason I ask is that lots of people do \n    // normalize, so perhaps I'm overlooking something?\n    vec3 up = cross(fwd, rgt); \n\n    // rd - Ray direction.\n    //vec3 rd = normalize(fwd + FOV*uv.x*rgt + FOV*uv.y*up);\n    vec3 rd = normalize(uv.x*rgt + uv.y*up + fwd/FOV);\n    \n    // Swiveling the camera about the XY-plane.\n\trd.xy *= rot2( sin(iTime)/32. );\n    \n\t \n    \n    // Raymarch to the scene.\n    float t = trace(ro, rd);\n    \n    // Save the block field value, block ID and 2D data field value.\n    vec4 svGID = gID;\n    \n    // Object ID.\n    float svObjID = objID;\n    \n    // Height tempering for the spiral centers.\n    float svTempR = tempR;\n    \n    // Pylon face local coordinates.\n    vec2 svP = gP;\n  \n\t\n    // Initiate the scene color to black.\n\tvec3 col = vec3(0);\n\t\n\t// The ray has effectively hit the surface, so light it up.\n\tif(t < FAR){\n        \n  \t\n    \t// Surface position and surface normal.\n\t    vec3 sp = ro + rd*t;\n        vec3 sn = getNormal(sp, t);\n        \n            \t// Light direction vector.\n\t    vec3 ld = lp - sp;\n\n        // Distance from respective light to the surface point.\n\t    float lDist = max(length(ld), .001);\n    \t\n    \t// Normalize the light direction vector.\n\t    ld /= lDist;\n\n        \n        \n        // Shadows and ambient self shadowing.\n    \tfloat sh = softShadow(sp, lp, sn, 16.);\n    \tfloat ao = calcAO(sp, sn); // Ambient occlusion.\n        \n\t    // Light attenuation, based on the distances above.\n\t    float atten = 1./(1. + lDist*.05);\n\n    \t\n    \t// Diffuse lighting.\n\t    float diff = max( dot(sn, ld), 0.);\n        //diff = pow(diff, 4.)*2.; // Ramping up the diffuse.\n    \t\n    \t// Specular lighting.\n\t    float spec = pow(max(dot(reflect(ld, sn), rd ), 0.), 32.); \n\t    \n\t    // Fresnel term. Good for giving a surface a bit of a reflective glow.\n        float fre = pow(clamp(1. - abs(dot(sn, rd))*.5, 0., 1.), 2.);\n        \n\t\t// Schlick approximation. I use it to tone down the specular term. It's pretty subtle,\n        // so could almost be aproximated by a constant, but I prefer it. Here, it's being\n        // used to give a hard clay consistency... It \"kind of\" works.\n\t\tfloat Schlick = pow( 1. - max(dot(rd, normalize(rd + ld)), 0.), 5.);\n\t\tfloat freS = mix(.15, 1., Schlick);  //F0 = .2 - Glass... or close enough. \n        \n          \n        // Obtaining the texel color. \n\t    vec3 texCol = vec3(.6);   \n\n        // The extruded grid.\n        if(svObjID<.5){\n            \n            // Wrapping the colors properly.\n            vec2 index = mod(svGID.yz, rDim.yx)/rDim.yx; \n            //index = floor(index*8.)/8. + 1./16.;\n            \n\n            // Using the color index to produce two different colors.\n            vec3 col1 = .5 + .45*cos(6.2831*index.y + vec3(0, 1, 2)*2.);\n            vec3 col2 = .5 + .45*cos(6.2831*index.y + 3.14159/2.5 + vec3(0, 1, 2)*1.35);\n\n            texCol = col1;\n\n            // Debug coloring.\n            //texCol = mod(floor(index.x*16.), 2.)<.5? vec3(.05) :  texCol;\n            //texCol = mod(floor(index.y*8.), 2.)<.5?  vec3(.05) : vec3(.9);\n            //texCol = vec3(.05);\n             \n            \n            // The dark lines, etc, need to look crisp, so we need a derivative\n            // based smoothing factor. This can either be done the easy way via\n            // hardware, or the harder but more maliable and reliable way. The\n            // hardware version is below for a comparison.\n            #if 1\n            float di2D = svGID.w;\n            float tmp = map(sp - vec3(3./450., 0, 0)); // Nearby X sample.\n            float di2DX = gID.w; // dX.\n            tmp = map(sp - vec3(0, 3./450., 0)); // Nearby Y sample.\n            float di2DY = gID.w; // dY.\n            //tmp = map(sp - vec3(0, 0, 3./450.)); \n            //float di2DZ = gID.w;//\n            \n            vec3 dF = (vec3(di2DX, di2DY, 1e5) - di2D); // Rought partial differential.\n            // Technically not fwidth, but I prefer it.\n            float sf = length(dF.xy); // Fwidth: abs(dF.x) + abs(dF.y);\n            #else\n            // The one line hardware version. Much cheaper, but not always reliable.\n            float sf = fwidth(svGID.w);\n            #endif\n            \n            \n            #ifdef VERT_LINES\n            // Lines eminating from the center to the vertices.\n            #if SHAPE == 2\n            const float aNum = 6.;\n            vec2 z = rot2(3.14159/aNum)*svP; \n            //float ch = smoothstep(-sf, sf, (abs(fract(a*6. - .5) - .5) - .45)/6.);\n            #else\n            const float aNum = 4.;\n            vec2 z = svP; \n            #endif\n            float a = mod(atan(z.x, z.y), 6.2831)/6.2831;\n            a = (floor(a*aNum) + .5)/aNum;\n            z *= rot2(a*6.2831);\n            texCol = mix(texCol, vec3(0), (1. - smoothstep(0., sf, abs(z.x) - .001))*.95);     \n            #endif\n            \n            \n            #ifdef FACE_DECO\n            float rim = .04;\n            #ifdef ROW_OFFSET\n            #if SHAPE >= 1\n            rim /= .8660254;\n            #endif\n            #endif\n            texCol = mix(texCol, vec3(0), (1. - smoothstep(0., sf, svGID.w + rim))*.95);\n            texCol = mix(texCol, col2, (1. - smoothstep(0., sf, svGID.w + rim + .005)));\n            #endif\n \n \n            // Dark edges.\n            float h = hm(index); // Pylon height.\n            float lw = .0035;\n            float dS = abs(svGID.w) - lw/2.; // 2D face field value.\n            texCol = mix(texCol, texCol/3., (1. - smoothstep(0., sf, dS)));\n            dS = max(dS, abs(sp.z + h*.1*svTempR*2.) - lw/2.); // Just the rim.\n            texCol = mix(texCol, vec3(0), (1. - smoothstep(0., sf, dS))*.95);\n             \n \n        }\n        else {\n            \n            // The dark floor in the background.\n            texCol = vec3(.05);\n        }\n       \n\n        \n        // Combining the above terms to produce the final color.\n        col = texCol*(diff*sh + .3 + vec3(.25, .5, 1)*fre*0. + vec3(1, .97, .92)*spec*freS*2.*sh);\n      \n        // Shading.\n        col *= ao*atten;\n          \n\t\n\t}\n          \n    \n    // Rought gamma correction.\n\tfragColor = vec4(sqrt(max(col, 0.)), 1);\n\t\n}",
-     "name": "Image",
-     "description": "",
-     "type": "image"
-    }
-   ]
-  },
-  {
-   "ver": "0.1",
-   "info": {
     "id": "WclXR7",
     "date": "0",
     "viewed": 0,
@@ -2253,7 +1885,7 @@
    "info": {
     "id": "33V3RR",
     "date": "1751983423",
-    "viewed": 1003,
+    "viewed": 1008,
     "name": "Three body periodic solutions",
     "description": "A few periodic solutions to the 3 body problem",
     "likes": 30,
@@ -2556,10 +2188,10 @@
    "info": {
     "id": "WXdSzl",
     "date": "1753810433",
-    "viewed": 93,
+    "viewed": 161,
     "name": "Hyperbolic billiard",
     "description": "Motivated by https://codepen.io/brainjam/pen/GaYJjJ\nclearly, there's still a lot of room for code optimization. But I'm too exhausted now.",
-    "likes": 18,
+    "likes": 21,
     "published": "Public API",
     "usePreview": 0,
     "tags": [
@@ -2594,7 +2226,7 @@
        "channel": 0
       }
      ],
-     "code": "void drawParticle(inout vec3 color, vec2 p, vec2 pos, vec2 vel, vec3 ball_color,\n                  float r) {\n    const float glow_falloff = 6.; // 发光的衰减指数，值越大，光点越集中\n    const float shadow_offset = .4;    // 阴影的偏移量，乘以半径\n    const float shadow_darkness = 0.5; // 阴影的暗度 (0.0 - 1.0)\n    const float shadow_softness = 1.; // 阴影的柔和度，值越大，阴影边缘越模糊\n\n    // --- 高光参数（调整以更明显） ---\n    // 调整光线方向，使其更“靠前”或“侧面”一些，以便高光位置更明显\n    // 这里Z分量增大，使得光线更直接从观察者方向来\n    const vec3 light_direction =\n        normalize(vec3(0.5, 0.5, 1.5)); // 模拟光线方向 (X, Y, Z) Z朝向观察者\n    const float shininess = 64.0; // 材质光泽度，值越大高光越集中和亮\n    const vec3 specular_color = vec3(1.0, 1.0, 1.0); // 高光颜色，通常是白色\n\n    // --- 2. 独立计算球和阴影的“形状”/“透明度” ---\n    // 计算当前片元到球心的距离\n    float ball_dist = length(p - pos);\n\n    // 计算球的辉光强度 (0.0 到 1.0)\n    // 只有在 ball_dist < r 的范围内，glow才>0。在 ball_dist >= r 时，glow 为\n    // 0。\n    float glow = pow(1.0 - smoothstep(0.0, r, ball_dist), glow_falloff);\n\n    // 计算阴影的强度 (0.0 到 1.0)\n    vec2 shadow_dir = vec2(0.0);\n    if (length(vel) > 0.001) {\n        shadow_dir = normalize(vel);\n    }\n    vec2 shadow_pos = pos - shadow_dir * r * shadow_offset;\n    float shadow_dist = length(p - shadow_pos);\n    float shadow_mix = 1.0 - smoothstep(r, r * shadow_softness, shadow_dist);\n\n    // --- 3. 高光计算 ---\n    vec3 specular_intensity = vec3(0.0);\n    // 只有在球体内部才计算高光\n    if (ball_dist < r) {\n        // 计算当前像素点在球体上的“法线”\n        vec2 normal_xy = normalize(p - pos); // 2D平面上的法线分量\n        // 计算Z深度，模拟球体的3D曲面\n        float z_depth_sq = r * r - dot(p - pos, p - pos);\n        float z_depth = sqrt(max(0.0, z_depth_sq));\n\n        // 构造3D法线向量 (xy平面分量和z深度分量)\n        vec3 surface_normal = normalize(\n            vec3(normal_xy, z_depth)); // z_depth无需除以r，normalize会处理\n\n        // 简化视角方向：假设相机在Z轴正方向，看向球心\n        vec3 view_direction =\n            normalize(vec3(0.0, 0.0, 1.0)); // 观察方向，简化为正Z轴\n\n        // 反射光线方向 (R = 2 * (N . L) * N - L)\n        vec3 reflected_light = normalize(\n            2.0 * dot(surface_normal, light_direction) * surface_normal -\n            light_direction);\n\n        // 高光强度：dot(reflected_light, view_direction) 的 shininess 次方\n        float spec_dot = max(0.0, dot(reflected_light, view_direction));\n        specular_intensity = specular_color * pow(spec_dot, shininess);\n\n        // 高光衰减：让高光在球体中心附近更亮，在边缘处逐渐消失\n        // 通过 `smoothstep` 使得高光不会突然出现和消失\n        specular_intensity *= smoothstep(r * 0.5, r * 0., ball_dist);\n    }\n\n    // --- 4. 按正确顺序混合 ---\n\n    // 首先，绘制背景或阴影。\n    // 阴影仍然是透明地叠加在背景上的。\n    float final_shadow_mix = shadow_mix * (1.0 - glow); // 阴影不覆盖发光区域\n    color = mix(color, vec3(0.0), final_shadow_mix * shadow_darkness);\n\n    // 关键改变：绘制球体，确保其不透明\n    // 如果当前像素在球体内部 (ball_dist <\n    // r)，则完全使用球体颜色；否则，保留color。\n    if (ball_dist < r) {\n        // 基础球体颜色 = 球的基色 + 辉光效果\n        vec3 base_particle_color =\n            mix(ball_color, vec3(1.0), glow * 0.5); // 让发光部分更亮白\n        // 最终颜色 = 基础球体颜色 + 高光\n        color = base_particle_color + specular_intensity;\n    }\n    // 如果 ball_dist >= r，则该像素点不在球体范围内，不改变 color，\n    // 这样就避免了球体外部的颜色被混合进来，从而解决了“透明”问题。\n}\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    vec2 uv = (2.0 * fragCoord.xy - iResolution.xy) / iResolution.y;\n    uv *= 1.1;\n    vec3 col = vec3(0);\n    vec2 p = uv;\n    int count = 0;\n    if (length(p) > 1.) {\n        p /= dot(p, p);\n    }\n    p = fold_tile(p, count);\n    float c = float(count);\n    vec3 oCol = .55 + .4 * cos(2. * PI * c / 32. + vec3(2, 1, 0));\n    float d1 = dot(p, conj(nB));\n    float d2 = dot(p, nB);\n    float d3 = length(p - cen) - r;\n    float dist = min(d1, min(d2, d3));\n    float aa = fwidth(dist) / 2.;\n    float lw = 0.01;\n\n    col = mix(col, oCol, 1. - smoothstep(0., 1., dist - .01));\n    col = mix(col, vec3(0), 1. - smoothstep(lw - aa, lw + aa, dist));\n    for (int i = 0; i < NUM_BALLS; i++) {\n        // Reads the final, updated state from Buffer A for this frame\n        vec4 state = texelFetch(iChannel0, ivec2(i, 0), 0);\n        vec2 ball_pos = state.xy;\n        vec2 ball_vel = state.zw;\n        vec3 ball_color;\n        if (i == 0)\n            ball_color = vec3(1., .3, .4);\n        else if (i == 1)\n            ball_color = vec3(0.1, 0.8, 0.6);\n        else if (i == 2)\n            ball_color = vec3(.75, .75, 0.1);\n        else if (i == 3)\n            ball_color = vec3(.5, 0.1, 0.1);\n        else\n            ball_color = vec3(0.2, 0.2, 0.6);\n        for (int k = 0; k < 6; k++)\n            drawParticle(col, getTransformedState(vec4(p, 0, 0), k).xy,\n                         ball_pos, ball_vel, ball_color, RADIUS);\n    }\n    float dcirc = abs(length(uv) - 1.);\n    col = mix(col, vec3(0), 1. - smoothstep(0., .01, dcirc - 0.01));\n    col = mix(col, vec3(1.0, 0.843, 0.0),\n              1. - smoothstep(0., .005, dcirc - 0.005));\n    fragColor = vec4(col, 1.0);\n}",
+     "code": "float seed;\nfloat hash() {\n    float p = fract((seed++) * .1031);\n    p += (p * (p + 19.19)) * 3.;\n    return fract((p + p) * p);\n}\n\nvec3 ball_colors[5] =\n    vec3[5](vec3(1.0, 0.3, 0.4), vec3(0.1, 0.8, 0.6), vec3(0.75, 0.75, 0.1),\n            vec3(0.5, 0.1, 0.1), vec3(0.2, 0.2, 0.6));\n\nvoid drawParticle(inout vec3 color, vec2 p, vec2 pos, vec2 vel, vec3 ball_color,\n                  float r) {\n    const float glow_falloff = 6.; // 发光的衰减指数，值越大，光点越集中\n    const float shadow_offset = .4;    // 阴影的偏移量，乘以半径\n    const float shadow_darkness = 0.5; // 阴影的暗度 (0.0 - 1.0)\n    const float shadow_softness = 1.; // 阴影的柔和度，值越大，阴影边缘越模糊\n\n    // --- 高光参数（调整以更明显） ---\n    // 调整光线方向，使其更“靠前”或“侧面”一些，以便高光位置更明显\n    // 这里Z分量增大，使得光线更直接从观察者方向来\n    const vec3 light_direction =\n        normalize(vec3(0.5, 0.5, 1.5)); // 模拟光线方向 (X, Y, Z) Z朝向观察者\n    const float shininess = 64.0; // 材质光泽度，值越大高光越集中和亮\n    const vec3 specular_color = vec3(1.0, 1.0, 1.0); // 高光颜色，通常是白色\n\n    // --- 2. 独立计算球和阴影的“形状”/“透明度” ---\n    // 计算当前片元到球心的距离\n    float ball_dist = length(p - pos);\n\n    // 计算球的辉光强度 (0.0 到 1.0)\n    // 只有在 ball_dist < r 的范围内，glow才>0。在 ball_dist >= r 时，glow 为\n    // 0。\n    float glow = pow(1.0 - smoothstep(0.0, r, ball_dist), glow_falloff);\n\n    // 计算阴影的强度 (0.0 到 1.0)\n    vec2 shadow_dir = vec2(0.0);\n    if (length(vel) > 0.001) {\n        shadow_dir = normalize(vel);\n    }\n    vec2 shadow_pos = pos - shadow_dir * r * shadow_offset;\n    float shadow_dist = length(p - shadow_pos);\n    float shadow_mix = 1.0 - smoothstep(r, r * shadow_softness, shadow_dist);\n\n    // --- 3. 高光计算 ---\n    vec3 specular_intensity = vec3(0.0);\n    // 只有在球体内部才计算高光\n    if (ball_dist < r) {\n        // 计算当前像素点在球体上的“法线”\n        vec2 normal_xy = normalize(p - pos); // 2D平面上的法线分量\n        // 计算Z深度，模拟球体的3D曲面\n        float z_depth_sq = r * r - dot(p - pos, p - pos);\n        float z_depth = sqrt(max(0.0, z_depth_sq));\n\n        // 构造3D法线向量 (xy平面分量和z深度分量)\n        vec3 surface_normal = normalize(\n            vec3(normal_xy, z_depth)); // z_depth无需除以r，normalize会处理\n\n        // 简化视角方向：假设相机在Z轴正方向，看向球心\n        vec3 view_direction =\n            normalize(vec3(0.0, 0.0, 1.0)); // 观察方向，简化为正Z轴\n\n        // 反射光线方向 (R = 2 * (N . L) * N - L)\n        vec3 reflected_light = normalize(\n            2.0 * dot(surface_normal, light_direction) * surface_normal -\n            light_direction);\n\n        // 高光强度：dot(reflected_light, view_direction) 的 shininess 次方\n        float spec_dot = max(0.0, dot(reflected_light, view_direction));\n        specular_intensity = specular_color * pow(spec_dot, shininess);\n\n        // 高光衰减：让高光在球体中心附近更亮，在边缘处逐渐消失\n        // 通过 `smoothstep` 使得高光不会突然出现和消失\n        specular_intensity *= smoothstep(r * 0.5, r * 0., ball_dist);\n    }\n\n    // --- 4. 按正确顺序混合 ---\n\n    // 首先，绘制背景或阴影。\n    // 阴影仍然是透明地叠加在背景上的。\n    float final_shadow_mix = shadow_mix * (1.0 - glow); // 阴影不覆盖发光区域\n    color = mix(color, vec3(0.0), final_shadow_mix * shadow_darkness);\n\n    // --- 抗锯齿边缘处理 ---\n    float aa_edge = 0.001; // 边缘过渡宽度，值越大边缘越软\n\n    // 球体边缘的混合因子（用于软化边缘）\n    float ball_alpha = 1.0 - smoothstep(r - aa_edge, r + aa_edge, ball_dist);\n\n    // 基础球体颜色 = 球的基色 + 辉光效果\n    vec3 base_particle_color = mix(ball_color, vec3(1.0), glow * 0.5);\n\n    // 最终颜色 = 基础球体颜色 + 高光\n    vec3 final_ball_color = base_particle_color + specular_intensity;\n\n    // 使用球体 alpha 混合颜色，避免锯齿\n    color = mix(color, final_ball_color, ball_alpha);\n}\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    seed = float((int(fragCoord.x) * 19349663 ^ int(fragCoord.y) * 83492791) %\n                 38069);\n    vec2 uv = (2.0 * fragCoord.xy - iResolution.xy) / iResolution.y;\n    uv *= 1.1;\n    vec3 col = vec3(0);\n    vec2 p = uv;\n    int count = 0;\n    if (length(p) > 1.) {\n        p /= dot(p, p);\n    }\n    p = fold_tile(p, count);\n    float c = float(count);\n    vec3 oCol = .55 + .4 * cos(2. * PI * c / 32. + vec3(2, 1, 0));\n    oCol += (vec3(hash(), hash(), hash()) - .5) * .12;\n    float d1 = dot(p, conj(nB));\n    float d2 = dot(p, nB);\n    float d3 = length(p - cen) - r;\n    float dist = min(d1, min(d2, d3));\n    float aa = fwidth(dist) / 2.;\n    float lw = 0.01;\n\n    col = mix(col, oCol, 1. - smoothstep(0., 1., dist - .01));\n    col = mix(col, vec3(0), 1. - smoothstep(lw - aa, lw + aa, dist));\n    for (int i = 0; i < NUM_BALLS; i++) {\n        // Reads the final, updated state from Buffer A for this frame\n        vec4 state = texelFetch(iChannel0, ivec2(i, 0), 0);\n        vec2 ball_pos = state.xy;\n        vec2 ball_vel = state.zw;\n        vec3 ball_color = ball_colors[i];\n        for (int k = 0; k < 6; k++)\n            drawParticle(col, getTransformedState(vec4(p, 0, 0), k).xy,\n                         ball_pos, ball_vel, ball_color, RADIUS);\n    }\n    float dcirc = abs(length(uv) - 1.);\n    float sf = 1./iResolution.y;\n    col = mix(col, vec3(0), 1. - smoothstep(0., 2.*sf, dcirc - 12.*sf));\n    float rnd = smoothstep(.1, 1., sin(iTime * 1.5)*.5 + .5);\n    vec3 blink = vec3(1.0, 0.843, 0.0);\n    blink = mix(blink*0.7, blink * 2.2, rnd);\n    col = mix(col, blink, 1. - smoothstep(0., sf, dcirc - 6.*sf));\n    fragColor = vec4(col, 1.0);\n}",
      "name": "Image",
      "description": "",
      "type": "image"
@@ -2602,7 +2234,7 @@
     {
      "inputs": [],
      "outputs": [],
-     "code": "#define NUM_BALLS 3\n#define MAX_ITER 100\n#define RADIUS 0.03\n#define DT 0.2\n#define PI 3.1415926536\n#define SPEED 0.01\n#define TARGET_ENERGY 1e-4\n\nconst float P = 8.;\nconst float Q = 3.;\n\nconst float alpha = PI / P;\nconst float beta = PI / Q;\n\nconst float ca = cos(alpha), sa = sin(alpha);\nconst float cb = cos(beta), sb = sin(beta);\nconst vec2 nB = vec2(sa, -ca);\nconst float rho = sqrt(cb * cb - sa * sa);\nconst vec2 cen = vec2(cb / rho, 0.0);\nconst float r = sa / rho;\n\nvec2 conj(vec2 p) { return vec2(p.x, -p.y); }\nvec2 refB(vec2 p) { return reflect(p, nB); }\nvec2 refC(vec2 p) {\n    p -= cen;\n    p *= r * r / dot(p, p);\n    return p + cen;\n}\nvec4 conjState(vec4 p) { return vec4(conj(p.xy), conj(p.zw)); }\n\nvec4 refBState(vec4 p) { return vec4(refB(p.xy), refB(p.zw)); }\n\nvec2 reflectVel(vec2 p, vec2 v) {\n    vec2 d = p - cen;\n    float a = dot(v, v);\n    float b = 2.0 * dot(v, d);\n    float c = dot(d, d) - r * r;\n\n    float discriminant = b * b - 4.0 * a * c;\n    float sqrtDisc = sqrt(discriminant);\n    float t2 = (-b + sqrtDisc) / (2.0 * a);\n    vec2 q = p + t2 * v;\n    vec2 n = normalize(q - cen);\n    vec2 v_reflect = v - 2.0 * dot(v, n) * n;\n    return v_reflect;\n}\n\nvec4 refCState(vec4 p) { return vec4(refC(p.xy), reflectVel(p.xy, p.zw)); }\n\nvec4 fold(vec4 state) {\n    int count = 0;\n    vec2 p = state.xy;\n    vec2 v = state.zw;\n    for (int i = 0; i < MAX_ITER; i++) {\n        float kA = dot(p, nB);\n        float kB = dot(p, conj(nB));\n        float kC = length(p - cen) - r;\n        if (kA > 0. && kB > 0. && kC > 0.) {\n            if (count % 2 == 1) {\n                p = conj(p);\n                v = conj(v);\n                count += 1;\n            }\n            return vec4(p, v);\n        }\n        if (p.y < 0.) {\n            p = conj(p);\n            v = conj(v);\n            count += 1;\n            continue;\n        }\n        if (dot(p, nB) < 0.) {\n            p = refB(p);\n            v = refB(v);\n            count += 1;\n            continue;\n        }\n        if (kC < 0.) {\n            v = reflectVel(p, v);\n            p = refC(p);\n            count += 1;\n            continue;\n        }\n    }\n    return vec4(p, v);\n}\n\nvec2 fold_tile(vec2 p, inout int count) {\n    for (int i = 0; i < MAX_ITER; i++) {\n        float kA = dot(p, nB);\n        float kB = dot(p, conj(nB));\n        float kC = length(p - cen) - r;\n        if (kA > 0. && kB > 0. && kC > 0.) {\n            if (count % 2 == 1) {\n                p = conj(p);\n                count += 1;\n            }\n            return p;\n        }\n        if (kA < 0.) {\n            p = refB(p);\n            count += 1;\n            continue;\n        }\n        if (kB < 0.) {\n            p = reflect(p, conj(nB));\n            count += 1;\n            continue;\n        }\n        if (kC < 0.) {\n            p = refC(p);\n            count += 1;\n            continue;\n        }\n    }\n    return p;\n}\n\nvec4 getTransformedState(vec4 s0, int idx) {\n    if (idx <= 0 || idx > 5)\n        return s0;\n\n    vec4 s1 = refBState(conjState(s0));\n    if (idx == 1)\n        return s1;\n\n    vec4 s2 = refCState(conjState(s1));\n    if (idx == 2)\n        return s2;\n\n    vec4 s3 = conjState(refBState(s0));\n    if (idx == 3)\n        return s3;\n\n    vec4 s4 = refCState(conjState(s3));\n    if (idx == 4)\n        return s4;\n\n    vec4 s5 = refCState(conjState(s0));\n    if (idx == 5)\n        return s5;\n}",
+     "code": "#define NUM_BALLS 3\n#define MAX_ITER 100\n#define RADIUS 0.03\n#define DT 0.2\n#define PI 3.1415926536\n#define SPEED 0.01\n#define TARGET_ENERGY 1e-4\n\nconst float P = 8.;\nconst float Q = 3.;\n\nconst float alpha = PI / P;\nconst float beta = PI / Q;\n\nconst float ca = cos(alpha), sa = sin(alpha);\nconst float cb = cos(beta), sb = sin(beta);\nconst vec2 nB = vec2(sa, -ca);\nconst float rho = sqrt(cb * cb - sa * sa);\nconst vec2 cen = vec2(cb / rho, 0.0);\nconst float r = sa / rho;\n\nvec2 conj(vec2 p) { return vec2(p.x, -p.y); }\nvec2 refB(vec2 p) { return reflect(p, nB); }\nvec2 refC(vec2 p) {\n    p -= cen;\n    p *= r * r / dot(p, p);\n    return p + cen;\n}\nvec4 conjState(vec4 p) { return vec4(conj(p.xy), conj(p.zw)); }\n\nvec4 refBState(vec4 p) { return vec4(refB(p.xy), refB(p.zw)); }\n\nvec2 reflectVel(vec2 p, vec2 v) { return vec2(-v.x, v.y); }\n\nvec4 refCState(vec4 p) { return vec4(refC(p.xy), reflectVel(p.xy, p.zw)); }\n\nvec4 fold(vec4 state) {\n    int count = 0;\n    vec2 p = state.xy;\n    vec2 v = state.zw;\n    for (int i = 0; i < MAX_ITER; i++) {\n        float kA = dot(p, nB);\n        float kB = dot(p, conj(nB));\n        float kC = length(p - cen) - r;\n        if (kA > 0. && kB > 0. && kC > 0.) {\n            if (count % 2 == 1) {\n                p = conj(p);\n                v = conj(v);\n                count += 1;\n            }\n            break;\n        }\n        if (p.y < 0.) {\n            p = conj(p);\n            v = conj(v);\n            count += 1;\n            continue;\n        }\n        if (dot(p, nB) < 0.) {\n            p = refB(p);\n            v = refB(v);\n            count += 1;\n            continue;\n        }\n        if (kC < 0.) {\n            v = reflectVel(p, v);\n            p = refC(p);\n            count += 1;\n            continue;\n        }\n    }\n    return vec4(p, v);\n}\n\nvec2 fold_tile(vec2 p, inout int count) {\n    for (int i = 0; i < MAX_ITER; i++) {\n        float kA = dot(p, nB);\n        float kB = dot(p, conj(nB));\n        float kC = length(p - cen) - r;\n        if (kA > 0. && kB > 0. && kC > 0.) {\n            if (count % 2 == 1) {\n                p = conj(p);\n                count += 1;\n            }\n            return p;\n        }\n        if (kA < 0.) {\n            p = refB(p);\n            count += 1;\n            continue;\n        }\n        if (kB < 0.) {\n            p = reflect(p, conj(nB));\n            count += 1;\n            continue;\n        }\n        if (kC < 0.) {\n            p = refC(p);\n            count += 1;\n            continue;\n        }\n    }\n    return p;\n}\n\nvec4 getTransformedState(vec4 s0, int idx) {\n    if (idx <= 0 || idx > 5)\n        return s0;\n\n    vec4 s1 = refBState(conjState(s0));\n    if (idx == 1)\n        return s1;\n\n    vec4 s2 = refCState(conjState(s1));\n    if (idx == 2)\n        return s2;\n\n    vec4 s3 = conjState(refBState(s0));\n    if (idx == 3)\n        return s3;\n\n    vec4 s4 = refCState(conjState(s3));\n    if (idx == 4)\n        return s4;\n\n    vec4 s5 = refCState(conjState(s0));\n    if (idx == 5)\n        return s5;\n}",
      "name": "Common",
      "description": "",
      "type": "common"
@@ -2630,7 +2262,163 @@
        "channel": 0
       }
      ],
-     "code": "vec4 addBall(int idx) {\n    float x = float(idx + 1) / 12.;\n    float ang = float(9 - idx) * PI / 20.;\n    vec2 v = vec2(cos(ang), sin(ang)) * SPEED;\n    return vec4(x, 0, v);\n}\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    int id = int(fragCoord.x);\n    if (iFrame == 0) {\n        if (id < NUM_BALLS)\n            fragColor = addBall(id);\n        return;\n    }\n    float totalKE = 0.0;\n    for (int i = 0; i < NUM_BALLS; i++) {\n        vec4 s = texelFetch(iChannel0, ivec2(i, 0), 0);\n        totalKE += dot(s.zw, s.zw);\n    }\n\n    float desiredKE = float(NUM_BALLS) * TARGET_ENERGY;\n    float scale = 1.0;\n    if (totalKE > 1e-8) {\n        scale = sqrt(desiredKE / totalKE);\n    }\n    vec4 state = texelFetch(iChannel0, ivec2(id, 0), 0);\n    state.zw *= scale;\n    state.xy += state.zw * DT;\n    fragColor = fold(state);\n}\n",
+     "code": "vec4 addBall(int idx) {\n    float x = float(idx + 1) / 6.;\n    float ang = float(9 - idx) * PI / 20.;\n    vec2 v = vec2(cos(ang), sin(ang)) * SPEED;\n    return vec4(x, 0, v);\n}\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    int id = int(fragCoord.x);\n    if (iFrame == 0) {\n        if (id < NUM_BALLS)\n            fragColor = addBall(id);\n        return;\n    }\n    float totalKE = 0.0;\n    for (int i = 0; i < NUM_BALLS; i++) {\n        vec4 s = texelFetch(iChannel0, ivec2(i, 0), 0);\n        totalKE += dot(s.zw, s.zw);\n    }\n\n    float desiredKE = float(NUM_BALLS) * TARGET_ENERGY;\n    float scale = 1.0;\n    if (totalKE > 1e-8) {\n        scale = sqrt(desiredKE / totalKE);\n    }\n    vec4 state = texelFetch(iChannel0, ivec2(id, 0), 0);\n    state.zw *= scale;\n    state.xy += state.zw * DT;\n    fragColor = fold(state);\n}\n",
+     "name": "Buffer A",
+     "description": "",
+     "type": "buffer"
+    },
+    {
+     "inputs": [
+      {
+       "id": "4dXGR8",
+       "filepath": "/media/previz/buffer00.png",
+       "type": "buffer",
+       "channel": 0,
+       "sampler": {
+        "filter": "linear",
+        "wrap": "clamp",
+        "vflip": "true",
+        "srgb": "false",
+        "internal": "byte"
+       },
+       "published": 1
+      }
+     ],
+     "outputs": [
+      {
+       "id": "XsXGR8",
+       "channel": 0
+      }
+     ],
+     "code": "void mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    int id = int(fragCoord.x);\n    if (id >= NUM_BALLS) {\n        fragColor = vec4(0.0);\n        return;\n    }\n\n    vec4 me = texelFetch(iChannel0, ivec2(id, 0), 0);\n    vec2 total_impulse = vec2(0);\n    vec2 total_pos_adj = vec2(0);\n    bool self_collision = false;\n\n    for (int j = 0; j < NUM_BALLS; ++j) {\n        vec4 other = texelFetch(iChannel0, ivec2(j, 0), 0);\n        for (int k = 0; k < 6; ++k) {\n            if (k == 0 && j == id)\n                continue;\n            vec4 other_transformed = getTransformedState(other, k);\n            vec2 d_pos_vec = me.xy - other_transformed.xy;\n            float dist_sq = dot(d_pos_vec, d_pos_vec);\n            float radii = 2.0 * RADIUS;\n\n            if (dist_sq < radii * radii && dist_sq > 1e-8) {\n                float dist = sqrt(dist_sq);\n                vec2 d_pos_normalized = d_pos_vec * radii / dist;\n                vec2 d_vel_vec = me.zw - other_transformed.zw;\n                if (dot(d_vel_vec, d_pos_vec) >= 0.0)\n                    continue;\n\n                float fact_numerator = 2.0 * dot(d_vel_vec, d_pos_normalized);\n                float fact_denominator =\n                    2.0 * dot(d_pos_normalized, d_pos_normalized);\n                float fact = fact_numerator / fact_denominator;\n\n                vec2 impulse = -fact * d_pos_normalized;\n                total_impulse += impulse;\n\n                float ratio = dist / radii;\n                float overlap = radii - dist;\n                vec2 my_adj = normalize(d_pos_vec) * overlap * 0.5;\n                if (j == id) {\n                    my_adj *= 2.0;\n                }\n                total_pos_adj += my_adj;\n                if (j == id) {\n                    self_collision = true;\n                }\n            }\n        }\n    }\n    if (int(fragCoord.y) == 0) {\n        fragColor = vec4(total_impulse, total_pos_adj);\n    } else if (int(fragCoord.y) == 1) {\n        fragColor = vec4(self_collision ? 1.0 : 0.0, 0.0, 0.0, 0.0);\n    } else {\n        fragColor = vec4(0.0);\n    }\n}",
+     "name": "Buffer B",
+     "description": "",
+     "type": "buffer"
+    },
+    {
+     "inputs": [
+      {
+       "id": "4dXGR8",
+       "filepath": "/media/previz/buffer00.png",
+       "type": "buffer",
+       "channel": 0,
+       "sampler": {
+        "filter": "linear",
+        "wrap": "clamp",
+        "vflip": "true",
+        "srgb": "false",
+        "internal": "byte"
+       },
+       "published": 1
+      },
+      {
+       "id": "XsXGR8",
+       "filepath": "/media/previz/buffer01.png",
+       "type": "buffer",
+       "channel": 1,
+       "sampler": {
+        "filter": "linear",
+        "wrap": "clamp",
+        "vflip": "true",
+        "srgb": "false",
+        "internal": "byte"
+       },
+       "published": 1
+      }
+     ],
+     "outputs": [
+      {
+       "id": "4sXGR8",
+       "channel": 0
+      }
+     ],
+     "code": "void mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    ivec2 id = ivec2(fragCoord);\n    if (id.x >= NUM_BALLS) {\n        fragColor = vec4(0.0);\n        return;\n    }\n\n    vec4 state = texelFetch(iChannel0, id, 0);\n    vec4 response_data = texelFetch(iChannel1, ivec2(id.x, 0), 0);\n    vec2 total_impulse = response_data.xy;\n    vec2 total_pos_adj = response_data.zw;\n\n    float self_collision = texelFetch(iChannel1, ivec2(id.x, 1), 0).x;\n    vec2 new_pos = state.xy + total_pos_adj;\n    vec2 new_vel = state.zw + total_impulse;\n\n    if (self_collision > 0.5) {\n        float ke_before = dot(state.zw, state.zw);\n        float ke_after = dot(new_vel, new_vel);\n        if (ke_after > 1e-8) {\n            float ke_correction = sqrt(ke_before / ke_after);\n            new_vel *= ke_correction;\n        }\n    }\n    fragColor = vec4(new_pos, new_vel);\n}",
+     "name": "Buffer C",
+     "description": "",
+     "type": "buffer"
+    }
+   ]
+  },
+  {
+   "ver": "0.1",
+   "info": {
+    "id": "W3dXDS",
+    "date": "0",
+    "viewed": 0,
+    "name": "Fork Hyperbolic neozhaolia 910",
+    "description": "Motivated by https://codepen.io/brainjam/pen/GaYJjJ\nclearly, there's still a lot of room for code optimization. But I'm too exhausted now.",
+    "likes": 0,
+    "published": "Private",
+    "usePreview": 0,
+    "tags": [
+     "2d",
+     "simulation",
+     "hyperbolic",
+     "poincare",
+     "billiard"
+    ]
+   },
+   "renderpass": [
+    {
+     "inputs": [
+      {
+       "id": "4sXGR8",
+       "filepath": "/media/previz/buffer02.png",
+       "type": "buffer",
+       "channel": 0,
+       "sampler": {
+        "filter": "linear",
+        "wrap": "clamp",
+        "vflip": "true",
+        "srgb": "false",
+        "internal": "byte"
+       },
+       "published": 1
+      }
+     ],
+     "outputs": [
+      {
+       "id": "4dfGRr",
+       "channel": 0
+      }
+     ],
+     "code": "float seed;\nfloat hash() {\n\tfloat p=fract((seed++)*.1031);\n\tp+=(p*(p+19.19))*3.;\n\treturn fract((p+p)*p);\n}\n\nvec3 ball_colors[5] = vec3[5](\n    vec3(1.0, 0.3, 0.4),\n    vec3(0.1, 0.8, 0.6),\n    vec3(0.75, 0.75, 0.1),\n    vec3(0.5, 0.1, 0.1),\n    vec3(0.2, 0.2, 0.6)\n);\n\n\nvoid drawParticle(inout vec3 color, vec2 p, vec2 pos, vec2 vel, vec3 ball_color,\n                  float r) {\n    // --- 参数保持不变 ---\n    const float glow_falloff = 6.;\n    const float shadow_offset = .4;\n    const float shadow_darkness = 0.5;\n    const float shadow_softness = 1.;\n    const vec3 light_direction = normalize(vec3(0.5, 0.5, 1.5));\n    const float shininess = 64.0;\n    const vec3 specular_color = vec3(1.0, 1.0, 1.0);\n    float ball_dist = length(p - pos);\n    float edge_softness = fwidth(ball_dist);\n    float alpha = smoothstep(r, r - edge_softness, ball_dist);\n    float glow = pow(1.0 - smoothstep(0.0, r, ball_dist), glow_falloff);\n\n    vec2 shadow_dir = vec2(0.0);\n    if (length(vel) > 0.001) {\n        shadow_dir = normalize(vel);\n    }\n    vec2 shadow_pos = pos - shadow_dir * r * shadow_offset;\n    float shadow_dist = length(p - shadow_pos);\n    float shadow_mix = 1.0 - smoothstep(r, r * shadow_softness, shadow_dist);\n\n    vec3 specular_intensity = vec3(0.0);\n    vec2 normal_xy = normalize(p - pos);\n    float z_depth_sq = r * r - dot(p - pos, p - pos);\n    float z_depth = sqrt(max(0.0, z_depth_sq));\n    vec3 surface_normal = normalize(vec3(normal_xy, z_depth));\n    vec3 view_direction = normalize(vec3(0.0, 0.0, 1.0));\n    vec3 reflected_light = normalize(\n        2.0 * dot(surface_normal, light_direction) * surface_normal -\n        light_direction);\n    float spec_dot = max(0.0, dot(reflected_light, view_direction));\n    specular_intensity = specular_color * pow(spec_dot, shininess);\n    specular_intensity *= smoothstep(r * 0.5, r * 0., ball_dist);\n\n    float final_shadow_mix = shadow_mix * (1.0 - glow);\n    color = mix(color, vec3(0.0), final_shadow_mix * shadow_darkness);\n\n    vec3 base_particle_color = mix(ball_color, vec3(1.0), glow * 0.5);\n    vec3 final_particle_color = base_particle_color + specular_intensity;\n    color = mix(color, final_particle_color, alpha);\n}\n\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    seed = float((int(fragCoord.x)*19349663^int(fragCoord.y)*83492791)%38069);\n    vec2 uv = (2.0 * fragCoord.xy - iResolution.xy) / iResolution.y;\n    uv *= 1.1;\n    vec3 col = vec3(0);\n    vec2 p = uv;\n    int count = 0;\n    if (length(p) > 1.) {\n        p /= dot(p, p);\n    }\n    p = fold_tile(p, count);\n    float c = float(count);\n    vec3 oCol = .55 + .4 * cos(2. * PI * c / 32. + vec3(2, 1, 0));\n    oCol += (vec3(hash(),hash(),hash())-.5)*.12;\n    float d1 = dot(p, conj(nB));\n    float d2 = dot(p, nB);\n    float d3 = length(p - cen) - r;\n    float dist = min(d1, min(d2, d3));\n    float aa = fwidth(dist) / 2.;\n    float lw = 0.01;\n\n    col = mix(col, oCol, 1. - smoothstep(0., 1., dist - .01));\n    col = mix(col, vec3(0), 1. - smoothstep(lw - aa, lw + aa, dist));\n    for (int i = 0; i < NUM_BALLS; i++) {\n        // Reads the final, updated state from Buffer A for this frame\n        vec4 state = texelFetch(iChannel0, ivec2(i, 0), 0);\n        vec2 ball_pos = state.xy;\n        vec2 ball_vel = state.zw;\n        vec3 ball_color = ball_colors[i];\n        for (int k = 0; k < 6; k++)\n            drawParticle(col, getTransformedState(vec4(p, 0, 0), k).xy,\n                         ball_pos, ball_vel, ball_color, RADIUS);\n    }\n    float dcirc = abs(length(uv) - 1.);\n    col = mix(col, vec3(0), 1. - smoothstep(0., .01, dcirc - 0.01));\n    col = mix(col, vec3(1.0, 0.843, 0.0) * 2.,\n              1. - smoothstep(0., .005, dcirc - 0.005));\n    fragColor = vec4(col, 1.0);\n}",
+     "name": "Image",
+     "description": "",
+     "type": "image"
+    },
+    {
+     "inputs": [],
+     "outputs": [],
+     "code": "#define NUM_BALLS 3\n#define MAX_ITER 100\n#define RADIUS 0.03\n#define DT 0.2\n#define PI 3.1415926536\n#define SPEED 0.01\n#define TARGET_ENERGY 1e-4\n\nconst float P = 8.;\nconst float Q = 3.;\n\nconst float alpha = PI / P;\nconst float beta = PI / Q;\n\nconst float ca = cos(alpha), sa = sin(alpha);\nconst float cb = cos(beta), sb = sin(beta);\nconst vec2 nB = vec2(sa, -ca);\nconst float rho = sqrt(cb * cb - sa * sa);\nconst vec2 cen = vec2(cb / rho, 0.0);\nconst float r = sa / rho;\n\nvec2 conj(vec2 p) { return vec2(p.x, -p.y); }\nvec2 refB(vec2 p) { return reflect(p, nB); }\nvec2 refC(vec2 p) {\n    p -= cen;\n    p *= r * r / dot(p, p);\n    return p + cen;\n}\nvec4 conjState(vec4 p) { return vec4(conj(p.xy), conj(p.zw)); }\n\nvec4 refBState(vec4 p) { return vec4(refB(p.xy), refB(p.zw)); }\n\nvec2 reflectVel(vec2 p, vec2 v) { return vec2(-v.x, v.y); }\n\nvec4 refCState(vec4 p) { return vec4(refC(p.xy), reflectVel(p.xy, p.zw)); }\n\nvec4 fold(vec4 state) {\n    int count = 0;\n    vec2 p = state.xy;\n    vec2 v = state.zw;\n    for (int i = 0; i < MAX_ITER; i++) {\n        float kA = dot(p, nB);\n        float kB = dot(p, conj(nB));\n        float kC = length(p - cen) - r;\n        if (kA > 0. && kB > 0. && kC > 0.) {\n            if (count % 2 == 1) {\n                p = conj(p);\n                v = conj(v);\n                count += 1;\n            }\n            break;\n        }\n        if (p.y < 0.) {\n            p = conj(p);\n            v = conj(v);\n            count += 1;\n            continue;\n        }\n        if (dot(p, nB) < 0.) {\n            p = refB(p);\n            v = refB(v);\n            count += 1;\n            continue;\n        }\n        if (kC < 0.) {\n            v = reflectVel(p, v);\n            p = refC(p);\n            count += 1;\n            continue;\n        }\n    }\n    return vec4(p, v);\n}\n\nvec2 fold_tile(vec2 p, inout int count) {\n    for (int i = 0; i < MAX_ITER; i++) {\n        float kA = dot(p, nB);\n        float kB = dot(p, conj(nB));\n        float kC = length(p - cen) - r;\n        if (kA > 0. && kB > 0. && kC > 0.) {\n            if (count % 2 == 1) {\n                p = conj(p);\n                count += 1;\n            }\n            return p;\n        }\n        if (kA < 0.) {\n            p = refB(p);\n            count += 1;\n            continue;\n        }\n        if (kB < 0.) {\n            p = reflect(p, conj(nB));\n            count += 1;\n            continue;\n        }\n        if (kC < 0.) {\n            p = refC(p);\n            count += 1;\n            continue;\n        }\n    }\n    return p;\n}\n\nvec4 getTransformedState(vec4 s0, int idx) {\n    if (idx <= 0 || idx > 5)\n        return s0;\n\n    vec4 s1 = refBState(conjState(s0));\n    if (idx == 1)\n        return s1;\n\n    vec4 s2 = refCState(conjState(s1));\n    if (idx == 2)\n        return s2;\n\n    vec4 s3 = conjState(refBState(s0));\n    if (idx == 3)\n        return s3;\n\n    vec4 s4 = refCState(conjState(s3));\n    if (idx == 4)\n        return s4;\n\n    vec4 s5 = refCState(conjState(s0));\n    if (idx == 5)\n        return s5;\n}",
+     "name": "Common",
+     "description": "",
+     "type": "common"
+    },
+    {
+     "inputs": [
+      {
+       "id": "4sXGR8",
+       "filepath": "/media/previz/buffer02.png",
+       "type": "buffer",
+       "channel": 0,
+       "sampler": {
+        "filter": "linear",
+        "wrap": "clamp",
+        "vflip": "true",
+        "srgb": "false",
+        "internal": "byte"
+       },
+       "published": 1
+      }
+     ],
+     "outputs": [
+      {
+       "id": "4dXGR8",
+       "channel": 0
+      }
+     ],
+     "code": "vec4 addBall(int idx) {\n    float x = float(idx + 1) / 6.;\n    float ang = float(9 - idx) * PI / 20.;\n    vec2 v = vec2(cos(ang), sin(ang)) * SPEED;\n    return vec4(x, 0, v);\n}\n\nvoid mainImage(out vec4 fragColor, in vec2 fragCoord) {\n    int id = int(fragCoord.x);\n    if (iFrame == 0) {\n        if (id < NUM_BALLS)\n            fragColor = addBall(id);\n        return;\n    }\n    float totalKE = 0.0;\n    for (int i = 0; i < NUM_BALLS; i++) {\n        vec4 s = texelFetch(iChannel0, ivec2(i, 0), 0);\n        totalKE += dot(s.zw, s.zw);\n    }\n\n    float desiredKE = float(NUM_BALLS) * TARGET_ENERGY;\n    float scale = 1.0;\n    if (totalKE > 1e-8) {\n        scale = sqrt(desiredKE / totalKE);\n    }\n    vec4 state = texelFetch(iChannel0, ivec2(id, 0), 0);\n    state.zw *= scale;\n    state.xy += state.zw * DT;\n    fragColor = fold(state);\n}\n",
      "name": "Buffer A",
      "description": "",
      "type": "buffer"
