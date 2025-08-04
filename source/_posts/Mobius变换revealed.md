@@ -14,7 +14,7 @@ teximage: true
 
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fljfRm?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
 
-这个动画的名字叫做 Möbius transformation revealed，想法源自 Douglas N. Arnold 和 Jonathan Rogness 于 2007 年发布的 [同名视频](https://www-users.cse.umn.edu/~arnold/moebius/)。这是一个很有名的视频，它表达的核心思想是，扩充复平面 $\Cbar$ 上的 Möbius 变换可以由球在三维空间中的刚体运动给出：
+动画的名字叫做 Möbius transformation revealed，源自 Douglas N. Arnold 和 Jonathan Rogness 于 2007 年发布的 [同名视频](https://www-users.cse.umn.edu/~arnold/moebius/)。这是一个很有名的视频，它表达的核心思想是，扩充复平面 $\Cbar$ 上的 Möbius 变换可以由球在三维空间中的刚体运动给出：
 
 1. 我们称一个球 $S$ 是**容许**的，如果 $S$ 的最高点，也就是北极点位于半空间 $\{z>0\}$ 中。
 2. 取任何一个可容许的球 $S$，将 $\Cbar$ 在逆球极投影下对应到 $S$ 的球面上。
@@ -44,7 +44,5 @@ $$\underbrace{\Cbar\xrightarrow{\text{inverse stereographic projection}} S\xrigh
   <video src="/images/mobius/inversion.mp4" height="300" controls></video>
 
 以上几种运动方式的复合可以给出可容许球的任何刚体运动，而任何 Möbius 变换都是平移、缩放、旋转、逆变换的复合，所以 Möbius 变换确实与可容许球体的刚体运动是对应的。
-
-另一种看待的角度是把 $M$ 对应的复矩阵写成一个酉矩阵 $Q$ 和上三角矩阵 $U$ 的乘积：$M=RQ$。$Q$ 作为 ${\rm SU}(2)$ 中的元素作用在球面上是一个旋转，而 $R$ 作为上三角矩阵给出的是平移和缩放。
 
 反过来对给定的 Möbius 变换 $M$ 和容许的球 $S$，当 $S$ 的初始位置确定以后，给出 $M$ 的刚体运动 $T$ 也是唯一确定的。证明见 [这个论文](https://scholar.rose-hulman.edu/cgi/viewcontent.cgi?article=1218&context=rhumj)。
