@@ -45,4 +45,6 @@ $$\underbrace{\Cbar\xrightarrow{\text{inverse stereographic projection}} S\xrigh
 
 以上几种运动方式的复合可以给出可容许球的任何刚体运动，而任何 Möbius 变换都是平移、缩放、旋转、逆变换的复合，所以 Möbius 变换确实与可容许球体的刚体运动是对应的。
 
+另一种看待的角度是把 $M$ 对应的复矩阵写成一个酉矩阵 $Q$ 和上三角矩阵 $U$ 的乘积：$M=RQ$。$Q$ 作为 ${\rm SU}(2)$ 中的元素作用在球面上是一个旋转，而 $R$ 作为上三角矩阵给出的是平移和缩放。
+
 反过来对给定的 Möbius 变换 $M$ 和容许的球 $S$，当 $S$ 的初始位置确定以后，给出 $M$ 的刚体运动 $T$ 也是唯一确定的。证明见 [这个论文](https://scholar.rose-hulman.edu/cgi/viewcontent.cgi?article=1218&context=rhumj)。

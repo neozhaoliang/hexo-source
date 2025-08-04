@@ -81,3 +81,4 @@ url: todo
 - Shadertoy 画 Escher circle limit
 - Shadertoy 画乐高小人镜面反射房间
 - Klein quartic 曲面上打台球
+- seascape 详解
