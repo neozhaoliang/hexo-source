@@ -5,7 +5,7 @@ categories: [计数组合学]
 url: "macmahon-formula-plane-partitions"
 ---
 
-我记得还在本科的时候，曾经有段时间痴迷于寻找线性代数的各种应用。
+\newcommand{\sgn}{\mathrm{sgn}}
 
 :::{.question .unnumbered}
 假设你家的浴室地面是一个边长为 $a\times b\times c$ 的平行六边形（$a,b,c$ 都是正整数），每个内角都是 120 度。你订购了一批边长为 1 的菱形瓷砖用来铺满整个浴室地面。问：有多少种不同的方法？
@@ -53,7 +53,7 @@ $A$ 有如下特点：
 
 设答案为 $M(a,b,c)$，则我们有一个非常令人吃惊的表达式：
 
-:::{.theorem .unnumbered}
+:::{.theorem .unnumbered #macmahon}
 **Macmahon 公式** \
 
 $$M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
@@ -81,11 +81,15 @@ $$M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
 
 注意 $A$ 的行和列满足递降关系，这个递降关系反映在这 $c$ 条路径上就是，对任何两条路径，它们可以有接触点或者重合的边，但彼此不能穿过对方。
 
-接下来我们做一件小把戏：对每个 $i$，把第 $i$ 条路径整体往 $(-1,1)$ 方向平移 $i-1$ 单位。这就让路径们完全不相交了。注意，不相交是指任意两条路径没有公共点，避免一切交叉和接触。我们称之为一个不相交的路径组。如下图所示：
+接下来我们做一件小把戏：对每个 $i$，把第 $i$ 条路径整体往 $(-1,1)$ 方向平移 $i-1$ 单位。这就让路径们完全不相交了。如下图所示：
 
-![](/images/macmahon/nonintersecting_paths.gif){width=550 .fig}
+![](/images/macmahon/nonintersecting_paths.gif){width=550 .fig #nonintersect-anim}
 
-这里 $A_i=(1-i,i-1)$，$B_j=(b+1-j,a-1+j)$，$\{p_i:A_i\rightarrow B_i,1\leq i\leq c\}$ 是一个不相交的路径组。反过来对每一个这样的不相交的路径组，我们也很容易还原出对应的平面分拆来。
+在平移后，第 $i$ 条路径的起点是 $A_i=(1-i,i-1)$，终点是 $B_i=(b+1-i,a-1+i)$。我们把这样的 $c$ 条路径组成的集合称之为一个不相交的路径组。
+
+我再强调一次，不相交的路径组是指任何两条路径之间没有公共点，避免一切交叉和接触。
+
+反过来对每一个这样的不相交的路径组，我们也很容易还原出对应的平面分拆来。
 
 于是我们的问题又进一步转化为
 
@@ -93,12 +97,15 @@ $$M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
 设 $\{A_i=(1-i,i-1)\}$ 和 $\{B_j=(b+1-j,a-1+j)\}$ 是平面上两组顶点集，计算所有不相交路径组 $\mathcal{P}=\{p_i,1\leq i\leq c\}$ 的数目，其中 $p_i$ 是从 $A_i$ 出发到 $B_i$ 的 Gauss 路径。
 :::
 
+这听起来像是某种城市道路或者管线设计问题。神奇的是，这个计数问题的答案，居然藏在一个行列式中。
 
 # Gessel-Viennot 的巧妙方法
 
-考虑 $c\times c$ 的矩阵 $M$，其元素 $m_{ij}$ 是从 $A_i$ 出发到达 $B_j$ 的所有 Gauss 路径的数目。由于 $A_i$ 坐标为 $(1-i,i-1)$，$B_j$ 坐标为 $(b+1-j,a-1+j)$，所以
+考虑 $c\times c$ 的矩阵 $M$，其元素 $m_{ij}$ 是从 $A_i$ 出发到达 $B_j$ 的所有 Gauss 路径的数目。注意，现在 Gauss 路径不再必须是从 $A_i$ 走到 $B_i$，而是可以走到任何 $B_j$。由于 $A_i$ 坐标为 $(1-i,i-1)$，$B_j$ 坐标为 $(b+1-j,a-1+j)$，所以
 $$m_{ij}=\binom{a+b}{b+i-j}.$$
-这里如果 $b+i-j<0$ 则规定 $m_{ij}=0$。Gessel-Viennot 引理非常意外地告诉我们：
+其中如果 $b+i-j<0$ 则规定 $m_{ij}=0$。因为这时 $B_j$ 的横坐标在 $A_i$ 的左边，这种 Gauss 路径根本不存在。
+
+现在，奇迹要发生了：
 
 ::: {.lemma .unnumbered}
 
@@ -108,42 +115,46 @@ $$m_{ij}=\binom{a+b}{b+i-j}.$$
 $$\det M=\det_{1\leq i,j\leq c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right).$$
 :::
 
-Gessel-Viennot 引理对更一般的带权的图也成立，它在许多组合问题中都有精彩的应用。关于这方面可以参看 [@thebook]。
+这个结论乍一看可太不可思议了，行列式的几何意义不是平行多面体的有向体积吗？怎么突然成了计数工具？要揭示这个魔法背后的秘密，我们得先看看上面的行列式真正干了什么。
 
 **证明**：对 $c$ 元组上的任一置换 $\sigma\in S_c$，记路径组 $\mathcal{P}_\sigma=\{p_i:A_i\rightarrow B_{\sigma(i)},1\leq i\leq c\}$。
 
-把 $\det M$ 按照行列式的定义展开：
+把 $\det M$ 按照行列式的定义展开。由于 $m_{i\sigma(i)}$ 是从 $A_i$ 到 $B_{\sigma(i)}$ 的 Gauss 路径的个数，所以
+$$m_{i\sigma(i)} = \sum_{p_i:A_i\to B_{\sigma(i)}}1.$$
+于是
 
-$$\begin{aligned}\det M&=\sum_{\sigma}\text{sgn}(\sigma)m_{1\sigma(1)}\cdots m_{c\sigma(c)}\\&=\sum_{\sigma}\text{sgn}(\sigma)\left(\sum_{p_1:A_1\to B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to B_{\sigma(c)}}1\right).\end{aligned}$$
+$$\begin{aligned}\det M&=\sum_{\sigma}\sgn(\sigma)m_{1\sigma(1)}\cdots m_{c\sigma(c)}\\&=\sum_{\sigma}\sgn(\sigma)\left(\sum_{p_1:A_1\to B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to B_{\sigma(c)}}1\right).\end{aligned}$$
 
-其中 $\sigma$ 跑遍对称群 $S_c$。取出其中的一个因子
+其中 $\sigma$ 跑遍对称群 $S_c$。$\sgn(\sigma)$ 是置换 $\sigma$ 的符号，偶置换时为 $+1$，奇置换时为 $-1$。
 
-$$\left(\sum_{p_1:A_1\to B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to B_{\sigma(c)}}1\right),$$
+我们考虑如下的项：
 
-把它展开得到很多个 1，每个 1 对应一个路径组 $\mathcal{P}_\sigma$，因此
+$$\left(\sum_{p_1:A_1\to B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to B_{\sigma(c)}}1\right).$$
+
+把它展开会得到很多个 1，每个 1 对应一个路径组 $\mathcal{P}_\sigma$，因此
 
 $$\det M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma). \tag{$\ast$}\label{eq:det}$$
 
-这个求和是对每个置换 $\sigma$，跑遍所有可能的路径组 $P_\sigma$。
+这个求和是对每个置换 $\sigma$，跑遍所有可能的路径组 $P_\sigma$。$P_\sigma$ 可以是相交的路径组，也可以是不相交的路径组。
 
-我们来证明在 $(\ref{eq:det})$ 的求和中，相交路径组对应的项可以两两抵消，剩下的只有不相交的路径组。
+奇妙的是，所有那些相交的路径组对应的项最后都会互相抵消，剩下的只有不相交的路径组！
 
-设 $\mathcal{P}=\mathcal{P}_\sigma$ 是一个相交的路径组，我们构造与之抵消的路径组 $\mathcal{P}'$ 如下：
+让我们看看这个抵消是怎么发生的。设 $\mathcal{P}=\mathcal{P}_\sigma$ 是一个相交的路径组，我们构造与之抵消的路径组 $\mathcal{P}'$ 如下：
 
 1. 在 $\mathcal{P}$ 的所有交点中，选择位于最“东北”方向的那一个，将其记作 $C$。
 1. 选择最大的 $i$ 使得 $p_i$ 经过 $C$，再选择最大的 $j<i$ 使得 $p_j$ 也经过 $C$。
 4. 交换 $p_i$ 和 $p_j$ 在 $C$ 点之后的部分，保持路径组其它部分不动。记得到的新路径组为 $\mathcal{P}'$。
 
-直观上，你可以想象两个人分别从 $A_i$ 和 $A_j$ 出发沿着路径 $p_i$ 和 $p_j$ 前往目的地 $B_{\sigma(i)}$ 和 $B_{\sigma(j)}$。当他们到达 $C$ 时改变路线，沿着对方剩下的路径前往对方的目的地。
+直观上，你可以想象两个人分别从 $A_i$ 和 $A_j$ 出发沿着路径 $p_i$ 和 $p_j$ 前往目的地 $B_{\sigma(i)}$ 和 $B_{\sigma(j)}$。当他们到达 $C$ 时同时调转路线，沿着对方剩下的路径前往对方的目的地。
 
 ![](/images/macmahon/gessel_viennot.svg){width=550 .fig}
 
-于是 $\mathcal{P}'$ 对应的置换 $\sigma'$ 与 $\sigma$ 只差一个对换 $(ij)$，因此 $\text{sgn}(\sigma')=-\text{sgn}(\sigma)$。更重要的是，如果对 $\mathcal{P}'$ 也进行上述操作的话，又会回到 $\mathcal{P}$，因此相交的路径组确实可以两两配对抵消。
+这个新路径组 $\mathcal{P}'$ 对应的置换 $\sigma'$ 与 $\sigma$ 相差一个对换 $(ij)$，因此 $\sgn(\sigma')=-\sgn(\sigma)$。不仅如此，如果对 $\mathcal{P}'$ 也按照上述规则寻找与之抵消的路径组的话，找到的路径仍然是 $\mathcal{P}$，这就构成了一个漂亮的“湮灭配对”：相交的路径组成对出现，符号相反，相加为零。
 
 于是我们可以把 $(\ref{eq:det})$ 改写为
-$$\det M=\sum_{\sigma,\,\mathcal{P}_\sigma \text{ non-intersecting}}\text{sgn}(\sigma).$$
+$$\det M=\sum_{\sigma,\,\mathcal{P}_\sigma \text{ non-intersecting}}\sgn(\sigma).$$
 
-但是注意，不相交的路径组只有在 $\sigma=1$ 时才可能发生，即每个 $A_i$ 的目的地必须是 $B_i$。所以我们进一步得到
+但是注意，不相交的路径组只有在 $\sigma=1$ 时才可能发生，即每个 $A_i$ 的目的地必须是 $B_i$。你可以很容易从前面的图中看出来。所以我们进一步得到
 $$
 \det M=\sum_{\sigma=1\text{ and } \mathcal{P}_\sigma \text{ non-intersecting}}1.$$
 这正是所求的不相交路径组的个数。$\blacksquare$
@@ -162,9 +173,9 @@ $$\det A\cdot \det A_{1,n}^{1,n}=\det A_1^1\det A_n^n-\det A_1^n\det A_n^1.$$
 
 我们对 $c$ 归纳来证明
 
-:::{.theorem .unnumbered}
+:::{.theorem .unnumbered #macmahon-thm}
 
-（**Macmahon 公式**）
+**Macmahon 公式** \
 
 $$\det_{1\leq i,j\leq c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
 :::
@@ -181,8 +192,8 @@ $$\begin{cases}(M_c(a,b))_1^1=M_{c-1}(a,b),\\(M_c(a,b))_n^n=M_{c-1}(a,b),\\(M_c(
 
 # 番外话
 
-说点八卦的东西。Dodgson 是 19 世纪的英国数学家，细心点的读者可能注意到这位老兄的名字实在让人不敢恭维：Dodgson，dog .. son？大概他也知道自己的名字难登大雅之堂，所以他给自己取了一个很好听的笔名：Lewis Carroll（路易斯·卡罗尔）。
+说点八卦的东西。Dodgson 是 19 世纪的英国数学家，细心点的读者可能注意到这位老兄的名字实在让人不敢恭维：Dodgson, dog...son？大概他也知道自己的名字难登大雅之堂，所以他给自己取了一个很好听的笔名：Lewis Carroll（路易斯·卡罗尔）。
 
-你对这个名字没有反应么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学的数学教授，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。他曾经专门为邻居家的女儿写了一部童话来哄她开心，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把 Dodgson 的全部著作都搜集呈上来，于是大臣献上了一本厚厚的《符号逻辑》，当然结果你猜得到的 ...
+你对这个名字没有印象么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学的数学教授，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。他曾经专门为邻居家的女儿写了一部童话来哄她开心，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把 Dodgson 的全部著作都搜集呈上来，于是大臣献上了一本厚厚的《符号逻辑》，当然结果你猜得到的 ...
 
 时光一转到了 20 世纪 80 年代，三位数学家 William Mills，David Robbins 和 Howard Rumsey 在研究计算行列式的快速数值算法时，受 Dodgson 算法的启发，发现了交错符号矩阵猜想。这是计数组合学里面最精彩的猜想之一。我向你推荐 Bressoud 的书 [@Bressoud1999]，我保证里面的故事和《爱丽丝漫游奇境记》一样奇妙 ...
