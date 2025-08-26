@@ -78,4 +78,4 @@ url: todo
 - Shadertoy 画乐高小人镜面反射房间
 - Klein quartic 曲面上打台球
 - seascape 详解
-- 环面上的 flip-shear, 闭合测地线, sturmian 序列, 连分式
+- hyperbolic-storage
