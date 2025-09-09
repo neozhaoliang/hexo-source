@@ -38,44 +38,43 @@ url: todo
 - 可裂八元数，G2 与复合代数
 - 多连通空间上群作用怎么给出表现
 - John Baez 李群和四元数讲义, G2 and the rolling ball, Kepler 问题的四维对称性
-
-# 编程
-
-- shadertoy 里面画 icosahedral 准晶
-- Python + cairo 实现 hyperbolic tiling 矢量绘图库。
-- shadertoy 实现 sphere gears，并解释与 SO3 的表示的关系
-- shaderoty 演示相对论
-- shadertoy 实现自动微分和 implicit surface 渲染
-- 用这个 https://www.shadertoy.com/view/NlKXWt 写一个 doyle spiral 的例子
-- shadertoy 版本的 Jigsaw Penrose tiling
-- Python 实现 Voronoi + LLoyd 算法，理解 mapbox 的那个实现原理
-- Stange + sl2c 的 shader 研究实现
-- missing mirror，用正方体万花筒内部反射实现 pseudo kleinian
-- 把 gifmaze 中 hilbert 曲线的例子改成对输入图像生成 hilbert 曲线图
 - 二维随机游动常返，如双曲、Penrose 等的判断。
+- [Weyl 特征公式](http://math.soimeme.org/~arunram/Resources/KacMoodyLieAlgebrasChapterIII.html)
+
+# Shadertoy
+
+- 3D icosahedral quasicrystal
+- Sphere and lattice gears and SO3 representation
+- 加速到光速演示相对论
+- implicit algebraic surfaces
+- doyle spiral
+- Voronoi + LLoyd
+- Stange + sl2c 的 shader 研究实现
+- 分形反射盒子
+- Direc belt trick
+- Bruhat - Tits tree
+- Escher circle limit
+- Klein quartic 曲面上打台球
+- seascape 详解
+- 笛沙格定理
+- 算术 Coxeter 群
+- 三维 Kleinian 群
+- 模群面上的测地流和 horocycle 流
+- Thurston 的圆堆算法
+
+
+# Python 
+
+- Python + cairo 实现 hyperbolic tiling 矢量绘图库。
 - 继续可视化项目系列，可视化复分析 + indra's pearls，可视化 circle packings，可视化双曲空间 (Hee Oh)。
-- Shadertoy 实现 hyperbolic weave
 - 相对论 + 机器猫
 - Faraday 驻波模拟
-- Thurston 的圆堆算法
 - Conway's Topograph
 - magicavoxel and magicaCSG
 - mitsuba
-- Bruhat 树
 - Voxel Turtle
-- Modular flow
-- 格点参数化　https://www.shadertoy.com/view/fllXzl
 - 纸壳制作多面体?
 - sl3 shdertoy?
-- shadertoy 实现 Z^d 齿轮？
-- shadertoy 画算术 Coxeter 群 (3, 4, 4), (6, 3, 3)
 - epstein 说的扫描线，gifmaze 能画？
 - Knuth-Bendix 约化，模群和 indra's pearls
-- Python + shader 实现代数曲面
-- 笛沙格定理 shadertoy
 - shadertoy Jigsaw 版本的 monotile
-- Shadertoy 画 Escher circle limit
-- Shadertoy 画乐高小人镜面反射房间
-- Klein quartic 曲面上打台球
-- seascape 详解
-- hyperbolic-storage
