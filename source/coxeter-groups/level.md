@@ -77,13 +77,9 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 假设结论对所有小于 $l$ 的正整数成立，考虑 $l$ 的情形。用反证法。
 
-假设从 $\Gamma$ 中删去 $\{i_1,\ldots,i_{l+1}\}$ 这 $l+1$ 个顶点后，剩下的部分中，连通分支 $\Gamma'$ 是仿射的。不妨设 $\Gamma\setminus\{i_1,\ldots,i_{l+1}\}=\Gamma'\cup\Gamma''$，其中 $\Gamma''$（可能为空集）和 $\Gamma'$ 之间没有边相连。
+假设从 $\Gamma$ 中删去 $|U|=l+1$ 个顶点后，剩下的部分包含一个仿射的连通分支 $Y$。由于 $\Gamma$ 是连通的，所以 $Y$ 必然和某个 $u\in U$ 有边相连。
 
-![](/images/coxeter/lemma.svg){.fig width=400}
-
-由于 $\Gamma$ 是连通的，所以 $\Gamma'$ 必然和 $\{i_1,\ldots,i_{l+1}\}$ 中某个顶点有边连接，不妨设为 $i_{l+1}$。
-
-$\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}$ 是一个仿射的连通子图，这个子图删除 $i_{l+1}$ 后得到的 $\Gamma'$ 仍然是仿射的，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
+考虑从 $\Gamma$ 中，删去 $U\setminus\{u\}$ 的 $l$ 个顶点后得到的子图。根据定义，它的每个分支都是有限或者仿射的。令 $C$ 是包含 $Y\cup\{u\}$ 的连通分支，则 $C$ 必然是仿射的。但是从 $C$ 中删除 $u$ 后仍然包含 $Y$ 这个仿射子图，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
 
 
 # Level 1 是双曲的
