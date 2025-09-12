@@ -323,6 +323,7 @@ $2\Rightarrow 1$：由于内积 $\inn$ 是双曲的，而子空间 $\span\{\omeg
 # 一个技术性命题
 
 下面这个命题仅会在后面 Boyd-Maxwell 球堆的一个细分情形中使用一次，但是它的论证颇为不易，所以我把它放在这里。请读者注意，这个命题并不限制 $W$ 的 level 或者内积 $\inn$ 的符号。
+
 :::{.proposition #ideal-vertex}
 [@Maxwell89, proposition 5.15] \
 
@@ -336,16 +337,16 @@ $2\Rightarrow 1$：由于内积 $\inn$ 是双曲的，而子空间 $\span\{\omeg
 :::
 
 :::{.note}
-由于 $\bigcup_{w\in W_I}wp$ 是无限集，$\cone{\bigcup_{w\in W_I}wp}$ 未必是闭集，因此闭包记号不可少。
+由于 $\bigcup_{w\in W_I}wp$ 是无限集，$\cone{\bigcup_{w\in W_I}}$ 未必是闭集，因此闭包记号不可少。
 
 当 $W$ 的 level 是 1 时，若 $\omega_s$ 是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时 $W_I$ 是经过 $\omega_s$ 的那些镜面生成的标准椭圆子群，$W_I$ 会把基本区域无限压缩到 $\omega_s$ 附近，如下图所示：
 
 ![](/images/coxeter/ideal-vertex.jpg){.fig width=350}
 :::
 
-**证明**：由已知 $V_I=\span\{\alpha_i\mid i\in I\}$ 是仿射的，并且 $\rad(V_I)$ 是一维的。由恒等式 $(\ref{eq:idI})$：
-$$\omega_s = \sum_{i\in I}(\omega_s,\omega_i)\,\alpha_i\in V_I.$$
-因此 $\rad(V_I)=\R\omega_s$。于是 $W_I$ 固定 $\omega_s$，即
+**证明**：由已知子空间 $V_I=\span\{\alpha_t\mid t\ne s\}$ 是仿射的，并且 $\rad(V_I)$ 是一维的。根据恒等式 $(\ref{eq:idI})$：
+$$\omega_s = \underbrace{(\omega_s,\omega_s)}_{=0}\alpha_s +  \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t = \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t\in V_I.$$
+由此可得 $\rad(V_I)=\R\omega_s$。于是 $W_I$ 保持 $\omega_s$ 不动，即
 $$\R\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.$$
 $W_I$ 同样作用在商空间 $V_I/\R\omega_s$ 上，此作用给出了一个同态 $W_I\to\gl(V_I/\R\omega_s)$。令 $K$ 为此同态的核，则对任何 $w\in K$，
 $$w(v + \R\omega_s) = v + \R\omega_s,\quad v\in V_I.$$
@@ -353,44 +354,47 @@ $$w(v + \R\omega_s) = v + \R\omega_s,\quad v\in V_I.$$
 $$V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.$$
 由于 $K\leqslant W_I$，所以
 $$V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ K-1\ }0.$$
-即 $(K-1)^2V_I\equiv0$。
+即 $(K-1)^2$ 在整个 $V_I$ 上恒为 0。
 
-进一步，对 $w\in K$，$w$ 是一些 $I$ 中生成元的乘积，所以 $w\alpha_s$ 形如 $w\alpha_s=\alpha_s+\sum\limits_{i\in I}c_i\alpha_i$，所以 $(w-1)\alpha_s\in V_I$，从而 $w-1$ 将整个 $V$ 也映入 $V_I$，于是 $$V\xrightarrow{\ K-1\ } V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ K-1\ }0.$$ 即 $(K-1)^2V\subset\R\omega_s$，$(K-1)^3V\equiv0$。
+更进一步，对任何 $w\in K$，$w\alpha_s$ 形如 $w\alpha_s=\alpha_s+\sum\limits_{t\ne s}c_t\alpha_t$，所以 $(w-1)\alpha_s\in V_I$，从而 $w-1$ 将整个 $V$ 也映入 $V_I$，于是
+$$V\xrightarrow{\ K-1\ } V_I\xrightarrow{\ K - 1\ }\R\omega_s\xrightarrow{\ K-1\ }0.$$
+即 $(K-1)^2V\subset\R\omega_s$，$(K-1)^3V\equiv0$。
 
-取 $w\in K$ 且 $w\ne 1$ [^1]，并记 $A=w-1$，由 $V_I\xrightarrow{A}\R\omega_s$ 可知
-$$A\alpha_i = \lambda_i\omega_s,\quad i\in I,\,\lambda_i\in\R.$$
-由于 $w$ 不是 $V_I$ 上的恒等变换，所以至少对一个 $i\in I$ 有 $\lambda_i\ne0$。
+取 $w\in K$ 且 $w\ne 1$ [^1]，由于 $w$ 在 $V_I$ 上不是恒等变换，所以存在 $t\in I$ 使得 $w\alpha_t\ne\alpha_t$。设
+$$\beta = w\alpha_t=\alpha_t+a\omega_s\,(a\ne 0).$$
+则 $s_\beta=wtw^{-1}$，从而对任何 $p\in V$，
+$$\begin{align*}
+s_\beta(p)&=p - 2(p,\beta)\beta\\
+&=p-2(p,\alpha_t+a\omega_s)(\alpha_t+a\omega_s)\\
+&=p-2(p,\alpha_t)\alpha_t- 2a(p, \omega_s)\alpha_t - c\omega_s\\
+&=t(p) - 2a(p, \omega_s)\alpha_t - c\omega_s.
+\end{align*}$$
+其中 $c=2(p,\alpha_t+a\omega_s)a$ 是实数。$c$ 具体是多少不用关心。
 
-对 $p\in V$，设 $Ap=u\in V_I$。利用
-$$(p,\alpha_i)=(wp,w\alpha_i)=(p+Ap,\alpha_i+A\alpha_i).$$
-代入 $Ap=u$ 和 $A\alpha_i=\lambda_i\omega_s$，化简可得
-$$(u,\alpha_i)+\lambda_i(p,\omega_s)=0,\qquad \forall i\in I.$$
-记 $u=\sum_{j\in I} x_j\alpha_j\,(x_j\in\R)$，$x=(x_i)_{i\in I}$，$\lambda=(\lambda_i)_{i\in I}$，则
-$$G x = -(p,\omega_s)\lambda.$$
-其中 $G=(\alpha_i,\alpha_j)_{i,j\in I}$ 是 $V_I$ 上的 Gram 矩阵。这是一个关于 $x$ 的线性方程组，由于 $G$ 是半正定但不是正定的，所以我们不能直接把 $G$ 的逆矩阵写在右边。但是我们可以用 $G$ 的 Moore-Penrose 广义逆写出它的解：
-$$x = -(p,\omega_s)G^+\lambda.$$
-于是
-$$A^2p=A(u)=\sum_{j\in I} x_jA(\alpha_j)=\sum_{j\in I}x_j\lambda_j\omega_s = -(p,\omega_s)\,\lambda^\top G^+\lambda\ \omega_s.$$
-我们断言有 $a=\lambda^\top G^+\lambda> 0$ 成立。不过这个断言的证明我们放在后面。
+构造换位子 $w_1=twtw^{-1}\in K$，则由 $(K-1)^2V\subset\R\omega_s$ 有 $(w_1-1)^2p=b\omega_s\,(b\in\R)$。我们来计算 $b$。首先，
 
-至此我们证明了 $A^2p = -(p,\omega_s) a\omega_s\,(a>0)$。我们来确定 $(p,\omega_s)$ 的符号。这里要用到 $p\in\barfd=\cone{\Delta^\ast}$ 的条件。如果 $p$ 是 $\omega_s$ 的正倍数，显然 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$，命题自然成立。所以我们可以假设 $p$ 与 $\omega_s$ 不共线。设 $p=\sum_{t\in S} c_t\omega_t\,(c_t\geq0)$，则至少有一个 $t\ne s$ 满足 $c_t>0$。于是 $$(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0 \text{ 且至少有一个 } >0}\ \cdot\ \underbrace{(\omega_s,\omega_t)}_{\text{已知 }<0}<0.$$
-从而 
-$$A^2p=b\omega_s,\quad b=-a(\omega_s,p)>0.$$
+$$(w_1-1)p=ts_\beta(p)-p=-2a(p,\omega_s)\alpha_t - c\omega_s.\label{eq:wp1}\tag{1}$$
+其中我们利用了 $t(\alpha_t)=-\alpha_t$ 和 $t(\omega_s)=\omega_s$。
 
-由 $A^3=0$ 与二项式展开：
-$$w^N p=(1+A)^N p=p+N Ap+\binom{N}{2}A^2p.$$
-代入 $A^2p = b\omega_s$ 有
-$$\lim_{N\to\infty}\frac{w^Np}{\binom{N}{2}b}=\omega_s.$$
-即得所证。
+到目前为止，我们的计算对任何 $p\in V$ 都是成立的。我们可以在 $(\ref{eq:wp1})$ 式中取 $p=\alpha_t$，得到
+$$(w_1-1)\alpha_t=2a\underbrace{(\alpha_t,\omega_s)}_{=0}\alpha_t -c\omega_s=-c\omega_s= -2(\alpha_t,\alpha_t+a\omega_s)a\omega_s=-2a\omega_s.\label{eq:wp2}\tag{2}$$
 
-最后我们来补上 $\lambda^\top G^+\lambda>0$ 的证明。为此我们只要说明有 $\lambda\in\mathrm{im}G$ 即可。由于 $\ker G$ 是一维的。设 $\omega_s = \sum_{i\in I} z_i\alpha_i$，则易见 $\ker G$ 由单个向量 $z=(z_i)_{i\in I}$ 生成。
+继续，将 $w_1-1$ 作用在 $(\ref{eq:wp1})$ 两端，由于 $(w_1-1)\omega_s=0$，所以
+$$(w_1-1)^2p = 2a(p,\omega_s)(w_1-1)\alpha_t.\label{eq:wp3}\tag{3}$$
 
-另一方面在 $\omega_s = \sum_{i\in I} z_i\alpha_i$ 两边用 $A$ 作用，有
-$$0=A\omega_s = \sum_{i\in I}z_iA\alpha_i=\sum_{i\in I}z_i\lambda_i\omega_s=(\lambda^\top z)\omega_s.$$ 
-于是 $\lambda^\top z=0$，即 $\lambda\perp z = \ker G$，从而 $\lambda\in{\rm im}(G)$。
+将 $(\ref{eq:wp2})$ 代入 $(\ref{eq:wp3})$ 的右边，我们得到
+$$(w_1-1)^2p=-4a^2(p,\omega_s)\omega_s.$$
+即 $b=-4a^2(\omega_s,p)$。
 
-$\blacksquare$
+我们来判断 $b$ 的符号。这里要用到 $p\in\barfd=\cone{\Delta^\ast}$ 的条件。如果 $p$ 是 $\omega_s$ 的正倍数，显然 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$，命题自然成立。所以我们可以假设 $p$ 与 $\omega_s$ 不共线。
 
+设 $p=\sum_{t\in S} c_t\omega_t\,(c_t\geq0)$，则至少有一个 $t\ne s$ 满足 $c_t>0$。于是
+$$(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0 \text{ 且至少有一个 } >0}\ \cdot\ \underbrace{(\omega_s,\omega_t)}_{\text{已知 }<0}<0.$$
+从而 $b>0$。
+
+最后利用 $(w_1-1)^3=0$ 和 $(w_1-1)^2p=b\omega_s$ 我们得到对任何 $N\geq 1$ 有
+$$w_1^N(p)=(1 + w_1-1)^N(p)= p + \binom{N}{1}(w_1-1)(p) + \binom{N}{2}b\omega_s,$$
+可见 $\lim\limits_{N\to\infty}\dfrac{w_1^Np}{\binom{N}{2}b} = \omega_s$，即得所证。$\blacksquare$
 
 
 # 附录
