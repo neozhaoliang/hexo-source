@@ -318,7 +318,8 @@ $2\Rightarrow 1$：由于内积 $\inn$ 是双曲的，而子空间 $\span\{\omeg
 
 # 一个技术性命题
 
-下面这个命题仅会在后面 Boyd-Maxwell 球堆的一个细分情形中使用一次，但是它的论证颇为不易，所以我把它放在这里。请读者注意，这个命题并不限制 $W$ 的 level 或者内积 $\inn$ 的符号。
+下面这个命题仅会在后面 Boyd-Maxwell 球堆的一个细分情形中使用一次，但是它的论证颇为不易，所以我把它放在这里。
+
 :::{.proposition #ideal-vertex}
 [@Maxwell89, proposition 5.15] \
 
@@ -370,7 +371,7 @@ $$A^2p=A(u)=\sum_{j\in I} x_jA(\alpha_j)=\sum_{j\in I}x_j\lambda_j\omega_s = -(p
 我们断言有 $a=\lambda^\top G^+\lambda> 0$ 成立。不过这个断言的证明我们放在后面。
 
 至此我们证明了 $A^2p = -(p,\omega_s) a\omega_s\,(a>0)$。我们来确定 $(p,\omega_s)$ 的符号。这里要用到 $p\in\barfd=\cone{\Delta^\ast}$ 的条件。如果 $p$ 是 $\omega_s$ 的正倍数，显然 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$，命题自然成立。所以我们可以假设 $p$ 与 $\omega_s$ 不共线。设 $p=\sum_{t\in S} c_t\omega_t\,(c_t\geq0)$，则至少有一个 $t\ne s$ 满足 $c_t>0$。于是 $$(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0 \text{ 且至少有一个 } >0}\ \cdot\ \underbrace{(\omega_s,\omega_t)}_{\text{已知 }<0}<0.$$
-从而 
+从而
 $$A^2p=b\omega_s,\quad b=-a(\omega_s,p)>0.$$
 
 由 $A^3=0$ 与二项式展开：
@@ -382,7 +383,7 @@ $$\lim_{N\to\infty}\frac{w^Np}{\binom{N}{2}b}=\omega_s.$$
 最后我们来补上 $\lambda^\top G^+\lambda>0$ 的证明。为此我们只要说明有 $\lambda\in\mathrm{im}G$ 即可。由于 $\ker G$ 是一维的。设 $\omega_s = \sum_{i\in I} z_i\alpha_i$，则易见 $\ker G$ 由单个向量 $z=(z_i)_{i\in I}$ 生成。
 
 另一方面在 $\omega_s = \sum_{i\in I} z_i\alpha_i$ 两边用 $A$ 作用，有
-$$0=A\omega_s = \sum_{i\in I}z_iA\alpha_i=\sum_{i\in I}z_i\lambda_i\omega_s=(\lambda^\top z)\omega_s.$$ 
+$$0=A\omega_s = \sum_{i\in I}z_iA\alpha_i=\sum_{i\in I}z_i\lambda_i\omega_s=(\lambda^\top z)\omega_s.$$
 于是 $\lambda^\top z=0$，即 $\lambda\perp z = \ker G$，从而 $\lambda\in{\rm im}(G)$。
 
 $\blacksquare$

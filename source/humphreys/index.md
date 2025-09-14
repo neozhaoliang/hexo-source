@@ -31,7 +31,7 @@ $W$ 可以由 $\{s_\alpha\mid\alpha\in\Delta\}$ 生成。
 
 **证明概要**：设 $W'$ 是 $\{s_\alpha\mid\alpha\in\Delta\}$ 生成的群。目标是证明 $W'=W$。我们来一步步推理：
 
-1. 由于 $W$ 是由关于整个根系的镜面反射 $\{s_\beta\mid \beta\in\Phi\}$ 生成的，所以只要证明任何 $s_\beta\in W'$ 即可。
+1. 由于 $W$ 是由关于整个根系的镜面反射 $\{s_\beta\mid \beta\in\Phi\}$ 生成的，所以只要证明每个生成元 $s_\beta\in W'$ 即可。
 2. 要证明 1，只要证明任何 $\beta\in\Phi$ 可以写成 $\beta=w'\alpha$ 的形式，其中 $w'\in W',\,\alpha\in\Pi$。这样 $s_\beta=w's_\alpha w'^{-1}\in W'$。
 3. 要证明 2，只需要分析 $\beta$ 是正根且不是单根的情形，因为 $-\beta = w's_\alpha\alpha$。
 4. 如果 $\beta>0$ 但不是单根，设 $\beta=\sum c_s\alpha_s$，那么 $0<(\beta,\beta)=\sum c_s(\beta, \alpha_s)$，这说明一定存在单根 $\alpha_s$ 满足 $(\beta,\alpha_s)>0$。考察 $\gamma=s\beta$。
