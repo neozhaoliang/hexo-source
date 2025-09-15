@@ -63,7 +63,7 @@ url: todo
 - Thurston 的圆堆算法
 
 
-# Python 
+# Python
 
 - Python + cairo 实现 hyperbolic tiling 矢量绘图库。
 - 继续可视化项目系列，可视化复分析 + indra's pearls，可视化 circle packings，可视化双曲空间 (Hee Oh)。
@@ -82,9 +82,11 @@ url: todo
 
 # Indra's pearls 问题
 
-- 为什么 Punctured torus 上只能 pinch 一条曲线 ？(交数 > 0，collar 引理导致另一条测地线的长度必然趋于穷)
 - 为什么 $\mu(p/q)=\pm2$ 分别只有一个解使得群离散？
+- 连分式，Farey word 和 cutting sequence 的关系
+- 为什么单尖群的普通集，一侧仍然是单穿孔环面，另一侧是一些圆盘，每个圆盘是一个三孔球面？
+- 怎么从核心圆链里面读出连分式
+- 为什么 Punctured torus 上只能 pinch 一条曲线 ？(交数 > 0，collar 引理导致另一条测地线的长度必然趋于穷)
 - 单/双退化群怎么构造的？为什么非周期的无理字单侧和双侧对称分别给出单双退化群？通过袜子戏法，把捏紧 $(1/0,\gamma)$ 曲线变成捏紧 $(\gamma,-1/\gamma)$ ？
 - 为什么一侧的常域塌陷，另一侧没事？
 - 双尖群总是给出一个circle packing, 这个 circle packing 由两部分组成。这是为什么？
-- 连分式，Farey word 和 cutting sequence 的关系
