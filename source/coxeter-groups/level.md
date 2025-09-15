@@ -73,13 +73,11 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 若 $\Gamma$ 是连通的，且 level 等于 $l$，则在 $\Gamma$ 中删去任何 $l+1$ 个顶点后，剩下的每个连通成分都是有限的。
 :::
 
-**证明**：对 $l$ 归纳。当 $l=0$ 时，由于在一个有限或者仿射的连通图中删去任何一个顶点后剩下的一定是有限子图 [@Humphreys90, section 2.6]，所以结论成立。
-
-假设结论对所有小于 $l$ 的正整数成立，考虑 $l$ 的情形。用反证法。
+**证明**：对 $l$ 归纳。当 $l=0$ 时，由于在一个有限或者仿射的连通图中删去任何一个顶点后剩下的一定是有限子图 [@Humphreys90, section 2.6]，所以结论成立。设结论对所有小于 $l$ 的正整数成立，考虑 $l$ 的情形。用反证法。
 
 假设从 $\Gamma$ 中删去 $|U|=l+1$ 个顶点后，剩下的部分包含一个仿射的连通分支 $Y$。由于 $\Gamma$ 是连通的，所以 $Y$ 必然和某个 $u\in U$ 有边相连。
 
-考虑从 $\Gamma$ 中，删去 $U\setminus\{u\}$ 的 $l$ 个顶点后得到的子图。根据定义，它的每个分支都是有限或者仿射的。令 $C$ 是包含 $Y\cup\{u\}$ 的连通分支，则 $C$ 必然是仿射的。但是从 $C$ 中删除 $u$ 后仍然包含 $Y$ 这个仿射子图，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
+考虑从 $\Gamma$ 中，删去 $U\setminus\{u\}$ 这 $l$ 个顶点后得到的子图。由于 $\Gamma$ 的 level 是 $l$，所以这个子图每个分支都是有限或者仿射的。令 $C$ 是包含 $Y\cup\{u\}$ 的连通分支，则 $C$ 是不可约仿射的。但是从 $C$ 中删除 $u$ 后仍然包含仿射子图 $Y$，这与 $l=0$ 的情形矛盾，所以结论得证。$\blacksquare$
 
 
 # Level 1 是双曲的
@@ -143,7 +141,7 @@ $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删
 
 **2. 证明 $(\omega_s,\omega_s)\leq0$**
 
-由于 $\Gamma$ 的 level 是 1，删除任意一个顶点 $s$ 后的子图 $\Gamma \setminus\{s\}$ 是有限或仿射型。因此子空间 $\omega_s^\perp = \span\{\alpha_t \mid t \ne s\}$ 是正定或者半正定的。由于我们刚刚已经证明了 $\inn$ 是双曲的，所以 $\omega_s$ 不是 space-like 的，即 $(\omega_s, \omega_s) \leq 0$。于是任何 $\omega_s\,(s\in S)$ 都不是实的。
+由 $\Gamma$ 的 level 是 1 可得删除任意一个顶点 $s$ 后的子图 $\Gamma \setminus\{s\}$ 是有限或仿射的，即子空间 $\omega_s^\perp = \span\{\alpha_t \mid t \ne s\}$ 是正定或者半正定的。由于刚刚已经证明了 $\inn$ 是双曲的，所以 $\omega_s$ 不是 space-like 的，即 $(\omega_s, \omega_s) \leq 0$。于是任何 $\omega_s\,(s\in S)$ 都不是实的。
 
 **3. 证明 $(\omega_s,\omega_t)\leq0$ 且 $\span\{\omega_i,\omega_j\}$ 非正定**
 
@@ -242,31 +240,31 @@ $$1-a^2 + 2bc(a+1)-(b+c)^2<0.$$
 2. 若向量 $v=\sum_{s\in S} v_s \alpha_s$ 满足 $(v,v)=0$，则除了断言 1 的情形之外，还有一种情形是 $v_s$ 中有两个是 0，其余的非零且同号。
 :::
 
-由于 $(u,u)<0$ 和 $(v,v)=0$，所以 $\{u_s\}$ 中至多一个是 0，$\{v_s\}$ 中至多两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。$u'=v_iu-u_iv$ 仍然满足 $u'\perp v$ 和 $(u',u')<0$，但是系数 $u'_i=0$，所以我们不妨一开始就取 $u$ 为 $u'$，使得 $u$ 有一个系数 $u_i=0$，其它 $u_s\,(s\ne i)$ 都非 0 且同号，不妨假设它们都大于 0。
 
-由于 $\{v_s\}$ 中至多只有两个为 0，而 $|\Gamma|\geq4$，所以 $\{v_j,\,j\ne i\}$ 中至少还有一个非零。
+由于 $(u,u)<0$ 和 $(v,v)=0$，所以 $\{u_s\}$ 中至多一个是 0，$\{v_s\}$ 中至多两个是 0，而 $|\Gamma|\geq4$，所以存在下标 $i$ 使得 $u_i,\,v_i$ 均不为 0。通过适当取 $\pm v$ 可以不妨设 $v_i<0$。$u'=v_iu-u_iv$ 仍然满足 $u'\perp v$ 和 $(u',u')<0$，但是系数 $u'_i=0$，用 $u'$ 作为 $u$ 可以不妨设 $u$ 的系数 $u_i=0$。再进一步调整 $\pm u$ 可以使得其它 $u_s>0\,(s\ne i)$。
 
-+ 如果 $\{v_j,\,j\ne i\}$ 中仅有一个非零，这时必有 $|\Gamma|=4$ 且 $v$ 形如 $v=v_i\alpha_i + v_j\alpha_j$。根据 @Pre:level-l，$\span\{\alpha_i,\alpha_j\}$ 是仿射的（它包含 $v$，不可能是有限的），从而 $(\alpha_i,\alpha_j)=-1$ 且 $v_i=v_j$。不妨将 $v$ 缩放为 $v=\alpha_i+\alpha_j$。
+记 $J=\{j\in S\mid u_j\ne0 \text{ and }v_j\ne 0\}$。分情况讨论：
 
++ $|J|\geq 2$：
+
+    这时必然存在 $j,k\in J$ 使得 $a=v_j/u_j < v_k/u_k$。$u'=au-v$ 是 time-like 的，其系数 $u'_i=-v_i>0$，$u'_j=0$，$u'_k\leq 0$，与断言 1 矛盾。
+
++ $|J|\leq1$：
+
+    这时必有 $|\Gamma|=4$ 且 $v$ 形如 $v=v_i\alpha_i + v_j\alpha_j$。如下表所示：
+    
     |   | $i$  |  $j$  |  $k$  | $m$ |
     |:---:|:---:|:---:|:---:|:---:|
-    | $u$ | 0   |  $>0$ | $>0$ |$>0$ |
-    | $v$ | $\ne0$ | $\ne0$ | 0 | 0 |
+    | $u$ | $0$  |  $>0$ | $>0$ |$>0$ |
+    | $v$ | $<0$ | $\ne0$ | $0$ | $0$ |
+
+    $\span\{\alpha_i,\alpha_j\}$ 是仿射的（它包含 $v$，不可能是有限的），从而 $(\alpha_i,\alpha_j)=-1$ 且 $v_i=v_j$。不妨将 $v$ 缩放为 $v=\alpha_i+\alpha_j$。
 
     设 $u=u_j\alpha_j+u_k\alpha_k+u_m\alpha_m$，由 $(u,v)=0$ 可得
     $$(u_j\alpha_j+u_k\alpha_k+u_m\alpha_m, v)=(u_k\alpha_k+u_m\alpha_m, \alpha_i+\alpha_j)=0,$$
     由于 $\{\alpha_k,\alpha_m\}$ 和 $\{\alpha_i,\alpha_j\}$ 之间的内积都小于等于 0，而 $u_k,u_m$ 大于 0，这说明
     $$(\alpha_k,\alpha_i) = (\alpha_k,\alpha_j) =(\alpha_m, \alpha_i) =(\alpha_m,\alpha_j)=0.$$
     即 $\{i, j\}$ 与 $\{k,m\}$ 是不连通的，与 $\Gamma$ 连通矛盾。
-
-+ 如果 $\{v_j,\,j\ne i\}$ 至少有两个非零，则可以取下标 $j,k$ 使得 $v_j/u_j\ne0,\,v_k/u_k\ne0$。
-
-    |   | $i$  |  $j$  |  $k$  | $\cdots$ |
-    |:---:|:---:|:---:|:---:|:---:|
-    | $u$ | 0   |  $>0$ | $>0$ |$>0$ |
-    | $v$ | $<0$ | $\ne0$ | $\ne0$ | $\cdots$ |
-
-    由于 $v_i\ne0$，通过选择 $v$ 或者 $-v$ 可以不妨设 $v_i<0$，并不妨设 $v_j/u_j\leq v_k/u_k$。记 $a=v_j/u_j$，则 $u'=au-v$ 满足 $(u',u')<0$，但是 $u'_i=-v_i>0$，$u'_j=0$，$u'_k\leq 0$，这与上面断言中 $u'$ 的系数除去至多一个例外，剩下的均非零且同号矛盾。
 
 至此我们证明了当 $\Gamma$ 的 level 等于 2 时是双曲的。
 
@@ -364,17 +362,14 @@ $$(p,\alpha_i)=(wp,w\alpha_i)=(p+Ap,\alpha_i+A\alpha_i).$$
 $$(u,\alpha_i)+\lambda_i(p,\omega_s)=0,\qquad \forall i\in I.$$
 记 $u=\sum_{j\in I} x_j\alpha_j\,(x_j\in\R)$，$x=(x_i)_{i\in I}$，$\lambda=(\lambda_i)_{i\in I}$，则
 $$G x = -(p,\omega_s)\lambda.$$
-其中 $G=(\alpha_i,\alpha_j)_{i,j\in I}$ 是 $V_I$ 上的 Gram 矩阵。这是一个关于 $x$ 的线性方程组，由于 $G$ 是半正定但不是正定的，所以我们不能直接把 $G$ 的逆矩阵写在右边。但是我们可以用 $G$ 的 Moore-Penrose 广义逆写出它的解：
+其中 $G=(\alpha_i,\alpha_j)_{i,j\in I}$ 是 $V_I$ 上的 Gram 矩阵。这是一个关于 $x$ 的线性方程组，由于 $G$ 是半正定但不是正定的，所以我们不能直接把 $G$ 的逆矩阵写在右边。但是我们可以用 $G$ 的 Moore-Penrose 将 $x$ 表示为：
 $$x = -(p,\omega_s)G^+\lambda.$$
 于是
 $$A^2p=A(u)=\sum_{j\in I} x_jA(\alpha_j)=\sum_{j\in I}x_j\lambda_j\omega_s = -(p,\omega_s)\,\lambda^\top G^+\lambda\ \omega_s.$$
 我们断言有 $a=\lambda^\top G^+\lambda> 0$ 成立。不过这个断言的证明我们放在后面。
 
-至此我们证明了 $A^2p = -(p,\omega_s) a\omega_s\,(a>0)$。我们来确定 $(p,\omega_s)$ 的符号。这里要用到 $p\in\barfd=\cone{\Delta^\ast}$ 的条件。如果 $p$ 是 $\omega_s$ 的正倍数，显然 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$，命题自然成立。所以我们可以假设 $p$ 与 $\omega_s$ 不共线。设 $p=\sum_{t\in S} c_t\omega_t\,(c_t\geq0)$，则至少有一个 $t\ne s$ 满足 $c_t>0$。于是 $$(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0 \text{ 且至少有一个 } >0}\ \cdot\ \underbrace{(\omega_s,\omega_t)}_{\text{已知 }<0}<0.$$
-从而
-$$A^2p=b\omega_s,\quad b=-a(\omega_s,p)>0.$$
-
-由 $A^3=0$ 与二项式展开：
+至此我们证明了 $A^2p = -a(p,\omega_s) \omega_s$ 且 $a>0$。我们来确定 $(p,\omega_s)$ 的符号。这里要用到 $p\in\barfd=\cone{\Delta^\ast}$ 的条件。如果 $p$ 是 $\omega_s$ 的正倍数，显然 $\omega_s\in\cl{\cone{\bigcup_{w\in W_I}wp}}$，命题自然成立。所以我们可以假设 $p$ 与 $\omega_s$ 不共线。设 $p=\sum_{t\in S} c_t\omega_t\,(c_t\geq0)$，则至少有一个 $t\ne s$ 满足 $c_t>0$。于是 $$(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0 \text{ 且至少有一个 } >0}\ \cdot\ \underbrace{(\omega_s,\omega_t)}_{\text{已知 }<0}<0.$$
+从而 $b=-a(\omega_s,p)>0$。由 $A^3=0$ 与二项式展开：
 $$w^N p=(1+A)^N p=p+N Ap+\binom{N}{2}A^2p.$$
 代入 $A^2p = b\omega_s$ 有
 $$\lim_{N\to\infty}\frac{w^Np}{\binom{N}{2}b}=\omega_s.$$
