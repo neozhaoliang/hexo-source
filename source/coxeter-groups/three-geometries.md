@@ -42,9 +42,11 @@ $W$ 是有限群当且仅当 Tits 锥 $\tc=V^\ast$。
 
 **证明**：
 
-$\Rightarrow$: 由 $\tc=V^\ast$ 可得 $-\fd\in\tc$。对任何 $x\in-\fd$，我们都有 $\Phi^+\subseteq \negf{x}$，根据 [Tits 锥的刻画](/coxeter-groups/tits-cone/#tits-neg-finite)，$|\Phi^+|=|\negf{x}|<\infty$，[从而 $W$ 是有限群](/coxeter-groups/root-system/#w-phi-both-finite-infinite)。
+$\Rightarrow$: $W$ 是有限群说明 $\Phi$ 也是有限的，从而对任何 $x\in V^\ast$ 都有 $|\negf{x}|\leq |\Phi^+|<\infty$，从而 $x\in\tc$。
 
-$\Leftarrow$: $W$ 是有限群说明 $\Phi$ 也是有限的，从而对任何 $x\in V^\ast$ 都有 $|\negf{x}|\leq |\Phi^+|<\infty$，从而 $x\in\tc$。$\blacksquare$
+$\Leftarrow$: 由 $\tc=V^\ast$ 可得 $-\fd\in\tc$。对任何 $x\in-\fd$，我们都有 $\Phi^+\subseteq \negf{x}$，根据 [Tits 锥的刻画](/coxeter-groups/tits-cone/#tits-neg-finite)，$|\Phi^+|=|\negf{x}|<\infty$，[从而 $W$ 是有限群](/coxeter-groups/root-system/#w-phi-both-finite-infinite)。
+
+$\blacksquare$
 
 :::{.example}
 在下图中，$W$ 是正二十面体群 $H_3$，红色的锥是基本区域，它在 $W$ 的作用下铺满了整个空间，所以 $\tc=\mathbb{R}^3$。$\tc$ 与球面的交给出球面上的密铺。如果用直线而不是球面上的弧连接顶点的话，得到的是正二十面体。
@@ -60,11 +62,9 @@ $\Leftarrow$: $W$ 是有限群说明 $\Phi$ 也是有限的，从而对任何 $x
 设 $W$ 是不可约 Coxeter 群。如果存在 $J\subsetneqq S$ 使得 $\Phi\setminus\Phi_J$ 是有限集，则 $W$ 必然是有限群。
 :::
 
-**证明**：由于 $J\subsetneqq S$，所以可以设 $S\setminus J=\{s_1,\ldots,s_r\}\,(r\geq1)$。由于 $W$ 不可约，$W$ 的 Coxeter 图 $\Gamma$ 是连通的，$J$ 中的任何顶点都可以通过某条路径与 $S\setminus J$ 中的顶点相连。记 $d(s)$ 是顶点 $s$ 与 $S\setminus J$ 之间的最短距离，将 $S$ 按如下方式重新排序为 $S=\{s_1,\ldots,s_n\}$：
+**证明**：由于 $J\subsetneqq S$，所以可以设 $S\setminus J=\{s_1,\ldots,s_r\}\,(r\geq1)$。由于 $\Gamma$ 是连通的，任何 $s\in S$ 都可以通过某条路径与 $S\setminus J$ 中的顶点相连。记 $d(s)$ 是顶点 $s$ 与 $S\setminus J$ 之间的最短距离，将 $S$ 按如下方式重新排序为 $S=\{s_1,\ldots,s_n\}$：
 $$S = \underbrace{\overbrace{\{s_1,\ldots,s_r\}}^{d(s)=0}}_{S\setminus J}\cup\underbrace{
 \overbrace{\{s_{r+1},\ldots,s_{r+k}\}}^{d(s)=1},\overbrace{\{s_{r+k+1},\ldots\}}^{d(s)=2},\cdots}_{J}\,.$$
-
-即 $S\setminus J$ 中的顶点排在最前面，接下来是 $J$ 中的顶点，按照距离从小到大排序。
 
 记 $\Phi_i^+$ 是所有可以由 $\{\alpha_i,\ldots,\alpha_n\}$ 张成，且 $\alpha_i$ 项系数不为 0 的正根组成的集合：
 $$\Phi_i^+=\{\lambda\in\Phi^+\mid\lambda=\sum_{j=i}^nc_j\alpha_j,\ c_i\ne 0\}.$$
