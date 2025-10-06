@@ -1,3 +1,7 @@
+git add .
+git commit -m "save"
+git push
+
 hexo g
 cp CNAME ./public
 zip -r source.zip ./source
