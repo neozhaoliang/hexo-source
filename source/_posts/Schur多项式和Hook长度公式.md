@@ -345,7 +345,7 @@ $$\begin{aligned}
 $$\lambda_k+c_k(T_{\geq j})+1=\lambda_{k+1}+c_{k+1}(T_{\geq j}).\tag{1}\label{eq:assert}$$
 并且 $T$ 的第 $j$ 列有一个 $k+1$ 但是没有 $k$。
 
-现在对 $T$ 进行如下的变换：保持 $T_{\geq j}$ 的部分不动，把 $T_{<j}$ 的部分对数字 $k$ 和 $k+1$ 进行 Bender-Knuth 变换，得到一个 Young 表 $T^\ast$ （不排除 $T=T^\ast$ 的可能）。不难验证 $T^\ast$ 也是半标准的 （因为 Bender-Knuth 对换不影响列递增性质，利用 $T$ 的第 $j$ 列不含 $k$ 这一点，将 $T_{<j}$ 的部分中某些 $k$ 换成 $k+1$ 也不会影响行递增性质），$T^\ast$ 也是一个坏 Young 表且 $(T^\ast)^\ast =T$ （因为 $T^\ast_{\geq j}$ 和 $T_{\geq j}$ 完全一样）。容易验证对换 $s_k=(k,k+1)$ 交换 $c(T_{< j})$ 和 $c(T^\ast_{< j})$ 的 $k$ 和 $k+1$ 位置：
+现在对 $T$ 进行如下的变换：保持 $T_{\geq j}$ 的部分不动，把 $T_{<j}$ 的部分对数字 $k$ 和 $k+1$ 进行 Bender-Knuth 变换，得到一个 Young 表 $T^\ast$ （不排除 $T=T^\ast$ 的可能）。不难验证 $T^\ast$ 也是半标准的：因为 Bender-Knuth 对换不影响列严格递增性质，利用 $T$ 的第 $j$ 列不含 $k$ 这一点，将 $T_{<j}$ 的部分中某些 $k$ 换成 $k+1$ 也不会影响行的弱递增性质。$T^\ast$ 也是一个坏 Young 表且 $(T^\ast)^\ast =T$ （因为 $T^\ast_{\geq j}$ 和 $T_{\geq j}$ 完全一样）。容易验证对换 $s_k=(k,k+1)$ 交换 $c(T_{< j})$ 和 $c(T^\ast_{< j})$ 的 $k$ 和 $k+1$ 位置：
 $$s_kc(T_{< j}) = c(T^\ast_{< j}).$$
 而 $(\ref{eq:assert})$ 说明 $s_k$ 保持 $\lambda+c(T_{\geq j}) + \rho$ 不变，因此
 $$s_k(\lambda+c(T)+\rho)=s_k(\lambda+c(T_{\geq j})+\rho)+s_kc(T_{<j})=\lambda+c(T^\ast)+\rho.$$
