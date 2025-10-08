@@ -69,7 +69,7 @@ $$x=\prod_{i\in I}s_i,\quad y=\prod_{j\in J}s_j.$$
 $$(\alpha_i\bullet\omega_j)=\delta_{ij}.$$
 ${\bf A}$ 是把每个 $\omega_i$ 映射为 $\alpha_i$ 的线性变换：
 $${\bf A}\omega_i=\alpha_i,\quad \forall 1\leq i\leq n.$$
-则 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下的矩阵就是 Cartan 矩阵 $A$。由于 $A$ 是对称矩阵，所以 ${\bf A}$ 是可对角化的线性变换，其不同特征值对应的特征向量互相正交。
+则 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下的矩阵就是 Cartan 矩阵 $A$。
 
 [@Humphreys90, section 2.6] 证明了矩阵 $A$ 的极小特征值 $c>0$ 的重数是 1，并且对应的特征向量 ${\bf c}=(c_1,\ldots,c_n)$ 的所有分量都是正的。我们将变换 ${\bf A}$ 的特征向量 $\sum_{i=1}^nc_i\omega_i$ 写成两个向量之和：
 $$\sum_{i=1}^nc_i\omega_i=\sum_{i\in I} c_i\omega_i+\sum_{i\in J}c_i\omega_i=\lambda+\mu.$$
@@ -94,7 +94,7 @@ $$P=\span\{\lambda,\,\mu\}=\span\left\{\sum_{i\in I}c_i\alpha_i,\,\sum_{j\in J}c
 
 如果你去看 [Github 代码](https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py) 的话，会发现它并不是完全按上面的逻辑写的。这是怎么回事呢？
 
-前面的计算还有个美中不足之处，就是我们需要显式地将 $S$ 的划分为两个不相交的子集 $S=I\sqcup J$，使得 $I,J$ 内部的生成元两两交换。下面的方式是我从 [@CasselmanCoxeterElement] 学到的，它使我们能够直接计算 Coxeter 平面，而无需进行 $S$ 的划分。
+前面的计算还有个美中不足之处，就是我们需要显式地将 $S$ 划分为 $S=I\sqcup J$，使得 $I,J$ 内部的生成元两两交换。下面的方式是我从 [@CasselmanCoxeterElement] 中学到的，它使我们能够跳过 $S$ 的划分，直接计算 Coxeter 平面。
 
 :::{.proposition}
 [@CasselmanCoxeterElement, {lemma. 3.3}]
@@ -148,7 +148,7 @@ $A$ 的不等于 2 的特征值成对出现，它们形如 $2\mp2\cos(\theta/2)$
 $$u=\sum_{i=1}^nc_i\omega_i\quad\text{and}\quad v=\sum_{i=1}^nd_i\omega_i$$
 分别是 ${\bf A}$ 对应 $c_\min,c_\max$ 的特征向量，它们构成 $P$ 的一组正交基。它们被 ${\bf A}$ 作用以后与自身相差一个常数倍，所以
 $${\bf A}u=\sum_{i=1}^nc_i\alpha_i\quad\text{and}\quad {\bf A}v=\sum_{i=1}^nd_i\alpha_i$$
-也构成 $P$ 的一组正交基。这样我们就找到了只用 Cartan 矩阵和单根系 $\Delta$ 计算 $P$ 的方法。
+也构成 $P$ 的一组正交基。而计算这组正交基只用到 Cartan 矩阵 $A$ 和单根系 $\Delta$。
 
 # $E_8$ 的例子
 
@@ -253,7 +253,6 @@ $$0.01095621 \approx 2-2\cos\frac{\theta_0}{2},\quad \theta_0\approx 2\arccos0.9
 ```python
 u /= np.linalg.norm(u)
 v /= np.linalg.norm(v)
-
 roots_2d = [(np.dot(u, x), np.dot(v, x)) for x in roots]
 ```
 
