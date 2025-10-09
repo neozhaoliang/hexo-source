@@ -4,6 +4,7 @@ categories: ["计数组合学"]
 date: 2011-04-04
 url: "schur-polynomials-and-hook-length-formula"
 ---
+\newcommand{\ssyt}{\mathrm{SSYT}}
 
 在数学中有那么一些问题，它们的表述简单而初等，但是解决起来却非常困难，往往需要相当的奇思妙想和深刻的工具。围绕这些问题。不同领域的数学相互交织，演绎出许多奇妙的故事。
 
@@ -77,7 +78,7 @@ $$1, 2, 1, 3, 2, 1, 2, 4, 3, 1$$
 | 8
 :::
 
-用记号 ${\rm SSYT}(n,\lambda)$ 表示所有形状为 $\lambda$，并且填入的数字不超过 $n$ 的半标准 Young 表组成的集合。显然若要使得此集合非空必须有 $n\geq l(\lambda)$（SSYT 从上到下是递增的，第一列的最后一行填入的整数至少是 $l(\lambda)$）。当 $|\lambda|=n$ 时我们也将其简写为 ${\rm SSYT}(\lambda)$。类似地，${\rm SYT}(\lambda)$ 表示所有形状为 $\lambda$ 的标准 Young 表的集合。
+用记号 $\ssyt(n,\lambda)$ 表示所有形状为 $\lambda$，并且填入的数字不超过 $n$ 的半标准 Young 表组成的集合。显然若要使得此集合非空必须有 $n\geq l(\lambda)$（SSYT 从上到下是递增的，第一列的最后一行填入的整数至少是 $l(\lambda)$）。当 $|\lambda|=n$ 时我们也将其简写为 $\ssyt(\lambda)$。类似地，${\rm SYT}(\lambda)$ 表示所有形状为 $\lambda$ 的标准 Young 表的集合。
 
 文章开头的投票序列问题本质上等价于计算集合 ${\rm SYT}(\lambda)$ 的大小。具体来说，每个符合要求的投票序列都可以唯一地转化为一个标准 Young 表，方法如下：
 
@@ -290,6 +291,73 @@ $$
 令水平线 $y=k$ 的权值为 $x_k$，垂直边的权值一律为 1，每条路径的权重是其所含各边的权重乘积。不难验证从 $A_j=(-j,1)$ 到 $B_i=(-i+\lambda_i,n)$ 的所有 Gauss 路径权重之和是齐次对称多项式 $h_{\lambda_i-i+j}$。于是由 Gessel-Viennot 引理，行列式 $\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq n}$ 给出了所有不相交路径组的权重之和。另一方面每个不相交路径组的权重正是它对应 Young 表的权重 $X^{c(T)}$，所以
 $$s_\lambda=\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq n}.$$
 这就证明了 Jacobi-Trudi 恒等式。
+
+
+# Bi-alternant 公式
+
+设 $\lambda=(\lambda_1,\ldots,\lambda_n),\,\mu=(\mu_1,\ldots,\mu_n)\in\mathbb{Z}^n_{\geq0}$ 是两个分拆。定义 Weyl 向量
+$$\rho=(n-1,n-2,\ldots,1,0).$$
+
+设 $T\in\ssyt(n,\mu)$，用记号 $T_{\geq j}$ 表示由 $T$ 的第 $j,j+1,\ldots$ 列组成的半标准 Young 表，同理记号 $T_{>j}$ 和 $T_{<j}$ 的含义都是不言自明的。如果对任何 $j$，向量 $\lambda+c(T_{\geq j})$ 都是一个分拆，就称 $T$ 是一个“好” Young 表，否则就称 $T$ 是一个“坏” Young 表。
+
+定义如下的 $n$ 阶行列式：
+
+$$a_\lambda=\det(x_i^{\lambda_j})_{1\leq i,j\leq n}=\sum_{\sigma\in S_n}\text{sgn}(\sigma)X^{\sigma(\lambda)}.$$
+
+:::{.theorem #stembridge}
+$$a_{\lambda+\rho}s_{\mu}=\sum_{T\in\mathrm{SSYT}(n,\mu)\text{ and $T$ good}}a_{\lambda+c(T)+\rho}.$$
+:::
+
+这个定理乍看起来从叙述到证明都很不直观，不过它的结论却非常重要，这就是 Littlewood-Richardson 定律。下面这个证明有很深刻的来源 （李代数的晶体图）。见
+
+> A Concise Proof of the Littlewood-Richardson Rule, by John R. Stembridge.
+
+**证明**：由于 $s_\mu$ 是对称多项式，因此对任何置换 $\sigma\in S_n$，当 $T$ 跑遍 $\ssyt(n,\mu)$ 时，集合 $\{c(T)\}$ 与集合 $\{\sigma(c(T))\}$ 是相同的，所以
+$$
+s_{\mu}=\sum_{T\in\ssyt(n,\mu)} X^{c(T)} = \sum_{T\in\ssyt(n,\mu)} X^{\sigma(c(T))}.
+$$
+
+于是利用定义有
+
+$$\begin{aligned}
+a_{\lambda+\rho}s_\mu&=\sum_{\sigma\in S_n}\text{sgn}(\sigma)X^{\sigma(\lambda+\rho)}s_\mu\\
+&=\sum_{\sigma\in S_n}\text{sgn}(\sigma)\left(\sum_{T\in\ssyt(n,\,\mu)}X^{\sigma(\lambda+\rho+c(T))}\right)\\
+&=\sum_{T\in\ssyt(n,\mu)}\sum_{\sigma\in S_n}\text{sgn}(\sigma)X^{\sigma(\lambda+\rho+c(T))}\\
+&=\sum_{T\in\ssyt(n,\mu)}a_{\lambda+c(T)+\rho}.\end{aligned}$$
+
+接下来，我们将借助 Bender-Knuth 对合，把求和项中坏的那些 $T$ 两两配对抵消掉，从而剩下的和项都是好的 $T$。
+
+
+设 $T$ 是一个坏 Young 表，则存在 $j$ 使得 $\lambda+c(T_{\geq j})$ 不是一个分拆，在所有这样的 $j$ 中，选取最大的那个。选好 $j$ 以后，由于 $\lambda+c(T_{\geq j})$ 不是分拆，因此存在 $k$ 使得
+$$\lambda_k+c_k(T_{\geq j}) < \lambda_{k+1}+c_{k+1}(T_{\geq j}).$$
+在所有这样的 $k$ 中，选取最小的那个。
+
+由于在 $T$ 的每一列中至多只有一个 $k$ 以及至多只有一个 $k+1$，所以差
+$$c_k(T_{\geq j}) - c_{k+1}(T_{\geq j})$$
+在 $j$ 变动到 $j+1$ 时最多只会改变 1。从而差
+$$\lambda_k+c_k(T_{\geq j}) -\lambda_{k+1}-c_{k+1}(T_{\geq j})$$
+也是如此。根据
+$$\begin{aligned}
+\lambda_k+c_k(T_{\geq j}) &< \lambda_{k+1}+c_{k+1}(T_{\geq j})\\
+\lambda_k+c_k(T_{\geq j+1}) &\geq \lambda_{k+1}+c_{k+1}(T_{\geq j+1})
+\end{aligned}$$
+第一行（两端之差）是一个负整数，在至多改变 1 的情况下，变成第二行的非负整数，只能是从 -1 变成 0。从而我们有
+$$\lambda_k+c_k(T_{\geq j})+1=\lambda_{k+1}+c_{k+1}(T_{\geq j}).\tag{1}\label{eq:assert}$$
+并且 $T$ 的第 $j$ 列有一个 $k+1$ 但是没有 $k$。
+
+现在对 $T$ 进行如下的变换：保持 $T_{\geq j}$ 的部分不动，把 $T_{<j}$ 的部分对数字 $k$ 和 $k+1$ 进行 Bender-Knuth 变换，得到一个 Young 表 $T^\ast$ （不排除 $T=T^\ast$ 的可能）。不难验证 $T^\ast$ 也是半标准的：因为 Bender-Knuth 对换不影响列严格递增性质，利用 $T$ 的第 $j$ 列不含 $k$ 这一点，将 $T_{<j}$ 的部分中某些 $k$ 换成 $k+1$ 也不会影响行的弱递增性质。$T^\ast$ 也是一个坏 Young 表且 $(T^\ast)^\ast =T$ （因为 $T^\ast_{\geq j}$ 和 $T_{\geq j}$ 完全一样）。容易验证对换 $s_k=(k,k+1)$ 交换 $c(T_{< j})$ 和 $c(T^\ast_{< j})$ 的 $k$ 和 $k+1$ 位置：
+$$s_kc(T_{< j}) = c(T^\ast_{< j}).$$
+而 $(\ref{eq:assert})$ 说明 $s_k$ 保持 $\lambda+c(T_{\geq j}) + \rho$ 不变，因此
+$$s_k(\lambda+c(T)+\rho)=s_k(\lambda+c(T_{\geq j})+\rho)+s_kc(T_{<j})=\lambda+c(T^\ast)+\rho.$$
+
+于是若 $T\ne T^\ast$，则两个行列式 $a_{\lambda+c(T)+\rho}$ 和 $a_{\lambda+c(T^\ast)+\rho}$ 相差一个 $k,k+1$ 列的交换，从而它们的值抵消。在 $T=T^\ast$ 的情形，矩阵的 $k,k+1$ 列是相同的，行列式自然是 0。$\blacksquare$
+
+:::{.corollary}
+**bi-alternant formula**
+$$s_{\mu}=\frac{a_{\mu+\rho}}{a_\rho}.$$
+:::
+
+**证明**：在定理中令 $\lambda=\emptyset$，则只有唯一的一个形状为 $\mu$ 的好 Young 表 $T$，使得 $c(T_{\geq j})$ 对任何 $j$ 都是一个分拆，这个表必须是第一行都填 1，第二行都填 2，...， 以此类推，从而 $c(T)=\mu$，因此得证。$\blacksquare$
 
 # 钩长公式
 
