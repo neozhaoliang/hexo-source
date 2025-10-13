@@ -50,18 +50,6 @@ $$(\lambda,\mu) = \kappa(t_\lambda,t_\mu),\quad \lambda,\,\mu\in\h^\ast.$$
 3. 三元组 $\{e_\alpha,f_\alpha,h_\alpha \}$ 生成一个 $\sl_2(\C)$ 子代数。
 :::
 
-在初学的时候我经常分不清 $t_\alpha$ 和 $h_\alpha$，每次看到它俩都要想一会儿它们的含义。其实它俩是用在不同的场景中：
-
-1. $t_\alpha$ 的使用场景是，当线性泛函 $\alpha\in\h^\ast$ 作用在 $h\in\h$ 上时，我们可以把 $\alpha(h)$ 等价地写成 $(t_\alpha, h)$。
-2. $h_\alpha$ 的使用场景是，在计算关于 $\alpha$ 的反射
-    $$s_\alpha(\lambda) = \lambda - 2\frac{(\lambda,\alpha)}{(\alpha,\alpha)}\alpha$$ 时，我们可以把它简写为
-    $$s_\alpha(\lambda) = \lambda - (\lambda,\alpha^\vee)\alpha.$$
-    其中 $\alpha^\vee=\frac{2}{(\alpha,\alpha)}$ 是 $\alpha$ 的**余根**。不过等等！我们刚才不是把 $h_\alpha$ 定义为 $\alpha$ 的余根了吗？
-
-    这是因为
-    $$2\frac{(\lambda,\alpha)}{(\alpha,\alpha)}=2\frac{\kappa(t_\lambda,t_\alpha)}{\kappa(t_\alpha,t_\alpha)}=\kappa(t_\lambda, h_\alpha)=\lambda(h_\alpha).$$
-    即 $(\lambda,\alpha^\vee)=\lambda(h_\alpha)$。所以虽然 $h_\alpha$ 和 $\alpha^\vee$ 一个在 $\h$ 中，一个在 $\h^\ast$ 中，但它俩在 Killing 型的对应下是同一个元素。
-
 每个单根 $\alpha$ 给出一个 $\h^\ast$ 上的线性变换 $s_\alpha(\beta) = \beta - \beta(\alpha^\vee)\alpha$，$s_\alpha$ 是一个单反射，所有单反射 $\{s_\alpha,\alpha\in\Delta\}$ 生成的群 $W$ 叫做 **Weyl 群**。
 
 设
@@ -81,6 +69,18 @@ $$\fd = \{x\in\h_{\R}^\ast\mid (x, \alpha^\vee)\geq0\text{ for all }\alpha\in\Ph
 $\fd$ 叫做**基本胞腔** (fundamental chamber)。基本胞腔的含义是，对任何 $x\in\h_{\R}^\ast$，$x$ 在 Weyl 群作用下的轨道 $\{wx\mid w\in W\}$ 与 $\fd$ 有唯一的交点。
 
 如果 $\lambda$ 是一个支配整权，则 $\lambda\in\fd$。这时对任何 $w\in W$ 有 $w\lambda\preceq\lambda$，等号成立当且仅当 $w=1$。
+
+# 权
+
+设 $M$ 是一个 $g$- 模，对任何 $\lambda\in\h^\ast$ 我们定义
+$$M_\lambda\,\colon=\{v\in M\mid h\cdot v = \lambda(h)v\text{ for all } h\in\h\}.$$
+如果 $M_\lambda \ne 0$ 我们就称 $\lambda$ 是 $M$ 的一个**权**，$M_\lambda$ 是**权空间**，$M_\lambda$ 的元素是权为 $\lambda$ 的**权向量**。
+
+:::{.lemma #weights-basic}
+1. 对 $\alpha\in\Phi$ 和 $\lambda\in\h^\ast$ 有 $g_\alpha\cdot M_\lambda\subset M_{\lambda+\alpha}$。
+2. $M'=\sum_{\lambda\in\h^\ast}M_\lambda$ 是直和，并且 $M'$ 是 $M$ 的 $\g$- 子模。
+3. 如果 $\varphi: M\to N$ 是 $\g$- 模同态，则对 $M$ 的任何权 $\lambda$ 有 $\varphi(M_\lambda)\subset N_\lambda$。
+:::
 
 # 权模
 
