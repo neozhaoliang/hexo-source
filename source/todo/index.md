@@ -46,13 +46,12 @@ url: todo
 - 3D icosahedral quasicrystal
 - Sphere and lattice gears and SO3 representation
 - 加速到光速演示相对论
-- implicit algebraic surfaces
 - doyle spiral
 - Voronoi + LLoyd
 - Stange + sl2c 的 shader 研究实现
 - 分形反射盒子
-- Direc belt trick
-- Bruhat - Tits tree
+- Dirac belt trick
+- Bruhat-Tits tree
 - Escher circle limit
 - Klein quartic 曲面上打台球
 - seascape 详解
