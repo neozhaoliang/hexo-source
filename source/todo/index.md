@@ -32,14 +32,14 @@ url: todo
 - 互锁的折纸 origami 正十二面体 | Interlock 多面体
 - 局部中心极限定理 | 电流与同调 | 改写随机游动
 - quaternions and polytopes
-- 概率论常用结论？单调类、Dynkin...
+- 整理概率论的常用结论？单调类、Dynkin...
 - 双曲内积
 - Thurston 圆堆算法，常返与暂态
 - 可裂八元数，G2 与复合代数
 - 多连通空间上群作用怎么给出表现
 - John Baez 李群和四元数讲义, G2 and the rolling ball, Kepler 问题的四维对称性
 - 二维随机游动常返，如双曲、Penrose 等的判断。
-- [Weyl 特征公式](http://math.soimeme.org/~arunram/Resources/KacMoodyLieAlgebrasChapterIII.html)
+- [Weyl 特征公式](http://math.soimeme.org/~arunram/Resources/KacMoodyLieAlgebrasChapterIII.html) 以及基于 BGG resolution 的证明
 
 # Shadertoy
 
