@@ -947,15 +947,21 @@ $$\E[f(X_t)|\F_s] = \E[f(X_t)|X_s],\quad \ae,\ \forall s < t.$$
 
 Markov 过程貌似是关于过去和当前的，但实际上它也告诉了我们关于未来的信息：
 
-> **推论**：$\E[Y|\F_s] = E[Y|X_s],\quad \forall Y\in\mathbb{B}(\Omega, \F_{\geq s})$。
+:::{.corollary}
+$$\E[Y|\F_s] = E[Y|X_s],\quad \forall Y\in\mathbb{B}(\Omega, \F_{\geq s}).$$
+:::
 
 这个推论的证明很有意思，要用到 Dynkin multiplicative system。
 
-考虑形如 $Y = g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})$ 的函数，这里 $s =t_0<t_1<\cdots <t_n$，且每个 $g_i$ 都是有界可测的，从而 $Y$ 也是有界可测的，并且 $Y\in\F_{\geq s}$。
+考虑形如
+$$Y = g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})$$
+的函数，这里 $s =t_0<t_1<\cdots <t_n$，且每个 $g_i$ 都是有界可测的，从而 $Y$ 也是有界可测的，并且 $Y\in\F_{\geq s}$。
 
-> **引理**：设
-> $$\mathcal{M} = \{g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n}): n\in\mathbb{Z}_{\geq0}, s=t_0<t_1<\cdots<t_n, g_j\in\mathbb{B}(S,\B)\},$$
-> 则 $\mathcal{M}$ 是乘法系，且 $\sigma(M) = \F_{\geq s}$。
+:::{.lemma}
+设
+$$\mathcal{M} = \{g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})\mid n\in\mathbb{Z}_{\geq0},\ s=t_0<t_1<\cdots<t_n, g_j\in\mathbb{B}(S,\B)\}.$$
+则 $\mathcal{M}$ 是乘法系，且 $\sigma(M) = \F_{\geq s}$。
+:::
 
 回到推论的证明。
 
