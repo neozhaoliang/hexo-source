@@ -21,6 +21,7 @@ url: todd-kemp
 \newcommand{\dv}{\,\mathrm{d}\nu}
 \newcommand{\dx}{\,\mathrm{d}x}
 \newcommand{\dy}{\,\mathrm{d}y}
+\newcommand{\dz}{\,\mathrm{d}z}
 
 \newcommand{\triple}{(\Omega,\mathcal{F},\mathbb{P})}
 \newcommand{\Lone}{L^1(\Omega,\mathcal{F},\mathbb{P})}
@@ -616,7 +617,7 @@ $\blacksquare$
 
 :::{.definition}
 两个概率测度 $\mu,\nu$ 之间的卷积定义为
-$$\mu\ast \nu(B) = \int_{\R^d\times\R^d}\ind_B(x+y)\mu\otimes\nu(\dx\dy)=\int_{\R^d}\mu(B-y)\vdx{y}.$$
+$$\mu\ast \nu(B) = \int_{\R^d\times\R^d}\ind_B(x+y)\mu\otimes\nu(\dx\dy)=\int_{\R^d}\mu(B-y)\vd{y}.$$
 :::
 
 # 18.1 Strong Law of Large Numbers, Part 1
@@ -764,11 +765,11 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 
 > **定理**：如果 $\{\mu_n\}_{n=1}^\infty$ 是一列 $(\R^d,\B(\R^d))$ 上的概率测度。假设极限 $\varphi(t) = \lim\limits_{n\to\infty}\hat{\mu_n}$ 存在，并且 $\varphi(t)$ 在 $t=0$ 处连续，则存在概率测度 $\mu$ 使得 $\hat{\mu}=\varphi$，并且 $\mu_n\rightarrow_{w}\mu$。
 
-> **引理**：对两个概率测度 $\mu,\nu$ 有 $$\int_{\R^d}\hat{\mu}(x)\vdx{x}=\int_{\R^d}\hat{\nu}(y)\udx{y}.$$
+> **引理**：对两个概率测度 $\mu,\nu$ 有 $$\int_{\R^d}\hat{\mu}(x)\vd{x}=\int_{\R^d}\hat{\nu}(y)\ud{y}.$$
 
 直接 Fubini 即可。
 
-> **引理**： $$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vdx{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\udx{x}.$$
+> **引理**： $$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\ud{x}.$$
 
 在前一个引理中两边取实部，然后被 1 减去即可。
 
@@ -790,18 +791,20 @@ $$\mu\{x\in\R^d:\ |x|\geq\alpha\}\leq 2\int_{\bar{B}_1}[1-\mathrm{Re}\,\hat{\mu}
 1. 对任何 $x\in S_1$，$Q(x,\cdot):\B_2\to[0,1]$ 是 $(S_2,\B_2)$ 上的概率测度。
 2. 对任何 $B\in \B_2$，$Q(\cdot, B):S_1\to[0,1]$ 是 $(S_1,\B_1)$ 上的可测函数。
 
-> **引理**：假设 $f(x,y)\in (S_1\times S_2, \B_1\otimes\B_2)$ 是乘积空间上的可测函数，并且是有界的或者非负的，则积分 $$x\to\int_{S_2}f(x,y)Q(x,\pd{y})$$ 是关于 $x$ 的可测函数。
+> **引理**：假设 $f(x,y)\in (S_1\times S_2, \B_1\otimes\B_2)$ 是乘积空间上的可测函数，并且是有界的或者非负的，则积分 $$x\to\int_{S_2}f(x,y)Q(x,\dy)$$ 是关于 $x$ 的可测函数。
 
 此引理不难从简单函数 $\ind_{B_1\times B_2}(x,y)=\ind_{B_1}(x)\ind_{B_2}(y)$ 出发，使用函数形式的 Dynkin 引理得到。
 
 由此对任何 $(S_1,\B_1)$ 上的测度 $\mu$，我们可以定义乘积空间 $(S_1\times S_2, \B_1\otimes\B_2)$ 上的乘积测度 $\mu\otimes Q$，这个乘积测度是随 $x$ 变化而变化的：
-$$\mu\otimes Q(E)=\int_{S_1}\mu(\pd{x})\int_{S_2}\ind_{C}(x,y)Q(x,\pd{y}).$$
+$$\mu\otimes Q(E)=\int_{S_1}\mu(\dx)\int_{S_2}\ind_{C}(x,y)Q(x,\dy).$$
 不过这真的是一个概率测度吗？你可以用积分的线性性质立刻看出它是有限可加的，并且利用积分项有界和控制收敛定理立刻看出它是可数可加的，所以确实是个概率测度。
 
 有了概率核的乘积测度，我们自然要研究对这种测度的积分。由于这个测度本身就是通过对示性函数积分来定义的，所以其上的积分也具有类似的性质：
 
-> **引理**：假设 $f(x,y)$ 是乘积空间的可测函数，并且是有界或者非负的，则
-> $$\int_{S_1\times S_2}f\pd{(\mu\otimes Q)} = \int_{S_1}\mu(\pd{x})\int_{S_2}f(x,y)Q(x,\pd{y}).$$
+:::{.lemma}
+假设 $f(x,y)$ 是乘积空间的可测函数，并且是有界或者非负的，则
+$$\int_{S_1\times S_2}f\,\mathrm{d}(\mu\otimes Q) = \int_{S_1}\mu(\dx)\int_{S_2}f(x,y)Q(x,\dy).$$
+:::
 
 后面花了很大力气证明当 $Q(x, \cdot)=\widetilde{Q}(x,\cdot)$ 对几乎处处的 $x$ 成立时有 $\mu\otimes Q=\mu\otimes\widetilde{Q}$。没仔细看。
 
@@ -809,13 +812,15 @@ $$\mu\otimes Q(E)=\int_{S_1}\mu(\pd{x})\int_{S_2}\ind_{C}(x,y)Q(x,\pd{y}).$$
 
 本讲使用概率核给出了 $\E[f(X, Y)\mid X=x]$ 这种条件期望的严格定义。
 
-> **定理**：设 $(\Omega,\F,\P)$ 是一个概率空间，$(S_i,\B_i),\,i=1,2$ 是两个可测空间，$X:(\Omega,\F)\to(S_1,\B_1),\,Y:(\Omega,\F)\to(S_2,\B_2)$ 是两个随机变量。于是 $(X,Y):(\Omega,\F)\to(S_1\times S_2,\,\B1\otimes\B_2)$ 是随机向量。记 $\mu_{X,Y}$ 为此随机向量在 $(S_1\times S_2,\,\B1\otimes\B_2)$ 上 push forward 给出的测度，$\mu_X$ 是 $X$ 在 $(S_1,\B_1)$ 上 push forward 给出的测度。如果存在概率核 $Q(x,B)$ 使得 $$\mu_{X,Y}=\mu_X\otimes Q.$$
->
-> 则对任何 $f\in L^1(S_1\times S_2,\B1\otimes\B_2)$ 有
-> $$\E[f(X,Y)\mid X = x] = \int_{S_2}f(x,y)Q(x, \pd{y}).$$
+:::{.theorem}
+设 $(\Omega,\F,\P)$ 是一个概率空间，$(S_i,\B_i),\,i=1,2$ 是两个可测空间，$X:(\Omega,\F)\to(S_1,\B_1),\,Y:(\Omega,\F)\to(S_2,\B_2)$ 是两个随机变量。于是 $(X,Y):(\Omega,\F)\to(S_1\times S_2,\,\B1\otimes\B_2)$ 是随机向量。记 $\mu_{X,Y}$ 为此随机向量在 $(S_1\times S_2,\,\B1\otimes\B_2)$ 上 push forward 给出的测度，$\mu_X$ 是 $X$ 在 $(S_1,\B_1)$ 上 push forward 给出的测度。如果存在概率核 $Q(x,B)$ 使得 $$\mu_{X,Y}=\mu_X\otimes Q.$$
+
+则对任何 $f\in L^1(S_1\times S_2,\B1\otimes\B_2)$ 有
+$$\E[f(X,Y)\mid X = x] = \int_{S_2}f(x,y)Q(x, \dy).$$
+:::
 
 这里需要解释 $\E[f(X,Y)\mid X = x]$ 这个记号的含义。这里其实引用了条件期望 (后面才会讲到) 的性质：$\E[f(X,Y)\mid X]$ 是一个关于 $\sigma(X)$ 可测的随机变量，从而由 Doob-Dynkin 表示定理，存在可测函数 $g$ 使得 $\E[f(X,Y)\mid X] = g(X)$，所以 $\E[f(X,Y)\mid X = x] = g(x)$。这个定理说的就是
-$$\E[f(X,Y)\mid X = x] = g(x) = \int_{S_2}f(x,y)Q(x, \pd{y}).$$
+$$\E[f(X,Y)\mid X = x] = g(x) = \int_{S_2}f(x,y)Q(x, \dy).$$
 
 **证明**：怎么证明两个关于 $\sigma(X)$ 可测的函数 (几乎处处) 相等呢？我们可以给它们同时乘以 $h(x)$，这里 $h(x)$ 是任何一个关于 $\sigma(X)$ 可测的有界函数，然后证明它们对 $\mu_X$ 积分以后的值相等，则这两个可测函数必相等。
 
@@ -823,45 +828,48 @@ $g(x)h(x)$ 这个函数对 $\mu_X$ 积分，根据积分变量替换定理，正
 $$\E[g(X)h(X)]=\E[\E[f(X,Y)|X]h(X)] = \E[\E[f(X,Y)h(X)|X]] = \E[f(X, Y)h(X)].$$
 注意右边的期望悄悄地变成了关于 $\mu_X\otimes Q$ 的积分。这是因为上式最后的等号使用了条件期望的 telescoping 性质，而 $f(X,Y)g(X)$ 是关于 $\B_1\otimes\B_2$ 可测的函数。
 
-另一方面，$h(x)\int_{S_2}f(x,y)Q(x,\pd{y})$ 这个函数对 $\mu_X$ 积分，正是
-$$\int_{S_1}\mu(\pd{x})\int_{S_2}f(x,y)h(x)Q(x,\pd{y}).$$
+另一方面，$h(x)\int_{S_2}f(x,y)Q(x,\dy)$ 这个函数对 $\mu_X$ 积分，正是
+$$\int_{S_1}\mu(\dx)\int_{S_2}f(x,y)h(x)Q(x,\dy).$$
 所以
 $$\begin{align*}
-\E[f(X,Y)h(X)] &= \int_{S_1\times S_2}f(x,y)h(x)\mu_{X,Y}(\pd{x}\pd{y}) \\
+\E[f(X,Y)h(X)] &= \int_{S_1\times S_2}f(x,y)h(x)\mu_{X,Y}(\dx\dy) \\
 &= \int_{S_1\times S_2}f(x,y)h(x)\mu_X\otimes Q \\
-&= \int_{S_1}\mu_X \int_{S_2}f(x,y)h(x)Q(x,\pd{y}) \\
-&= \int_{S_1}\mu_X h(x)\int_{S_2}f(x,y)Q(x,\pd{y}).
+&= \int_{S_1}\mu_X \int_{S_2}f(x,y)h(x)Q(x,\dy) \\
+&= \int_{S_1}\mu_X h(x)\int_{S_2}f(x,y)Q(x,\dy).
 \end{align*}$$
 正是所要证明的。
 
 不过在上面的证明中我们都假定了所有的可积性的前提，我们实际上需要假定 $f(x,y)$ 有界才能确保推导成立。对一般的 $f(x,y)\in L^1(S_1\times S_2,\B_1\otimes \B_2)$，我们需要用有界函数列 $f_n\to f$ 且此收敛是在 $L^1(\mu_{X,Y})$ 意义下的。由于条件期望是 contraction，所以
 $$\E[f_n(X, Y)| X] \xrightarrow{L^1} \E[f(X,Y)|X].$$
 此外我们已经证明了
-$$\E[f_n(X, Y)| X] = \left.\int_{S_2}f_n(x,y)Q(x,\pd{y})\right|_{x=X}.$$
+$$\E[f_n(X, Y)| X] = \left.\int_{S_2}f_n(x,y)Q(x,\dy)\right|_{x=X}.$$
 所以只要证明
-$$\left.\int_{S_2}f_n(x,y)Q(x,\pd{y})\right|_{x=X} \xrightarrow{L^1} \left.\int_{S_2}f(x,y)Q(x,\pd{y})\right|_{x=X}.$$
+$$\left.\int_{S_2}f_n(x,y)Q(x,\dy)\right|_{x=X} \xrightarrow{L^1} \left.\int_{S_2}f(x,y)Q(x,\dy)\right|_{x=X}.$$
 即可。这个 $L^1$ 收敛的意思是对 $\mu_X$ 取积分，因此我们要估计
-$$\int_{S_1}\mu(\pd{x})\int_{S_2}|f_n(x,y)-f(x,y)|Q(x,\pd{y}).$$
+$$\int_{S_1}\mu(\dx)\int_{S_2}|f_n(x,y)-f(x,y)|Q(x,\dy).$$
 这不正是 $|fn-f|$ 对乘积测度的积分嘛，而我们已经知道了它是 $L^1$ 收敛的了。
 
 所以如果我们能把一个联合分布分解为边际分布和一个概率核的乘积，则我们就得到了条件概率的一个表示。
 
 > **问题**：$\mu_{X,Y}$ 总可以表示为 $\mu_X\otimes Q$ 的形式吗？
 
-> **定理**：如果概率核 $Q(x, B)$ 满足
-> $$\P(Y\in B | X=x) = Q(x, B)$$
-> (这个条件等价于
-> $$\E[h(Y) | X] = \left.\int h(y) Q(x,\pd{y})\right|_{x=X}.$$
-> 对任何有界的可测函数 $h(y)$ 成立)
-> 则对 $f(x,y)$ 同样有
-> $$\E[f(X,Y) | X] = \left.\int f(x,y) Q(x,\pd{y})\right|_{x=X}.$$
-> 成立。
+:::{.theorem}
+如果概率核 $Q(x, B)$ 满足
+$$\P(Y\in B | X=x) = Q(x, B)$$
+(这个条件等价于
+$$\E[h(Y) | X] = \left.\int h(y) Q(x,\dy)\right|_{x=X}.$$
+对任何有界的可测函数 $h(y)$ 成立)
+
+则对 $f(x,y)$ 同样有
+$$\E[f(X,Y) | X] = \left.\int f(x,y) Q(x,\dy)\right|_{x=X}.$$
+成立。
+:::
 
 这个定理可以先从 $f(x,y)=f(x)\otimes g(y)$ 形式的函数出发，然后用 Dynkin 函数系引理得到。
 
 总结一下，至此我们讨论了：
 
-1. 如果 $\mu_{X,Y}=\mu_X\otimes Q$，那我们就有了 $\E[f(X,Y)|X]$ 的计算方法：积分 $\int_{S_2}f(X,y)Q(X,\pd{y})$。特别地我们可以算条件概率了。
+1. 如果 $\mu_{X,Y}=\mu_X\otimes Q$，那我们就有了 $\E[f(X,Y)|X]$ 的计算方法：积分 $\int_{S_2}f(X,y)Q(X,\dy)$。特别地我们可以算条件概率了。
 2. 反之如果我们有一个概率核给出条件概率：$\P(Y\in B | X=x) = Q(x, B)$，那么它就给出 $\mu_{X,Y}$ 的一个分解：$\mu_{X,Y}=\mu_X\otimes Q$。
 
 本讲后面讨论了离散和连续情形概率核是什么样子的。
@@ -871,7 +879,7 @@ $$\int_{S_1}\mu(\pd{x})\int_{S_2}|f_n(x,y)-f(x,y)|Q(x,\pd{y}).$$
 本讲介绍了概率核的本质是 Markov 生成元，即可测函数空间上的非负线性泛函。
 
 当有一个概率核 $Q: S_1\times \B_2\to[0, 1]$ 时，
-$$f\to \int_{S_2}f(y)Q(x,\pd{y}),\quad f\in\mathbb{B}(S_2,\B_2)$$
+$$f\to \int_{S_2}f(y)Q(x,\dy),\quad f\in\mathbb{B}(S_2,\B_2)$$
 给出了从 $L^\infty(S_2,\B_2)$ 到 $L^\infty(S_1,\B_1)$ 的线性映射 $L_Q$，$L_Q$ 满足
 
 1. $L_Q(1)=1$。
@@ -894,11 +902,11 @@ $$f\to \int_{S_2}f(y)Q(x,\pd{y}),\quad f\in\mathbb{B}(S_2,\B_2)$$
 固定 $x$，我们需要证明 $L(\ind_B)(x) = \sum_{k=1}^\infty L(\ind_{B_k})(x)$ 对可数不交并 $B = \uplus_{k=1}^\infty B_k$ 成立。记 $f_n=\sum_{k=1}^n B_k$，则 $f_n\uparrow \ind_B$，于是 $L(f_n)\uparrow L(f)=L(\ind_B)$，即 $\sum_{k=1}^\infty L(\ind_{B_k})\uparrow L(\ind_B)$，成立！
 
 要证明 $L = L_Q$，即对任何 $f\in\mathbb{B}(S,\B)$ 有
-$$L(f) = \int_S f(y)Q(x,\pd{y})$$
+$$L(f) = \int_S f(y)Q(x,\dy)$$
 成立。这个很容易从示性函数出发取极限得到。
 
 如果 $Q_1,Q_2$ 是两个 $(S,\B)$ 到自身的概率核，则 $L_{Q_1}L_{Q_2}$ 也满足性质 1-4，因而也是由一个概率核给出：存在概率核 $Q$ 使得 $L_Q = L_{Q_1}L_{Q_2}$。我们可以把 $Q$ 明确的写出来：
-$$L_Q(f) = L_{Q_1}L_{Q_2}(f)=\int_{S}Q_1(x,\pd{y})\left(\int_Sf(z)Q_2(y,\pd{z})\right).$$
+$$L_Q(f) = L_{Q_1}L_{Q_2}(f)=\int_{S}Q_1(x,\dy)\left(\int_Sf(z)Q_2(y,\dz)\right).$$
 这看起来很像乘积测度，实际上我们后面会讨论
 $$Q_1(x,dy)Q_2(d, dz)= Q_1\otimes Q_2(x, dz)$$
 的具体含义。
@@ -921,7 +929,7 @@ $$X_{n+1} = f(X_n, \xi_{n+1}) = F_n(X_0,\xi_1,\xi_2,\ldots,\xi_n),\quad F_n:S\ti
 
 $$\begin{align*}\E[g(X_{n+1})|\F_n] &= \E[g(f(X_n,\xi_{n+1}))|\F_n]\\
 &=\left.\E[g\circ f(x,\xi_{n+1})]\right|_{x=X_n} \\
-&=\left.\int g(y)Q_{n+1}(x,\pd{y})\right|_{x=X_n}\\
+&=\left.\int g(y)Q_{n+1}(x,\dy)\right|_{x=X_n}\\
 &=L_{n+1}(g)(X_n).\end{align*}$$
 但是 $L_{n+1}(g)(X_n)$ 是 $X_n$ 的函数，所以它关于 $\sigma(X_n)$ 是可测的，而且是有界可测，从而两边对 $\sigma(X_n)$ 这个子 $\sigma$- 域取条件期望，并注意到 $\sigma(X_n)\subset\F_n$ 有
 $$\E[g(X_{n+1})|\F_n] = \E[g(X_{n+1})|X_n].$$
@@ -994,3 +1002,136 @@ $$\begin{align*}\sum_{n=1}^\tau\E X_n&=\sum_{n=1}^\infty\E X_n\cdot \ind_{\tau\g
 
 我们为什么可以在第一行的第二个等号处交换求和次序？这是因为上面的推导对 $|X_n|$ 是成立的，并且离散积分值 $\E|X_1|\cdot\E \tau<\infty$，所以由控制收敛定理对原序列 $X_n$ 交换求和也是 OK 的。
 
+
+# 48.1 Uniform Integrability
+
+这一讲介绍了随机变量集合的一致可积性，要点非常多。
+
+对任何 $L^1$ 的随机变量 $X$，总是可以找一个紧集 $K$，使得 $|X|$ 在 $K^c$ 上的积分任意小：对任何 $\epsilon>0$，存在 $a>0$ 使得 $\E[|X|:\ |X|\geq a]<\epsilon$。但是如果是一族可积的随机变量的话，这个统一的 $a$ 就未必存在了。
+
+如果这样的 $a$ 总是存在的话，我们就称这族随机变量是一致可积的。
+
+:::{.definition}
+随机变量列 $\{X_n\}$ 称作是一致可积的 (UI) 的，如果它们满足以下条件：
+
+1. 每个 $X_i$ 都是 $L^1$ 的。
+2. 对任何 $\epsilon>0$，存在 $a>0$ 使得 $\sup_n\E[X_n:\ |X_n|\geq a]< \epsilon$。
+:::
+
+不难验证如果 $\{X_n\}$ 被一个可积随机变量控制，则它们是一致可积的：
+
+:::{.example}
+如果 $|X_n|\leq Y,\ Y\in L^1$，则 $\{X_n\}$ 是一致可积的。
+:::
+
+这是因为被积函数和积分区域都可以放大：$\E[|X_n|:\ |X_n|\geq a]\leq\E[|Y|:\ |Y|\geq a]$。
+
+:::{.example}
+如果 $\{X_n\}$ 是 $L^p,\,p>1$ 一致有界的：$\sup_n\E |X_n|^p<\infty$，则 $\{X_n\}$ 是一致可积的。
+:::
+
+这是因为被积函数可以放大：
+$$\E[|X|: |X|\geq a]\leq \E[|X|\cdot\frac{|X|^{p-1}}{a^{p-1}}: |X|\geq a] = \frac{1}{a^{p-1}}\E[|X|^p: |X|\geq a]\leq \frac{M}{a^{p-1}}.$$
+
+这个例子中的 $p>1$ 是不能减弱为 $p\geq1$ 的。不过我们可以证明 UI 的变量族必然是 $L^1$ 一致有界的：
+
+:::{.theorem}
+若 $\{X_n\}$ 一致可积，则 $\sup_n E|X_n| <\infty$。
+:::
+
+证明：取 $a$ 使得 $\sup_n \E[|X_n|: |X_n|\geq a] < 1$，则不难证明 $\E |X_n| < a+1$。
+
+现在我们来给出一致绝对连续的概念，并将说明**一致可积 = $L^1$ 一致有界 + 一致绝对连续**。
+
+:::{.definition}
+随机变量序列 $\{X_n\}$ 是一致绝对连续的，如果对任何 $\epsilon>0$，都存在 $\delta>0$，使得只要集合 $B$ 满足 $\mu(B)<\delta$，就有 $\sup_n\E[|X_n|: B]<\epsilon$。
+:::
+
+:::{.theorem}
+$\{X_n\}$ 一致可积当且仅当它们 $L^1$ 一致有界且一致绝对连续。
+:::
+**证明**：
+
+$\Rightarrow$: $L^1$ 一致有界已经有了。下证一致绝对连续性质。对任何可测集 $B$，我们考虑用一个待定的 $a>0$ 把积分 $\E[|X_n|: B]$ 变成
+$$\E[|X_n|: B,\ |X_n|\geq a] + \E[|X_n|: B,\ |X_n|<a].$$
+第一项小于等于  $\E[|X_n|: |X_n|\geq a]$，由一致可积性我们可以取 $a$ 使得它小于 $\epsilon/2$。第二项小于等于 $a\mu(B)$。所以只要 $\mu(B)<\delta=\frac{\epsilon}{2a}$ 即可。
+
+$\Leftarrow$: 我们可以料想 $\{|X_n|\geq a\}$ 的测度是会一致地越来越小的：
+
+$$\P(\{|X_n|\geq a\})=\E[1: |X_n|\geq a]\leq \E[\frac{|X_n|}{a}: |X_n|\geq a]\leq \frac{\E|X_n|}{a}=\frac{K}{a}.$$
+其中 $K$ 是 $\{X_n\}$ 的 $L^1$ 上界。所以确实可以取 $a$ 适当大使得 $\{|X_n|\geq a\}$ 的测度一致地小于一致绝对连续性中所需要的那个 $\delta$。
+
+:::{.theorem}
+一致可积性是平移不变的： $\{X_n\}$ 一致可积且 $Y\in L^1$，则 $\{X_n+Y\}$ 也是一致可积的。
+:::
+
+为此只要证明它们一致 $L^1$ 有界且一致绝对连续。其中一致 $L^1$ 有界是显然的。
+
+对于一致绝对连续，我们有
+$$\E[|X_n+Y|: B]\leq\E[|X_n|:B] + \E[|Y|: B].$$
+取 $\delta_1$ 使得只要 $\mu(B)<\delta_1$ 就有 $\E[|X_n|:B]<\frac{\epsilon}{2}$，再取 $\delta_2$ 使得只要 $\mu(B)<\delta_2$ 就有 $\E[|Y|:B]<\frac{\epsilon}{2}$，则 $\delta=\min\{\delta_1,\delta_2\}$ 符合要求。
+
+最后一个重要定理是：**依 $L^1$ 范数收敛 = 一致可积 + 依测度收敛**。
+
+:::{.theorem}
+随机变量序列 $X_n\xrightarrow{L^1} X$ 当且仅当 $X_n\xrightarrow{\P}X$ 且 $\{X_n\}$ 一致可积。
+:::
+**证明**：
+
+$\Rightarrow$: $L^1$ 收敛当然可以得出依测度收敛 (Markov 不等式一步即得)。要证明一致可积，我们只要根据平移不变性，证明 $Y_n=X_n-X$ 是一致可积的即可。
+
+考虑取一个待定的正整数 $N$，则
+$$\sup_n\E[|Y_n|: |Y_n|\geq a] \leq \sup_{n< N}\E[|Y_n|: |Y_n|\geq a] \vee \sup_{n\geq N}\E[|Y_n|: |Y_n|\geq a]$$
+上面右边第一项是有限多个可积随机变量组成的集合，是一致可积的，所以只要 $a$ 足够大第一项是可以任意小的。第二项小于等于 $\E|Y_n|$ 并且由于 $\E|Y_n|\to 0$ 所以只要 $N$ 足够大也是可以任意小的。所以我们先取 $N$ 足够大使得 $\E|Y_n|<\epsilon/2$，再取 $a$ 足够大使得 $n<N$ 时 $\sup_{n< N}\E[|Y_n|: |Y_n|\geq a]<\epsilon/2$，就得到了一致可积性。
+
+$\Leftarrow$: 记 $Y_n = X_n - X$，则 $Y_n\ind_{|Y_n|<a}$ 是一个不大于 $a$ 的函数序列，且依测度收敛到 0，从而由**依测度的控制收敛定理**有 $Y_n\ind_{|Y_n|<a}\xrightarrow{L^1}0$。
+从而
+$$\|X_n-X\|_{L^1} = \E[Y_n\ind_{\{|Y_n|<a\}}] + \E[Y_n\ind_{\{|Y_n|\geq a\}}].$$
+第一项取 $n$ 足够大就可以任意小，第二项取 $a$ 足够大也可以任意小，得证。$\blacksquare$
+
+:::{.corollary}
+正则鞅 $X_n = \E[X|\mathcal{F}_n]$ 是一致可积的。
+:::
+
+反过来也是对的：鞅序列如果是一致可积的，则一定是正则鞅。
+
+
+# 49.1 Optional Stopping and Sampling
+
+这一节介绍了停时，以及停时鞅序列 $\{X_{n\wedge \tau}\}$ 的性质。
+
+一个简单的股票市场模型：设 $\{X_n\}_{n=0}^\infty$ 是股票价格，$\{U_n\}_{n=1}^\infty$ 是你的投资策略，即在时刻 $n-1$ 买入 $U_n$ 并在时刻 $n$ 抛出。或者说，$U_n$ 是你在 $(n-1,n]$ 这个时间区间内的股票交易数量，那么到时刻 $n$ 时，你的净收益为
+$$I_n(U,X) = \sum_{j=1}^n U_j(X_j-X_{j-1}).$$
+这里 $U_n$ 必须是关于 $\F_{n-1}=\sigma(X_0,X_1,\ldots,X_{n-1})$ 可测。
+
+第一个重要观察是：
+
+:::{.theorem #martingale-discrete-integration}
+如果 $\{X_n\}$ 是鞅/下鞅/上鞅，并且 $U_n\geq0$，则 $I_n(U,X)$ 也是鞅/下鞅/上鞅。
+:::
+
+证明：对下面的恒等式两边关于 $\F_n$ 取条件期望即可。
+$$I_{n+1}(U,X) = \underbrace{I_{n}(U,X)}_{\in\F_n} + \underbrace{U_{n+1}}_{\in\F_n}\underbrace{(X_{n+1}-X_{n})}_{\rm (sub/sup)martingale}.$$
+
+我们可以设定两个随机时间，比如 $\sigma$ 是股票首次低于 1 美元的时刻, 这时立刻买入；$\tau$ 是股票首次高于 10 美元的时刻，这时立刻抛出；在区间 $(\sigma,\tau]$ 中保持持有股票，即 $U_j=\ind_{\sigma<j\leq \tau}$。于是 $U_j\ind_{n\geq j}=\ind_{(\sigma\wedge n, \tau\wedge n]}(j)$。
+
+那么净收益
+$$I_n(U,X) = \sum_{j=1}^n \ind_{\sigma\wedge n<j\leq \tau\wedge n} (X_j-X_{j-1})=X_{\tau\wedge n} - X_{\sigma\wedge n}.$$
+
+特别地，取 $\sigma=0$，则 $U_j=\ind_{j\leq\tau}$，则我们有如下结论：
+
+:::{.theorem #stopping-time-also-martingale}
+如果 $\{X_n\}$ 是鞅，那么 $\{X_{n\wedge \tau}\}$ 也是鞅。
+:::
+
+证明：首先每一项 $X_{n\wedge \tau}$ 可以看成是一个关于 $X_1,\ldots,X_n$ 的部分和：
+
+$$X_{n\wedge \tau} = \sum_{k=0}^n\ind_{\tau=k}X_k.$$
+
+显然 $X_{n\wedge \tau}$ 是可积的。
+
+另一方面在 @Pre:martingale-discrete-integration 中取 $U_n=\ind_{n\leq\tau}$，则 $X_{n\wedge \tau} - X_0 = I_n(U,X)$ 仍然是鞅，那么加上一个 $X_0$ 得到的 $X_{n\wedge\tau}$ 当然还是鞅。
+
+# 49.2 Holder's Inequality
+
+无特别内容
