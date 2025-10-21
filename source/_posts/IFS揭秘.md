@@ -56,7 +56,7 @@ $$d(f(x),f(y))\leq r\cdot d(x,y)$$
 $$F(X) = f_1(X)\cup f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^n).$$
 也就是说，给定集合 $X$，我们将它变形成 $N$ 个版本，每个版本分别应用一个压缩变换、再把所有版本合起来，得到新的集合 $F(X)$。
 
-把 $X$ 想象成孙悟空，他拔出一把毫毛，变出一些小孙悟空，这些小孙悟空构成的集合就是 $F(X)$。
+把 $X$ 想象成孙悟空，他拔出一把毫毛，变出一些小孙悟空 $\{f_i(X)\}_{i=1}^N$，这些小孙悟空构成的集合就是 $F(X)$。
 
 可以证明 $F$ 是空间 $K(\mathbb{R}^n)$ 上的压缩映射，其压缩比例不超过 $r=\max\{r_1,\ldots,r_N\}$。于是根据 [Banach 不动点定理](https://en.wikipedia.org/wiki/Banach_fixed-point_theorem)，存在唯一的紧集 $A\subset\mathbb{R}^n$ 使得 $A$ 是 $F$ 的不动点：
 $$F(A) = A.$$
