@@ -20,7 +20,6 @@ url: todo
 - Random walk, circle packing and conformal mapping.
 - Billiard ball，测度论，Poncelet 定理
 - Durrett 概率论 Brownian 运动部分改写
-- Indra's pearls 部分内容介绍，附 shadertoy 动画
 - Raymarching 中 sdf 函数与各种变换的数学证明
 - 正的 Hausdoff 维数意味常返性 http://www.cmat.edu.uy/~lessa/resource/randomwalknotes.pdf
 - 准晶，Faraday 驻波。
@@ -60,13 +59,13 @@ url: todo
 - 三维 Kleinian 群
 - 模群面上的测地流和 horocycle 流
 - Thurston 的圆堆算法
+- Clebsch 曲面上的 27 lines
 
 
 # Python
 
 - Python + cairo 实现 hyperbolic tiling 矢量绘图库。
 - 继续可视化项目系列，可视化复分析 + indra's pearls，可视化 circle packings，可视化双曲空间 (Hee Oh)。
-- 相对论 + 机器猫
 - Faraday 驻波模拟
 - Conway's Topograph
 - magicavoxel and magicaCSG

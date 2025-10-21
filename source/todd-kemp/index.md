@@ -939,53 +939,89 @@ $$\E[g(X_{n+1})|\F_n] = \E[g(X_{n+1})|X_n].$$
 
 本讲介绍了随机过程的定义，以及它们的有限维分布、滤过 (filtration)、适应 (adapted) 等概念。
 
-# 36.1 The Markov property
+# ✅ 36.1 The Markov property
 
-我们称随机过程 $X_t:(\Omega,\F_t)\to(S_,\B)$ Markov 性质，如果对任何有界可测函数 $f\in\mathbb{B}(S,\B)$ 有
+:::{.definition}
+我们称随机过程 $X_t:(\Omega,\F_t)\to(S_,\B)$ 具有 Markov 性质，如果对任何有界可测函数 $f\in\mathbb{B}(S,\B)$ 有
+$$\E[f(X_t)|\F_s] = \E[f(X_t)|X_s],\quad \ae\ \forall s < t.$$
+:::
+即对 $s$ 时刻之前的所有历史取条件期望，等于只对 $s$ 时刻的历史取条件期望。
 
-$$\E[f(X_t)|\F_s] = \E[f(X_t)|X_s],\quad \ae,\ \forall s < t.$$
+根据 Doob-Dynkin 引理，不难验证这个定义等价于
+$$\E[f(X_t)|\F_s] = F(X_s),\quad \ae\text{ for some } F\in\mathbb{B}(S,\B).$$
 
-Markov 过程貌似是关于过去和当前的，但实际上它也告诉了我们关于未来的信息：
+上面定义看起来是说，Markov 过程是关于过去和当前的。但实际上它也告诉了我们关于未来的信息：
 
 :::{.corollary}
-$$\E[Y|\F_s] = E[Y|X_s],\quad \forall Y\in\mathbb{B}(\Omega, \F_{\geq s}).$$
+$$\E[Y|\F_s] = E[Y|X_s],\quad \forall Y\in\mathbb{B}(\Omega, \F^X_{\geq s}).$$
+注意，$Y$ 来自 $\F^X_{\geq s}=\sigma(X_t:t\geq s)$，而不是 Filtration $\F_{\geq s}$。
 :::
 
 这个推论的证明很有意思，要用到 Dynkin multiplicative system。
 
-考虑形如
+**证明**：考虑所有形如
 $$Y = g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})$$
-的函数，这里 $s =t_0<t_1<\cdots <t_n$，且每个 $g_i$ 都是有界可测的，从而 $Y$ 也是有界可测的，并且 $Y\in\F_{\geq s}$。
+的函数，这里 $s =t_0<t_1<\cdots <t_n$，且每个 $g_i$ 都是有界可测的，从而 $Y$ 也是有界可测的，并且 $Y\in\F^X_{\geq s}$。
 
 :::{.lemma}
 设
 $$\mathcal{M} = \{g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})\mid n\in\mathbb{Z}_{\geq0},\ s=t_0<t_1<\cdots<t_n, g_j\in\mathbb{B}(S,\B)\}.$$
-则 $\mathcal{M}$ 是乘法系，且 $\sigma(M) = \F_{\geq s}$。
+则 $\mathcal{M}$ 是乘法系，且 $\sigma(M) = \F^X_{\geq s}$。
 :::
+
+引理的证明很简单，这里省略。
 
 回到推论的证明。
 
-设 $\mathcal{H}$ 是所有满足推论要求的函数构成的空间。我们只要证明 $\mathcal{H} \supset\mathcal{M}$。这样由于 $\mathcal{H}$ 是向量空间，包含常数 1，在有界收敛下封闭，并且包含乘法系 $\mathcal{M}$，从而根据 Dynkin 函数系引理包含所有关于 $\sigma(\mathcal{M})=\F_{\geq s}$ 可测的有界可测函数，这正是所要证明的。
+设 $\mathcal{H}$ 是所有满足推论要求的函数构成的空间。显然 $\mathcal{H}$ 满足：
 
-$$\begin{align*}\E_{\F_s}[Y]&=\E_{\F_s}[E_{\F_{t_{n-1}}}[Y]]\\
+1. 是向量空间；
+2. 包含常函数 1；
+3. 对有界收敛下封闭
+
+我们只要再证明 $\mathcal{H}$ 包含乘法系 $\mathcal{M}$，从而根据 Dynkin 函数系引理它包含所有关于 $\sigma(\mathcal{M})=\F^X_{\geq s}$ 可测的有界可测函数，这正是所要证明的。
+
+根据 Markov 性质和 Doob-Dynkin 引理，我们可以记 $\E_{\F_{t_{n-1}}}[g_n(X_{t_n})]=h(X_{t_{n-1}})$。于是
+
+$$\begin{aligned}\E_{\F_s}[Y]&=\E_{\F_s}[E_{\F_{t_{n-1}}}[Y]]\\
 &=\E_{\F_s}[g_0(X_{t_0})\cdots g_{n-1}(X_{t_{n-1}})h(X_{t_{n-1}})]\\
 &=\E_{\F_s}[g_0(X_{t_0})\cdots \widetilde{g_{n-1}}(X_{t_{n-1}})]\\
 &=\cdots\\
 &=\E_{\F_s}[F(X_{s})]\\
 &=F(X_s)
-\end{align*}$$
-再利用 $\E_{X_s}[Y]=\E_{X_s}[\E_{\F_s}[Y]]=\E_{X_s}[F(X_s)]=F(X_s)$ 即得所证。
+\end{aligned}$$
+再利用 $\E_{X_s}[Y]=\E_{X_s}[\E_{\F_s}[Y]]=\E_{X_s}[F(X_s)]=F(X_s)$ 即得所证。$\blacksquare$
 
 上面是 Markov 性质的第一种刻画：将对未来可测的函数对当前和过去取条件期望，相当于只对当前取条件期望。
 
 本讲接下来用条件独立给出了 Markov 性质的第二种刻画：
 
-> **定理**：随机过程 $\{X_t\}$ 满足 Markov 性质当且仅当 $\F_s$ 和 $\F_{\geq s}$ 关于 $\sigma(X_s)$ 是条件独立的，即对任何有界可测函数 $Z\in\mathbb{B}(\Omega,\F_s)$，$Y\in\mathbb{B}(\Omega,\F_{\geq s})$ 有
-> $$\E[ZY|X_s] = \E[Z|X_s]\cdot \E[Y|X_s].$$
+:::{.theorem}
+随机过程 $\{X_t\}$ 满足 Markov 性质当且仅当 $\F_s$ 和 $\F^X_{\geq s}$ 关于 $\sigma(X_s)$ 是条件独立的，即对任何有界可测函数 $Z\in\mathbb{B}(\Omega,\F_s)$，$Y\in\mathbb{B}(\Omega,\F^X_{\geq s})$ 有
+$$\E[ZY\mid X_s] = \E[Z\mid X_s]\cdot \E[Y\mid X_s].$$
+:::
 
-注意到 $\F_s=\sigma(X_t: t\leq s)$ 以及 $\F_{\geq s}=\sigma(X_T:t\geq s)$，所以这个结论可以概括为：对 Markov 过程，给定当下，过去与未来独立。
+注意到 $\F_s\supset\sigma(X_t: t\leq s)$ 以及 $\F^X_{\geq s}=\sigma(X_t:t\geq s)$，所以这个结论可以概括为：对 Markov 过程，给定当下，过去与未来独立。
 
-这个结论的证明主要使用了 Tower 性质，不算困难。
+**证明**：
+
+$\Rightarrow$：由于 $Z$ 关于 $\F_s$ 可测，以及 Markov 性质，有
+$$\E[ZY\mid\F_s] = Z\E[Y\mid \F_s]=Z\cdot \E[Y\mid X_s].$$
+两边同时对 $\sigma(X_s)$ 取条件期望，并利用条件期望的 Tower 性质，得到
+$$\E[ZY\mid X_s] = \E[Z\mid X_s]\cdot \E[Y\mid\F_s].$$
+
+$\Leftarrow$：对任意 $Z\in\mathbb{B}(\Omega,\sigma(X_s))$，考虑 $\E[Z f(X_t)]$。由条件独立得：
+
+$$\E[Z\cdot f(X_t)]= \E\big[\E[Z f(X_t)\mid X_s]\big]= \E\big[\E[Z\mid X_s]\cdot\E[f(X_t)\mid X_s]\big]=\E[Z\cdot h(X_s)].$$
+其中 $h(X_s):=\E[f(X_t)\mid X_s]$。另一方面，根据条件期望定义，
+$$\E[Z\cdot f(X_t)] = \E\big[Z \cdot\E[f(X_t)\mid \F_s]\big].$$
+两个式子的右边相等，所以
+$$\E\big[Z\cdot\E[f(X_t)\mid \F_s]\big]
+= \E\big[Z\cdot h(X_s)\big].$$
+而这正是条件期望的“投影特征”：由 $Z$ 的任意性，必然有
+$$\E[f(X_t)\mid\F_s] = h(X_s) = \E[f(X_t)\mid X_s],\quad \ae$$
+$\blacksquare$
+
 
 # 36.2 Probability Kernels Revisited
 
