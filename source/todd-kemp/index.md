@@ -589,7 +589,7 @@ $\Rightarrow$: 简单。
 这是因为 $\sigma(f(X_1,\ldots,X_n))\subseteq\sigma(X_1,\ldots,X_n)$，$\sigma(g(Y_1,\ldots,Y_m))\subseteq\sigma(Y_1,\ldots,Y_m)$，所以也是独立的。
 
 
-# 17.1 Kolmogorov's 0-1 Law
+# ✅ 17.1 Kolmogorov's 0-1 Law
 
 本讲介绍了独立随机变量序列的尾事件，以及 Kolmogrov 0-1 律。
 
@@ -606,10 +606,18 @@ $$\{\text{all finite intersections like }\cap A_i, A_i\in\sigma(X_i),i=1,2,\ldot
 $$\{\text{all finite intersections like }\cap A_j, A_j\in\sigma(X_j),j=n+1,n+2,\ldots\}.$$
 这俩都是 $\pi$- 系且互相独立，所以它们生成的 $\sigma$- 域也独立。前者可以生成 $\sigma(X_1,\ldots,X_n)$，后者可以生成 $\sigma(X_{n+1},X_{n+2},\ldots)$。
 + 于是 $\sigma(X_1,\ldots,X_n)$ 和 $\mathcal{T}$ 是独立的。
-+ 于是 $\pi$- 系 $\cup_{n=1}^\infty\sigma(X_1,\ldots,X_n)$ 和 $\mathcal{T}$ 是独立的。
++ 于是 $\cup_{n=1}^\infty\sigma(X_1,\ldots,X_n)$ 作为代数，当然也是 $\pi$- 系，和 $\mathcal{T}$ 是独立的。
 + 于是 $\sigma$- 域 $\sigma(X_1,\ldots,X_n,\ldots)$ 和 $\mathcal{T}$ 独立，从而 $\mathcal{T}$ 和 $\mathcal{T}$ 独立，从而得证。
 
 $\blacksquare$
+
+:::{.proposition}
+设 $\{X_i\}_{i=1}^\infty$ 是一个随机变量的无限序列，如果 $Y$ 是 $\sigma(X_1,X_2,\ldots)$ 可测的，且 $Y$ 有界，则对任何 $\epsilon>0$，都存在 $N$ 和 Borel 可测的有界函数 $F:\R^N\to\R$ 使得
+$$\E|Y - F(X_1,\ldots,X_N)|<\epsilon,\quad \ae$$
+:::
+
+**证明**：记 $Y_n=\E[Y\mid\sigma(X_1,\ldots,X_n)]$，则 $\{Y_n\}$ 是一致可积鞅，且在 $L^1$ 范数下收敛到 $Y$。每个 $Y_n$ 根据 Doob-Dynkin 引理都形如 $Y_n=F(X_1,\ldots,X_n)$。此即为结论。
+
 
 # 17.2 Convolution
 
@@ -635,8 +643,6 @@ $\sum_{n=1}^\infty\mathbb{P}(X_n\ne Y_n)<\infty$。
 
 这样根据 Borel-Cantelli 引理，$\{X_n\ne Y_n,\io\}$ 是零测集，从而 $X_n=Y_n$ 最终会几乎处处成立，从而二者的极限行为一致。即如果 $b_n\uparrow\infty$，则
 $$\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum_{j=1}^n X_n = X \Leftrightarrow \lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum_{j=1}^n Y_n = X.$$
-
-**截断的序列和原序列是尾等价的**
 
 :::{.lemma}
 若 $X\in L^1,\,\epsilon>0$，则 $$\sum_{n=1}^\infty\mathbb{P}(X\geq n\epsilon) \leq\frac{1}{\epsilon}\mathbb{E}|X|.$$
@@ -755,7 +761,7 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 
 无要点
 
-# 24.2 Characteristic Function
+# ✅ 24.2 Characteristic Function
 
 本讲介绍了随机变量的特征函数及其基本性质。整体内容比较基础。
 
