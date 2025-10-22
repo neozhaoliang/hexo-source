@@ -618,6 +618,14 @@ $$\E|Y - F(X_1,\ldots,X_N)|<\epsilon,\quad \ae$$
 
 **证明**：记 $Y_n=\E[Y\mid\sigma(X_1,\ldots,X_n)]$，则 $\{Y_n\}$ 是一致可积鞅，且在 $L^1$ 范数下收敛到 $Y$。每个 $Y_n$ 根据 Doob-Dynkin 引理都形如 $Y_n=F(X_1,\ldots,X_n)$。此即为结论。
 
+或者也可以这样证：先取简单函数
+$$\varphi = \sum_{k=1}^n a_k\ind_{A_k},\quad A_k\in\B(\R^{\mathbb{N}})$$
+满足 $|Y -\varphi|_1<\epsilon/2$。然后记 $M=\max\{|a_1|,\ldots,|a_k|\}$。对每个 $A_k$，取柱集 $C_k$ 使得
+$$\mu(A_k\Delta C_k) < \frac{\epsilon}{2nM}.$$
+于是
+$$\left| \sum_{k=1}^n a_k\ind_{A_k} -  \sum_{k=1}^n a_k\ind_{C_k}\right|\leq  \sum_{k=1}^n |a_k| |\ind_{A_k}-\ind_{C_k}|= \sum_{k=1}^n |a_k|\ind_{A_k\Delta C_k}\leq M \sum_{k=1}^n\ind_{A_k\Delta C_k}.$$
+右边函数每一项的积分 $<\epsilon/2n$，全部 $n$ 项合起来的积分 $<\epsilon$，所以简单函数 $\ind_{A_k\Delta C_k}$ 就是所求的 $F$。$\blacksquare$
+
 
 # 17.2 Convolution
 
