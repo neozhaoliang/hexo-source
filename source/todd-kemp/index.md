@@ -12,6 +12,8 @@ url: todd-kemp
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\S}{\mathcal{S}}
+\newcommand{\H}{\mathbb{H}}
+\newcommand{\M}{\mathbb{M}}
 
 \newcommand{\io}{\mathrm{i.o.}}
 \newcommand{\ae}{\mathrm{a.e.}}
@@ -263,8 +265,7 @@ $$f(X)=\varlimsup f_n(X)=\varlimsup \phi_n = \lim\phi_n = Y.$$
 结论得证。$\blacksquare$
 
 
-
-# 7.2 Riemann-Stieltjes Integration
+# ✅ 7.2 Riemann-Stieltjes Integration
 
 无要点。
 
@@ -772,6 +773,47 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 # ✅ 24.2 Characteristic Function
 
 本讲介绍了随机变量的特征函数及其基本性质。整体内容比较基础。
+
+# ✅ 25.1 The Riemann-Lebesgue lemma
+
+:::{.theorem}
+设 $f\in L^1(\R^n)$，则其特征函数
+$$\varphi(t) = \int_{\R^n}e^{-it\cdot x}f(x)\,\dx.$$
+满足
+$$\lim_{t\to\infty}\varphi(t) = 0.$$
+:::
+
+**证明**：首先，我们假设 $f$ 无穷次可微，并且具有紧支集。由分部积分，我们得到
+
+$$it_j\varphi(t) = \int_{\R^n}\underbrace{it_je^{-it\cdot x}}_{\frac{\partial x}{\partial x_j}e^{-it\cdot x}}f(x)\,\dx =-\int_{\R^n}e^{-it\cdot x}\frac{\partial x}{\partial x_j}f(x)\,\dx.$$
+两边取绝对值，我们有
+$$|t_j\varphi(t)|\leq \int_{\R^n}\left|\frac{\partial x}{\partial x_j}f(x)\right|\,\dx=M_j<\infty.$$
+于是
+$$|t|\cdot |\varphi(t)|\leq \sqrt{M_1^2+\cdots+M_n^2} < \infty.$$
+所以在 $f$ 光滑且紧支集的情形，我们得到 $\varphi(t)=O(|t|^{-1})$。
+
+对一般的 $L^1$ 型 $f$，我们用一个具有紧支集的光滑函数来逼近 $f$。首先
+$$f\ind_{\overline{B}_R}\to f \text{ in }L^1 \text{ as }R\to\infty.$$
+所以我们可以假设 $\mathrm{supp}(f)\subset\overline{B}_R$。
+令
+$$\H = \{h\in\mathbb{B}(\overline{B}_R)\mid \exists\ {g_n}\xrightarrow{L^1}h\text{ with }g_n\in C^\infty(\overline{B}_R)\}.$$
+则
+
++ $1\in\H$；因为我们可以取类似“钟形”的光滑函数 $g_n\in C^\infty(\overline{B}_R)$ 使得 $g_n$ 在缩小一点的闭球 $\overline{B}_{R-1/n}$ 上恒为 1。
++ $\H$ 在有界收敛下封闭；因为如果 $h_n\to h$，则根据控制收敛定理，$|h_n-h|_1\to 0$。由于 $h_n\in\H$，设 $g_n\in C^\infty(\overline{B}_R)$ 满足 $|h_n-g_n|_1<1/n$，则
+由三角不等式有
+$$|h-g_n|\leq 1/n + ||h_n-g_n|_1\to 0.$$
+记 $\M=C^\infty_c(\R^n)$ 是全体具有紧支集的光滑函数组成的集合，则 $\M$ 是乘法系，且 $\M\subset \H$。于是 $\mathbb{B}(\overline{B}_R,\sigma(\M))\subset\H$。但是 $\sigma(\M)=\mathcal{B}(\R^n)$，所以所有在 $\overline{B}_R$ 上有界，且 Borel 可测的函数都在 $\H$ 中。
+
+最后，取 $g\in C^\infty_c(\R^n)$ 满足 $|f-g|_1<\epsilon$。则
+$$|\varphi(t) - \hat{g}(t)|\leq |f-g|_1 < \epsilon.$$
+而我们已经证明了 $|\hat{g}|=O(1/t)$，所以我们可以取 $R>0$ 使得 $|t|>R$ 时有 $|\hat{g}|<\epsilon$。从而 $|t|>R$ 时有
+$$|\varphi(t)| < |\hat{g}(t)|+\epsilon < 2\epsilon.$$
+$\blacksquare$
+
+# 25.2 Fourier inversion
+
+
 
 # 25.3 The Continuity Theorem
 
