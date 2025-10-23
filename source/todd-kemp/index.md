@@ -921,14 +921,16 @@ $\blacksquare$
 :::
 
 :::{.lemma}
-设 $\mu,\nu$ 是 $(\R^d,\B(\R^d))$ 上的两个概率测度，则
-$$\int_{\R^d}\hat{\mu}(x)\vd{x}=\int_{\R^d}\hat{\nu}(y)\ud{y}.$$
+设 $\mu,\nu$ 是 $(\R^d,\B(\R^d))$ 上的两个概率测度，$K>0$ 是任意正实数，则
+$$\int_{\R^d}\hat{\mu}(Kx)\vd{x}=\int_{\R^d}\hat{\nu}(Ky)\ud{y}.$$
 :::
 
-**证明**：直接 Fubini 即可。
+**证明**：要证明的是
+$$\int_{\R^d}\vd{x}\int_{\R^d}e^{iKx\cdot \xi}\ud{\xi}=\int_{\R^d}\ud{y}\int_{\R^d}e^{iKy\cdot \xi}\vd{\xi}.$$
+直接 Fubini 即可。
 
 :::{.lemma}
-$$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\ud{x}.$$
+$$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(Kx)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat{\nu}(Ky)]\ud{x}.$$
 :::
 
 **证明**：在前一个引理中两边取实部，然后被 1 减去即可。
@@ -936,8 +938,24 @@ $$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat
 
 :::{.corollary}
 假设 $\rho$ 是一个 $\R^d$ 上的概率密度，其支集位于闭的单位球 $\bar{B}_1$ 内。设 $M>0$ 使得 $|\hat{\rho}(t)|\leq1/2$ 对任何 $|t|\geq M$ 成立，则对任何 $(\R^d,\B(\R^d))$ 上的概率测度 $\mu$ 和正数 $\alpha>0$ 有
-$$\mu\{x\in\R^d:\ |x|\geq\alpha\}\leq 2\int_{\bar{B}_1}\left[1-\mathrm{Re}\,\hat{\mu}(\frac{M}{\alpha}x)\right]\rho(x)\dx.$$
+$$\mu\{x\in\R^d:\ |x|\geq\alpha\}\leq 2\int_{\bar{B}_1}\left[1-\mathrm{Re}\,\hat{\mu}\left(\frac{M}{\alpha}x\right)\right]\rho(x)\dx.$$
 :::
+
+**证明**：设
+$$\hat{\mu}(t)=\int_{\R^d}e^{it\cdot x}\ud{x},\quad \hat{\rho}(t)=\int_{\R^d}e^{it\cdot x}\rho(x)\dx.$$
+令 $K=\frac{M}{\alpha}$，由于 $\rho$ 的支集包含在 $\bar B_1$ 中，所以
+$$2\int_{\bar B_1}\bigl[1-\mathrm{Re}\,\hat{\mu}(Kx)\bigr]\rho(x)\dx=2\int_{\R^d}\bigl[1-\mathrm{Re}\,\hat{\rho}(Ky)\bigr]\ud{y}.$$
+由假设，当 $|y|\ge\alpha$ 时有 $|K y|=\frac{M}{\alpha} |y|\ge M$，从而
+$$1-\mathrm{Re}\hat{\rho}(K y)\ge1-|\hat{\rho}(K y)|\ge\frac{1}{2}.$$
+故 $|y|\ge\alpha$ 时有
+$$2\bigl(1-\mathrm{Re}\hat{\rho}(K y)\bigr)\ge \ind_{\{|y|\ge\alpha\}}(y).$$
+这个式子对 $|y|<\alpha$ 也成立，所以同时对 $\mu$ 积分得到
+$$2\int_{\R^d}\bigl[1-\mathrm{Re}\,\hat{\rho}(K y)\bigr]\ud{y}\ge\int_{\R^d}\ind_{\{|y|\ge\alpha\}}\ud{y}=\mu(\{|y|\ge\alpha\}).$$
+把左边换回原式即得
+$$\mu(\{|x|\ge\alpha\})\le2\int_{\bar B_1}\left[1-\mathrm{Re}\,\hat{\mu}\left(\tfrac M\alpha x\right)\right]\rho(x)\dx.$$
+$\blacksquare$
+
+
 
 # 31.1 Orthogonal Projections
 
