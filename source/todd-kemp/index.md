@@ -24,6 +24,8 @@ url: todd-kemp
 \newcommand{\dx}{\,\mathrm{d}x}
 \newcommand{\dy}{\,\mathrm{d}y}
 \newcommand{\dz}{\,\mathrm{d}z}
+\newcommand{\dt}{\,\mathrm{d}t}
+\newcommand{\dxi}{\,\mathrm{d}\xi}
 
 \newcommand{\triple}{(\Omega,\mathcal{F},\mathbb{P})}
 \newcommand{\Lone}{L^1(\Omega,\mathcal{F},\mathbb{P})}
@@ -34,6 +36,7 @@ url: todd-kemp
 \newcommand{\vd}[1]{\nu(\mathrm{d}#1)}
 \newcommand{\uxuy}{\mu_X\otimes\mu_Y}
 \newcommand{\uxvy}{\mu_X\otimes\nu_Y}
+\newcommand{\sgn}{\mathrm{sgn}}
 
 # 0 Banach Tarski
 
@@ -778,14 +781,14 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 
 :::{.theorem}
 设 $f\in L^1(\R^n)$，则其特征函数
-$$\varphi(t) = \int_{\R^n}e^{-it\cdot x}f(x)\,\dx.$$
+$$\varphi(t) = \int_{\R^n}e^{it\cdot x}f(x)\,\dx.$$
 满足
 $$\lim_{t\to\infty}\varphi(t) = 0.$$
 :::
 
 **证明**：首先，我们假设 $f$ 无穷次可微，并且具有紧支集。由分部积分，我们得到
 
-$$it_j\varphi(t) = \int_{\R^n}\underbrace{it_je^{-it\cdot x}}_{\frac{\partial x}{\partial x_j}e^{-it\cdot x}}f(x)\,\dx =-\int_{\R^n}e^{-it\cdot x}\frac{\partial x}{\partial x_j}f(x)\,\dx.$$
+$$it_j\varphi(t) = \int_{\R^n}\underbrace{it_je^{it\cdot x}}_{\frac{\partial x}{\partial x_j}e^{it\cdot x}}f(x)\,\dx =-\int_{\R^n}e^{it\cdot x}\frac{\partial x}{\partial x_j}f(x)\,\dx.$$
 两边取绝对值，我们有
 $$|t_j\varphi(t)|\leq \int_{\R^n}\left|\frac{\partial x}{\partial x_j}f(x)\right|\,\dx=M_j<\infty.$$
 于是
@@ -811,28 +814,130 @@ $$|\varphi(t) - \hat{g}(t)|\leq |f-g|_1 < \epsilon.$$
 $$|\varphi(t)| < |\hat{g}(t)|+\epsilon < 2\epsilon.$$
 $\blacksquare$
 
-# 25.2 Fourier inversion
+:::{.note}
+证明中，我们不加证明使用了两个结论：
+
+1. 光滑函数 $g_n$ 的存在性；
+2. $\sigma(\M)=\mathcal{B}(\R^n)$。
+
+这两点原因如下：任意 $\R^n$ 中的开球都能写成某个紧支撑光滑函数的开阈值原像。给定中心 $a\in\R^n$ 和半径 $r>0$，定义标准“钟形”函数
+$$\phi_{a,r}(x)=\begin{cases}
+\exp\Bigl(-\dfrac{1}{1-\frac{|x-a|^2}{r^2}}\Bigr), & |x-a|<r,\\
+0,& |x-a|\ge r.
+\end{cases}$$
+则 $\phi_{a,r}\in C_c^\infty(\mathbb{R}^n)$，并且
+$$\phi_{a,r}^{-1}((0,+\infty))=\{x\in\R^n\mid\phi_{a,r}(x)>0\}=B(a,r)$$。因此每个开球 $B(a,r)$ 都属于 $\sigma(\M)$。
+:::
+
+# ✅ 25.2 Fourier inversion
+
+:::{.lemma}
+对 $\xi\geq0$，定义函数
+$$S(\xi) = \int_{-r}^r\frac{\sin\xi}{\xi}\dxi.$$
+则 $S(\xi)$ 是 $[0,+\infty)$ 上的连续函数，并且
+$$\lim_{\xi\to\infty}S(\xi) = \pi.$$
+:::
+
+**证明**：由于被积函数 $\frac{\sin\xi}{\xi}$ 在 $\R$ 上连续。由微积分基本定理，连续函数的变上限积分是连续的，故 $S$ 在 $[0,\infty)$ 上连续。
+
+对 $a>0$ 定义
+$$F(a)=\int_0^\infty e^{-ax}\frac{\sin x}{x}\dx.$$
+
+可以在积分号下求导，得到
+$$F'(a)=-\int_0^\infty e^{-ax}\sin x\dx=-\frac{1}{1+a^2}.$$
+故
+$$F(a)=C-\arctan a.$$
+当 $a\to+\infty$ 时，$e^{-ax}$ 强衰减，$F(a)\to 0$，而 $\arctan a\to \frac{\pi}{2}$，故 $C=\frac{\pi}{2}$。于是
+$$F(a)=\frac{\pi}{2}-\arctan a=\arctan\frac{1}{a}.$$
+令 $a\downarrow 0$ 即得结论。$\blacksquare$
 
 
+:::{.theorem}
+设 $\mu$ 是 $(\R,\mathcal{B}(\R))$ 上的概率测度，则对任何 $a<b\in\R$ 有
+$$\mu((a,b)) + \frac{1}{2}\mu(\{a,b\}) = \lim_{R\to\infty}\frac{1}{2\pi}\int_{-R}^R\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\hat{\mu}(\xi)\dxi.$$
+:::
+
+**证明**：
+$$\begin{aligned}
+I(R) &= \frac{1}{2\pi}\int_{-R}^R\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\hat{\mu}(\xi)\dxi\\
+&=\frac{1}{2\pi}\int_{-R}^R \frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi} \dxi\int_\R e^{i\xi x}\ud{x} \\
+&=\frac{1}{2\pi}\int_\R  e^{i\xi x} \ud{x} \int_{-R}^R \frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi} \dxi\\
+&=\frac{1}{2\pi}\int_\R \ud{x} \int_{-R}^R \frac{e^{i\xi(x-a)}-e^{i\xi(x-b)}}{i\xi} \dxi\\
+&=\frac{1}{2\pi}\int_\R \ud{x} \int_{-R}^R \frac{\sin\xi(x-a)-\sin\xi(x-b)}{\xi} \dxi.
+\end{aligned}$$
+这里我们可以使用 Fubini 定理交换关于 $\xi$ 和 $x$ 的积分顺序是因为
+$$F(x,\xi)=e^{i\xi x}\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\ind_{[-R,R]}(\xi).$$
+满足
+$$|F(x,\xi)|\le |a-b|\ind_{[-R,R]}(\xi).$$
+从而
+$$\int_{\R}\int_{\R}|F(x,\xi)|\du\dxi\leq \int_{\R}\int_{\R} |a-b|\ind_{[-R,R]}(\xi)\du\dxi
+=|a-b|\cdot \mu(\R)\cdot (2R)<\infty.$$
+
+然后注意到
+$$\begin{aligned}
+\int_{-R}^R\frac{\sin\xi(x-a)}{\xi}\dxi&=\int_{-R(x-a)}^{R(x-a)}\frac{\sin\eta}{\eta}\,\mathrm{d}\eta=\begin{cases}
+S(R(x-a)), & x-a > 0,\\
+-S(R(a-x)), & x - a < 0.
+\end{cases} \\
+&= \sgn(x-a)S(R|x-a|).
+\end{aligned}$$
+所以
+$$I(R)=\frac{1}{2\pi}\int_\R\big[\sgn(x-a)S(R|x-a|) -\sgn(x-b)S(R|x-b|)\big]\ud{x}.$$
+现在，被积函数是有界的（不超过 $S(r)$ 在 $[0,+\infty)$ 上的上界 x 2），所以可以用控制收敛定理得到
+$$\lim_{R\to\infty}I(R)=
+\frac{1}{2}\int_\R[\sgn(x-a)-\sgn(x-b)]\ud{x}.$$
+注意到现在的被积函数满足
+$$\sgn(x-a)-\sgn(x-b)=\begin{cases}
+0, & x > b \text{ or } x < a,\\
+1, & x = a \text{ or } x = b,\\
+2, & a < x < b.
+\end{cases}.$$
+所以
+$$\lim_{R\to\infty}I(R) = \frac{1}{2}\mu(\{a,b\}) + \mu((a,b)).$$
+$\blacksquare$
+
+
+:::{.corollary}
+设 $\mu$ 是 $(\R,\mathcal{B}(\R))$ 上的概率测度，$\hat{\mu}$ 是关于 Legesgue $L^1$ 的，则其有密度函数 $\rho$，满足
+$$\rho(x)=\frac{1}{2\pi}\int_\R e^{-itx}\hat{\mu}(t)\dt.$$
+:::
+
+**证明**：令 $\rho$ 如上定义，则
+$$\begin{aligned}
+\int_a^b\rho(x)\dx &= \frac{1}{2\pi}\int_a^b\dx\int_\R\hat{\mu}(\xi)e^{-i\xi x}\dxi\\
+&=\frac{1}{2\pi}\int_\R\hat{\mu}(\xi)\dxi \int_a^b e^{-i\xi x}\dx\\
+&=\frac{1}{2\pi}\int_\R\hat{\mu}(\xi)\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\dxi\\
+&=\lim_{R\to\infty} I(R)\\
+&=\mu((a,b)) + \frac{\mu(\{a,b\})}{2}.
+\end{aligned}$$
+$\blacksquare$
 
 # 25.3 The Continuity Theorem
 
 本讲介绍了测度弱收敛的连续性定理。
 
-> **定理**：如果 $\{\mu_n\}_{n=1}^\infty$ 是一列 $(\R^d,\B(\R^d))$ 上的概率测度。假设极限 $\varphi(t) = \lim\limits_{n\to\infty}\hat{\mu_n}$ 存在，并且 $\varphi(t)$ 在 $t=0$ 处连续，则存在概率测度 $\mu$ 使得 $\hat{\mu}=\varphi$，并且 $\mu_n\rightarrow_{w}\mu$。
+:::{.theorem}
+如果 $\{\mu_n\}_{n=1}^\infty$ 是一列 $(\R^d,\B(\R^d))$ 上的概率测度。假设极限 $\varphi(t) = \lim\limits_{n\to\infty}\hat{\mu_n}$ 存在，并且 $\varphi(t)$ 在 $t=0$ 处连续，则存在概率测度 $\mu$ 使得 $\hat{\mu}=\varphi$，并且 $\mu_n\rightarrow_{w}\mu$。
+:::
 
-> **引理**：对两个概率测度 $\mu,\nu$ 有 $$\int_{\R^d}\hat{\mu}(x)\vd{x}=\int_{\R^d}\hat{\nu}(y)\ud{y}.$$
+:::{.lemma}
+设 $\mu,\nu$ 是 $(\R^d,\B(\R^d))$ 上的两个概率测度，则
+$$\int_{\R^d}\hat{\mu}(x)\vd{x}=\int_{\R^d}\hat{\nu}(y)\ud{y}.$$
+:::
 
-直接 Fubini 即可。
+**证明**：直接 Fubini 即可。
 
-> **引理**： $$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\ud{x}.$$
+:::{.lemma}
+$$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\ud{x}.$$
+:::
 
-在前一个引理中两边取实部，然后被 1 减去即可。
+**证明**：在前一个引理中两边取实部，然后被 1 减去即可。
 
 
-> **推论**：假设 $\rho$ 是一个 $\R^d$ 上的概率测度，其支集位于闭的单位球 $\bar{B}_1$ 内。设 $M>0$ 使得 $|\hat{\rho}(t)|\leq1/2$ 对任何 $|t|\geq M$ 成立，则对任何 $(\R^d,\B(\R^d))$ 上的概率测度 $\mu$ 和正数 $\alpha>0$ 有
-$$\mu\{x\in\R^d:\ |x|\geq\alpha\}\leq 2\int_{\bar{B}_1}[1-\mathrm{Re}\,\hat{\mu}(\frac{M}{\alpha}x)]\rho(x)\dx.$$
-
+:::{.corollary}
+假设 $\rho$ 是一个 $\R^d$ 上的概率密度，其支集位于闭的单位球 $\bar{B}_1$ 内。设 $M>0$ 使得 $|\hat{\rho}(t)|\leq1/2$ 对任何 $|t|\geq M$ 成立，则对任何 $(\R^d,\B(\R^d))$ 上的概率测度 $\mu$ 和正数 $\alpha>0$ 有
+$$\mu\{x\in\R^d:\ |x|\geq\alpha\}\leq 2\int_{\bar{B}_1}\left[1-\mathrm{Re}\,\hat{\mu}(\frac{M}{\alpha}x)\right]\rho(x)\dx.$$
+:::
 
 # 31.1 Orthogonal Projections
 
