@@ -307,7 +307,7 @@ $$\varphi_n = \sum_{k=1}^{2^{2n}}\frac{k-1}{2^n}\ind_{\{\frac{k-1}{2^n}\leq f<\f
 来逼近。在第 $n$ 次切割中，我们将切割范围扩大为原来的 2 倍以逼近 $f$ 在 $\infty$ 的部分，同时将切割的间隔缩小为原来的 1/2 以保证逼近的误差是减小的。
 
 
-# 9.1 Integrals and Null Sets
+# ✅ 9.1 Integrals and Null Sets
 
 本讲主要是论证积分的基本结论在 $\ae$ 的情形下也都成立。此外介绍了非负可测函数列积分的 Fatou 定理，它是上一讲中单调收敛定理的直接推论：
 
@@ -334,7 +334,7 @@ $$\sum_{n=0}^\infty\mu(A_n)=\int\sum_{n=0}^\infty\ind_{A_n}\du.$$
 左边如果有限，那么右边的函数必须几乎处处有限，所以 $\{A_n,\ \io\}$ 是零测集。
 
 
-# 9.2 L1 and the DCT
+# ✅ 9.2 $L^1$ and the DCT
 
 本讲引入了一般可积函数的定义，并证明了控制收敛定理。
 
@@ -689,7 +689,7 @@ $\blacksquare$
 于是接下来的任务就是证明 $S_n^Y = \dfrac{Y_1+\cdots+Y_n}{n}\to a,\,\ae$。
 
 
-# 18.2 Kolmogorov's Convergence Criterion
+# ✅ 18.2 Kolmogorov's Convergence Criterion
 
 本讲介绍了 Kolmogrov 收敛判定：独立随机变量序列如果是 $L^2$ 意义下的 Cauchy 序列，则也是逐点收敛意义下的 Cauchy 序列。
 
@@ -702,25 +702,33 @@ $\blacksquare$
 
 我们首先证明 $\sum_{k=1}^n \frac{Y_k-\E Y_k}{n}$ 是个收敛的序列，然后用下一讲介绍的 Kronecker 引理来得出 $\frac{\sum_{k=1}^n (Y_k-\E Y_k)}{n}\to 0$。
 
-> **Kolmogrov 收敛判定**：若 $\iid$ 序列 $Z_n$ 满足 $\sum\mathrm{Var}(Z_n)<\infty$ 则 $\sum(Z_n-\E Z_n)$ 几乎处处收敛。
+:::{.theorem}
+**Kolmogrov 收敛判定**：若独立且 $L^2$ 可积的随机变量序列 $\{Y_n\}$ 满足
+$$\sum\mathrm{Var}(Y_n)<\infty.$$
+则
+$$\sum_{n=1}^\infty(Y_n-\E Y_n)$$
+几乎处处收敛。并且这个收敛也是 $L^2$ 收敛。
+:::
 
-**证明概要**：我们可以不妨假设 $\E Z_n=0$，则问题变为若 $\iid$ 序列 $\sum\E |Z_n|^2$ 收敛，则 $\sum Z_n$ 几乎处处收敛。
+**证明概要**：记 $Z_n=Y_n-\E Y_n$，则 $\E Z_n=0$ 且 $\sum_{n=1}^\infty\E Z_n^2<\infty$。我们来证明 $\sum_{n=1}^\infty Z_n$ 几乎处处收敛。
 
 记 $S_n=\sum_{k=1}^nZ_k$，利用 Markov 不等式不难有
 $$\P(|S_n|\geq\epsilon)\leq \frac{1}{\epsilon^2}\E[S_n^2].$$
-有意思的是，上面的不等式中在左边把 $S_n$ 换成 $S_n^\ast=\max_{1\leq i\leq n}|S_n|$ 仍然成立：
+有意思的是，上面的不等式中在左边把 $S_n$ 换成 $S_n^\ast=\max\limits_{1\leq i\leq n}|S_n|$ 仍然成立：
 
-> **Kolmogrov 极大不等式**：对任何正数 $\epsilon>0$ 有
-> $$\P(S_n^\ast\geq\epsilon)\leq \frac{1}{\epsilon^2}\E[S_n]^2.$$
+:::{.theorem}
+**Kolmogrov 极大不等式**：对任何正数 $\epsilon>0$ 有
+$$\P(S_n^\ast\geq\epsilon)\leq \frac{1}{\epsilon^2}\E[S_n]^2.$$
+:::
 
-证明：记 $\tau=\inf\{j\in\mathbb{Z}_{\geq1}:\ |S_j|\geq\epsilon\}$。则 $\P(S_n^\ast\geq\epsilon)=\P(\tau\leq n)$。
-$$\E[S_n^2:\ S_n^\ast\geq\epsilon]=\E[S_n^2:\ \tau\leq n]=\sum_{k=1}^n\E[S_n^2:\ \tau=k].$$
+**证明**：记 $\tau=\min\{j\mid |S_j|\geq\epsilon\}$。则 $\{S_n^\ast\geq\}=\{\tau\leq n\}$。
+$$\E[S_n^2\ind_{\{S_n^\ast\geq\epsilon\}}]=\E[S_n^2\ind_{\{\tau\leq n\}}]=\sum_{k=1}^n\E[S_n^2\ind_{\{\tau=k\}}].$$
 使用技巧 $S_n^2=(S_k + S_n - S_k)^2$ 我们有
-$$\E[S_n^2:\ \tau=k] = \E[S_k^2 + (S_n-S_k)^2:\ \tau=k] + \E[2S_k(S_n-S_k):\ \tau=k].$$
+$$\E[S_n^2\ind_{\{\tau=k\}}] = \E[(S_k^2 + (S_n-S_k)^2)\ind_{\{\tau=k\}}] + \E[2S_k(S_n-S_k)\ind_{\{\tau=k\}}].$$
 注意到第二项
-$$\E[2S_k(S_n-S_k):\ \tau=k] = \E[2S_k\ind_{\{\tau=k\}}(S_n-S_k)]=2\E[S_k\ind_{\{\tau=k\}}]\cdot\E[S_n-S_k]=0.$$
+$$\E[2S_k(S_n-S_k)\ind_{\{\tau=k\}}] =2\E[S_k\ind_{\{\tau=k\}}]\cdot\E[S_n-S_k]=0.$$
 所以
-$$\E[S_n^2]\geq\sum_{k=1}^n\E[S_n^2:\ \tau=k] \geq \sum_{k=1}^n\E[S_k^2:\ \tau=k]\geq\epsilon^2\sum_{k=1}^n\E\ind_{\{\tau=k\}}=\epsilon^2\P(\tau\leq n)=\epsilon^2 \P(S_n^\ast\geq\epsilon).$$
+$$\E[S_n^2]\geq\sum_{k=1}^n\E[S_k^2\ind_{\{\tau=k\}}]\geq\epsilon^2\sum_{k=1}^n\E[\ind_{\{\tau=k\}}]=\epsilon^2\P(\tau\leq n)=\epsilon^2 \P(S_n^\ast\geq\epsilon).$$
 
 回到 Kolmogrov 收敛定理的证明。
 
@@ -731,7 +739,10 @@ $$\P(\max_{n\leq k \leq m}|S_k - S_n|\geq\epsilon)\leq \frac{1}{\epsilon^2}\E|S_
 $$\P(\sup_{k\geq n}|S_k - S_n|\geq\epsilon)\leq\frac{1}{\epsilon^2}\sum_{k=n}^\infty \E Z_k^2.$$
 于是
 $$\P(\sup_{k,j\geq n}|S_k - S_j|\geq\epsilon)\leq\frac{2}{\epsilon^2}\sum_{k=n}^\infty \E Z_k^2.$$
-所以随机变量序列 $\delta_n = \sup_{k,j\geq n}|S_k - S_j|$ 依测度收敛到 0。但是 $\delta_n$ 是一个单调下降的非负序列，它必然有一个几乎处处收敛的极限 $\delta$，$\delta$ 也非负。$\delta$ 依测度收敛到 0，又几乎处处收敛到 $\delta$，那必须 $\delta$ 几乎处处为 0，即 $\{S_n\}$ 是 Cauchy 序列。
+所以随机变量序列
+$$\delta_n := \sup_{k,j\geq n}|S_k - S_j|$$
+依测度收敛到 0。但是 $\{\delta_n\}$ 是一个单调下降的非负序列，它必然有一个几乎处处收敛的极限 $\delta$，$\delta$ 也非负。$\{\delta_n\}$ 依测度收敛到 0，又几乎处处收敛到 $\delta$，那必须 $\delta$ 几乎处处为 0，即 $\{S_n\}$ 是 Cauchy 序列。$\blacksquare$
+
 
 # 19.1 Strong Law of Large Numbers, Part 2
 
@@ -784,6 +795,16 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 
 老技巧，只要证明 $\P(\{|X_n|\geq n\epsilon,\ \io\})=0$ 即可。根据 Borel-Cantelli 引理，只要证明 $\sum_{n=1}^\infty\P(|X_n|\geq n\epsilon)<\infty$ 即可，而这在 18.1 中已经证明过了。
 
+
+# 23.2 Prokhorov's Compactness Theorem
+
+:::{.theorem}
+**Prokhorov 紧性定理** 设 $\S$ 是可分度量空间，$\{\mu_n\}$ 是 $(\S,\B(\S))$ 上的概率测度，则 $\{\mu_n\}$ 有 vaguely 收敛的子序列。
+:::
+
+:::{.corollary}
+如果 $\{\mu_n\}$ 还是 tight 的，则存在弱收敛的子序列，其弱收敛的极限是一个概率测度 $\mu$。 
+:::
 
 # 24.1 Complex Integration and Dynkin's Theorem
 
@@ -1323,7 +1344,7 @@ $$\E[|X|: |X|\geq a]\leq \E[|X|\cdot\frac{|X|^{p-1}}{a^{p-1}}: |X|\geq a] = \fra
 若 $\{X_n\}$ 一致可积，则 $\sup_n E|X_n| <\infty$。
 :::
 
-证明：取 $a$ 使得 $\sup_n \E[|X_n|: |X_n|\geq a] < 1$，则不难证明 $\E |X_n| < a+1$。
+**证明**：取 $a$ 使得 $\sup_n \E[|X_n|: |X_n|\geq a] < 1$，则不难证明 $\E |X_n| < a+1$。$\blacksquare$
 
 现在我们来给出一致绝对连续的概念，并将说明**一致可积 = $L^1$ 一致有界 + 一致绝对连续**。
 
@@ -1416,6 +1437,32 @@ $$X_{n\wedge \tau} = \sum_{k=0}^n\ind_{\tau=k}X_k.$$
 
 另一方面在 @Pre:martingale-discrete-integration 中取 $U_n=\ind_{n\leq\tau}$，则 $X_{n\wedge \tau} - X_0 = I_n(U,X)$ 仍然是鞅，那么加上一个 $X_0$ 得到的 $X_{n\wedge\tau}$ 当然还是鞅。
 
-# 49.2 Holder's Inequality
+# ✅ 49.2 Hölder's Inequality
 
-无特别内容
+:::{.lemma}
+**Young 不等式**
+给定 $a,b\ge0$，$p,q>1$ 且 $\tfrac1p+\tfrac1q=1$，有
+$$ab\le\frac{a^p}{p}+\frac{b^q}{q}.$$
+且当且仅当 $a^p=b^q$ 取等号。
+:::
+
+**证明**：对任意 $u,v\ge0$，$\theta\in(0,1)$，
+$$u^{\theta}v^{1-\theta}\le \theta u+(1-\theta)v.$$
+这是因为 $\ln$ 函数凹，Jensen 不等式给出
+$$\ln(\theta u+(1-\theta)v)\ge \theta\ln u+(1-\theta)\ln v.$$
+两边取指数即得。
+
+取 $\theta=\frac1p,1-\theta=\frac1q,u=a^p,v=b^q$ 代入即得 Young 不等式，且等号当且仅当 $a^p=b^q$。$\blacksquare$
+
+
+设 $1/p+1/q=1$，$1<p,q<\infty$。对任意 $a,b\ge 0$ 有 **Young 不等式**
+$$ab\le \frac{a^{p}}{p}+\frac{b^{q}}{q}.$$
+令
+$$u(x)=\frac{|f(x)|}{\|f\|_p},\qquad v(x)=\frac{|g(x)|}{\|g\|_q}.$$
+则逐点有
+$$u(x)v(x)\le u(x)^{p}/p+v(x)^{q}/q.$$
+两边对 $\mu$ 积分并用 $\int u^{p}=1,\ \int v^{q}=1$ 即得 Hölder 不等式。
+
+$p=1,q=\infty$ 时
+$$\int |fg|\le \|g\|_{\infty}\int |f|=\|f\|_1\|g\|_{\infty}.$$
+故结论成立。
