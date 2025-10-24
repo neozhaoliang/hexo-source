@@ -641,7 +641,7 @@ $$\left| \sum_{k=1}^n a_k\ind_{A_k} -  \sum_{k=1}^n a_k\ind_{C_k}\right|\leq  \s
 $$\mu\ast \nu(B) = \int_{\R^d\times\R^d}\ind_B(x+y)\mu\otimes\nu(\dx\dy)=\int_{\R^d}\mu(B-y)\vd{y}.$$
 :::
 
-# 18.1 Strong Law of Large Numbers, Part 1
+# ✅ 18.1 Strong Law of Large Numbers, Part 1
 
 本讲介绍了 Kolmogrov 强大数定理的表述，以及证明思想。
 
@@ -651,11 +651,17 @@ $$\mu\ast \nu(B) = \int_{\R^d\times\R^d}\ind_B(x+y)\mu\otimes\nu(\dx\dy)=\int_{\
 **强大数定理** 设 $\{X_n\}$ 是 $\iid$ 的 $L^1$ 序列且 $\E [X_n]=a$，则 $\dfrac{S_n}{n}\to a, \ae$。
 :::
 
-**重要技巧**：同一个概率空间上的两个序列 $\{X_n\},\,\{Y_n\}$ 称作是尾等价的，如果
-$\sum_{n=1}^\infty\mathbb{P}(X_n\ne Y_n)<\infty$。
+:::{.definition}
+同一个概率空间上的两个随机变量序列 $\{X_n\},\,\{Y_n\}$ 称作是尾等价的，如果
+$$\sum_{n=1}^\infty\mathbb{P}(X_n\ne Y_n)<\infty.$$
+:::
 
-这样根据 Borel-Cantelli 引理，$\{X_n\ne Y_n,\io\}$ 是零测集，从而 $X_n=Y_n$ 最终会几乎处处成立，从而二者的极限行为一致。即如果 $b_n\uparrow\infty$，则
+这样根据 Borel-Cantelli 引理，$\{X_n\ne Y_n\,\io\}$ 是零测集，从而 $X_n=Y_n$ 最终会几乎处处成立，从而二者的极限行为一致。
+
+:::{.corollary}
+如果 $\{X_n\}$ 和 $\{Y_n\}$ 是尾等价的，$b_n\uparrow\infty$，则
 $$\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum_{j=1}^n X_n = X \Leftrightarrow \lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum_{j=1}^n Y_n = X.$$
+:::
 
 :::{.lemma}
 若 $X\in L^1,\,\epsilon>0$，则 $$\sum_{n=1}^\infty\mathbb{P}(X\geq n\epsilon) \leq\frac{1}{\epsilon}\mathbb{E}|X|.$$
@@ -663,13 +669,22 @@ $$\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum_{j=1}^n X_n = X \Leftrightarrow \li
 
 值得与 Markov 不等式比较一下，这个不等式更强。
 
-**证明概要**：只要证明结论对 $\epsilon=1$ 成立即可。而这非常显然：
-
-$$X\geq\lfloor X\rfloor = \sum_{n=1}^\infty \ind_{\{n\leq X\}}.$$
+**证明概要**：只要证明结论对 $\epsilon=1$ 成立即可。对任意实数 $x\ge 0$，我们有
+$$\sum_{n=1}^{\infty}\ind_{[n,\infty)}(x)= \sharp\{n\in\mathbb{Z}_+\mid n\le x\}= \lfloor x\rfloor
+\le x.$$
+对 $|X|$ 使用上式得
+$$\sum_{n=1}^{\infty}\ind_{[n,\infty)}(|X|)\le |X|.$$
+两边求期望即得
+$$\sum_{n=1}^\infty\P(|X|\ge n)\le \E|X|.$$
+$\blacksquare$
 
 :::{.corollary}
 若 $\{X_n\}$ 是 $\iid$ 的 $L^1$ 序列，令 $Y_n = X_n\ind_{\{|X_n|\leq n\}}$，则 $\{Y_n\}$ 与 $\{X_n\}$ 是尾等价的。
 :::
+
+**证明**：
+$$\sum_{n=1}^\infty\P(X_n\ne Y_n)=\sum_{n=1}^\infty\P(|X_n|>n)=\sum_{n=1}^\infty\P(|X_1|>n)\le\E|X_1|<\infty.$$
+$\blacksquare$
 
 于是接下来的任务就是证明 $S_n^Y = \dfrac{Y_1+\cdots+Y_n}{n}\to a,\,\ae$。
 
@@ -913,7 +928,7 @@ $$\begin{aligned}
 \end{aligned}$$
 $\blacksquare$
 
-# 25.3 The Continuity Theorem
+# ✅ 25.3 The Continuity Theorem
 
 本讲介绍了测度弱收敛的连续性定理。
 
