@@ -37,6 +37,7 @@ url: todd-kemp
 \newcommand{\uxuy}{\mu_X\otimes\mu_Y}
 \newcommand{\uxvy}{\mu_X\otimes\nu_Y}
 \newcommand{\sgn}{\mathrm{sgn}}
+\renewcommand{\Re}{\mathrm{Re}\,}
 
 # 0 Banach Tarski
 
@@ -930,7 +931,7 @@ $$\int_{\R^d}\vd{x}\int_{\R^d}e^{iKx\cdot \xi}\ud{\xi}=\int_{\R^d}\ud{y}\int_{\R
 直接 Fubini 即可。
 
 :::{.lemma}
-$$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(Kx)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\hat{\nu}(Ky)]\ud{x}.$$
+$$\int_{\R^d}[1-\Re\hat{\mu}(Kx)]\vd{x}=\int_{\R^d}[1-\Re\hat{\nu}(Ky)]\ud{x}.$$
 :::
 
 **证明**：在前一个引理中两边取实部，然后被 1 减去即可。
@@ -938,23 +939,70 @@ $$\int_{\R^d}[1-\mathrm{Re}\,\hat{\mu}(Kx)]\vd{x}=\int_{\R^d}[1-\mathrm{Re}\,\ha
 
 :::{.corollary}
 假设 $\rho$ 是一个 $\R^d$ 上的概率密度，其支集位于闭的单位球 $\bar{B}_1$ 内。设 $M>0$ 使得 $|\hat{\rho}(t)|\leq1/2$ 对任何 $|t|\geq M$ 成立，则对任何 $(\R^d,\B(\R^d))$ 上的概率测度 $\mu$ 和正数 $\alpha>0$ 有
-$$\mu\{x\in\R^d:\ |x|\geq\alpha\}\leq 2\int_{\bar{B}_1}\left[1-\mathrm{Re}\,\hat{\mu}\left(\frac{M}{\alpha}x\right)\right]\rho(x)\dx.$$
+$$\mu\{x\in\R^d:\ |x|\geq\alpha\}\leq 2\int_{\bar{B}_1}\left[1-\Re\hat{\mu}\left(\frac{M}{\alpha}x\right)\right]\rho(x)\dx.$$
 :::
 
 **证明**：设
 $$\hat{\mu}(t)=\int_{\R^d}e^{it\cdot x}\ud{x},\quad \hat{\rho}(t)=\int_{\R^d}e^{it\cdot x}\rho(x)\dx.$$
 令 $K=\frac{M}{\alpha}$，由于 $\rho$ 的支集包含在 $\bar B_1$ 中，所以
-$$2\int_{\bar B_1}\bigl[1-\mathrm{Re}\,\hat{\mu}(Kx)\bigr]\rho(x)\dx=2\int_{\R^d}\bigl[1-\mathrm{Re}\,\hat{\rho}(Ky)\bigr]\ud{y}.$$
+$$2\int_{\bar B_1}\bigl[1-\Re\hat{\mu}(Kx)\bigr]\rho(x)\dx=2\int_{\R^d}\bigl[1-\Re\hat{\rho}(Ky)\bigr]\ud{y}.$$
 由假设，当 $|y|\ge\alpha$ 时有 $|K y|=\frac{M}{\alpha} |y|\ge M$，从而
-$$1-\mathrm{Re}\hat{\rho}(K y)\ge1-|\hat{\rho}(K y)|\ge\frac{1}{2}.$$
+$$1-\Re\hat{\rho}(K y)\ge1-|\hat{\rho}(K y)|\ge\frac{1}{2}.$$
 故 $|y|\ge\alpha$ 时有
-$$2\bigl(1-\mathrm{Re}\hat{\rho}(K y)\bigr)\ge \ind_{\{|y|\ge\alpha\}}(y).$$
+$$2\bigl(1-\Re\hat{\rho}(K y)\bigr)\ge \ind_{\{|y|\ge\alpha\}}(y).$$
 这个式子对 $|y|<\alpha$ 也成立，所以同时对 $\mu$ 积分得到
-$$2\int_{\R^d}\bigl[1-\mathrm{Re}\,\hat{\rho}(K y)\bigr]\ud{y}\ge\int_{\R^d}\ind_{\{|y|\ge\alpha\}}\ud{y}=\mu(\{|y|\ge\alpha\}).$$
+$$2\int_{\R^d}\bigl[1-\Re\hat{\rho}(K y)\bigr]\ud{y}\ge\int_{\R^d}\ind_{\{|y|\ge\alpha\}}\ud{y}=\mu(\{|y|\ge\alpha\}).$$
 把左边换回原式即得
-$$\mu(\{|x|\ge\alpha\})\le2\int_{\bar B_1}\left[1-\mathrm{Re}\,\hat{\mu}\left(\tfrac M\alpha x\right)\right]\rho(x)\dx.$$
+$$\mu(\{|x|\ge\alpha\})\le2\int_{\bar B_1}\left[1-\Re\hat{\mu}\left(\tfrac M\alpha x\right)\right]\rho(x)\dx.$$
 $\blacksquare$
 
+:::{.corollary}
+设 $\{\mu_n\}_{n=1}^\infty$ 是 $(\R^d,\mathcal{B}(\R^d))$ 上的概率测度，且
+$\varphi(t)=\lim\limits_{n\to\infty}\hat{\mu}_n(t)$ 处处存在，并且 $\varphi$ 在 $t=0$ 处连续。则 $\{\mu_n\}_{n=1}^\infty$ 是 tight 的。
+:::
+
+**证明**：记
+$$I_n(\alpha)=2\int_{\bar B_1}\bigl[1-\Re\hat{\mu}_n(\tfrac M\alpha x)\bigr]\rho(x)\dx.$$
+
+由于 $|1-\Re\hat{\mu}_n|\le 2$ 且 $\rho$ 为概率密度，故由控制收敛定理
+$$\lim_{n\to\infty}I_n(\alpha)=I(\alpha)=2\int_{\bar B_1}\bigl[1-\Re\varphi(\tfrac M\alpha x)\bigr]\rho(x)\dx.$$
+
+由于 $\varphi$ 在 $0$ 处连续且对每个 $x$ 有 $\tfrac M\alpha x\to 0$，仍由控制收敛定理得
+$$I(\alpha)\xrightarrow{\alpha\to\infty}0.$$
+
+给定 $\epsilon>0$。取 $\alpha_1$ 使得 $I(\alpha_1)\le\epsilon/2$。再取 $N$ 使得对所有 $n\ge N$ 有
+$$I_n(\alpha_1)\le I(\alpha_1)+\epsilon/2\le \epsilon.$$
+
+从而 $\mu_n(\{|x|\ge \alpha_1\})\le I_n(\alpha_1)\le\epsilon$ 对所有 $n\ge N$ 成立。
+
+对那些 $n<N$，由于 $\hat{\mu}_n$ 作为特征函数在 0 处连续，$\alpha\to\infty$ 时 $I_n(\alpha)\to 0$，因此可取 $\alpha_0$ 使
+$$\max_{1\le n<N}\mu_n(\{|x|\ge \alpha_0\})\le \max_{1\le n<N} I_n(\alpha_0)\le\epsilon.$$
+
+令 $R=\max\{\alpha_0,\alpha_1\}$。则
+
++ 若 $n\ge N$，则 $\mu_n(\{|x|\ge R\})\le \mu_n(\{|x|\ge \alpha_1\})\le\epsilon$；
++ 若 $n< N$，同理 $\mu_n(\{|x|\ge R\})\le \mu_n(\{|x|\ge \alpha_0\})\le\epsilon$。
+
+于是
+$$\sup_{n\ge1}\mu_n(\{|x|\ge R\})\le\epsilon.$$
+这正是 tightness 的定义。$\blacksquare$
+
+:::{.corollary}
+设 $\{\mu_n\}_{n=1}^\infty$ 是 $(\R^d,\mathcal{B}(\R^d))$ 上的概率测度，且
+$\varphi(t)=\lim\limits_{n\to\infty}\hat{\mu}_n(t)$ 处处存在，并且 $\varphi$ 在 $t=0$ 处连续。则存在概率测度 $\mu$ 使得 $\varphi=\hat{\mu}$ 并且 $\mu_n\to_w \mu$。
+:::
+
+**证明**：由于 $\{\mu_n\}$ 是 tight 的，根据 Prokhorov，存在子序列 $\{\mu_{n_k}\}$ 弱收敛到某个概率测度 $\mu_{n_k}\to_w\mu$。于是
+$$\varphi=\lim_{k\to\infty}\hat\mu_{n_k} =\hat{\mu}.$$
+从而对整个序列也有
+$$\varphi=\lim_{n\to\infty}\hat\mu_{n} =\hat{\mu}.$$
+这样我们就证明了 $\varphi=\hat\mu$ 是概率测度 $\mu$ 的 Fourier 变换。
+
+我们断言整个 $\{\mu_n\}$ 都弱收敛到 $\mu$。若不然，存在有界连续函数 $g$ 使得
+$$\int_{\R^d} g \,\mathrm{d}\mu_n \nrightarrow \int_{\R^d} g \du.$$
+于是对任何 $\epsilon>0$，存在子序列 $\{\mu_{n_k'}\}$ 使得
+$$\left|\int_{\R^d} g \,\mathrm{d}\mu_n - \int_{\R^d} g \du\right|\ge\epsilon,\quad \forall k.$$
+但是 $\{\mu_{n_k'}\}$ 也是 tight 的，所以再用一次 Prokhorov 定理，存在二级子序列 $\{\mu_{n_k''}\}\subset\{\mu_{n_k'}\}$ 使得 $\mu_{n_k''}\to_w\nu$。于是 $\hat\mu_{n_k''}\to \hat\nu$。我们上面已经证明了 $\hat\mu_{n_k''}\to\hat\mu$，从而 $\hat\mu=\hat\nu$，由 Fourier inversion 有 $\mu=\nu$。即 $\mu_{n_k''}\to_w\mu$。矛盾。$\blacksquare$
 
 
 # 31.1 Orthogonal Projections
