@@ -7,6 +7,7 @@ url: todd-kemp
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\F}{\mathcal{F}}
+\newcommand{\N}{\mathcal{N}}
 \newcommand{\O}{\Omega}
 \newcommand{\P}{\mathbb{P}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -469,7 +470,13 @@ $$\begin{align*}\int\|f_{n_k}-f\|^p\du&=\int\lim_{j\to\infty}\|f_{n_k}-f_{n_j}\|
 本讲介绍了 Dynkin $\pi-\lambda$ 定理的函数形式的版本。
 
 :::{.definition}
-设 $(\Omega,\mathcal{F})$ 是一个可测空间，称 $f$ 是一个关于 $\mathcal{F}$ 可测的有界函数，如果存在 $M>0$ 使得 $|f|\leq M\ae$ 成立。记 $\mathbb{B}(\Omega,\mathcal{F})$ 为全体这样的有界函数构成的向量空间。若 $\{f_n\}\in\mathbb{B}(M,\mathcal{F})$ 满足 $|f_n|\leq M\ae$ 并且 $f_n\to f\ae$，就称 $f_n$ **一致有界收敛到 $f$**。
+设 $(\Omega,\mathcal{F})$ 是一个可测空间，$f$ 是可测函数。如果存在 $M>0$ 使得
+$$|f|\leq M,\quad \ae$$
+成立，就称 $f$ 是一个有界可测函数。记 $\mathbb{B}(\Omega,\mathcal{F})$ 为全体有界函数构成的向量空间。若 $\{f_n\}\in\mathbb{B}(M,\F)$ 满足
+$$|f_n|\leq M,\ \ae \quad \forall n$$
+并且
+$$\lim_{n\to\infty} f_n = f,\quad \ae$$
+就称 $\{f_n\}$ **一致有界收敛到 $f$**。
 :::
 
 :::{.theorem}
@@ -1039,6 +1046,93 @@ $$\int_{\R^d} g \,\mathrm{d}\mu_n \nrightarrow \int_{\R^d} g \du.$$
 于是对任何 $\epsilon>0$，存在子序列 $\{\mu_{n_k'}\}$ 使得
 $$\left|\int_{\R^d} g \,\mathrm{d}\mu_n - \int_{\R^d} g \du\right|\ge\epsilon,\quad \forall k.$$
 但是 $\{\mu_{n_k'}\}$ 也是 tight 的，所以再用一次 Prokhorov 定理，存在二级子序列 $\{\mu_{n_k''}\}\subset\{\mu_{n_k'}\}$ 使得 $\mu_{n_k''}\to_w\nu$。于是 $\hat\mu_{n_k''}\to \hat\nu$。我们上面已经证明了 $\hat\mu_{n_k''}\to\hat\mu$，从而 $\hat\mu=\hat\nu$，由 Fourier inversion 有 $\mu=\nu$。即 $\mu_{n_k''}\to_w\mu$。矛盾。$\blacksquare$
+
+# ✅ 26.1 Central Limit Theorem
+
+:::{.theorem}
+**Basic Central Limit Theorem**
+
+设 $\{X_n\}_{n=1}^\infty$ 是 i.i.d 的 $L^2$ 随机变量，具有共同的期望 $\E[X_n]=a$ 和 $\mathrm{Var}[X_n]=\sigma^2$。则
+$$\frac{S_n-na}{\sigma\sqrt{n}}\to_w \N(0,1).$$
+:::
+
+**证明**：记 $Z_n = \frac{S_n-na}{\sigma\sqrt{n}}$。我们只要证明特征函数的收敛
+$$\varphi_{Z_n}(t) \to e^{-t^2/2},\quad \forall t\in\R.$$
+那么根据 Levy 连续性定理：
+
++ 若一列特征函数 $\varphi_{Z_n}$ 对每个 $t$ 都有极限 $\varphi(t)$，且 $\varphi$ 在 $t=0$ 处连续，那么
++ $\varphi$ 本身就是某个概率分布的特征函数；
++ $Z_n$ 的分布按弱收敛收敛到这个分布。
+
+就得到 $Z_n\to_w \N(0,1)$，因为 $e^{-t^2/2}$ 显然在 0 处连续，且它就是标准正态的特征函数。
+
+记 $Y_1=X_1-a$，则 $\E Y_1=0$ 且 $\E Y_1^2 = \sigma^2<\infty$，所以 $Y_1$ 的特征函数 $\varphi(t)$ 是 $C^2$ 的。根据 Taylor 展开，
+$$\varphi(t) = \varphi(0)+\varphi'(0)t + \frac{1}{2}\varphi''(r(t))t^2,\quad 0<r(t)<t.$$
+注意到
+$$\varphi'(0) = \E[iY_1 e^{itY_1}]\Big|_{t=0}=i\E Y_1 = 0.$$
+所以
+$$\varphi(t) = \varphi(0)+\frac{1}{2}\varphi''(r(t))t^2,\quad 0<r(t)<t.$$
+利用
+$$\lim_{t\to 0}\varphi''(r(t))=\varphi''(0)=-\E Y_1^2 = -\sigma^2.$$
+以及熟知的微积分结论
+$$\lim_{n\to\infty}\left(1+ \frac{c_n}{n}\right)^n= e^c,\quad c_n\to c.$$
+可得
+$$\begin{aligned}
+\lim_{n\to\infty}\left(\varphi\left(\frac{\xi}{\sigma\sqrt{n}}\right)\right)^n
+&=\lim_{n\to\infty}\left(1+\frac{1}{2}\varphi''\left(r\left(\frac{\xi}{\sigma\sqrt{n}}\right)\right)\frac{\xi^2}{\sigma^2 n}\right)^n\\
+&=\lim_{n\to\infty}\left(1+ \frac{-\xi^2/2}{n}\right)^n\\
+&=e^{-\xi^2/2}.
+\end{aligned}$$
+$\blacksquare$
+
+:::{.lemma}
+**Cramer-Wold Device**
+设 $\{X_n\}$ 和 $X$ 都是 $\R^d$ 中的随机向量。则 $X_n\to_w X$ 当且仅当对任何 $\xi\in\R^d$ 有 $\xi\cdot X_n\to_w \xi\cdot X$。
+:::
+
+**证明**：如果对 $\xi\in\R^d$ 有 $\xi\cdot X_n\to_w \xi\cdot X$，则
+$$\exp(i\xi\cdot X_n)\to_w \exp(i\xi \cdot X).$$
+所以
+$$\E f(\exp(i\xi\cdot X_n))\to \E f(\exp(i\xi \cdot X)).\quad \forall f\in C_b(\mathbb{C}).$$
+取 $f(z)$ 满足 $f(z)=z\,(|z|\leq 1)$ 和 $f(z)=1\,(|z|>1)$，则
+$$\varphi_{X_n}(\xi) \to \varphi_X(\xi).$$
+由连续性定理可得 $X_n\to_w X$。
+
+反过来，若 $X_n\to_w X$，则对任何实数 $u$，
+$$\varphi_{\xi\cdot X_n}(u)=\E[e^{iu\xi\cdot X_n}]\to \E[e^{iu\xi\cdot X}]=\varphi_{\xi\cdot X}(u).$$
+由连续性定理，$\xi\cdot X_n\to_w \xi\cdot X$。$\blacksquare$
+
+:::{.note}
+这个结论的证明可以直接用 **Portmanteau 定理**：若 $X_n\to_w X$，则对任意**有界连续**函数 $h:\R^d\to\R$，有 $\E[h(X_n)]\to \E[h(X)]$。
+:::
+
+:::{.theorem}
+**Multivariate CLT**
+
+设 $X_1,X_2,\dots$ 是 $\R^d$ 上的 i.i.d. 随机向量，$\mu=\E X_1\in\mathbb R^d$，协方差矩阵 $\Sigma=\mathrm{Cov}(X_1)$（允许奇异）。令
+$$S_n=\sum_{k=1}^n X_k,\qquad Z_n=\frac{S_n-n\mu}{\sqrt n}.$$
+则
+$$Z_n \ \to_w \ N_d(0,\Sigma).$$
+:::
+
+**取任意方向做投影，化为一维问题。**
+
+对任意 $\xi\in\R^d$，令 $Y_{k,\xi}=\xi^\top (X_k-\mu)$。则 $Y_{1,\xi},Y_{2,\xi},\dots$ 是一维 i.i.d.，且
+$$\E Y_{k,\xi}=0,\quad \mathrm{Var}(Y_{k,\xi})=\xi^\top\Sigma\xi.$$
+并且
+$$\xi^\top Z_n=\frac1{\sqrt n}\sum_{k=1}^n Y_{k,\xi}.$$
+
+**对每个 $\xi$ 应用一维中心极限定理。**
+
+由一维 CLT（Lindeberg–Lévy）得
+$$\xi^\top Z_n \ \to_w\ \N\big(0,\ \xi^\top\Sigma\xi\big),\quad \forall\xi\in\R^d.$$
+
+**用 Cramér–Wold 得出向量弱收敛。**
+
+既然对所有 $\xi$ 都有 $\xi^\top Z_n \Rightarrow \N(0,\xi^\top\Sigma\xi)$，由 **Cramér–Wold**知 $Z_n\to_w Z$（某极限向量），并且该极限 $Z$ 的任意线性投影都是正态，且
+$$\mathrm{Var}(\xi^\top Z)=\xi^\top\Sigma\xi,\quad \forall\xi.$$
+这唯一刻画了 $Z$ 的分布为 $\N_d(0,\Sigma)$。因此
+$$Z_n \Rightarrow \N_d(0,\Sigma).$$
 
 
 # 31.1 Orthogonal Projections
