@@ -1134,6 +1134,25 @@ $$\mathrm{Var}(\xi^\top Z)=\xi^\top\Sigma\xi,\quad \forall\xi.$$
 这唯一刻画了 $Z$ 的分布为 $\N_d(0,\Sigma)$。因此
 $$Z_n \Rightarrow \N_d(0,\Sigma).$$
 
+# 26.2 Infinitely Divisible Distributions
+
+:::{.definition}
+$(\R,\B(\R))$ 上的一个概率分布 $\mu$ 称作是无穷可除的，如果对任何正整数 $n$，都存在 $(\R,\B(\R))$ 上的概率分布 $\mu_n$ 使得 $\mu=\mu_n^{\ast n}$。
+:::
+
+:::{.theorem}
+$\mu$ 是无穷可除分布，当且仅当存在随机变量的三角列
+$$\{X_{n,k}\}_{k=1}^{n}$$
+满足对每个 $n$，$\{X_{n,k}\}$ 是 i.i.d 的，并且
+$$S_n = \sum_{k=1}^{n}X_k \to_w X\overset{d}{=}\mu.$$
+:::
+
+**证明**：$\Rightarrow$：由无穷可除的定义，显然。
+
+$\Leftrrow$：固定一个正整数 $l$。
+
+
+
 
 # 31.1 Orthogonal Projections
 
