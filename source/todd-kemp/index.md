@@ -810,7 +810,7 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 :::
 
 :::{.corollary}
-如果 $\{\mu_n\}$ 还是 tight 的，则存在弱收敛的子序列，其弱收敛的极限是一个概率测度 $\mu$。 
+如果 $\{\mu_n\}$ 还是 tight 的，则存在弱收敛的子序列，其弱收敛的极限是一个概率测度 $\mu$。
 :::
 
 # 24.1 Complex Integration and Dynkin's Theorem
@@ -1402,7 +1402,7 @@ $$\begin{align*}\sum_{n=1}^\tau\E X_n&=\sum_{n=1}^\infty\E X_n\cdot \ind_{\tau\g
 我们为什么可以在第一行的第二个等号处交换求和次序？这是因为上面的推导对 $|X_n|$ 是成立的，并且离散积分值 $\E|X_1|\cdot\E \tau<\infty$，所以由控制收敛定理对原序列 $X_n$ 交换求和也是 OK 的。
 
 
-# 48.1 Uniform Integrability
+# ✅ 48.1 Uniform Integrability
 
 这一讲介绍了随机变量集合的一致可积性，要点非常多。
 
@@ -1477,16 +1477,24 @@ $$\E[|X_n+Y|: B]\leq\E[|X_n|:B] + \E[|Y|: B].$$
 :::
 **证明**：
 
-$\Rightarrow$: $L^1$ 收敛当然可以得出依测度收敛 (Markov 不等式一步即得)。要证明一致可积，我们只要根据平移不变性，证明 $Y_n=X_n-X$ 是一致可积的即可。
+$\Rightarrow$：$L^1$ 收敛当然可以得出依测度收敛 (Markov 不等式一步即得)。要证明一致可积，我们只要根据平移不变性，证明 $Y_n=X_n-X$ 是一致可积的即可。固定 $\epsilon>0$。取 $N$ 使得 $\sup_{n\ge N}\E|Y_n|<\epsilon$，于是对所有 $a>0$，
+$$
+\sup_{n\ge N}\E\big[\,|Y_n|\mathbf 1_{\{|Y_n|\ge a\}}\,\big]\le \sup_{n\ge N}\E|Y_n|<\epsilon.
+$$
+对有限个指标 $n<N$，由于每个 $Y_n\in L^1$，存在 $a$ 足够大使
+$$
+\max_{n<N}\mathbb E\big[\,|Y_n|\mathbf 1_{\{|Y_n|\ge a\}}\,\big]<\epsilon.
+$$
+综上得到
+$$
+\sup_{n}\mathbb E\big[\,|Y_n|\mathbf 1_{\{|Y_n|\ge a\}}\,\big]<\epsilon
+$$
+即 $\{Y_n\}$ 一致可积。
 
-考虑取一个待定的正整数 $N$，则
-$$\sup_n\E[|Y_n|: |Y_n|\geq a] \leq \sup_{n< N}\E[|Y_n|: |Y_n|\geq a] \vee \sup_{n\geq N}\E[|Y_n|: |Y_n|\geq a]$$
-上面右边第一项是有限多个可积随机变量组成的集合，是一致可积的，所以只要 $a$ 足够大第一项是可以任意小的。第二项小于等于 $\E|Y_n|$ 并且由于 $\E|Y_n|\to 0$ 所以只要 $N$ 足够大也是可以任意小的。所以我们先取 $N$ 足够大使得 $\E|Y_n|<\epsilon/2$，再取 $a$ 足够大使得 $n<N$ 时 $\sup_{n< N}\E[|Y_n|: |Y_n|\geq a]<\epsilon/2$，就得到了一致可积性。
-
-$\Leftarrow$: 记 $Y_n = X_n - X$，则 $Y_n\ind_{|Y_n|<a}$ 是一个不大于 $a$ 的函数序列，且依测度收敛到 0，从而由**依测度的控制收敛定理**有 $Y_n\ind_{|Y_n|<a}\xrightarrow{L^1}0$。
+$\Leftarrow$: $Y_n\ind_{\{|Y_n|<a\}}$ 是一个不大于 $a$ 的函数序列，且依测度收敛到 0，从而由**依测度的控制收敛定理**有 $Y_n\ind_{\{|Y_n|<a\}}\xrightarrow{L^1}0$。
 从而
 $$\|X_n-X\|_{L^1} = \E[Y_n\ind_{\{|Y_n|<a\}}] + \E[Y_n\ind_{\{|Y_n|\geq a\}}].$$
-第一项取 $n$ 足够大就可以任意小，第二项取 $a$ 足够大也可以任意小，得证。$\blacksquare$
+第一项取 $n$ 大于某个 $N$ 就可以任意小，第二项对有限多个 $n\le N$，$a$ 足够大也可以任意小，得证。$\blacksquare$
 
 :::{.corollary}
 正则鞅 $X_n = \E[X|\mathcal{F}_n]$ 是一致可积的。
