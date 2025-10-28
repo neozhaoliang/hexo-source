@@ -1134,7 +1134,7 @@ $$\mathrm{Var}(\xi^\top Z)=\xi^\top\Sigma\xi,\quad \forall\xi.$$
 这唯一刻画了 $Z$ 的分布为 $\N_d(0,\Sigma)$。因此
 $$Z_n \Rightarrow \N_d(0,\Sigma).$$
 
-# 26.2 Infinitely Divisible Distributions
+# ✅ 26.2 Infinitely Divisible Distributions
 
 :::{.definition}
 $(\R,\B(\R))$ 上的一个概率分布 $\mu$ 称作是无穷可除的，如果对任何正整数 $n$，都存在 $(\R,\B(\R))$ 上的概率分布 $\mu_n$ 使得 $\mu=\mu_n^{\ast n}$。
@@ -1149,9 +1149,34 @@ $$S_n = \sum_{k=1}^{n}X_k \to_w X\overset{d}{=}\mu.$$
 
 **证明**：$\Rightarrow$：由无穷可除的定义，显然。
 
-$\Leftrrow$：固定一个正整数 $l$。
+$\Leftarrow$: 固定任意 $l\in\mathbb N$。对第 $nl$ 行把和分成 $l$ 个相邻的块：
+$$S_{nl}=\sum_{k=1}^{nl}X_{nl,k}=\sum_{i=1}^l S_n^{(i)},\qquad
+S_n^{(i)}:=\sum_{j=n(i-1)+1}^{ni} X_{nl,j}.$$
+由于同一行内独立同分布，$(S_n^{(1)},\dots,S_n^{(l)})$ 相互独立且同分布。
 
+设 $\mu_{nl}=\mathcal L(S_{nl})$。因为 $S_{nl}\Rightarrow X$，${\mu_{nl}}$ tight。定义
+$$\epsilon_l(r):=\sup_{n\ge1}\mathbb P(|S_{nl}|>r)\downarrow 0\quad (r\to\infty).$$
+对任意 $r>0$ 与任意 $n$，由独立性有
+$$\mathbb P(S_n^{(1)}>r,\dots,S_n^{(l)}>r)
+=\prod_{i=1}^l\mathbb P(S_n^{(i)}>r)
+\le \P(S_{nl}>lr)\le \epsilon_l(lr).$$
+故 $\P(S_n^{(1)}>r)\le \epsilon_l(lr)^{1/l}$，同理
+$\mathbb P(S_n^{(1)}<-r)\le \epsilon_l(lr)^{1/l}$，于是
+$$\sup_{n}\mathbb P\big(|S_n^{(1)}|>r\big)\le 2\epsilon_l(lr)^{1/l}\xrightarrow{r\to\infty}0,$$
+即 $\{\mathcal L(S_n^{(1)})\}_n$ 紧。由 Prokhorov 定理，存在子列 $n_j$ 使得
+$$S_{n_j}^{(1)}\overset{j\to\infty}{\Rightarrow} Y_l.$$
+由于 $\mathcal L(S_n^{(i)})=\mathcal L(S_n^{(1)})$，所以
+$S_{n_j}^{(i)}\Rightarrow Y_l$ 亦成立。
 
+对每个 $t\in\mathbb R$，有
+$$\varphi_{S_{n_j l}}(t)
+=\prod_{i=1}^l \varphi_{S_{n_j}^{(i)}}(t)
+=\big(\varphi_{S_{n_j}^{(1)}}(t)\big)^{l}.
+$$
+当 $j\to\infty$ 时，左边因 $S_{n_j l}\Rightarrow X$ 收敛到 $\varphi_X(t)$；右边因
+$S_{n_j}^{(1)}\Rightarrow Y_l$ 收敛到 $\big(\varphi_{Y_l}(t)\big)^l$。因此
+$$\varphi_X(t)=\big(\varphi_{Y_l}(t)\big)^l,\qquad \forall t\in\mathbb R.$$
+由 Lévy 连续性定理知 $\mu=\mu_{Y_1}{*l}$。由于 $l$ 任意，$\mu$ 为无穷可除。证毕。 $\blacksquare$
 
 
 # 31.1 Orthogonal Projections

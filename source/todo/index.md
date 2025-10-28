@@ -60,6 +60,7 @@ url: todo
 - 模群面上的测地流和 horocycle 流
 - Thurston 的圆堆算法
 - Clebsch 曲面上的 27 lines
+- [极小曲面](http://bugman123.com/MinimalSurfaces/index.html) 上面跑车
 
 
 # Python
