@@ -1178,6 +1178,112 @@ $S_{n_j}^{(1)}\Rightarrow Y_l$ 收敛到 $\big(\varphi_{Y_l}(t)\big)^l$。因此
 $$\varphi_X(t)=\big(\varphi_{Y_l}(t)\big)^l,\qquad \forall t\in\mathbb R.$$
 由 Lévy 连续性定理知 $\mu=\mu_{Y_1}{*l}$。由于 $l$ 任意，$\mu$ 为无穷可除。证毕。 $\blacksquare$
 
+# ✅ 27.1 Average Uniformity
+
+设 $\{X_{n,k}\}_{k=1}^n$ 是一个随机变量三角列，满足
+$$\E[X_{n,k}]=0,\ \E[X_{n,k}^2]=\sigma_{n,k}^2,\ \sum_{k=1}^n\sigma_{n,k}^2=1.$$
+
++ **(DV) The decaying variance conditon** 
+$$\max_{1\leq k\leq n}\sigma_{n,k}^2\xrightarrow{n\to\infty} 0.$$
++ **(UAN) The uniform asymptotic negligiblility condition**
+$$\forall \epsilon > 0,\ \lim_{n\to\infty}\max_{1\leq k\leq n}\P(|X_{n,k}|>\epsilon)=0.$$
+
+:::{.lemma}
+DV $\Rightarrow$ UAN.
+:::
+
+**证明**：由切比雪夫不等式 $\P(|X_{n,k}|>\epsilon) \leq \frac{\sigma_{n,k}^2}{\epsilon^2}$ 即得。
+
+但是，仅有 DV 条件仍不能保证中心极限定理的成立。我们需要一个更强的条件：
+
+:::{.definition}
+**Lindberg 条件**
+
+$$\lim_{n\to\infty}\sum_{k=1}^n \E[X_{n,k}^2: |X_{n,k}|>\epsilon ]=0,\quad\forall\epsilon>0.$$
+:::
+
+:::{.lemma}
+Lindberg $\Rightarrow$ DV.
+:::
+
+证明：
+$$\sigma_{n,k}^2=\E[X_{n,k}^2: |X_{n,k}|\leq\epsilon]+\E[X_{n,k}^2: |X_{n,k}|>\epsilon]\leq\epsilon^2 + \sum_{j=1}^n\E[X_{n,j}^2: |X_{n,j}|>\epsilon].$$
+
+对 $k$ 取最大值得
+$$\max_{1\le k\le n}\sigma_{n,k}^2\le \epsilon^2 + \sum_{j=1}^n \E\big[X_{n,j}^2:\ |X_{n,j}|> \epsilon\big].$$
+由 Lindeberg 条件，右端和式随 $n\to\infty$ 收敛到 $0$，故
+$$\limsup_{n\to\infty}\max_{1\le k\le n}\sigma_{n,k}^2\le \epsilon^2.$$
+由于 $\epsilon>0$ 任意，必有
+$$\max_{1\le k\le n}\sigma_{n,k}^2 \xrightarrow[n\to\infty]{} 0.$$
+即 DV 成立。$\blacksquare$
+
+:::{.theorem}
+**Lindberg-Feller 中心极限定理**
+
+如果 $\{X_{n,k}\}$ 满足 Lindberg 条件，则 $S_n\to_w\N(0,1)$。
+
+反之，如果 $\{X_{n,k}\}$ 满足 DV 条件，且 $S_n\to_w\N(0,1)$，则 $\{X_{n,k}\}$ 也满足 Lindberg 条件。
+:::
+
+
+# 27.2 Lindberg-Feller CLT
+
+:::{.lemma}
+设 $a_j,b_j$ 是复数且 $|a_j|, |b_j|\leq1$，则
+$$|a_1\cdots a_n - b_1\cdots b_n|\leq\sum_{j=1}^n |a_j-b_j|.$$
+:::
+
+证明：用归纳法即可。
+
+:::{.lemma}
+如果 $X$ 是 $L^2$ 可积的随机变量，$\varphi$ 是其特征函数，则
+$$\left|\varphi(t) - 1 - it\E X + \frac{1}{2}\E[X^2]t^2\right|\leq \E\left[X^2\wedge\frac{|X|^3}{3!}t\right].$$
+:::
+
+证明：根据 Taylor 定理，
+$$\left|e^{it} - 1 - it\right|\leq \frac{t^2}{2}.$$
+$$\left|e^{it} - 1 - it+ \frac{1}{2}t^2\right|\leq \frac{|it|^3}{3!}.$$
+合起来就得到
+$$\left|e^{it} - 1 - it+ \frac{1}{2}t^2\right|\leq t^2\wedge \frac{|it|^3}{3!}.$$
+取 $tX$ 代入并求期望，得到
+$$\left|\E\left[e^{itX} - 1 - itX+ \frac{1}{2}t^2X^2\right]\right|\leq \E\left[t^2X^2\wedge \frac{|X|^3}{3!}t^3\right].$$
+即为所证。$\blacksquare$
+
+
+:::{.theorem}
+**Lindberg-Feller CLT Part 1**
+
+如果三角列 $\{X_{n,k}\}$ 满足 Lindberg 条件，则 $S_n\to_w\N(0,1)$。
+:::
+
+**证明**：只要证 $\varphi_{S_n}\to e^{-t^2/2}$ 即可。
+
+根据第一个引理，结合 $\sum_{k=1}^n\sigma_{n,k}^2=1$，我们得到
+
+$$|\varphi_{S_n}(t) - e^{-t^2/2}|\leq \sum_{k=1}^n\left|\varphi_{X_{n,k}}(t) - e^{-\sigma_{n,k}^2t^2/2}\right|.$$
+
+$$\begin{aligned}
+|\varphi_{X_{n,k}}(t) - e^{-\sigma_{n,k}^2t^2/2}| &\le |\varphi_{X_{n,k}}(t)-(1-\frac{t^2\sigma_{n,k}^2}{2})|+|(1-\frac{t^2\sigma_{n,k}^2}{2})-e^{-\sigma_{n,k}^2t^2/2}|.
+\end{aligned}$$
+记第一项是 $A_{n,k}$，第二项是 $B_{n,k}$，问题转化为证明
+$$\lim_{n\to\infty}\sum_{k=1}^n (A_{n,k}+B_{n,k})=0.$$
+注意到 $\E[X_{n,k}]=0$，所以
+$$\begin{aligned}
+A_{n,k}&=|\varphi_{X_{n,k}}(t)-(1-\frac{t^2\sigma_{n,k}^2}{2})|\leq t^2\left(\E X_{n,k}^2\wedge \frac{|X_{n,k}|^3}{3!}t\right)\\
+&\le t^2\left(
+\E\left[X_{n,k}^2\wedge \frac{|X_{n,k}|^3}{3!}t: |X_{n,k}|\leq\epsilon\right]
++\E\left[X_{n,k}^2\wedge \frac{|X_{n,k}|^3}{3!}t: |X_{n,k}|>\epsilon\right]
+\right)\\
+&\le |t|^3\frac{\epsilon}{3!}\E[X_{n,k}^2]+t^2\E\left[X_{n,k}^2: |X_{n,k}|>\epsilon\right]\\
+&= |t|^3\frac{\epsilon}{3!}\sigma_{n,k}^2+t^2\E\left[X_{n,k}^2: |X_{n,k}|>\epsilon\right]
+\end{aligned}$$
+所以
+$$\sum_{k=1}^n A_{n,k}\le |t|^3\frac{\epsilon}{3!}\sum_{k=1}^n\sigma_{n,k}^2+t^2\sum_{k=1}^n\E\left[X_{n,k}^2: |X_{n,k}|>\epsilon\right].$$
+于是
+$$\limsup_{n\to\infty}\sum_{k=1}^n A_{n,k}\leq \frac{|t|^3}{6}\epsilon.$$
+由 $\epsilon$ 任意性即得。
+
+
 
 # 31.1 Orthogonal Projections
 
