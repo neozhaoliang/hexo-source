@@ -937,6 +937,69 @@ $$\int f\,\mathrm{d}\mu_n\to \int f\du.$$
 如果定理结论成立，则
 $$\lim_{R\to\infty}\inf_n\mu_n(\overline B_R)=1.$$
 :::
+证明：令 $g_R(x):\R^d\to\R$ 是如下的连续　函数：当 $|x|< R/2$ 时 $g(x)=1$，当 $|x|>R$ 时 $g(x)=0$，当 $R/2\le |x|\le R$ 时 $g(x)$ 线性插值。则
+$$\ind_{\overline B_{R/2}}\le g_R \le \ind_{\overline B_{R}}.$$
+所以
+$$\int g_R\,\mathrm{d}\mu_n\leq \int \ind_{\overline B_{R}}\,\mathrm{d}\mu_n=\mu_n(\overline B_R).$$
+两边取下极限，并利用 $g_R$ 是具有紧支集的连续函数，得到
+$$\liminf_n\mu_n(\overline B_R)\geq \liminf_n\int g_R\,\mathrm{d}\mu_n=\int g_R\du\geq\mu(\overline B_{R/2}).$$
+
+给定 $\varepsilon>0$。由 $\mu(\overline B_{R/2})\uparrow 1$，可取 $R_0$ 使 $\mu(\overline B_{R_0/2})>1-\varepsilon$。
+$$\liminf_{n}\mu_n(\overline B_{R_0})\ \ge\ 1-\varepsilon.$$
+故存在 $N$ 使得对所有 $n\ge N$，$\mu_n(\overline B_{R_0})\ge 1-\varepsilon$。
+
+对有限个指标 $n<N$，可取 $R_1,\dots,R_{N-1}$ 使
+$\mu_n(\overline B_{R_n})\ge 1-\varepsilon$。令
+$$R=\max\{R_0,R_1,\dots,R_{N-1}\}.$$
+则对所有 $n$ 都有 $\mu_n(\overline B_R)\ge 1-\varepsilon$。于是
+$$\inf_n \mu_n(\overline B_R)\ \ge\ 1-\varepsilon.$$
+由 $\varepsilon$ 任意，遂得
+$$\lim_{R\to\infty}\inf_n \mu_n(\overline B_R)=1.$$
+
+回到定理证明。
+
+现取任意有界连续函数 $f\in C_b(\R^d)$，令 $f_R:=f\cdot g_R\in C_c(\R^d)$。注意到
+$$
+0\le 1-g_R\le \ind_{\overline B_{R/2}^{c}},
+\quad |f-f_R|=|f|\cdot (1-g_R)\le \|f\|_\infty\cdot\ind_{\overline B_{R/2}^{c}}.$$
+因此对所有 $n$ 有
+$$
+\left|\int (f-f_R)\,\mathrm d\mu_n\right|
+\le \|f\|_\infty\cdot\mu_n(\overline B_{R/2}^{c}),\quad
+\left|\int (f-f_R)\du\right|
+\le \|f\|_\infty\cdot\mu(\overline B_{R/2}^{c}).
+\tag{1}
+$$
+
+由上一部分已得的统一紧性
+$\displaystyle \lim_{R\to\infty}\inf_n\mu_n(\overline B_R)=1$
+以及 $\mu(\overline B_R)\uparrow 1$，给定 $\varepsilon>0$，可取 $R$ 使得
+$$\sup_n\mu_n(\overline B_{R/2}^{c})\le \varepsilon,\quad
+\mu(\overline B_{R/2}^{c})\le \varepsilon.
+\tag{2}$$
+代回 (1) 得到
+$$\sup_n\left|\int (f-f_R)\,\mathrm d\mu_n\right|\le \|f\|_\infty\varepsilon,
+\quad
+\left|\int (f-f_R)\du\right|\le \|f\|_\infty \varepsilon.
+\tag{3}$$
+
+另一方面，对这个固定的 $R$，由假设在 $C_c(\R^d)$ 上的收敛有
+$$\int f_R\,\mathrm d\mu_n\to\int f_R\du \quad (n\to\infty)$$
+故存在 $N$ 使得 $n\ge N$ 时
+$$\left|\int f_R\,\mathrm d\mu_n-\int f_R\du\right|\le \varepsilon.
+\tag{4}$$
+
+现在分解
+$$\int f\,\mathrm d\mu_n-\int f\du
+=\int (f-f_R)\,\mathrm d\mu_n + \left(\int f_R\,\mathrm d\mu_n-\int f_R\du\right)
++\int (f-f_R)\du.$$
+
+由 (3), (4) 得到当 $n\ge N$ 时
+$$\left|\int f\,\mathrm d\mu_n-\int f\du\right|
+\le 2\|f\|_\infty\varepsilon+\varepsilon.$$
+由于 $\varepsilon>0$ 任意，便得
+$$\int f\,\mathrm d\mu_n\to\int f\du\quad(n\to\infty).$$
+
 
 # 23.2 Prokhorov's Compactness Theorem
 
