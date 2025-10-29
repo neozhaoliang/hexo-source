@@ -1283,6 +1283,9 @@ $$\sum_{k=1}^n A_{n,k}\le |t|^3\frac{\epsilon}{3!}\sum_{k=1}^n\sigma_{n,k}^2+t^2
 $$\limsup_{n\to\infty}\sum_{k=1}^n A_{n,k}\leq \frac{|t|^3}{6}\epsilon.$$
 由 $\epsilon$ 任意性即得。
 
+再来估计 $B_{n,k}=|(1-\frac{t^2\sigma_{n,k}^2}{2})-e^{-\sigma_{n,k}^2t^2/2}|$。利用 $|e^{-u}-(1-u)|\leq\frac{u^2}{2}$，可得
+$$\sum_{k=1}^n B_{n,k}\le\frac{1}{8}t^4\sum_{k=1}^n\sigma_{n,k}^4 \le\frac{1}{8}t^4\max_{k}\sigma_{n,k}^2.$$
+
 
 
 # 31.1 Orthogonal Projections
