@@ -804,7 +804,7 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 
 老技巧，只要证明 $\P(\{|X_n|\geq n\epsilon,\ \io\})=0$ 即可。根据 Borel-Cantelli 引理，只要证明 $\sum_{n=1}^\infty\P(|X_n|\geq n\epsilon)<\infty$ 即可，而这在 18.1 中已经证明过了。
 
-# 22.1 Weak Convergence
+# ✅ 22.1 Weak Convergence
 
 :::{.definition}
 设 $\S$ 是一个度量空间，$\mu_n,\mu$ 是 $(\S,\B(\S))$ 上的概率测度。如果有
@@ -814,7 +814,7 @@ $$\int f\,\mathrm{d}\mu_n\to \int f \du,\quad \forall f\in C_b(\S).$$
 
 :::{.lemma}
 设 $\{X_n\}, X$ 都是从概率空间 $(\Omega,\F,\P)\to (\S,\B(\S))$ 的随机变量。
-如果 $X_n\to_\P X$ 且 $g$ 是连续函数，则 $g(X_n)\to\P g(X)$。
+如果 $X_n\to_\P X$ 且 $g$ 是连续函数，则 $g(X_n)\to_\P g(X)$。
 :::
 
 证明：设 $\epsilon,\delta>0$。记
@@ -887,64 +887,56 @@ $5\Rightarrow1$：取任意 $f\in C_b(\mathcal S)$，记 $m=\inf f$, $M=\sup f$�
 $$
 g=\frac{f-m}{M-m}\in C_b(\mathcal S),\qquad 0\le g\le 1.
 $$
-若已证 $\int g\,d\mu_n\to\int g\,d\mu$，则由线性缩放可还原对 $f$ 的结论。
+若已证 $\int g\,\mathrm{d}\mu_n\to\int g\,\du$，则由线性缩放可还原对 $f$ 的结论。
 
 对任意有限测度 $\nu$ 及 $0\le h\le 1$ 的可测函数，有层蛋糕表示：
 $$
-\int h\,d\nu \;=\; \int_0^1 \nu\big(\{h>t\}\big)\,dt,
+\int h\dv = \int_0^1 \nu\big(\{h\ge t\}\big)\dt.
 $$
-因为 $h(x)=\int_0^1 \mathbf 1_{\{h(x)>t\}}\,dt$，再用 Tonelli 交换积分次序。
+因为
+$$h(x)=\int_0^{h(x)}\dt=\int_0^1\ind_{\{h(x)\ge t\}}\dt.$$
+再用 Tonelli 交换积分次序。
 
 据此，只需证明
 $$
-\int_0^1 \mu_n\big(\{g>t\}\big)\,dt \;\longrightarrow\; \int_0^1 \mu\big(\{g>t\}\big)\,dt.
+\int_0^1 \mu_n\big(\{g\ge t\}\big)\dt \longrightarrow\int_0^1 \mu\big(\{g\ge t\}\big)\dt.
 $$
+从而我们只要证明 $\mu_n(\{g\ge t\})\to \mu(\{g\ge t\})$ 对几乎处处的 $t\in[0,1]$ 成立即可。
 
-**步骤 2：几乎处处的点态收敛**
+对每个 $t\in[0,1]$，记
+$$\{t\in[0,1]\mid \mu(\partial\{g\ge t\})>0\}\subset\{t\in[0,1]\mid \mu(\{g=t\})>0\}:=E.$$
 
-对每个 $t\in(0,1)$，记
-$$
-A_t=\{x\in\mathcal S:\ g(x)>t\}.
-$$
-由于 $g$ 连续，$\partial A_t=\{g=t\}$。令
-$$
-E:=\{t\in(0,1):\ \mu(\{g=t\})>0\}.
-$$
-则 $E$ 至多可数：对每个 $k\in\mathbb N$，集合
+:::{.note}
+这里只是包含关系，不是相等关系。例如，取 $g(x)$ 是任何在 $[-1,1]$ 上为 0，在 $|x|>1$ 时取值在 $(0,1]$ 之间的连续函数，则
+$$\{g(x)> 0 \}=(-\infty, -1)\cup(1,\infty),\quad \{g(x) = 0\} = [-1,1].$$
+前者的边界只要两个点 $\pm1$，是后者严格的子集。
+:::
+
+则 $\mu_n(\{g\ge t\})\to \mu(\{g\ge t\})$ 对所有 $t\in[0,1]\setminus E$ 成立。
+所以我们只要再证明 $E$ 是可数集合即可。
+
+对每个 $k\in\mathbb N$，集合
 $$
 E_k:=\{t:\ \mu(\{g=t\})\ge 1/k\}
 $$
-必为有限集（否则不同 $t$ 的水平集两两不交，将导致 $\sum_{t\in E_k}\mu(\{g=t\})=\infty$，与 $\mu(\mathcal S)=1$ 矛盾），从而 $E=\bigcup_{k\ge1}E_k$ 可数。
+必为有限集，否则将导致 $\sum_{t\in E_k}\mu(\{g=t\})=\infty$，与 $\mu(\mathcal S)=1$ 矛盾。从而 $E=\bigcup_{k\ge1}E_k$ 可数。$\blacksquare$
 
-于是对所有 $t\in(0,1)\setminus E$，有
-$$
-\mu(\partial A_t)=\mu(\{g=t\})=0,
-$$
-由假设 (5) 立得
-$$
-\mu_n(A_t)\ \longrightarrow\ \mu(A_t)\qquad (t\notin E).
-$$
+# 22.2 Weak Convergence over $\R^d$
 
-**步骤 3：对 $t$ 积分并交换极限**
+:::{.theorem}
+在 $\S=\R^d$ 的情形，$\mu_n\to_w \mu$ 等价于对任何 $f\in C_c(\R^d)$ 有
+$$\int f\,\mathrm{d}\mu_n\to \int f\du.$$
+注意，这里的 $f$ 加强为具有紧支集的函数。
+:::
 
-映射 $t\mapsto \mu_n(A_t)$ 与 $t\mapsto \mu(A_t)$ 取值于 $[0,1]$，且在 $(0,1)\setminus E$ 上点态收敛，而 $E$ 可数（勒贝格测度为零），故以常数 $1$ 为支配，支配收敛定理给出
-$$
-\int_0^1 \mu_n(A_t)\,dt\ \longrightarrow\ \int_0^1 \mu(A_t)\,dt.
-$$
-结合层蛋糕表示，得到
-$$
-\int g\,d\mu_n \;\longrightarrow\; \int g\,d\mu.
-$$
-由归一化与线性缩放，回到 $f$ 可得
-$$
-\int f\,d\mu_n \;\longrightarrow\; \int f\,d\mu\qquad\text{对一切 }f\in C_b(\mathcal S).
-$$
+证明：只要证明当 $f\in C_c(\R^d)$ 时有
+$$\int f\,\mathrm{d}\mu_n\to \int f\du.$$
+即可。
 
----
-
-**结论**：因此 $\mu_n\Rightarrow\mu$，即 (1) 得证。
-
-
+:::{.lemma}
+如果定理结论成立，则
+$$\lim_{R\to\infty}\inf_n\mu_n(\overline B_R)=1.$$
+:::
 
 # 23.2 Prokhorov's Compactness Theorem
 
@@ -1370,7 +1362,7 @@ $$\varphi_X(t)=\big(\varphi_{Y_l}(t)\big)^l,\qquad \forall t\in\mathbb R.$$
 设 $\{X_{n,k}\}_{k=1}^n$ 是一个随机变量三角列，满足
 $$\E[X_{n,k}]=0,\ \E[X_{n,k}^2]=\sigma_{n,k}^2,\ \sum_{k=1}^n\sigma_{n,k}^2=1.$$
 
-+ **(DV) The decaying variance conditon** 
++ **(DV) The decaying variance conditon**
 $$\max_{1\leq k\leq n}\sigma_{n,k}^2\xrightarrow{n\to\infty} 0.$$
 + **(UAN) The uniform asymptotic negligiblility condition**
 $$\forall \epsilon > 0,\ \lim_{n\to\infty}\max_{1\leq k\leq n}\P(|X_{n,k}|>\epsilon)=0.$$
