@@ -13,6 +13,7 @@ url: todd-kemp
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\S}{\mathcal{S}}
+\newcommand{\L}{\mathcal{L}}
 \newcommand{\H}{\mathbb{H}}
 \newcommand{\M}{\mathbb{M}}
 
@@ -39,6 +40,7 @@ url: todd-kemp
 \newcommand{\uxvy}{\mu_X\otimes\nu_Y}
 \newcommand{\sgn}{\mathrm{sgn}}
 \renewcommand{\Re}{\mathrm{Re}\,}
+\newcommand{\span}{\mathrm{span}}
 
 # 0 Banach Tarski
 
@@ -802,6 +804,147 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 
 老技巧，只要证明 $\P(\{|X_n|\geq n\epsilon,\ \io\})=0$ 即可。根据 Borel-Cantelli 引理，只要证明 $\sum_{n=1}^\infty\P(|X_n|\geq n\epsilon)<\infty$ 即可，而这在 18.1 中已经证明过了。
 
+# 22.1 Weak Convergence
+
+:::{.definition}
+设 $\S$ 是一个度量空间，$\mu_n,\mu$ 是 $(\S,\B(\S))$ 上的概率测度。如果有
+$$\int f\,\mathrm{d}\mu_n\to \int f \du,\quad \forall f\in C_b(\S).$$
+就称 $\mu_n$ 弱收敛到 $\mu$。
+:::
+
+:::{.lemma}
+设 $\{X_n\}, X$ 都是从概率空间 $(\Omega,\F,\P)\to (\S,\B(\S))$ 的随机变量。
+如果 $X_n\to_\P X$ 且 $g$ 是连续函数，则 $g(X_n)\to\P g(X)$。
+:::
+
+证明：设 $\epsilon,\delta>0$。记
+$$B_{\epsilon,\delta}(g)=\{x\in\S\mid \exists y\in\S, d(x,y)\leq\delta, |g(x)-g(y)|\geq\epsilon\}.$$
+$g$ 的连续性保证了对任何 $\epsilon>0$，$\lim_{\delta\to0}B_{\epsilon,\delta}(g)\downarrow \emptyset$。
+
+于是
+$$\{\omega\mid |g(X_n(\omega))-g(X(\omega))|\geq\epsilon\}\subset\{\omega\mid d(X_n(\omega), X(\omega))\geq\delta\}\cup\{\omega\mid X(\omega)\in B_{\epsilon,\delta}(g)\}.$$
+于是
+$$\P(|g(X_n(\omega))-g(X(\omega))|\geq\epsilon)\le \P(d(X_n(\omega), X(\omega))\geq\delta) + \P(X\in B_{\epsilon,\delta}(g)).$$
+也就是
+$$\P(|g(X_n)-g(X)|\geq\epsilon)\le \P(d(X_n, X)\geq\delta) +\mu_X(B_{\epsilon,\delta}(g)).$$
+所以，对给定的 $\epsilon$，我们可以取 $\delta$ 使得第二项任意小，再取最后大的 $n$ 使得第一项任意小。这就证明了结论。$\blacksquare$
+
+:::{.proposition}
+如果 $X_n\to_\P X$，则 $X_n\to_w X$。
+:::
+
+证明：设 $f\in C_b(\S)$。则 $\int f\,\mathrm{d}\mu_{X_n}=\E[f(X_n)]$。于是我们要证明
+$$\E[f(X_n)]\to \E[f(X)].$$
+但是根据引理，$f(X_n)\to_\P f(X)$。又因为 $f$ 有界，所以由依测度收敛的控制收敛定理即得。$\blacksquare$
+
+:::{.theorem}
+**Portmanteau 定理**
+
+设 $\{\mu_n\},\mu$ 都是空间 $(\S,\B(\S))$ 上的概率测度。以下结论是等价的：
+
+1. $\mu_n\to_w\mu$。
+2. $\int f\,\mathrm{d}\mu_n\to\int f\du,\quad \forall f\in\mathrm{Lip}_b(\S)$。
+3. $\limsup \mu_n(F)\le \mu(F)$ 对任何闭集 $F$ 成立。
+4. $\liminf \mu_n(G)\ge \mu(G)$ 对任何开集 $G$ 成立。
+5. $\mu_n(A)\to \mu(A)$ 对任何满足 $\mu(\partial A)=0$ 的集合 $A\in\B(\S)$ 成立。
+:::
+
+:::{.note}
+Portmanteau 的原意是把若干词拼起来组成新词。这里表示把一些看起来不同的结论放在一起。
+:::
+
+$1\Rightarrow 2$ 显然。
+
+$2\Rightarrow3$：取 $\psi\in{\rm Lip}_b(\R)$ 为如下的截断函数：
+
+$$\psi(x)=\begin{cases}
+1, & x < 0\\
+0, & x > 1\\
+1-x, & 0\leq x\leq 1
+\end{cases}$$
+不难看出 $\|\phi\|_{\rm Lip}\leq1$。
+
+给定闭集 $F$，考虑
+$$f_k(x) = \phi(k \cdot d(x, F)).$$
+则
+$$|f_k(x)-f_k(y)|\leq k |d(x,F)-d(y,F)|\leq k\cdot d(x,y).$$
+这里用到了距离到集合的函数是 1-Lipschitz。从而 $f_k\in{\rm Lip}_b(\S)$。
+注意到
+$$\lim_{k\to\infty}f_k(x)=\begin{cases}
+f_k(x)\downarrow\psi(\infty) = 0, & d(x,F)> 0\\
+f_k(x) = \phi(0) = 0, & d(x,F)=0
+\end{cases} = \ind_F.$$
+总之 $f_k\downarrow \ind_F$。于是
+$$\limsup\mu_n(F)=\limsup\int \ind_F\,\mathrm{d}\mu_n\le \limsup\int f_k\,\mathrm{d}\mu_n = \int f_k\du$$
+上面的式子对所有 $k$ 都成立。然而根据控制收敛定理，$\int f_k\du\to \int \ind_F\du = \mu(F)$。得证。
+
+$3\Leftrightarrow4$：对闭集 $F=G^c$ 应用 3 即可。反之对 $G=F^c$ 应用 4。
+
+$3,4\Rightarrow5$：如果 $\mu(\partial A)=0$，则 $\mu(A)=\mu(\overline{A})=\mu({\rm int}(A))$。
+$$\varlimsup\mu_n(A)\le\varlimsup\mu_n(\overline{A}) \le\mu(\overline{A})=\mu(A)=\mu({\rm int}(A))\le\varliminf\mu_n({\rm int}(A))\le\varliminf\mu_n(A).$$
+
+$5\Rightarrow1$：取任意 $f\in C_b(\mathcal S)$，记 $m=\inf f$, $M=\sup f$，并令
+$$
+g=\frac{f-m}{M-m}\in C_b(\mathcal S),\qquad 0\le g\le 1.
+$$
+若已证 $\int g\,d\mu_n\to\int g\,d\mu$，则由线性缩放可还原对 $f$ 的结论。
+
+对任意有限测度 $\nu$ 及 $0\le h\le 1$ 的可测函数，有层蛋糕表示：
+$$
+\int h\,d\nu \;=\; \int_0^1 \nu\big(\{h>t\}\big)\,dt,
+$$
+因为 $h(x)=\int_0^1 \mathbf 1_{\{h(x)>t\}}\,dt$，再用 Tonelli 交换积分次序。
+
+据此，只需证明
+$$
+\int_0^1 \mu_n\big(\{g>t\}\big)\,dt \;\longrightarrow\; \int_0^1 \mu\big(\{g>t\}\big)\,dt.
+$$
+
+**步骤 2：几乎处处的点态收敛**
+
+对每个 $t\in(0,1)$，记
+$$
+A_t=\{x\in\mathcal S:\ g(x)>t\}.
+$$
+由于 $g$ 连续，$\partial A_t=\{g=t\}$。令
+$$
+E:=\{t\in(0,1):\ \mu(\{g=t\})>0\}.
+$$
+则 $E$ 至多可数：对每个 $k\in\mathbb N$，集合
+$$
+E_k:=\{t:\ \mu(\{g=t\})\ge 1/k\}
+$$
+必为有限集（否则不同 $t$ 的水平集两两不交，将导致 $\sum_{t\in E_k}\mu(\{g=t\})=\infty$，与 $\mu(\mathcal S)=1$ 矛盾），从而 $E=\bigcup_{k\ge1}E_k$ 可数。
+
+于是对所有 $t\in(0,1)\setminus E$，有
+$$
+\mu(\partial A_t)=\mu(\{g=t\})=0,
+$$
+由假设 (5) 立得
+$$
+\mu_n(A_t)\ \longrightarrow\ \mu(A_t)\qquad (t\notin E).
+$$
+
+**步骤 3：对 $t$ 积分并交换极限**
+
+映射 $t\mapsto \mu_n(A_t)$ 与 $t\mapsto \mu(A_t)$ 取值于 $[0,1]$，且在 $(0,1)\setminus E$ 上点态收敛，而 $E$ 可数（勒贝格测度为零），故以常数 $1$ 为支配，支配收敛定理给出
+$$
+\int_0^1 \mu_n(A_t)\,dt\ \longrightarrow\ \int_0^1 \mu(A_t)\,dt.
+$$
+结合层蛋糕表示，得到
+$$
+\int g\,d\mu_n \;\longrightarrow\; \int g\,d\mu.
+$$
+由归一化与线性缩放，回到 $f$ 可得
+$$
+\int f\,d\mu_n \;\longrightarrow\; \int f\,d\mu\qquad\text{对一切 }f\in C_b(\mathcal S).
+$$
+
+---
+
+**结论**：因此 $\mu_n\Rightarrow\mu$，即 (1) 得证。
+
+
 
 # 23.2 Prokhorov's Compactness Theorem
 
@@ -813,9 +956,53 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 如果 $\{\mu_n\}$ 还是 tight 的，则存在弱收敛的子序列，其弱收敛的极限是一个概率测度 $\mu$。
 :::
 
+# 23.3 Skorohod's Theorem
+
+
+
 # 24.1 Complex Integration and Dynkin's Theorem
 
-无要点
+这一节将 Dynkin 函数系引理推广到了复可测的函数上。
+
+:::{.definition}
+设 $(\Omega,\F,\mu)$ 是一个可测空间，$f:\Omega\to(\mathbb{C},\B(\R^2))$ 是一个可测函数。我们称 $f$ 是 $L^1$ 可积的，当且仅当 $f$ 的实部和虚部都是 $L^1$ 可积的。
+:::
+
+:::{.theorem}
+**复版本的 Dynkin 函数系引理**
+
+设 $\H\in\mathbb{B}(\Omega)$ 是一个由 $\mathbb{C}$- 值有界可测函数组成的 $\mathbb{C}$- 向量空间，满足：
+
++ 包含 1
++ 在有界收敛下封闭
++ 对复共轭封闭
+
+又设 $\M\subset\H$ 是一个乘法系，则 $\H$ 包含所有关于 $\sigma(\M)$ 可测的有界函数。即
+
+$$\mathbb{B}(\Omega,\sigma(\M))\subset\H.$$
+:::
+
+证明：
+
+**把生成集从乘法系扩到代数：**令 $\A$ 为由 $\M$ 生成的（复）**代数**。由于 $\M$ 乘法封闭，$\A\subset\H$。显然 $\sigma(\A)=\sigma(\M)$。
+
+记
+$$\L:=\{f\in\mathbb{B}(\Omega,\sigma(\A)):\ f\in\H\}.$$
+则 $\L$ 是一个复向量空间，且：
+
+* $1\in\L$（因 $1\in\A\subset\H$ 且 $\sigma(\A)$-可测）；
+* **有界收敛封闭：**若 $|f_n|\le C,\ f_n\to f$ 点态，且 $f_n\in\L$，则 $f$ 仍 $\sigma(\A)$-可测且 $f\in\H$，故 $f\in\L$；
+* **复共轭封闭：**若 $f\in\L$，则 $\overline f\in\H$，且仍 $\sigma(\A)$-可测，因此 $\overline f\in\L$。并且 $\A\subset\L$。
+
+应用**函数版单调类定理（实值）**：
+
+$$\mathcal{C}_{\mathbb R}:=\{\Re a,\ \Im a:\ a\in\A\}\ \text{生成的实值代数}.$$
+上一段的说明保证 $\mathcal{C}_{\mathbb R}\subset \L$（这里用到了**共轭封闭**来把 $\Re a,\Im a$ 放进 $\H$，从而放进 $\L$）。
+于是得到：所有**有界实值**、$\sigma(\A)$-可测的函数都在 $\L\subset\H$。
+
+任取有界复值 $\sigma(\A)$-可测 $f$。写 $f=u+iv$（(u,v) 。由第 2 步 $u,v\in\L\subset\H$。因 $\H$ 为复向量空间，$f=u+iv\in\H$。
+结合 $\sigma(\A)=\sigma(\M)$，即得 $\mathbb{B}(\Omega,\sigma(\M))\subset\H$。$\blacksquare$
+
 
 # ✅ 24.2 Characteristic Function
 
@@ -1226,7 +1413,7 @@ $$\max_{1\le k\le n}\sigma_{n,k}^2 \xrightarrow[n\to\infty]{} 0.$$
 :::
 
 
-# 27.2 Lindberg-Feller CLT
+# ✅ 27.2 Lindberg-Feller CLT
 
 :::{.lemma}
 设 $a_j,b_j$ 是复数且 $|a_j|, |b_j|\leq1$，则
@@ -1256,18 +1443,23 @@ $$\left|\E\left[e^{itX} - 1 - itX+ \frac{1}{2}t^2X^2\right]\right|\leq \E\left[t
 如果三角列 $\{X_{n,k}\}$ 满足 Lindberg 条件，则 $S_n\to_w\N(0,1)$。
 :::
 
+:::{.note}
+注意 Lindberg-Feller CLT 仍然要求 $\{X_{n,k}\}$ 对每个 $n$ 都是 i.i.d 序列。
+:::
+
 **证明**：只要证 $\varphi_{S_n}\to e^{-t^2/2}$ 即可。
 
 根据第一个引理，结合 $\sum_{k=1}^n\sigma_{n,k}^2=1$，我们得到
 
 $$|\varphi_{S_n}(t) - e^{-t^2/2}|\leq \sum_{k=1}^n\left|\varphi_{X_{n,k}}(t) - e^{-\sigma_{n,k}^2t^2/2}\right|.$$
+注意这个特征函数的分解就用到了 i.i.d 性质。
 
 $$\begin{aligned}
 |\varphi_{X_{n,k}}(t) - e^{-\sigma_{n,k}^2t^2/2}| &\le |\varphi_{X_{n,k}}(t)-(1-\frac{t^2\sigma_{n,k}^2}{2})|+|(1-\frac{t^2\sigma_{n,k}^2}{2})-e^{-\sigma_{n,k}^2t^2/2}|.
 \end{aligned}$$
 记第一项是 $A_{n,k}$，第二项是 $B_{n,k}$，问题转化为证明
 $$\lim_{n\to\infty}\sum_{k=1}^n (A_{n,k}+B_{n,k})=0.$$
-注意到 $\E[X_{n,k}]=0$，所以
+我们任取一个正数 $\epsilon>0$。注意到 $\E[X_{n,k}]=0$，所以
 $$\begin{aligned}
 A_{n,k}&=|\varphi_{X_{n,k}}(t)-(1-\frac{t^2\sigma_{n,k}^2}{2})|\leq t^2\left(\E X_{n,k}^2\wedge \frac{|X_{n,k}|^3}{3!}t\right)\\
 &\le t^2\left(
@@ -1285,7 +1477,7 @@ $$\limsup_{n\to\infty}\sum_{k=1}^n A_{n,k}\leq \frac{|t|^3}{6}\epsilon.$$
 
 再来估计 $B_{n,k}=|(1-\frac{t^2\sigma_{n,k}^2}{2})-e^{-\sigma_{n,k}^2t^2/2}|$。利用 $|e^{-u}-(1-u)|\leq\frac{u^2}{2}$，可得
 $$\sum_{k=1}^n B_{n,k}\le\frac{1}{8}t^4\sum_{k=1}^n\sigma_{n,k}^4 \le\frac{1}{8}t^4\max_{k}\sigma_{n,k}^2.$$
-
+由于 Lindberg 条件意味着 DV 条件，故 $n\to\infty$ 时上式右边趋于 0，得证。$\blacksquare$
 
 
 # 31.1 Orthogonal Projections
