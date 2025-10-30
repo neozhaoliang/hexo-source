@@ -1000,6 +1000,64 @@ $$\left|\int f\,\mathrm d\mu_n-\int f\du\right|
 由于 $\varepsilon>0$ 任意，便得
 $$\int f\,\mathrm d\mu_n\to\int f\du\quad(n\to\infty).$$
 
+:::{.corollary}
+设 $\{\mu_n\},\mu$ 是 $\R^d$ 上的概率分部，则 $\mu_n\to_w\mu$ 当且仅当
+$$\int f\,\mathrm{d}\mu_n\to \int f\du,\quad \forall f\in C_c^\infty(\R^d).$$
+:::
+这里进一步把 $f$ 加强成了具有紧支集且光滑的函数。
+
+证明：任取一个光滑函数 $\rho$ 满足 $0\le \rho\le \ind_{\overline B_1}$。并归一化使得 $\rho$ 是概率密度。
+
+任取 $\epsilon>0$，$f\in C_c(\R^d)$。令
+$$f_\epsilon(x) = \int_{\R^d}f(x+\epsilon t)\rho(t)\dt=\frac{1}{\epsilon^d}\int f(y)\rho(\frac{y-x}{\epsilon})\dy.$$
+直观上，$f_\epsilon$ 就是 $f$ 在半径为 $\epsilon$ 邻域内，以 $\rho$ 为密度的平均值。显然 $f_\epsilon$ 是光滑且具有紧支集的函数且
+$$\|f - f_\epsilon\|_\infty \to 0.$$
+取 $f_\delta$ 满足 $\|f - f_\delta\|_\infty<\epsilon.$$
+$$\int f\du - \int f\,\mathrm{d}\mu_n = \int (f-f_\epsilon)\du + \int f_\epsilon\du - \int f_\epsilon\,\mathrm{d}\mu_n
++\int f_\epsilon-f\,\mathrm{d}\mu_n.
+$$
+第一项和第三项都不超过 $\epsilon$，中间项可以通过取 $n$ 足够大使得也不超过 $\epsilon$，
+所以
+$$\left|\int f\du - \int f\,\mathrm{d}\mu_n\right|\le 3\epsilon.$$
+由 $\epsilon$ 任意性即得。
+
+:::{.note}
+你问“为什么 $f_\varepsilon \to f$ 是**一致**收敛？”——关键在于：
+$f\in C_c(\mathbb{R}^d)$ 是**一致连续**的，而卷积核 $\rho_\varepsilon$ 的支撑缩到 0 且 $\int\rho_\varepsilon=1$。
+
+设 $\rho\in C_c^\infty(\mathbb{R}^d)$, $\rho\ge0$, $\int \rho=1$, $\mathrm{supp}\,\rho\subset \overline{B_1(0)}$。令
+$$
+\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon),\qquad
+f_\varepsilon=f*\rho_\varepsilon.
+$$
+对任意 $x\in\mathbb{R}^d$，
+$$
+f_\varepsilon(x)-f(x)
+=\int_{\mathbb{R}^d}\rho_\varepsilon(y)\bigl(f(x-y)-f(x)\bigr)\,dy.
+$$
+因为 $\mathrm{supp}\,\rho_\varepsilon\subset \overline{B_\varepsilon(0)}$，有
+$$
+|f_\varepsilon(x)-f(x)|
+\le \int \rho_\varepsilon(y)\,\sup_{|y|\le \varepsilon}|f(x-y)-f(x)|\,dy
+\le \sup_{|h|\le \varepsilon}\sup_{x\in\mathbb{R}^d}|f(x+h)-f(x)|.
+$$
+记
+$$
+\omega_f(r):=\sup_{|h|\le r}\,\|f(\cdot+h)-f(\cdot)\|_\infty,
+$$
+则上式给出
+$$
+\|f_\varepsilon-f\|_\infty \le \omega_f(\varepsilon).
+$$
+由于 $f\in C_c(\mathbb{R}^d)$ 连续且支撑紧，$f$ 在 $\mathbb{R}^d$ 上一致连续（Heine–Cantor：在紧集上一致连续；紧支撑外 $f\equiv0$ 更无问题），故 $\omega_f(r)\to0$ 当 $r\to0$。于是
+$$
+\|f_\varepsilon-f\|_\infty \xrightarrow[\varepsilon\to0]{} 0,
+$$
+这正是一致收敛。
+
+（顺便一提）因为 $\rho$ 有紧支撑，$\mathrm{supp}\,f_\varepsilon\subset \mathrm{supp}\,f+\overline{B_\varepsilon(0)}$ 仍为紧集，所以 $f_\varepsilon\in C_c^\infty(\mathbb{R}^d)$。
+:::
+
 
 # 23.2 Prokhorov's Compactness Theorem
 
