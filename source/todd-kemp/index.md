@@ -22,6 +22,7 @@ url: todd-kemp
 \newcommand{\iid}{\mathrm{i.i.d}}
 
 \newcommand{\du}{\,\mathrm{d}\mu}
+\newcommand{\dun}{\,\mathrm{d}\mu_n}
 \newcommand{\dv}{\,\mathrm{d}\nu}
 \newcommand{\dx}{\,\mathrm{d}x}
 \newcommand{\dy}{\,\mathrm{d}y}
@@ -41,6 +42,7 @@ url: todd-kemp
 \newcommand{\sgn}{\mathrm{sgn}}
 \renewcommand{\Re}{\mathrm{Re}\,}
 \newcommand{\span}{\mathrm{span}}
+\DeclareMathOperator{\supp}{supp}
 
 # 0 Banach Tarski
 
@@ -49,11 +51,11 @@ url: todd-kemp
 $$1 = \sum_{q\in\Q}\mu(E) = \infty\cdot \mu(E)\Rightarrow E\text{ not measuabe.}$$
 :::
 
-# 1.1 Probability Motivation
+# ✅ 1.1 Probability Motivation
 
 无要点
 
-# 1.2 $\sigma$- Fields
+# ✅ 1.2 $\sigma$- Fields
 
 介绍了 $\sigma$- 域的概念，以及最重要的 $\sigma$- 域的例子：拓扑空间中开集生成的 Borel 域。
 
@@ -921,7 +923,7 @@ E_k:=\{t:\ \mu(\{g=t\})\ge 1/k\}
 $$
 必为有限集，否则将导致 $\sum_{t\in E_k}\mu(\{g=t\})=\infty$，与 $\mu(\mathcal S)=1$ 矛盾。从而 $E=\bigcup_{k\ge1}E_k$ 可数。$\blacksquare$
 
-# 22.2 Weak Convergence over $\R^d$
+# ✅ 22.2 Weak Convergence over $\R^d$
 
 :::{.theorem}
 在 $\S=\R^d$ 的情形，$\mu_n\to_w \mu$ 等价于对任何 $f\in C_c(\R^d)$ 有
@@ -1022,15 +1024,25 @@ $$\left|\int f\du - \int f\,\mathrm{d}\mu_n\right|\le 3\epsilon.$$
 由 $\epsilon$ 任意性即得。
 
 :::{.note}
-你问“为什么 $f_\varepsilon \to f$ 是**一致**收敛？”——关键在于：
-$f\in C_c(\mathbb{R}^d)$ 是**一致连续**的，而卷积核 $\rho_\varepsilon$ 的支撑缩到 0 且 $\int\rho_\varepsilon=1$。
+我们来证明 $f_\varepsilon \to f$ 是一致收敛的：
 
-设 $\rho\in C_c^\infty(\mathbb{R}^d)$, $\rho\ge0$, $\int \rho=1$, $\mathrm{supp}\,\rho\subset \overline{B_1(0)}$。令
+由于 $f\in C_c(\mathbb{R}^d)$ 有界。设
+$$\|f\|_\infty:=\sup_{x\in\mathbb{R}^d}|f(x)|<\infty.$$
+（这是因为 $\operatorname{supp} f$ 紧且 $f$ 在紧集上连续，故取得最大值；在支集外 $f=0$。）
+
+于是对任意 $h\in\mathbb{R}^d$ 与任意 $x$,
+$$|f(x+h)-f(x)|\le |f(x+h)|+|f(x)|\le 2\|f\|_\infty.$$
+对 $x$ 取上确界得到
+$$\|f(\cdot+h)-f(\cdot)\|_\infty\le 2\|f\|_\infty.$$
+再对所有 $|h|\le r$ 取上确界，便有
+$$\omega_f(r):=\sup_{|h|\le r}\|f(\cdot+h)-f(\cdot)\|_\infty\le 2\|f\|_\infty <\infty.$$
+
+设 $\rho\in C_c^\infty(\mathbb{R}^d)$，$\rho\ge0$，$\int \rho=1$，$\mathrm{supp}\,\rho\subset \overline{B_1(0)}$。令
 $$
-\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon),\qquad
+\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon),\quad
 f_\varepsilon=f*\rho_\varepsilon.
 $$
-对任意 $x\in\mathbb{R}^d$，
+对任意 $x\in\R^d$，
 $$
 f_\varepsilon(x)-f(x)
 =\int_{\mathbb{R}^d}\rho_\varepsilon(y)\bigl(f(x-y)-f(x)\bigr)\,dy.
@@ -1039,41 +1051,213 @@ $$
 $$
 |f_\varepsilon(x)-f(x)|
 \le \int \rho_\varepsilon(y)\,\sup_{|y|\le \varepsilon}|f(x-y)-f(x)|\,dy
-\le \sup_{|h|\le \varepsilon}\sup_{x\in\mathbb{R}^d}|f(x+h)-f(x)|.
+\le \omega_f(\varepsilon).
 $$
-记
-$$
-\omega_f(r):=\sup_{|h|\le r}\,\|f(\cdot+h)-f(\cdot)\|_\infty,
-$$
-则上式给出
-$$
-\|f_\varepsilon-f\|_\infty \le \omega_f(\varepsilon).
-$$
-由于 $f\in C_c(\mathbb{R}^d)$ 连续且支撑紧，$f$ 在 $\mathbb{R}^d$ 上一致连续（Heine–Cantor：在紧集上一致连续；紧支撑外 $f\equiv0$ 更无问题），故 $\omega_f(r)\to0$ 当 $r\to0$。于是
+
+
+由于 $f\in C_c(\mathbb{R}^d)$ 连续且支撑紧，$f$ 在 $\mathbb{R}^d$ 上一致连续，故 $\omega_f(r)\to0$ 当 $r\to0$。于是
 $$
 \|f_\varepsilon-f\|_\infty \xrightarrow[\varepsilon\to0]{} 0,
 $$
 这正是一致收敛。
-
-（顺便一提）因为 $\rho$ 有紧支撑，$\mathrm{supp}\,f_\varepsilon\subset \mathrm{supp}\,f+\overline{B_\varepsilon(0)}$ 仍为紧集，所以 $f_\varepsilon\in C_c^\infty(\mathbb{R}^d)$。
 :::
 
+:::{.theorem}
+当 $\S=\R$ 时，$\mu_n\to_w\mu$ 当且仅当
+$$F_n(t)=\mu_n((-\infty, t])\to \mu((-\infty, t]) = F(t),\quad \forall t, \text{ $F$ continous at $t$}.$$
+:::
 
-# 23.2 Prokhorov's Compactness Theorem
+证明：$\Rightarrow$ 由 Portmanteau 定理即得。
+
+$\Leftarrow$：设 $f\in C_c(\R)$ 是具有紧支集的连续函数，则 $f$ 也是一致连续的。
+
+设 $\pi= \{x_0<x_1<\cdots< x_k\}$ 是 $\supp f$ 的一个划分，满足：
+
+1. $x_j$ 都是 $F$ 的连续点；
+2. $|x_j-x_{j+1}|\leq \epsilon$；
+3. $|f(x_j)-f(x_{j+1})|\leq\delta$。
+
+则 $f_\pi = \sum_{j=1}^k \ind_{(x_{j-1},x_j]}$ 满足 $\|f_\pi - f\|_\infty < \epsilon$。
+于是
+$$\left|\int (f-f_\pi)\,\mathrm{d}\mu_n\right| \leq \epsilon.$$
+$$\left|\int (f-f_\pi)\,\mathrm{d}\mu\right| \leq \epsilon.$$
+$$\left|\int f_\pi\,\mathrm{d}\mu - \int f_\pi\du \right|\le \epsilon \sum_{j=1}^k|F_n(x_j) - F(x_j)|\xrightarrow{x\to\infty}0.$$
+
+
+# ✅ 23.1 Vague Convergence
+
+回忆弱收敛是指，一族概率测度 $\{\mu_n\}$ 收敛到一个概率测度 $\mu$。如果这些测度都是 $\R^d$ 上的，那么这等价于用连续有界函数 $C_b(\R^d)$，或者连续紧支集函数 $C_c(\R^d)$，甚至光滑紧支集函数 $C_c^\infty(\R^d)$ 的积分检查的收敛。
+
+如果我们不要求 $\mu_n,\mu$ 是概率测度呢？只要求它们是 Borel 测度呢？
+
+:::{.definition}
+设 $\mu_n,\mu$ 是 $\R^d,\B(\R^d)$ 上的 Borel 测度。如果对任何 $f\in C_c(\R^d)$ 有
+$$\int f\dun \to \int f\du.$$
+就称 $\mu_n$ vaguely 收敛到 $\mu$。记作 $\mu_n\to_v\mu$。
+:::
+
+:::{.definition}
+设 $\S$ 是一个拓扑空间。其上的一族概率测度 $\Lambda$ 称作是 tight 的，如果对任意 $\epsilon>0$，都存在紧集 $K_\epsilon$ 使得 $\mu_(K^c)<\epsilon$ 对任何 $\mu\in\Lambda$ 成立。
+:::
+
+:::{.theorem}
+设 $\{\mu_n\}$ 是 $(\R^d,\B(\R^d))$ 上的概率测度，且 $\mu_n\to_v \mu$。则 $\mu$ 是概率测度当且仅当 $\{\mu_n\}$ 是 tight 的。这时 $\mu_n\to_w\mu$。
+:::
+
+**证明**：
+
+$\Rightarrow$：如果 $\mu$ 是概率测度，则在 22.2 的引理中我们证明了
+$$\lim_{R\uparrow\infty}\inf_n\mu_n(\overline B_R) = 1.$$
+由此即得结论。
+
+$\Leftarrow$：给定 $\epsilon > 0$。取紧集 $K_\epsilon$ 使得 $\mu_n(K_\epsilon)\ge1-\epsilon$。再取具有紧支集的 $f\in C_c(\R^d)$ 满足 $1_{K_\epsilon}\le f\le 1$。则
+$$\mu(\R^d)=\int 1\du\ge \int f\du=\lim_{n\to\infty}\int f\dun\ge\varliminf_{n\to\infty}\int 1_{K_\epsilon}\dun=\varliminf_{n\to\infty}\mu_n(K_\epsilon)\ge 1-\epsilon.$$
+由 $\epsilon$ 任意性可得 $\mu(\R^d)\ge1$。
+
+另一方面，如果 $\mu(\R^d) > 1$ 的话，则我们可以取紧集 $K=\overline B_R$ 满足 $\mu(K)>1$。仍然取 $f\in C_c(\R^d)$ 满足 $1 \ge f \ge \ind_K$，则
+$$1=\mu_n(\R^d)=\int 1\dun \ge\int f\dun \to \int f\du \ge \mu(K)>1.$$
+矛盾！$\blacksquare$
+
+# ✅ 23.2 Prokhorov's Compactness Theorem
 
 :::{.theorem}
 **Prokhorov 紧性定理** 设 $\S$ 是可分度量空间，$\{\mu_n\}$ 是 $(\S,\B(\S))$ 上的概率测度，则 $\{\mu_n\}$ 有 vaguely 收敛的子序列。
 :::
 
+**证明**：将有理数 $\mathbb Q$ 排列为 $\mathbb{Q}=\{q_1,q_2,\ldots\}$，并记 $F_n=F_{\mu_n}$。
+
++ $\{F_n(q_1)\}_{n=1}^\infty$ 是 $[0,1]$ 中的有界序列，所以存在收敛子序列 $\{F_{m_1(k)}(q_1)\}_{k=1}^\infty$。
++ $\{F_{m_1(k)}(q_2)\}_{k=1}^\infty$ 是 $[0,1]$ 中的有界序列，所以存在收敛子序列 $\{F_{m_2(k)}(q_2)\}_{k=1}^\infty$。
++ ...
+
+这样我们会得到一串子序列 $\{m_j(k)\}$ 使得 $m_j(\cdot)$ 是 $m_{j-1}(\cdot)$ 的子序列；并且
+$$F_{m_j(k)}(q_j)\to G(q_j).$$
+于是 $F_{m_k(k)}(q) \to G(q)$ 对所有 $q\in\mathbb Q$ 成立。
+
+现在的 $G$ 只在 $\mathbb Q$ 上有定义。我们想把它变成一个 $\R$ 上的分布函数。令
+
+$$F(x) = \inf\,\{G(q)\mid q\in\mathbb{Q},\ q > x\}.$$
+显然 $F$ 是递增的。我们来说明 $F$ 也是右连续的：设 $x_n\downarrow x$，则
+$$\begin{aligned}
+\lim_{n\to\infty}F(x_n)&=\inf F(x_n)=\inf_n\inf\,\{G(q)\mid q\in\mathbb{Q},\ q > x_n\}\\&=\inf\,\{G(q)\mid q\in\mathbb{Q}> \text{ some }x_n\}\\
+&=\inf\,\{G(q)\mid q\in\mathbb{Q}> x\}\\
+&=F(x).
+\end{aligned}.$$
+所以 $F$ 确实是右连续的。
+
+:::{.note}
+我们使用了 $\inf_n \inf S_n = \inf(\cup_{n=1}^\infty S_n)$ 对任何集合族 $\{S_n\}$ 成立这一事实。
+:::
+
+此外还有
+$$\lim_{x\to -\infty} F(x) = \inf\{G(q)\}\geq 0,\quad \lim_{x\to \infty} F(x) = \sup\{G(q)\}\leq 1.$$
+所以 $F$ 是一个次分布函数。它给出一个有限 Borel 测度。
+
+要证明 $\mu_{n_k}\to_v\mu$，只要证明对任何 $F$ 的连续点 $x$ 有
+$$F_{n_k}(x)\to F(x).$$
+即可。设有理数序列 $q_j\uparrow x,r_j\downarrow x$。由于 $F_{n_k}$ 都是递增的，所以
+$$F_{n_k}(q_j)\le F_{n_k}(x) \le F_{n_k}(r_j),\quad \forall k, j.$$
+令 $k\to\infty$ 可得
+$$G(q_j)\leq \varliminf_k F_{n_k}(x)\le \varlimsup_k F_{n_k}(x)\le G(r_j).$$
+从而
+$$\sup_j G(q_j)\leq \varliminf_k F_{n_k}(x)\le \varlimsup_k F_{n_k}(x)\le \inf_j G(r_j).$$
+一方面右边 $\inf_{r>x}G(r)=F(x)$。
+
+另一方面，对任意 $q < y < x$，由
+$$G(q)\leq \inf_{s > y} G(s) = F(y).$$
+对所有 $q<y$ 取上确界，再对所有 $y<x$ 取上确界，得
+$$\sup_{q<x}G(q) = \sup_{y<x}\sup_{q<y}G(q)\le \sup_{y<x}F(y) = F(x-).$$
+由于 $x$ 是连续点可得 $F(x)= \sup_{q<x}G(q)=\sup_j G(q_j)$。
+于是 $F(x) = \varliminf_k F_{n_k}(x)= \varlimsup_k F_{n_k}(x)$。
+
+先对 $\varphi\in C_c^1(\mathbb R)$。记 $K=\operatorname{supp}\varphi$ 紧。对每个 $k$,
+$$\int \varphi\,\mathrm{d}\mu_{n_k}
+=\int_{(-\infty,\infty)} \varphi\,\mathrm{d}F_{n_k}
+=\Big[\varphi(x)F_{n_k}(x)\Big]_{-\infty}^{+\infty}
+-\int F_{n_k}(x)\varphi'(x)\dx
+= -\int_K F_{n_k}(x)\varphi'(x)\dx.$$
+同理
+$$\int \varphi\,\du= -\int_K F(x)\varphi'(x)\dx.$$
+我们有 $F_{n_k}(x)\to F(x)$ 对 $x$ **几乎处处**成立，且 $0\le F_{n_k}\le 1$。支配收敛给出
+$$\int\varphi\,\mathrm{d}\mu_{n_k}\to-\int_K F(x)\varphi'(x)\dx=\int \varphi\du.$$
+
+再用 $C_c^1$ 在 $C_c$ 上的一致稠密性：给定任意 $\psi\in C_c(\mathbb R)$ 与 $\epsilon>0$，可取 $\varphi\in C_c^1$ 使 $\|\psi-\varphi\|_\infty<\epsilon$。因为 $\mu_{n_k},\mu$ 都是有限测度，
+$$\left|\int \psi\,\mathrm d\mu_{n_k}-\int \psi\du\right|
+\le \left|\int \varphi\,\mathrm{d}\mu_{n_k}-\int \varphi\du\right|
++ \epsilon\cdot(\mu_{n_k}(\mathbb R)+\mu(\mathbb R))
+  \le \left|\int \varphi\,\mathrm{d}\mu_{n_k}-\int \varphi\du\right|+2\epsilon.$$
+令 $k\to\infty$ 后，再令 $\epsilon\downarrow0$ 即得 $\mu_{n_k}\to_v\mu$。
+
 :::{.corollary}
 如果 $\{\mu_n\}$ 还是 tight 的，则存在弱收敛的子序列，其弱收敛的极限是一个概率测度 $\mu$。
 :::
 
+
+
 # 23.3 Skorohod's Theorem
 
+:::{.theorem}
+设 $\S$ 是可分度量空间，$\mu_n,\mu$ 都是 $(\S,\B(\S))$ 上的概率测度，如果 $\mu_n\to_w\mu$，则存在概率空间 $(\Omega,\F,\P)$ 和随机变量 $Y_n,Y: \Omega\to\S$ 满足：
+
+1. $Y_n,Y$ 的分布分别是 $\mu_n,\mu$。
+2. $Y_n\to Y\ \ae$。
+:::
+
+我们只在 $\S=\R$ 的情形证明这个结论。
+
+**Inverting the CDF**
+
+设 $F:\R\to [0,1]$ 是一个分布函数。$F$ 未必是单射。我们来试着定义 $F$ 的逆 $F^\leftarrow$。这里的问题在于 $F$ 的平坦处（即 $F$ 在区间 $(a,b)$ 上是常数），$F^{-1}$ 是没有定义的。这时我们一律规定取区间的左端点 $a$ 作为 $F^{-1}$：
+
+$$F^\leftarrow(x)= \sup\{y\in\R\mid F(y)<x\}.$$
+
+直观上，就是取高度为 $x$ 的水平横线与 $F$ 的图像的第一个交点的横坐标。
+
+$F^\leftarrow$ 满足：
+
+$$F^{\leftarrow}(u)\le t\Longleftrightarrow  F(t)\ge u.$$
+
+几何上这很显然：$F(t)\ge u$ 说明在 $t$ 处，$F$ 的图像已经和高度为 $u$ 的水平线相交了，即交点横坐标必然在 $t$ 或者 $t$ 的左侧，即 $F^\leftarrow\le t$。
+
+:::{.lemma}
+取 $Y = F^\leftarrow$，则 $Y$ 的分布函数就是 $F$。
+:::
+
+证明：
+$$\begin{aligned}
+\P(Y\le t)&=\lambda(\{x\in(0,1): Y(x)\le t\})\\
+&=\lambda(\{x\in(0,1): x\le F(t)\})\\
+&=\lambda((0, F(t)])\\
+&=F(t).
+\end{aligned}
+$$
+
+回到 Skorohod 定理的证明。我们取 $(\Omega,\F,\P)=((0,1),\B(0,1),\lambda)$。$Y_n=F_n^\leftarrow$。$Y=F^\leftarrow$。这样就解决了“存在随机变量的分布恰好是 $\mu_n$ 和 $\mu$” 这一步。我们再来证明 $Y_n$ 几乎处处收敛到 $Y$。
+
+记
+$$E = \{t\in(0,1)\mid F^\leftarrow(t) < F^\to(t)\}.$$
+即 $E$ 是 $F$ 的图像中的那些“平坦”对应的高度值。则 $E$ 是可数集。
+我们要证明 $Y_n(x)\to Y(x)$ 对任何 $x\notin E$ 成立。
+
+任取 $F$ 的连续点 $y$。
+
++ 如果 $y<Y(x)$，则弱收敛给出 $F_n(y)\to F(y)$。由于
+$$y<Y(x) = \sup\{u\mid F(u) < x\}.$$
+所以 $F(y)<x$。从而 $F_n(y)<x$ 对充分大的 $n$ 成立。但这说明对这些充分大的 $n$ 也有
+$$Y_n(x) = \sup\{y\mid F_n(y) < x\}\ge y.$$
+上式对所有 $F$ 的连续点 $y<Y(x)$ 成立，从而可选一列 $F$ 的连续点 $y_j\uparrow Y(x)$ 使得
+$$y_j\le Y_n(x).$$
+于是
+$$\varliminf_n Y_n(x)\ge \sup_j y_j = Y(x).$$
+
++ 如果 $y > Y(x)$。由于 $x\notin E$，$Y(x)=F^\to(x)=\inf\{u\in\R\mid F(u)>x\}$。
+可以重复上面的证明得到 
+$$\varlimsup_n Y_n(x)\le Y(x).$$
+
+从而得到 $\lim_n Y_n(x)=Y(x)$。
 
 
-# 24.1 Complex Integration and Dynkin's Theorem
+# ✅ 24.1 Complex Integration and Dynkin's Theorem
 
 这一节将 Dynkin 函数系引理推广到了复可测的函数上。
 
