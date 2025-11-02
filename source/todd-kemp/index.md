@@ -1194,7 +1194,7 @@ $$\left|\int \psi\,\mathrm d\mu_{n_k}-\int \psi\du\right|
 
 
 
-# 23.3 Skorohod's Theorem
+# ✅ 23.3 Skorohod's Theorem
 
 :::{.theorem}
 设 $\S$ 是可分度量空间，$\mu_n,\mu$ 都是 $(\S,\B(\S))$ 上的概率测度，如果 $\mu_n\to_w\mu$，则存在概率空间 $(\Omega,\F,\P)$ 和随机变量 $Y_n,Y: \Omega\to\S$ 满足：
@@ -1239,22 +1239,20 @@ $$E = \{t\in(0,1)\mid F^\leftarrow(t) < F^\to(t)\}.$$
 即 $E$ 是 $F$ 的图像中的那些“平坦”对应的高度值。则 $E$ 是可数集。
 我们要证明 $Y_n(x)\to Y(x)$ 对任何 $x\notin E$ 成立。
 
-任取 $F$ 的连续点 $y$。
 
-+ 如果 $y<Y(x)$，则弱收敛给出 $F_n(y)\to F(y)$。由于
-$$y<Y(x) = \sup\{u\mid F(u) < x\}.$$
-所以 $F(y)<x$。从而 $F_n(y)<x$ 对充分大的 $n$ 成立。但这说明对这些充分大的 $n$ 也有
-$$Y_n(x) = \sup\{y\mid F_n(y) < x\}\ge y.$$
-上式对所有 $F$ 的连续点 $y<Y(x)$ 成立，从而可选一列 $F$ 的连续点 $y_j\uparrow Y(x)$ 使得
-$$y_j\le Y_n(x).$$
++ 取一列 $F$ 的连续点 $y_j\uparrow Y(x)$。弱收敛给出 $F_n(y_j)\to F(y_j)$ 对每个 $j$ 成立。由于
+$$y_j<Y(x) = \sup\{u\mid F(u) < x\}.$$
+所以 $F(y_j)<x$。从而 $F_n(y_j)<x$ 对充分大的 $n$ 成立。但这说明对这些充分大的 $n$ 也有
+$$Y_n(x) = \sup\{y\mid F_n(y) < x\}\ge y_j.$$
 于是
 $$\varliminf_n Y_n(x)\ge \sup_j y_j = Y(x).$$
 
-+ 如果 $y > Y(x)$。由于 $x\notin E$，$Y(x)=F^\to(x)=\inf\{u\in\R\mid F(u)>x\}$。
-可以重复上面的证明得到 
-$$\varlimsup_n Y_n(x)\le Y(x).$$
-
-从而得到 $\lim_n Y_n(x)=Y(x)$。
++ 取一列 $F$ 的连续点 $y_j\downarrow Y(x)$。弱收敛给出 $F_n(y_j)\to F(y_j)$ 对每个 $j$ 成立。由于 $x\in E$，所以
+$$y_j>Y(x) = Y^\leftarrow(x) = Y^\to(x) = \inf\{u\mid F(u)>x\}.$$
+所以 $F(y_j)>x$。从而 $F_n(y_j)>x$ 对充分大的 $n$ 成立。但这说明对这些充分大的 $n$ 也有
+$$Y_n(x) = \sup\{y\mid F_n(y) < x\}\le y_j.$$
+于是
+$$\varlimsup_n Y_n(x)\le \inf_j y_j = Y(x).$$
 
 
 # ✅ 24.1 Complex Integration and Dynkin's Theorem
