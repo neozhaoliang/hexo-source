@@ -244,8 +244,7 @@ $$X^{-1}\left((-\infty, t_1], (-\infty, t_2],\ldots, (-\infty, t_n]\right)=\bigc
 是可测的，这显然。$\blacksquare$
 
 
-
-# 7.1 Robustness of Measurability
+# ✅ 7.1 Robustness of Measurability
 
 本讲主要介绍了可测函数集合在通常的运算，以及取极限的操作下得到的仍然是可测函数。
 
@@ -262,35 +261,95 @@ $$Y=f(X).$$
 
 **证明**：
 
-我们先来说明有 $\sigma(X_1,X_2,\ldots)=X^{-1}(\B(\R^I))$。这是因为对任意柱集 $C=\prod B_i$ （仅有有限多个 $B_i\ne\R$），有
-$$X^{-1}(C)=\bigcap_{i:\,B_i\ne\R} X_i^{-1}(B_i)\in\sigma(X_i:\, i\in I).$$
-因此 $X^{-1}(\mathcal{C})\subset \sigma(X_1,\ldots)$。而柱集生成 $\B(\R^I)$，故
-$$X^{-1}(\B(\R^I))\subset \sigma(X_1,\ldots).$$
-另一方面，每个 $X_i^{-1}(B) = X^{-1}(\pi_i^{-1}(B))$，故 $\sigma(X_i)\subset X^{-1}(\B(\R^I))$。
-
-由于 $Y$ 关于 $\sigma(X_1,X_2,\ldots)$ 可测，所以对任何 Borel $B\subset\R$，存在 $A\subset\B(\R^I)$ 使得
-$$Y^{-1}(B) = X^{-1}(A).$$
-
-特别地，对每个有理数 $q$，存在 $A_q\in\B(\R^I)$ 使得
-$$Y^{-1}((-\infty, q])=\{Y\le q\} = X^{-1}(A_q).$$
-显然 $q\le r$ 时有 $A_q\subset A_r$。
-
-定义 $f:\R^I\to\overline{R}$ 为
-$$f(x) = \inf\{q\in\mathbb{Q}\mid s\in A_q\}.$$
-由于 $\{f\le t\} = \bigcap_{r\in\mathbb{Q}\ r>t} A_r$
-故 $f$ 为 Borel 可测。
-
-并且
-$$Y\le q\Leftrightarrow \omega\in X^{-1}(A_q)\Leftrightarrow X(\omega)\in A_q\Leftrightarrow f(X(\omega))\le q.$$
-于是对所有 $q\in\mathbb{Q}$ 有
-$$Y(\omega)\le q \Leftrightarrow f(X(\omega))\le q.$$
-
-:::{.note}
-若 $s\in{f\le t}$，则 $\inf S\le t$，其中 $S:={q\in\mathbb Q:s\in A_q}$。对任意 $r>t$（有理），因 $\inf S<r$，存在 $q\in S$ 使 $q<r$。由单调性 $A_q\subset A_r$ 得 $s\in A_r$。于是 $s$ 落入所有 $r>t$ 的 $A_r$，即 $s\in\bigcap_{r>t,,r\in\mathbb Q}A_r$。
-
-反过来，若 $s\in\bigcap_{r>t,,r\in\mathbb Q}A_r$，则对每个有理 $r>t$ 都有 $s\in A_r$，也就是所有 $r>t$ 的有理数都属于集合 $S$。因此 $\inf S\le t$，即 $f(s)\le t$。两向合起来就得到所需等式。
+:::{.lemma}
+设 $T:\Omega\to\Omega'$ 为函数，$(\Omega,\mathcal F)$ 与 $(\Omega',\mathcal A')$ 为可测空间。函数 $f:\Omega\to[0,1]$ 关于 $\sigma(T)$ 可测，当且仅当存在 $\mathcal A'$ 可测的 $g:\Omega'\to[0,1]$ 使得
+$$f=g\circ T.$$
 :::
 
+证明：由 $\sigma(T)$ 的定义，对任意 $A\in\sigma(T)$ 都存在 $A'\in\mathcal A'$ 使
+$$A=T^{-1}(A').$$
+
+**Step 1 示性函数**
+
+若 $f=\ind_A$ 且 $A\in\sigma(T)$，取 $A'\in\mathcal A'$ 使 $A=T^{-1}(A')$，令 $g=\ind_{A'}:\Omega'\to[0,1]$，则 $g$ 可测且
+$$g\circ T=\ind_{A'}\circ T=\ind_{T^{-1}(A')}=\ind_A=f.$$
+
+**Step 2 简单函数**
+
+若 $f=\sum_{k=1}^m a_k\ind_{A_k}$，其中 $a_k\in[0,1]$、$A_k\in\sigma(T)$。对每个 $k$ 取 $A_k'\in\mathcal A'$ 满足 $A_k=T^{-1}(A_k')$，并令
+$$g:=\sum_{k=1}^m a_k\ind_{A_k'}:\Omega'\to[0,1].$$
+则 $g$ 可测且 $g\circ T=f$。
+
+**Step 3 一般可测函数**
+
+取单调递增的简单函数列 $f_n\uparrow f$。由第二步，对每个 $n$ 存在可测 $g_n:\Omega'\to[0,1]$ 使 $f_n=g_n\circ T$。定义
+$$g(x):=\sup_{n\ge1} g_n(x),\qquad x\in\Omega'.$$
+对任意 $\omega\in\Omega$，
+$$g\bigl(T(\omega)\bigr)=\sup_n g_n\bigl(T(\omega)\bigr)=\sup_n f_n(\omega)=f(\omega).
+$$
+于是 $f=g\circ T$。
+
+**从 $[0,1]$ 推广到 $\mathbb R$**
+
+取一个 Borel 同构 $\phi:\mathbb R\to(0,1)$（例如 $\phi(t)=\tfrac1\pi\arctan t+\tfrac12$）。若 $Y:\Omega\to\mathbb R$ 关于 $\sigma(T)$ 可测，则 $\phi\circ Y:\Omega\to(0,1)$ 亦可测。由引理存在可测 $g:\Omega'\to[0,1]$ 使
+$$\phi\circ Y=g\circ T.$$
+令
+$$f:=\phi^{-1}\circ g:\Omega'\to\R.$$
+则 $f$ Borel 可测且 $Y=f\circ T$。
+
+**应用于 Doob–Dynkin（$\R^d$ 与 $\R^\infty$）**
+
+取指标集 $I=\{1,\dots,d\}$（有限维）或 $I=\mathbb{Z}^+$。给定可测 $X_i:(\Omega,\F)\to(\R,\B(\R))$，定义
+$$X:=(X_i)_{i\in I}:\Omega\to\mathbb R^{I}.$$
+在 $\mathbb R^{I}$ 上取乘积拓扑的 Borel $\sigma$-代数 $\mathcal B(\mathbb R^{I})$。则有
+$$
+\sigma(X_1,X_2,\dots)=X^{-1}(\mathcal B(\mathbb R^{I})).
+$$
+若 $Y:\Omega\to\mathbb R$ 关于 $\sigma(X_1,X_2,\dots)$ 可测，取 $T=X$、$\Omega'=\mathbb R^{I}$、$\mathcal A'=\mathcal B(\mathbb R^{I})$，由上节得到 Borel 可测 $f:\mathbb R^{I}\to\mathbb R$ 使
+$$
+Y=f\bigl(X_1,X_2,\dots\bigr).
+$$
+上述论证对有限 $I$ 与可数 $I$ 完全一致。
+
+:::{.note}
+令 $X(\omega)=(X_i(\omega))_{i\in I}$，我们要证
+$$
+\sigma(X_1,X_2,\ldots)=X^{-1}\bigl(\mathcal B(\mathbb R^{I})\bigr).
+\tag{$\ast$}
+$$
+
+设 $\mathcal C$ 为所有柱集的族。利用原像保持 $\sigma$-运算的事实，
+$$X^{-1}\bigl(\sigma(\mathcal C)\bigr)=\sigma\bigl(X^{-1}(\mathcal C)\bigr).$$
+但对任意柱集
+$$
+C=\prod_{i\in I}B_i\quad(\text{仅有限多 }B_i\neq\mathbb R)$$
+都有
+$$X^{-1}(C)=\bigcap_{i:\,B_i\neq\mathbb R} X_i^{-1}(B_i)\in \sigma(X_i:i\in I).$$
+于是
+$$
+X^{-1}\bigl(\mathcal B(\mathbb R^{I})\bigr)
+= X^{-1}\bigl(\sigma(\mathcal C)\bigr)
+= \sigma\bigl(X^{-1}(\mathcal C)\bigr)
+\subset \sigma(X_i:i\in I).
+$$
+另一方面
+$$
+\pi_i:\mathbb R^{I}\to\mathbb R,\qquad \pi_i\bigl((s_j)_{j\in I}\bigr)=s_i,
+$$
+为坐标投影。它是**连续**的。因此对任意 $B\in\mathcal B(\mathbb R)$，有
+$$
+\pi_i^{-1}(B)\in\mathcal B(\mathbb R^{I}).
+$$
+另一方面，
+$$
+X_i=\pi_i\circ X \quad\Rightarrow\quad
+X_i^{-1}(B)=X^{-1}\bigl(\pi_i^{-1}(B)\bigr)\in X^{-1}\bigl(\mathcal B(\mathbb R^{I})\bigr).
+$$
+这对所有 $i$、所有 $B\in\mathcal B(\mathbb R)$ 都成立，于是由生成性得
+$$
+\sigma(X_i:i\in I)\subset X^{-1}\bigl(\mathcal B(\mathbb R^{I})\bigr).
+$$
+:::
 
 # ✅ 7.2 Riemann-Stieltjes Integration
 
@@ -537,7 +596,7 @@ $$\psi_n(t)=\begin{cases}0,& t\le a\\
 n(t-a), & a < t < a+1/n\\
 1, & t\geq a+1/n
 \end{cases}$$
-故 
+故
 $$\psi_n(f)\uparrow \ind_{\{f > a\}}.$$
 
 由于 $\psi_n$ 在紧集 $[-M,M]$ 上连续，由 Weierstrass 逼近定理，存在多项式 $p_{n,k}$ 使得
