@@ -206,7 +206,7 @@ Radon 测度是指对任何紧集 $K$ 有 $\mu(K)<\infty$ 的测度。这种测�
 
 
 
-# 6.1 Random Variables Motivation
+# ✅ 6.1 Random Variables Motivation
 
 本节介绍了随机变量，分布函数的概念。样本空间 $\Omega$ (modelling space) 是难以接触到的，我们对其的观测是通过随机变量来进行的。
 
@@ -214,7 +214,7 @@ Radon 测度是指对任何紧集 $K$ 有 $\mu(K)<\infty$ 的测度。这种测�
 
 
 
-# 6.2 Measurable Functions
+# ✅ 6.2 Measurable Functions
 
 本讲介绍了测度空间上可测映射的概念。
 
@@ -252,34 +252,55 @@ $$X^{-1}\left((-\infty, t_1], (-\infty, t_2],\ldots, (-\infty, t_n]\right)=\bigc
 下面这个结论在整个课程中都会频繁用到：
 
 :::{.theorem}
-**Doob-Dynkin 分解** 设 $X_1,\ldots,X_d$ 和 $Y$ 都是 $(\O,\F)\to(\R,\B(\R))$ 的可测函数，而且 $Y$ 还关于 $\sigma(X_1,\ldots,X_d)$ 可测，则存在 Borel 可测函数 $f:\R^d\to\R$ 使得
-$$Y=f(X_1,\ldots,X_d).$$
+**Doob-Dynkin 分解** 设有限或者可数指标集 $I=\{1,\ldots,d\}$ 或者 $I=\mathbb{Z}^+$。
+$$X(\omega)=(X_i(\omega))_{i\in I}\in \R^I.$$
+其中每个 $X_i:(\Omega,\F)\to(\R, \B(\R))$ 都是可测函数。
+
+设 $Y:(\Omega,\F)\to(\R,\B(\R))$ 且 $Y$ 关于 $\sigma(X_1,\ldots,X_i,\ldots)$ 可测。则存在 Borel 可测函数 $(\R^I,\B(\R^I))\to\R$ 使得
+$$Y=f(X).$$
 :::
 
-**证明**：记 $X=(X_1,\ldots,X_d)$，则 $X:\O\to\R^d$ 是 $\F/\B(\R^d)$ 可测的。
+**证明**：
 
-我们先来说明有 $\sigma(X_1,\ldots,X_n)=X^{-1}(\B(\R^d))$ 成立。这个基本就是把之前 6.2 讲的推论证了一遍。为方便记
-$$I^d=\{(-\infty,t_1]\times\cdots\times(-\infty, t_d],\ t_i\in\R\text{ or }t_i=+\infty\}.$$ 首先 $\B(\R^d)$ 在 $X^{-1}$ 下的 pull back $X^{-1}(\B(\R^d))$ 是一个 $\sigma$- 域，而且包含 $X^{-1}(I^d)$，所以包含任何形如 $\{X_i\leq t_i\}$ 的集合，从而包含所有的 $\sigma(X_i)$，即包含 $\sigma(X_1,\ldots,X_n)$。
+我们先来说明有 $\sigma(X_1,X_2,\ldots)=X^{-1}(\B(\R^I))$。这是因为对任意柱集 $C=\prod B_i$ （仅有有限多个 $B_i\ne\R$），有
+$$X^{-1}(C)=\bigcap_{i:\,B_i\ne\R} X_i^{-1}(B_i)\in\sigma(X_i:\, i\in I).$$
+因此 $X^{-1}(\mathcal{C})\subset \sigma(X_1,\ldots)$。而柱集生成 $\B(\R^I)$，故
+$$X^{-1}(\B(\R^I))\subset \sigma(X_1,\ldots).$$
+另一方面，每个 $X_i^{-1}(B) = X^{-1}(\pi_i^{-1}(B))$，故 $\sigma(X_i)\subset X^{-1}(\B(\R^I))$。
 
-另一方面 $\sigma(X_1,\ldots,X_n)$ 在 $X$ 下的 push forward $X(\sigma(X_1,\ldots,X_n))$ 也是一个 $\sigma$- 域，并且包含 $I^d$，所以也就包含 $\B(\R^d)$。
+由于 $Y$ 关于 $\sigma(X_1,X_2,\ldots)$ 可测，所以对任何 Borel $B\subset\R$，存在 $A\subset\B(\R^I)$ 使得
+$$Y^{-1}(B) = X^{-1}(A).$$
 
-回到定理证明。我们首先对 $Y=\ind_{A},\,A\in\sigma(X_1,\ldots,X_n)$ 是指标函数的情形证明。由于 $\sigma(X_1,\ldots,X_n)=X^{-1}(\B(\R^d))$，所以存在 $B\in\B(\R^d)$ 使得 $A=X^{-1}(B)$。于是
-$$\ind_{A}=\ind_{X^{-1}(B)} = \ind_{B}\circ X.$$
-$\ind_B$ 当然是 $\B(\R^d)/\B$ 可测函数，所以结论成立。
+特别地，对每个有理数 $q$，存在 $A_q\in\B(\R^I)$ 使得
+$$Y^{-1}((-\infty, q])=\{Y\le q\} = X^{-1}(A_q).$$
+显然 $q\le r$ 时有 $A_q\subset A_r$。
 
-由此很容易得出结论对任意简单函数都成立。
+定义 $f:\R^I\to\overline{R}$ 为
+$$f(x) = \inf\{q\in\mathbb{Q}\mid s\in A_q\}.$$
+由于 $\{f\le t\} = \bigcap_{r\in\mathbb{Q}\ r>t} A_r$
+故 $f$ 为 Borel 可测。
 
-对一般的可测函数 $Y\in\sigma(X_1,\ldots,X_d)$，取简单函数列 $\phi_n\to Y,\,\phi_n\in\sigma(X_1,\ldots,X_d)$。根据上面的结论，存在可测函数 $f_n:\R^d\to\R$ 使得 $\phi_n=f_n(X)$。记 $f=\varlimsup f_n$，则有
-$$f(X)=\varlimsup f_n(X)=\varlimsup \phi_n = \lim\phi_n = Y.$$
-结论得证。$\blacksquare$
+并且
+$$Y\le q\Leftrightarrow \omega\in X^{-1}(A_q)\Leftrightarrow X(\omega)\in A_q\Leftrightarrow f(X(\omega))\le q.$$
+于是对所有 $q\in\mathbb{Q}$ 有
+$$Y(\omega)\le q \Leftrightarrow f(X(\omega))\le q.$$
+
+:::{.note}
+若 $s\in{f\le t}$，则 $\inf S\le t$，其中 $S:={q\in\mathbb Q:s\in A_q}$。对任意 $r>t$（有理），因 $\inf S<r$，存在 $q\in S$ 使 $q<r$。由单调性 $A_q\subset A_r$ 得 $s\in A_r$。于是 $s$ 落入所有 $r>t$ 的 $A_r$，即 $s\in\bigcap_{r>t,,r\in\mathbb Q}A_r$。
+
+反过来，若 $s\in\bigcap_{r>t,,r\in\mathbb Q}A_r$，则对每个有理 $r>t$ 都有 $s\in A_r$，也就是所有 $r>t$ 的有理数都属于集合 $S$。因此 $\inf S\le t$，即 $f(s)\le t$。两向合起来就得到所需等式。
+:::
 
 
 # ✅ 7.2 Riemann-Stieltjes Integration
 
 无要点。
 
+# ✅ 8.1 Simple Integeration
 
-# 8.2 Monotone convergence theorem
+无要点
+
+# ✅ 8.2 Monotone convergence theorem
 
 本讲给出了**非负可测函数积分**的定义：设 $f\in L^+$ 为非负可测函数，其积分定义为
 $$\int f\du = \sup\left\{\int\varphi\du:\ \varphi\leq f,\ \varphi \text{ simple and measuable}\right\}.$$
@@ -365,7 +386,7 @@ $$\varlimsup\int f_n\du \leq \int f\du \leq \varliminf\int f_n\du.$$
 即得结论。
 
 
-# 11.1 The Radon-Nikodym Theorem
+# ✅ 11.1 The Radon-Nikodym Theorem
 
 本讲介绍了 Radon-Nikodym 定理，不过没有给出证明。
 
@@ -382,8 +403,7 @@ $$\varlimsup\int f_n\du \leq \int f\du \leq \varliminf\int f_n\du.$$
 + 此函数是奇异的，因为它在除去 Cantor 集对应的点之外几乎处处是常数。
 
 
-
-# 11.2 Probability Laws Revisited
+# ✅ 11.2 Probability Laws Revisited
 
 :::{.theorem}
 **积分的变量替换定理** 设 $X:\ (\Omega,\mathcal{F},\mu)\to(\mathcal{S},\mathcal{B})$ 是一个可测映射，$(\mathcal{S},\mathcal{B})$ 上的测度 $\nu$ 由 $\nu(E) = \mu(X^{-1}(E))$ 给出，$g:\ (\mathcal{S},\mathcal{B},\nu)\to\mathbb{R}$ 是一个可积函数，则 $$\int_{\Omega}g\circ X\du=\int_{\mathcal{S}}g\dv.$$
@@ -399,9 +419,7 @@ $$\int_{\S} g\dv = \nu(B) = \mu(X^{-1}(B))=\int_{\O}\ind_{X^{-1}(B)}\du.$$
 此时结论成立。根据积分的线性性质结论对简单函数也成立，从而进一步取极限可得对任何可积函数 $g$ 都成立。
 
 
-
-
-# 13.1 Convergence in measure
+# ✅ 13.1 Convergence in measure
 
 本讲介绍了可测函数的依测度收敛概念，及其与逐点收敛之间的联系。
 
@@ -433,18 +451,16 @@ $$\lim_{n,m\to\infty}\mu\{|f_n-f_m|\geq\epsilon\} = 0.$$
 则 $f_n$ 必有逐点收敛的子序列 $f_{n_k}\to f\ \mathrm{a.e.}$，并且 $f_n$ 依测度收敛到 $f$。
 :::
 
-**简要证明必有逐点收敛的子序列**：利用上面介绍的技巧，归结为抽取子序列 $\{f_{n_k}\}$ 满足
+**必有逐点收敛的子序列**：利用上面介绍的技巧，归结为抽取子序列 $\{f_{n_k}\}$ 满足
 $$\mu\{|f_{n_{k+1}} - f_{n_k}|\geq2^{-k},\ \io\} = 0.$$
 利用 Borel-Cantelli 引理这只要让 $\sum_{k=1}^\infty\mu\{|f_{n_{k+1}} - f_{n_k}|\geq 2^{-k}\}<\infty$ 即可。为此又只要让 $\mu\{|f_{n_{k+1}} - f_{n_k}|\geq 2^{-k}\}\leq 2^{-k}$ 即可。根据 Cauchy 条件这是可以做到的。
 
-**简要证明这个子序列的逐点极限是原序列的依测度极限**：对任何 $n$，取 $n_{k}>n$ 则有
+**子序列的极限也是原序列的依测度极限**：对任何 $n$，取 $n_{k}>n$ 则有
 $$\{|f_n-f|\geq\epsilon\}\subseteq \{|f_n-f_{n_k}|\geq\epsilon/2\}\cup \{|f_{n_k}-f|\geq\epsilon/2\}.$$
 显然 $n$ 足够大时右边两个集合测度都趋于 0。
 
 
-
-
-# 13.2 $L^p$ is Complete
+# ✅ 13.2 $L^p$ is Complete
 
 首先我们来证明 $L^p$ 收敛可以推出依测度收敛。
 
@@ -469,7 +485,7 @@ $$\begin{align*}\int\|f_{n_k}-f\|^p\du&=\int\lim_{j\to\infty}\|f_{n_k}-f_{n_j}\|
 这与控制收敛定理矛盾。
 
 
-# 14.1 Dynkin's Multiplicative Systems Theorem
+# ✅ 14.1 Dynkin's Multiplicative Systems Theorem
 
 本讲介绍了 Dynkin $\pi-\lambda$ 定理的函数形式的版本。
 
@@ -484,28 +500,69 @@ $$\lim_{n\to\infty} f_n = f,\quad \ae$$
 :::
 
 :::{.theorem}
-设 $\mathcal{I}\subseteq\mathcal{F}$ 是一个 $\pi$- 系，设 $\mathbb{H}(\mathcal{I})\subseteq\mathbb{B}(\Omega,\mathcal{F})$ 满足如下条件：
-
-1. $\mathbb{H}(\mathcal{I})$ 是一个向量空间。
-2. $\mathbb{H}(\mathcal{I})$ 包含 $\Omega$ 上的常函数 $\ind$。
-3. 若 $\{f_n\}$ 是 $\mathbb{H}(\mathcal{I})$ 中的可测函数序列，且 $f_n$ 一致有界收敛到 $f$，则 $f\in\mathbb{H}(\mathcal{I})$。
-4. $\mathbb{H}(\mathcal{I})$ 包含 $\mathcal{I}$ 中的所有指标函数 $\ind_{A},\,A\in\mathcal{I}$。
-
-则 $\mathbb{H}(\mathcal{I})$ 包含所有关于 $\sigma(\mathcal{I})$- 可测的有界函数。
+设 $\H\subset\mathbb{B}(\Omega)$ 是一个向量空间，包含常函数 $\ind_\Omega$，并且在有界收敛下封闭。又设 $\M\subset\H$ 是一个乘法系：$f,g\in\M\Rightarrow f\cdot g\in\M$。则 $\H$ 包含所有关于 $\sigma(\M)$- 可测的有界可测函数：
+$$\mathbb{B}(\Omega,\sigma(\M))\subset \H.$$
 :::
 
-**证明概要**：设
-$$\mathcal{A}=\{A\in\mathcal{F}:\ \ind_A\in\mathbb{H}(\mathcal{I})\}.$$
+**证明**：设 $\H=\H(\M)$ 是包含 $\M$ 和 1 的向量空间。且在有界收敛下封闭。
 
-+ 由 2 $\Omega\in\mathcal{A}$。
-+ 由 1, 2 结合有若 $A\in\mathcal{A}$ 则 $A^c\in\mathcal{A}$。
-+ 由 3 有若 $\{A_n\}\in\mathcal{A}$，$A_n\uparrow$ 则 $\cup_{n}A_n\in\mathcal{A}$。
+**Step 1 $\H$ 是一个代数**
 
-于是 $\mathcal{A}$ 是一个 $\lambda$- 系，并且由 4 有 $\mathcal{A}\supseteq\mathcal{I}$，从而 $\mathcal{A}\supseteq\sigma(\mathcal{I})$。于是 $\mathbb{H}(\mathcal{I})$ 包含所有形如 $\ind_A,\,A\in\sigma(\mathcal{I})$ 的指标函数，也就包含所有 $\sigma(\mathcal{I})$ 上的简单可测函数，从而包含它们的所有一致有界极限，即全体 $\sigma(\mathcal{I})$- 可测的有界函数。
+固定 $f\in\H$，记 $\H^f =\{g\in\H\mid f\cdot g\in\H\}$。
 
-:::{.note}
-条件 3 其实可以减弱为 $\{f_n\}$ 是非负可测函数序列，且 $f_n\uparrow f$，$f$ 有界。这样我们首先得到 $\mathbb{H}(\mathcal{I})$ 包含所有 $\sigma(\mathcal{I})$ 上的非负简单函数，因而包含所有的非负有界可测函数，而对任何一般的 $\sigma(\mathcal{I})$ 有界可测函数 $f$，$f^{\pm}$ 都是 $\sigma(\mathcal{I})$ 上的非负有界可测函数，因而 $f^{\pm}$ 和它们的差 $f=f^+-f^-$ 都属于 $\mathbb{H}(\mathcal{I})$。
++ $\H^f$ 是 $\H$ 的子空间
++ $\H^f$ 包含常数 1
++ $\H^f$ 在有界收敛下封闭
+
+特别地，如果 $f\in\M$，由定义 $\M\subset\H^f$。所以
+$$\H=\H(\M)\subset \H^f\subset \H.$$
+即 $\H=\H^f$。但根据 $f$ 的任意性，这正说明对任何 $f,g\in\H$ 都有 $f,g\in\H$。从而 $\H$ 是一个代数。
+
+**Step 2 $\F=\{A\subset\Omega\mid \ind_A\in \H\}$ 是 $\sigma$- 域**
+
+这一步很容易
+
+**Step 3 $\mathbb{B}(\Omega,\F)\subset\H$**
+
+$\F$ 中的示性函数都在 $\H$ 中，从而简单函数也在 $\F$ 中。又因为有界收敛封闭，所以有界函数的 $f^+,f^-$ 也在 $\F$ 中，从而 $f$ 在 $\F$ 中。
+
+**Step 4 $\sigma(\M)\subset \F$**
+
+根据
+$$\sigma(\M) = \sigma(\cup\{ f^{-1}\B(\R), f\in\M\})=\sigma(\ \bigcup\{f^{-1}(a,+\infty)\mid a\in\R, f\in\M\ \}).$$
+所以我们只要证明所有形如 $\ind_{\{f>a\}},\forall f\in\M,a\in\R$ 的函数在 $\H$ 中即可。
+设 $|f|\leq M$。首先我们构造连续函数列 $\psi_n\uparrow\ind_{(a,+\infty)}$，这总是可以的：
+
+$$\psi_n(t)=\begin{cases}0,& t\le a\\
+n(t-a), & a < t < a+1/n\\
+1, & t\geq a+1/n
+\end{cases}$$
+故 
+$$\psi_n(f)\uparrow \ind_{\{f > a\}}.$$
+
+由于 $\psi_n$ 在紧集 $[-M,M]$ 上连续，由 Weierstrass 逼近定理，存在多项式 $p_{n,k}$ 使得
+$$\sup_{|t|\le M}|p_{n,k}(t)-\psi_n(t)|\leq\frac{1}{k}.$$
+因为 $0\leq\psi_n\leq 1$，就有
+$$\sup_{|t|\le M}|p_{n,k}(t)|\leq \sup_{|t|\le M}|\psi_n(t)|+\frac{1}{k} \le 2.$$
+于是对所有 $n,k$ 有
+$$\|p_{n,k}(f)\|_\infty \leq 2.$$
+
+因为 $\H$ 是代数且 $f\in\M$，故 $p_{n,k}(f)\in\H$。
+又根据 $p_{n,k}(f)\to \psi_n(f)$ 是有界收敛，所以 $\psi_n(f)\in\H$。再根据 $\psi_n(f)\uparrow \ind_{\{f>a\}}$ 也是有界收敛，得到结论。$\blacksquare$
+
+:::{.corollary}
+$\sigma(C_c(\R)) = \sigma(\mathbb{\R})$。
 :::
+
+
+:::{.corollary}
+设 $\mu,\nu$ 是 $\R$ 上的 Borel 概率测度，并且对任何 $f\in C_c(\R)$ 都有
+$$\int f\du = \int f\dv$$
+成立，则 $\mu=\nu$。
+:::
+设 $\H$ 是使得上面积分相等的全体有界函数成立的集合，则 $\H$ 包含常数 1，在有界收敛下封闭，还包含乘法系 $C_c(\R)$，从而 $\H$ 包含所有的 $\mathbb{B}(\R, \sigma(C_c(\R)))=\mathbb{B}(\R, \B(\R))$。特别地，对任何 Borel 可测集 $E$ 有 $\ind_E\in\B(\R)\subset\H$，从而
+$$\mu(E) = \int \ind_E\du = \int \ind_E\dv = \nu(E).$$
+
 
 # 14.2 Product Measure
 
