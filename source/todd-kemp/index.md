@@ -59,7 +59,7 @@ $$1 = \sum_{q\in\Q}\mu(E) = \infty\cdot \mu(E)\Rightarrow E\text{ not measuabe.}
 
 介绍了 $\sigma$- 域的概念，以及最重要的 $\sigma$- 域的例子：拓扑空间中开集生成的 Borel 域。
 
-# 2.1 Measures Definition and Examples
+# ✅ 2.1 Measures Definition and Examples
 
 介绍了可测空间，以及测度的定义和基本性质。
 
@@ -623,7 +623,7 @@ $$\int f\du = \int f\dv$$
 $$\mu(E) = \int \ind_E\du = \int \ind_E\dv = \nu(E).$$
 
 
-# 14.2 Product Measure
+# ✅ 14.2 Product Measure
 
 本讲介绍了乘积测度的构造。**记住乘积测度的构造是用到重积分的**。
 
@@ -646,24 +646,67 @@ $\Leftarrow$: 本质是证明如果每个 $X_i$ 都是随机变量，则 $X=(X_1
 
 $$\int_{\Omega_1\times\Omega_2}f_1\otimes f_2\mathrm{d}(\mu_1\otimes\mu_2) = \int_{\Omega_1}f_1\mathrm{d}\mu_1\cdot\int_{\Omega_2}f_2\mathrm{d}\mu_2.$$
 
-考虑满足如下条件的乘积空间 $\Omega_1\times\Omega_2$ 上的可测函数 $f$:
+首先我们假定 $\mu_1,\mu_2$ 都是有限测度。构建完毕以后再扩展到 $\sigma$- 有限的测度上去。
 
-> 1. $\omega_1\to f(\omega_1,\omega_2)$ 对任何 $\omega_2$ 都是可测函数。
-> 2. $\omega_2\to f(\omega_1,\omega_2)$ 对任何 $\omega_1$ 都是可测函数。
-> 3. $\omega_1\to \int_{\Omega_2}f(\omega_1,\omega_2)\mu_2(\mathrm{d}\omega_2)$ 是 $\F_1/\B(\overline{\R})$ 可测函数。注意这个积分值可能是无穷。
-> 4. $\omega_2\to \int_{\Omega_1}f(\omega_1,\omega_2)\mu_1(\mathrm{d}\omega_1)$ 是 $\F_2/\B(\overline{\R})$ 可测函数。
-> 5. $$\int_{\Omega_1}\left(\int_{\Omega_2}f(\omega_1,\omega_2)\mu_2(\mathrm{d}\omega_2)\right)\mu_1(\mathrm{d}\omega_1)=\int_{\Omega_2}\left(\int_{\Omega_1}f(\omega_1,\omega_2)\mu_1(\mathrm{d}\omega_1)\right)\mu_2(\mathrm{d}\omega_2).$$
+:::{.theorem}
+设 $f$ 是一个非负的，关于 $(\Omega_1\times\Omega_2,\F_1\otimes\F_2)$ 可测的函数，则
 
-容易验证对所有形如 $f_1\otimes f_2$ 的函数它们满足上面的性质。它们构成一个乘法系，包含所有形如 $\ind_{E_1}\otimes\ind_{E_2}$ 的函数，然后上面的条件对函数列的有界极限仍然成立。根据函数版本的 Dynkin 定理，上面的条件对所有有界可测函数，或者非负可测函数都成立。
+1. $f(\cdot,\omega_2)$ 对任何 $\omega_2$ 都是 $\F_1$ 可测的。 
+2. $f(\omega_1,\cdot)$ 对任何 $\omega_1$ 都是 $\F_2$ 可测的。
+3. $\int_{\Omega_2}f(\cdot,\omega_2)\mu_2(\mathrm{d}\omega_2)$ 是 $\F_1$ 可测的。注意这个积分值可能是无穷。
+4. $\int_{\Omega_1}f(\omega_1,\cdot)\mu_1(\mathrm{d}\omega_1)$ 是 $\F_2$ 可测的。
+5. $$\int_{\Omega_1}\left(\int_{\Omega_2}f(\omega_1,\omega_2)\mu_2(\mathrm{d}\omega_2)\right)\mu_1(\mathrm{d}\omega_1)=\int_{\Omega_2}\left(\int_{\Omega_1}f(\omega_1,\omega_2)\mu_1(\mathrm{d}\omega_1)\right)\mu_2(\mathrm{d}\omega_2).$$
+:::
+
+**证明**：我们先来验证结论对形如 $f_1\otimes f_2$ 的函数成立。
+
+1. $f(\cdot,\omega_2) = f_1(\cdot)f_2(\omega_2)$ 当然是 $\F_1$ 可测函数。
+2. 同 1。
+3. $\int_{\Omega_2}f(\cdot,\omega_2)\mu_2(\mathrm{d}\omega_2)=f_1(\cdot)\int_{\Omega_2}f_2(\omega_2)\mu_2(\mathrm{d}\omega_2)$。
+4. 同 3.
+5. 两边都等于 $\int_{\Omega_1}f_1(\omega_1)\mu_1(\mathrm{d}\omega_1)\cdot\int_{\Omega_2}f_2(\omega_2)\mu_2(\mathrm{d}\omega_2)$。
+
+令 $\H$ 是所有满足定理中条件的函数组成的集合，$\M$ 是所有形如 $\f_1\otimes f_2$ 的非负可测函数组成的集合。则 $\M$ 是乘法系。又因为 $\M$ 包含所有形如 $\ind_{B_1}\otimes\ind_{B_2}$ 的函数，所以 $\sigma(\M)=\F_1\otimes\F_2$。
+
+又 $\H$ 是向量空间，包含 $\{1\}\cup\M$，并且在有界收敛下封闭。（对 5 需要用两次控制收敛定理或者非负函数的单调收敛定理）,所以根据 Dynkin 乘法系引理，$\H$ 包含所有 $\F_1\otimes\F_2$ 可测的有界函数（或者非负函数）。$\blacksquare$
 
 由此我们可以定义乘积空间中的测度为
 
 $$\mu(E)=\int_{\Omega_1}\left(\int_{\Omega_2}\ind_{E}\mu_2(\mathrm{d}\omega_2)\right)\mu_1(\mathrm{d}\omega_1)=\int_{\Omega_2}\left(\int_{\Omega_1}\ind_{E}\mu_1(\mathrm{d}\omega_1)\right)\mu_2(\mathrm{d}\omega_2).$$
 不难验证这样定义的积分是有限可加的 (积分的线性性质)，可以取单调上升的极限，所以是可数可加的，并且当 $E$ 形如 $E_1\times E_2$ 时有 $\mu(E)=\mu_1(E_1)\mu_2(E_2)$，从而确实给出符合要求的乘积测度。
 
+# ✅ 14.3 Tonelli-Fubini
+
+:::{.theorem}
+**Tonelli 定理**
+如果 $f\in(\Omega_1\times\Omega_2,\F_1\otimes\F_2)$ 是**非负可测**的，则
+$$\int_{\Omega_1\times\Omega_2} f\,\mathrm{d}(\mu_1\times\mu_2)
+=\int_{\Omega_1}\left(\int_{\Omega_2} f\,\mathrm{d}\mu_2\right)\,\mathrm{d}\mu_1
+=\int_{\Omega_2}\left(\int_{\Omega_1} f\,\mathrm{d}\mu_1\right)\,\mathrm{d}\mu_2.$$
+:::
+
+上一讲里面已经证明了右边两者相等。要把左边也连上，只需补一句标准话：用非负简单函数递增逼近 $f$，对简单函数这三者相等（按照乘积测度的定义，它就是集合示性函数的分部积分），再用单调收敛定理把等式传到极限。
 
 
-# 15.1 Independence
+令一般可测 $f$ 可积：$\int |f|\,\mathrm{d}(\mu_1\times\mu_2)<\infty$，写
+$f=f^+-f^-$。
+
+1. 由 Tonelli 可得
+   $$
+   \int |f|\, \mathrm d(\mu_1\times\mu_2)
+   =\int\left(\int |f(\omega_1,\omega_2)|\,\mathrm d\mu_2\right)\,\mathrm d\mu_1
+   =\int\left(\int |f(\omega_1,\omega_2)|\,\mathrm d\mu_1\right)\,\mathrm d\mu_2<\infty.
+   $$
+   因而对 $\mu_1$-几乎处处的 $\omega_1$，截面 $f(\omega_1,\cdot)\in L^1(\mu_2)$；同理交换坐标亦然。
+2. 再对 $f^\pm$ 分别应用上一节的等式并相减，得到
+   $$
+   \int_{\Omega_1\times\Omega_2} f\, \mathrm d(\mu_1\times\mu_2)
+   =\int_{\Omega_1}\left(\int_{\Omega_2} f\,\mathrm d\mu_2\right)d\mu_1
+   =\int_{\Omega_2}\left(\int_{\Omega_1} f\,\mathrm d\mu_1\right)d\mu_2.
+   $$
+   且两个迭代积分都有限。这就是 **Fubini 定理**。
+
+# ✅ 15.1 Independence
 
 本讲介绍了事件和 $\sigma$- 域之间的独立性概念。
 
@@ -686,7 +729,7 @@ $$\lim_{M\to\infty}\prod_{k=n}^M(1-\P(A_k))\leq\lim_{M\to\infty}\prod_{k=n}^Me^{
 上式右边对任何固定的 $n$ 其极限都是 0，从而 $\P(\bigcup_{k\geq n}A_k)\to1$，结论得证。$\blacksquare$
 
 
-# 15.2 Independent Random Variables
+# ✅ 15.2 Independent Random Variables
 
 上一讲介绍了独立事件和独立事件域的概念，这一讲介绍了独立随机变量的概念。
 
@@ -756,10 +799,10 @@ $$\varphi = \sum_{k=1}^n a_k\ind_{A_k},\quad A_k\in\B(\R^{\mathbb{N}})$$
 $$\mu(A_k\Delta C_k) < \frac{\epsilon}{2nM}.$$
 于是
 $$\left| \sum_{k=1}^n a_k\ind_{A_k} -  \sum_{k=1}^n a_k\ind_{C_k}\right|\leq  \sum_{k=1}^n |a_k| |\ind_{A_k}-\ind_{C_k}|= \sum_{k=1}^n |a_k|\ind_{A_k\Delta C_k}\leq M \sum_{k=1}^n\ind_{A_k\Delta C_k}.$$
-右边函数每一项的积分 $<\epsilon/2n$，全部 $n$ 项合起来的积分 $<\epsilon$，所以简单函数 $\ind_{A_k\Delta C_k}$ 就是所求的 $F$。$\blacksquare$
+右边函数每一项的积分 $<\epsilon/2n$，全部 $n$ 项合起来的积分 $<\epsilon$，所以简单函数 $ \sum_{k=1}^n a_k\ind_{C_k}$ 就是所求的 $F$。$\blacksquare$
 
 
-# 17.2 Convolution
+# ✅ 17.2 Convolution
 
 本讲介绍了概率测度之间的卷积。
 
