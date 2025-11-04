@@ -77,7 +77,7 @@ $$1 = \sum_{q\in\Q}\mu(E) = \infty\cdot \mu(E)\Rightarrow E\text{ not measuabe.}
 
 预告了接下来构造测度的过程：有限可加测度 $\Rightarrow$ 预测度 $\Rightarrow$ ·测度。
 
-# 2.2 Finitely Additive Measures
+# ✅ 2.2 Finitely Additive Measures
 
 这一讲介绍了**有限可加测度**，**预测度 (pre-measure，即域上的可数可加测度)**，**半代数 (semi-algebra)** 等概念。
 
@@ -115,7 +115,7 @@ $$\mathcal{A}=\{\text{all finite disjoint unions of sets from }\mathcal{S} \}.$$
 
 任何单调函数 $F$ 都可以给出其上的一个有限可加测度：$F((a, b])) = F(b) - F(a)$，从而可以扩张为代数 $\mathcal{A}$ 上的有限可加测度。**但是要使得这个测度是可数可加的，我们必须限制 $F$ 是右连续的**，这样的测度叫做 Stieltjes 测度，会在下一讲介绍。
 
-# 3.1 Stieltjes Premeasures
+# ✅ 3.1 Stieltjes Premeasures
 
 本讲接着上一讲的内容，证明了当 $F$ 单调且右连续时，$\mu((a,b])=F(b)-F(a)$ 确实给出 Borel 域 $\mathcal{A}$ 上的一个可数可加测度。当然 Borel 域还是太复杂了 (虽然它们都是有限多个半开区间的不交并)，无法用可数可加的定义来验证。我们还是要回到由半开区间构成的半代数 $\mathcal{S}$ 上。
 
@@ -477,6 +477,14 @@ $$\int_{\S} g\dv = \nu(B) = \mu(X^{-1}(B))=\int_{\O}\ind_{X^{-1}(B)}\du.$$
 由于 $\omega\in X^{-1}(B)\Leftrightarrow X(\omega)\in B$，所以 $\ind_{X^{-1}(B)} = \ind_{B}\circ X$，所以上式右边的积分等于 $$\int_{\O}\ind_{B}\circ X\dv.$$
 此时结论成立。根据积分的线性性质结论对简单函数也成立，从而进一步取极限可得对任何可积函数 $g$ 都成立。
 
+# ✅ 12.1 $L^2$
+
+无要点
+
+# ✅ 12.2 The Weak Law of Large Numbers (WLLN)
+
+这一讲证明了弱大数定律，即当 $\{X_n\}$ 是 $L^2$ 可积的 i.i.d 序列时有
+$$\P\left(|\frac{S_n}{n} - a|\geq \epsilon\right) = O(\frac{1}{n}).$$
 
 # ✅ 13.1 Convergence in measure
 
@@ -918,7 +926,9 @@ $$\delta_n := \sup_{k,j\geq n}|S_k - S_j|$$
 
 介绍了证明强大数定理的第二个工具：Kronecker 引理。
 
-> **Kronecker 引理**：若 $\{b_k\}\uparrow\infty$ 且 $\lim\limits_{n\to\infty}\sum\limits_{k=1}^n\dfrac{x_k}{b_k}$ 存在，则 $\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum\limits_{k=1}^n x_k=0$。
+:::{.lemma}
+**Kronecker 引理** 若 $\{b_k\}\uparrow\infty$ 且 $\lim\limits_{n\to\infty}\sum\limits_{k=1}^n\dfrac{x_k}{b_k}$ 存在，则 $\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum\limits_{k=1}^n x_k=0$。
+:::
 
 **证明概要**：记 $u_n=\sum\limits_{k=1}^n\dfrac{x_k}{b_k},\,u_0=0$，则 $\lim\limits_{n\to\infty}u_n=s$ 存在。
 $$\begin{align*}\frac{1}{b_n}\sum_{k=1}^n x_k&=\frac{1}{b_n}\sum_{k=1}^n(u_k-u_{k-1})b_k=\frac{1}{b_n}\sum_{k=1}^nu_kb_k-\frac{1}{b_n}\sum_{k=0}^{n-1}u_kb_{k+1}\\&=u_n-\frac{b_n-b_1}{b_n}s-\sum_{k=1}^{n-1}\frac{b_{k+1}-b_k}{b_n}(u_k-s).\end{align*}$$
@@ -928,7 +938,9 @@ $$\begin{align*}\sum_{k=1}^{n-1}\frac{b_{k+1}-b_k}{b_n}|u_k-s|=\left(\sum_{k=1}^
 
 当 $n\to\infty$ 时第一个和项是一个有界的值除以 $b_n$ 从而趋于 0。第二个和项显然不大于 $\dfrac{b_n}{b_n}\epsilon$，所以这个余项可以任意小。
 
-> **引理**：$Y_n' = Y_n/n$ 满足 Kolmogrov 收敛判定。
+:::{.lemma}
+$Y_n' = Y_n/n$ 满足 Kolmogrov 收敛判定。
+:::
 
 **证明概要**：
 $$\begin{align*}\sum_{n=1}^\infty\mathrm{Var}(Y_n')&=\sum_{n=1}^\infty\frac{\mathbb{E}Y_n^2 - (\mathbb{E}Y_n)^2}{n^2}\leq \sum_{n=1}^\infty\frac{\mathbb{E}Y_n^2}{n^2}\\&=\sum_{n=1}^\infty\frac{\mathbb{E}X_n^2\ind_{\{|X_n|\leq n\}}}{n^2}\\&=\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\ind_{\{|X_1|\leq n\}}\right]\\&\leq\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2},\ |X_1|\leq 2\right] + \mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\ind_{\{|X_1|\leq n\}},\ |X_1|>2\right]\\&\leq4\sum_{n=1}^\infty\frac{1}{n^2}+\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\ind_{\{|X_1|\leq n\}},\ |X_1|>2\right] .\end{align*}$$
@@ -944,6 +956,7 @@ $$\sum_{n=1}^\infty\frac{1}{n^2}\ind_{\{|X_1|\leq n\}}<\frac{2}{|X_1|}.$$
 两边乘以 $|X_1|^2$ 并积分，则
 $$\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\ind_{\{|X_1|\leq n\}},\ |X_1|>2\right] < 2\mathbb{E}|X_1|.$$
 这就证明了结论。
+
 
 # 19.2 Renewal Theory
 
@@ -1934,25 +1947,27 @@ $$\sum_{k=1}^n B_{n,k}\le\frac{1}{8}t^4\sum_{k=1}^n\sigma_{n,k}^4 \le\frac{1}{8}
 由于 Lindberg 条件意味着 DV 条件，故 $n\to\infty$ 时上式右边趋于 0，得证。$\blacksquare$
 
 
-# 31.1 Orthogonal Projections
+# ✅ 31.1 Orthogonal Projections
 
-无要点
+一些关于 Hilber 空间 $L^2$ 的基本结论，无要点
 
-# 33.1 Probability Kernels, Part 1
+# ✅ 33.1 Probability Kernels, Part 1
 
 本讲引入了概率核的概念。
 
-设 $(S_i,\B_i), i=1,2$ 是两个可测空间，一个概率核 $Q(x, B):(S_1,\B_2)\to[0,1]$ 是一个二元函数，满足：
+设 $(S_i,\B_i), i=1,2$ 是两个可测空间，一个概率核 $Q(x, B):S_1\times\B_2\to[0,1]$ 是一个二元函数，满足：
 
 1. 对任何 $x\in S_1$，$Q(x,\cdot):\B_2\to[0,1]$ 是 $(S_2,\B_2)$ 上的概率测度。
 2. 对任何 $B\in \B_2$，$Q(\cdot, B):S_1\to[0,1]$ 是 $(S_1,\B_1)$ 上的可测函数。
 
-> **引理**：假设 $f(x,y)\in (S_1\times S_2, \B_1\otimes\B_2)$ 是乘积空间上的可测函数，并且是有界的或者非负的，则积分 $$x\to\int_{S_2}f(x,y)Q(x,\dy)$$ 是关于 $x$ 的可测函数。
+:::{.lemma}
+假设 $f(x,y)\in (S_1\times S_2, \B_1\otimes\B_2)$ 是乘积空间上的可测函数，并且是有界的或者非负的，则积分 $$x\to\int_{S_2}f(x,y)Q(x,\dy)$$ 是关于 $x$ 的可测函数。
+:::
 
 此引理不难从简单函数 $\ind_{B_1\times B_2}(x,y)=\ind_{B_1}(x)\ind_{B_2}(y)$ 出发，使用函数形式的 Dynkin 引理得到。
 
-由此对任何 $(S_1,\B_1)$ 上的测度 $\mu$，我们可以定义乘积空间 $(S_1\times S_2, \B_1\otimes\B_2)$ 上的乘积测度 $\mu\otimes Q$，这个乘积测度是随 $x$ 变化而变化的：
-$$\mu\otimes Q(E)=\int_{S_1}\mu(\dx)\int_{S_2}\ind_{C}(x,y)Q(x,\dy).$$
+由此对任何 $(S_1,\B_1)$ 上的测度 $\mu$，我们可以定义乘积空间 $(S_1\times S_2, \B_1\otimes\B_2)$ 上的乘积测度 $\mu\otimes Q$：
+$$(\mu\otimes Q)(E)=\int_{S_1}\ud{x}\int_{S_2}\ind_{E}(x,y)Q(x,\dy).$$
 不过这真的是一个概率测度吗？你可以用积分的线性性质立刻看出它是有限可加的，并且利用积分项有界和控制收敛定理立刻看出它是可数可加的，所以确实是个概率测度。
 
 有了概率核的乘积测度，我们自然要研究对这种测度的积分。由于这个测度本身就是通过对示性函数积分来定义的，所以其上的积分也具有类似的性质：
@@ -1962,21 +1977,48 @@ $$\mu\otimes Q(E)=\int_{S_1}\mu(\dx)\int_{S_2}\ind_{C}(x,y)Q(x,\dy).$$
 $$\int_{S_1\times S_2}f\,\mathrm{d}(\mu\otimes Q) = \int_{S_1}\mu(\dx)\int_{S_2}f(x,y)Q(x,\dy).$$
 :::
 
-后面花了很大力气证明当 $Q(x, \cdot)=\widetilde{Q}(x,\cdot)$ 对几乎处处的 $x$ 成立时有 $\mu\otimes Q=\mu\otimes\widetilde{Q}$。没仔细看。
 
-# 33.2 Regular Conditional Distributions
+:::{.theorem}
+若两核 $(Q,\tilde Q)$ 只在 $\mu$-零集上不同，即 $Q(x,\cdot)=\tilde Q(x,\cdot)$ for $\mu$-a.e. $x$，则由它们和边缘 $\mu$ 拼出来的“联合测度”是**同一个**测度：$\mu\otimes Q=\mu\otimes \tilde Q$。
+
+反过来，如果 $\B_2$ 是可数生成的，则如果 $\mu\otimes Q=\mu\otimes \tilde Q$，那么 $Q(x,\cdot)=\tilde Q(x,\cdot)$ 对 $\mu$-a.e. 的 $x$ 成立。
+:::
+
+**意义**：正则条件分布/概率核通常只在 $\mu$-a.e. 意义下唯一。若 $\mu\otimes Q$ 会因零集上的改动而改变，那很多定义就不稳固了。这个结论保证：**任选一个版本**都得到**同一**联合测度与同一组期望值 $\displaystyle \int f\,\mathrm{d}(\mu\otimes Q)=\int \mu(\mathrm{d}x)\int f(x,y)\,Q(x,\mathrm{d}y)$。
+
+**证明**：$\Rightarrow$：
+$$\begin{aligned}
+(\mu\otimes Q)(B_1\times B_2) &= \int_{S_1}\ud{x}\int_{S_2}\ind_{B_1}(x)\ind_{B_2}(y) Q(x,\dy)\\
+&=\int_{B_1}\ud{x} Q(x,B_2) = \int_{B_1}\ud{x} \tilde Q(x,B_2).
+\end{aligned}$$
+
+$\Leftarrow$：如果 $\mu\otimes Q=\mu\otimes \tilde Q$，上面的计算给出
+$$\int_{B_1}\ud{x}Q(x,B_2) = \int_{B_2}\ud{x}\tilde Q(x,B_2),\quad \forall B_1\in\B_1,B_2\in\B_2.$$
+于是
+$$\int_{S_1}[Q(x,B_2) - \tilde Q(x,B_2)]\ind_{B_1}(x)\ud{x} = 0,\quad\forall B_1\in\B_1.$$
+从而
+$$\int_{S_1}[Q(x,B_2) - \tilde Q(x,B_2)]h(x)\ud{x} = 0,\quad\forall h\in\mathbb{B}(S_1,\B_1).$$
+这必须有 $Q(x,B_2) =\tilde Q(x,B_2)$ 几乎处处成立才行。$\blacksquare$
+
+
+# ✅ 33.2 Regular Conditional Distributions
 
 本讲使用概率核给出了 $\E[f(X, Y)\mid X=x]$ 这种条件期望的严格定义。
 
 :::{.theorem}
-设 $(\Omega,\F,\P)$ 是一个概率空间，$(S_i,\B_i),\,i=1,2$ 是两个可测空间，$X:(\Omega,\F)\to(S_1,\B_1),\,Y:(\Omega,\F)\to(S_2,\B_2)$ 是两个随机变量。于是 $(X,Y):(\Omega,\F)\to(S_1\times S_2,\,\B1\otimes\B_2)$ 是随机向量。记 $\mu_{X,Y}$ 为此随机向量在 $(S_1\times S_2,\,\B1\otimes\B_2)$ 上 push forward 给出的测度，$\mu_X$ 是 $X$ 在 $(S_1,\B_1)$ 上 push forward 给出的测度。如果存在概率核 $Q(x,B)$ 使得 $$\mu_{X,Y}=\mu_X\otimes Q.$$
+设 $(\Omega,\F,\P)$ 是一个概率空间，$(S_i,\B_i),\,i=1,2$ 是两个可测空间。
+$$X:(\Omega,\F)\to(S_1,\B_1),\quad Y:(\Omega,\F)\to(S_2,\B_2)$$
+是两个随机变量。于是
+$$(X,Y):(\Omega,\F)\to(S_1\times S_2,\,\B1\otimes\B_2)$$
+
+是随机向量。记 $\mu_{X,Y}$ 为此随机向量在 $(S_1\times S_2,\,\B1\otimes\B_2)$ 上 push forward 给出的测度，$\mu_X$ 是 $X$ 在 $(S_1,\B_1)$ 上 push forward 给出的测度。如果存在概率核 $Q(x,B)$ 使得 $$\mu_{X,Y}=\mu_X\otimes Q.$$
 
 则对任何 $f\in L^1(S_1\times S_2,\B1\otimes\B_2)$ 有
 $$\E[f(X,Y)\mid X = x] = \int_{S_2}f(x,y)Q(x, \dy).$$
 :::
 
 这里需要解释 $\E[f(X,Y)\mid X = x]$ 这个记号的含义。这里其实引用了条件期望 (后面才会讲到) 的性质：$\E[f(X,Y)\mid X]$ 是一个关于 $\sigma(X)$ 可测的随机变量，从而由 Doob-Dynkin 表示定理，存在可测函数 $g$ 使得 $\E[f(X,Y)\mid X] = g(X)$，所以 $\E[f(X,Y)\mid X = x] = g(x)$。这个定理说的就是
-$$\E[f(X,Y)\mid X = x] = g(x) = \int_{S_2}f(x,y)Q(x, \dy).$$
+$$g(x):=\E[f(X,Y)\mid X = x] = \tilde g(x):=\int_{S_2}f(x,y)Q(x, \dy).$$
 
 **证明**：怎么证明两个关于 $\sigma(X)$ 可测的函数 (几乎处处) 相等呢？我们可以给它们同时乘以 $h(x)$，这里 $h(x)$ 是任何一个关于 $\sigma(X)$ 可测的有界函数，然后证明它们对 $\mu_X$ 积分以后的值相等，则这两个可测函数必相等。
 
@@ -1984,26 +2026,26 @@ $g(x)h(x)$ 这个函数对 $\mu_X$ 积分，根据积分变量替换定理，正
 $$\E[g(X)h(X)]=\E[\E[f(X,Y)|X]h(X)] = \E[\E[f(X,Y)h(X)|X]] = \E[f(X, Y)h(X)].$$
 注意右边的期望悄悄地变成了关于 $\mu_X\otimes Q$ 的积分。这是因为上式最后的等号使用了条件期望的 telescoping 性质，而 $f(X,Y)g(X)$ 是关于 $\B_1\otimes\B_2$ 可测的函数。
 
-另一方面，$h(x)\int_{S_2}f(x,y)Q(x,\dy)$ 这个函数对 $\mu_X$ 积分，正是
-$$\int_{S_1}\mu(\dx)\int_{S_2}f(x,y)h(x)Q(x,\dy).$$
-所以
-$$\begin{align*}
+另一方面，
+$$\begin{aligned}
 \E[f(X,Y)h(X)] &= \int_{S_1\times S_2}f(x,y)h(x)\mu_{X,Y}(\dx\dy) \\
 &= \int_{S_1\times S_2}f(x,y)h(x)\mu_X\otimes Q \\
-&= \int_{S_1}\mu_X \int_{S_2}f(x,y)h(x)Q(x,\dy) \\
-&= \int_{S_1}\mu_X h(x)\int_{S_2}f(x,y)Q(x,\dy).
-\end{align*}$$
+&= \int_{S_1}\ud{x} \int_{S_2}f(x,y)h(x)Q(x,\dy) \\
+&= \int_{S_1}h(x)\ud{x} h(x)\int_{S_2}f(x,y)Q(x,\dy)\\
+&= \int_{S_1}\tilde g(x)h(x)\ud{x}\\
+&= \E[\tilde g(x)h(x)].
+\end{aligned}$$
 正是所要证明的。
 
-不过在上面的证明中我们都假定了所有的可积性的前提，我们实际上需要假定 $f(x,y)$ 有界才能确保推导成立。对一般的 $f(x,y)\in L^1(S_1\times S_2,\B_1\otimes \B_2)$，我们需要用有界函数列 $f_n\to f$ 且此收敛是在 $L^1(\mu_{X,Y})$ 意义下的。由于条件期望是 contraction，所以
+不过在上面的证明中我们都假定了所有的可积性的前提。我们实际上需要假定 $f(x,y)$ 有界才能确保推导成立。对一般的 $f(x,y)\in L^1(S_1\times S_2,\B_1\otimes \B_2)$，取有界函数列 $f_n=f\ind_{|f|\le n}\xrightarrow{L^1}f$。由于条件期望是 contraction，所以
 $$\E[f_n(X, Y)| X] \xrightarrow{L^1} \E[f(X,Y)|X].$$
-此外我们已经证明了
+我们上面已经证明了
 $$\E[f_n(X, Y)| X] = \left.\int_{S_2}f_n(x,y)Q(x,\dy)\right|_{x=X}.$$
 所以只要证明
 $$\left.\int_{S_2}f_n(x,y)Q(x,\dy)\right|_{x=X} \xrightarrow{L^1} \left.\int_{S_2}f(x,y)Q(x,\dy)\right|_{x=X}.$$
 即可。这个 $L^1$ 收敛的意思是对 $\mu_X$ 取积分，因此我们要估计
 $$\int_{S_1}\mu(\dx)\int_{S_2}|f_n(x,y)-f(x,y)|Q(x,\dy).$$
-这不正是 $|fn-f|$ 对乘积测度的积分嘛，而我们已经知道了它是 $L^1$ 收敛的了。
+这不正是 $|f_n-f|$ 对乘积测度的积分嘛，而我们已经知道了它是 $L^1$ 收敛的了。
 
 所以如果我们能把一个联合分布分解为边际分布和一个概率核的乘积，则我们就得到了条件概率的一个表示。
 
@@ -2091,7 +2133,7 @@ $$\begin{align*}\E[g(X_{n+1})|\F_n] &= \E[g(f(X_n,\xi_{n+1}))|\F_n]\\
 $$\E[g(X_{n+1})|\F_n] = \E[g(X_{n+1})|X_n].$$
 这正是 Markov 性质。
 
-# 35.1 Stochastic Processes
+# ✅ 35.1 Stochastic Processes
 
 本讲介绍了随机过程的定义，以及它们的有限维分布、滤过 (filtration)、适应 (adapted) 等概念。
 
@@ -2188,15 +2230,18 @@ $\blacksquare$
 本讲介绍了连续情形的 Kolmogrov 扩张定理：可以构造一般的有限维分布，只要它们满足相容性条件。
 
 
-# 46.3 Wald's Identity
+# ✅ 46.3 Wald's Identity
 
 本讲介绍了 Wald 引理。
 
-> **Wald 引理**：设 $\{X_n\}$ 是 $\iid$ 的随机变量序列，$\tau$ 是一个停时，则在 $\E|X_1|<\infty$ 且 $\E\tau<\infty$ 的条件下有 $\E\sum\limits_{n=1}^\tau X_n=\E X_1\cdot \E\tau$。
+:::{.theorem}
+**Wald 引理** 设 $\{X_n\}$ 是 $\iid$ 的随机变量序列，$\tau$ 是一个停时，则在 $\E|X_1|<\infty$ 且 $\E\tau<\infty$ 的条件下有 $\E\sum\limits_{n=1}^\tau X_n=\E X_1\cdot \E\tau$。
+:::
 
 这里的关键在于将上面的求和变成一个二重级数求和，然后交换求和次序。
 
-$$\begin{align*}\sum_{n=1}^\tau\E X_n&=\sum_{n=1}^\infty\E X_n\cdot \ind_{\tau\geq n}=\sum_{n=1}^\infty\E X_n\cdot\sum_{k=n}^\infty\ind_{\tau=k}\\&=\sum_{k=1}^\infty\ind_{\tau=k}\sum_{n=1}^k\E X_n\\&=\E X_1\sum_{k=1}^\infty k\cdot\ind_{\tau=k}\\&=\E X_1\cdot \E\tau.\end{align*}$$
+$$\begin{aligned}
+\sum_{n=1}^\tau\E X_n&=\sum_{n=1}^\infty\E X_n\cdot \ind_{\tau\geq n}=\sum_{n=1}^\infty\E X_n\cdot\sum_{k=n}^\infty\ind_{\tau=k}\\&=\sum_{k=1}^\infty\ind_{\tau=k}\sum_{n=1}^k\E X_n\\&=\E X_1\sum_{k=1}^\infty k\cdot\ind_{\tau=k}\\&=\E X_1\cdot \E\tau.\end{aligned}$$
 
 我们为什么可以在第一行的第二个等号处交换求和次序？这是因为上面的推导对 $|X_n|$ 是成立的，并且离散积分值 $\E|X_1|\cdot\E \tau<\infty$，所以由控制收敛定理对原序列 $X_n$ 交换求和也是 OK 的。
 
