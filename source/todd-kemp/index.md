@@ -2072,7 +2072,7 @@ $$\E[f(X,Y) | X] = \left.\int f(x,y) Q(x,\dy)\right|_{x=X}.$$
 
 本讲后面讨论了离散和连续情形概率核是什么样子的。
 
-# 34.1 Probability Kernels, Part 2
+# ✅ 34.1 Probability Kernels, Part 2
 
 本讲介绍了概率核的本质是 Markov 生成元，即可测函数空间上的非负线性泛函。
 
@@ -2091,17 +2091,34 @@ $$f\to \int_{S_2}f(y)Q(x,\dy),\quad f\in\mathbb{B}(S_2,\B_2)$$
 
 答案是否定的，一般来说这不成立。但是在 $(S_1,\B_1)=(S_2,\B_2)$ 的情形，这确实是对的。
 
-> **定理**：如果 $L:\mathbb{B}(S,\B)\to\mathbb{B}(S,B)$ 满足以上四个条件，则
-> $$Q(x, B) = L(\ind_B)(x)$$
-> 给出一个概率核。并且 $L_Q=L$，即此概率核给出的线性泛函正是 $L$。
+:::{.theorem}
+如果 $L:\mathbb{B}(S,\B)\to\mathbb{B}(S,B)$ 满足以上四个条件，则
+$$Q(x, B) = L(\ind_B)(x)$$
+给出一个概率核。并且 $L_Q=L$，即此概率核给出的线性泛函正是 $L$。
+:::
 
-证明：由于 $0\leq \ind_B\leq 1$ 总是成立的，所以 $L(0)\leq L(\ind_B)\leq L(1)=1$，即 $L(\ind_B)(x)$ 对任何 $x$ 都在 $[0,1]$ 中，这符合概率的定义约束。
+**证明**：先证 $Q$ 为概率核。对任意固定 $B\in\mathcal B$，有
+$$Q(\cdot,B)=L(\ind_B)\in\mathbb{B}(S,\mathcal B).$$
+故 $x\mapsto Q(x,B)$ 可测。对任意固定 $x\in S$，由 $0\le \ind_B\le 1$ 与正性得
+$$0\le Q(x,B)\le Q(x,S)=L(1)(x)=1.$$
+且 $Q(x,\varnothing)=0$。设 $B=\biguplus_{k\ge1} B_k$ 两两不交，令 $f_n:=\sum_{k=1}^n \ind_{B_k}$，则 $0\le f_n\uparrow \ind_B$，由线性与单调连续性，
+$$Q(x,B)=L(\ind_B)(x)=\lim_{n\to\infty}L(f_n)(x)=\lim_{n\to\infty}\sum_{k=1}^n L(\ind_{B_k})(x)=\sum_{k=1}^\infty Q(x,B_k).$$
+故 $B\mapsto Q(x,B)$ 为概率测度。于是 $Q$ 是概率核。
 
-固定 $x$，我们需要证明 $L(\ind_B)(x) = \sum_{k=1}^\infty L(\ind_{B_k})(x)$ 对可数不交并 $B = \uplus_{k=1}^\infty B_k$ 成立。记 $f_n=\sum_{k=1}^n B_k$，则 $f_n\uparrow \ind_B$，于是 $L(f_n)\uparrow L(f)=L(\ind_B)$，即 $\sum_{k=1}^\infty L(\ind_{B_k})\uparrow L(\ind_B)$，成立！
+记
+$$L_Q(f)(x):=\int_S f(y)Q(x,\dy).$$
+显然对任意 $B\in\mathcal B$，
+$$L(\ind_B)=Q(\cdot,B)=\int_S \ind_B(y)Q(\cdot,\dy)=L_Q(\ind_B).
+$$
 
-要证明 $L = L_Q$，即对任何 $f\in\mathbb{B}(S,\B)$ 有
-$$L(f) = \int_S f(y)Q(x,\dy)$$
-成立。这个很容易从示性函数出发取极限得到。
+设
+$$\H=\{f\in\mathbb{B}(S,\mathcal B):\ L(f)=L_Q(f)\}.$$
+则 $\H$ 是向量空间，并且对有界收敛封闭。$\H$ 包含乘法系
+$$\M=\{\ind_B:\ B\in\mathcal B\}.
+$$
+显然 $\sigma(\M)=\B$。由 **Dynkin 的乘法系定理（函数版）**，对一切 $f\in\mathbb{B}(S,\mathcal B)$ 与 $x\in S$，
+$$L(f)(x)=L_Q(f)(x)=\int_S f(y)Q(x,\dy).$$
+即 $L=L_Q$。$\blacksquare$
 
 如果 $Q_1,Q_2$ 是两个 $(S,\B)$ 到自身的概率核，则 $L_{Q_1}L_{Q_2}$ 也满足性质 1-4，因而也是由一个概率核给出：存在概率核 $Q$ 使得 $L_Q = L_{Q_1}L_{Q_2}$。我们可以把 $Q$ 明确的写出来：
 $$L_Q(f) = L_{Q_1}L_{Q_2}(f)=\int_{S}Q_1(x,\dy)\left(\int_Sf(z)Q_2(y,\dz)\right).$$
