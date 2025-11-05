@@ -28,6 +28,7 @@ url: todd-kemp
 \newcommand{\dy}{\,\mathrm{d}y}
 \newcommand{\dz}{\,\mathrm{d}z}
 \newcommand{\dt}{\,\mathrm{d}t}
+\newcommand{\dp}{\,\mathrm{d}\mathbb{P}}
 \newcommand{\dxi}{\,\mathrm{d}\xi}
 
 \newcommand{\triple}{(\Omega,\mathcal{F},\mathbb{P})}
@@ -1947,9 +1948,48 @@ $$\sum_{k=1}^n B_{n,k}\le\frac{1}{8}t^4\sum_{k=1}^n\sigma_{n,k}^4 \le\frac{1}{8}
 由于 Lindberg 条件意味着 DV 条件，故 $n\to\infty$ 时上式右边趋于 0，得证。$\blacksquare$
 
 
+# ✅ 30.2 Conditional Expectation, Part 1
+
+无要点
+
 # ✅ 31.1 Orthogonal Projections
 
 一些关于 Hilber 空间 $L^2$ 的基本结论，无要点
+
+# ✅ 32.3 Conditioning on Random Variables
+
+:::{.proposition}
+设 $X:(\Omega,\mathcal F)\to(S,\mathcal B)$，$Y:(\Omega,\mathcal F)\to(T,\mathcal C)$ 为随机变量。若 $X$ 与 $Y$ 独立，且 $f\in \mathbb B(S\times T,\mathcal B\otimes\mathcal C)$（有界可测），则对 $\mu_X$-a.e. 的 $x$ 有
+$$\E\left[f(X,Y)\mid X=x\right]=\int_T f(x,y)\,\mu_Y(\mathrm d y).$$
+等价地，
+$$\mathbb E\left[f(X,Y)\mid \sigma(X)\right]= g(X)\quad a.s.,\quad
+g(x):=\int_T f(x,y)\,\mu_Y(\mathrm d y).$$
+:::
+
+**证明**：由独立性，联合分布 $\mu_{X,Y}=\mu_X\otimes \mu_Y$。令
+$$g(x):=\int_T f(x,y)\,\mu_Y(\dy).$$
+则按核积分的可测性引理，$g$ 是 $\mathcal B$-可测且有界。
+
+取任意 $h\in\mathbb B(S,\mathcal B)$，有（把期望写成对联合分布的积分并用 Fubini/Tonelli）
+$$
+\begin{aligned}
+\mathbb E\left[f(X,Y)h(X)\right]
+&=\int_{S\times T} f(x,y)h(x)\,(\mu_X\otimes\mu_Y)(\dx\dy)\\
+&=\int_{S}\left(\int_{T} f(x,y)\,\mu_Y(\dy)\right) h(x)\,\mu_X(\dx)\\
+&=\int_S g(x)h(x)\,\mu_X(\dx)\\
+&=\mathbb E\left[g(X)h(X)\right].
+\end{aligned}
+$$
+以上对一切有界 $\mathcal B$-可测 $h$ 成立，故按条件期望的刻画，
+$$
+\mathbb E\left[f(X,Y)\mid \sigma(X)\right]=g(X)\quad a.e.
+$$
+从而对 $\mu_X$-a.e. 的 $x$，
+$$
+\mathbb E\left[f(X,Y)\mid X=x\right]=g(x)=\int_T f(x,y)\,\mu_Y(\dy).
+$$
+证毕。
+
 
 # ✅ 33.1 Probability Kernels, Part 1
 
@@ -2070,7 +2110,51 @@ $$\E[f(X,Y) | X] = \left.\int f(x,y) Q(x,\dy)\right|_{x=X}.$$
 1. 如果 $\mu_{X,Y}=\mu_X\otimes Q$，那我们就有了 $\E[f(X,Y)|X]$ 的计算方法：积分 $\int_{S_2}f(X,y)Q(X,\dy)$。特别地我们可以算条件概率了。
 2. 反之如果我们有一个概率核给出条件概率：$\P(Y\in B | X=x) = Q(x, B)$，那么它就给出 $\mu_{X,Y}$ 的一个分解：$\mu_{X,Y}=\mu_X\otimes Q$。
 
-本讲后面讨论了离散和连续情形概率核是什么样子的。
+:::{.theorem}
+当 $S_2$ 是标准 Borel 空间或者 Polish 空间时，正则条件概率存在。
+:::
+
+**证明**：我们对 $S=\R$ 的情形证明。设 $(\Omega,\F,\P)$ 为概率空间，$\mathcal G\subset\F$ 为子 $\sigma$-代数，$Y:(\Omega,\F)\to(\R,\B(\R))$ 可测。
+
+对每个 $q\in\mathbb Q$，设
+$$G(q,\omega):=\mathbb P(Y\le q\mid \mathcal G)(\omega).$$
+由 $\ind_{\{Y\le q_1\}}\le\ind_{\{Y\le q_2\}}$与条件期望的单调性，丢掉可数零集 $\bigcup_{q_1,q_2} \{\omega\mid G(q_1,\omega)\not\le G(q_2,\omega)\}$ 后可取版本使得对每个 $\omega$，$q\mapsto G(q,\omega)$ 非降。定义
+$$
+F(x,\omega):=\inf\{\,G(q,\omega):q\in\mathbb Q,\ q>x\,\}.
+$$
+则对每个 $\omega$，$F(\cdot,\omega)$ 非降、右连续，且 $\lim_{x\to-\infty}F(x,\omega)=0$、$\lim_{x\to+\infty}F(x,\omega)=1$。并且对任意 $A\in\mathcal G$ 与 $x\in\mathbb R$，取 $q_n\downarrow x$ 得
+$$
+\int_A F(x,\omega)\,\mathrm d\mathbb P(\omega)
+=\lim_{n}\int_A G(q_n,\omega)\,\mathrm d\mathbb P(\omega)
+=\lim_{n}\mathbb P\big(A\cap{Y\le q_n}\big)
+=\mathbb P\big(A\cap{Y\le u}\big).
+$$
+
+令 $\nu(\omega,\cdot)$ 是以 $F(\cdot,\omega)$ 为分布函数的 Lebesgue–Stieltjes 概率测度，由上式可得对一切 $A\in\mathcal G$ 与 $x\in\mathbb R$，
+$$
+\int_A \nu\big(\omega,(-\infty,x]\big)\,\mathrm d\mathbb P(\omega)=\mathbb P\big(A\cap{Y\le x}\big).
+$$
+令
+$$
+\mathcal D:=\{B\in\mathcal B(\mathbb R):\ \omega\mapsto \nu(\omega,B)\ \ \mathcal G\text{-可测且}\ \int_A \nu(\omega,B)\,\mathrm d\mathbb P=\mathbb P\big(A\cap{Y\in B}\big),\ \forall A\in\mathcal G\}.
+$$
+则 $\mathcal D$ 为 $\lambda$-系且包含 $\pi$-系 $\{(a,b]\}$，故由 $\pi-\lambda$ 定理 $\mathcal D=\mathcal B(\mathbb R)$。于是对所有 Borel集 $B$，$\nu(\cdot,B)$ 为 $\mathcal G$-可测，且
+$$
+\int_A \nu(\omega,B)\,\mathrm{d}\mathbb P=\mathbb P\big(A\cap{Y\in B}\big),\qquad \forall A\in\mathcal G.
+$$
+
+定义
+$$
+Q(\omega,B):=\nu\big(\omega,B\big),\qquad B\in\mathcal S.
+$$
+则对每个 $\omega$，$B\mapsto Q(\omega,B)$ 为 $(S,\mathcal S)$上的概率测度；对每个 $B$，$\omega\mapsto Q(\omega,B)$ 为 $\mathcal G$-可测。并且对一切 $A\in\mathcal G$ 与 $B\in\mathcal S$，
+$$
+\int_A Q(\omega,B)\,\mathrm d\mathbb P
+=\int_A \nu\big(\omega,B\big)\,\mathrm d\mathbb P
+=\mathbb P\big(A\cap{Y\in B}\big).
+$$
+因此 $Q(\cdot, B)$ 正是 $\E[\ind_{\{Y\in B\}}|\mathcal G]$ 的一个版本。于是 $Q$ 是给定 $\mathcal G$ 的正则条件概率核。$\blacksquare$
+
 
 # ✅ 34.1 Probability Kernels, Part 2
 
@@ -2127,7 +2211,7 @@ $$Q_1(x,dy)Q_2(d, dz)= Q_1\otimes Q_2(x, dz)$$
 的具体含义。
 
 
-# 34.2 Random Dynamics
+# ✅ 34.2 Random Dynamics
 
 什么是随机动力系统：
 
@@ -2140,7 +2224,9 @@ $$X_{n+1} = f(X_n, \xi_{n+1}) = F_n(X_0,\xi_1,\xi_2,\ldots,\xi_n),\quad F_n:S\ti
 
 注意 $X_n$ 由 $\xi_1\sim\xi_n$ 决定，所以 $\F_n=\sigma(X_0,X_1,\ldots,X_n) =\sigma(X_0,\xi_1,\ldots,\xi_n)$。
 
-记 $Q_n(x,\cdot)=\mathrm{Law}f(x, \xi_n)$，则 $Q_n$ 是一个概率核。设 $L_n$ 是其 Markov 生成元。则
+记 $Q_n(x,A)=\P(f(x, \xi_n)\in A)$，则 $Q_n$ 是一个概率核。设 $L_n$ 是其 Markov 生成元。
+$$L_n(g)(x) = \int g(y) Q_n(x,\dy)=\E[g(f(x,\xi_n))].$$
+则
 
 $$\begin{align*}\E[g(X_{n+1})|\F_n] &= \E[g(f(X_n,\xi_{n+1}))|\F_n]\\
 &=\left.\E[g\circ f(x,\xi_{n+1})]\right|_{x=X_n} \\
@@ -2241,6 +2327,11 @@ $\blacksquare$
 # 36.2 Probability Kernels Revisited
 
 回顾了之前概率核的概念。没啥新的。
+
+# 37.1 Markov Processes
+
+设 $\{X_t\}:(\Omega,\F)\to(\S,\B(\S))$ 是一族随机变量，满足 Markov 性质。假设 $\S$ 足够 nice，于是我们可以定义正则条件概率 $q_{s,t}$ 满足
+$$\E[f(X_s)|X_t] = \int_\S f(y)q_{s,t}(X_s,\dy)=Q_{s,t}(f(X_s)).$$
 
 # 37.2 Kolmogorov's (Extended) Extension Theorem
 
