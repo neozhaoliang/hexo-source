@@ -2335,7 +2335,76 @@ $$\E[f(X_s)|X_t] = \int_\S f(y)q_{s,t}(X_s,\dy)=Q_{s,t}(f(X_s)).$$
 
 # 37.2 Kolmogorov's (Extended) Extension Theorem
 
-本讲介绍了连续情形的 Kolmogrov 扩张定理：可以构造一般的有限维分布，只要它们满足相容性条件。
+Kolmogorov 本质上是一个拓扑结论，在一个可分度量空间上，其测度具有内正则性质：
+$$\mu(E)=\sup\{\mu(K)\mid K\subset E,\ K \text{ compact }\}.$$
+并且紧集也满足有限交性质，从而代数上的有限可加测度也是可数可加测度。
+
+给定指标集 $T$，每个 $t\in T$ 上有 Polish 空间 $(X_t,\Sigma_t)$（$\Sigma_t$ 为 Borel $\sigma$ 代数）。对每个有限子集 $F\subset T$ 给定概率测度 $P_F$ 于 $(X_F,\Sigma_F)$，并满足相容性：若 $G\subset F$ 且 $E\in\Sigma_F$，则 $P_F(E)=P_G(\pi_{FG}(E))$。定义柱状代数
+$$
+\mathcal A=\text{由所有 }A\times X_{-F}\ (F\subset T\ \text{有限},\ A\in\Sigma_F)\ \text{生成的代数}.
+$$
+在生成元上置
+$$
+P(A\times X_{-F})=P_F(A).
+$$
+相容性保证 $P$ 在 $\mathcal A$ 上良定且有限可加；一般而言 $P$ 未必可数可加。若 $T$ 无穷，则 $\mathcal A$ 即无限乘积 $X=\prod_{t\in T}X_t$ 的有限维柱状代数。
+
+:::{.lemma}
+在 Polish 空间 $(X,\mathcal B(X))$ 上，每个有限 Borel 测度 $\mu$ 是紧集内正则：对任意 $A\in\mathcal B(X)$ 与任意 $\varepsilon>0$，存在紧集 $K\subset A$ 使得 $\mu(A)\le \mu(K)+\varepsilon$。
+:::
+
+证明：先取紧致逼近全集。由紧性定理，存在递增紧集 $K_n\uparrow X$ 使 $\mu(K_n)\uparrow\mu(X)$。对任意开集 $U$ 令
+$$
+F_{n,m}:=\{x\in U:\ \mathrm{dist}(x,X\setminus U)\ge 1/m\}\cap K_n,
+$$
+则 $F_{n,m}$ 紧且 $F_{n,m}\uparrow U$，据从下连续性有 $\mu(U)=\sup_{n,m}\mu(F_{n,m})$。对一般 $A$ 取开集 $U\supset A$ 使 $\mu(U)\le \mu(A)+\varepsilon$，再取某个 $F_{n,m}\subset U$ 使 $\mu(U)\le \mu(F_{n,m})+\varepsilon$，令 $K=A\cap F_{n,m}$ 即得 $\mu(A)\le \mu(K)+2\varepsilon$，令 $\varepsilon\downarrow0$ 即可。
+
+:::{.lemma}
+设 $E=\big(\prod_{t\in F}E_t\big)\times X_{-F}$ 为有限维可测矩形，$F$ 有限，$E_t\in\Sigma_t$。对任意 $\varepsilon>0$，存在紧集 $K_t\subset E_t$ 使
+$$
+C:=\Big(\prod_{t\in F}K_t\Big)\times X_{-F}\subset E,\qquad P(E)\le P(C)+\varepsilon .
+$$
+:::
+
+证明：令 $Q_t$ 为 $P_F$ 的第 $t$ 坐标边缘。由上引理，取紧 $K_t\subset E_t$ 使 $Q_t(E_t)\le Q_t(K_t)+\varepsilon/|F|$。由联合到边缘的粗估计得 $P(E)-P(C)\le \sum_{t\in F}\big(Q_t(E_t)-Q_t(K_t)\big)<\varepsilon$。
+
+:::{.lemma}
+记
+$$
+\mathcal C=\Big\{\Big(\prod_{t\in F}K_t\Big)\times X_{-F}: F\subset T\ \text{有限},\ K_t\subset X_t\ \text{紧}\Big\}\subset\mathcal A .
+$$
+则对任意有限维可测矩形 $E$ 与任意 $\varepsilon>0$，有
+$$
+P(E)=\sup\{P(C): C\in\mathcal C,\ C\subset E\}.
+$$
+:::
+
+证明：由上一个引理取紧矩形 $C\subset E$ 使差值小于 $\varepsilon$，取上确界即得。
+
+:::{.lemma}
+若 $\{C_n\}_{n\ge1}\subset\mathcal C$ 且 $\bigcap_{n\ge1}C_n=\varnothing$，则存在 $N$ 使 $\bigcap_{n=1}^NC_n=\varnothing$。
+:::
+
+证明：写作 $C_n=\big(\prod_{t\in F_n}K_{n,t}\big)\times X_{-F_n}$，令 $J=\bigcup_n F_n$（可数）。则
+$$
+\bigcap_{n\ge1}C_n=\Big(\prod_{t\in J}\bigcap_{n:\,t\in F_n}K_{n,t}\Big)\times X_{-J}.
+$$
+若左端为空，则存在 $t_0\in J$ 使 $\bigcap_{n:\,t_0\in F_n}K_{n,t_0}=\varnothing$。因紧集族满足有限交性质，存在有限子族已交空，对应得到某个有限 $N$ 使 $\bigcap_{n=1}^NC_n=\varnothing$。
+
+:::{.lemma}
+若 $E_n\downarrow\varnothing$ 于 $\mathcal A$，则 $P(E_n)\downarrow0$。
+:::
+
+证明：给定 $\varepsilon>0$，由内逼近引理取 $C_n\in\mathcal C$，$C_n\subset E_n$，且 $P(E_n)\le P(C_n)+\varepsilon 2^{-n}$。若 $\bigcap_n C_n\ne\varnothing$ 则与 $E_n\downarrow\varnothing$ 矛盾，据上引理得某个 $N$ 使 $\bigcap_{n=1}^NC_n=\varnothing$。由有限可加性与单调性，
+$$
+0=P\Big(\bigcap_{n=1}^N C_n\Big)\ge \sum_{n=1}^N\big(P(C_n)-P(E_{n+1})\big).
+$$
+令 $N\to\infty$ 并代入 $P(E_n)\le P(C_n)+\varepsilon 2^{-n}$ 得 $\limsup_n P(E_n)\le \varepsilon$，再令 $\varepsilon\downarrow0$ 即得 $P(E_n)\downarrow0$。
+
+:::{.theorem}
+上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
+:::
+
 
 
 # ✅ 46.3 Wald's Identity
