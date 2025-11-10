@@ -199,13 +199,16 @@ $$\mathcal{M}=\{E\in\Omega\mid \mu^\ast(T)=\mu^\ast(T\cap E)+\mu^\ast(T\cap E^c)
 这里介绍了 Driver 的方法。这个方法稍微有一点缺陷，它要求 $\mu:\mathcal{A}\to[0,\infty)$ 是一个有限测度。稍后也可以扩展到 $\sigma$- 有限测度。在概率论中这足够了。
 
 
-# 5.1 Radon Measures
+# ✅ 5.1 Radon Measures
 
 本讲介绍了实直线上的 Radon 测度等价于 Stieltjes 测度。
 
 Radon 测度是指对任何紧集 $K$ 有 $\mu(K)<\infty$ 的测度。这种测度的分布函数必然是单调、右连续的，从而根据之前介绍的预测度和测度扩张定理给出了实直线上的一个可数可加测度。
 
 
+# ✅ 5.2 Lebesgue Measure
+
+无要点
 
 # ✅ 6.1 Random Variables Motivation
 
@@ -444,6 +447,24 @@ $$\int (g\pm f)\du \leq \int g\du \pm \varliminf_{n\to\infty}\int f_n\du.$$
 消去 $g$ 的积分，并注意对任何实数列 $\{a_n\}$ 有 $\varliminf\limits_{n\to\infty}(-a_n)=-\varlimsup\limits_{n\to\infty} a_n$，从而
 $$\varlimsup\int f_n\du \leq \int f\du \leq \varliminf\int f_n\du.$$
 即得结论。
+
+# ✅ 10.1 Integrals and Derivatives
+
+这一讲介绍了在何种条件下，可以在积分号下对参数求导。
+
+我把视频中的结论作了一些加强，实际上是等价的：
+
+:::{.theorem}
+
+1. $f(t, \cdot)$ 对每个 $t$ 都是可测的，而且是 $L^1$ 可积的；
+2. $\frac{\partial f}{\partial t}(t,\omega)$ 对几乎处处的 $\omega$ 有定义；
+3. $|\frac{\partial f}{\partial t}(t,\omega)|\le g(\omega)$ 对某个 $g\in L^1$ 几乎处处成立。
+
+则
+$$\frac{\mathrm d}{\mathrm d t}\int f(t,\omega)\,\mu(\mathrm d\omega)=\int \frac{\partial f}{\partial t}(t,\omega)\,\mu(\mathrm d\omega).$$
+:::
+
+注意：对所有的 $t$，使得 2, 3 成立的那些 $\omega$ 组成的集合必须是固定的，不能随着 $t$ 变化而变化。反例：$(0,1)$ 上的 Lebesgue 测度，$f(t,\omega)=\ind_{\{\omega\le t\}}$。
 
 
 # ✅ 11.1 The Radon-Nikodym Theorem
@@ -2405,7 +2426,65 @@ $$
 上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
 :::
 
+# 46.1 The Strong Markov Property
 
+:::{.theorem}
+设 $\nu$ 是 Markov 链的初始分布，$\tau$ 是停时，则
+$$\E^\nu[F(X_{\tau+})\mid\mathcal F_\tau] = \E^x [F(X)]\Big|_{x=X_\tau},\quad \text{a.e. on }\{\tau<\infty\}.$$
+:::
+
+**证明**：
+$$\begin{aligned}
+\E^\nu[F(X_{\tau+})\mid\mathcal F_\tau]\ind_{\{\tau<\infty\}}&=\sum_{n=0}^\infty \E^\nu[F(X_{\tau+})\mid\mathcal F_n]\ind_{\{\tau=n\}}\\
+&=\sum_{n=0}^\infty \E^\nu[F(X_{\tau+})\ind_{\{\tau=n\}}\mid\mathcal F_n]\\
+&=\sum_{n=0}^\infty \underbrace{\E^\nu[F(X_{n+})\mid\mathcal F_n]}_{\E^x [F(X)]\Big|_{x=X_n}}\ind_{\{\tau=n\}}.
+\end{aligned}$$
+即如果令 $g(x)=\E^x[F(X)]$，则
+$$\text{The above }=\sum_{n=0}^\infty g(X_n)\ind_{\{\tau=n\}}=g(X_\tau)\ind_{\{\tau<\infty\}}.$$
+$\blacksquare$
+
+:::{.corollary}
+设 $(X_n)_{n\ge0}$ 是一个取值在离散空间 $S$ 中的 Markov 链。对任何 $x\in S$，对 $A_x=\{\tau<\infty,X_\tau=x\}$ 取条件，则 $\mathcal F_\tau$ 和 $X_{\tau + n}$ 是独立的，且 $(X_{\tau + n})$ 和 $(X_n)$ 有相同的分布。
+:::
+
+**证明**：设 $Y\in\mathbb{B}(\Omega,\mathcal F_\tau)$，则
+$$\begin{aligned}
+\E^\nu[F(X_{\tau+})\,Y\ind_{A_x}]&=\E^\nu[\E[F(X_{\tau+})\mid\mathcal F_\tau]\,Y\ind_{A_x}]\\
+&\overset{\text{strong Markov property}}{=}\E^\nu[\E^{X_\tau}[F(X)]\,Y\ind_{A_x}]\\
+&\overset{\E^x[F(X)]\text{ is a scalar}}{=}\E^x[F(X)]\cdot \E^\nu[Y\ind_{A_x}].
+\end{aligned}$$
+两边同时除以 $\mathbb{P}^\nu(A_x)$ 可得
+$$\E^\nu[F(X_{\tau+})Y \mid A_x] = \E^x[F(X)]\cdot \E^\nu[Y\mid A_x].$$
+取 $Y\equiv 1$，可得
+$$\E^\nu[F(X_{\tau+})\mid A_x]=\E^x[F(x)]\cdot \mathbb{P}^\nu(\{\tau<\infty,X_\tau=x\}).$$
+
+1. 取 $Y\equiv1$，得
+   $$\mathbb E^\nu[F(X_{\tau+})\mid A_x]=\mathbb E^x[F(X)]$$，所以 $(X_{\tau+n})_{n\ge0}$ 在 $\mathbb P^\nu(\cdot\mid A_x)$ 下与从 $x$ 出发的 $(X_n)_{n\ge0}$ 同分布；
+2. 对任意有界 $Y\in\mathcal F_\tau$ 与任意未来泛函 $F$，都有乘积分解，上式表明在 $\mathbb P^\nu(\cdot\mid A_x)$ 下 $\mathcal F_\tau$ 与 $\sigma(X_{\tau+n},n\ge0)$ 条件独立。
+
+
+# 46.2 Markov Chain Ergodic Theorem
+
+:::{.theorem}
+**遍历定理** 令 $V_j(N)$ 为前 $N$ 个时刻访问状态 $j$ 的次数：
+$$V_j(N)=\sum_{n=0}^N \ind_{\{X_n=j\}}.$$
+则
+$$\lim_{N\to\infty}\frac{V_j(N)}{N}=\frac{1}{\E^i[\tau_i]}=1,\ \text{a.e.}\quad \forall i,j.$$
+:::
+
+:::{.definition}
+$$\sigma_j^{(1)}=\inf\{n\ge 1: X_n=j\}.$$
+$$\sigma_j^{(n)}=\inf\{n\ge 1: X_{n+\sigma_j^{(n-1)}}=j\}.$$
+:::
+
+:::{.lemma}
+$\{\sigma_j^{(n)}\}_{n=1}^\infty$ 是 i.i.d 序列。
+:::
+
+证明：定义 $\tau_j^{(0)}=0$，
+$$\tau_j^{(n)}=\inf\{n>\tau_{j-1}^{(n)}:\ X_n=j\}.$$
+注意到
+$$\sigma_j^({n+1})(X_0,X_1,\ldots) = \sigma_j^{(1)}(X_{\tau_j^{(n)}},X_{\tau_j^{(n)}+1},\ldots).$$
 
 # ✅ 46.3 Wald's Identity
 
