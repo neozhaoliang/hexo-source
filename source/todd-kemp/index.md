@@ -2426,7 +2426,10 @@ $$
 上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
 :::
 
-# 46.1 The Strong Markov Property
+
+# ✅ 44.2 Invariant Distributions
+
+# ✅ 46.1 The Strong Markov Property
 
 :::{.theorem}
 设 $\nu$ 是 Markov 链的初始分布，$\tau$ 是停时，则
@@ -2455,12 +2458,14 @@ $$\begin{aligned}
 \end{aligned}$$
 两边同时除以 $\mathbb{P}^\nu(A_x)$ 可得
 $$\E^\nu[F(X_{\tau+})Y \mid A_x] = \E^x[F(X)]\cdot \E^\nu[Y\mid A_x].$$
-取 $Y\equiv 1$，可得
-$$\E^\nu[F(X_{\tau+})\mid A_x]=\E^x[F(x)]\cdot \mathbb{P}^\nu(\{\tau<\infty,X_\tau=x\}).$$
 
-1. 取 $Y\equiv1$，得
-   $$\mathbb E^\nu[F(X_{\tau+})\mid A_x]=\mathbb E^x[F(X)]$$，所以 $(X_{\tau+n})_{n\ge0}$ 在 $\mathbb P^\nu(\cdot\mid A_x)$ 下与从 $x$ 出发的 $(X_n)_{n\ge0}$ 同分布；
-2. 对任意有界 $Y\in\mathcal F_\tau$ 与任意未来泛函 $F$，都有乘积分解，上式表明在 $\mathbb P^\nu(\cdot\mid A_x)$ 下 $\mathcal F_\tau$ 与 $\sigma(X_{\tau+n},n\ge0)$ 条件独立。
+特别地，取 $Y\equiv1$，得
+$$\mathbb E^\nu[F(X_{\tau+})\mid A_x]=\mathbb E^x[F(X)].$$
+所以在事件 $A_x$ 条件下，
+$$(X_{\tau+}) \overset{d}{=} (X) \ \text{under }\mathbb{P}^x.$$
+不仅如此，代入以后我们还有对任意有界 $Y\in\mathcal F_\tau$ 与任意未来泛函 $F$，都有乘积分解：
+$$\E^\nu[F(X_{\tau+})\,Y\ind_{A_x}]=\E^\nu[F(X_{\tau+})\ind_{A_x}]\cdot\E^\nu[Y\ind_{A_x}].$$
+这表明在 $\mathbb P^\nu(\cdot\mid A_x)$ 下 $\mathcal F_\tau$ 与 $\sigma(X_{\tau+n},n\ge0)$ 条件独立。$\blacksquare$
 
 
 # 46.2 Markov Chain Ergodic Theorem
