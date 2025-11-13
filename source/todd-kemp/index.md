@@ -16,7 +16,7 @@ url: todd-kemp
 \newcommand{\L}{\mathcal{L}}
 \newcommand{\H}{\mathbb{H}}
 \newcommand{\M}{\mathbb{M}}
-
+\newcommand{\dtv}{\mathrm{d_{TV}}}
 \newcommand{\io}{\mathrm{i.o.}}
 \newcommand{\ae}{\mathrm{a.e.}}
 \newcommand{\iid}{\mathrm{i.i.d}}
@@ -24,6 +24,7 @@ url: todd-kemp
 \newcommand{\du}{\,\mathrm{d}\mu}
 \newcommand{\dun}{\,\mathrm{d}\mu_n}
 \newcommand{\dv}{\,\mathrm{d}\nu}
+\newcommand{\da}{\,\mathrm{d}\alpha}
 \newcommand{\dx}{\,\mathrm{d}x}
 \newcommand{\dy}{\,\mathrm{d}y}
 \newcommand{\dz}{\,\mathrm{d}z}
@@ -793,6 +794,22 @@ $\Rightarrow$: 简单。
 
 这是因为 $\sigma(f(X_1,\ldots,X_n))\subseteq\sigma(X_1,\ldots,X_n)$，$\sigma(g(Y_1,\ldots,Y_m))\subseteq\sigma(Y_1,\ldots,Y_m)$，所以也是独立的。
 
+# ✅ 16.2 Kolmogorov's Extension Theorem, Part 2
+
+回忆一个 Radon 测度是指，它是一个有限的 Borel 测度，并且满足内外的正则性：从内部可以用紧集任意逼近，从外部可以用开集任意逼近。
+
+:::{.theorem}
+$\R^d$ 上的任何有限 Borel 测度都是 Radon 测度。
+:::
+
+**证明**：设 $\F$ 是所有可以从外部被开集任意逼近的那些子集构成的集合。我们要证明 $\F$ 包含 $\B(\R^d)$。
+
+1. $\F$ 包含所有闭集。实际上对闭集 $F$，令 $G_\epsilon=\cup_{x\in F}B(x,\epsilon)$，则 $G_\epsilon\downarrow \overline{F}=F$。从而由测度连续性即得。
+2. $\F$ 对有限集合运算封闭，从而 $\F$ 是一个代数。
+3. $\F$ 对可数不交并封闭。
+
+由此即得结论。$\blacksquare$
+
 
 # ✅ 17.1 Kolmogorov's 0-1 Law
 
@@ -999,6 +1016,40 @@ $$\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} < \frac{S_{N_t+1}}{N_t}.$$
 > **引理**：设 $X\in L^1$，如果 $\{X_n\}$ 是一列 $\iid$ 且服从和 $X$ 同样的分布，则 $\dfrac{X_n}{n}\to0,\ae$。
 
 老技巧，只要证明 $\P(\{|X_n|\geq n\epsilon,\ \io\})=0$ 即可。根据 Borel-Cantelli 引理，只要证明 $\sum_{n=1}^\infty\P(|X_n|\geq n\epsilon)<\infty$ 即可，而这在 18.1 中已经证明过了。
+
+# ✅ 21.1 Total Variation
+
+:::{.definition}
+设 $\mu,\nu$ 是 $(S,\B)$ 上的两个概率测度。定义它们之间的全变差为
+$$\dtv(\mu,\nu) = \sup_{B\in\B}|\mu(B)-\nu(B)|.$$
+:::
+
+:::{.lemma}
+设 $\mu,\nu$ 是 $(S,\B)$ 上的两个概率测度，$\alpha$ 是有限测度且 $\mu,\nu\ll\alpha$。设 $\mathrm{d}\mu = f\,\mathrm{d}\alpha,\mathrm{d}\nu=g\,\mathrm{d}\alpha$，则
+$$\dtv(\mu,\nu) = \frac{1}{2}\|f-g\|_{L^1(\alpha)}.$$
+:::
+
+**证明**：对任何 $B\in \B$，
+$$|\mu(B) - \nu(B)| = \left|\int_B (f-g)\,\mathrm{d}\alpha\right|.$$
+$$|\mu(B^c) - \nu(B^c)| = \left|\int_{B^c} (f-g)\,\mathrm{d}\alpha\right|.$$
+上面两个式子，左边的值是一样的，右边之和大于等于 $\|f-g\|$，所以
+$$\dtv(\mu,\nu)\le \|f-g\|.$$
+另一方面，取 $A=\{f > g\}$，则由于 $\mu,\nu$ 是概率测度，所以
+$$0=\int_S (f-g)\,\mathrm{d}\alpha=\int_A (f-g)\da + \int_{A^c}(f-g)\da=\int_A |f-g|\da - \int_{A^c}|f-g|\da.$$
+即
+$$\mu(A)-\nu(A)=\int_A (f-g)\da =\int_A |f-g|\da=\frac{1}{2}\|f-g\|_{L1}.$$
+$\blacksquare$
+
+给定一族 $\{\mu_n\}_{n\ge1}$，取
+$$\alpha = \sum_{n=1}^\infty\frac{\mu_n}{2^n}.$$
+则 $\mu_n\ll\alpha_n$。
+
+:::{.corollary}
+$\dtv$ 是 $(S,\B)$ 上的完备度量。
+:::
+
+**证明**：取 $\alpha$ 如上使得 $\mu_n\ll\alpha$，则问题转化为使用 $L^1(\alpha)$ 是完备度量空间。$\blacksquare$。
+
 
 # ✅ 22.1 Weak Convergence
 
@@ -2426,6 +2477,62 @@ $$
 上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
 :::
 
+# 40.2 Bounded Generators
+
+设 $B_b(S)$ 是测度空间 $(S,\mathcal B)$ 上有界可测函数的 Banach 空间，范数为 $\|f\|_\infty$。
+$(Q_t)_{t\ge0}$ 是一族 **Markov 迁移算子**，也就是：
+
+* 每个 $Q_t : B_b(S)\to B_b(S)$ 是线性的、正的；
+* $Q_t\mathbf 1=\mathbf 1$；
+* 半群性质：$Q_{t+s}=Q_tQ_s$，$Q_0=I$（恒等算子）。
+
+因为 $Q_t$ 是 Markov 算子，在 $|\cdot|_\infty$ 下都是压缩映射，$|Q_t|_{\mathrm{op}}\le 1$。
+
+假设再多一点正则性：
+
+$$\lim_{t\downarrow 0}|Q_t - I|_{\mathrm{op}} = 0.$$
+
+这叫“在 $t=0$ 的算子范数连续”，也就是很小时间步 $t$ 对任意有界可测函数几乎“不做事”。
+
+:::{.theorem}
+在上述假设下，存在一个有界线性算子
+$$A = \lim_{t\downarrow0}\frac{Q_t - I}{t}$$
+（极限在算子范数意义下存在），并且对所有 $t\ge0$,
+$$Q_t = e^{tA} := \sum_{n=0}^\infty \frac{t^n}{n!} A^n.$$
+级数在算子范数下收敛。
+
+从而 $t\mapsto Q_t$ 在 $[0,\infty)$ 上在算子范数意义下可微，并满足
+$$\frac{d}{dt}Q_t = Q_tA = AQ_t, \qquad Q_0=I.$$
+这是 Kolmogorov 的正向 / 反向方程的算子形式。
+:::
+
+**证明**：利用半群性质和 $\|Q_t\|\le 1$，我们先说明：只要在 0 点范数连续，就在每个 $t$ 都范数连续，甚至在每个有限区间上一致连续。
+
+对任意固定 $s\ge0$ 以及 $h>0$，有
+$$Q_{s+h} - Q_s = Q_sQ_h - Q_s = Q_s(Q_h - I).$$
+所以
+$$\|Q_{s+h} - Q_s\|_{\mathrm{op}}
+\le \|Q_s\|_{\mathrm{op}}\cdot\|Q_h - I\|_{\mathrm{op}}
+\le \|Q_h - I\|_{\mathrm{op}}.$$
+由已知 $h\downarrow0$ 时右边趋于 0，因此在任意 $s$ 处右连续。类似地
+$Q_s - Q_{s-h} = Q_{s-h}(Q_h - I)$ 给出左连续。
+
+固定 $\epsilon>0$，定义一个有界算子
+$$B_\epsilon = \frac{1}{\epsilon}\int_0^\epsilon Q_s\,\mathrm{d}s.$$
+其中 $B_\epsilon$ 的定义为
+$$(B_\epsilon f)(x) = \frac{1}{\epsilon}\int_0^\epsilon Q_s f(x)\,\mathrm{d}s.$$
+这是因为对于任意固定的状态 $x\in S$,
+$$\|Q_{s+h}f(x) - Q_{s}f(x)\|\le \|Q_{s+h}f - Q_{s}f\|_\infty \xrightarrow[h\to0]{} 0.$$
+所以对每个 $x$，函数
+$$s\longmapsto Q_s f(x)$$
+在任何 $s$ 处都连续。
+
+注意到
+$$B_\epsilon Q_t f = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}f\,\mathrm{d}s.$$
+即
+$$B_\epsilon Q_t  = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}\,\mathrm{d}s = \frac{1}{\epsilon}\int_t^{t+\epsilon} Q_{s}\,\mathrm{d}s.$$
+所以函数 $t\to B_\epsilon Q_t$ 是可微的，其导数为
+$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon} $$
 
 # ✅ 44.2 Invariant Distributions
 
