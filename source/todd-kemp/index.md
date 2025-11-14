@@ -2486,11 +2486,11 @@ $(Q_t)_{t\ge0}$ 是一族 **Markov 迁移算子**，也就是：
 * $Q_t\mathbf 1=\mathbf 1$；
 * 半群性质：$Q_{t+s}=Q_tQ_s$，$Q_0=I$（恒等算子）。
 
-因为 $Q_t$ 是 Markov 算子，在 $|\cdot|_\infty$ 下都是压缩映射，$|Q_t|_{\mathrm{op}}\le 1$。
+因为 $Q_t$ 是 Markov 算子，在 $\|\cdot\|_\infty$ 下都是压缩映射，$\|Q_t\|_{\mathrm{op}}\le 1$。
 
 假设再多一点正则性：
 
-$$\lim_{t\downarrow 0}|Q_t - I|_{\mathrm{op}} = 0.$$
+$$\lim_{t\downarrow 0}\|Q_t - I\|_{\mathrm{op}} = 0.$$
 
 这叫“在 $t=0$ 的算子范数连续”，也就是很小时间步 $t$ 对任意有界可测函数几乎“不做事”。
 
@@ -2527,12 +2527,25 @@ $$\|Q_{s+h}f(x) - Q_{s}f(x)\|\le \|Q_{s+h}f - Q_{s}f\|_\infty \xrightarrow[h\to0
 $$s\longmapsto Q_s f(x)$$
 在任何 $s$ 处都连续。
 
+注意
+$$B_\varepsilon-I = \frac1\varepsilon\int_0^\varepsilon(Q_s-I)\,\mathrm d s.$$
+因此
+$$\|B_\varepsilon-I\|_{\mathrm{op}}
+\le \frac1\varepsilon\int_0^\varepsilon \|Q_s-I\|_{\mathrm{op}}\,\mathrm d s
+\xrightarrow[\varepsilon\downarrow0]{}0$$
+
+于是存在某个 $\varepsilon_0>0$，使得对所有 $0<\varepsilon\le \varepsilon_0$,
+$\|B_\varepsilon-I\|<\frac12$。这时 $B_\varepsilon$ 通过 Neumann 级数可逆，且
+$$\|B_\varepsilon^{-1}\|\le \frac1{1-\|B_\varepsilon-I\|}\le 2.$$
+
 注意到
 $$B_\epsilon Q_t f = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}f\,\mathrm{d}s.$$
 即
 $$B_\epsilon Q_t  = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}\,\mathrm{d}s = \frac{1}{\epsilon}\int_t^{t+\epsilon} Q_{s}\,\mathrm{d}s.$$
 所以函数 $t\to B_\epsilon Q_t$ 是可微的，其导数为
-$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon} $$
+$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon}. $$
+
+
 
 # ✅ 44.2 Invariant Distributions
 
