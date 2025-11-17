@@ -2506,44 +2506,241 @@ $$\frac{d}{dt}Q_t = Q_tA = AQ_t, \qquad Q_0=I.$$
 这是 Kolmogorov 的正向 / 反向方程的算子形式。
 :::
 
-**证明**：利用半群性质和 $\|Q_t\|\le 1$，我们先说明：只要在 0 点范数连续，就在每个 $t$ 都范数连续，甚至在每个有限区间上一致连续。
+**证明**：**第一步：从 $0$ 点连续到各点连续**
 
-对任意固定 $s\ge0$ 以及 $h>0$，有
-$$Q_{s+h} - Q_s = Q_sQ_h - Q_s = Q_s(Q_h - I).$$
-所以
-$$\|Q_{s+h} - Q_s\|_{\mathrm{op}}
-\le \|Q_s\|_{\mathrm{op}}\cdot\|Q_h - I\|_{\mathrm{op}}
-\le \|Q_h - I\|_{\mathrm{op}}.$$
-由已知 $h\downarrow0$ 时右边趋于 0，因此在任意 $s$ 处右连续。类似地
-$Q_s - Q_{s-h} = Q_{s-h}(Q_h - I)$ 给出左连续。
+利用半群性质和 $\|Q_t\|\le1$，先说明：只要在 $0$ 点算子范数连续，则在每个 $t$ 都算子范数连续，并且在每个有限区间上一致连续。
 
-固定 $\epsilon>0$，定义一个有界算子
-$$B_\epsilon = \frac{1}{\epsilon}\int_0^\epsilon Q_s\,\mathrm{d}s.$$
-其中 $B_\epsilon$ 的定义为
-$$(B_\epsilon f)(x) = \frac{1}{\epsilon}\int_0^\epsilon Q_s f(x)\,\mathrm{d}s.$$
-这是因为对于任意固定的状态 $x\in S$,
-$$\|Q_{s+h}f(x) - Q_{s}f(x)\|\le \|Q_{s+h}f - Q_{s}f\|_\infty \xrightarrow[h\to0]{} 0.$$
-所以对每个 $x$，函数
-$$s\longmapsto Q_s f(x)$$
-在任何 $s$ 处都连续。
+对任意固定 $s\ge0$ 以及 $h>0$，由半群性质有
+$$
+Q_{s+h}-Q_s=Q_sQ_h-Q_s=Q_s(Q_h-I).
+$$
+于是
+$$\|Q_{s+h}-Q_s\|
+\le\|Q_s\|\cdot\|Q_h-I\|
+\le\|Q_h-I\|.$$
+由已知 $\|Q_h-I\|\to0$，得出 $t\mapsto Q_t$ 在任意 $s$ 处右连续。类似地，由
+$$
+Q_s-Q_{s-h}=Q_{s-h}(Q_h-I)
+$$
+得到左连续。故 $t\mapsto Q_t$ 在每个 $t\ge0$ 都算子范数连续。
+再注意到上述估计与 $s$ 无关，可知在任意有限区间 $[0,T]$ 上 $t\mapsto Q_t$ 一致连续。
 
-注意
-$$B_\varepsilon-I = \frac1\varepsilon\int_0^\varepsilon(Q_s-I)\,\mathrm d s.$$
-因此
-$$\|B_\varepsilon-I\|_{\mathrm{op}}
-\le \frac1\varepsilon\int_0^\varepsilon \|Q_s-I\|_{\mathrm{op}}\,\mathrm d s
-\xrightarrow[\varepsilon\downarrow0]{}0$$
+**第二步：定义平滑算子 $B_\varepsilon$ 并证明其可逆**
 
-于是存在某个 $\varepsilon_0>0$，使得对所有 $0<\varepsilon\le \varepsilon_0$,
-$\|B_\varepsilon-I\|<\frac12$。这时 $B_\varepsilon$ 通过 Neumann 级数可逆，且
-$$\|B_\varepsilon^{-1}\|\le \frac1{1-\|B_\varepsilon-I\|}\le 2.$$
+固定 $\varepsilon>0$，定义有界算子
+$$B_\varepsilon=\frac{1}{\varepsilon}\int_0^\varepsilon Q_s\,\mathrm{d}s.
+$$
+即对 $f\in B_b(S)$ 和 $x\in S$，
+$$
+(B_\varepsilon f)(x)=\frac{1}{\varepsilon}\int_0^\varepsilon Q_sf(x)\,\mathrm{d}s.
+$$
+
+由于对任意 $f\in B_b(S)$，有
+$$
+\|Q_{s+h}f-Q_sf\|_\infty\le\|Q_{s+h}-Q_s\| \|f\|_\infty\xrightarrow[h\to0]{}0.
+$$
+所以对每个 $x\in S$，函数
+$$
+s\longmapsto Q_sf(x)
+$$
+在每个 $s$ 处连续，从而可积，上式定义良好。并且
+$$
+\|B_\varepsilon\|\le\frac{1}{\varepsilon}\int_0^\varepsilon\|Q_s\|\,\mathrm{d}s\le1.
+$$
 
 注意到
-$$B_\epsilon Q_t f = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}f\,\mathrm{d}s.$$
-即
-$$B_\epsilon Q_t  = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}\,\mathrm{d}s = \frac{1}{\epsilon}\int_t^{t+\epsilon} Q_{s}\,\mathrm{d}s.$$
-所以函数 $t\to B_\epsilon Q_t$ 是可微的，其导数为
-$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon}. $$
+$$
+B_\varepsilon-I=\frac{1}{\varepsilon}\int_0^\varepsilon(Q_s-I)\,\mathrm{d}s.
+$$
+于是
+$$\|B_\varepsilon-I\|\le\frac{1}{\varepsilon}\int_0^\varepsilon\|Q_s-I\|\,\mathrm{d}s
+\xrightarrow[\varepsilon\downarrow0]{}0.
+$$
+
+因此存在某个 $\varepsilon_0>0$，使得对所有 $0<\varepsilon\le\varepsilon_0$，
+$$\|B_\varepsilon-I\|<\frac{1}{2}.$$
+记 $K_\varepsilon:=B_\varepsilon-I$，则 $\|K_\varepsilon\|<1$。由 Neumann 级数定理，算子
+$$B_\varepsilon=I+K_\varepsilon$$
+是可逆的，其逆为
+$$
+B_\varepsilon^{-1}=\sum_{n=0}^\infty(-1)^nK_\varepsilon^n,
+$$
+并且
+$$\|B_\varepsilon^{-1}\|\le\sum_{n=0}^\infty|K_\varepsilon|^n
+=\frac{1}{1-\|K_\varepsilon\|}\le\frac{1}{1-\frac{1}{2}}=2.
+$$
+
+**第三步：$B_\varepsilon$ 与 $Q_t$ 交换**
+
+对任意 $t\ge0$，
+$$
+\begin{aligned}
+Q_tB_\varepsilon f
+&=Q_t\left(\frac{1}{\varepsilon}\int_0^\varepsilon Q_sf\,\mathrm{d}s\right)
+=\frac{1}{\varepsilon}\int_0^\varepsilon Q_tQ_sf\,\mathrm{d}s\\
+&=\frac{1}{\varepsilon}\int_0^\varepsilon Q_{t+s}f\,\mathrm{d}s
+=\frac{1}{\varepsilon}\int_t^{t+\varepsilon}Q_uf\,\mathrm{d}u
+\end{aligned}
+$$
+另一方面，
+$$
+\begin{aligned}
+B_\varepsilon Q_tf
+&=\frac{1}{\varepsilon}\int_0^\varepsilon Q_sQ_tf\,\mathrm{d}s
+=\frac{1}{\varepsilon}\int_0^\varepsilon Q_{s+t}f\,\mathrm{d}s
+=\frac{1}{\varepsilon}\int_t^{t+\varepsilon}Q_uf\,\mathrm{d}u.
+\end{aligned}
+$$
+于是 $Q_tB_\varepsilon f=B_\varepsilon Q_tf$，即
+$$
+Q_tB_\varepsilon=B_\varepsilon Q_t,\qquad\forall t\ge0.
+$$
+因此 $B_\varepsilon^{-1}$ 也与所有 $Q_t$ 交换。
+
+**第四步：$t\mapsto B_\varepsilon Q_t$ 的可微性**
+
+由上式我们可以写成
+$$
+B_\varepsilon Q_t=\frac{1}{\varepsilon}\int_t^{t+\varepsilon}Q_s\,\mathrm{d}s.
+$$
+微积分基本定理给出
+$$
+\frac{\mathrm{d}}{\mathrm{d}t}(B_\varepsilon Q_t)=\frac{Q_{t+\varepsilon}-Q_t}{\varepsilon}.
+$$
+
+**第五步：$t\mapsto Q_t$ 的可微性与生成元 $A$**
+
+现在固定一个足够小的 $\varepsilon\le\varepsilon_0$，此时 $B_\varepsilon$ 可逆且与所有 $Q_t$ 交换。对任意 $t\ge0$，
+$$
+Q_t=B_\varepsilon^{-1}(B_\varepsilon Q_t).
+$$
+右侧是常算子 $B_\varepsilon^{-1}$ 作用在可微函数 $t\mapsto B_\varepsilon Q_t$ 上。因为 $B_\varepsilon^{-1}$ 是有界线性算子，有
+$$
+\frac{Q_{t+h}-Q_t}{h}
+=B_\varepsilon^{-1}\frac{B_\varepsilon Q_{t+h}-B_\varepsilon Q_t}{h}.
+$$
+当 $h\to0$ 时，右侧在算子范数下趋于
+$$
+B_\varepsilon^{-1}\frac{\mathrm{d}}{\mathrm{d}t}(B_\varepsilon Q_t)
+=B_\varepsilon^{-1}\frac{Q_{t+\varepsilon}-Q_t}{\varepsilon}.
+$$
+因此 $t\mapsto Q_t$ 在算子范数意义下处处可微，其导数满足
+$$
+\frac{\mathrm{d}}{\mathrm{d}t}Q_t
+=B_\varepsilon^{-1}\frac{Q_{t+\varepsilon}-Q_t}{\varepsilon}.
+$$
+
+特别地，在 $t=0$ 处导数存在，于是可以定义生成元
+$$
+A:=\left.\frac{\mathrm{d}}{\mathrm{d}t}Q_t\right|_{t=0}
+=\lim_{t\downarrow0}\frac{Q_t-I}{t},
+$$
+其中极限在算子范数意义下存在。由于每个差商 $\frac{Q_t-I}{t}$ 都是有界算子，其范数极限 $A$ 也是有界线性算子，因此 $A\in\mathcal L(B_b(S))$。
+
+**第六步：Kolmogorov 正向/反向方程**
+
+由 $Q_t$ 的可微性，利用半群性质可以得到
+$$
+\begin{aligned}
+\frac{\mathrm{d}}{\mathrm{d}t}Q_t
+&=\lim_{h\to0}\frac{Q_{t+h}-Q_t}{h}\\
+&=\lim_{h\to0}\frac{Q_tQ_h-Q_t}{h}\qquad(\text{半群性质})\\
+&=\lim_{h\to0}Q_t\frac{Q_h-I}{h}
+=Q_tA,
+\end{aligned}
+$$
+这里用到了 $Q_t$ 有界，可以从极限中提出。
+
+同理，从左乘出发，
+$$
+Q_{t+h}-Q_t=Q_hQ_t-Q_t,
+$$
+从而
+$$
+\frac{\mathrm{d}}{\mathrm{d}t}Q_t
+=\lim_{h\to0}\frac{Q_hQ_t-Q_t}{h}
+=AQ_t.
+$$
+
+于是我们得到了 Kolmogorov 正向/反向方程的算子形式：
+$$
+\frac{\mathrm{d}}{\mathrm{d}t}Q_t=Q_tA=AQ_t,\qquad Q_0=I.
+$$
+
+**第七步：指数 $e^{tA}$ 的定义与基本性质**
+
+因为 $A$ 是有界线性算子，对任意 $t\ge0$，级数
+$$
+e^{tA}:=\sum_{n=0}^\infty\frac{t^n}{n!}A^n
+$$
+在算子范数意义下收敛。
+
+标准的幂级数运算（在算子范数下逐项求导是合法的，因为在有界 $t$ 区间上级数一致收敛）给出：
+
+1. 对每个 $t\ge0$，$e^{tA}$ 有界线性；
+2. 半群性质：
+   $$
+   e^{(t+s)A}=e^{tA}e^{sA},\qquad t,s\ge0;
+   $$
+3. 对每个 $t\ge0$，$t\mapsto e^{tA}$ 在算子范数意义下可微，且
+   $$
+   \frac{\mathrm{d}}{\mathrm{d}t}e^{tA}=e^{tA}A=Ae^{tA},\qquad e^{0A}=I.
+   $$
+
+因此 $(e^{tA})_{t\ge0}$ 也是一个满足同样 Kolmogorov 方程的算子半群。
+
+**第八步：微分方程解的唯一性**
+
+现在在 Banach 空间 $\mathcal L(B_b(S))$ 上考虑微分方程
+$$\begin{cases}
+X'(t)&=X(t)A,\\
+X(0)&=I.
+\end{cases}
+$$
+
+我们已经知道：
+
+* $(Q_t)_{t\ge0}$ 是该方程在算子范数意义下的一个 $C^1$ 解；
+* $(e^{tA})_{t\ge0}$ 也是该方程的一个 $C^1$ 解。
+
+接下来证明解的唯一性。令 $X_t$、$Y_t$ 是两个在 $[0,T]$ 上的 $C^1$ 解，即
+$$
+X_0=Y_0=I,\qquad X'_t=X_tA,\quad Y'_t=Y_tA.
+$$
+将方程积分得到（在算子范数意义下积分）：
+$$
+X_t=I+\int_0^tX_sA,\mathrm{d}s,\qquad
+Y_t=I+\int_0^tY_sA,\mathrm{d}s.
+$$
+作差得
+$$
+D_t:=X_t-Y_t=\int_0^tD_sA,\mathrm{d}s.
+$$
+对两侧取算子范数，得到
+$$
+|D_t|
+\le\int_0^t|D_sA|\,\mathrm{d}s
+\le|A|\int_0^t|D_s|\,\mathrm{d}s.
+$$
+令
+$$
+\varphi(t):=|D_t|\ge0,
+$$
+则 $\varphi(0)=0$，且满足
+$$
+\varphi(t)\le|A|\int_0^t\varphi(s)\,\mathrm{d}s,\qquad t\in[0,T].
+$$
+
+这是一个 Grönwall 型不等式。经典 Grönwall 引理给出：在这样的条件下，只能有 $\varphi(t)\equiv0$。因此对所有 $t\in[0,T]$，
+$$
+|D_t|=0\quad\Rightarrow\quad D_t=0\quad\Rightarrow\quad X_t=Y_t.
+$$
+
+由 $T>0$ 的任意性可知：在每个有限区间 $[0,T]$ 上，甚至在 $[0,\infty)$ 上，满足
+$$
+X'(t)=X(t)A,\quad X(0)=I
+$$
+的 $C^1$ 解在算子范数意义下唯一。
 
 
 
