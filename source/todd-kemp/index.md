@@ -2806,6 +2806,10 @@ $\blacksquare$
 
 # ✅ 44.2 Invariant Distributions
 
+# ✅ 45.1 Stopping Times
+
+关于停时的基本知识，无要点。
+
 # ✅ 46.1 The Strong Markov Property
 
 :::{.theorem}
