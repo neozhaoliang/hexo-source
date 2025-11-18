@@ -46,7 +46,7 @@ url: todd-kemp
 \newcommand{\span}{\mathrm{span}}
 \DeclareMathOperator{\supp}{supp}
 
-# 0 Banach Tarski
+# ✅ 0 Banach Tarski
 
 :::{.example}
 **不可测集的例子** 记单位圆 $S^1=\{e^{it},\,t\in\R\}$，子群 $H=\{e^{iq},\,q\in\Q\}$，在每个左陪集 $S^1/H$ 中选择一个代表元组成集合 $E$，则 $E$ 是不可测集合。这是因为 $S^1 = \bigcup_{q\in\Q}Ee^{iq}$ 是可数多个互不相交的集合的并，这些集合两两之间只差乘以一个单位复数，即差一个旋转，所以测度均相等，于是
@@ -2405,7 +2405,23 @@ $\blacksquare$
 设 $\{X_t\}:(\Omega,\F)\to(\S,\B(\S))$ 是一族随机变量，满足 Markov 性质。假设 $\S$ 足够 nice，于是我们可以定义正则条件概率 $q_{s,t}$ 满足
 $$\E[f(X_s)|X_t] = \int_\S f(y)q_{s,t}(X_s,\dy)=Q_{s,t}(f(X_s)).$$
 
-# 37.2 Kolmogorov's (Extended) Extension Theorem
+# ✅ 37.2 Kolmogorov's (Extended) Extension Theorem
+
+怎么构造一个 Markov 过程？
+
+记 $\Omega = \{\omega: T\to \S\}$ 是所有从时间 $T$ 到状态空间 $\S$ 的映射组成的集合。对 $t\in T$，令 $\pi_t$ 为坐标映射
+$$\pi_t(\omega) = \omega(t).$$
+定义 $\sigma$- 域 $\B^{\otimes T} = \sigma(\{\pi_t, t\in T\})$。即 $\B^{\otimes T}$ 是使得所有坐标映射都是可测映射的最小 $\sigma$- 域。
+
+我们希望在这个乘积 $\sigma$- 域上定义测度 $\P$。我们有的是 $\P$ 的所有有限维投影：
+$$\pi_\Lambda \P = \mu_{\Lambda}.$$
+其中 $\Lambda\subset T$ 是一个有限集合。$\P$ 必须满足**相容性条件**。
+
+考虑代数
+$$\A = \cup_{\Lambda \subset T\text{ finite}}\sigma(\pi_\Lambda).$$
+定义其上的概率为
+$$\P(A) = \mu_\Lambda(B),\quad B = \pi_\Lambda(A).$$
+这是一个良定义的概率，不依赖于 $\Lambda$ 的选择。但是，这只是代数上的有限可加测度，它是可数可加的吗？
 
 Kolmogorov 本质上是一个拓扑结论，在一个可分度量空间上，其测度具有内正则性质：
 $$\mu(E)=\sup\{\mu(K)\mid K\subset E,\ K \text{ compact }\}.$$
@@ -2477,7 +2493,11 @@ $$
 上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
 :::
 
-# 40.2 Bounded Generators
+
+
+
+
+# ✅ 40.2 Bounded Generators
 
 设 $B_b(S)$ 是测度空间 $(S,\mathcal B)$ 上有界可测函数的 Banach 空间，范数为 $\|f\|_\infty$。
 $(Q_t)_{t\ge0}$ 是一族 **Markov 迁移算子**，也就是：
@@ -2741,6 +2761,46 @@ $$
 X'(t)=X(t)A,\quad X(0)=I
 $$
 的 $C^1$ 解在算子范数意义下唯一。
+
+
+# ✅ 44.1 Finite Expectation Hitting Times
+
+:::{.lemma}
+设 $T$ 是一个取值为正整数的随机变量，则对任何正整数 $N$ 有
+$$\E[T] \le N \sum_{k=0}^\infty\P(T>Nk).$$
+:::
+
+**证明**：只要注意到
+$$\sum_{k=0}^\infty\ind_{\{T>Nk\}}=\sum_{k=0}^\infty\ind_{\{T/N>k\}}=\sum_{k=0}^{\lceil\frac{T}{N}\rceil -1}1=\lceil\frac{T}{N}\rceil\ge \frac{T}{N}.$$
+两边取期望即可。$\blacksquare$
+
+设 $B$ 是事件，$T_B(X) = \inf\{n\ge0\mid X_n\in B\}$。
+
+:::{.proposition}
+假设存在正整数 $N$ 和正数 $\delta>0$ 使得
+$$\P^x(T_B \le N )\ge \delta,\quad \forall x\notin B.$$
+
+则 $\E^x[T_B]<\infty$。
+:::
+
+**证明**：对任何正整数 $n$，
+$$\begin{aligned}
+\P^x(T_B > n) &= \P^x((X_1,\ldots,X_n)\in (B^c)^{\otimes n})\\
+&=\int_{B^c} q(x,\mathrm{d}x_1)\int_{B^c} q(x_1,\mathrm{d}x_2)\cdots \int_{B^c} q(x_{n-1},\mathrm{d}x_n)\\
+&=(Q_{B^c}^{n}1)(x)\le1-\delta:=\alpha\in(0,1).
+\end{aligned}$$
+根据引理，
+$$\E^x[T_B]\le N \sum_{k=0}^\infty\P^x(T_B > kN)=N\sum_{k=0}^\infty (Q_{B^c}^{kN}1)(x)\le N\sum \alpha^k<\infty.$$
+$\blacksquare$
+
+:::{.corollary}
+对有限不可约 Markov 链，$\E^i[T_j] < \infty$。
+:::
+由于是不可约链，所以对每对 $i,j$，存在 $N(i,j)$ 使得 $q^{N(i,j)}(i,j)>0$。取 $N=\max_{i,j}N(i,j)$。记 $n=N(i,j)$，则
+$$\{X_n=j\}\subset \{T_j\le n\}\subset \{T_j\le N\}.$$
+所以
+$$\P^i(T_j \le N)\ge\P^i(X_n=j)>0.$$
+$\blacksquare$
 
 
 
