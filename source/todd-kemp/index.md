@@ -2493,6 +2493,55 @@ $$
 上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
 :::
 
+# 38.1 Path Space
+
+设 $\Omega$ 是一个集合，$\mathcal C\subset\mathcal P(\Omega)$ 任意一族集合
+（可以是不可数的）。记 $\sigma(\mathcal C)$ 为由它生成的 $\sigma$-代数。
+
+:::{.lemma}
+对任意 $A\in\sigma(\mathcal C)$，都存在一个**可数子族**
+$\mathcal C_A\subset\mathcal C$，使得
+$$A\in\sigma(\mathcal C_A).$$
+:::
+
+也就是说：**每一个可测集合，只需要可数多个生成元就够了。**
+
+**证明**：定义
+$$
+\mathcal D := \{A\subset\Omega:\ \exists\text{可数 } \mathcal C_0\subset\mathcal C,\ A\in\sigma(\mathcal C_0)\}.$$
+
+1. $\mathcal C\subset\mathcal D$：
+   对任意 $E\in\mathcal C$，取 $\mathcal C_0=\{E\}$（显然是可数的），
+   那么 $E\in\sigma(\mathcal C_0)$，所以 $E\in\mathcal D$。
+
+2. $\mathcal D$ 是一个 $\sigma$-代数：
+
+   * 若 $A\in\mathcal D$，由某个可数 $\mathcal C_0$ 生成，
+     那 $A^c\in\sigma(\mathcal C_0)$，故 $A^c\in\mathcal D$。
+   * 若 $A_n\in\mathcal D$，各自对应可数 $\mathcal C_n$，
+     取 $\mathcal C'=\bigcup_n\mathcal C_n$，
+     可数个可数集的并仍然是可数，所以 $\mathcal C'$ 可数；
+     每个 $A_n\in\sigma(\mathcal C_n)\subset\sigma(\mathcal C')$，
+     因而 $\bigcup_n A_n\in\sigma(\mathcal C')$，故 $\bigcup_n A_n\in\mathcal D$。
+
+
+由 1 和 2：$\mathcal D$ 是一个 $\sigma$-代数且包含 $\mathcal C$，所以 $\sigma(\mathcal C)\subset\mathcal D$。
+
+另一方面，对任何 $A\in\mathcal D$，有 $A\in\sigma(\mathcal C_0)\subset\sigma(\mathcal C)$，所以 $\mathcal D\subset\sigma(\mathcal C)$。
+
+于是 $\mathcal D = \sigma(\mathcal C)$。$\blacksquare$
+
+在路径空间里面，$\mathcal C$ 可以取为所有的有限维柱集，它们生成了乘积空间上的 $\sigma$- 域 $\B^{\otimes T}$。所以这里面任何可测集实际上只依赖于可数多个有限维柱集，从而只依赖于可数多个坐标。于是像 $\{\omega(t)\text{ is continous}\}$ 这种依赖不可数多个坐标的事件就不可能在乘积 $\sigma$- 域里面。
+
+在独立增量过程的情形，转移概率核为
+$$q_{s,t}(x, B) = \E[\ind_B(x + X_t - X_s)].$$
+这是因为
+$$\P(X_t\in B\mid X_s = x) = \P((X_t - X_s) + x\in B\).$$
+
+# ✅ 39.1 Markov Matrix
+
+无要点
+
 
 # ✅ 40.1 Operator Norm Continuity
 
