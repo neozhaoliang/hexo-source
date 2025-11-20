@@ -682,7 +682,7 @@ $$\int_{\Omega_1\times\Omega_2}f_1\otimes f_2\mathrm{d}(\mu_1\otimes\mu_2) = \in
 :::{.theorem}
 设 $f$ 是一个非负的，关于 $(\Omega_1\times\Omega_2,\F_1\otimes\F_2)$ 可测的函数，则
 
-1. $f(\cdot,\omega_2)$ 对任何 $\omega_2$ 都是 $\F_1$ 可测的。 
+1. $f(\cdot,\omega_2)$ 对任何 $\omega_2$ 都是 $\F_1$ 可测的。
 2. $f(\omega_1,\cdot)$ 对任何 $\omega_1$ 都是 $\F_2$ 可测的。
 3. $\int_{\Omega_2}f(\cdot,\omega_2)\mu_2(\mathrm{d}\omega_2)$ 是 $\F_1$ 可测的。注意这个积分值可能是无穷。
 4. $\int_{\Omega_1}f(\omega_1,\cdot)\mu_1(\mathrm{d}\omega_1)$ 是 $\F_2$ 可测的。
@@ -2486,11 +2486,11 @@ $(Q_t)_{t\ge0}$ 是一族 **Markov 迁移算子**，也就是：
 * $Q_t\mathbf 1=\mathbf 1$；
 * 半群性质：$Q_{t+s}=Q_tQ_s$，$Q_0=I$（恒等算子）。
 
-因为 $Q_t$ 是 Markov 算子，在 $|\cdot|_\infty$ 下都是压缩映射，$|Q_t|_{\mathrm{op}}\le 1$。
+因为 $Q_t$ 是 Markov 算子，在 $\|\cdot\|_\infty$ 下都是压缩映射，$\|Q_t\|_{\mathrm{op}}\le 1$。
 
 假设再多一点正则性：
 
-$$\lim_{t\downarrow 0}|Q_t - I|_{\mathrm{op}} = 0.$$
+$$\lim_{t\downarrow 0}\|Q_t - I\|_{\mathrm{op}} = 0.$$
 
 这叫“在 $t=0$ 的算子范数连续”，也就是很小时间步 $t$ 对任意有界可测函数几乎“不做事”。
 
@@ -2532,7 +2532,8 @@ $$B_\epsilon Q_t f = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}f\,\mathrm{d}s.$$
 即
 $$B_\epsilon Q_t  = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}\,\mathrm{d}s = \frac{1}{\epsilon}\int_t^{t+\epsilon} Q_{s}\,\mathrm{d}s.$$
 所以函数 $t\to B_\epsilon Q_t$ 是可微的，其导数为
-$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon} $$
+$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon}.$$
+但是 $B_\epsilon$ 与 $t$ 是无关的。因此 $Q_t$ 关于 $t$ 可微。 
 
 # ✅ 44.2 Invariant Distributions
 
