@@ -2536,11 +2536,20 @@ $$
 在独立增量过程的情形，转移概率核为
 $$q_{s,t}(x, B) = \E[\ind_B(x + X_t - X_s)].$$
 这是因为
-$$\P(X_t\in B\mid X_s = x) = \P((X_t - X_s) + x\in B\).$$
+$$\P(X_t\in B\mid X_s = x) = \P((X_t - X_s) + x\in B).$$
 
 # ✅ 39.1 Markov Matrix
 
 无要点
+
+# ✅ 39.2 Markov Generator
+
+这一讲介绍了，Chapman-Kolmogorov 方程给出的算子方程
+$$Q_{t+s}=Q_tQ_s,\quad Q_0=I.$$
+其解应该形如 $Q = \exp(tA)$，其中 $A$ 是某个有界算子。
+
+$A$ 不难猜出来，它就是
+$$A = \lim_{t\to 0}\frac{\mathrm d}{\mathrm{d}t}Q_t\bigg|_{t=0}.$$
 
 
 # ✅ 40.1 Operator Norm Continuity
