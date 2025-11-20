@@ -46,7 +46,7 @@ url: todd-kemp
 \newcommand{\span}{\mathrm{span}}
 \DeclareMathOperator{\supp}{supp}
 
-# 0 Banach Tarski
+# ✅ 0 Banach Tarski
 
 :::{.example}
 **不可测集的例子** 记单位圆 $S^1=\{e^{it},\,t\in\R\}$，子群 $H=\{e^{iq},\,q\in\Q\}$，在每个左陪集 $S^1/H$ 中选择一个代表元组成集合 $E$，则 $E$ 是不可测集合。这是因为 $S^1 = \bigcup_{q\in\Q}Ee^{iq}$ 是可数多个互不相交的集合的并，这些集合两两之间只差乘以一个单位复数，即差一个旋转，所以测度均相等，于是
@@ -2405,7 +2405,23 @@ $\blacksquare$
 设 $\{X_t\}:(\Omega,\F)\to(\S,\B(\S))$ 是一族随机变量，满足 Markov 性质。假设 $\S$ 足够 nice，于是我们可以定义正则条件概率 $q_{s,t}$ 满足
 $$\E[f(X_s)|X_t] = \int_\S f(y)q_{s,t}(X_s,\dy)=Q_{s,t}(f(X_s)).$$
 
-# 37.2 Kolmogorov's (Extended) Extension Theorem
+# ✅ 37.2 Kolmogorov's (Extended) Extension Theorem
+
+怎么构造一个 Markov 过程？
+
+记 $\Omega = \{\omega: T\to \S\}$ 是所有从时间 $T$ 到状态空间 $\S$ 的映射组成的集合。对 $t\in T$，令 $\pi_t$ 为坐标映射
+$$\pi_t(\omega) = \omega(t).$$
+定义 $\sigma$- 域 $\B^{\otimes T} = \sigma(\{\pi_t, t\in T\})$。即 $\B^{\otimes T}$ 是使得所有坐标映射都是可测映射的最小 $\sigma$- 域。
+
+我们希望在这个乘积 $\sigma$- 域上定义测度 $\P$。我们有的是 $\P$ 的所有有限维投影：
+$$\pi_\Lambda \P = \mu_{\Lambda}.$$
+其中 $\Lambda\subset T$ 是一个有限集合。$\P$ 必须满足**相容性条件**。
+
+考虑代数
+$$\A = \cup_{\Lambda \subset T\text{ finite}}\sigma(\pi_\Lambda).$$
+定义其上的概率为
+$$\P(A) = \mu_\Lambda(B),\quad B = \pi_\Lambda(A).$$
+这是一个良定义的概率，不依赖于 $\Lambda$ 的选择。但是，这只是代数上的有限可加测度，它是可数可加的吗？
 
 Kolmogorov 本质上是一个拓扑结论，在一个可分度量空间上，其测度具有内正则性质：
 $$\mu(E)=\sup\{\mu(K)\mid K\subset E,\ K \text{ compact }\}.$$
@@ -2477,7 +2493,71 @@ $$
 上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
 :::
 
-# 40.2 Bounded Generators
+# 38.1 Path Space
+
+设 $\Omega$ 是一个集合，$\mathcal C\subset\mathcal P(\Omega)$ 任意一族集合
+（可以是不可数的）。记 $\sigma(\mathcal C)$ 为由它生成的 $\sigma$-代数。
+
+:::{.lemma}
+对任意 $A\in\sigma(\mathcal C)$，都存在一个**可数子族**
+$\mathcal C_A\subset\mathcal C$，使得
+$$A\in\sigma(\mathcal C_A).$$
+:::
+
+也就是说：**每一个可测集合，只需要可数多个生成元就够了。**
+
+**证明**：定义
+$$
+\mathcal D := \{A\subset\Omega:\ \exists\text{可数 } \mathcal C_0\subset\mathcal C,\ A\in\sigma(\mathcal C_0)\}.$$
+
+1. $\mathcal C\subset\mathcal D$：
+   对任意 $E\in\mathcal C$，取 $\mathcal C_0=\{E\}$（显然是可数的），
+   那么 $E\in\sigma(\mathcal C_0)$，所以 $E\in\mathcal D$。
+
+2. $\mathcal D$ 是一个 $\sigma$-代数：
+
+   * 若 $A\in\mathcal D$，由某个可数 $\mathcal C_0$ 生成，
+     那 $A^c\in\sigma(\mathcal C_0)$，故 $A^c\in\mathcal D$。
+   * 若 $A_n\in\mathcal D$，各自对应可数 $\mathcal C_n$，
+     取 $\mathcal C'=\bigcup_n\mathcal C_n$，
+     可数个可数集的并仍然是可数，所以 $\mathcal C'$ 可数；
+     每个 $A_n\in\sigma(\mathcal C_n)\subset\sigma(\mathcal C')$，
+     因而 $\bigcup_n A_n\in\sigma(\mathcal C')$，故 $\bigcup_n A_n\in\mathcal D$。
+
+
+由 1 和 2：$\mathcal D$ 是一个 $\sigma$-代数且包含 $\mathcal C$，所以 $\sigma(\mathcal C)\subset\mathcal D$。
+
+另一方面，对任何 $A\in\mathcal D$，有 $A\in\sigma(\mathcal C_0)\subset\sigma(\mathcal C)$，所以 $\mathcal D\subset\sigma(\mathcal C)$。
+
+于是 $\mathcal D = \sigma(\mathcal C)$。$\blacksquare$
+
+在路径空间里面，$\mathcal C$ 可以取为所有的有限维柱集，它们生成了乘积空间上的 $\sigma$- 域 $\B^{\otimes T}$。所以这里面任何可测集实际上只依赖于可数多个有限维柱集，从而只依赖于可数多个坐标。于是像 $\{\omega(t)\text{ is continous}\}$ 这种依赖不可数多个坐标的事件就不可能在乘积 $\sigma$- 域里面。
+
+在独立增量过程的情形，转移概率核为
+$$q_{s,t}(x, B) = \E[\ind_B(x + X_t - X_s)].$$
+这是因为
+$$\P(X_t\in B\mid X_s = x) = \P((X_t - X_s) + x\in B\).$$
+
+# ✅ 39.1 Markov Matrix
+
+无要点
+
+
+# ✅ 40.1 Operator Norm Continuity
+
+介绍了一些泛函中关于算子范数的内容（这里不再整理）。还介绍了可数情形的算子，如果算子可以用矩阵的形式表示时，算子的范数。
+
+如果 $a=(a_{ij})$ 满足
+
+$$\|a\|=\sup_{i}\sum_{j}|a_{ij}|<\infty.$$
+
+那么由
+$$Af(i) = \sum_j a_{ij}f(j)$$
+定义的算子是有界算子，并且 $\|A\|=\|a\|$。
+
+
+
+# ✅ 40.2 Bounded Generators
 
 设 $B_b(S)$ 是测度空间 $(S,\mathcal B)$ 上有界可测函数的 Banach 空间，范数为 $\|f\|_\infty$。
 $(Q_t)_{t\ge0}$ 是一族 **Markov 迁移算子**，也就是：
@@ -2506,36 +2586,60 @@ $$\frac{d}{dt}Q_t = Q_tA = AQ_t, \qquad Q_0=I.$$
 这是 Kolmogorov 的正向 / 反向方程的算子形式。
 :::
 
-**证明**：利用半群性质和 $\|Q_t\|\le 1$，我们先说明：只要在 0 点范数连续，就在每个 $t$ 都范数连续，甚至在每个有限区间上一致连续。
+**证明**：**第一步：从 $0$ 点连续到各点连续**
 
-对任意固定 $s\ge0$ 以及 $h>0$，有
-$$Q_{s+h} - Q_s = Q_sQ_h - Q_s = Q_s(Q_h - I).$$
-所以
-$$\|Q_{s+h} - Q_s\|_{\mathrm{op}}
-\le \|Q_s\|_{\mathrm{op}}\cdot\|Q_h - I\|_{\mathrm{op}}
-\le \|Q_h - I\|_{\mathrm{op}}.$$
-由已知 $h\downarrow0$ 时右边趋于 0，因此在任意 $s$ 处右连续。类似地
-$Q_s - Q_{s-h} = Q_{s-h}(Q_h - I)$ 给出左连续。
+利用半群性质和 $\|Q_t\|\le1$，先说明：只要在 $0$ 点算子范数连续，则在每个 $t$ 都算子范数连续，并且在每个有限区间上一致连续。
 
-固定 $\epsilon>0$，定义一个有界算子
-$$B_\epsilon = \frac{1}{\epsilon}\int_0^\epsilon Q_s\,\mathrm{d}s.$$
-其中 $B_\epsilon$ 的定义为
-$$(B_\epsilon f)(x) = \frac{1}{\epsilon}\int_0^\epsilon Q_s f(x)\,\mathrm{d}s.$$
-这是因为对于任意固定的状态 $x\in S$,
-$$\|Q_{s+h}f(x) - Q_{s}f(x)\|\le \|Q_{s+h}f - Q_{s}f\|_\infty \xrightarrow[h\to0]{} 0.$$
-所以对每个 $x$，函数
-$$s\longmapsto Q_s f(x)$$
-在任何 $s$ 处都连续。
+对任意固定 $s\ge0$ 以及 $h>0$，由半群性质有
+$$
+Q_{s+h}-Q_s=Q_sQ_h-Q_s=Q_s(Q_h-I).
+$$
+于是
+$$\|Q_{s+h}-Q_s\|
+\le\|Q_s\|\cdot\|Q_h-I\|
+\le\|Q_h-I\|.$$
+由已知 $\|Q_h-I\|\to0$，得出 $t\mapsto Q_t$ 在任意 $s$ 处右连续。类似地，由
+$$
+Q_s-Q_{s-h}=Q_{s-h}(Q_h-I)
+$$
+得到左连续。故 $t\mapsto Q_t$ 在每个 $t\ge0$ 都算子范数连续。
+再注意到上述估计与 $s$ 无关，可知在任意有限区间 $[0,T]$ 上 $t\mapsto Q_t$ 一致连续。
+
+**第二步：定义平滑算子 $B_\varepsilon$ 并证明其可逆**
+
+固定 $\varepsilon>0$，定义有界算子
+$$B_\varepsilon=\frac{1}{\varepsilon}\int_0^\varepsilon Q_s\,\mathrm{d}s.
+$$
+即对 $f\in B_b(S)$ 和 $x\in S$，
+$$
+(B_\varepsilon f)(x)=\frac{1}{\varepsilon}\int_0^\varepsilon Q_sf(x)\,\mathrm{d}s.
+$$
+
+由于对任意 $f\in B_b(S)$，有
+$$
+\|Q_{s+h}f-Q_sf\|_\infty\le\|Q_{s+h}-Q_s\| \|f\|_\infty\xrightarrow[h\to0]{}0.
+$$
+所以对每个 $x\in S$，函数
+$$
+s\longmapsto Q_sf(x)
+$$
+在每个 $s$ 处连续，从而可积，上式定义良好。并且
+$$
+\|B_\varepsilon\|\le\frac{1}{\varepsilon}\int_0^\varepsilon\|Q_s\|\,\mathrm{d}s\le1.
+$$
 
 注意到
 $$B_\epsilon Q_t f = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}f\,\mathrm{d}s.$$
 即
 $$B_\epsilon Q_t  = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}\,\mathrm{d}s = \frac{1}{\epsilon}\int_t^{t+\epsilon} Q_{s}\,\mathrm{d}s.$$
 所以函数 $t\to B_\epsilon Q_t$ 是可微的，其导数为
-$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon}.$$
-但是 $B_\epsilon$ 与 $t$ 是无关的。因此 $Q_t$ 关于 $t$ 可微。 
+$$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon} $$
 
 # ✅ 44.2 Invariant Distributions
+
+# ✅ 45.1 Stopping Times
+
+关于停时的基本知识，无要点。
 
 # ✅ 46.1 The Strong Markov Property
 
