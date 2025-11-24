@@ -2683,6 +2683,19 @@ $$\E^{\nu_0}[F(X_{t+})\mid\F_t] = \E^{\nu_0}[F(X_{t+})\mid X_t]=\E^{X_t}[F(X)].$
 这个定理的意义是，记 $g(x) =\E^x[F(X)]$，根据第一个断言这是关于 $x$ 的可测函数，则第二个断言说：
 $$g(X_t) = \E^{X_t}[F(X)].$$
 
+**证明**：2 的前半部分是 36.1 节 Markov property 中的内容。下面只要证 1 和 2 的后半部分。
+
+设 $0=t_0<t_1<\cdots<t_n$，$F$ 形如
+$$F(\omega)=\prod_{k=0}^nf_k(\omega(t_k)).$$
+我们将对这样的 $F$ 证明，然后使用 Dynkin 的函数形式引理。
+
+1. 对这样的 $F$ 有
+$$\E^x[F(X)] = \E^x[\prod_{k=0}^n f_k(X_{t_k})]=\int \delta_x\,\mathrm{d}x\int q_{t_0,t_1}(x_0,\,\mathrm{d}x_1)\cdots\int q_{t_{n-1},t_n}(x_{n-1},\,\mathrm{d}x_n)\prod_{k=0}^nf(x_k).$$
+上式等于
+$$\E_{\delta_x}[f_0Q_{t_0,t_1}(\cdots f_{n-1}(Q_{t_{n-1},t_n}f_n)\cdots)]=f_0(x)Q_{t_0,t_1}(\cdots f_{n-1}(Q_{t_{n-1},t_n}f_n)\cdots)(x).$$
+没问题。
+2. 考虑 $F(X)=F_$根据条件期望的投影性质，我们只要证明对任何有界可测函数 $h$ 有
+$$$$
 
 # ✅ 39.1 Markov Matrix
 
