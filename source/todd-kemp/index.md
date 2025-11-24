@@ -2400,10 +2400,142 @@ $\blacksquare$
 
 回顾了之前概率核的概念。没啥新的。
 
-# 37.1 Markov Processes
+# ✅ 37.1 Markov Processes
 
-设 $\{X_t\}:(\Omega,\F)\to(\S,\B(\S))$ 是一族随机变量，满足 Markov 性质。假设 $\S$ 足够 nice，于是我们可以定义正则条件概率 $q_{s,t}$ 满足
+设 $\{X_t\}:(\Omega,\F)\to(\S,\B(\S))$ 是一族随机变量，满足 Markov 性质：
+$$\E[f(X_t)\mid \F_s] = \E[f(X_t)\mid X_s],\quad \ae\ \forall s<t.$$
+假设 $\S$ 足够 nice，于是我们可以定义正则条件概率 $q_{s,t}=\P(X_t\in B\mid X_s)$ 满足
 $$\E[f(X_s)|X_t] = \int_\S f(y)q_{s,t}(X_s,\dy)=Q_{s,t}(f(X_s)).$$
+那么，这些算子 $Q_{s,t}$ 之间应该满足怎样的关系呢？
+
+固定 $r<s<t$，利用条件期望的 Tower 性质，可以得到
+$$Q_{r,t}f(X_r)=\E[f(X_t)\mid X_r]=\E[\E[f(X_t)\mid X_s] \mid X_r]=\E[Q_{s,t}f(X_s)\mid X_r]=Q_{r,s}Q_{s,t}f(X_r).$$
+于是正则条件概率 $\{q_{s,t}\}$ 满足
+$$q_{r,t}(x, B)=\int q_{r,s}(x,\dy)q_{s,t}(y, B).$$
+这就是所谓的 **Chapman-Kolmogorov** 方程。
+
+:::{.definition}
+Markov 过程就是满足 Markov 性质，并且存在概率转移核 $\{Q_{s,t}\}$ 使得
+$$\E[f(X_t)\mid X_s] = Q_{s,t}f(X_s).$$
+:::
+
+
+:::{.proposition}
+独立增量过程是 Markov 过程，其中
+$$q_{s,t}(x,B) = \E[\ind_B(x + X_t - X_s)].$$
+:::
+
+视频接下来介绍了 Markov 过程的有限维分布。我们的目标是证明：对任意 $t_0<\cdots<t_n$ 与 $B_0,\ldots,B_n\in\mathcal B(\mathcal S)$，都有
+$$\mathbb P(X_{t_0}\in B_0,\ldots,X_{t_n}\in B_n)=\int_{B_0}\mu_{t_0}(\mathrm d x_0)\int_{B_1}q_{t_0,t_1}(x_0,\mathrm d x_1)\cdots\int_{B_n}q_{t_{n-1},t_n}(x_{n-1},\mathrm d x_n).$$
+更方便的做法是先证明一个函数版的等式：对任意有界 Borel 函数 $f_0,\dots,f_n:\mathcal S\to\mathbb R$，有
+$$\mathbb E\Big[\prod_{k=0}^n f_k(X_{t_k})\Big]=\int_{\mathcal S}\mu_{t_0}(\mathrm dx_0)\,f_0(x_0)\int_{\mathcal S} q_{t_0,t_1}(x_0,\mathrm dx_1)\,f_1(x_1)\cdots\int_{\mathcal S} q_{t_{n-1},t_n}(x_{n-1},\mathrm dx_n)\,f_n(x_n).$$
+然后取 $f_k=\mathbf 1_{B_k}$ 即得到有限维分布的核表示。
+
+对 $n$ 的归纳，当 $n=0$ 时，
+$$\mathbb E[f_0(X_{t_0})] = \int_{\mathcal S} f_0(x_0)\,\mu_{t_0}(\mathrm dx_0),
+$$
+这只是 $X_{t_0}$ 分布为 $\mu_{t_0}$ 的定义，因此命题成立。
+
+现在假设 $(P_{n-1})$ 已经成立，固定任意有界 Borel 函数 $f_0,\dots,f_{n-1}$，它们在下面都视为给定的常量函数族。现在把注意力放在最后一个函数 $f_n$ 上。
+
+对任意有界 Borel 函数 $g:\mathcal S\to\mathbb R$，定义
+$$\Lambda(g):=\mathbb E\Big[\Big(\prod_{k=0}^{n-1} f_k(X_{t_k})\Big)\,g(X_{t_n})\Big],$$
+$$\Phi(g)
+:=\int_{\mathcal S}\mu_{t_0}(\mathrm dx_0)\,f_0(x_0)
+\int_{\mathcal S}q_{t_0,t_1}(x_0,\mathrm dx_1)\,f_1(x_1)\cdots
+\int_{\mathcal S}q_{t_{n-1},t_n}(x_{n-1},\mathrm dx_n)\,f_{n-1}(x_{n-1})\,g(x_n).$$
+当我们能证明对所有有界 Borel $g$ 都有 $\Lambda(g)=\Phi(g)$ 时，把 $g=f_n$ 代入，就得到结论对 $n$ 的情形成立。
+
+因此定义函数类
+$$\mathcal H := \{g\in\mathcal B_b(\mathcal S):\ \Lambda(g)=\Phi(g)\}.$$
+
+接下来要证明 $\mathcal H$ 满足 Dynkin 函数系引理的条件，从而 $\mathcal H=\mathcal B_b(\mathcal S)$。
+
+首先，$\mathcal H$ 是向量空间。
+
+其次，由单调收敛定理，$\mathcal H$ 对有界单调极限封闭。因此 $\mathcal H$ 是一个对线性组合与有界单调极限封闭的有界可测函数类，符合 Dynkin 函数系引理的结构要求。
+
+接下来需要一个生成族。假设状态空间 $(\mathcal S,\mathcal B(\mathcal S))$ 是标准 Borel 空间（或足够 nice），则存在一个可数的 $\pi$-系统（或代数） $\mathcal C\subset\mathcal B(\mathcal S)$ 生成 $\mathcal B(\mathcal S)$。我们只需在每个 $C\in\mathcal C$ 上验证 $\mathbf 1_C\in\mathcal H$，即证明
+$$
+\Lambda(\mathbf 1_C)=\Phi(\mathbf 1_C).
+$$
+
+取任意 $C\in\mathcal C$。计算
+$$
+\begin{aligned}
+\Lambda(\mathbf 1_C)
+&=\mathbb E\Big[\Big(\prod_{k=0}^{n-1} f_k(X_{t_k})\Big)\,\mathbf 1_C(X_{t_n})\Big]\\
+&=\mathbb E\Big[\Big(\prod_{k=0}^{n-1} f_k(X_{t_k})\Big)\,\mathbb E[\mathbf 1_C(X_{t_n})\mid\mathcal F_{t_{n-1}}]\Big].
+\end{aligned}
+$$
+
+利用 Markov 性质和转移核的定义，
+$$
+\mathbb E[\mathbf 1_C(X_{t_n})\mid\mathcal F_{t_{n-1}}]
+=\mathbb E[\mathbf 1_C(X_{t_n})\mid X_{t_{n-1}}]
+=q_{t_{n-1},t_n}(X_{t_{n-1}},C),
+$$
+于是
+$$
+\begin{aligned}
+\Lambda(\mathbf 1_C)
+&=\mathbb E\Big[\Big(\prod_{k=0}^{n-2} f_k(X_{t_k})\Big)\,
+f_{n-1}(X_{t_{n-1}})\,q_{t_{n-1},t_n}(X_{t_{n-1}},C)\Big]\\
+&=\mathbb E\Big[\prod_{k=0}^{n-2} f_k(X_{t_k})\,h(X_{t_{n-1}})\Big],
+\end{aligned}
+$$
+其中定义
+$$
+h(x):=f_{n-1}(x)\,q_{t_{n-1},t_n}(x,C).
+$$
+显然 $h$ 是有界 Borel 函数。
+
+现在可以使用归纳假设 $(P_{n-1})$：它告诉我们，对任意有界 Borel 函数 $f_0,\dots,f_{n-2},h$，
+$$
+\mathbb E\Big[\prod_{k=0}^{n-2} f_k(X_{t_k})\,h(X_{t_{n-1}})\Big]
+=
+\int_{\mathcal S}\mu_{t_0}(\mathrm dx_0)\,f_0(x_0)
+\cdots
+\int_{\mathcal S}q_{t_{n-2},t_{n-1}}(x_{n-2},\mathrm dx_{n-1})\,h(x_{n-1}).
+$$
+
+代入当前的 $h$ 得
+$$
+\begin{aligned}
+\Lambda(\mathbf 1_C)
+&=\int_{\mathcal S}\mu_{t_0}(\mathrm dx_0)\,f_0(x_0)
+\int_{\mathcal S}q_{t_0,t_1}(x_0,\mathrm dx_1)\,f_1(x_1)\cdots\\
+&\quad\cdots
+\int_{\mathcal S}q_{t_{n-2},t_{n-1}}(x_{n-2},\mathrm dx_{n-1})\,
+f_{n-1}(x_{n-1})\,q_{t_{n-1},t_n}(x_{n-1},C).
+\end{aligned}
+$$
+
+注意
+$$
+q_{t_{n-1},t_n}(x_{n-1},C)
+=\int_{\mathcal S}\mathbf 1_C(x_n)\,q_{t_{n-1},t_n}(x_{n-1},\mathrm dx_n),
+$$
+于是
+$$
+\begin{aligned}
+\Lambda(\mathbf 1_C)
+&=\int_{\mathcal S}\mu_{t_0}(\mathrm dx_0)\,f_0(x_0)
+\int_{\mathcal S}q_{t_0,t_1}(x_0,\mathrm dx_1)\,f_1(x_1)\cdots\\
+&\quad\cdots
+\int_{\mathcal S}q_{t_{n-2},t_{n-1}}(x_{n-2},\mathrm dx_{n-1})\,f_{n-1}(x_{n-1})
+\int_{\mathcal S}q_{t_{n-1},t_n}(x_{n-1},\mathrm dx_n)\,\mathbf 1_C(x_n)\\
+&=\Phi(\mathbf 1_C).
+\end{aligned}
+$$
+
+因此对每个 $C\in\mathcal C$，$\mathbf 1_C\in\mathcal H$。
+
+综上，$\mathcal H$ 是一个包含生成族指标函数的函数类，对线性组合和有界单调极限封闭。由 Dynkin 函数系引理可知
+$$
+\mathcal H = \mathcal B_b(\mathcal S),
+$$
+
 
 # ✅ 37.2 Kolmogorov's (Extended) Extension Theorem
 
@@ -2493,7 +2625,7 @@ $$
 上述 $P$ 在柱状代数 $\mathcal A$ 上可数可加，故由 Carathéodory 定理存在唯一扩张 $\overline P$ 于 $\sigma(\mathcal A)=\bigotimes_{t\in T}\Sigma_t$，并满足对每个有限 $F$ 有 $\overline P\circ\pi_F^{-1}=P_F$。
 :::
 
-# 38.1 Path Space
+# ✅ 38.1 Path Space
 
 设 $\Omega$ 是一个集合，$\mathcal C\subset\mathcal P(\Omega)$ 任意一族集合
 （可以是不可数的）。记 $\sigma(\mathcal C)$ 为由它生成的 $\sigma$-代数。
@@ -2537,6 +2669,20 @@ $$
 $$q_{s,t}(x, B) = \E[\ind_B(x + X_t - X_s)].$$
 这是因为
 $$\P(X_t\in B\mid X_s = x) = \P((X_t - X_s) + x\in B).$$
+
+# 38.2 Time Homogeneous Markov Processes
+
+:::{.theorem}
+设 $X$ 是齐次 Markov 链，$F\in\B(\S^{\otimes T})$，则
+$$x\to \E^x[F(X)]$$
+是可测函数。进一步，对任何初始分布 $\nu_0$，
+$$\E^{\nu_0}[F(X_{t+})\mid\F_t] = \E^{\nu_0}[F(X_{t+})\mid X_t]=\E^{X_t}[F(X)].$$
+:::
+注意这里第一个断言不需要齐次性质。但是第二个是需要的。
+
+这个定理的意义是，记 $g(x) =\E^x[F(X)]$，根据第一个断言这是关于 $x$ 的可测函数，则第二个断言说：
+$$g(X_t) = \E^{X_t}[F(X)].$$
+
 
 # ✅ 39.1 Markov Matrix
 
