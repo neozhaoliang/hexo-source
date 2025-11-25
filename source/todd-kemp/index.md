@@ -2694,8 +2694,35 @@ $$\E^x[F(X)] = \E^x[\prod_{k=0}^n f_k(X_{t_k})]=\int \delta_x\,\mathrm{d}x\int q
 上式等于
 $$\E_{\delta_x}[f_0Q_{t_0,t_1}(\cdots f_{n-1}(Q_{t_{n-1},t_n}f_n)\cdots)]=f_0(x)Q_{t_0,t_1}(\cdots f_{n-1}(Q_{t_{n-1},t_n}f_n)\cdots)(x).$$
 没问题。
-2. 考虑 $F(X)=F_$根据条件期望的投影性质，我们只要证明对任何有界可测函数 $h$ 有
-$$$$
+2. 还是取
+$$0=t_0<t_1<\dots<t_n,\quad F(\omega)=\prod_{k=0}^n f_k(\omega(t_k)).$$
+则
+$$F(X_{t+})=\prod_{k=0}^n f_k\big(X_{t+t_k}\big).$$
+设 $s_k=t+t_k$，于是
+$$t=s_0<s_1<\dots<s_n,\quad F(X_{t+})=\prod_{k=0}^n f_k(X_{s_k}).$$
+固定 $x$，考虑从时间 $t$ 开始、初值为 $x$ 的链 $(X_{t+s})_{s\ge0}$。对这个过程，用 1 里已经写出的公式（只是把 $t_0$ 从 0 换成 $t$）得到：
+$$\E^x\Big[\prod_{k=0}^n f_k(X_{s_k})\Big]= f_0(x)\,Q_{s_0,s_1}\Big(f_1\,Q_{s_1,s_2}(\cdots f_{n-1}(Q_{s_{n-1},s_n}f_n)\cdots)\Big)(x).$$
+注意这里 $s_0=t,s_1=t+t_1,\dots$。
+
+由于链是齐次的，所以 $Q_{s_{k-1},s_k}=Q_{t_{k-1},t_k}$ 对所有 $k$ 成立，于是上面的式子化简为
+$$\E^x[F(X_{t+})]
+= f_0(x)\,Q_{t_0,t_1}\Big(f_1\,Q_{t_1,t_2}(\cdots f_{n-1}(Q_{t_{n-1},t_n}f_n)\cdots)\Big)(x).$$
+
+但右边正是第 1 点中得到的 $\E^x[F(X)]$ 的表达式。所以我们得到一个关键等式：
+$$\E^x[F(X_{t+})]=\E^x[F(X)]=g(x)$$
+对所有 $x$ 均成立。
+
+也就是说：**从时刻 (t)** 往后的整条“未来路径”的分布与“从 0 开始、初值为 $x$”的那条链是一样的，这一步用到了齐次性。
+由 36.1 的 Markov 性质，我们已经知道存在某个可测函数 $h$ 使得
+$$\E^{\nu_0}[F(X_{t+})\mid X_t]=h(X_t).$$
+并且按定义有
+$$h(x)=\E^x[F(X_{t+})].$$
+
+第一步刚刚证明了 $\E^x[F(X_{t+})]=\E^x[F(X)]=g(x)$，因此
+$$h(x)=g(x),\quad\forall x.$$
+从而
+$$\E^{\nu_0}[F(X_{t+})\mid X_t]=g(X_t)=\E^{X_t}[F(X)].$$
+这就完成了第二点的后半部分，对柱状 $F$ 成立。
 
 # ✅ 39.1 Markov Matrix
 
