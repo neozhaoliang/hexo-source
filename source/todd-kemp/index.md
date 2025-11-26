@@ -2830,6 +2830,12 @@ $$B_\epsilon Q_t  = \frac{1}{\epsilon}\int_0^\epsilon Q_{t+s}\,\mathrm{d}s = \fr
 所以函数 $t\to B_\epsilon Q_t$ 是可微的，其导数为
 $$\frac{\mathrm d}{\mathrm{d}t} (B_\epsilon Q_t) = \frac{Q_{t+\epsilon}-Q_t}{\epsilon} $$
 
+# 42.2 Hitting Times
+
+:::{.theorem}
+$$\E^x[F(X)] = \int_S q(x,\dy)\E^y[F(x, X)].$$
+:::
+
 # ✅ 44.2 Invariant Distributions
 
 # ✅ 45.1 Stopping Times
