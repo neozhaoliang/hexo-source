@@ -46,7 +46,6 @@ url: todo
 - Sphere and lattice gears and SO3 representation
 - 加速到光速演示相对论
 - doyle spiral
-- Voronoi + LLoyd
 - Stange + sl2c 的 shader 研究实现
 - 分形反射盒子
 - Dirac belt trick
@@ -95,4 +94,4 @@ url: todo
 
 - Doob-Dynkin 引理
 - 单调类定理（两个版本）
-- 无穷乘积测度中，任何可测集可以被有限柱集逼近
+- 无穷乘积测度中，任何可测集可以被有限柱集逼近。无限多个随机变量生成的 sigma 域，可以被有限维时间逼近。
