@@ -16,19 +16,6 @@ title: "Coxeter 群语言正则的证明"
 \newcommand{\barfd}{\overline{\mathcal{D}}}
 \DeclareMathOperator{\span}{span}
 
-
-:::{.proposition}
-若 $\alpha,\beta\in\Phi$ 满足 $|(\alpha,\beta)|<1$，则必然有 $(\alpha,\beta)=\cos(p\pi/q)$，其中 $p,q$ 是互素的正整数，而且反射 $\ra,\rb$ 生成的子群是有限群。
-:::
-
-**证明**：若 $|(\alpha,\beta)|<1$，则内积 $\inn$ 限制在 $\alpha,\beta$ 张成的二维子空间 $U=\span{\{\alpha,\beta\}}$ 上是正定的。
-
-我们可以不妨假定 $\alpha$ 是正根，以及 $\beta=\alpha_s$ 是单根。设
-$$\alpha = c_s\alpha_s + \sum_{t\ne s }c_t\alpha_t.$$
-由于 $\alpha$ 不可能是 $\alpha_s$ 的正倍数，所以 $\gamma=\alpha - c_s\alpha_s\ne0$。
-
-注意到如果 $a,b\in\bbR$ 使得 $a\gamma+b\alpha_s\in\Phi$，则 $a,b$ 必须同时非负，或者同时非正。如果 $\alpha,\beta$ 所夹的角度是 $\pi$ 的无理数倍，那么 $(\ra s)$ 是 $U$ 上角度为 $\pi$ 的无理数倍的旋转，它的各次幂 $\{(\ra s)^n,n=0,1,\ldots,\}$ 会将 $\alpha$ 映射为 $U$ 中单位圆周上稠密的集合，特别地必然有某个 $k$ 使得 $(\ra s)^k\alpha$ 位于区域 $\{a\gamma+b\alpha_s\mid a > 0, b<0\}$ 中，这与此区域不包含任何根矛盾。所以 $\alpha,\beta$ 所夹的角度必须是 $\pi$ 的有理数倍，形如 $p\pi/q$，从而 $\ra,\rb$ 生成的子群 $D$ 在 $U$ 上的作用是一个二面体群。另一方面 $\inn$ 限制在 $U$ 上是正定的，所以 $V=U\oplus U^\bot$。而 $D$ 作用在 $U^\bot$ 上是平凡的，所以 $D$ 在全空间上的作用也是二面体群。
-
 :::{.definition}
 对任何正根 $\alpha\in\Phi^+$，定义其深度为
 $$\dp{\alpha}=\min\{\,l(w) \mid w\alpha\in\Phi^-\,\}.$$
