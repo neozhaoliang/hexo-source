@@ -4,6 +4,32 @@ categories: [完美采样]
 date: 2016-07-02
 url: "coupling-from-the-past"
 ---
+
+**2025/12/13 更新**：我用 GPT 帮我把画图的 Python 脚本改成了 Javascript 动画：
+
+<div style="width:100%; margin:1rem 0;">
+  <iframe
+    id="cftp-iframe"
+    src="/demos/cftp.html"
+    style="width:100%; border:0; border-radius:16px; overflow:hidden;"
+    scrolling="no"
+    title="CFTP demo"
+  ></iframe>
+</div>
+
+<script>
+(function () {
+  const f = document.getElementById("cftp-iframe");
+  window.addEventListener("message", (e) => {
+    // 如果同源部署，建议加：if (e.origin !== location.origin) return;
+    if (!e.data || e.data.type !== "cftp:resize") return;
+    f.style.height = (e.data.height + 2) + "px"; // +2 防止边框裁切
+  });
+})();
+</script>
+
+---
+
 今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the past (CFTP)。这个算法看似简单，实则充满玄机。我相信你可以在五分钟内理解算法的步骤，然后再花五分钟左右看懂算法的证明，但是我打赌你需要几个星期甚至更久的时间来细细回味其中奥妙。
 
 为了引出算法，我们从一个计数问题开始：
