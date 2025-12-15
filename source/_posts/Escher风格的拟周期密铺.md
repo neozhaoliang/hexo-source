@@ -22,4 +22,7 @@ url: "debruijn-rhombus-tiling"
 
 代码中窗户的绘制方法参考了 Greg Egan 的代码和注释，特别致谢。
 
+de Bruijn 的网格方法也可以用于绘制 3D 的准晶，例如 [Icosahedral Quasicrystal](demos/icosa_qc.html)。
+
+
 [^1]: N.G. de Bruijn. Algebraic theory of Penrose's non-periodic tilings of the plane.
