@@ -1,6 +1,5 @@
 ---
 title：隐私政策
-date: 2025-12-31
 ---
 
 [本站](https://neozhaoliang.github.io) 使用 Google 提供的广告服务（Google AdSense）以展示广告并支持网站运营。
