@@ -25,4 +25,4 @@ Google 及其合作伙伴可能会使用 Cookie、设备标识符或类似技术
 
 ### 联系我们
 
-如对本政策有疑问，请联系：mathzhaoliang@gmail.com
+如对本政策有疑问，请联系我。
