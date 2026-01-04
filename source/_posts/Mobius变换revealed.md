@@ -8,11 +8,14 @@ teximage: true
 
 \newcommand{\Cbar}{\overline{\mathbb{C}}}
 
-五一期间我写了一个 shadertoy 小动画，演示 Möbius 变换与球的刚体运动之间的关系：
+五一期间我写了一个 [shadertoy 小动画](https://www.shadertoy.com/view/fljfRm)，演示 Möbius 变换与球的刚体运动之间的关系：
 
 <!--more-->
 
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fljfRm?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+<div style="display:flex; justify-content:center;">
+  <object data="/code/mobius_ball.svg" type="image/svg+xml"
+          style="width:100%; aspect-ratio: 600/360;"></object>
+</div>
 
 动画的名字叫做 Möbius transformation revealed，源自 Douglas N. Arnold 和 Jonathan Rogness 于 2007 年发布的 [同名视频](https://www-users.cse.umn.edu/~arnold/moebius/)。这是一个很有名的视频，它表达的核心思想是，扩充复平面 $\Cbar$ 上的 Möbius 变换可以由球在三维空间中的刚体运动给出：
 
