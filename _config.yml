@@ -110,7 +110,7 @@ theme: raytaylorism
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:neozhaoliang/neozhaoliang.github.io
+  repository: git@github.com:neozhaoliang/neozhaoliang.github.io
   branch: master
 
 search:
