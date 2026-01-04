@@ -8,7 +8,10 @@ url: "Marden-theorem"
 
 <!-- more -->
 
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/7lf3Wn?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+<div style="display:flex; justify-content:center;">
+  <object data="/code/marden.svg" type="image/svg+xml"
+          style="width:90%; aspect-ratio: 600/360;"></object>
+</div>
 
 这个动画的含义如下：
 

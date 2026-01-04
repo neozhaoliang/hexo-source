@@ -3086,3 +3086,10 @@ $$u(x)v(x)\le u(x)^{p}/p+v(x)^{q}/q.$$
 $p=1,q=\infty$ 时
 $$\int |fg|\le \|g\|_{\infty}\int |f|=\|f\|_1\|g\|_{\infty}.$$
 故结论成立。
+
+
+# 51.1 Versions
+
+:::{.definition}
+设 $(X_t)_{t\in T}$ 和 $(Y_t)_{t\in T}$ 是两个随机过程，如果对任何 $t$ 有 $X_t = Y_t,\,\ae$  成立，就称 $(Y_t)$ 是 $(X_t)$ 的一个 version/modification。 
+:::
