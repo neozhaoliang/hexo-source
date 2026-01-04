@@ -4,11 +4,13 @@ date: 2020-12-06
 categories: [Shadertoy]
 url: "debruijn-rhombus-tiling"
 ---
-周末刚完成了一个有点烧脑的 Shadertoy 项目，Escher 风格的 [非周期密铺](https://en.wikipedia.org/wiki/Aperiodic_tiling)：
+周末刚完成了一个有点烧脑的 [Shadertoy 项目](https://www.shadertoy.com/view/wsKBW1)，Escher 风格的 [非周期密铺](https://en.wikipedia.org/wiki/Aperiodic_tiling)：
 
 <!--more-->
 
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/wsKBW1?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+
+<object data="/code/debruijn.svg" type="image/svg+xml"></object>
+
 
 你能看出这个动画的奥妙之处在哪里吗？
 
@@ -22,7 +24,7 @@ url: "debruijn-rhombus-tiling"
 
 代码中窗户的绘制方法参考了 Greg Egan 的代码和注释，特别致谢。
 
-de Bruijn 的网格方法也可以用于绘制 3D 的准晶，例如 [Icosahedral Quasicrystal](demos/icosa_qc.html)。
+de Bruijn 的网格方法也可以用于绘制 3D 的准晶，例如 [Icosahedral Quasicrystal](/demos/icosa_qc.html)。
 
 
 [^1]: N.G. de Bruijn. Algebraic theory of Penrose's non-periodic tilings of the plane.
