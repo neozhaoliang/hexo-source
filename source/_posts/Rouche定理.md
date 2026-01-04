@@ -12,7 +12,10 @@ url: "Rouche-theorem-winding-number"
 :::{.simple}
 一个人和他的狗在公园里绕着一棵树散步，人和狗各自走的路径都是闭曲线，即经过一段时间后都会回到起点。如果人把狗绳抓的紧一些，使得整个过程中狗**无法接触**到树，则结束后人和狗绕着树走的圈数是一样的，这就是下面这个动画演示的：（树的位置是原点，用一个表盘标记）
 
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fdK3RD?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+<div style="display:flex; justify-content:center;">
+  <object data="/code/rouche.svg" type="image/svg+xml"
+          style="width:90%; aspect-ratio: 600/360;"></object>
+</div>
 :::
 
 对应的数学结论是：
