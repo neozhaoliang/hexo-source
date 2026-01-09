@@ -5,6 +5,17 @@ menu:
     link: /
     icon: home
     class: menu-home
+  # 归档
+  - id: archives
+    link: /archives
+    icon: archive
+    class: menu-archive
+  # 目录
+  - id: category
+    link: javascript:;
+    category: true
+    icon: bookmark
+    class: menu-category
   # 关于
   - id: about
     link: /about
