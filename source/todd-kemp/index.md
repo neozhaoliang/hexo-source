@@ -3087,6 +3087,28 @@ $p=1,q=\infty$ 时
 $$\int |fg|\le \|g\|_{\infty}\int |f|=\|f\|_1\|g\|_{\infty}.$$
 故结论成立。
 
+# 49.3 (Sub)martingale Maximal Inequalities
+
+下鞅有一个关键性质，就是它们在一个区间的最大值，可以被它们在区间终点处的值所控制。这就是极大不等式。
+
+:::{.proposition}
+**Levy's maximal inequality** \
+
+设 $(X_n)_{n\geq0}$ 是下鞅，$N\ge0$ 是非负整数，则对任何 $a\geq0$ 有
+$$\P(X_N^\ast\ge a)\leq \frac{1}{a}\E[X_N:X_N^\ast \ge a].$$
+:::
+
+**证明**：设 $\tau=\inf\{n\geq0\mid X_n\geq a\}$，则 $\tau$ 是停时。根据可料停时定理，
+$$\E [X_N\mid \F_{\tau\wedge N}]\geq  X_{\tau\wedge N}.$$
+于是
+$$\E[X_\tau:\tau\le N]=\E[X_{\tau\wedge N}\ind_{\tau\le N}]\le\E[\E[X_N\mid \F_{\tau\wedge N}]\ind_{\tau\leq N}]=\E[X_N\ind_{\tau\le N}].$$
+由于
+$$\{\tau\le N\} =\{X_n\ge a \text{ for some } 0\le n\le N\}=\{X_N^\ast \ge a\}.$$
+所以上面的不等式最右边还等于 $\E[X_N:X_N^\ast \ge a]$。于是我们有
+$$\E[X_\tau:\tau\le N]\le \E[X_N:X_N^\ast \ge a].$$
+另一方面在事件 $\{\tau\le N\}$ 上我们有 $X_\tau\ge a$，所以上式左边
+$$\E[X_\tau:\tau\le N] \ge \E[a:\tau\ le N] = a \P(\tau\le N) = a\P(X_N^\ast\ge a).$$
+此即为所证。$\blacksquare$
 
 # 51.1 Versions
 

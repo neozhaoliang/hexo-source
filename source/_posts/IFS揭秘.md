@@ -21,7 +21,7 @@ glsl: true
 |   |    |   |
 |:---:|:---:|:---:|
 | [Ethereal](https://www.shadertoy.com/view/ltB3DG) by Kali|  [Apollonian fractal](https://www.shadertoy.com/view/NsVyRz) by Xor | [Radiosity](https://www.shadertoy.com/view/mdG3Wy) by Xor |
-|![](https://www.shadertoy.com/media/shaders/ltB3DG.jpg)    |   ![](https://www.shadertoy.com/media/shaders/NsVyRz.jpg)   | ![](https://www.shadertoy.com/media/shaders/mdG3Wy.jpg) |
+|![](/images/ifs/kali.png){.fig} | ![](/images/ifs/xor_apollo.png){.fig}   | ![](/images/ifs/xor_radio.png){.fig} |
 
 
 然而代码短可不代表它们容易看懂。尤其是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对我来说，这种被人秀了一脸却没搞明白对面是怎么装的逼的感觉让人很不爽。当然我不是在抱怨，这种炫技行为本身就是黑客文化的一部分，可以理解。
@@ -224,6 +224,6 @@ $$d(p, F(K)) = d(p, 1/s\cdot K) = 1/s\cdot d(s\cdot p, K) = 1/s\cdot d(F^{-1}(p)
 
 # 实战演示
 
-我以 Shadertoy 上一个混淆过的 [作品](https://www.shadertoy.com/view/WlGyWK)  为例子来完整展示上面的理论。下面是重新改写后的可读版本，我在注释中解释了每一步的含义：
+我以 Shadertoy 上一个混淆过的 [作品](https://www.shadertoy.com/view/WlGyWK)  为例子来完整展示上面的理论。下面是重新改写后的 [版本](https://www.shadertoy.com/view/l3cXR7)，我在注释中解释了每一步的含义：
 
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/l3cXR7?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
