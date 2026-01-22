@@ -3087,7 +3087,7 @@ $p=1,q=\infty$ 时
 $$\int |fg|\le \|g\|_{\infty}\int |f|=\|f\|_1\|g\|_{\infty}.$$
 故结论成立。
 
-# 49.3 (Sub)martingale Maximal Inequalities
+# ✅ 49.3 (Sub)martingale Maximal Inequalities 
 
 下鞅有一个关键性质，就是它们在一个区间的最大值，可以被它们在区间终点处的值所控制。这就是极大不等式。
 
