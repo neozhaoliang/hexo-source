@@ -70,12 +70,14 @@ url: todo
 - Conway's Topograph
 - magicavoxel and magicaCSG
 - mitsuba
-- Voxel Turtle
 - 纸壳制作多面体?
 - sl3 shdertoy?
 - epstein 说的扫描线，gifmaze 能画？
 - Knuth-Bendix 约化，模群和 indra's pearls
 - shadertoy Jigsaw 版本的 monotile
+- Dirac belt trick
+- 3D 球面齿轮
+- A2 状态机的箭头图
 
 
 # Indra's pearls 问题

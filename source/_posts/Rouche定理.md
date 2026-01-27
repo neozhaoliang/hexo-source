@@ -24,7 +24,7 @@ url: "Rouche-theorem-winding-number"
 
 注意这个结论只要求 $\gamma_1,\gamma_2\colon\ [0,1]\to\mathbb{R}^2$ 是两条连续曲线，并不涉及解析性。因为环绕数和同伦都是拓扑概念，只涉及连续性。
 
-但如果我们进一步考虑“人和狗的路线”分别是单位圆 $S^1\colon\ \{z\in\mathbb{C}:|z|=1\}$ 经由两个解析函数 $f,g$ 映射后的路径，那事情就变得有趣多了。
+但如果我们考虑 $\gamma_1,\gamma_2$ 分别是单位圆 $S^1\colon\ \{z\in\mathbb{C}:|z|=1\}$ 在两个解析函数 $f,g$ 映射下的像，那事情就变得有趣多了。
 
 首先 [幅角原理](https://en.wikipedia.org/wiki/Argument_principle) 给出了环绕数的另一种解释：
 
