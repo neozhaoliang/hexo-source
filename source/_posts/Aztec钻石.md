@@ -15,7 +15,7 @@ url: "domino-shuffling"
 
 ---
 
-**2021/01/01 更新**：2021 年的第一天，有人在 Shadertoy 上放了一个精彩的动画，演示多米诺洗牌算法的步骤：
+**2021/01/01 更新**：2021 年的第一天，有人在 Shadertoy 上放了一个 [精彩的动画](https://www.shadertoy.com/view/Wldyzj)，演示多米诺洗牌算法的步骤：
 
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/Wldyzj?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
 
