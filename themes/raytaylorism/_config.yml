@@ -1,15 +1,5 @@
 # 菜单配置（若不需要某项可直接删除）
 menu:
-  # 首页
-  - id: home
-    link: /
-    icon: home
-    class: menu-home
-  # 归档
-  - id: archives
-    link: /archives
-    icon: archive
-    class: menu-archive
   # 目录
   - id: category
     link: javascript:;

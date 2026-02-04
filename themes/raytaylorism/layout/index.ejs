@@ -1,9 +1,42 @@
 <%- partial('_partial/slider') %>
 
-<div id="article-list" class="container main-container">
-    <% page.posts.each(function(item){ %>
-        <%- partial('_partial/simple_article', {item: item, index: true, showEntry: true}) %>
-    <% }); %>
+<div class="container main-container">
+  <%- partial('_partial/pagenav', {
+    nav_head: __('current_page') + '（' + site.posts.length + '）',
+    partial_path: null,
+    archive_html: null
+  }) %>
 
-    <%- partial('_partial/pagination') %>
+  <% var posts = site.posts.sort('date', -1); %>
+
+  <% if (theme.archive_yearly) { %>
+    <% var lastYear = null; %>
+    <% posts.each(function(item){ %>
+      <% var y = item.date.format('YYYY'); %>
+      <% if (y !== lastYear) { %>
+        <% if (lastYear !== null) { %></div><% } %>
+        <h5 class="archive-year"><%= y %></h5>
+        <div class="collection mt-0">
+        <% lastYear = y; %>
+      <% } %>
+
+      <a href="<%- url_for(item.path) %>" class="collection-item <%= theme.color.archive_item %>-text text-darken-1">
+        <time datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format(config.date_format) %></time>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <%- item.title || __('no_title') %>
+      </a>
+    <% }) %>
+    <% if (lastYear !== null) { %></div><% } %>
+
+  <% } else { %>
+    <div class="collection mt-0">
+      <% posts.each(function(item){ %>
+        <a href="<%- url_for(item.path) %>" class="collection-item <%= theme.color.archive_item %>-text text-darken-1">
+          <time datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format(config.date_format) %></time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          <%- item.title || __('no_title') %>
+        </a>
+      <% }) %>
+    </div>
+  <% } %>
 </div>

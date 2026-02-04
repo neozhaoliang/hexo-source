@@ -25,11 +25,11 @@ social: 社交
 powered:
     first: 本博客由
     last: "强力驱动 | 主题"
-current_page: 当前位置
+current_page: 全部文章
 page_name:
     categories: （分类目录）
     tags: （标签）
-    archives: （归档）
+    archives: ""
 reading:
     score: 评分
     comment: 简评
