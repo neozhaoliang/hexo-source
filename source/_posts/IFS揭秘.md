@@ -50,7 +50,7 @@ $$d(f(x),f(y))\leq r\cdot d(x,y)$$
 成立，我们就称 $f$ 是一个压缩映射，$r$ 是压缩比例。这里 $d$ 是通常的 Euclidean 距离。
 :::
 
-记 $K(\mathbb{R}^n)$ 是 $\mathbb{R}^n$ 中所有紧集组成的集合，可以证明 $K(\mathbb{R}^n)$ 在 [Hausdorff 度量](https://en.wikipedia.org/wiki/Hausdorff_distance) 下构成一个完备度量空间。你现在不必关心 Hausdoff 度量的具体细节！你只要知道它是一个度量，可以衡量两个紧集的接近程度即可。
+记 $K(\mathbb{R}^n)$ 是 $\mathbb{R}^n$ 中所有紧集组成的集合，可以证明 $K(\mathbb{R}^n)$ 在 [Hausdorff 度量](https://en.wikipedia.org/wiki/Hausdorff_distance) 下构成一个完备度量空间。你现在不必关心 Hausdoff 度量的具体细节！你只要知道它是一个度量，可以衡量两个紧集的接近程度，这就够了。
 
 设 $\{f_i\}_{i=1}^N$ 是 $N$ 个不同的压缩映射，$f_i$ 的压缩比例是 $0<r_i<1$。定义映射 $$F:K(\mathbb{R}^n)\to K(\mathbb{R}^n),\quad F(X) = f_1(X)\cup f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^n).$$
 也就是说，对给定的紧集 $X$，我们将它变形成 $N$ 个版本，每个版本分别应用一个压缩变换、再把所有版本合起来，得到新的集合 $F(X)$。

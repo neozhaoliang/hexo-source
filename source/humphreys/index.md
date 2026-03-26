@@ -163,6 +163,89 @@ $$s_1s_2\cdots s_r=1,\quad r=2q$$
 
 $\blacksquare$
 
+# 1.16 An alternating sum formula
+
+设超平面 $H_1,\dots,H_r$ 把 $V=\mathbb R^n$ 切成很多胞腔。一个胞腔就是某个非空交集
+$$K=\bigcap_i H_i^{\varepsilon_i},\quad \varepsilon_i\in\{0,+,-\}.$$
+
+定义 $L$ 为 $K$ 的线性张成，等价于把定义 $K$ 时那些选了 $0$ 的超平面都交起来：
+$$  L=\bigcap_{\varepsilon_i=0} H_i^0.$$
+$K$ 是 $L$ 的开子集。
+
+现在再加一条新超平面 $H$。新的复形里只在一种情况下会出现新面：$H$ 真正切进了某个旧的面 $K$ 的内部，也就是 $H\cap K\neq \varnothing$ 但 $K\not\subset H$。
+
+取 $x\in H\cap K$。因为 $K$ 是 $L$ 里的开集，因此一定能找到一个 $L$ 里的小开球 $U$ 满足
+$$x\in U\subset K.$$
+
+把 $L$ 想成 $\mathbb R^i$。在合适坐标下，可以取 $x$ 为原点，把 $H$ 写成 $x_1=0$ 这个超平面。那么：
+
+* $H^+\cap L$ 对应 $\{x\in\mathbb R^i\mid x_1>0\}$
+* $H^-\cap L$ 对应 $\{x\in\mathbb R^i\mid x_1<0\}$
+
+$U$ 作为 $\mathbb R^i$ 中包含原点的开球必然同时包含 $x_1>0$ 的点和 $x_1<0$ 的点。所以 $U$ 必然同时“碰到”两边：
+
+$$U\cap H^+\neq\varnothing,\qquad U\cap H^-\neq\varnothing.$$
+
+因为 $U\subset K$，所以
+$$K\cap H^+\neq\varnothing,\qquad
+K\cap H^-\neq\varnothing.$$
+
+加入新超平面 $H$ 后，$K$ 在新复形里会被细分成三块：
+
+* $K^+ := H^+\cap K$。
+* $K^- := H^-\cap K$。
+* $K^0 := H^0\cap K$。
+
+而且维数是：
+
+* $K^+$ 和 $K^-$ 都还是 $L$ 里的开集，所以 $\dim = i$（和原来 $K$ 一样）
+* $K^0$ 落在 $H\cap L$ 里，而 $H\cap L$ 是 $i-1$ 维，所以 $K^0$ 的维数是 $i-1$
+
+所以原来有 1 个 $i$ 维面 $K$，现在变成 2 个 $i$ 维面 $K^+,K^-$ 加 1 个 $i-1$ 维面 $K^0$，交错和不变。
+
+:::{.proposition}
+设 $(W,S)$ 的标准反射表示作用在实内积空间 $V$（$\dim V=n$）上，$C$ 为对应的 Coxeter complex。对每个 $I\subseteq S$，记 $f_I(w)$ 为在 $C$ 中被 $w$ **逐点固定**的 $I$-型面（facet/face）的个数。则对任意 $w\in W$，
+$$
+\sum_{I\subseteq S}(-1)^{|I|}\,f_I(w)=\det(w).
+$$
+:::
+**证明**：固定 $w$。令 $V'=\{v\in V:\; wv=v\}$ 为 $w$ 的不动点子空间（$1$-特征子空间），并记 $c=\dim V'$。
+
+一个面 $F\subseteq C$ 被 $w$ 逐点固定当且仅当 $F\subseteq V'$。因此，对每个维数 $i$，令 $n_i$ 为被 $w$ 固定的 $i$ 维面数，则 $n_i$ 也等于落在 $V'$ 内的 $i$ 维面数。
+
+将 Coxeter arrangement 限制到 $V'$，得到在 $V'$ 中的一组超平面，并由此得到一个由这些超平面切分出的复形 $\mathcal K$（其元素为相应半空间/超平面的非空交）。由构造，$\mathcal K$ 的 $i$ 维元素个数正是上面的 $n_i$。由本节前面的引理可得
+$$\sum_i (-1)^i n_i = (-1)^c. \tag{1}$$
+另一方面显然
+$$
+n_i=\sum_{|I|=n-i} f_I(w). \tag{2}
+$$
+将 (2) 代入 (1)，并用 $i=n-|I|$ 重新索引：
+$$\sum_i (-1)^i\sum_{|I|=n-i} f_I(w)
+=\sum_{I\subseteq S} (-1)^{\,n-|I|} f_I(w)
+=(-1)^c.$$
+于是
+$$
+(-1)^n\sum_{I\subseteq S} (-1)^{|I|} f_I(w)=(-1)^c,
+$$
+即
+$$
+\sum_{I\subseteq S} (-1)^{|I|} f_I(w)=(-1)^{n-c}. \tag{3}
+$$
+$w$ 是正交变换。其复特征值由以下三类组成：
+
+- $1$，其重数为 $c$；
+- 若干对共轭复数 $e^{i\theta},e^{-i\theta}$（模长为 $1$），设共有 $b$ 对；
+- $-1$，其重数为 $n-c-2b$。
+
+因此
+$$
+\det(w)=1^c\cdot\prod_{j=1}^b \bigl(e^{i\theta_j}e^{-i\theta_j}\bigr)\cdot(-1)^{n-c-2b}
+=(-1)^{n-c}. \tag{4}
+$$
+
+由 (3) 与 (4) 即得结论。
+
+
 # 2.6 Subgraphs
 
 在本节中，$\Gamma$ 是一个不可约 Coxeter 图，内积 $(\alpha_s,\alpha_t)=-\cos\frac{\pi}{m_{s,t}}$ 是半正定的，但不是正定的。
@@ -176,7 +259,7 @@ $$\rad(V)=\{v\in V\mid (v, u)=0 \text{ for all } u \in V\}.$$
 :::{.lemma .unnumbered}
 若内积半正定，则 $N=\rad(V)$。
 :::
-证明：只要证明 $N\subset\rad(V)$ 即可，即若 $u\in V$ 满足 $(u,u)=0$，则对任何 $v\in V$ 都有 $(u,v)=0$。若不然，设 $v$ 满足 $(u,v)\ne0$，我们给 $v$ 乘以适当实数使得 $(u,v)=1$。设 $k$ 是实数，考虑向量 $z=ku +v$：
+**证明**：只要证 $N\subset\rad(V)$ 即可，即若 $u\in V$ 满足 $(u,u)=0$，则对任何 $v\in V$ 都有 $(u,v)=0$。若不然，设 $v$ 满足 $(u,v)\ne0$，给 $v$ 乘以适当实数使得 $(u,v)=1$。考虑向量 $z=ku +v\,(k\in\R)$：
 $$(z,z)=(ku+v,ku+v) = (v,v) + 2k.$$
 所以只要选择 $k$ 满足 $2k < -(v,v)$ 就有 $(z,z)<0$，这与内积的半正定性矛盾。$\blacksquare$
 
@@ -187,10 +270,8 @@ $$(z,z)=(ku+v,ku+v) = (v,v) + 2k.$$
 **命题 2.6**
 
 1. $\rad(V)$ 是一维的，由一个向量 $\delta=\sum_{s\in S}c_s\alpha_s$ 生成，并且每个系数 $c_s$ 都大于 0。
-2. $\Gamma$ 删去任意多个顶点后得到的子图是正定的。
+2. 若 $\Gamma$ 连通且半正定，则 $\Gamma$ 的任意真子图是正定的。（真子图是指删掉某些顶点。或者将某些边的标号调小）
 :::
-
-这里给出一个不同于 Humphreys 书上的证明。
 
 1 的证明：
 
@@ -218,7 +299,117 @@ $$(z,z)=\delta^2+2\delta(u_+,\alpha_t)=\delta^2+2\delta\sum_{s\in I_+}\underbrac
 
 2 的证明：
 
-我们只要证明若 $I\subsetneqq \Gamma$ 是真子集，则对任何非零向量 $u=\sum_{s\in I}c_s\alpha_s$ 都有 $(u,u)>0$。若不然，$u=\sum_{s\in I}c_s\alpha_s+\sum_{t\notin I}0\cdot\alpha_t$ 并且 $(u,u)=0$，这与 $u$ 的系数必须全部非零矛盾。$\blacksquare$
+设 $\Gamma'$ 是 $\Gamma$ 的一个真子图，对应的 Cartan 矩阵是 $A'=(a'_{ij})$，大小为 $k\times k\,(k\le n)$。
+
+注意到对每个 $i\leq k$ 有 $a'_{ii}=a_{ii}=1$ 和 $-1\le a_{ij}\leq a'_{ij}\le 0$。
+
+用反证法，假设 $A'$ 不是正定，则存在某个非零向量 $x\in\mathbb R^k$ 使得
+$$x^TA'x\le 0. \label{ineq:sub1}\tag{1}$$
+令 $y=(|x_1|,\dots,|x_k|,0,\dots,0)\in\mathbb R^n$，由于 $A$ 正半定，
+$$0\le y^TAy= \sum_{i,j\le k} a_{ij}|x_i||x_j|. \label{ineq:sub2}\tag{2}$$
+由 $a_{ij}\le a'_{ij}$，且 $|x_i||x_j|\ge0$，逐项相乘并求和得到
+$$\sum_{i,j\le k} a_{ij}|x_i||x_j|\le\sum_{i,j\le k} a'_{ij}|x_i||x_j|. \label{ineq:sub3}\tag{3}$$
+
+我们还需要最后一个不等式：
+
++ 注意对 $i\neq j$，$a'_{ij}\le 0$。而对任意实数，
+$$x_ix_j\le |x_i||x_j|.$$
+把这个不等式乘上一个非正的数 $a'_{ij}$ 会反向，因此
+$$a'_{ij}|x_i||x_j|\le a'_{ij}x_ix_j\quad (i\neq j).$$
++ $i=j$ 时两边相等，都是 $a'_{ii}x_i^2=x_i^2$。
+
+因此整体求和：
+$$\sum_{i,j\le k} a'_{ij}|x_i||x_j|\le\sum_{i,j\le k} a'_{ij}x_ix_j = x^TA'x. \label{ineq:sub4}\tag{4}$$
+综合 $\ref{ineq:sub1},\ref{ineq:sub2},\ref{ineq:sub3},\ref{ineq:sub4}$ 就是
+$$0\le y^TAy=\sum_{i,j\le k} a_{ij}|x_i||x_j|\le\sum_{i,j\le k} a'_{ij}|x_i||x_j|\le \sum_{i,j\le k} a'_{ij}x_ix_j= x^TA'x\le 0.$$
+于是所有不等号都是等号。从而 $y\in \rad(A)$。而我们已经知道 $\rad(A)$ 中的非零向量必须所有分量都同号，这只能是 $k=n$，并且所有 $x_i$ 都非零。这进一步导致对所有 $a_{ij}=a'_{ij}$。这与 $\Gamma'$ 是真子图矛盾。$\blacksquare$
+
+
+# 3.2 Finite generation
+
+:::{.proposition}
+设 $S=\bigoplus_{d\ge 0}S_d$ 为一个分次 $K$-代数，$W$ 为有限群作用在 $S$ 上并保持分次，$R=S^W$ 为不变子环，$R^+=\bigoplus_{d>0}R_d$。令
+$$
+I:=S\cdot R^+
+$$
+为由正次数不变式生成的 $S$- 理想。设 $f_1,\dots,f_r\in R^+$ 为齐次元，并且它们生成理想 $I$。则 $R$ 作为 $K$- 代数由 $1,f_1,\dots,f_r$ 生成。
+:::
+
+**证明**：由于 $S$ 是 Noether 环，因此 $I$ 作为理想也是有限生成的：$I=\langle f_1,\cdots,f_r\rangle$。实际上这些 $f_i$ 都可以取自 $R^+$（若不然，把 $f_i$ 写成 $g_i \in R^+$ 的 $S$- 线性组合，并用这些 $g_i$ 替换），而且都可以取为齐次多项式（若不然，就用齐次分量替换）
+
+现在我们断言 $R$ 作为代数由 $1,f_1,\dots,f_r$ 生成。为此只要对 $f\in R$ 且 $f$ 是齐次多项式证明即可。
+
+对 $\deg f$ 归纳：如果 $\deg f=0$ 那么 $f$ 是常数多项式，无所可证。
+
+现假设 $\deg f>0$ 且 $R$ 中任何次数小于 $\deg f$ 的齐次多项式都属于 $K[f_1.\cdots,f_r]$，由于 $f$ 是正次数的齐次多项式因此 $f\in R^+\subset I$，于是存在 $p_1,\cdots,p_r\in S$ 使得
+
+$$f=p_1f_1+\cdots+p_rf_r.$$
+
+这里的 $p_1,\cdots,p_m$ 仍然可以取为齐次多项式，次数为 $\deg p_i=\deg f-\deg f_i$（$p_i$ 中其它次数的单项式互相抵消，实际上不起作用）。两边同时用 Reynolds 算子作用：
+
+$$f = p_1^\sharp f_1+\cdots+p_r^\sharp f_r.$$
+
+每个 $p_i^\sharp$ 都是齐次不变多项式，且次数不超过 $p_i$，根据归纳假设它们都是 $f_1,\cdots,f_r$ 的多项式，于是 $f$ 自然也是 $f_1,\cdots,f_r$ 的多项式。$\blacksquare$
+
+
+# 3.4 The key lemma
+
+记 $R=S^W$ 是不变多项式环。$I=R^+ S$ 是正次数不变多项式生成的理想。
+
+:::{.lemma}
+设 $f_1,\ldots,f_r\in R$ 且 $f_1\notin\langle f_2,\ldots,f_r\rangle R$。如果 $S$ 中的齐次多项式 $g_1,\ldots, g_r$ 满足
+$$f_1g_1 +\cdots + f_rg_r=0.$$
+则 $g_1\in I$。
+:::
+
+首先我们证明 $f_1\notin \langle f_2,\ldots,f_r\rangle S$。即 $f_1$ 也不属于 $\{f_1,\ldots,f_r\}$ 在 $S$ 中生成的理想。若不然，设
+$$f_1 = \sum_{i=2}^r f_ih_i,\quad h_i\in S.$$
+两边用 Reynold 算子作用，得到
+$$f_1 = \sum_{i=2}^r f_ih_i^\sharp.$$
+右边是一个 $\langle f_2,\ldots,f_r\rangle R$ 中的元素，与已知矛盾。所以确实有 $f_1\notin \langle f_2,\ldots,f_r\rangle S$。
+
+然后我们证明 $g_1\in I$，如果 $g_1=c$ 是常数，那么 $c=0$ 的话自然有 $g_1\in I$，$c\ne 0$ 的话会导致 $f_1\in \langle f_2,\ldots,f_r\rangle S$，不可能。所以只要考虑 $\deg g_1>0$。
+
+任取反射 $s$，设线性式 $l$ 满足 $sg_i - g_i = lh_i$。则 $\deg h_i < \deg g_i$。然后在 $\sum f_ig_i=0$ 两边用 $s$ 作用，利用 $f_i$ 是 $W$- 不变的，得到
+$$\sum f_i (s\cdot g_i)=0\Rightarrow \sum f_i (s\cdot g_i - g_i)=0\Rightarrow \sum f_i h_i=0.$$
+可以对 $\deg h_1<\deg g_1$ 使用归纳假设得到 $h_1\in I$。于是
+$$sg_1 - g_1 = lh_i\in I.$$
+由 $s$ 任意性，对任何 $w\in W$ 有
+$$wg_1\equiv g_1\pmod I.$$
+进一步
+$$g_1^\sharp\equiv g_1\pmod I.$$
+但是 $g_1^\sharp$ 也是齐次多项式，要么具有正次数，要么是 0，从而 $g_1^\sharp\in I$，于是 $g_1\in I$。$\blacksquare$
+
+
+# 3.5 Chevalley's theorem
+
+:::{.theorem}
+$R=S^W$ 是一个多项式代数，由 $n$ 个代数无关的齐次多项式 $f_1,\ldots,f_n$ 生成。
+:::
+
+我们已经知道理想 $I=R^+S$ 的一组齐次生成元就是 $R$ 的一组代数生成元。所以只要再证明 $f_1,\ldots,f_r$ 是代数无关的即可，这样由 $S:R$ 是代数扩张即得 $r=n$。 
+
+证明还是用经典的反证法，取一个次数最低的、非平凡的代数关系 $h(y_1,\ldots,h_r)$ 使得
+$$h(f_1,\ldots,f_r)=0.$$
+我们来由此推导一个次数更低的、同样非平凡的代数关系，从而得出矛盾。
+
+设 $y_1^{e_1}\cdots y_r^{e_r}$ 是 $h$ 中出现的任何一个单项式，代入 $f_1,\ldots,f_r$ 以后并展开，得到的结果关于 $x_1,\ldots,x_n$ 的次数是
+$$d = \sum_{i=1}^r d_ie_i,\quad d_i=\deg f_i.$$
+所有满足上述等式的单项式会抵消掉。所以我们不妨假设 $h$ 中的单项式都满足上述等式。即 $h$ 虽然未必关于 $y_1,\ldots,y_r$ 齐次，但是代入 $f_1,\ldots,f_r$ 以后关于 $x_1,\ldots,x_n$ 是齐次的，并且次数是 $d$。
+
+固定 $k$，我们在
+$$h(f_1,\ldots,f_r) = 0.$$
+两边关于 $x_k$ 求偏导数。注意，上式左边已经是关于 $x_1,\ldots,x_n$ 的次数为 $d$ 的齐次多项式。由链式法则，有
+$$\sum_{i=1}^r\frac{\partial h}{\partial y_i}(f_1,\ldots,f_r)\cdot \frac{\partial f_i}{\partial x_k}=\sum_{i=1}^r h_i \frac{\partial f_i}{\partial x_k} = 0.\quad h_i = \frac{\partial h}{\partial y_i}(f_1,\ldots,f_r).$$
+$h_i$ 是次数为 $d-d_i$ 的齐次多项式。不妨设 $h_1,\ldots,h_m$ 是理想 $\langle h_1,\ldots,h_r\rangle R$ 的最小生成集。于是 $h_{m+1},\ldots,h_r$ 中的每一个都可以写成 $h_1,\ldots,h_m$ 的 $R$- 线性组合。对每个 $i>m$，设
+$$h_i=\sum_{j=1}^m g_{ij}h_j,\quad g_{ij}\in R.$$
+由于每个 $h_i$ 是次数为 $d-d_i$ 的齐次多项式，因此抛弃不必要的单项式以后我们可以假定 $g_{ij}$ 是次数为 $d_j-d_i$ 的齐次多项式。代入前面的求和整理得到
+$$\sum_{i=1}^mh_i\left(\frac{\partial f_i}{\partial x_k}+\sum_{j=m+1}^r g_{ji}\frac{\partial f_j}{\partial x_k}\right)=0.$$
+我们把括号里的多项式简记作 $p_i$，则 $p_i$ 是关于 $x_1,\cdots,x_r$ 次数为 $d_i-1$ 的齐次多项式，总之我们可以用 section 3.4 的关键引理得到 $p_1\in I$。
+$$\frac{\partial f_1}{\partial x_k}+\sum_{j=m+1}^rg_{j1}\frac{\partial f_j}{\partial x_k}=\sum_{i=1}^r f_iq_i.$$
+其中 $q_i\in S$。给这个式子乘以 $x_k$ 再对所有 $k$ 求和，就可以用 Euler 公式得到
+$$d_1f_1+\sum_{j=m+1}^r d_jg_{j1}f_j=\sum_{i=1}^r f_ir_i.$$
+这里每个 $\deg r_i>0$ 都是齐次多项式。这个式子左边是次数为 $d_1$ 的齐次多项式，所以右边也是。如果 $r_1\ne 0$ 的话，则 $\deg f_1r_1>\deg f_1$，从而 $f_1r_1$ 的每一项都与右边后面的项抵消掉，从而 $f_1$ 属于 $f_2,\ldots,f_r$ 生成的理想，矛盾！
 
 # 3.7 Uniqueness of the degrees
 
@@ -242,6 +433,44 @@ $$f_1^{k_1}\cdots f_n^{k_n},\quad k_i\geq 1$$
 :::{.corollary .unnumbered #unique-degrees}
 $S^G$ 的任何一组齐次、代数无关生成元的次数是唯一却定的。
 :::
+
+# 3.10 Jacobian criterion for algebraic independence
+
+
+:::{.theorem}
+设 $f_1,\cdots,f_n\in F[x_1,\ldots,x_n]$，其中 $F$ 是特征为 0 的域。定义 Jacobi 矩阵
+$$J=\left( \frac{\partial f_i}{\partial x_j}\right)_{n\times n}.$$
+则 $f_1,\cdots,f_n$ 代数相关的充要条件是 $\det J\equiv0$。
+:::
+
+**证明**：如果 $\det J$ 不恒为 0，我们来证明 $f_1,\cdots,f_n$ 是代数无关的。若不然则存在非常数的多项式 $p(y_1,\cdots,y_n)$ 使得
+$$p(f_1,\cdots,f_n)=0.$$
+我们可以假设 $p$ 是所有这样的多项式中次数最低的。对每个 $x_j$ 求导得到 $n$ 个方程
+$$\sum_{i=1}^n\frac{\partial p }{\partial y_i}(f_1,\cdots,f_n)\cdot\frac{\partial f_i}{\partial x_j}=0,\quad j=1,2,\ldots,n.$$
+
+这是一个有理函数域 $F(x_1,\cdots,x_n)$ 上的齐次线性方程组，系数矩阵为 $J$，$n$ 个 未知量为
+$$\frac{\partial p}{\partial y_i}(f_1,\cdots,f_n),\quad i=1,\ldots,n.$$
+
+由于 $\det J\ne0$，因此这个方程组只有零解，但是所有的 $\partial p/\partial{y_i}$ 不全为 0（因为 $p$ 不是常数），不妨设 $\partial p/\partial y_1\ne0$，则它的次数小于 $p$ 且满足
+$$\frac{\partial p}{\partial y_1}(f_1,\cdots,f_n)=0.$$
+这与 $p$ 的选取矛盾！
+
+反过来，若 $f_1,\cdots,f_n$ 是代数无关的，由于 $n$ 变元有理多项式域的超越次数是 $n$，因此对任何 $i$，$\{x_i,f_1,\cdots,f_n\}$ 都是代数相关的。设 $h_i(y_0,y_1,\cdots,y_n)$ 为极小正次数多项式使得
+
+$$h_i(x_i,f_1,\ldots,f_n)=0.$$
+
+在上式中对 $x_k$ 求偏导得到
+
+$$\sum_{j=1}^n \frac{\partial h_i}{\partial y_j}(x_i,f_1,\cdots,f_n)\frac{\partial f_j}{\partial x_k}+\frac{\partial h_i}{\partial y_0}(x_i,f_1,\cdots,f_n)\delta_{ik}=0.$$
+
+写成矩形形式就是
+
+$$\left(\frac{\partial h_i}{\partial y_j}(x_i,f_1,\cdots,f_n)\right)\cdot J=\left(-\delta_{ij}\frac{\partial h_i}{\partial y_0}(x_i,f_1,\cdots,f_n)\right).$$
+
+由于这些 $f_j$ 是代数无关的，$h_i$ 关于 $y_0$ 必然是正次数，因此 $\partial h_i/\partial y_0$ 的次数严格小于 $h_i$，从而它在 $(x_i,f_1,\cdots,f_n)$ 处的值不为 0（否则与 $h_i$ 的选取矛盾）。所以上式右边是一个行列式不为 0 的对角矩阵， 所以 $\det J$ 也不等于 0。
+
+ 
+
 
 # 3.16 Coxeter elements
 
