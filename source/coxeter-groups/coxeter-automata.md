@@ -39,7 +39,6 @@ date: 2021-12-06
 若 $\alpha,\beta\in\Phi$ 满足 $|(\alpha,\beta)|<1$，则必然有 $(\alpha,\beta)=\cos(p\pi/q)$，其中 $p,q$ 是互素的正整数，而且反射 $s_\alpha,s_\beta$ 生成的二面体群是有限群。
 :::
 
-
 **证明**：由已知，内积限制在二维平面 $U=\span{\{\alpha,\beta\}}$ 上是正定的。所以 $V=U\oplus U^\bot$。
 
 我们可以不妨假定 $\alpha$ 是正根，以及 $\beta=\alpha_s$ 是单根。设

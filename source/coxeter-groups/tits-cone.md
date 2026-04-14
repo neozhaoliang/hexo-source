@@ -248,6 +248,18 @@ $$\lfun{\alpha_s}{v}=\lfun{w\alpha_s}{wv}=\lfun{w\alpha_s}{z}\ne0$$
 
 **证明**：$y$ 可以写成 $y=wx\,(w\in W,\,x\in\barfd)$ 的形式，从而 ${\rm Stab}(y)=w{\rm Stab}(x)w^{-1}$，二者同为有限群或者无限群；而且 $x,y$ 同时属于或者同时不属于 $\tc^\circ$。由 @Pre:fd-finite-stabilizer 即得结论。$\blacksquare$
 
+:::{.theorem #conjugate-to-standard-parabolic-subgroup}
+设 $H\leqslant W$ 是一个有限子群，则存在 $w\in W$ 和 $J\subseteq S$ 使得
+$$wHw^{-1} \subseteq W_J.$$
+:::
+
+**证明**：记 $x=\sum_{s\in S}\omega_s$，对任何单根 $\alpha_s$ 有 $\langle \alpha_s,x\rangle=1>0$，所以 $x\in\fd\subset\tc^\circ$。由于 $\tc^\circ$ 在 $W$ 作用下不变，所以对每个 $h\in H$ 都有 $hx\in\tc^\circ$。又因为 $\tc^\circ$ 也是凸锥，所以有限和
+$$y=\sum_{h\in H}hx\in\tc^\circ.$$
+于是存在 $w\in W$ 使得
+$$wy=z\in\barfd\cap\tc^\circ.$$
+注意到 $Hy=y$，即 $H\subseteq\stab{y}$。所以
+$$wHw^{-1}\subseteq w\stab{y}w^{-1}= \stab{z}.$$
+然而 $z\in\barfd\cap\tc^\circ$，根据 @Pre:stabilizer-parabolic-subgroup 和 @Pre:fd-finite-stabilizer，$\stab{z}=W_J$ 是一个有限的标准椭圆子群。这就证明了结论。$\blacksquare$
 
 # Tits 锥的对偶锥
 
