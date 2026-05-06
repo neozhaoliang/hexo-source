@@ -89,9 +89,7 @@ $$\alpha=\alpha_0\preceq\alpha_1\preceq\cdots\preceq\alpha_k=\beta$$
 
 **证明**：若 $\beta=s\alpha$ 则 $\alpha,\beta$ 只有在 $\alpha_s$ 项的系数不同。又 $(\alpha,\alpha_s)<0$ 所以 $d_s>c_s$ 得证。
 
-:::{.definition}
-对 $\alpha,\beta\in\Phi^+$，如果对任何 $w\in W$ 都有 $w\alpha\in\Phi^-\Rightarrow w\beta\in\Phi^-$，我们就称 $\alpha$ 支配 $\beta$，记作 $\alpha\dom\beta$。
-:::
+
 
 :::{.lemma}
 设 $\alpha,\beta\in\Phi^+$ 且 $\alpha\dom\beta$，则：
