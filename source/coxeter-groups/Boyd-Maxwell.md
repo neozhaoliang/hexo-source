@@ -333,7 +333,7 @@ $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 
 $$\begin{aligned}
 (u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
-(u,v)&=(v,v)-at \leq at<0.
+(u,v)&=(v,v)-at \leq -at<0.
 \end{aligned}$$
 即 $u$ 是 time-like 的并且 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in \H$。又因为 $(u,k)=a-t\geq0$，所以也有 $(u',k)\geq0$，从而 $u'\in C_k$。
 
@@ -378,20 +378,36 @@ $$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $|C_{k_1}\cap C_{k_2}|\leq1$，我们要证明对任何 $k\ne k'\in\P$ 同样有 $|C_k\cap C_{k'}|\leq1$。如果 $\{k,k'\}=\{k_1,k_2\}$ 结论显然成立，所以不妨设 $k\notin\{k_1,k_2\}$。用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。令 $w=k_1-(k_1,k_2)k_2$，则有
-$$(w,w)=1-(k_1,k_2)^2\leq0,\quad (w, k)<0,\quad (w, k')\leq0.$$
-我们来证明 $v\sim w$。若如此，则 $w$ 的某个正倍数 $w'\in\H$，并且
-$$(w',-k)>0,\quad (w',-k')\geq0.$$
-从而由 @Pre:contain-time-like 有 $|C_{-k}\cap C_{-k'}|>1$，与 @Pre:disjoint-pair 矛盾。由于 $v$ 是 time-like 的，我们只要证明有 $(v,w)\leq0$ 成立即可。利用
-$$(v,w)=(v, k_1) - (v,k_2)(k_1,k_2) = (v-(v,k_2)k_2, k_1).$$
-并记 $u=v-(v, k_2)k_2$，问题转化为证明 $(u,k_1)\leq0$。计算可得
-$$\begin{aligned}
-(u,k_2) &= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
-(u,u)&=(u,v)-(v,k_2)(u,k_2) = (u,v),\\
-(u,v)&=(v,v)-(v,k_2)^2 \leq (v,v)<0.
-\end{aligned}
+1 $\Rightarrow$ 2：根据 @Pre:disjoint-pair，不妨设 $k_1,k_2\in\P$ 使得 $|C_{k_1}\cap C_{k_2}|\leq1$，我们要证明对任何 $k\ne k'\in\P$ 同样有 $|C_k\cap C_{k'}|\leq1$。如果 $\{k,k'\}=\{k_1,k_2\}$ 结论显然成立，所以不妨设 $k\notin\{k_1,k_2\}$。
+
+用反证法，若 $|C_k\cap C_{k'}|>1$，根据 @Pre:contain-time-like，存在 time-like 的向量 $v\in C_k\cap C_{k'}$。记
+$$\overline{v} = v-(v,k_2)k_2$$
+是 $v$ 在 $k_2$ 上的投影，同时记
+$$\overline{k}_1 = k_1-(k_1,k_2)k_2$$
+是 $k_1$ 在 $k_2^\bot$ 上的投影。直接验证有：
+
+$$(\overline{v} , v)=(\overline{v},\overline{v}) = (v, v) - (v,k_2)^2\le (v,v) < 0.
 $$
-即 $u$ 是 time-like 的且 $u\sim v$。于是 $u$ 的某个正倍数 $u'$ 属于 $\H$。如果 $(u,k_1)>0$ 的话则 $u'$ 是 time-like 的向量且满足 $(u',k_1)>0$ 和 $(u',k_2)=0$，从而 $u'\in C_{k_1}\cap C_{k_2}$。但根据 @Pre:contain-time-like 这会导致 $|C_{k_1}\cap C_{k_2}|>1$，矛盾。因此 $(u,k_1)\leq0$。
+即 $\overline{v}$ 是 time-like 的，并且 $\overline{v}\sim v$。于是 $\overline{v}\in\Q_+$。
+
+同样计算可得
+$$(\overline{k}_1,\overline{k}_1)=1-(k_1,k_2)^2\leq0.$$
+即 $\overline{k}_1$ 是 time-like/light-like 的。$\overline{k}_1$ 属于 $\Q_+$ 或者 $\Q_-$ 中的哪个还不能确定。利用投影算子是自共轭算子这一点，我们有
+$$(v,\overline{k}_1) = (\overline{v}, k_1).$$
+（你也可以直接验证这个等式成立）
+
+我们来说明 $(\overline{v}, k_1)\le0$。一旦这一点成立，则 $\overline{k}_1$ 必然和 $\overline{v}$ 都位于同一分支 $\Q_+$ 中。
+
+若不然，假设 $(\overline{v},k_1)>0$，取 $\overline{v}$ 的某个正倍数 $w\in\H$。由于 $\overline{v}$ 是 time-like 的，从而 $w$ 也是。$(w, k_1)$ 同样大于 0，并且 $(w,k_2)\propto(\overline{v},k_2)=0$。这就导致 $C_{k_1}\cap C_{k_2}$ 包含了 time-like 的向量 $w$，由 @Pre:contain-time-like 可得 $|C_{k_1}\cap C_{k_2}|>1$，矛盾！故必有 $(\overline{v}, k_1)\le0$，从而 $\overline{k}_1\in\Q_+$。
+
+既然 $\overline{k}_1\in\Q_+$，我们可以取 $\overline{k}_1$ 的某个正倍数 $w\in\H$。则
+$$\begin{aligned}
+(w,k)&\propto (\overline{k}_1,k) = (k_1,k) - (k_1,k_2)(k_2,k) < 0,\\
+(w,k')&\propto  (\overline{k}_1,k')=(k_1,k') - (k_1,k_2)(k_2,k')\le0. 
+\end{aligned}$$
+其中，第一个式子由于 $k\notin\{k_1,k_2\}$ 所以严格小于 0。第二个式子在 $k'\notin\{k_1,k_2\}$ 时也是严格小于 0 的；在 $k'=k_1$ 时 $\le0$，在 $k'=k_2$ 时正好等于 0。
+
+于是我们有 $(w,-k)>0$ 和 $(w,-k')\ge0$，从而 $C_{-k}\cap C_{-k'}$ 包含了 time-like 的向量 $w$，从而由 @Pre:contain-time-like 有 $|C_{-k}\cap C_{-k'}|>1$。但是我们假设了 $|C_k\cap C_k'|>1$，根据 @Pre:disjoint-pair，这不可能。
 
 2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。对 $k_1\ne k_2\in\P$，$U=\span\{k_1,k_2\}$ 肯定不是 space-like 的，否则 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，则存在 time-like 的向量 $v$ 满足 $(v,k_1)=(v,k_2)=0$。给 $v$ 乘以适当实数后可以使得 $v\in\H$，从而 $v\in C_{k_1}\cap C_{k_2}$，这与 @Pre:contain-time-like 矛盾。所以 $U$ 不是 space-like 的，即 $|(k_1,k_2)|\geq1$。如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。所以只能是 $(k_1,k_2)\leq-1$，从而 $\P$ 是球堆。
 $\blacksquare$
