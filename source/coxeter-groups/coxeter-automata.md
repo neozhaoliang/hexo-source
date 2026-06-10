@@ -35,7 +35,7 @@ date: 2021-12-06
 \DeclareMathOperator{\span}{span}
 
 
-:::{.proposition}
+:::{.proposition #dihedral-finite}
 若 $\alpha,\beta\in\Phi$ 满足 $|(\alpha,\beta)|<1$，则必然有 $(\alpha,\beta)=\cos(p\pi/q)$，其中 $p,q$ 是互素的正整数，而且反射 $s_\alpha,s_\beta$ 生成的二面体群是有限群。
 :::
 
@@ -104,8 +104,13 @@ $$\mathcal C_\gamma^-=\{\,w\fd\mid (\gamma,w\fd)<0\,\}.$$
 
 1. 显然。
 
-2. $\Rightarrow$：
+2. $\Rightarrow$：设 $\alpha\dom\beta$。取 $w\in W$ 满足 $l(w)=\dp{\alpha}$ 且 $w\alpha\in\Phi^-$。设 $w=sx$，其中 $s\in S$ 和 $l(x)=l(w) -1$。则有 $x\alpha=\alpha_s$。由于 $\alpha\ne\beta$，所以 $x\beta\ne\alpha_s$。但是 $\alpha\dom\beta$ 说明 $sx\beta\in\Phi^-$，所以 $x\beta$ 本身就是负根。所以
+$$\dp{\beta}\le l(x) < l(w)=\dp{\alpha}.$$
+又因为关于超平面 $\alpha$ 的反射 $s_\alpha\in W$，以及 $s_\alpha(\alpha)=-\alpha\in\Phi^-$，所以
+$$s_\alpha\beta = \beta - 2(\alpha,\beta)\alpha \in\Phi^-.$$
+由此可得 $(\alpha,\beta) > 0$。如果 $0<(\alpha,\beta)<1$，那么根据 @Pre:dihedral-finite，$s_\alpha,s_\beta$ 生成一个有限二面体群 $D$。但是在一个有限 Coxeter 群里面任何两个正根之间不可能有支配关系（取一个 $H_\alpha\cap H_\beta$ 中的胞腔，使得它位于 $\alpha$ 的负侧、$\beta$ 的正侧。这就给出了一个 $D$ 中的群元素 $u$，使得 $u\alpha$ 是负根而 $u\beta$ 是正根），所以只能是 $(\alpha,\beta)\ge1$。
 
+    $\Leftarrow$：设 $(\alpha,\beta)\ge1$ 且 $\dp{\alpha}\ge\dp{\beta}$。
 3. 只要对 $\alpha\prec\alpha'$ 且 $\dp{\alpha'}=\dp{\alpha}+1$ 进行证明即可。由偏序 $\preceq$ 的定义，存在单反射 $s$ 使得 $\alpha'=s\alpha$，并且由 @Pre:partial-order-by-simple-ref 有 $(\alpha_s,\alpha)<0$。由第 1 条 $(\alpha,\beta)>0$ 所以 $\beta\ne\alpha_s$，从而 $s\beta$ 是正根，从而由第 2 条 $\alpha'=s\alpha\dom s\beta$ 不是极小根。
 
 4. $\alpha\dom\beta$ 显然意味着 $\dpa\geq\dp{\beta}$。下面证明，如果还有等号成立则必有 $\alpha=\beta$。设 $w\in W$ 使得 $w\alpha=-\alpha_s$ 是某个负的单根，则 $w\beta\in\Phi^-$。注意这时 $w^{-1}\alpha_s=-\alpha<0$，所以 $l(sw)<l(w)$。
