@@ -26,10 +26,10 @@ url: "coxeter-groups-root-system"
 
 1. 取 $n=|S|$ 维实向量空间 $V$，并设其一组基为 $\{\alpha_s\mid s\in S\}$；
 2. 定义 $V$ 上的内积 $\inn$；
-2. 对每个生成元 $s\in S$ 在 $V$ 上的作用是以 $\alpha_s$ 为法向量的反射 $\rho_s$；
-3. 最后，我们证明了 $\rho\,\colon\ W\to\mathrm{O}(V)$ 是群同态。
+3. 对每个生成元 $s\in S$ 在 $V$ 上的作用是以 $\alpha_s$ 为法向量的反射 $\rho_s$；
+4. 最后，我们证明了 $\rho\,\colon\ W\to\mathrm{O}(V)$ 是群同态。
 
-但是我们还有一个未完成的工作：证明 $\rho$ 是同构。本文会完成它。此外我还会介绍一些关于根系的知识。如果你直接翻到本文后面，会看到我罗列了很多关于根系的推论。这并不是我在故意掉书袋，这些推论每一条后面都会用到。不过读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。
+但是我们还有一个未完成的工作：证明 $W\xrightarrow{\rho}\rho(W)$ 是同构。本文会完成它。此外我还会介绍一些关于根系的知识。如果你直接翻到本文后面，会看到我罗列了很多关于根系的推论。这并不是我在故意掉书袋，这些推论每一条后面都会用到。不过读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。
 
 <!--more-->
 
@@ -46,13 +46,13 @@ $$\Phi=W\cdot\Delta=\{w\alpha_s\mid w\in W, \, \alpha_s\in\Delta\}$$
 + 每个根 $\lambda=w\alpha_s$ 都是内积 $\inn$ 下的单位向量，因为群 $W$ 的作用保持内积；
 + 若 $\alpha, \beta \in \Phi$ 共线，则 $\alpha = \pm \beta$。这是因为它们都是单位向量，$\alpha = k\beta\Rightarrow k^2 = 1$。
 
-由于 $\Delta$ 构成 $V$ 的一组基，所以每个根 $\Phi\in\lambda$ 都是单根的线性组合：
+由于 $\Delta$ 构成 $V$ 的一组基，所以每个根 $\lambda\in\Phi$ 都是单根的线性组合：
 $$\lambda = \sum_{s\in S}c_s\alpha_s,\quad c_s\in\mathbb{R}.$$
 如果上面的所有系数 $c_s$ 都非负，就称 $\lambda$ 是**正根**；若所有系数 $c_s$ 都非正，就称 $\lambda$ 是**负根**。正根和负根组成的集合分别记作 $\Phi^+$ 和 $\Phi^-$。显然 $\Phi^+\cap\Phi^-=\emptyset$。
 
 这就引出了一个问题：每个根都必然是正根或者负根吗？即是否有 $\Phi=\Phi^+\cup\Phi^-$ 成立？虽然答案是肯定的，但这并不显然。为此我们需要一个关键引理。这个引理的证明有点长，但是它非常重要，Coxeter 群的几乎所有性质的证明多少都会用到它。在引入它之前，我们需要做一点小小的准备。
 
-设 $I\subseteq S$，$I$ 中的生成元在 $(W,S)$ 中生成一个子群 $W_I \leqslant (W,S)$，$W_I$ 叫做**标准椭圆子群**。记 $l_I(\cdot)$ 是 $W_I$ 上的长度函数，则显然对任何 $w\in W_I$ 有 $l(w)\leq l_I(w)$ 成立（因为 $W_I$ 中的既约表示放到 $W$ 中可能不是既约的）。我们后面会证明其实有 $l_I=l\mid_{W_I}$。
+设 $I\subseteq S$，$I$ 中的生成元在 $(W,S)$ 中生成一个子群 $W_I \leqslant (W,S)$，$W_I$ 叫做**标准抛物子群**。记 $l_I(\cdot)$ 是 $W_I$ 上的长度函数，则显然对任何 $w\in W_I$ 有 $l(w)\leq l_I(w)$ 成立（因为 $W_I$ 中的既约表示放到 $W$ 中可能不是既约的）。我们后面会证明其实有 $l_I=l\mid_{W_I}$。
 
 现在请出我们的重要引理：
 
@@ -81,17 +81,17 @@ $$
 
 对 $l(w)$ 归纳：$l(w)=0$ 时 $w=1$，结论显然成立。下面设结论对所有长度小于 $l(w)$ 的元素成立。
 
-我们总是可以取 $t\in S$ 使得 $l(wt)<l(w)$，比如 $t$ 取为 $w$ 的某个既约表达式的最后一项。由于 $l(ws)>l(w)$，故 $t\ne s$。令 $I=\{s,t\}$，定义集合
+取 $t$ 为 $w$ 的某个既约表达式的最后一项。则 $l(wt)<l(w)$。由于 $l(ws)>l(w)$，故 $t\ne s$。令 $I=\{s,t\}$，定义集合
 $$A = \{(x,x_I)\in W\times W_I\mid w=xx_I,\,l(w)=l(x)+l_I(x_I)\}.$$
 由于 $(wt,t)\in A$ 所以 $A$ 非空。取 $(v,v_I)\in A$ 使得 $l(v)$ 是最小的，则
 $$l(v)\leq l(wt)=l(w)-1.$$
 我们断言对任何 $u\in I$ 都有 $l(vu)>l(v)$。若不然，则 $l(vu)=l(v)-1$，于是
-$$\begin{align*}
+$$\begin{aligned}
 l(w)&=l(vu\cdot uv_I)\leq l(vu) + l(uv_I) = (l(v) -1) + l(uv_I)\\
 &\leq (l(v) -1) + l_I(uv_I)\\
 &\leq (l(v) -1) + (l_I(v_I) + 1)\\
 & = l(v) + l_I(v_I)=l(w).
-\end{align*}$$
+\end{aligned}$$
 于是所有的不等号都是等式，从而 $(vu,uv_I)\in A$，但这与 $(v,v_I)$ 的选择矛盾。所以不论 $u=s$ 或是 $u=t$ 都有 $l(vu)>l(v)$。
 
 由于 $l(v)\leq l(w)-1$ 所以根据归纳假设 $v\alpha_s,\,v\alpha_t$ 都是正根。如果我们能够证明 $v_I\alpha_s$ 是 $\alpha_s$ 和 $\alpha_t$ 的非负线性组合：$$v_I\alpha_s = a\alpha_s + b\alpha_t,\quad a,\,b\geq0.$$
@@ -99,13 +99,15 @@ l(w)&=l(vu\cdot uv_I)\leq l(vu) + l(uv_I) = (l(v) -1) + l(uv_I)\\
 $$w\alpha_s=vv_I\alpha_s=v(a\alpha_s + b\alpha_t)=av\alpha_s + bv\alpha_t\in\Phi^+.$$
 这就证明了结论。
 
-注意到 $v_I\in W_I$ 的任何既约表示都是 $s,t$ 的交错乘积，而且不能以 $s$ 结尾，否则 $l_I(v_Is)=l_I(v_I)-1$，从而
+注意到 $v_I\in W_I$ 不存在以 $s$ 结尾的 $I$- 既约表示，否则 $l_I(v_Is)=l_I(v_I)-1$，从而
 $$l(ws)=l(vv_Is)\leq l(v) + l(v_Is)\leq l(v)+l_I(v_Is)=l(v)+l_I(v_I)-1=l(w)-1.$$
 这与 $l(ws) > l(w)$ 矛盾！
 
 于是 $v_I$ 形如 $v_I=st\cdots t$ 或者 $v_I=ts\cdots t$，问题归结为分析这样的 $v_I$ 在 $\alpha_s$ 上的作用。我们在 [前文](/coxeter-groups/geometric-realization#rank2-roots) 中已经有过计算：
 
-1. $m=m_{s,t}<\infty$ 时，$W_I$ 是有限二面体群 $D_m$。$W_I$ 中所有长度 $\leq m-1$ 且以 $t$ 结尾的元素罗列如下（包含恒等元）：
+1. $m=m_{s,t}<\infty$ 时，$W_I$ 是有限二面体群 $D_m$。$W_I$ 中除去唯一的长度为 $m$ 的元素
+$$\underbrace{\cdots sts}_{m}= \underbrace{\cdots tst}_{m}$$
+之外，其它元素的长度都 $\leq m-1$。这个最长元素有一个以 $s$ 为结尾的既约表示，不必考虑。其它以 $t$ 结尾的元素罗列如下（包含恒等元）：
 $$1,\ t,\ st,\ \ldots,\ \overbrace{\ast\cdots st}^{m-1}.$$
 它们作用在 $\alpha_s$ 上给出如下链条的前 $m$ 项：
 $$\alpha_s\xrightarrow{\ t\ }\sthe{}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ s\ }\sthe{3}\alpha_s+\sthe{2}\alpha_t\xrightarrow{\ t\ }\cdots$$
@@ -124,7 +126,8 @@ $$\sthe{(k-1)}\alpha_s+\sthe{k}\alpha_t,\quad k=1,2,\ldots,m.$$
 
 2. $m=m_{s,t}=\infty$ 时，记 $\cosh\theta=a_{s,t}\,(\theta\geq0)$，则
 $$\alpha_s\xrightarrow{\ t\ }\shthe{}\alpha_s+\shthe{2}\alpha_t\xrightarrow{\ s\ }\shthe{3}\alpha_s+\shthe{2}\alpha_t\xrightarrow{\ t\ }\cdots$$
-每一项都是 $\alpha_s,\alpha_t$ 的非负线性组合。
+每一项都是 $\alpha_s,\alpha_t$ 的非负线性组合。这里 $\theta=0$ 时约定 
+$$\left.\shthe{k}\right|_{\theta=0}=\lim_{\theta\to0}\shthe{k} = k.$$
 
 :::{.example}
 当 $\theta=0$ 时，$W_I$ 是一维直线上两个平行镜面生成的（仿射）反射群（包含了平移），它可以处理成二维平面上的线性反射群：
@@ -194,7 +197,7 @@ $|W|<\infty$ 当且仅当 $|\Phi|<\infty$。
 若 $W$ 是一个有限群，则存在唯一的元素 $w_0$，$w_0$ 是 $W$ 中长度最大者，它交换 $\Phi^+$ 和 $\Phi^-$：$w_0(\Phi^+)=\Phi^-$，且 $w_0$ 是一个对合：$w_0^2=1$。
 :::
 
-**证明**：由于 $W$ 有限所以存在一个长度最大的元素 $w_0$，对任何 $s\in S$ 只能有 $l(w_0s)<l(w)$，从而 $w_0\alpha_s\in\Phi^-$，从而 $w_0$ 把 $\Phi^+$ 变为 $\Phi^-$。
+**证明**：由于 $W$ 有限所以存在一个长度最大的元素 $w_0$，对任何 $s\in S$ 只能有 $l(w_0s)<l(w_0)$，从而 $w_0\alpha_s\in\Phi^-$，从而 $w_0$ 把 $\Phi^+$ 变为 $\Phi^-$。
 
 进一步 $w_0^2$ 仍然把 $\Phi^+$ 映射为 $\Phi^+$，所以由 @Pre:nw-zero-means-identity $w_0^2=1$，因此 $w_0$ 是一个对合。
 

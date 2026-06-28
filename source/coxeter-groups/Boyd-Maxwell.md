@@ -130,7 +130,7 @@ $$
 此即为 $\PL$ 的第二种参数化表示。
 :::
 
-![红色的圆是超平面 $(\cdot, e_{n+2})=1$ 与光锥的截线，可以通过将 $S^n$ 沿着 $e_{n+2}$ 平移一个单位得到；$\ER$ 对应蓝色的 horosphere，它是超平面 $(\cdot, e_0)=\frac{1}{2}$ 与光锥的截线。$e_\infty$ 不在 horosphere 上](/images/coxeter/Horosphere.svg){width=500 .fig}
+![红色的圆是超平面 $(\cdot, e_{n+2})=-1$ 与光锥的截线，可以通过将 $S^n$ 沿着 $e_{n+2}$ 平移一个单位得到；$\ER$ 对应蓝色的 horosphere，它是超平面 $(\cdot, e_\infty)=-\frac{1}{2}$ 与光锥的截线。$e_\infty$ 不在 horosphere 上](/images/coxeter/Horosphere.svg){width=500 .fig}
 
 设 $\y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in S^n$，$\y$ 在以 $e_{n+1}$ 为北极的球极投影下对应的点是
 $$\x=\begin{cases}
@@ -154,7 +154,12 @@ $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}
 
 # 球面
 
-记 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 的单位向量组成的集合。我们来建立 $\R^n$ 中的球（包括超平面）和 $\S$ 之间的一一对应。
+
+:::{.definition}
+记 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 的单位向量组成的集合。
+:::
+
+我们来建立 $\R^n$ 中的球（包括超平面）和 $\S$ 之间的一一对应。
 
 设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，它将 $\R^n$ 分成有界和无界两个连通分支。我们允许 $r$ 是负数以区分 $B$ 的内部和外部：
 
@@ -187,10 +192,10 @@ $$(\imath(\x),k)=(\x,\n)-d.$$
 + $\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k)>0$。
 
 反过来，任意 $k\in\S$ 都唯一对应 $\R^n$ 中的某个球或者超平面。具体方法是将 $k$ 表示为
-$$k=be_\infty+\a+ce_\infty\in\S,\quad b,c\in\R.$$
+$$k=be_0+\a+ce_\infty\in\S,\quad b,c\in\R.$$
 并根据 $b$ 是否等于 0 将 $k$ 对应为球 $B(\a/b ,1/b)$ 或者超平面 $H(\a, c/2)$ 即可。
 
-# 球面的 seperation
+# 球面的 separation
 
 设 $B_1(\a_1,r_1),\,B_2(\a_2,r_2)$ 是两个球，它们对应的 $\S$- 向量分别是
 $$\begin{aligned}
@@ -199,13 +204,13 @@ k_2&=\frac{1}{r_2}e_0 + \frac{\a_2}{r_2} + \frac{|\a_2|^2-r_2^2}{r_2}e_\infty.\\
 \end{aligned}.$$
 直接计算验证可以得到
 $$(k_1,k_2)=\frac{r_1^2+r_2^2 - |\a_1-\a_2|^2}{2r_1r_2}.$$
-我们称内积 $(k_1,k_2)$ 为 $B_1$ 和 $B_2$ 的 **seperation**。
+我们称内积 $(k_1,k_2)$ 为 $B_1$ 和 $B_2$ 的 **separation**。
 
 :::{.note}
 
 [见 @ratcliffe section 3.2]
 
-在 Lorentzinian 内积下，两个 space-like 的单位向量 $k_1,k_2$ 之间的内积有如下解释：
+在 Lorentzian 内积下，两个 space-like 的单位向量 $k_1,k_2$ 之间的内积有如下解释：
 
 1. 若 $|(k_1,k_2)|\leq1$，则 $(k_1,k_2)=\cos\theta$，其中 $\theta$ 是两条以 $x,y$ 为切向量的测地线之间的夹角；
 2. 若 $|(k_1,k_2)|>1$，则 $(k_1,k_2)=\pm\cosh\eta$，其中 $\eta$ 是以 $x,y$ 为法向量的两个超平面之间的双曲距离。
@@ -241,7 +246,7 @@ $$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
 
 **证明**：$B_1$ 和 $B_2$ 内部不相交有如下几种可能：
 
-1. $B_1,B_2$ 都是球，半径 $r_1,r_2$ 都大于 0，并且 $r_1+r_2 \geq |\a_1-\a_2|$。
+1. $B_1,B_2$ 都是球，半径 $r_1,r_2$ 都大于 0，并且 $r_1+r_2 \le |\a_1-\a_2|$。
 2. $B_1,B_2$ 都是球，半径 $r_1>0,\, r_2<0$，且 $B_1$ 位于 $B_2$ 另一侧的有界区域，即 $-r_2-r_1\geq |\a_1-\a_2|$。
 3. $B_1$ 是球，其半径 $r_1>0$；$B_2$ 是超平面，且 $B_1$ 位于 $B_2$ 的负半空间，从而其球心 $\a_1$ 到 $(\n,\x)=d$ 的有向距离 $\leq-r_1$，即 $(\a_1,\n)-d\leq -r_1$。
 4. $B_1,B_2$ 是互相平行的超平面，且法向量相反的，即 $(\n_1,\n_2)=-1$。
@@ -274,10 +279,10 @@ $$\begin{aligned}
 
 注意 $\rho$ 保持光锥的两个分支不变，即 $\rho(\Q_\pm)\subset\Q_\pm$。这是因为，如果 $v\in\Q_+$，则 $(v,v)\leq0$，并且 $(v, \rho(v)) = (v,v) - 2(v,k)^2\leq0$。若不等号严格成立，自然有 $v\sim\rho(v)$。若等号成立，则 $(v,v)=(v,k)=0$，从而 $\rho(v)=v$。
 
-我们来计算 $\rho$ 作用在 $\imath(\x)\,(\x\in\R^n)$ 上的效果：（注意 $(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{r}$）
+我们来计算 $\rho$ 作用在 $\imath(\x)\,(\x\in\R^n)$ 上的效果：（注意 $(2\imath(\x),k)=\frac{r^2-|\x-\a|^2}{r}$）
 $$\begin{aligned}
 \begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} &\xrightarrow{\rho}
-\begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} -\frac{r^2-|\x-\a|^2}{r}\begin{pmatrix}\frac{1}{r}\\\frac{\a}{r}\\ \frac{|\a|-r^2}{r}\end{pmatrix}\\
+\begin{pmatrix}1\\\x\\ |\x|^2\end{pmatrix} -\frac{r^2-|\x-\a|^2}{r}\begin{pmatrix}\frac{1}{r}\\\frac{\a}{r}\\ \frac{|\a|^2-r^2}{r}\end{pmatrix}\\
 &=\begin{pmatrix}\frac{|\x-\a|^2}{r^2}\\\x+\left(\frac{|\x-\a|^2-r^2}{r^2}\right)\a\\ \ast \end{pmatrix}\\
 &\stackrel{+}{\sim} \begin{pmatrix}1\\\a+\frac{r^2}{|\x-\a|^2}(\x-\a)\\ \ast \end{pmatrix}\\
 &=\begin{pmatrix}1\\\tau(\x)\\ |\tau(\x)|^2 \end{pmatrix}.
@@ -301,6 +306,38 @@ $$\x\in B'\Leftrightarrow (\imath(\x), k')=0
 $$
 即关于 $B$ 的反演 $\tau$ 将 $B'$ 映射为 $B''$。
 
+# 一个凸集分离引理
+
+:::{.lemma #hyp-convex-sep}
+设 $k,l$ 是两个 space-like 的向量。如果不存在 time-like 的向量 $v\in\Q_+^\circ$ 使得
+$$(v,k)>0,\quad (v, l)>0.$$
+那么存在 $\lambda,\mu>0$ 使得
+$$q = \lambda k + \mu l\in \Q_+.$$
+:::
+
+**证明**：定义线性映射
+$$T:V\to\R^2,\quad T(v)=((v,k),(v,l)).$$
+考虑集合 $K = T(\Q_+^\circ)$。由于 $T$ 是线性映射，所以 $K$ 是 $\R^2$ 中的凸集，并且在任意正数缩放下不变。
+
+记严格正象限
+$$P^+ = \R^2_{>0} = \{(x,y)\mid x>0,y>0\}.$$
+则 $P^+$ 也是凸集，也在任意正数缩放下不变。
+
+引理条件告诉我们 $K\cap P^+=\varnothing$。于是凸集分离定理告诉我们，这时必然存在一个仿射超平面分离 $K$ 和 $P$：即存在 $(\lambda,\mu)\ne(0,0)\in\R^2$，$c\in\R$ 使得
+$$\begin{aligned}
+&\lambda x + \mu y \ge c,\quad \forall (x, y)\in P^+,\\
+&\lambda x + \mu y \le c,\quad \forall (x, y)\in K.
+\end{aligned}$$
+由于 $P^+$ 和 $K$ 在任意正倍数缩放下不变，这个超平面必然经过原点，即 $c=0$。从而
+$$\begin{aligned}
+&\lambda x + \mu y \ge 0,\quad \forall (x, y)\in P^+,\\
+&\lambda x + \mu y \le 0,\quad \forall (x, y)\in K.
+\end{aligned}$$
+第一个式子告诉我们必然有 $\lambda,\mu\ge0$。第二个式子告诉我们对任何 $v\in\Q_+^\circ$ 都有
+$$(v, \lambda k + \mu l)\le 0.$$
+记 $q = \lambda k + \mu l$，则 $(\Q_+^\circ, q)\le0$，从而 $q\in\Q_+$。
+
+最后，由于 $k,l$ 都是 space-like 的向量，$\lambda,\mu$ 必须都不为 0。$\blacksquare$
 
 # 双曲球堆
 
@@ -311,6 +348,10 @@ $$
 
 如果 $\P$ 形如 $\P=\{k,-k\}$，就称 $\P$ 是平凡的，因为它由一个球的内部和外部组成。否则就称 $\P$ 是非平凡球堆。$-\P=\{-k\mid k\in\P\}$ 也是球堆，它是通过翻转 $\P$ 中每个球的内部和外部得到的。
 
+在一个非平凡的球堆 $\P$ 中，$k$ 和 $-k$ 不能同时出现。否则取第三个 $m\in\P$，就会有
+$$(m, k)\le -1,\quad (m,-k)\le-1.$$
+这不可能。
+
 :::{.definition}
 记超平面 $\{v\in V\mid (v,e_{n+2})=1\}$ 与 $\Q_+$ 的“截面”为
 $$\H = \{v\in \Q_+\mid (v, e_{n+2})=1\}.$$
@@ -318,120 +359,143 @@ $$\H = \{v\in \Q_+\mid (v, e_{n+2})=1\}.$$
 $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 :::
 
-根据定义球帽总是位于同一个分支 $\Q_+$ 中，因此 $u\sim v$ 对所有 $u\in C_k,v\in C_{k'}$ 成立。
+:::{.lemma #k-plus-l}
+设 $k,l\in\S$ 且 $k\ne\pm l$。则
+$$|C_k\cap C_l|\le1\Longleftrightarrow k+l\in\Q_+.$$
+更准确地说：
 
-下面的引理告诉我们，如果 $v$ 严格落在 $C_k$ 的内部，则我们可以稍微“扰动” $v$，得到无限多个落在 $C_k$ 中的 time-like 的向量。
-
-:::{.lemma #perturb}
-设 $\P$ 是球堆，$k\in\P$。设 $v\in C_k$ 满足 $(v,k)=a>0$。则对任何 $0<t\leq a$，$u=v-tk$ 都满足：
-
-1. $u$ 是 time-like 的并且 $u\sim v$；
-2. $(u,k)>0$。
-
-从而 $u$ 的某个正倍数 $u'\in C_k$。进一步，如果 $k'\ne k\in\P$ 满足 $v\in C_k\cap C_{k'}$，则同样有 $u'\in C_k\cap C_{k'}$。
-:::
-
-**证明**：直接计算可得：
-
-$$\begin{aligned}
-(u,u)&=(v,v)-2at + t^2 \leq -2at+t^2 < 0,\\
-(u,v)&=(v,v)-at \leq -at<0.
-\end{aligned}$$
-即 $u$ 是 time-like 的并且 $u\sim v$，从而 $u$ 的某个正倍数 $u'\in \H$。又因为 $(u,k)=a-t\geq0$，所以也有 $(u',k)\geq0$，从而 $u'\in C_k$。
-
-如果存在 $k'\ne k\in\P$ 使得 $v\in C_{k'}$，则 $(v,k')\geq0$，从而
-$$(u,k')=(v,k') - t(k,k')\geq t>0.$$
-于是 $(u',k')\geq0$，所以 $u'$ 也属于 $C_{k'}$。$\blacksquare$
-
-:::{.lemma #contain-time-like}
-设 $\P$ 是球堆且 $k_1\ne k_2\in\P$。则以下三点等价：
-
-1. $|C_{k_1}\cap C_{k_2}|>1$；
-2. 存在 $v\in C_{k_1}\cap C_{k_2}$ 且 $v$ 是 time-like 的；
-3. 存在 $v\in C_{k_1}\cap C_{k_2}$ 使得不等式 $(v,k_1)>0$ 和 $(v,k_2)>0$ 至少有一个成立。
-:::
-
-**证明**：首先由 $(k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0$ 可知 $k_1+k_2$ 是 time/light-like 的。
-
-$1\Rightarrow 2$：设 $u\ne v\in C_{k_1}\cap C_{k_2}$，则 $u,v$ 不共线，从而 $(u,v)<0$。记 $z=u+v$，$z$ 是 time-like 的，并且 $z$ 的某个正倍数 $z'$ 属于 $\H$。$z'$ 即为所求。
-
-$2\Rightarrow 3$：设 $v\in C_{k_1}\cap C_{k_2}$ 是 time-like 的，则 $(v,k_1)\geq0,\, (v,k_2)\geq0$。我们断言这两个不等式至少有一个是严格的。若不然，则 $(v,k_1+k_2)=0$。然而 $k_1+k_2$ 是 time/light-like 的，而 $v$ 是 time-like 的，这不可能。
-
-$3\Rightarrow 1$：不妨设 $a=(v,k_1)>0$。根据 @Pre:perturb，对任何 $t\in(0,a]$ 我们都可以得到对应的 $u'\in C_k\cap C_{k'}$。不难看到不同的 $t$ 给出的 $u'$ 互不相同，于是 $|C_{k_1}\cap C_{k_2}|=\infty > 1$。
-$\blacksquare$
-
-::: {.lemma #disjoint-pair}
-设 $\P$ 是球堆且 $k_1\ne k_2\in\P$，则集合 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 中必有一个至多只包含一个点。并且当这两个集合中的某个恰好只含一个点时，此点与 $k_1+k_2$ 共线，并且有 $(k_1,k_2)=-1$ 成立。
++ 若 $k+l$ 是 time-like 的，则 $C_k\cap C_l=\varnothing$。
++ 若 $k+l$ 是 light-like 的，则 $C_k\cap C_l$ 恰好是一个点，它由 $k+l$ 表示。
 :::
 
 **证明**：
-若 $C_{k_1}\cap C_{k_2}$ 和 $C_{-k_1}\cap C_{-k_2}$ 均不为空，取 $u\in C_{k_1}\cap C_{k_2}$，$v\in C_{-k_1}\cap C_{-k_2}$，则
-$$(u, k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.$$
-如果上面两个不等号都是严格成立的，则 $u\not\sim k_1+k_2$ 但是 $v\sim k_1+k_2$，这与 $u\sim v$ 矛盾。所以至少有一个等号是成立的，即 $u,v$ 之中必有一个与 $k_1+k_2$ 共线，并且 $k_1+k_2$ 是 light-like 的向量。由此可得 $(k_1,k_2)=-1$ 并且 $|C_{k_1}\cap C_{k_2}|\leq1$ 和 $|C_{-k_1}\cap C_{-k_2}|\leq1$ 中至少有一个成立。
 
-如果这两个集合，不妨设为 $C_{k_1}\cap C_{k_2}$，恰好只有一个点。记这个点为 $u$。如果 $u$ 与 $k_1+k_2$ 不共线的话，则必有 $(u,k_1+k_2)>0$，从而 $(u,k_1)$ 和 $(u,k_2)$ 中至少有一个大于 0。根据 @Pre:contain-time-like 有 $|C_k\cap C_{k'}|=\infty$，矛盾。所以 $u$ 必然与 $k_1+k_2$ 共线。$\blacksquare$
+$\Leftarrow$：设 $k+l\in\Q_+$。则
+$$\begin{cases}
+v\in C_k\cap C_l\Longrightarrow (v,k)\ge0,(v,l)\ge0\\
+v,k+l\in\Q_+\Longrightarrow (v,k+l)\le0 
+\end{cases}\quad \Longrightarrow (v,k)=(v,l)=(v,k+l)=0.$$
 
++ 如果 $k+l$ 是 time-like 的，则它不可能与 $v$ 正交，所以交集为空。
++ 如果 $k+l$ 是 light-like 的，则 $v$ 必须与 $k+l$ 共线。而该射线与截面 $\H$ 只有一个交点，因此 $|C_k\cap C_l|\leq1$。
+
+$\Rightarrow$：设 $|C_k\cap C_l|\leq1$。则不存在 $v\in\Q_+^\circ$ 满足
+$$(v,k)>0,\quad (v,l)>0.$$
+因为这样的 $v$ 归一化到 $\H$ 后，连同它附近的一小片邻域都会落在 $C_k\cap C_l$ 中。
+
+根据 @Pre:hyp-convex-sep，存在 $\lambda>0,\mu>0$ 使得
+$$q=\lambda k+\mu l\in\Q_+.$$
+记 $a=(k,l)$，由 $(q,q)\leq0$ 得
+$$\lambda^2+\mu^2+2\lambda\mu a\leq0.$$
+于是
+$$a\leq-\frac{\lambda^2+\mu^2}{2\lambda\mu}\leq-1.$$
+因此
+$$(k+l,k+l)=2+2a\leq0.$$
+即 $k+l\in\Q$。还需判断它属于哪个分支。
+
++ 若 $a<-1$，则
+$$(q,k+l)=(\lambda+\mu)(1+a)<0.$$
+所以 $q$ 与 $k+l$ 位于同一个分支。由于 $q\in\Q_+$，故 $k+l\in\mathcal Q_+$。
++ 若 $a=-1$，由
+$$0\geq(q,q)=(\lambda-\mu)^2$$
+可知 $\lambda=\mu$，从而 $q=\lambda(k+l)$，同样得到 $k+l\in\mathcal Q_+$。
+
+$\blacksquare$
 
 ::: {.theorem #thm-sphere-packing}
 设 $\P$ 是非空集合，则下面两点是等价的：
 
 1. $\P$ 是一个非平凡的球堆。
-2. 对 $\P$ 或者 $-\P$ 之一，其包含的任何两个球帽 $C_k$ 和 $C_{k'}$ 至多有一个公共点。
+2. 对 $\P$ 或者 $-\P$ 之一，其包含的任何两个球帽 $C_k$ 和 $C_l$ 至多有一个公共点。
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：如果 $|\P|=2$，则根据 @Pre:disjoint-pair 结论自然成立。所以可以设 $|P|\ge3$。取三个不同的 $k_1,k_2,k_3\in\P$，令 $v=k_1+k_2+k_3$，则
-$$(v,v) = 3 + 2(k_1,k_2) + 2(k_2,k_3) + 2(k_1,k_3)\le -3 <0.$$
-从而 $v$ 是 time-like 的。并且对任何 $k\in\P$ 有
-$$(v,k) \le -1 < 0.$$
-即 $(v, -k)>0$ 对所有 $k\in\P$ 成立。
+1 $\Rightarrow$ 2：设 $k\ne l\in\P$，则 $k\ne\pm l$。
+$$(k+l,k+l) = 2 + 2(k,l)\le0.$$
+因此 $k+l\in\Q$。我们来证明，所有的 $k+l$ 位于 $\Q$ 的同一个分支中。
 
-+ 如果 $v\in\Q_+$，则 $v$ 的某个正倍数 $w$ 属于 $\H$，从而 $w$ 属于所有 $\{C_{-k},k\in\P\}$ 的内部。根据 @Pre:contain-time-like，$-\P$ 中任何两个球的交都包含多于一个点，再根据 @Pre:disjoint-pair，$\P$ 中任何两个的交都至多有一个点，结论成立。
-+ 如果 $v\in\Q_-$，同理考察 $-v$ 可得 $-\P$ 中任何两个的交都至多有一个点，结论同样成立。
+取三个不同的元素 $k,l,m\in\P$，则
+$$(k+l, l+m) = 1 + (k,l) + (k,m)+(l,m)\le -2.$$
+所以 $k+l$ 和 $l+m$ 位于 $\Q$ 的同一个分支中。
 
-2 $\Rightarrow$ 1: 不妨设 $\P$ 中任何两个球帽至多只有一个交点。对 $k_1\ne k_2\in\P$，$U=\span\{k_1,k_2\}$ 肯定不是 space-like 的，否则 $U^\bot=k_1^\bot\cap k_2^\bot$ 是 time-like 的，则存在 time-like 的向量 $v$ 满足 $(v,k_1)=(v,k_2)=0$。给 $v$ 乘以适当实数后可以使得 $v\in\H$，从而 $v\in C_{k_1}\cap C_{k_2}$，这与 @Pre:contain-time-like 矛盾。所以 $U$ 不是 space-like 的，即 $|(k_1,k_2)|\geq1$。如果 $(k_1,k_2)\geq1$，则 $C_{k_1}\cap C_{-k_2}$ 和 $C_{-k_1}\cap C_{k_2}$ 中必有一个至多只包含一个点，不妨设 $|C_{k_1}\cap C_{-k_2}|\leq1$。但是根据已知 $C_{k_1}\cap C_{k_2}$ 也至多只包含一个点，从而 $C_{k_1}$ 作为二者的并至多只有一个点，矛盾。所以只能是 $(k_1,k_2)\leq-1$，从而 $\P$ 是球堆。
+由于任意两个二元组之间都可以通过一串“共享一个元素”的二元组连接起来，所以所有的 $k+l\,(k\ne l)$ 都位于 $\Q$ 的同一个分支中。通过适当选择 $\P$ 或者 $-\P$，可以使得这个分支就是 $\Q_+$。根据 @Pre:k-plus-l，$|C_k\cap C_l|\le 1$。
+
+2 $\Rightarrow$ 1: 不妨设对 $\P$ 有 $|C_k\cap C_l|\le1\,(k,l\in\P)$ 恒成立。由 @Pre:k-plus-l，$k+l\in\Q_+$。于是
+$$(k+l,k+l) = 2+2(k,l)\le 0\Rightarrow (k,l)\le -1.$$
+因此 $\P$ 是球堆。显然 $\P$ 不能是平凡球堆。
 $\blacksquare$
-
 
 :::{.definition}
 记 $\Omega_r=\{\omega\in\Omega\mid (\omega,\omega)>0\}$ 是所有实权组成的集合，$\tc_r=\cone{\Omega_r}$ 是由所有实权生成的凸锥。
 :::
 
 ::: {.theorem #real-cone-closure}
-如果 $W$ 是不可约、双曲的，且 level 大于等于 2，则 $\tcr = \cl{\tc}$。
+如果 $W$ 是不可约、双曲的，且 level $\ge2$，则 $\tcr = \cl{\tc}$。
 :::
 
-**证明**：只要证明 $\tcr$ 包含那些非实的基本权 $(\omega_s, \omega_s)\leq 0$ 即可。若如此，则 $\tcr$ 包含全部基本权 $\Delta^\ast$，从而也包含 $\cone{\Delta^\ast}=\barfd$，再结合 $\tcr$ 是 $W$- 不变的，即得 $\tcr$ 包含 $\bigcup\limits_{w\in W}w\barfd=\tc$，从而包含 $\cl{\tc}$。
+**证明**：如果 $W$ 没有实的基本权，那么双曲说明删掉任何一个顶点后的子图都是有限或者仿射的，即 $W$ 的 level $\le1$，矛盾。所以 $W$ 有实的基本权，从而 $\tcr\ne\emptyset$。
 
-设 $\omega_s$ 是任一非实的基本权，记 $I=S-\{s\}$，$W_I$ 为标准椭圆子群。分情况讨论：
+我们只要再证明 $\tcr$ 包含那些非实的基本权 $(\omega_s, \omega_s)\leq 0$ 即可。若如此，则 $\tcr$ 包含全部基本权 $\Delta^\ast$，从而也包含 $\cone{\Delta^\ast}=\barfd$，再结合 $\tcr$ 是 $W$- 不变的，即得 $\tcr$ 包含 $\bigcup\limits_{w\in W}w\barfd=\tc$，从而包含 $\cl{\tc}$。
 
-$\color{blue}(\omega_s,\omega_s)<0$
+设 $\omega_s$ 是任一非实的基本权，记 $I=S-\{s\}$，$W_I$ 为标准抛物子群。
+$$V_I=\span\{\alpha_t\mid t\ne s\}$$
+是 $\omega_s$ 的正交补空间。
 
-这时 $\omega_s$ 是 time-like 的，其正交补 $V_I=\span\{\alpha_t\mid t\ne s\}$ 是 space-like 的，从而 $W_I$ 是有限群。任取一个实的基本权 $(\omega_t,\omega_t)>0\,(t\in I)$ 并考虑
-$$v = \sum_{w\in W_I}w(\omega_t).$$
-显然 $v\in\tcr$，并且 $W_I$ 保持 $v$ 不动。特别地对任何 $t\in I$ 都有 $t(v)=v$。这是 $n-1$ 个独立的线性约束，其解空间是一维的，所以 $v$ 和 $\omega_s$ 共线：存在 $a\in\R$ 使得 $v=a\omega_s$。两边同时与 $\alpha_s$ 作内积得到
-$$a = (\alpha_s,v)=\sum_{w\in W_I}(\alpha_s,w(\omega_t))=\sum_{w\in W_I}(w^{-1}(\alpha_s), \omega_t)=\sum_{w\in W_I}(w(\alpha_s), \omega_t).$$
-对任何 $w\in W_I$，$w\alpha_s=\alpha_s+\sum_{i\in I}c_i\alpha_i$ 仍然是正根，所有的系数 $c_i$ 都非负。所以上式右边的每一项
-$$(w(\alpha_s), \omega_t)=\sum_{i\in I}c_i(\alpha_i, w_t) = c_t\geq0.$$
-我们来选择一个特殊的 $w\in W_I$ 使得 $c_t>0$：由于 $\Gamma$ 是连通的，所以 $\Gamma$ 中存在一条从 $s$ 到 $t$ 的路径 $s\sim s_1\sim\cdots\sim s_m=t$，其中每个 $s_i\,(i\geq1)\in I$  且互不相同。不难验证对 $w=s_m\cdots s_1\in W_I$，$w\alpha_s$ 的系数 $c_t>0$，所以 $a$ 严格大于 0，从而 $\omega_s=v/a\in\tcr$。
+取一个实的基本权 $\omega_t,(t\in I)$，并考虑 $t$ 所在的连通分支 $J$。$J$ 要么是有限型的，要么是仿射型的。分情况讨论：
 
-$\color{blue}(\omega_s, \omega_s)=0$
+[$J$ 是有限型]{style="color: blue;"}
 
-这个情形要麻烦一些。这时 $\omega_s$ 的正交补 $\omega_s^\bot$ 是 light-like 的，即子图 $\Gamma\setminus\{s\}$ 是仿射的。所以 $\Gamma\setminus\{s\}$ 由一些仿射或者有限的连通成分组成，由于内积是双曲的，这些连通成分中有且恰有一个是仿射的。任取一个实的基本权 $(\omega_t,\omega_t)>0\,(t\in I)$，分两种情况：
+取轨道平均
+$$v = \sum_{w\in W_J}w(\omega_t).$$
+显然 $v\in\tcr$，并且 $W_J$ 固定 $v$。
 
-1. 如果 $\omega_t$ 属于某个有限型的连通成分 $Y$，类似上面的讨论，$v$ 是 $\omega_s$ 的某个正倍数，从而 $\omega_s\in\tcr$。
+另一方面 $I\setminus J$ 中的单反射也都固定 $\omega_t$，并且它们与 $W_J$ 交换，从而整个 $W_I$ 都固定 $v$。特别地对任何 $t\in I$ 都有 $t(v)=v$。这是 $|I|=\dim V-1$ 个独立的线性约束，其解空间是一维的，所以 $v$ 和 $\omega_s$ 共线：存在 $a\in\R$ 使得
+$$v=\sum_{w\in W_J}w(\omega_t) = a\omega_s.$$
 
-2. 如果 $\omega_t$ 属于某个仿射型的连通成分 $X$，记 $\Gamma_1=X\cup \{s\}$，$Y=\Gamma\setminus\Gamma_1$，则 $Y$ 是有限型，并且 $X$ 和 $Y$ 互不连通（它们必然通过 $s$ 连在一起），从而
-$$\omega_s = \underbrace{(\omega_s, \omega_s)}_{=0}\alpha_s + \sum_{t\ne s} (\omega_s, \omega_t)\alpha_t=\sum_{t\in X} (\omega_s,\omega_t)\alpha_t + \sum_{t\in Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.$$
-这里 $v_1$ 和 $v_2$ 是正交的。于是
-$$(\omega_s, \omega_s)=0\Rightarrow (v_1+v_2,v_1+v_2)=0\Rightarrow (v_1,v_1) + (v_2,v_2) = 0.$$
-由于 $V_X$ 是不可约仿射的，$V_Y$ 是有限的，所以 $v_2=0$，并且 $\R v_1=\rad(V_X)$。从而 $\omega_s=v_1$，并且 $\R \omega_s=\rad(V_X)$。$\omega_s$ 表示为 $\{\alpha_i\mid i\in X\}$ 的线性组合时，所有的系数 $(\omega_s,\omega_i)$ 系数都是非零且同号的。我们断言它们都小于 0。实际上在
-$$\omega_s=\sum_{i\in X} (\omega_s,\omega_i)\alpha_i$$
-两边同时用 $\alpha_s$ 作内积有
-$$1=\sum_{i\in X} (\omega_s, \omega_i)\underbrace{(\alpha_s,\alpha_i)}_{\leq0}.$$
-所以必须所有 $(\omega_s, \omega_i)<0$。\
-于是 $\Gamma_1$ 满足 [这个结论](/coxeter-groups/level/#ideal-vertex) 的条件（取 $I=X,\,p=\omega_t,\,\omega_s=\omega_s$ 代入），从而我们得到
-$$\omega_s\in\cl{\cone{\bigcup_{w\in W_X}w(\omega_t)}}\subset\tcr.$$
+两边同时与 $\alpha_s$ 作内积得到
+$$a = \sum_{w\in W_J}(\alpha_s,w(\omega_t))=\sum_{w\in W_J}(w^{-1}(\alpha_s), \omega_t)=\sum_{w\in W_J}(w(\alpha_s), \omega_t).$$
+对任何 $w\in W_J$，$w\alpha_s=\alpha_s+\sum_{i\in I}c_i\alpha_i$ 仍然是正根，$(w(\alpha_s), \omega_t)$ 是它的 $\alpha_t$- 项的系数，是非负的。所以上式右边每个求和项都非负。
+
+我们来选择一个特殊的 $w\in W_J$ 使得它对应的求和项 $(w(\alpha_s), \omega_t)>0$。这样就有 $a>0$，从而 $\omega_s=v/a\in\tcr$。
+
+由于 $\Gamma$ 是连通的，可以在 $J\cup\{s\}$ 中取一条从 $s$ 到 $t$ 的路径
+$$s\sim s_1\sim\cdots\sim s_m=t.$$
+其中每个 $s_i\,(i\geq1)\in I$  且互不相同。考虑 $w=s_m\cdots s_1\in W_J$。不难验证 $w\alpha_s$ 的 $\alpha_t$- 项系数大于 0。
+
+
+[$J$ 是仿射型]{style="color: blue;"}
+
+这时必有 $(\omega_s,\omega_s)=0$，而且 $J$ 是 $I$ 中唯一的仿射连通分支。
+
+由于 $\omega_s\in\rad(V_I)$，而 $I$ 的其它连通分支都是有限的，所以
+$$\rad(V_J)=\R\omega_s.$$
+记
+$$\omega_s = \sum_{i\in J}c_i\alpha_i.$$
+由于 $J$ 是不可约仿射的，其 $\rad$ 是一维的，所有系数 $c_i$ 非零且同号。
+
+另一方面
+$$1=(\alpha_s,\omega_s) = \sum_{i\in J}c_i(\alpha_s, \alpha_i).$$
+这只能是所有 $c_i<0$。特别地，$(\omega_s,\omega_t) = c_t < 0$。
+
+仿射根系 $\Phi_J$ 是无限的，但是 [它在 $V_J/\R\omega_s$ 中的像有限](/coxeter-groups/three-geometries#phi0-finite)，因此存在 $\alpha,\beta=\alpha+c\omega_s\in\Phi_J$ 且 $c\ne 0$。$\alpha,\beta$ 都是 space-like 的单位向量。
+
+令 $T = s_\beta s_\alpha\in W_J$。直接计算可得
+$$T(x)=x-2c(x,\omega_s)\alpha
++\bigl(2c(x,\alpha)-2c^2(x,\omega_s)\bigr)\omega_s.$$
+令 $\gamma = -2c\alpha$，则上式可以写成
+$$T(x) = x+(x,\omega_s)\gamma-(x,\gamma)\omega_s-\frac12(\gamma,\gamma)(x,\omega_s)\omega_s.$$
+可见 $T$ 是依赖参数 $\gamma$ 的等距变换。用 $T_\gamma$ 代替 $T$ 来表示这个“单参数”族，不难验证有
+$$T_\gamma T_{\gamma'} = T_{\gamma + \gamma'}.$$
+因此
+$$T_\gamma^n(x) = T_{n\gamma}(x)=x + n(x,\omega_s)\gamma - n(x,\gamma)\omega_s-\frac{n^2}{2}(\gamma,\gamma)(x,\omega_s)\omega_s.$$
+代入 $x = \omega_t$ 得到
+$$T_\gamma^n(\omega_t) = \omega_t + n(\omega_t,\omega_s)\gamma - n(\omega_t,\gamma)\omega_s-\frac{n^2}{2}(\gamma,\gamma)(\omega_t,\omega_s)\omega_s.$$
+由于 $(\gamma,\gamma)=4c^2>0$，以及我们证明了 $(\omega_s,\omega_t)<0$，所以
+$$b_n = -\frac{n^2}{2}(\gamma,\gamma)(\omega_t,\omega_s) >0.$$
+显然
+$$\lim_{n\to\infty}\frac{T_\gamma^n(\omega_t)}{b_n} = \omega_s.$$
+由于 $T_\gamma\in W_J$，$\omega_t$ 是实权，每个 $T^n_\gamma(\omega_t)$ 都是实权，所以 $\omega_s\in\tcr$。
+
 $\blacksquare$
 
 :::{.definition}
@@ -439,12 +503,26 @@ $\blacksquare$
 :::
 
 ::: {.theorem #max-packing}
-若 $W$ 是双曲的，则 $\hat{\Omega}_r$ 是非平凡的球堆当且仅当 $\Gamma$ 的 level 是 2，这时 $\hat{\Omega}_r$ 还是极大球堆。
+若 $W$ 是不可约双曲 Coxeter 群，则 $\hat{\Omega}_r$ 是非平凡的球堆当且仅当 $\Gamma$ 的 level 是 2，这时 $\hat{\Omega}_r$ 还是极大球堆。
 :::
 
-**证明**：若 $\Gamma$ 的 level 是 2，则 [$\Omega_r$ 中的元素两两分离](/coxeter-groups/level#level-12)，将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。由于基本权是线性无关的，$\hat{\Omega}_r$ 显然是非平凡的球堆。如果存在某个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $k$ 对应的 $C_k$ 与 $\hat{\Omega}_r$ 中的任何球都没有公共内部的话，则有 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，自然就有 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\tcr=\cone{\Omega_r}$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，这意味着 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$(k,k)=(-k,-k)\leq0$，这与 $(k,k)=1$ 矛盾。这就证明了 level 2 时 $\Omega_r$ 是极大球堆。
+**证明**：
 
-反之若 $\hat{\Omega}_r$ 是一个非平凡球堆，则 $W$ 的 level 必然大于 1，且所有的实权之间两两分离。于是任何两个基本权生成的二维子空间 $\span\{\omega_i,\omega_j\}$ 都是 time-like 或者 light-like 的。又由于 $W$ 是双曲的，从而 $\Gamma\setminus\{i,j\}$ 是 space-like 或者 light-like 的，所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$
+$\Leftarrow$：若 $\Gamma$ 的 level 是 2，根据 [前文的结论](/coxeter-groups/level#level-12)，$\Omega_r$ 中的权两两分离。将其归一化后得到的 $\hat{\Omega}_r$ 仍然两两分离，所以 $\hat{\Omega}_r$ 的元素两两之间的内积 $\leq -1$，从而 $\hat{\Omega}_r$ 给出一个球堆。
+
+下面说明它非平凡。
+
+任取一个实的基本权 $\omega_i$，取一个与 $i$ 相邻的顶点 $j$，则
+$$\omega_i,\quad s_i\omega_i=\omega_i - 2\alpha_i,\quad s_js_i\omega_i = \omega_i-2\alpha_i + 4(\alpha_i, \alpha_j)\alpha_j.$$
+是三个互相不共线的实权。归一化以后它们给出 $\hat{\Omega_r}$ 中三个不同的实权。故 $\hat{\Omega}_r$ 是非平凡的球堆。
+
+再证明极大性。
+
+如果还可以增加一个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，则 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\cone{\Omega_r}$ 成立。进一步由内积连续性，$(k,y)\le0$ 对任何 $y\in\tcr$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，于是 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$(-k,-k)\leq0$，这与 $(k,k)=1$ 矛盾。这就证明了 level 2 时 $\hat{\Omega_r}$ 是极大球堆。
+
+$\Rightarrow$：设 $\hat{\Omega}_r$ 是一个非平凡球堆。我们知道 level 1 的时候所有基本权都不是实的，所以 $W$ 的 level $\ge2$。如果 level > 2，则存在两个顶点 $s,t$ 使得 $\Gamma\setminus\{s,t\}$ 既不是有限的，也不是仿射的。由于内积是 Lorentzian 的，这说明 $U = V_{S\setminus\{s,t\}}$ 包含 time-like 的向量，从而
+$$U^\perp = \span\{\omega_s,\omega_t\}$$
+是正定的。特别地，$\omega_s,\omega_t\in\Omega_r$ 都是实权，并且归一化以后 $|(\hat{\omega_s},\hat{\omega_t})|<1$。这与 $\hat{\Omega}_r$ 是球堆矛盾。所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$
 
 
 # 计算例子
@@ -466,7 +544,7 @@ $\blacksquare$
 
 我们按照如下步骤来分别计算 $\{\alpha_i\}$ 和 $\{\hat{\omega}_j\}$：
 
-1. 第一个实球 $\hat{\omega}_1$ 总是可以取为单位球 $B(\mathbf{0},1)$。**并且 $\hat{\omega}_1$ 是无界球**。由于实球之间互不相交，所以 $\hat{\omega}_2,\hat{\omega}_3,\hat{\omega}_4$ 都落在单位球内。
+1. 第一个实球 $\hat{\omega}_1$ 总是可以取为单位球 $B(\mathbf{0},-1)$。**$\hat{\omega}_1$ 是无界球**。由于实球之间互不相交，所以 $\hat{\omega}_2,\hat{\omega}_3,\hat{\omega}_4$ 都落在单位球内。
 2. 两个虚球 $\alpha_3,\alpha_4$ 可以取为过原点的两条直线，法向量分别为
 $$\begin{aligned}
 \n_3&=(1, 0),\\
@@ -514,4 +592,4 @@ $$\begin{aligned}
 
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&t=0&paused=true&muted=false" allowfullscreen></iframe>
 
-可以看到，每个实球都呈现一个二维的 Poincaré 密铺图案。这很好理解，因为如果 $\omega_i$ 是实权，记 $I=S\setminus\{i\}$，则实球 $\hat{\omega}_i$ 与虚球 $\{\alpha_j\mid j\in I \}$ 都正交，这些虚球在 $\hat{\omega}_1$ 中围成一个测地三角形，关于这个三角形三条边的反射生成的群是标准椭圆子群 $W_I$。$W_I$ 保持 $\hat{\omega}_i$ 不动，同时将测地三角形映射为 $\hat{\omega}_i$ 中的双曲密铺。在前面 [$K_4$ 的例子](#K4) 中，有 4 个初始实球，它们每一个都呈现 $\Delta(4,4,4)$ 的双曲密铺；在 [${\rm\color{red}o\color{red}}-{\rm o}-{\rm o}\overset{7}{-}{\rm o}$ 的例子](#337) 中，只有一个初始实球，它呈现 $\Delta(2,3,7)$ 的双曲密铺。
+可以看到，每个实球都呈现一个二维的 Poincaré 密铺图案。这很好理解，因为如果 $\omega_i$ 是实权，记 $I=S\setminus\{i\}$，则实球 $\hat{\omega}_i$ 与虚球 $\{\alpha_j\mid j\in I \}$ 都正交，这些虚球在 $\hat{\omega}_i$ 中围成一个测地三角形，关于这个三角形三条边的反射生成的群是标准抛物子群 $W_I$。$W_I$ 保持 $\hat{\omega}_i$ 不动，同时将测地三角形映射为 $\hat{\omega}_i$ 中的双曲密铺。在前面 [$K_4$ 的例子](#K4) 中，有 4 个初始实球，它们每一个都呈现 $\Delta(4,4,4)$ 的双曲密铺；在 [${\rm\color{red}o\color{red}}-{\rm o}-{\rm o}\overset{7}{-}{\rm o}$ 的例子](#337) 中，只有一个初始实球，它呈现 $\Delta(2,3,7)$ 的双曲密铺。
