@@ -97,7 +97,7 @@ $\PL$ **的第一种参数化表示** \
 我们在 $\{e_1,\ldots,e_{n+2}\}$ 这组基下计算。
 
 设 $\y=y_1e_1+\cdots+y_{n+1}e_{n+1}\in\R^{n+1}$，则
-$$\y\in S_n\Leftrightarrow |\y|=1\Leftrightarrow \y+e_{n+2}\in\L.$$
+$$\y\in S^n\Leftrightarrow |\y|=1\Leftrightarrow \y+e_{n+2}\in\L.$$
 即我们有一一映射：
 $$
 \begin{aligned}
@@ -161,7 +161,7 @@ $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}
 
 我们来建立 $\R^n$ 中的球（包括超平面）和 $\S$ 之间的一一对应。
 
-设 $B(\a,r)=\{\x\in\R^n\mid |x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，它将 $\R^n$ 分成有界和无界两个连通分支。我们允许 $r$ 是负数以区分 $B$ 的内部和外部：
+设 $B(\a,r)=\{\x\in\R^n\mid |\x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，它将 $\R^n$ 分成有界和无界两个连通分支。我们允许 $r$ 是负数以区分 $B$ 的内部和外部：
 
 + $r>0$ 时 $B$ 的内部是满足 $|\x-\a|< r$ 的有界分支；
 + $r<0$ 时 $B$ 的内部是满足 $|\x-\a|>|r|$ 的无界分支。
@@ -182,14 +182,14 @@ $$(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{2r}.$$
 
 注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k)=0$。$V$ 中所有形如 $(\jmath(\x),k)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k^\bot$ 的截线。
 
-设 $H(\n,d)=\{\x\in\R^n\mid (\x,\n)=d\}$ 是超平面，$\n$ 是 $B$ 的单位法向量。我们将 $H(\n,d)$ 对应到
+设 $H(\n,d)=\{\x\in\R^n\mid (\x,\n)=d\}$ 是超平面，$\n$ 是 $H$ 的单位法向量。我们将 $H(\n,d)$ 对应到
 $$k=\n + 2d e_\infty.$$
 不难验证同样有 $k\in\S$，并且对 $\x\in\R^n$ 有
 $$(\imath(\x),k)=(\x,\n)-d.$$
 于是：
 
-+ $\x\in B$ 当且仅当 $(\imath(\x),k)=0$；
-+ $\x$ 属于 $B$ 的正半空间当且仅当 $(\imath(\x),k)>0$。
++ $\x\in H$ 当且仅当 $(\imath(\x),k)=0$；
++ $\x$ 属于 $H$ 的正半空间当且仅当 $(\imath(\x),k)>0$。
 
 反过来，任意 $k\in\S$ 都唯一对应 $\R^n$ 中的某个球或者超平面。具体方法是将 $k$ 表示为
 $$k=be_0+\a+ce_\infty\in\S,\quad b,c\in\R.$$
@@ -215,43 +215,6 @@ $$(k_1,k_2)=\frac{r_1^2+r_2^2 - |\a_1-\a_2|^2}{2r_1r_2}.$$
 1. 若 $|(k_1,k_2)|\leq1$，则 $(k_1,k_2)=\cos\theta$，其中 $\theta$ 是两条以 $x,y$ 为切向量的测地线之间的夹角；
 2. 若 $|(k_1,k_2)|>1$，则 $(k_1,k_2)=\pm\cosh\eta$，其中 $\eta$ 是以 $x,y$ 为法向量的两个超平面之间的双曲距离。
 :::
-
-根据内积 $(k_1,k_2)$ 的大小，可以判断球体之间的位置关系：
-
-1. 当 $|(k_1,k_2)|\leq1$ 时两球相交或者相切，这时 $(k_1,k_2)=\cos\theta$，$\theta$ 是两个球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。特别地，$(k_1,k_2)=-1$ 时两球外切，$(k_1,k_2)=1$ 时两球内切。
-2. 当 $|(k_1,k_2)|>1$ 时两球既不相交也不相切，这时 $|(k_1,k_2)|=\cosh\eta$，$\eta$ 是 $k_1,k_2$ 对应的双曲空间中测地线的距离。两球在 $(k_1,k_2)<-1$ 时没有公共的内部，在 $(k_1,k_2)>1$ 时一个完全包含另一个。
-
-|   |   |
-|:---:|:---:|
-| $(k_1,k_2)=\cos\theta(\ell_1,\ell_2)$ |  $(k_1,k_2)=\cosh d(\ell_1,\ell_2)$  |
-|![](/images/coxeter/image0.jpg){width=150} | ![](/images/coxeter/image1.jpg){width=150}  |
-| $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$    | $(k_1,k_2)=-\cosh d(\ell_1,\ell_2)$|
-|![](/images/coxeter/image2.jpg){width=150} | ![](/images/coxeter/image3.jpg){width=150}|
-
-上述结论同样适用于球面和超平面的情形。例如设 $B_1$ 是球面，$B_2$ 是超平面，$k_2=\n+2de_\infty$，则
-$$(k_1,k_2)=\frac{(\a_1,\n)-d}{r_1}.$$
-此时：
-+ 若 $B_1,B_2$ 相交，则 $(k_1,k_2)$ 等于 $B_1$ 在交点处的内法向量和 $B_2$ 的法向量 $\n$ 夹角的余弦；
-+ 若不相交，则 $(k_1,k_2)$ 是 $B_1$ 的球心到 $B_2$ 的有向距离除以 $r_1$。
-
-类似地当 $B_1,B_2$ 都是超平面时，$(k_1,k_2)=(\n_1,\n_2)$ 是它们法向量夹角的余弦。
-
-::: {.proposition #suff-for-disjoint}
-设 $B_1,B_2$ 是两个球，且 $B_1,B_2$ 的内部不相交。设 $k_1,k_2$ 分别是它们对应的 space-like 的单位向量，则 $(k_1,k_2)\leq-1$。
-:::
-
-:::{.note}
-这个命题反过来是不对的。
-:::
-
-**证明**：$B_1$ 和 $B_2$ 内部不相交有如下几种可能：
-
-1. $B_1,B_2$ 都是球，半径 $r_1,r_2$ 都大于 0，并且 $r_1+r_2 \le |\a_1-\a_2|$。
-2. $B_1,B_2$ 都是球，半径 $r_1>0,\, r_2<0$，且 $B_1$ 位于 $B_2$ 另一侧的有界区域，即 $-r_2-r_1\geq |\a_1-\a_2|$。
-3. $B_1$ 是球，其半径 $r_1>0$；$B_2$ 是超平面，且 $B_1$ 位于 $B_2$ 的负半空间，从而其球心 $\a_1$ 到 $(\n,\x)=d$ 的有向距离 $\leq-r_1$，即 $(\a_1,\n)-d\leq -r_1$。
-4. $B_1,B_2$ 是互相平行的超平面，且法向量相反的，即 $(\n_1,\n_2)=-1$。
-
-不难验证这些都可以推出 $(k_1,k_2)\leq-1$。$\blacksquare$
 
 # 球的反演
 
@@ -323,7 +286,7 @@ $$T:V\to\R^2,\quad T(v)=((v,k),(v,l)).$$
 $$P^+ = \R^2_{>0} = \{(x,y)\mid x>0,y>0\}.$$
 则 $P^+$ 也是凸集，也在任意正数缩放下不变。
 
-引理条件告诉我们 $K\cap P^+=\varnothing$。于是凸集分离定理告诉我们，这时必然存在一个仿射超平面分离 $K$ 和 $P$：即存在 $(\lambda,\mu)\ne(0,0)\in\R^2$，$c\in\R$ 使得
+引理条件告诉我们 $K\cap P^+=\varnothing$。于是凸集分离定理告诉我们，这时必然存在一个仿射超平面分离 $K$ 和 $P^+$：即存在 $(\lambda,\mu)\ne(0,0)\in\R^2$，$c\in\R$ 使得
 $$\begin{aligned}
 &\lambda x + \mu y \ge c,\quad \forall (x, y)\in P^+,\\
 &\lambda x + \mu y \le c,\quad \forall (x, y)\in K.
@@ -354,8 +317,8 @@ $$(m, k)\le -1,\quad (m,-k)\le-1.$$
 
 :::{.definition}
 记超平面 $\{v\in V\mid (v,e_{n+2})=1\}$ 与 $\Q_+$ 的“截面”为
-$$\H = \{v\in \Q_+\mid (v, e_{n+2})=1\}.$$
-给定 $k\in S$，定义球帽
+$$\H = \{v\in \Q_+\mid (v, e_{n+2})=-1\}.$$
+给定 $k\in \S$，定义球帽
 $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
 :::
 
@@ -406,11 +369,15 @@ $\blacksquare$
 设 $\P$ 是非空集合，则下面两点是等价的：
 
 1. $\P$ 是一个非平凡的球堆。
-2. 对 $\P$ 或者 $-\P$ 之一，其包含的任何两个球帽 $C_k$ 和 $C_l$ 至多有一个公共点。
+2. 对 $\P$ 或者 $-\P$ 之一，其包含的任何两个不同的球帽 $C_k$ 和 $C_l$ 至多有一个公共点。
 :::
 **证明**：
 
-1 $\Rightarrow$ 2：设 $k\ne l\in\P$，则 $k\ne\pm l$。
+1 $\Rightarrow$ 2：若 $|\P|=2$，只要取 $\P$ 或者 $-\P$ 使得 $k+l\in\Q_+$ 即可。
+
+下设 $|\P|\ge3$。
+
+设 $k\ne l\in\P$，则 $k\ne\pm l$。
 $$(k+l,k+l) = 2 + 2(k,l)\le0.$$
 因此 $k+l\in\Q$。我们来证明，所有的 $k+l$ 位于 $\Q$ 的同一个分支中。
 
@@ -420,7 +387,7 @@ $$(k+l, l+m) = 1 + (k,l) + (k,m)+(l,m)\le -2.$$
 
 由于任意两个二元组之间都可以通过一串“共享一个元素”的二元组连接起来，所以所有的 $k+l\,(k\ne l)$ 都位于 $\Q$ 的同一个分支中。通过适当选择 $\P$ 或者 $-\P$，可以使得这个分支就是 $\Q_+$。根据 @Pre:k-plus-l，$|C_k\cap C_l|\le 1$。
 
-2 $\Rightarrow$ 1: 不妨设对 $\P$ 有 $|C_k\cap C_l|\le1\,(k,l\in\P)$ 恒成立。由 @Pre:k-plus-l，$k+l\in\Q_+$。于是
+2 $\Rightarrow$ 1: 不妨设对 $\P$ 有 $|C_k\cap C_l|\le1\,(k,l\in\P)$ 恒成立。显然 $k\ne\pm l$。由 @Pre:k-plus-l，$k+l\in\Q_+$。于是
 $$(k+l,k+l) = 2+2(k,l)\le 0\Rightarrow (k,l)\le -1.$$
 因此 $\P$ 是球堆。显然 $\P$ 不能是平凡球堆。
 $\blacksquare$
@@ -514,11 +481,11 @@ $\Leftarrow$：若 $\Gamma$ 的 level 是 2，根据 [前文的结论](/coxeter-
 
 任取一个实的基本权 $\omega_i$，取一个与 $i$ 相邻的顶点 $j$，则
 $$\omega_i,\quad s_i\omega_i=\omega_i - 2\alpha_i,\quad s_js_i\omega_i = \omega_i-2\alpha_i + 4(\alpha_i, \alpha_j)\alpha_j.$$
-是三个互相不共线的实权。归一化以后它们给出 $\hat{\Omega_r}$ 中三个不同的实权。故 $\hat{\Omega}_r$ 是非平凡的球堆。
+是三个互相不共线的实权。归一化以后它们给出 $\hat{\Omega}_r$ 中三个不同的实权。故 $\hat{\Omega}_r$ 是非平凡的球堆。
 
 再证明极大性。
 
-如果还可以增加一个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，则 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\cone{\Omega_r}$ 成立。进一步由内积连续性，$(k,y)\le0$ 对任何 $y\in\tcr$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，于是 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$(-k,-k)\leq0$，这与 $(k,k)=1$ 矛盾。这就证明了 level 2 时 $\hat{\Omega_r}$ 是极大球堆。
+如果还可以增加一个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，则 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\cone{\Omega_r}$ 成立。进一步由内积连续性，$(k,y)\le0$ 对任何 $y\in\tcr$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，于是 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$(-k,-k)\leq0$，这与 $(k,k)=1$ 矛盾。这就证明了 level 2 时 $\hat{\Omega}_r$ 是极大球堆。
 
 $\Rightarrow$：设 $\hat{\Omega}_r$ 是一个非平凡球堆。我们知道 level 1 的时候所有基本权都不是实的，所以 $W$ 的 level $\ge2$。如果 level > 2，则存在两个顶点 $s,t$ 使得 $\Gamma\setminus\{s,t\}$ 既不是有限的，也不是仿射的。由于内积是 Lorentzian 的，这说明 $U = V_{S\setminus\{s,t\}}$ 包含 time-like 的向量，从而
 $$U^\perp = \span\{\omega_s,\omega_t\}$$
@@ -574,7 +541,7 @@ $$\begin{aligned}
 6. $\hat{\omega}_3$ 与 $\alpha_1,\alpha_2,\alpha_4$ 正交，这可以得到三个方程。联立解出 $\hat{\omega}_3$。
 7. $\hat{\omega}_4$ 与 $\alpha_1,\alpha_2,\alpha_3$ 正交，也可以得到三个方程，联立解出 $\hat{\omega}_4$。
 
-结果如下图所示，单根 $\alpha_i$ 对应的虚球用虚线绘制，$\hat{\omega}_i$ 对应的实球用实线绘制，同样的 $i$ 使用同样的颜色。上标 $\ast$ 表示该球以无界区域为内部。所以我们有三个无界的球 $\alpha_1,\alpha_2,\omega_1$。
+结果如下图所示，单根 $\alpha_i$ 对应的虚球用虚线绘制，$\hat{\omega}_i$ 对应的实球用实线绘制，同样的 $i$ 使用同样的颜色。上标 $\ast$ 表示该球以无界区域为内部。所以我们有三个无界的球 $\alpha_1,\alpha_2,\hat{\omega_1}$。
 
 ![](/images/coxeter/compute_example_K4.svg){width=500 .fig}
 
