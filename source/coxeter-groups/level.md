@@ -45,6 +45,10 @@ url: "coxeter-groups-level"
 $(W,S)$ 的 level 定义为最小的非负整数 $l$，使得在 $\Gamma$ 中删去任何 $l$ 个顶点后，剩下的每个连通分支都是有限或者仿射的。
 :::
 
+:::{.note}
+**注意** level 的定义依赖于具体的几何实现（Vinberg 记号），一个抽象 Coxeter 群在不同的几何实现下可能有不同的 level。
+:::
+
 <!--more-->
 
 根据定义，有限和仿射 Coxeter 群的 level 都是 0（因为不需要删去任何顶点）。

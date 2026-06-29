@@ -205,7 +205,7 @@ $$\angle (H_{\beta_1},H_{\beta_2}) = \angle (wH_{\beta_1},wH_{\beta_2}).$$
 
 事实上，若 $x\in H_\beta\cap\barfd_1$，则反射 $s_\beta$ 固定 $x$，从而
 $$s_\beta\in\stab{x} = W_{I(x)},\quad I(x)= \{s\in S\mid \langle\alpha_s, x\rangle=0\}.$$
-因为 $x\in H_1$，所以 $I(x)\subsetneq S$。在不可约仿射的情形下，真子群 $W_{I(x)}$ 是有限标准抛物子群。这样的 $W_{I(x)}$ 只有有限多个，因此这样的 $\beta$ 也只有有限多个。所以确实只有有限多个不同的直线 $H_\beta$ 可以与 $\barfd_1$ 相交。
+因为 $x\in H_1$，所以 $I(x)\subsetneq S$。在不可约仿射的情形下，真子群 $W_{I(x)}$ 是有限标准抛物子群。这样的 $W_{I(x)}$ 只有有限多个，因此这样的 $s_\beta$ 也只有有限多个。并且 $s_\beta=s_\gamma\Leftrightarrow \beta=\pm\gamma$，所以确实只有有限多个不同的直线 $H_\beta$ 可以与 $\barfd_1$ 相交。
 
 既然与 $\barfd_1$ 相交的 $H_\beta$ 个数有限，它们之间的非零夹角的可能的取值也有限。从而所有 $H_\beta$ 之间的非零夹角的可能的取值也有限。于是存在正数 $\epsilon>0$ 使得对任意两个不平行的 $H_{\beta_1},H_{\beta_2}$ 都有
 $$\angle (H_{\beta_1},H_{\beta_2}) \ge\epsilon.\quad \beta_1,\beta_2\in\Phi.$$

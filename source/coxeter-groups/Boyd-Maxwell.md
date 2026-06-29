@@ -159,7 +159,7 @@ $$[\y+e_{n+2}] = \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i +\frac{1+y_{n+1}
 记 $\S=\{v\in\LR\mid( v,v)=1\}$ 是所有 space-like 的单位向量组成的集合。
 :::
 
-我们来建立 $\R^n$ 中的球（包括超平面）和 $\S$ 之间的一一对应。
+我们来建立 $\R^n$ 中的**定向球面**（包括超平面）和 $\S$ 之间的一一对应。
 
 设 $B(\a,r)=\{\x\in\R^n\mid |\x-\a|=|r|\}$ 是 $\R^n$ 中以 $\a$ 为中心，半径为 $r\ne 0$ 的球，它将 $\R^n$ 分成有界和无界两个连通分支。我们允许 $r$ 是负数以区分 $B$ 的内部和外部：
 
@@ -180,7 +180,7 @@ $$(\imath(\x),k)=\frac{r^2-|\x-\a|^2}{2r}.$$
 
 鉴于此，我们也把 $B$ 的内部叫做 $B$ 的**正半空间**，$k$ 是指向 $B$ 的正半空间的单位法向量。
 
-注意到 $\imath(\x)$ 和 $\jmath(\x)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k)=0$。$V$ 中所有形如 $(\jmath(\x),k)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k^\bot$ 的截线。
+注意到 $\imath(\x)$ 和 $\jmath(\y)$ 只差一个正的倍数，所以 $\x\in B$ 等价于 $(\jmath(\x),k)=0$。$V$ 中所有形如 $(\jmath(\x),k)=0\,(\x\in\R^n)$ 的点构成 $S^n_1$ 与超平面 $k^\bot$ 的截线。
 
 设 $H(\n,d)=\{\x\in\R^n\mid (\x,\n)=d\}$ 是超平面，$\n$ 是 $H$ 的单位法向量。我们将 $H(\n,d)$ 对应到
 $$k=\n + 2d e_\infty.$$
@@ -272,7 +272,7 @@ $$
 # 一个凸集分离引理
 
 :::{.lemma #hyp-convex-sep}
-设 $k,l$ 是两个 space-like 的向量。如果不存在 time-like 的向量 $v\in\Q_+^\circ$ 使得
+设 $k,l$ 是两个不共线的 space-like 的向量。如果不存在 time-like 的向量 $v\in\Q_+^\circ$ 使得
 $$(v,k)>0,\quad (v, l)>0.$$
 那么存在 $\lambda,\mu>0$ 使得
 $$q = \lambda k + \mu l\in \Q_+.$$
@@ -298,7 +298,7 @@ $$\begin{aligned}
 \end{aligned}$$
 第一个式子告诉我们必然有 $\lambda,\mu\ge0$。第二个式子告诉我们对任何 $v\in\Q_+^\circ$ 都有
 $$(v, \lambda k + \mu l)\le 0.$$
-记 $q = \lambda k + \mu l$，则 $(\Q_+^\circ, q)\le0$，从而 $q\in\Q_+$。
+记 $q = \lambda k + \mu l$，则 $(\Q_+^\circ, q)\le0$。利用 Lorentz 的自对偶性质（$\Q_+$ 和 $\Q_-$ 互为对偶锥），故有 $q\in\Q_+$。
 
 最后，由于 $k,l$ 都是 space-like 的向量，$\lambda,\mu$ 必须都不为 0。$\blacksquare$
 
@@ -316,7 +316,7 @@ $$(m, k)\le -1,\quad (m,-k)\le-1.$$
 这不可能。
 
 :::{.definition}
-记超平面 $\{v\in V\mid (v,e_{n+2})=1\}$ 与 $\Q_+$ 的“截面”为
+记超平面 $\{v\in V\mid (v,e_{n+2})=-1\}$ 与 $\Q_+$ 的“截面”为
 $$\H = \{v\in \Q_+\mid (v, e_{n+2})=-1\}.$$
 给定 $k\in \S$，定义球帽
 $$C_k = \{v\in\H\mid (v,k)\geq0\}.$$
@@ -340,7 +340,9 @@ v,k+l\in\Q_+\Longrightarrow (v,k+l)\le0
 \end{cases}\quad \Longrightarrow (v,k)=(v,l)=(v,k+l)=0.$$
 
 + 如果 $k+l$ 是 time-like 的，则它不可能与 $v$ 正交，所以交集为空。
-+ 如果 $k+l$ 是 light-like 的，则 $v$ 必须与 $k+l$ 共线。而该射线与截面 $\H$ 只有一个交点，因此 $|C_k\cap C_l|\leq1$。
++ 如果 $k+l$ 是 light-like 的，则 $v$ 必须与 $k+l$ 共线。令 $q=k+l$，则
+$$(q,k) = (q,l) = 1 + (k,l)=0.$$
+而 $q\in\Q_+$ 的射线与 $\H$ 恰好交于一点，此点就是 $v$，因此 $|C_k\cap C_l|=1$。
 
 $\Rightarrow$：设 $|C_k\cap C_l|\leq1$。则不存在 $v\in\Q_+^\circ$ 满足
 $$(v,k)>0,\quad (v,l)>0.$$
@@ -397,10 +399,10 @@ $\blacksquare$
 :::
 
 ::: {.theorem #real-cone-closure}
-如果 $W$ 是不可约、双曲的，且 level $\ge2$，则 $\tcr = \cl{\tc}$。
+如果 $\Gamma$ 是不可约、双曲的，且 level $\ge2$，则 $\tcr = \cl{\tc}$。
 :::
 
-**证明**：如果 $W$ 没有实的基本权，那么双曲说明删掉任何一个顶点后的子图都是有限或者仿射的，即 $W$ 的 level $\le1$，矛盾。所以 $W$ 有实的基本权，从而 $\tcr\ne\emptyset$。
+**证明**：如果 $W$ 没有实的基本权，那么双曲说明删掉任何一个顶点后的子图都是有限或者仿射的，即 $\Gamma$ 的 level $\le1$，矛盾。所以 $W$ 有实的基本权，从而 $\tcr\ne\emptyset$。
 
 我们只要再证明 $\tcr$ 包含那些非实的基本权 $(\omega_s, \omega_s)\leq 0$ 即可。若如此，则 $\tcr$ 包含全部基本权 $\Delta^\ast$，从而也包含 $\cone{\Delta^\ast}=\barfd$，再结合 $\tcr$ 是 $W$- 不变的，即得 $\tcr$ 包含 $\bigcup\limits_{w\in W}w\barfd=\tc$，从而包含 $\cl{\tc}$。
 
@@ -451,10 +453,8 @@ $$T(x)=x-2c(x,\omega_s)\alpha
 +\bigl(2c(x,\alpha)-2c^2(x,\omega_s)\bigr)\omega_s.$$
 令 $\gamma = -2c\alpha$，则上式可以写成
 $$T(x) = x+(x,\omega_s)\gamma-(x,\gamma)\omega_s-\frac12(\gamma,\gamma)(x,\omega_s)\omega_s.$$
-可见 $T$ 是依赖参数 $\gamma$ 的等距变换。用 $T_\gamma$ 代替 $T$ 来表示这个“单参数”族，不难验证有
-$$T_\gamma T_{\gamma'} = T_{\gamma + \gamma'}.$$
-因此
-$$T_\gamma^n(x) = T_{n\gamma}(x)=x + n(x,\omega_s)\gamma - n(x,\gamma)\omega_s-\frac{n^2}{2}(\gamma,\gamma)(x,\omega_s)\omega_s.$$
+不难验证有
+$$T_\gamma^n(x)=x + n(x,\omega_s)\gamma - n(x,\gamma)\omega_s-\frac{n^2}{2}(\gamma,\gamma)(x,\omega_s)\omega_s.$$
 代入 $x = \omega_t$ 得到
 $$T_\gamma^n(\omega_t) = \omega_t + n(\omega_t,\omega_s)\gamma - n(\omega_t,\gamma)\omega_s-\frac{n^2}{2}(\gamma,\gamma)(\omega_t,\omega_s)\omega_s.$$
 由于 $(\gamma,\gamma)=4c^2>0$，以及我们证明了 $(\omega_s,\omega_t)<0$，所以
@@ -487,7 +487,7 @@ $$\omega_i,\quad s_i\omega_i=\omega_i - 2\alpha_i,\quad s_js_i\omega_i = \omega_
 
 如果还可以增加一个 space-like 的向量 $k$ 满足 $(k,k)=1$ 且 $(k,\hat{\omega})\leq -1$ 对任何 $\hat{\omega}\in\hat{\Omega}_r$ 成立，则 $(k,\omega)<0$ 对任何 $\omega\in\Omega_r$ 成立，从而 $(k,y)\leq0$ 对任何 $y\in\cone{\Omega_r}$ 成立。进一步由内积连续性，$(k,y)\le0$ 对任何 $y\in\tcr$ 成立。根据 @Pre:real-cone-closure，$\tcr=\cl{\tc}$，于是 $(k,y)\leq0$ 对任何 $y\in\tc$ 成立，即 $-k\in\tc^\ast$。由于 [对偶锥 $\tc^\ast$ 中的向量范数 $\leq0$](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$(-k,-k)\leq0$，这与 $(k,k)=1$ 矛盾。这就证明了 level 2 时 $\hat{\Omega}_r$ 是极大球堆。
 
-$\Rightarrow$：设 $\hat{\Omega}_r$ 是一个非平凡球堆。我们知道 level 1 的时候所有基本权都不是实的，所以 $W$ 的 level $\ge2$。如果 level > 2，则存在两个顶点 $s,t$ 使得 $\Gamma\setminus\{s,t\}$ 既不是有限的，也不是仿射的。由于内积是 Lorentzian 的，这说明 $U = V_{S\setminus\{s,t\}}$ 包含 time-like 的向量，从而
+$\Rightarrow$：设 $\hat{\Omega}_r$ 是一个非平凡球堆。我们知道 level 1 的时候所有基本权都不是实的，所以 $\Gamma$ 的 level $\ge2$。如果 level > 2，则存在两个顶点 $s,t$ 使得 $\Gamma\setminus\{s,t\}$ 既不是有限的，也不是仿射的。由于内积是 Lorentzian 的，这说明 $U = V_{S\setminus\{s,t\}}$ 包含 time-like 的向量，从而
 $$U^\perp = \span\{\omega_s,\omega_t\}$$
 是正定的。特别地，$\omega_s,\omega_t\in\Omega_r$ 都是实权，并且归一化以后 $|(\hat{\omega_s},\hat{\omega_t})|<1$。这与 $\hat{\Omega}_r$ 是球堆矛盾。所以 $\Gamma$ 的 level 只能是 2。$\blacksquare$
 
@@ -505,7 +505,7 @@ $$U^\perp = \span\{\omega_s,\omega_t\}$$
 
 单根系 $\Delta=\{\alpha_i\}_{i=1}^4$ 满足 $(\alpha_i,\alpha_i)=1$，它们对应 4 个虚球。前面已经介绍了，以 $\alpha_i$ 为法向量的单反射 $s_i$ 对应关于 $B_i$ 的反演变换，它们生成了 $(W,S)$。
 
-由于删掉 $K_4$ 的任何顶点后，剩下的是双曲三角群 $\Delta(4,4,4)$，所以基本权 $\Delta^\ast = \{\omega_i\}_{i=1}^4$ 都是实的。归一化以后 $\{\hat{\omega}_i\}_{i=1}^4$ 给出 4 个互相分离的实球。由于 $i\ne j$ 时 $(\alpha_i,\omega_j)=0$，所以 $\alpha_i$ 和 $\hat{\omega}_j$ 正交。又因为 $(\alpha_i,\omega_i)=1$，以及 $\omega_i$ 满足 $0<(\omega_i,\omega_i)\leq1$，所以归一化以后 $(\alpha_i,\hat{\omega}_i)\geq1$，即球 $\alpha_i$ 和 $\hat{\omega}_i$ 有包含关系。我们要求对每个 $i$，实球 $\hat{\omega}_i$ 包含在虚球 $\alpha_i$ 的内部（即正半空间）。这是因为在计算时，我们要反复将平面上的点关于 $\{\alpha_i\}$ 作反演，直到它落入基本区域 $\barfd$ 为止，然后判断这个最终位置属于哪个实球。所以我们一定要让虚球 $\alpha_i$ 包含实球 $\hat{\omega_i}$。
+由于删掉 $K_4$ 的任何顶点后，剩下的是双曲三角群 $\Delta(4,4,4)$，所以基本权 $\Delta^\ast = \{\omega_i\}_{i=1}^4$ 都是实的。归一化以后 $\{\hat{\omega}_i\}_{i=1}^4$ 给出 4 个互相分离的实球。由于 $i\ne j$ 时 $(\alpha_i,\omega_j)=0$，所以 $\alpha_i$ 和 $\hat{\omega}_j$ 正交。又因为 $(\alpha_i,\omega_i)=1$，以及 $\omega_i$ 满足 $0<(\omega_i,\omega_i)\leq1$，所以归一化以后 $(\alpha_i,\hat{\omega}_i)\geq1$，即球 $\alpha_i$ 和 $\hat{\omega}_i$ 有包含关系。我们要求对每个 $i$，实球 $\hat{\omega}_i$ 包含在虚球 $\alpha_i$ 的内部（即正半空间）。这是因为在计算时，我们要反复将平面上的点关于 $\{\alpha_i\}$ 作反演，直到它落入基本区域 $\barfd$ 为止，然后判断这个最终位置属于哪个实球。所以我们一定要让虚球 $\alpha_i$ 包含实球 $\hat{\omega}_i$。
 
 将 $W$ 作用在实球 $\{C_i\}$ 上，得到的所有球即为所要绘制的球堆 $\P=\bigcup_{w\in W,\,1\leq i\leq 4}w(\hat{\omega}_i)$。
 
@@ -545,13 +545,13 @@ $$\begin{aligned}
 
 ![](/images/coxeter/compute_example_K4.svg){width=500 .fig}
 
-注意到关于 $\hat{\omega}_1$ 的反演保持虚球 $\alpha_2,\alpha_3,\alpha_4$ 不变，因为它们都与 $\hat{\omega}_1$ 正交；同时将 $\alpha_1$ 变成另一个关于 $\hat{\omega}_1$ 对称的球 $\gamma_1$。反演变换是保角的，所以 $\{\gamma_1,\alpha_2,\alpha_3,\alpha_4\}$ 也是一组夹角符合要求的镜面球，但是包含关系发生了改变，变成了 $\gamma_1$ 包含在 $\hat{\omega}_1$ 的内部。这是错误的。这就是为什么前面求解 $\alpha_1$ 的半径时我们要取那个较小的解（这两个解给出的球心形如 $r_1\x$ 和 $r_2\x\,(\x\in\R^2)$，所以半径较小者一定在单位球内部）。
+注意到关于 $\hat{\omega}_1$ 的反演保持虚球 $\alpha_2,\alpha_3,\alpha_4$ 不变，因为它们都与 $\hat{\omega}_1$ 正交；同时将 $\alpha_1$ 变成另一个关于 $\hat{\omega}_1$ 对称的球 $\gamma_1$。反演变换是保角的，所以 $\{\gamma_1,\alpha_2,\alpha_3,\alpha_4\}$ 也是一组夹角符合要求的镜面球，但是包含关系发生了改变，变成了 $\gamma_1$ 包含在 $\hat{\omega}_1$ 的内部。这是错误的。这就是为什么前面求解 $\alpha_1$ 的半径时我们要取那个较小的解（这两个解给出的球心形如 $r_1\x$ 和 $r_2\x\,(\x\in\R^2)$，且关于单位球互为反演球，所以半径较小者一定在单位球内部）。
 
 我们再举一个只有一个实权的例子：
 
 ![](/images/coxeter/337.svg){.fig width=250 #337}
 
-这个群只有第一个顶点是实的，所以整个球堆完全由一个实球 $\hat{\omega}_1$ 生成：
+这个群只有第一个顶点是实的，所以整个球堆完全由一个实球 $\\hat{\omega}_1$ 生成：
 
 ![](/images/coxeter/compute_example_337.svg){width=500 .fig}
 
