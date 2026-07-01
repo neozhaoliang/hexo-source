@@ -78,7 +78,7 @@ $$1, 2, 1, 3, 2, 1, 2, 4, 3, 1$$
 | 8
 :::
 
-用记号 $\ssyt(n,\lambda)$ 表示所有形状为 $\lambda$，并且填入的数字不超过 $n$ 的半标准 Young 表组成的集合。显然若要使得此集合非空必须有 $n\geq l(\lambda)$（SSYT 从上到下是递增的，第一列的最后一行填入的整数至少是 $l(\lambda)$）。当 $|\lambda|=n$ 时我们也将其简写为 $\ssyt(\lambda)$。类似地，${\rm SYT}(\lambda)$ 表示所有形状为 $\lambda$ 的标准 Young 表的集合。
+用记号 $\ssyt(n,\lambda)$ 表示所有形状为 $\lambda$，并且填入的数字不超过 $n$ 的半标准 Young 表组成的集合。显然若要使得此集合非空必须有 $n\geq l(\lambda)$（SSYT 从上到下是递增的，第一列的最后一行填入的整数至少是 $l(\lambda)$）。此外用 ${\rm SYT}(\lambda)$ 表示所有形状为 $\lambda$ 的标准 Young 表的集合。
 
 文章开头的投票序列问题本质上等价于计算集合 ${\rm SYT}(\lambda)$ 的大小。具体来说，每个符合要求的投票序列都可以唯一地转化为一个标准 Young 表，方法如下：
 
@@ -209,7 +209,7 @@ table {max-width: 36%}
 
 **关键观察**：
 
-> 在任意一行中，未匹配的元素总是构成一段连续的序列。即设 $i=x\leq y\leq i+1$ 是两个未匹配的元素，则它们中间不可能有匹配的元素。
+> 如果一行中有两个未匹配的 $i$ 或 $i+1$，那么位于它们之间的所有 $i$ 或 $i+1$ 也都是未匹配的。因此，一行中的未匹配元素构成一段连续区间，并且形如若干个 $i$ 后接若干个 $i+1$。
 
 设某一行中的未匹配元素形如：$r$ 个 $i$ 紧接着 $s$ 个 $i+1$，我们将其替换为 $s$ 个 $i$ 紧接着 $r$ 个 $i+1$，保持其他部分不变。对 Young 表的每一行都执行这一操作，得到新表 $T^\ast$，此时 $T^\ast$ 仍然是一个合法的半标准 Young 表。
 
@@ -226,16 +226,16 @@ table {max-width: 36%}
 
 # Jacobi-Trudi 恒等式
 
-除了通过半标准 Young 表的生成函数定义之外，Schur 多项式还有许多等价的表达方式。本节中，我们将 Schur 多项式表示为齐次对称多项式行列式的形式。
+除了通过半标准 Young 表的生成函数定义之外，Schur 多项式还有许多等价的表达方式。本节中，我们将 Schur 多项式表示为完全齐次对称多项式行列式的形式。
 
 :::{.definition}
 记 $h_k(x_1,\ldots,x_n)$ 为所有次数为 $k$ 的单项式之和：
 $$h_k(x_1,\ldots,x_n)=\sum_{\begin{subarray}{c}\alpha_1+\alpha_2+\cdots+\alpha_n=k\\\alpha_i\in\mathbb{Z}_{\geq0}\end{subarray}} x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_n^{\alpha_n}.$$
-约定 $h_0=1$，$k<0$ 时 $h_{k}=0$。$h_k$ 也是对称多项式，称为**齐次对称多项式**。
+约定 $h_0=1$，$k<0$ 时 $h_{k}=0$。$h_k$ 也是对称多项式，称为**完全齐次对称多项式**。
 :::
 
 :::{.example}
-$h_2(x_1,\ldots,x_n)=\sum_{i=1}^n x_n^2 + \sum_{1<i<j<n}x_ix_j$。
+$h_2(x_1,\ldots,x_n)=\sum_{i=1}^n x_n^2 + \sum_{1\le i<j\le n}x_ix_j$。
 :::
 
 :::{.theorem}
@@ -274,7 +274,7 @@ $$
 | 3  | 4  | 4  |
 | 4  | 5  |
 
-其中，$T$ 的每一行是一个长度为 $\lambda_i$ 的递增数列，该数列对应一条从 $(0,1)$ 到 $(\lambda_i,n)$ 的 Gauss 路径，即这一行的“台阶图”。
+其中，$T$ 的每一行是一个长度为 $\lambda_i$ 的弱递增数列，该数列对应一条从 $(0,1)$ 到 $(\lambda_i,n)$ 的 Gauss 路径，即这一行的“台阶图”。
 
 ![](/images/schur/jacobi-trudi.gif){width=600 .fig}
 
@@ -288,7 +288,7 @@ $$
 
 反过来每一个这样的不相交的路径组也对应于一个半标准 Young 表。
 
-令水平线 $y=k$ 的权值为 $x_k$，垂直边的权值一律为 1，每条路径的权重是其所含各边的权重乘积。不难验证从 $A_j=(-j,1)$ 到 $B_i=(-i+\lambda_i,n)$ 的所有 Gauss 路径权重之和是齐次对称多项式 $h_{\lambda_i-i+j}$。于是由 Gessel-Viennot 引理，行列式 $\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq n}$ 给出了所有不相交路径组的权重之和。另一方面每个不相交路径组的权重正是它对应 Young 表的权重 $X^{c(T)}$，所以
+令水平线 $y=k$ 的权值为 $x_k$，垂直边的权值一律为 1，每条路径的权重是其所含各边的权重乘积。不难验证从 $A_j=(-j,1)$ 到 $B_i=(-i+\lambda_i,n)$ 的所有 Gauss 路径权重之和是齐次对称多项式 $h_{\lambda_i-i+j}$。由于只有恒等置换可以给出不相交路径组，所以由 Gessel-Viennot 引理，行列式 $\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq n}$ 给出了所有不相交路径组的权重之和。另一方面每个不相交路径组的权重正是它对应 Young 表的权重 $X^{c(T)}$，所以
 $$s_\lambda=\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq n}.$$
 这就证明了 Jacobi-Trudi 恒等式。
 
@@ -312,7 +312,7 @@ $$a_{\lambda+\rho}s_{\mu}=\sum_{T\in\mathrm{SSYT}(n,\mu)\text{ and $T$ good}}a_{
 
 > A Concise Proof of the Littlewood-Richardson Rule, by John R. Stembridge.
 
-**证明**：由于 $s_\mu$ 是对称多项式，因此对任何置换 $\sigma\in S_n$，当 $T$ 跑遍 $\ssyt(n,\mu)$ 时，集合 $\{c(T)\}$ 与集合 $\{\sigma(c(T))\}$ 是相同的，所以
+**证明**：由于 $s_\mu$ 是对称多项式，因此对任何置换 $\sigma\in S_n$，所以当 $T$ 跑遍 $\ssyt(n,\mu)$ 时，
 $$
 s_{\mu}=\sum_{T\in\ssyt(n,\mu)} X^{c(T)} = \sum_{T\in\ssyt(n,\mu)} X^{\sigma(c(T))}.
 $$
@@ -326,7 +326,6 @@ a_{\lambda+\rho}s_\mu&=\sum_{\sigma\in S_n}\text{sgn}(\sigma)X^{\sigma(\lambda+\
 &=\sum_{T\in\ssyt(n,\mu)}a_{\lambda+c(T)+\rho}.\end{aligned}$$
 
 接下来，我们将借助 Bender-Knuth 对合，把求和项中坏的那些 $T$ 两两配对抵消掉，从而剩下的和项都是好的 $T$。
-
 
 设 $T$ 是一个坏 Young 表，则存在 $j$ 使得 $\lambda+c(T_{\geq j})$ 不是一个分拆，在所有这样的 $j$ 中，选取最大的那个。选好 $j$ 以后，由于 $\lambda+c(T_{\geq j})$ 不是分拆，因此存在 $k$ 使得
 $$\lambda_k+c_k(T_{\geq j}) < \lambda_{k+1}+c_{k+1}(T_{\geq j}).$$
@@ -367,7 +366,7 @@ $$s_{\mu}=\frac{a_{\mu+\rho}}{a_\rho}.$$
 设 $\lambda\vdash n$，$F_\lambda$ 是其 Ferrers 图，记 $v=(i,j)$ 为 $F_\lambda$ 中第 $i$ 行第 $j$ 列位置的方格 （只考虑那些有方格的位置）。我们计算那些与 $v$ 同行但是位置在 $v$ 的右边，以及与 $v$ 同列但是位置在 $v$ 的下方的方格的总数，$v$ 自己也算一个但是只算一次。这个数字称作 $v$ 的钩子长度，记作 $h_v$。
 :::
 
-例如 $\lambda=(5, 4, 3, 2, 1)$ 的 Ferrers 图中，$v=(1, 1)$ 的钩子长度 $h_v=5$。
+例如 $\lambda=(5, 4, 3, 2, 1)$ 的 Ferrers 图中，$v=(2,2)$ 的钩子长度 $h_v=5$。
 
 |   |   |   |   |   |
 |:-:|:-:|:-:|:-:|:-:|
@@ -420,11 +419,13 @@ $$\{0,1,\ldots,h_{k1}\}=\{h_{k1}-h_{i1} \mid k\leq i\leq r\}\sqcup \{h_{kj}\mid 
 
 前者正是集合 $\{\mu_k-\mu_i\mid k\leq i\leq r\}$，这就证明了 @Pre:lemmaB。$\blacksquare$
 
-最后我们来完成钩长公式的证明：这里使用了一个小技巧：考虑关于无穷多个变元的对称多项式环 $\Lambda[x_1,\ldots,x_n,\ldots]$，任何 $k$ 变元的 Schur 多项式都是 $\Lambda$ 中的元素。$\Lambda$ 到有理数域上的单变元形式幂级数环 $\mathbb{Q}[t]$ 有一个同态 $\theta$：
+最后我们来完成钩长公式的证明：这里使用了一个小技巧：考虑关于无穷多个变元的对称多项式环 $\Lambda[x_1,\ldots,x_n,\ldots]$，任何 $k$ 变元的 Schur 多项式都是 $\Lambda$ 中的元素通过令 $x_{k+1}=x_{k+2}=\cdots=0$ 得到的。$\Lambda$ 到有理数域上的单变元多项式环 $\mathbb{Q}[t]$ 有一个同态 $\theta$：
 $$\theta(f) = \sum_{k=0}^\infty f_k \frac{t^k}{k!}.$$
 其中 $f_k$ 是 $f$ 中单项式 $x_1x_2\cdots x_k$ 的系数。不难验证 $\theta$ 是 $\Lambda\to \mathbb{Q}[t]$ 的代数同态 [^1]。
 
-在齐次对称多项式 $h_k$ 中，其形如 $x_1x_2\cdots x_n$ 的项只有一个，就是 $x_1x_2\cdots x_k$，并且这一项的系数是 1，所以 $\theta(h_k)=\frac{t^k}{k!}$。
+在齐次对称多项式 $h_k$ 中，
+$$[x_1x_2\cdots x_j]h_k = \begin{cases}1,& j=k\\ 0, & j\ne k.\end{cases}$$
+所以 $\theta(h_k)=\frac{t^k}{k!}$。
 
 我们再来分析 $\theta$ 作用在 $n$ 变元 Schur 多项式上的结果 $\theta(s_\lambda(x_1,\ldots,x_n))$。这里我们要求 $\lambda$ 满足 $|\lambda|=n$，即 $\lambda$ 的 Ferrers 图恰好包含 $n$ 个方格。单项式 $x_1x_2\cdots x_k$ 在 $s_\lambda(x_1,\ldots,x_n)$ 中的系数等于每个数字 $\{1,2,\ldots,k\}$ 都恰好使用一次的不同填法的个数，这只能是 $k=n$ 且得到的是标准 Young 表，这样的填法有 $f_\lambda$ 种，所以
 $$\theta(s_\lambda(x_1,\ldots,x_n))=f_\lambda \frac{t^n}{n!}.$$
@@ -440,7 +441,7 @@ $$f_\lambda = n!\cdot \det\begin{pmatrix}
 \cdots & \cdots &\cdots&\cdots\\
 \frac{1}{(\lambda_r-r+1)!} & \frac{1}{(\lambda_r-r+2)!} & \cdots & \frac{1}{\lambda_r!}
 \end{pmatrix}.$$
-它的最后一列恰好是 $\{\mu_i!\mid 1\leq i\leq r\}$，提出来以后得到
+它的最后一列恰好是 $\{\frac{1}{\mu_i!}\mid 1\leq i\leq r\}$，提出来以后得到
 $$f_\lambda = \frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot \det\begin{pmatrix}
 \mu_1^{\underline{r-1}}& \mu_1^{\underline{r-2}} & \cdots & \mu_1^{\underline{0}}\\
 \mu_2^{\underline{r-1}} & \mu_2^{\underline{r-2}} & \cdots & \mu_2^{\underline{0}}\\
@@ -466,5 +467,5 @@ g(p_1,p_2,\ldots) &\to g(t, 0, 0,\ldots)
 则 ${\rm ex}$ 是代数同态。${\rm ex}$ 实际上就是 $\theta$：
 $${\rm ex}(f) = \sum_{n\geq 0}f_n\frac{t^n}{n!}.$$
 详情可以参考 [@Stanley_Fomin_1999]。
-[^2]: 考虑 $n$ 个变元 $X_1,\ldots,X_n$ 的行列式
+[^2]: 考虑 $r$ 个变元 $X_1,\ldots,X_r$ 的行列式
 $\det(X_i^{\underline{r-j}})$，这个多项式在 $X_i=X_j$ 时是 0，所以它有因子 $\prod_{1\leq i<j\leq r}(X_i-X_j)$。另一方面它的行列式展开以后每一项次数都不超过 $\sum_{i=1}^r(r-i)=\frac{r(r-1)}{2}$，所以比较次数即得它等于 $\prod_{1\leq i<j\leq r}(X_i-X_j)$ 乘以一个常数。再比较 $X_1^{r-1}X_2^{r-2}\cdots X_r^0$ 的系数（来自主对角线）即得这个常数是 1。

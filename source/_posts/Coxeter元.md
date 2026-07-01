@@ -30,14 +30,15 @@ $$(s_is_j)^{m_{ij}}=1,\quad \forall s_i,s_j\in S.$$
 
 取 $V$ 是 $n$ 维实向量空间，$\Delta=\{\alpha_1,\ldots,\alpha_n\}$ 是 $V$ 的一组基，$\Delta$ 叫做一组**单根系**，任何 $\alpha_i$ 叫做**单根**。定义 $V$ 上的内积 $\bullet$ 如下：
 $$\alpha_i\bullet\alpha_j=-\cos\frac{\pi}{m_{ij}}.$$
-在这个内积下，每个 $\alpha_i\in\Delta$ 都是单位向量：$\alpha_i\bullet\alpha_i=1$。
+在这个内积下，每个 $\alpha_i\in\Delta$ 的长度都是 1：
+$$\alpha_i\bullet\alpha_i=1.$$
 
 [@Humphreys90, section 6.2-6.4] 中证明了 $( W,S )$ 是有限群当且仅当 $\bullet$ 是正定的。
 
-记 $A= ( \alpha_i\bullet\alpha_j )_{1\leq i,j\leq n}$ 是 $\bullet$ 在 $\Delta$ 这组基下的 Gram 矩阵，$A$ 叫做 Cartan 矩阵。
+记 $A= ( \alpha_i\bullet\alpha_j )_{1\leq i,j\leq n}$ 是 $\bullet$ 在 $\Delta$ 这组基下的 Gram 矩阵。
 
 规定每个生成元 $s_i\in S$ 在 $V$ 上的作用为
-$$s_i ( v ) = v - 2 ( v\bullet\alpha_i ) \alpha_i,\quad v\in V.$$
+$$s_i ( v ) = v - 2 ( v\bullet\alpha_i )\alpha_i,\quad v\in V.$$
 即 $s_i$ 是关于以 $\alpha_i$ 为法向量的超平面的反射。这个作用将 $W$ 同构地映射为 $O ( V )$ 的一个有限反射子群。
 
 :::{.definition}
@@ -69,7 +70,7 @@ $$x=\prod_{i\in I}s_i,\quad y=\prod_{j\in J}s_j.$$
 $$(\alpha_i\bullet\omega_j)=\delta_{ij}.$$
 ${\bf A}$ 是把每个 $\omega_i$ 映射为 $\alpha_i$ 的线性变换：
 $${\bf A}\omega_i=\alpha_i,\quad \forall 1\leq i\leq n.$$
-则 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下的矩阵就是 Cartan 矩阵 $A$。
+则 ${\bf A}$ 在 $\{\omega_i\}_{i=1}^n$ 这组基下的矩阵就是 Gram 矩阵 $A$。
 
 [@Humphreys90, section 2.6] 证明了矩阵 $A$ 的极小特征值 $c>0$ 的重数是 1，并且对应的特征向量 ${\bf c}=(c_1,\ldots,c_n)$ 的所有分量都是正的。我们将变换 ${\bf A}$ 的特征向量 $\sum_{i=1}^nc_i\omega_i$ 写成两个向量之和：
 $$\sum_{i=1}^nc_i\omega_i=\sum_{i\in I} c_i\omega_i+\sum_{i\in J}c_i\omega_i=\lambda+\mu.$$
@@ -80,13 +81,15 @@ $$\sum_{i=1}^nc_i\omega_i=\sum_{i\in I} c_i\omega_i+\sum_{i\in J}c_i\omega_i=\la
 
 由于 $\gamma$ 置换根系 $\Phi$，所以如果我们把 $\Phi$ 投影到 $P$ 上，就会看到一个具有 $h$ 阶旋转对称性的图案。
 
-不过直接使用上面 $\lambda,\mu$ 的定义来计算 $P$ 是很不方便的，因为其中涉及了对偶基 $\{\omega_i\}$。我们可以绕开对偶基的计算。[@Humphreys90, p. 78] 中提供了以下公式
+不过直接使用上面 $\lambda,\mu$ 的定义来计算 $P$ 是很不方便的，因为其中涉及了对偶基 $\{\omega_i\}$。我们可以绕开对偶基的计算。[@Humphreys90, p. 78] 中提供了以下公式：
 $$\begin{aligned}
 (c-1)\mu+\lambda &=\sum_{i\in I}c_i\alpha_i,\\
 (c-1)\lambda+\mu &=\sum_{j\in J}c_j\alpha_j.
 \end{aligned}$$
 
-由于 $c\ne 1$（1 不是 Coxeter 元的特征值），这两个等式告诉我们
+由于 Coxeter 图不可约且秩至少为 2，存在相邻顶点 $i,j$。取 $z=e_i+e_j$，则根据 Rayleigh 商，有
+$$c\le \frac{z^{\mathsf T}Az}{z^{\mathsf T}z}=1-\cos\frac{\pi}{m_{ij}}<1.$$
+因而上述系数矩阵可逆。从而
 $$P=\span\{\lambda,\,\mu\}=\span\left\{\sum_{i\in I}c_i\alpha_i,\,\sum_{j\in J}c_j\alpha_j\right\}.\tag{$\ast$}\label{eq:alpha}$$
 所以我们完全可以仅通过特征向量 ${\bf c}$ 和 $\Delta$ 得出 $P$ 的一组基。
 
@@ -99,42 +102,59 @@ $$P=\span\{\lambda,\,\mu\}=\span\left\{\sum_{i\in I}c_i\alpha_i,\,\sum_{j\in J}c
 :::{.proposition}
 [@CasselmanCoxeterElement, {lemma. 3.3}]
 
-$2I + \gamma + \gamma^{-1}= ( 2I-A )^2$。
+$2I + \gamma + \gamma^{-1}= 4(I-A )^2$。
 :::
-
-根据这个结论，如果 $s=e^{i\theta}$ 和 $\bar{s}=e^{-i\theta}$ 是 $\gamma$ 的一对共轭的复特征值，$V_s,V_{\bar{s}}$ 分别是对应的特征子空间，记 $U=V_s\oplus V_{\bar{s}}$，则对任何 $u\in U$ 有
-$$( 2I-A )^2 ( u ) = ( 2+e^{i\theta}+e^{-i\theta} ) u= 4\cos^2(\theta/2) u.$$
-即 $U$ 是 $( 2I-A )^2$ 的特征值为 $4\cos^2(\theta/2)$ 的特征子空间。
-
-我们想把这个结论中的平方去掉，即证明 $U$ 是 $2I-A$ 的特征值为 $\pm 2\cos(\theta/2)$ 的特征子空间的直和。
 
 :::{.proposition #u-pm}
-设 $U_{\pm}$ 是 $2I-A$ 的 $\pm2\cos(\theta/2)$ 特征子空间，则 $\dim U_+=\dim U_-$ 并且 $U=U_+\oplus U_-$。
+设 $e^{\pm i\theta}$ 是 $\gamma$ 的一对严格非实特征值，其中 $0<\theta<\pi$，并令
+$$U=V_{e^{i\theta}}\oplus V_{e^{-i\theta}}.$$
+设 $U_{\pm}$ 是 $I-A$ 的特征值 $\pm\cos\frac{\theta}{2}$ 对应的特征子空间。则
+$$U=U_+\oplus U_-,\quad\dim U_+=\dim U_-.$$
 :::
 
-**证明**：显然 $U\supseteq U_+\oplus U_-$。下面证明反向包含。
+**证明**：记 $B=I-A$，$r=\cos\frac{\theta}{2}>0$。
 
-显然 $U$ 是 $2I-A$ 的不变子空间。而 $2I-A$ 是可对角化的，所以 $2I-A$ 限制在 $U$ 上也可以对角化，即 $U$ 是 $2I-A$ 的特征子空间的直和。显然 $2I-A$ 在 $U$ 上的特征值只有可能是 $\pm 2\cos(\theta/2)$，从而 $U\subseteq U_+\oplus U_-$，即 $U=U_+\oplus U_-$。
+我们先证明 $U=\ker(B^2 - r^2I)$。
 
-为了说明 $\dim U_+=\dim U_-$，我们需要下面的引理，这个引理的证明并不是简单的线性代数，它要用到 Coxeter 图 $\Gamma$ 的不可约条件：
+由恒等式 $2I + \gamma + \gamma^{-1}= 4B^2$ 可得对 $u\in U$ 有
+$$4B^2(u) = (2 + e^{i\theta} + e^{-i\theta}) u = \left(4\cos^2\frac{\theta}{2}\right)u = 4r^2u.$$
+即 $U\subseteq \ker(B^2 - r^2I)$。
 
-:::{.lemma #same-characteristic}
-[@CasselmanCoxeterElement, {lemma. 3.5}]
+另一方面，由于 $B^2$ 和 $\gamma$ 交换，$\ker(B^2 - r^2I)$ 是 $\gamma$ 的不变子空间，而 $\gamma$ 作为有限群 $W$ 的元素也是可对角化的，所以 $\ker(B^2 - r^2I)$ 可以分解为 $\gamma$ 的特征空间的直和。若 $t$ 是其中出现的 $\gamma$-特征值，则
+$$2+t+t^{-1} = 4r^2 = 2 + e^{i\theta} + e^{-i\theta}.$$
+从而 $t=e^{\pm i\theta}$。故 $\ker(B^2 - r^2I)\subseteq U$。从而二者相等。
 
-$2I-A$ 和 $A-2I$ 有同样的特征多项式。
-:::
+由于 $B$ 是对称矩阵，可以对角化，因此
+$$\ker(B^2 -r^2I) = \ker(B-rI) \oplus \ker(B+rI) = U_+\oplus U_-.$$
+即
+$$U = U_+\oplus U_-.$$
 
-这个引理告诉我们，若 $\lambda$ 是 $A-2I$ 的特征值，则 $-\lambda$ 也是，并且二者的特征子空间维数相等（$A-2I$ 是可对角化的，特征值的几何重数等于代数重数）。于是 $\dim U_+=\dim U_-$。@Pre:u-pm 得证。$\blacksquare$
+再证 $U_{\pm}$ 的维数相等。按照 Coxeter 图的二部图划分 $I\sqcup J$ 排列单根，则 $B=I-A$ 具有分块形式
+$$B=\begin{pmatrix}
+0& X\\
+X^\mathsf{T} & 0
+\end{pmatrix}.$$
+令
+$$D=\begin{pmatrix}
+I_{|I|}& 0\\
+0 & -I_{|J|}
+\end{pmatrix}.$$
+则 $D^2=I$ 且
+$$DB = -BD.$$
+因此，若 $Bu=ru$，则
+$$B(Du) = -D(Bu) = -r Du.$$
+即 $u\to Du$ 给出了 $U_+\to U_-$ 的线性同构。故 $\dim U_+=\dim U_-$。
+$\blacksquare$
 
-由于 $2I-A$ 的 $\pm2\cos(\theta/2)$ 特征子空间对应的是 $A$ 的 $2\mp2\cos(\theta/2)$ 特征子空间，所以我们得到了下面的推论：
+由于 $I-A$ 的 $\pm\cos(\theta/2)$ 特征子空间对应的是 $A$ 的 $1\mp\cos(\theta/2)$ 特征子空间，所以我们得到了下面的推论：
 
 :::{.corollary #eigenspace-pair}
-$A$ 的不等于 2 的特征值成对出现，它们形如 $2\mp2\cos(\theta/2)$，并且对应的特征子空间 $U_{\pm}$ 的维数是相等的。
+$A$ 的不等于 1 的特征值成对出现，它们形如 $1\mp\cos(\theta/2)$，并且对应的特征子空间 $U_{\pm}$ 的维数是相等的。
 :::
 
 一般来说 $U=U_+\oplus U_-$ 的维数未必是 2，所以 $U$ 不一定是平面。
 
-然而对 $A$ 的极小特征值 $c_\min=2-2\cos(\theta_0/2)$，我们知道 $c_\min$ 的重数是 1。根据 @Pre:eigenspace-pair，$A$ 的极大特征值 $c_\max=2+2\cos(\theta_0/2)$ 的重数也是 1，这时 $U$ 就是一个二维平面，并且 $\gamma$ 在 $U$ 上的作用是一个旋转。我们来说明这个旋转的阶等于 $\gamma$ 的阶 $h$，从而 $U$ 就是要找的 Coxeter 平面：
+然而对 $A$ 的极小特征值 $c_\min=1-\cos(\theta_0/2)$，我们知道 $c_\min$ 的重数是 1。根据 @Pre:eigenspace-pair，$A$ 的极大特征值 $c_\max=1+\cos(\theta_0/2)$ 的重数也是 1，这时 $U$ 就是一个二维平面，并且 $\gamma$ 在 $U$ 上的作用是一个旋转。我们来说明这个旋转的阶等于 $\gamma$ 的阶 $h$，从而 $U$ 就是要找的 Coxeter 平面：
 
 :::{.proposition}
 设 $u,v$ 分别是 $c_\min,c_\max$ 对应的特征向量，$U=\span\{u,v\}$，则 $\gamma$ 作为 $U$ 上的旋转的阶等于 $\gamma$ 的阶 $h$。
@@ -158,12 +178,13 @@ $E_8$ 的 Coxeter 图如下：
 
 ![](/images/coxeter-element/e8-dynkin.svg){width=400 .fig}
 
-我们第一步需要取 $\mathbb{R}^8$ 的一组基 $\Delta=\{\alpha_i\}_{1\leq i\leq 8}$ 作为单根系，并规定它们之间的内积 $\bullet$ 为
-$$(\alpha_i\bullet\alpha_j)_{1\leq i,j\leq 8}=\begin{pmatrix}2&-1&0&0&0&0&0&0\\-1&2&-1&0&0&0&0&0\\0&-1&2&-1&0&0&0&0\\0&0&-1&2&-1&0&0&0\\0&0&0&-1&2&-1&0&-1\\0&0&0&0&-1&2&-1&0\\0&0&0&0&0&-1&2&0\\0&0&0&0&-1&0&0&2\end{pmatrix}.$$
-注意这里每个单根 $\alpha_i\bullet\alpha_i=2$，并不是单位向量，这样主要是为了书写代码更方便。
-
-由于 $\bullet$ 是正定的，所以我们可以适当选择单根系 $\Delta$ 使得在这组基下 $\bullet$ 就是标准的 Euclidean 内积。例如，取 $\alpha_i$ 为下面矩阵的第 $i$ 行：
+我们第一步需要取 $\mathbb{R}^8$ 的一组基 $\Delta=\{\alpha_i\}_{1\leq i\leq 8}$ 作为单根系。例如，取 $\alpha_i$ 为下面矩阵的第 $i$ 行：
 $$\begin{bmatrix}1&-1&0&0&0&0&0&0\\0&1&-1&0&0&0&0&0\\0&0&1&-1&0&0&0&0\\0&0&0&1&-1&0&0&0\\0&0&0&0&1&-1&0&0\\0&0&0&0&0&1&1&0\\-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}\\0&0&0&0&0&1&-1&0\end{bmatrix}.$$
+
+注意前文为了与 Casselman 的记号一致，使用长度为 1 的单根。但在 $E^8$ 的标准坐标表示中，通常令每个根的长度平方为 2。
+
+取 $\bullet$ 为标准欧氏内积，则 Gram 为
+$$C = (\alpha_i\bullet\alpha_j)_{1\leq i,j\leq 8}=\begin{pmatrix}2&-1&0&0&0&0&0&0\\-1&2&-1&0&0&0&0&0\\0&-1&2&-1&0&0&0&0\\0&0&-1&2&-1&0&0&0\\0&0&0&-1&2&-1&0&-1\\0&0&0&0&-1&2&-1&0\\0&0&0&0&0&-1&2&0\\0&0&0&0&-1&0&0&2\end{pmatrix}.$$
 
 用代码来写的话，就是
 
@@ -196,7 +217,7 @@ $\Phi$ 中的向量从形式上看分为两类：
 为了编程方便，我们可以把所有根都乘以 2，使得它们都是整数向量。于是生成根系 $\Phi$ 的代码可以这样写：
 
 ```python
-import itertools
+from itertools import combinations, product
 
 roots = []
 
@@ -229,14 +250,14 @@ for i, r in enumerate(roots):
 
 ```python
 eigenvals, eigenvecs = np.linalg.eigh(cartan)
-u = eigenvecs[:, 0]
-v = eigenvecs[:, -1]
+coeff_min = eigenvecs[:, 0]
+coeff_max = eigenvecs[:, -1]
 
-u = np.dot(u, delta)
-v = np.dot(v, delta)
+u = coeff_min @ delta
+v = coeff_max @ delta
 ```
 
-其中 `eigenvals` 返回 Cartan 矩阵的特征值，按照从小到大排列；`eigenvecs` 的列向量是 Cartan 矩阵的特征向量，也是按照特征值递增的顺序排列，第一列 `u = eigenvecs[:, 0]` 和最后一列 `v = eigenvecs[:, -1]` 就是最小和最大特征值对应的特征向量。
+其中 `eigenvals` 返回 Cartan 矩阵的特征值，按照从小到大排列；`eigenvecs` 的列向量是 Cartan 矩阵的特征向量，也是按照特征值递增的顺序排列，第一列 `coeff_min = eigenvecs[:, 0]` 和最后一列 `coeff_max = eigenvecs[:, -1]` 就是最小和最大特征值对应的特征向量。
 
 把 `eigenvals` 中的特征值打印出来：
 
@@ -248,7 +269,7 @@ v = np.dot(v, delta)
 $$0.01095621 \approx 2-2\cos\frac{\theta_0}{2},\quad \theta_0\approx 2\arccos0.994521895\approx\frac{2\pi}{30}.$$
 所以我们验证了 $\gamma$ 在 $P$ 上的作用是一个 30 阶的旋转，即 $W$ 的 Coxeter 数是 30。
 
-根据上一节末尾的介绍，$\sum_{i=1}^8u_i\alpha_i$ 和 $\sum_{i=1}^8v_i\alpha_i$ 构成 $P$ 的一组正交基。把它们归一化为单位向量，然后计算根系 `roots` 到 $P$ 的投影：
+根据上一节末尾的介绍，$u,v$ 构成 $P$ 的一组正交基。把它们归一化为单位向量，然后计算根系 `roots` 到 $P$ 的投影：
 
 ```python
 u /= np.linalg.norm(u)
