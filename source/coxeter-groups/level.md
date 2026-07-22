@@ -197,7 +197,7 @@ $$G \sim\begin{pmatrix} d & 0\\ 0 & A\end{pmatrix}.$$
 
 **2. 证明 $\omega_s$ 是实权等价于 $\Gamma_s$ level 是 1 且实权都满足 $0<(\omega_s,\omega_s)\le1$**
 
-如果 $\omega_s$ 是实权，由于刚刚证明了 $\Gamma$ 是双曲的，$\Gamma_s$ 的 level 必须是 1。
+如果 $\omega_s$ 是实权，由于刚刚证明了 $\Gamma$ 是双曲的，所以 $\Gamma_s$ 仍然是双曲的。并且 $\Gamma$ 的 level 是 2 保证了 $\Gamma_s$ 的 level $\le1$，从而 $\Gamma_s$ 的 level 必须是 1。
 
 反之，若 $\Gamma_s$ 的 level 是 1，由分块求逆公式，
 $$G^{-1}=\frac{1}{d}\begin{pmatrix}1  & -b^\mathsf{T}A^{-1}\\
@@ -211,7 +211,7 @@ $$0<(\omega_s,\omega_s)\le1.$$
 
 **3. 证明所有的基本权两两分离**
 
-首先任何两个基本权 $\omega_s,\omega_t$ 张成的子空间不可能是正定的，否则这与 $\Gamma$ 是双曲的并且 level 是 2 矛盾。所以只要再证任何两个基本权之间的内积 $(\omega_s,\omega_t)\le0$ 即可。
+首先任何两个基本权 $\omega_s,\omega_t$ 张成的子空间不可能是正定的，否则删去 $s,t$ 后的子图 $\Gamma\setminus\{s,t\}$ 仍然是双曲的，这与 $\Gamma$ 的 level 是 2 矛盾。所以只要再证任何两个基本权之间的内积 $(\omega_s,\omega_t)\le0$ 即可。
 
 + 当 $\omega_s,\omega_t$ 中至少有一个是实权时，不妨设 $\omega_s$ 是实权。根据 $(\ref{eq:schur-inverse})$，
 $$(\omega_s,\omega_t) = -\frac{1}{d}(A^{-1}b)_t.$$
@@ -236,7 +236,7 @@ $$(\omega_i,w\omega_i)\le (\omega_i,\omega_i)-2.$$
 
 由于
 $$s_k(\omega_j)=\begin{cases}\omega_j-2\alpha_j,&s_k=s_j,\\\omega_j,&s_k\ne s_j.\end{cases}$$
-逐项计算可得
+直接望远镜求和可得
 $$w(\omega_j)=\omega_j-2\sum_{\substack{1\le k\le m\\ \\ s_k=s_j}}w_{k-1}(\alpha_j).$$
 两边与 $\omega_i$ 作内积，得到
 $$(\omega_i, w(\omega_j))=(\omega_i, \omega_j)-2\sum_{\substack{1\le k\le m\\ \\ s_k=s_j}}(\omega_i, w_{k-1}(\alpha_j)).$$
@@ -254,27 +254,7 @@ $\blacksquare$
 2. $\Gamma$ 是双曲的，且任何两个不同的权都互相分离。
 :::
 
-**证明**：先注意一个简单事实：
-
-:::{.simple}
-设 $x,y,z$ 满足：
-
-1. $x,z$ 线性无关；
-2. $(y,y)=(z,z)$，$(x,z)\le (x,y)$；
-3. $x,y$ 分离。
-
-则 $x,z$ 也分离。
-:::
-
-事实上，$x,y$ 分离首先给出
-$$(x,z)\le (x,y)\le0.$$
-
-+ 若 $(x,x)\le0$ 或 $(z,z)=(y,y)\le0$，则 $\span\{x,z\}$ 显然不是正定的，从而 $x,z$ 分离。
-+ 若 $x,y,z$ 都是实的，则 $x,y$ 分离意味着
-$$(x,y)^2\ge (x,x)(y,y).$$
-因为 $(x,z)\le(x,y)\le0$，所以
-$$(x,z)^2\ge(x,y)^2\ge(x,x)(y,y)=(x,x)(z,z).$$
-故 $\operatorname{span}\{x,z\}$ 仍不是正定的。从而 $x,z$ 分离。
+**证明**：
 
 $1\Rightarrow 2$：前面已经证明了 level 为 1 或 2 的时候都是双曲的，并且所有基本权都是两两分离的。只要再证明任何两个不同的权都是分离的。设
 $$\lambda = u\omega_i,\ \mu = v\omega_j,\quad u,v\in W.$$
@@ -282,12 +262,45 @@ $$\lambda = u\omega_i,\ \mu = v\omega_j,\quad u,v\in W.$$
 
 首先 $\omega_i$ 和 $w\omega_j$ 必然线性无关。若不然，设 $w\omega_j = c\omega_i$，由于无限不可约 Coxeter 群的 Tits 锥是点锥，所以必须 $c>0$。这时 $c\omega_i$ 和 $\omega_j$ 都属于基本区域 $\barfd$，并且属于同一个 $W$- 轨道。由于每个 $W$- 轨道恰好与 $\barfd$ 交于一点，所以 $c\omega_i=\omega_j$，这只能是 $i=j$ 且 $c=1$。于是任何两个不同的权线性无关。
 
-+ 若 $i\ne j$，取 $x=\omega_i$，$y=\omega_j$，$z=w\omega_j$。由于基本权两两分离，所以 $x,y$ 分离。由 @Pre:key-lemma $(x,z)\le (x,y)$，故 $x,z$ 分离。
-+ 若 $i=j$，取 $x=\omega_i$，$y=s_i\omega_i$，$z=w\omega_i$。则由 @Pre:key-lemma，有
-$$(x,z)\le (x,y)=(\omega_i,\omega_i-2\alpha_i)=(\omega_i,\omega_i)-2 < 0.$$
-以及
-$$(x,x)(y,y)-(x,y)^2 = 4(\omega_i,\omega_i) - 4\le 0.$$
-所以 $x,y$ 分离，从而 $x,z$ 分离。
+根据 @Pre:key-lemma，
+$$(\omega_i,w\omega_j)\le (\omega_i,\omega_j).$$
+
+下面分两种情形证明 $\omega_i$ 与 $w\omega_j$ 分离。
+
+**情形一：$i\ne j$**
+
+由于基本权 $\omega_i,\omega_j$ 两两分离，因此 $(\omega_i,\omega_j)\le 0$ 并且 $\span\{\omega_i,\omega_j\}$ 不是正定的。
+
+如果 $\omega_i$ 和 $\omega_j$ 中有一个不是实的，那么 $\omega_i,w\omega_j$ 中对应的那个也不是实的，它们张成的二维空间不可能正定。再由
+$$(\omega_i,w\omega_j)\le(\omega_i,\omega_j)\le0.$$
+可知 $\omega_i$ 与 $w\omega_j$ 分离。
+
+所以只需考虑 $\omega_i$ 和 $\omega_j$ 都是实权的情形。由于 $\omega_i,\omega_j$ 分离，它们张成的二维空间不是正定的，所以相应的 Gram 行列式非正：
+$$(\omega_i,\omega_j)^2\ge(\omega_i,\omega_i)(\omega_j,\omega_j).$$
+另一方面，
+$$(\omega_i,w\omega_j)\le(\omega_i,\omega_j)\le0.$$
+因此
+$$(\omega_i,w\omega_j)^2\ge(\omega_i,\omega_j)^2\ge(\omega_i,\omega_i)(\omega_j,\omega_j) = (\omega_i,\omega_i)(w\omega_j,w\omega_j) .$$
+所以 $\span\{\omega_i,w\omega_j\}$ 也不是正定的。于是 $\omega_i$ 与 $w\omega_j$ 分离。
+
+**情形二：$i=j$**
+
+现在考虑两个不同的权 $w\omega_i\ne\omega_i$。根据 @Pre:key-lemma 中的严格估计，
+$$(\omega_i,w\omega_i)\le(\omega_i,\omega_i)-2.$$
+如果 $\omega_i$ 不是实的，那么 $\span\{\omega_i,w\omega_i\}$ 不可能正定；同时
+$$(\omega_i,w\omega_i)\le(\omega_i,\omega_i)-2<0.$$
+所以此时二者分离。
+
+下面只需考虑 $\omega_i$ 是实权的情形。Level 2 的实权满足
+$$0<(\omega_i,\omega_i)\le1.$$
+所以
+$$(\omega_i,w\omega_i)\le (\omega_i,\omega_i)-2\le -(\omega_i,\omega_i)<0.$$
+于是
+$$(\omega_i,w\omega_i)^2\ge(\omega_i,\omega_i)^2.$$
+
+又因为 $W$ 保持范数，所以
+$$(\omega_i,w\omega_i)^2\ge(\omega_i,\omega_i)^2=(\omega_i,\omega_i)(w\omega_i,w\omega_i).$$
+故 $\span\{\omega_i,w\omega_i\}$ 不是正定的。从而 $\omega_i$ 与 $w\omega_i$ 分离。
 
 $2\Rightarrow 1$：由于内积 $\inn$ 是双曲的，而子空间 $\span\{\omega_i,\omega_j\}$ 不是正定的，所以其正交补是正定或者半正定的。于是 $\Gamma\setminus\{i,j\}$ 是有限或者仿射的，从而 $\Gamma$ 的 level 等于 1 或 2。
 

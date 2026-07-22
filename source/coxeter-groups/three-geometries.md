@@ -58,52 +58,23 @@ $\blacksquare$
 
 在仿射和双曲的情形，Coxeter 群都是无限群。我们来介绍一点关于无限 Coxeter 群 Tits 锥的一般结论。
 
-:::{.proposition #phi-J-finite}
-设 $W$ 是不可约 Coxeter 群。如果存在 $J\subsetneqq S$ 使得 $\Phi\setminus\Phi_J$ 是有限集，则 $W$ 必然是有限群。
+:::{.lemma #dual-cone-non-trivial}
+设 $W$ 是不可约 Coxeter 群，
+$$A = ((\alpha_s,\alpha_t))_{s,t\in S} = I - B.$$
+其中 $B \ge 0$ 是不可约非负对称矩阵。令
+$$Bz = \rho(B) z,\quad  z=(z_s)_{s\in S} > 0.$$
+是 Perron-Frobenius 正特征向量，并令
+$$\eta = \sum_{z\in S} z_s\alpha_s.$$
+如果 $W$ 是无限群，则有
+$$\rho(B)\ge1  \text{ and } \eta\in \tc^\ast.$$
 :::
 
-**证明**：由于 $J\subsetneqq S$，所以可以设 $S\setminus J=\{s_1,\ldots,s_r\}\,(r\geq1)$。由于 $\Gamma$ 是连通的，任何 $s\in S$ 都可以通过某条路径与 $S\setminus J$ 中的顶点相连。记 $d(s)$ 是顶点 $s$ 与 $S\setminus J$ 之间的最短距离，将 $S$ 按如下方式重新排序为 $S=\{s_1,\ldots,s_n\}$：
-$$S = \underbrace{\overbrace{\{s_1,\ldots,s_r\}}^{d(s)=0}}_{S\setminus J}\cup\underbrace{
-\overbrace{\{s_{r+1},\ldots,s_{r+k}\}}^{d(s)=1},\overbrace{\{s_{r+k+1},\ldots\}}^{d(s)=2},\cdots}_{J}\,.$$
+**证明**：由于 $W$ 是无限群，所以 $A$ 不是正定矩阵，因此 $\rho(B)\ge1$。
 
-记 $\Phi_i^+$ 是所有可以由 $\{\alpha_i,\ldots,\alpha_n\}$ 张成，且 $\alpha_i$ 项系数不为 0 的正根组成的集合：
-$$\Phi_i^+=\{\lambda\in\Phi^+\mid\lambda=\sum_{j=i}^nc_j\alpha_j,\ c_i\ne 0\}.$$
-不难看出有 $\Phi^+=\Phi_1^+\sqcup\cdots\sqcup\Phi^+_n$，以及 $\Phi^+\setminus\Phi_J^+=\Phi_1^+\cup\cdots\cup\Phi^+_r$。由已知 $\Phi\setminus\Phi_J$ 是有限的，所以 $\Phi_1^+,\ldots,\Phi^+_r$ 都是有限的。
+另一方面，对任何 $\alpha_t\in\Delta$，有
+$$(\eta,\alpha_t) = \sum_{s\in S}z_s(\alpha_s,\alpha_t) = (Gz)_t = (1-\rho(B))z_t \le 0.$$
+而且 $\eta\in\cone{\Delta}$。根据 [前文证明过的结论](/coxeter-groups/tits-cone#dual-cone-dot-neg)，$\eta\in\tc^\ast$。特别地，$\tc^\ast\ne\{0\}$。$\blacksquare$
 
-我们用归纳法依次论证 $\Phi^+_{r+1},\ldots,\Phi^+_{n}$ 也都是有限集：设 $r+1\leq i\leq n$ 且已知对所有 $j<i$，$\Phi_1^+,\ldots,\Phi^+_j$ 都是有限集，
-现在考察 $\Phi^+_i$，注意必然有 $d(s_i)\geq1$，所以存在 $j<i$ 使得 $d(s_j)<d(s_i)$ 且 $s_j\sim s_i$。
-
-我们发现：
-
-1. $s_j\Phi_i^+$ 的元素都是正根。这是因为用 $s_j$ 作用不改变 $\Phi^+_i$ 中元素的 $\alpha_i$ 项系数；
-2. $s_j\Phi_i^+\subset\Phi^+_j$。这是因为若 $\lambda=\sum_{k\geq i}c_k\alpha_k\in\Phi^+_i$，则 $$s_j\lambda=\lambda-2\left(\sum_{k\geq i}c_k(\alpha_k,\alpha_j)\right)\alpha_j.$$
-   上面每一项 $c_k(\alpha_k,\alpha_j)$ 都非正，且由于顶点 $s_i,s_j$ 相邻所以 $c_i(\alpha_i,\alpha_j)<0$。所以 $s_j\lambda$ 的 $\alpha_j$ 项系数严格大于 0。
-
-于是 $|\Phi_i^+|\leq |\Phi^+_j|$ 也是有限集。从而所有 $\Phi^+_1,\ldots,\Phi^+_n$ 都是有限集，从而 $\Phi$ 也是有限的。所以 $W$ 是有限群，命题得证。$\blacksquare$
-
-@Pre:phi-J-finite 有如下的推论：
-
-:::{.corollary #tits-cone-pointed}
-如果 $W$ 不可约且无限，则 $\tc\cap-\tc=\{0\}$，即 $\tc$ 是点锥 (pointed cone)。
-:::
-
-**证明**：根据
-$$\tc\cap-\tc=\bigcup_{w_1,w_2\in W}w_1\barfd\cap w_2(-\barfd).$$
-若 $\tc\cap-\tc\ne\{0\}$ 则存在 $x\ne0\in\barfd$ 和 $w\in W$ 满足 $-wx\in\barfd$。令
-$$J=\{s\in S\mid \lfun{\alpha_s}{x}=0\}.$$
-由于 $x\ne 0$，所以 $J\subsetneqq S$ 是真子集。
-
-对任何 $\lambda\in\Phi^+\setminus\Phi^+_J$，显然 $\lfun{\lambda}{x}>0$，并且对这样的 $\lambda$ 有
-$$\lfun{w\lambda}{-wx} = \lfun{\lambda}{-x}<0.$$
-而 $-wx\in\barfd$，所以 $w\lambda$ 是负根，即 $\Phi^+\setminus\Phi^+_J\subset\negf{w}$。于是
-$$|\Phi^+\setminus\Phi^+_J|\leq |\negf{w}|=l(w)<\infty.$$
-由 @Pre:phi-J-finite，$W$ 是有限群，这与已知矛盾。$\blacksquare$
-
-:::{.corollary #dual-cone-non-trivial}
-如果 $W$ 不可约且无限，则对偶锥 $\tc^\ast\ne\{0\}$。
-:::
-
-**证明**：用反证法，若不然，则 $\bartc=\tc^{\ast\ast}=V^\ast$ 是全空间。由于一个凸集的内点和它的闭包的内点集相同（证明见这个 [附件](/papers/sCONVs.pdf)），所以 $\tc=V^\ast$，这与 @Pre:tits-cone-pointed 的结论 $\tc$ 是点锥矛盾。$\blacksquare$
 
 # 仿射
 
@@ -129,23 +100,18 @@ $$\tc=\{0\}\cup\{\delta > 0\}.$$
 $$\{\delta>0\}=\{x\in V^\ast \mid \langle\delta,x\rangle>0\}.$$
 :::
 
-**证明**：由于 $W\delta=\delta$，并且 $\delta=\sum_{s\in S}z_s\alpha_s,\,(z_s>0)$，
-对任意 $x=wy\in\tc$，其中 $y\in\barfd$，有
-$$\langle\delta,x\rangle=\langle w^{-1}\delta,w^{-1}x\rangle=\langle\delta,y\rangle=\sum_{s\in S}z_s\langle\alpha_s,y\rangle\geq0.$$
-等号成立当且仅当所有 $\langle\alpha_s,y\rangle=0$，即 $y=0$，从而 $x=0$。所以
-$$\tc\subseteq \{0\}\cup\{\delta>0\}.$$
-并且 $\delta$ 在 $\tc$ 上非负，故 $\delta\in\tc^\ast$。
+**证明**：这时 $\delta$ 就是 @Pre:dual-cone-non-trivial 中的 $\eta$，于是 $\delta\in\tc^\ast$。
 
 另一方面，[前文中证明了](/coxeter-groups/tits-cone/#dual-cone-nonspace) 任意 $v\in\tc^\ast$ 都满足 $(v,v)\le0$。而仿射情形下内积半正定，所以必有 $(v,v)=0$。因此
 $$\tc^\ast\subset\rad{V}=\R\delta.$$
-结合 $\delta\in\tc^\ast$ 和 [$\tc^\ast$ 是点锥](/coxeter-groups/tits-cone/#tits-cone-dual-pointed)，$-\delta\notin\tc^\ast$，便得到
+结合 [$\tc^\ast$ 是点锥](/coxeter-groups/tits-cone/#tits-cone-dual-pointed)，$-\delta\notin\tc^\ast$，便得到
 $$\tc^\ast=\R_{\geq0}\delta.$$
 于是
 $$\cl{\tc}=(\tc^\ast)^\ast=\{\delta\ge0\}.$$
 由于凸集与其闭包具有相同的内部，故
 $$\{\delta>0\}=(\cl{\tc})^\circ = \tc^\circ\subseteq\tc.$$
 即得
-$$\tc=\{0\}\cup{\delta>0}.$$
+$$\tc=\{0\}\cup\{\delta>0\}.$$
 $\blacksquare$
 
 由于内积 $\inn$ 是半正定的，且 $\rad(V)=\R\delta$，所以 $\inn$ 在商空间 $V/\R\delta$ 上诱导了一个正定的内积。又因为 $W$ 固定 $\delta$，所以 $W$ 也是商空间 $V/\R\delta$ 上的正交变换群。于是我们有同态
@@ -186,7 +152,11 @@ $$H_1 = \bigcup_{w\in W}w\barfd_1.$$
 $|\overline{\Phi}|<\infty$。
 :::
 
-**证明**：设 $\beta\in\Phi$，记
+**证明**：如果 $W$ 的 rank 是 2，则 $\dim(V/\R\delta)=1$，每个根在这个商空间中仍然是单位向量，因此其像只能是同一直线上的两个单位向量 $\pm\alpha$，所以 $\overline{\Phi}$ 自动有限。
+
+下面假设 $W$ 的 rank 大于 2，即 $|S|\ge3$。
+
+设 $\beta\in\Phi$，记
 $$H_\beta =\{x\in H_1\mid \langle\beta, x\rangle = 0\}.$$
 这是 $H_1$ 中余维数为 1 的超平面，你可以理解为一条仿射“直线”。
 
@@ -249,8 +219,7 @@ $W_0$ 是有限群。
 2. $U$ 是 light-like 的当且仅当 $U^\bot$ 是 light-like 的。
 :::
 
-:::{#lorentzinian-decomposition}
-:::
+
 
 取 $z$ 是任一满足 $(z,z)=-1$ 的 time-like 的向量，则正交补空间 $z^\perp$ 是 space-like 的，并且 $V=\R z\oplus z^\perp$。任何 $v\in V$ 可以写成 $v = x + cz\,(x\in z^\perp,c\in\R)$ 的形式。
 
@@ -291,30 +260,13 @@ $$(w,w)=a^2(u,u) + b^2(v,v)\leq0.$$
 
 由于 Lorentzinian 内积是非退化的，所以我们可以把 $V$ 和 $V^\ast$ 等同起来，这样 $\tc$ 和 $\tc^\ast$ 都是 $V$ 的子集。我们将证明，这时 Tits 锥的闭包 $\cl{\tc}$ 必然包含 $\Q_+,\,\Q_-$ 中的一个，同时与另一个的交仅为 $\{0\}$。
 
-首先根据 [前文结论](/coxeter-groups/tits-cone/#dual-cone-nonspace)，$\tc^\ast$ 中任意两个向量之间的内积都非正，特别地对任何 $v\in\tc^\ast$ 有 $(v,v)\leq0$，所以 $\tc^\ast\subset\Q$。
-
-::: {.proposition #dual-cone-trivial-intersection}
-在 $W$ 不可约且双曲的情形，$\tc^\ast\cap \Q_+,\,\tc^\ast\cap\Q_-$ 中必有一个是 $\{0\}$。
-:::
-
-**证明**：若不然，设 $u\in\tc^\ast\cap\Q_+,\,v\in \tc^\ast\cap\Q_-$ 是非零向量，由于 $\tc^\ast$ 是点锥，所以 $u,v$ 不可能是共线的 light-like 的向量。它们位于 $\Q$ 的不同分支，从而 $(u,v)>0$。然而 $u,v\in\tc^\ast$ 导致 $(u,v)\le0$，矛盾。$\blacksquare$
-
-::: {.corollary #dual-cone-belongs-branch}
-在双曲的情形，必有 $\tc^\ast\subset\Q_+$ 或者 $\tc^\ast\subset\Q_-$ 之一成立。
-:::
-
-**证明**：结合 @Pre:dual-cone-trivial-intersection 和 $\tc^\ast\subset\Q=\Q_+\cup\Q_-$ 即得。$\blacksquare$
-
 ::: {.corollary #tits-closure}
-在双曲的情形，如果 $\tc^\ast\subset\Q_+$ 则 $\tc\supset \N_-$。反之若 $\tc^\ast\subset\Q_-$ 则 $\tc\supset\N_+$。
+在双曲的情形，必有 $\tc^\ast\subset\Q_+$ 或者 $\tc^\ast\subset\Q_-$ 之一成立。如果 $\tc^\ast\subset\Q_+$ 则 $\tc\supset \N_-$。反之若 $\tc^\ast\subset\Q_-$ 则 $\tc\supset\N_+$。
 :::
 
-**证明**：首先注意到对任何 $x\in\Q_+$ 和 $y\in\Q_-$ 有 $(x,y)\geq0$，所以 $\Q_+$ 和 $\Q_-$ 互相包含在对方的对偶锥中。
-
-由 @Pre:dual-cone-belongs-branch，不妨设 $\tc^\ast\subseteq\Q_+$，[取对偶以后有](/coxeter-groups/tits-cone/#dual-dual-cone)
-$$\overline{\tc}=\tc^{\ast\ast}\supseteq \Q_+^\ast\supseteq\Q_-.$$
-由于凸集的内点等于其闭包的内点，所以 $$\tc^\circ=(\cl{\tc})^\circ\supset\Q_-^\circ=\N_-.$$
-$\blacksquare$
+**证明**：记 $\eta$ 为 @Pre:dual-cone-non-trivial 中所述。双曲时 $A$ 有一个负特征值，故 $\rho(B)>1$。且
+$$(\eta,\eta)=z^\mathsf{T}Az=(1-\rho(B))z^{\mathsf{T}}z < 0.$$
+所以 $\eta$ 是 time-like 的。不妨设 $\eta\in\Q_+$。由于 $\tc^\ast$ 中的任何向量 $v$ 都满足 $(v,v)\le0$ 和 $(v,\eta)\le0$，所以 $\tc^\ast$ 必然和 $\eta$ 属于同一个分支 $Q_+$。取对偶即得 $\tc\supset \N_-$。$\eta\in\Q_-$ 的情形可以类似得到。$\blacksquare$
 
 :::{.example}
 以双曲群 $(7,3)$ 为例，红色的锥是 $\barfd$，Tits 锥 $\tc=\N_+$。取 $\tc$ 与 hyperboloid 的交给出双曲密铺。

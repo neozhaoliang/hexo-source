@@ -49,7 +49,6 @@ url: todo
 - Stange + sl2c 的 shader 研究实现
 - 分形反射盒子
 - Dirac belt trick
-- Bruhat-Tits tree
 - Escher circle limit
 - Klein quartic 曲面上打台球
 - seascape 详解
@@ -57,7 +56,6 @@ url: todo
 - 算术 Coxeter 群
 - 三维 Kleinian 群
 - 模群面上的测地流和 horocycle 流
-- Thurston 的圆堆算法
 - Clebsch 曲面上的 27 lines
 - [极小曲面](http://bugman123.com/MinimalSurfaces/index.html) 上面跑车
 

@@ -126,7 +126,7 @@ $l(w)$ 具有如下的性质：
 3. $l(w)=0$ 当且仅当 $w=1$。
 4. $l(ws)=l(w)\pm 1$，其中 $w\in W, s\in S$。
 
-前三点都是显然的，只有 4 需要证明。显然 $|l(ws)-l(w)|\leq 1$，所以只要说明 $l(ws)$ 和 $l(s)$ 不相等即可。这一步需要用到自由群的泛性质：
+前三点都是显然的，只有 4 需要证明。显然 $|l(ws)-l(w)|\leq 1$，所以只要说明 $l(ws)$ 和 $l(w)$ 不相等即可。这一步需要用到自由群的泛性质：
 
 设 $F$ 是由集合 $S$ 生成的 [自由群](https://en.wikipedia.org/wiki/Free_group)，定义群同态 ${\rm sgn}: F\to{\pm1}$ 如下：对 $F$ 的每个生成元 $s\in S$ 规定 ${\rm sgn}(s)=-1$，然后将此映射扩充为 $F$ 到 ${\pm1}$ 的群同态。容易验证 $(W,S)$ 的所有生成关系都属于这个同态的核，因此根据 [自由群的泛性质](https://en.wikipedia.org/wiki/Free_group#Universal_property)，${\rm sgn}$ 诱导了一个从 $(W,S)$ 到 ${\pm1}$ 的群同态。若 $w=s_1s_2\cdots s_k$ 是 $w$ 的任一既约表示，则 $${\rm sgn}(w)={\rm sgn}(s_1){\rm sgn}(s_2)\cdots{\rm sgn}(s_k)=(-1)^k=(-1)^{l(w)}.$$ 从而 ${\rm sgn}(ws)={\rm sgn}(w){\rm sgn}(s)=-{\rm sgn}(w)$，这说明 $l(ws)\ne l(w)$，从而第 4 条成立。
 
@@ -205,7 +205,7 @@ $$\begin{aligned}
 &\alpha_t\xrightarrow{\ \rho_s\ }a_2\alpha_s+a_1\alpha_t\xrightarrow{\ \rho_t\ }a_2\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_s\ }a_4\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_t\ }\cdots
 \end{aligned}
 $$
-这两个链的周期都是 $2m$，因为它们的第 $2m+1$ 项各自回到了初始状态：
+这两个链的周期都是 $2m$，因为它们的前 $2m$ 项互不相同，第 $2m+1$ 项等于首项：
 $$\begin{aligned}
 a_{2m+1}\alpha_s+a_{2m}\alpha_t&=\sthe{(2m+1)}\alpha_s+\sthe{(2m)}\alpha_t=\alpha_s,\\
 a_{2m}\alpha_s+a_{2m+1}\alpha_t&=\sthe{(2m)}\alpha_s+\sthe{(2m+1)}\alpha_t=\alpha_t.
