@@ -127,21 +127,9 @@ $$u'= u - \frac{u_s}{v_s} v$$
 
 **3. 证明 $(\omega_s,\omega_t)\leq0$ 且 $\span\{\omega_i,\omega_j\}$ 非正定**
 
-记 Gram 矩阵 $G=((\alpha_s,\alpha_t))_{s,t\in S}$。则 $G$ 的对角元恒为 1、非对角元均非正。所以
-$$G=I-B,\quad B\ge0.$$
-又因为 $\Gamma$ 连通，$B$ 还是一个不可约非负矩阵。
-
-我们已经证明了 $\inn$ 是双曲的，所以 $G$ 有一个负特征值，于是 $B$ 的谱半径满足 $\rho(B)>1$。由 Perron-Frobenius 定理，存在向量
-$$\lambda = (\lambda_s)_{s\in S},\quad \lambda_s>0.$$
-满足
-$$B\lambda = \rho(B)\lambda.$$
-令 $v = \sum_{s\in S}\lambda_s\alpha_s$，则
-$$(v,v)=\lambda^\mathsf{T} G\lambda=\lambda^\mathsf{T}(I-B)\lambda=(1-\rho(B))\lambda^\mathsf{T}\lambda<0.$$
-所以 $v$ 是一个 time-like 的向量。
-
-而对每个 $s\in S$ 都有
-$$(v,\omega_s) = \lambda_s > 0.$$
-根据第二步，所有 $\omega_s$ 都和 $-v$ 位于 $\Q$ 的同一个分支中。于是
+令 $\eta$ 是前文中 [这个关于双曲情形的结论](/coxeter-groups/three-geometries#tits-closure) 中所述，则 $\eta$ 是 time-like 的，并且对任何 $\omega_s$ 都有
+$$(\eta,\omega_s) = z_s > 0.$$
+根据第二步 $(\omega_s,\omega_s)\leq0$，于是所有 $\omega_s$ 都和 $-\eta$ 位于 $\Q$ 的同一个分支中。于是
 $$(\omega_s,\omega_t)\le0,\quad \forall s,t\in S.$$
 特别地，$\span\{\omega_s,\omega_t\}$ 包含非正范数的非零向量，不可能是正定的，所以所有的基本权两两分离。$\blacksquare$
 
