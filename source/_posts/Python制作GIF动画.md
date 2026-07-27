@@ -12,29 +12,29 @@ url: "gifmaze-cn"
 
 + Wilson 均匀生成树算法：
 
-    <img style="margin:0px auto;display:block" src="/images/gifmaze/wilson-bfs.gif" />
+    ![](/images/gifmaze/wilson-bfs.gif){width=500 .fig}
 
-+ Prim 算法：
++ Prim 最小生成树算法：
 
-    <img style="margin:0px auto;display:block" src="/images/gifmaze/prim.gif" />
+    ![](/images/gifmaze/prim.gif){width=500 .fig}
 
-+ Kruskal 算法：
++ Kruskal 最小生成树算法：
 
-    <img style="margin:0px auto;display:block" src="/images/gifmaze/kruskal.gif" />
+    ![](/images/gifmaze/kruskal.gif){width=500 .fig}
 
 + Langton 蚂蚁：
 
-    <img style="margin:0px auto;display:block" src="/images/gifmaze/langton-ant.gif" />
+    ![](/images/gifmaze/langton-ant.gif){width=500 .fig}
 
 + Hilbert 曲线：
 
-    <img style="margin:0px auto;display:block" src="/images/gifmaze/hilbert.gif" />
+    ![](/images/gifmaze/hilbert.gif){width=500 .fig}
 
 + Conway 的生命游戏 (gosper glider gun)：
 
-    <img style="margin:0px auto;display:block" src="/images/gifmaze/gosperglidergun.gif" />
+    ![](/images/gifmaze/gosperglidergun.gif){width=250 .fig}
 
-以上这些动画有一个共同特点：它们都位于二维的网格图上，这也是这个程序的一个限制。
+这些动画虽然来自不同领域，却有一个共同的程序结构：它们都可以表示为二维离散网格上的状态演化。算法每前进一步，只会改变少量格点或边的状态；程序要做的，就是把这串局部变化依次编码成动画帧。这也是这个程序的一个限制。
 
 这个程序有如下特点：
 
@@ -46,7 +46,7 @@ url: "gifmaze-cn"
 
 程序运行的相当快，生成一副 600x400 像素，演示 Wilson 算法的动图只要数秒，得到的文件包含 1000~3000 帧，但大小不超过 1M 左右。没想到吧？:astonished:
 
-这个程序是怎么来的呢？许多年前我在网上闲逛的时候，偶然发现了 d3.js [作者的网站](https://bl.ocks.org/mbostock)（原链接已重定向，作者现在已经创业搞 [observablehq](https://observablehq.com/) 去了），当时我对上面展示的各种丰富炫酷的动态效果惊羡不已，尤其是其中 [Wilson 算法的演示](https://bl.ocks.org/mbostock/11357811)，让我对此算法有了更直观和深入的理解。我立刻萌发了用 Python 制作一个 GIF 版本动画演示的想法，但是思考了许久也不知道从何入手。这里困难的地方在于 Wilson 算法是一个随机算法，其运行时间是不确定的，一个动画里面可能包含数千帧，如果采用把每一帧保存为图像再合并到一起的话，最终得到的文件会非常庞大。而且这种纯暴力的做法逼格不高，我实在不屑于采用。限于能力不足，这个想法只好被暂时压在心底，但是一直念念不忘。过了几年后，一个偶然的机会我接触到了 GIF 图像的编码协议，豁然开朗：为什么不直接把动画过程编码为字节流呢？通过精确定位每一帧的位置，控制 LZW 压缩过程的编码长度，文件过大的问题是可以解决的！前后捣鼓了半个月，反复研究协议细节，debug 了无数次后，这才作出了上面的效果。后来慢慢又加上了其它迷宫算法和元胞自动机的演示。
+这个程序是怎么来的呢？许多年前我在网上闲逛的时候，偶然发现了 d3.js [作者的网站](https://bl.ocks.org/mbostock)（原链接已重定向，作者现在已经创业搞 [observablehq](https://observablehq.com/) 去了），当时我对上面展示的各种丰富炫酷的动态效果惊羡不已，尤其是其中 [Wilson 算法的演示](https://bl.ocks.org/mbostock/11357811)，让我对此算法有了更直观和深入的理解。我立刻萌发了用 Python 制作一个 GIF 版本动画演示的想法，但是思考了许久也不知道从何入手。这里困难的地方在于 Wilson 算法是一个随机算法，其运行时间是不确定的，一个动画里面可能包含数千帧，如果采用先把每一步渲染成一张图片，再合成为 GIF 的方法，最终得到的文件会非常庞大。而且这种纯暴力的做法逼格不高，我实在不屑于采用。限于能力不足，这个想法只好被暂时压在心底，但是一直念念不忘。过了几年后，一个偶然的机会我接触到了 GIF 图像的编码协议，豁然开朗：为什么不直接把动画过程编码为字节流呢？通过精确定位每一帧的位置，控制 LZW 压缩过程的编码长度，文件过大的问题是可以解决的！前后捣鼓了半个月，反复研究协议细节，debug 了无数次后，这才作出了上面的效果。后来慢慢又加上了其它迷宫算法和元胞自动机的演示。
 
 关键的地方有这么几个：
 

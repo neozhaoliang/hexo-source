@@ -169,7 +169,7 @@ $$\det A\cdot \det A_{1,n}^{1,n}=\det A_1^1\det A_n^n-\det A_1^n\det A_n^1.$$
 
 用一个形象的图片描述：
 
-![](/images/MacMahon/dodgson.svg){width=450 .fig}
+![](/../images/MacMahon/dodgson.svg){width=450 .fig}
 
 这个结论的证明不难，可以见 [维基百科](http://en.wikipedia.org/wiki/Dodgson_condensation)，这里就不再写了。
 
@@ -182,45 +182,20 @@ $$\det A\cdot \det A_{1,n}^{1,n}=\det A_1^1\det A_n^n-\det A_1^n\det A_n^1.$$
 $$\det_{1\leq i,j\leq c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
 :::
 
-**证明**：首先记
-$$D_c(a, b) = \det_{1\leq i,j\leq c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right).$$
-由 Dodgson condensation 得到
-$$D_c(a,b)D_{c-2}(a,b) = D_{c-1}(a,b)^2 - D_{c-1}(a-1, b+1)D_{c-1}(a+1,b-1).$$
-设预期的结果为
-$$F_c(a,b) = \prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.$$
-先把 $k$ 方向的乘积消去：
-$$F_c(a,b) = \prod_{i=1}^a\prod_{j=1}^b\frac{i+j+c-1}{i+j-1}.$$
-直接约分可以得到
-$$\frac{F_c(a,b)F_{c-2}(a,b)}{F_{c-1}(a,b)^2} = \frac{(c-1)(a+b+c-1)}{(a+c-1)(b+c-1)}.$$
-以及
-$$\frac{F_{c-1}(a-1,b+1)F_{c-1}(a+1,b-1)}{F_{c-1}(a,b)^2} = \frac{ab}{(a+c-1)(b+c-1)}.$$
-而两个式子的右边满足
-$$ \frac{(c-1)(a+b+c-1)}{(a+c-1)(b+c-1)} +\frac{ab}{(a+c-1)(b+c-1)}=1.$$
-所以
-$$\frac{F_{c}(a,b)F_{c-2}(a,b)}{F_{c-1}(a,b)^2} + \frac{F_{c-1}(a-1,b+1)F_{c-1}(a+1,b-1)}{F_{c-1}(a,b)^2}=1.$$
-这恰好就是 Dodgson 递推。
+首先你需要对 $c=1$ 和 $c=2$ 的情形手算验证（略繁琐，不过只是一个 2 阶矩阵），设 $M_c(a, b)$ 为所求的行列式，注意到
 
-还需要验证二者的初始条件相同。
+$$\begin{cases}(M_c(a,b))_1^1=M_{c-1}(a,b),\\(M_c(a,b))_n^n=M_{c-1}(a,b),\\(M_c(a,b))_1^n=M_{c-1}(a-1,b+1),\\(M_c(a,b))_n^1=M_{c-1}(a+1,b-1),\\(M_c(a,b))^{1,n}_{1,n}=M_{c-2}(a,b).\end{cases}$$
 
-+ $c=1$ 时 $D_1(a,b) = F_1(a, b) =\binom{a+b}{b}$，二者相等。
-+ $c=2$ 时
-$$D_2(a,b)= \det\begin{pmatrix}\binom{a+b}{b}&\binom{a+b}{b-1}\\ \binom{a+b}{b+1}& \binom{a+b}{b}\end{pmatrix}=\frac{(a+b)!(a+b+1)!}{a!b!(a+1)!(b+1)!}.$$
-在 $F_2(a,b)$ 中先固定 $i$，得到
-$$\begin{aligned}
-F_2(a,b)&=\prod_{i=1}^a\left(\prod_{j=1}^b\frac{i+j+1}{i+j-1}\right)=\prod_{i=1}^a\frac{(i+b)(i+b+1)}{i(i+1)}\\
-&=\frac{\frac{(a+b)!}{b!}\frac{(a+b+1)!}{(b+1)!}}{a!(a+1)!}=\frac{(a+b)!(a+b+1)!}{a!b!(a+1)!(b+1)!}.\end{aligned}$$
-于是 $D_2(a,b)=F_2(a,b)$。
-
-$\blacksquare$
+然后应用归纳假设即可。
 
 :::{.note}
-问题的 $q$-计数版本也可以用 Gessel-Viennot 引理来做，只是行列式的求值略复杂。其实也可以用 [Krattenthaler 公式](https://arxiv.org/abs/math/9902004) 来计算，不过那个方法不是我们要讲的。
+问题的 $q-$ 计数版本也可以用 Gessel-Viennot 引理来做，只是行列式的求值略复杂。其实也可以用 [Krattenthaler 公式](https://arxiv.org/abs/math/9902004) 来计算，不过那个方法不是我们要讲的。
 :::
 
 # 番外话
 
 说点八卦的东西。Dodgson 是 19 世纪的英国数学家，细心点的读者可能注意到这位老兄的名字实在让人不敢恭维：Dodgson, dog...son？大概他也知道自己的名字难登大雅之堂，所以他给自己取了一个很好听的笔名：Lewis Carroll（路易斯·卡罗尔）。
 
-你对这个名字没有印象么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学基督堂学院的数学讲师，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。在一次划船旅行中，他给基督堂学院院长的三个女儿讲了一个关于小女孩 Alice 的故事。在 Alice Liddell 的请求下，他把故事写了下来，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机可能不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把 Dodgson 的全部著作都搜集呈上来，于是大臣献上了一本厚厚的《符号逻辑》，当然结果你猜得到的 ...
+你对这个名字没有印象么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学的数学教授，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。他曾经专门为邻居家的女儿写了一部童话来哄她开心，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把 Dodgson 的全部著作都搜集呈上来，于是大臣献上了一本厚厚的《符号逻辑》，当然结果你猜得到的 ...
 
 时光一转到了 20 世纪 80 年代，三位数学家 William Mills，David Robbins 和 Howard Rumsey 在研究计算行列式的快速数值算法时，受 Dodgson 算法的启发，发现了交错符号矩阵猜想。这是计数组合学里面最精彩的猜想之一。我向你推荐 Bressoud 的书 [@Bressoud1999]，我保证里面的故事和《爱丽丝漫游奇境记》一样奇妙 ...
