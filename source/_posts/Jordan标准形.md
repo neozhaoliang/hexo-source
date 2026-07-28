@@ -54,7 +54,7 @@ $J_0$ 叫做特征值为 0 的 Jordan 块。注意 $T$ 是一个幂零算子：$
 
 现在我们做个小变化。把 $T$ 改成 $S=T+\lambda I\,(\lambda\in\mathbb{C})$，$S$ 对应的矩阵
 $$J_\lambda=\begin{pmatrix}\lambda&1&&\\&\ddots&\ddots&\\&&\lambda&1\\&&&\lambda\end{pmatrix}$$
-叫做特征值为 $\lambda$ 的 Jordan 块。$S$ 也是不可分解的线性变换，道理完全相同，它的秩是 $n-1$，只有唯一的特征值 $\lambda$，所以 $V$ 不可能分解成两个非平凡 $S$- 不变子空间的直和。　
+叫做特征值为 $\lambda$ 的 Jordan 块。$S$ 也是不可分解的线性变换，因为一个子空间是 $S$-不变的，当且仅当它是 $T$-不变的。所以由 $T$ 不可分解立即可以推出 $S$ 不可分解。　
 
 Jordan 块是我们在线性变换的世界中找到的“原子”，是那些不能再分解的变换。那是不是每个线性变换都可以拆成若干个 Jordan 块呢？答案是肯定的：
 
@@ -79,7 +79,7 @@ $$T=J_{\mu_1}\oplus\cdots\oplus J_{\mu_s},$$
 $$f(x)=(x-\lambda_1)^{n_1}\cdots(x-\lambda_k)^{n_k},$$
 这里的 $\lambda_i$ 互不相同。令 $V_i=\ker (T-\lambda_i I)^{n_i}$，
 则每个 $V_i$ 都是 $T$- 不变子空间而且
-$$V=V_1\oplus\cdots\oplus V_m.$$
+$$V=V_1\oplus\cdots\oplus V_k.$$
 :::
 
 **证明**：我们从一个简单的引理出发：
@@ -110,7 +110,7 @@ $$v\rightarrow Nv\rightarrow \cdots \rightarrow N^kv\rightarrow 0.$$
 
 对 $V$ 的维数 $\dim V$ 归纳，$\dim V=1$ 时显然结论成立。
 
-现假设结论对所有维数小于 $\dim V$ 的向量空间成立，考虑 $V$ 的像空间 $\im(V)$。这是一个 $N$- 不变子空间，且由于 $N$ 是幂零线性变换所以 $\dim \im(V)<\dim V$，所以可以对 $\im(V)$ 使用归纳假设：存在 $\im(V)$ 的一组基如下，它们构成 $q$ 条不相交的链 $\mathcal{O}_1,\cdots,\mathcal{O}_q$：
+现假设结论对所有维数小于 $\dim V$ 的向量空间成立，考虑像空间 $\im(N) = N(V)$。这是一个 $N$- 不变子空间，且由于 $N$ 是幂零线性变换所以 $\dim \im(V)<\dim V$，所以可以对 $\im(V)$ 使用归纳假设：存在 $\im(V)$ 的一组基如下，它们构成 $q$ 条不相交的链 $\mathcal{O}_1,\cdots,\mathcal{O}_q$：
 
 $$\begin{array}{l}&v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow 0.\\&v_{2,1}\rightarrow v_{2,2}\rightarrow\cdots\rightarrow v_{2,n_2}\rightarrow 0.\\&\cdots\\& v_{q,1}\rightarrow v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow 0.\end{array}$$
 
@@ -120,7 +120,7 @@ $$\begin{array}{l}&w_1\rightarrow v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\ri
 
 那么这些新链包含的向量是否构成 $V$ 的一组基？答案是我们还要补上一些在 $V$ 中长度是 1，但是在 $\im(V)$ 中“消失”了的链：注意 $\{v_{1,n_1},\cdots,v_{q,n_q}\}$ 是 $\ker N$ 中的线性无关元，但是 $\ker N$ 还可能有其它的基向量。将它们扩充为 $\ker N$ 的一组基
 
-$$\{ v_{1,n_1},\cdots,v_{q,n_1}\}\cup \{ w_{q+1},\cdots,w_{K}\},\quad K=\dim\ker N.$$
+$$\{ v_{1,n_1},\cdots,v_{q,n_q}\}\cup \{ w_{q+1},\cdots,w_{K}\},\quad K=\dim\ker N.$$
 
 从而我们最终得到下面的链图：
 
@@ -171,7 +171,7 @@ $$\begin{aligned}
 \ker N: \quad &  \{ {\color{red}{\bullet}} \}\\
 \ker N^2/\ker N: \quad & \{ {\color{green}{\bullet}} \}\\
 \ker N^3/\ker N^2: \quad & \{ {\color{blue}{\bullet}} \}\\
-\ker N^4/\ker N^3=U/\ker N^3: \quad & \{ \bullet \}\\
+\ker N^4/\ker N^3=V/\ker N^3: \quad & \{ \bullet \}\\
 \end{aligned}
 $$
 所以右边第 $i$ 列的长度等于 $\dim\ker N^i - \dim\ker N^{i-1}$。
@@ -214,13 +214,13 @@ $$J_0:\quad v_n\rightarrow v_{n-1}\rightarrow \cdots \rightarrow v_1\rightarrow 
 
 $$J_0^k:\quad \left\{\begin{array}{l} v_n\rightarrow v_{n-k}\rightarrow \cdots \rightarrow0,\\v_{n-1}\rightarrow v_{n-1-k}\rightarrow \cdots\rightarrow 0,\\\cdots\\v_{n-k+1}\rightarrow v_{n-2k+1}\rightarrow \cdots \rightarrow 0.\end{array}\right.$$
 
-所以 $J_0^k$ 有 $k$ 条链，每个链都是一个 Jordan 块，即 $J_0^k$ 的标准形中有 $k$ 个 Jordan 块。设 $n=qk+r$，这里 $0\leq r< k$，则这 $k$ 个 Jordan 块中有 $r$ 个是 $q+1$ 阶的，$k-r$ 个是 $q$ 阶的。
+所以 $J_0^k$ 有 $\min(k,n)$ 条链，每个链都是一个 Jordan 块，即 $J_0^k$ 的标准形中有 $k$ 个 Jordan 块。设 $n=qk+r$，这里 $0\leq r< k$，则这 $k$ 个 Jordan 块中有 $r$ 个是 $q+1$ 阶的，$k-r$ 个是 $q$ 阶的。
 
 举个例子就明白了，一个 8 阶的 0 特征值 Jordan 块 $J_0$，$J_0^3$ 的 Jordan 标准形是什么样子的？这个时候 $J_0^3$ 有 3 个链 $\{v_8,v_5,v_2\}$, $\{v_7,v_4,v_1 \}$, $\{v_6,v_3\}$，所以 $J_0^3$ 的 Jordan 标准形有 2 个 3 阶的 Jordan 块和 1 个 2 阶的 Jordan 块。
 
 总结一下：零特征值的 Jordan 块的高次幂一定会分裂，而且是尽可能均匀的分裂；非零特征值的 Jordan 块的任意次幂都不会分裂。
 
-一个不可约的代数结构，在某种限制或者扩张的意义下却能均匀的「碎裂」，这是代数学中一个常见而重要的现象。比如设 $f$ 是一个有理数域 $\mathbb{Q}$ 上的不可约多项式，$F$ 是 $\mathbb{Q}$ 的一个正规扩域，则如果 $f$ 在 $F$ 上是可约的，那么 $f$ 必然分解成一些次数相同的多项式的乘积：
+一个不可分解的代数结构，在某种限制或者扩张的意义下却能均匀的「碎裂」，这是代数学中一个常见而重要的现象。比如设 $f$ 是一个有理数域 $\mathbb{Q}$ 上的不可约多项式，$F$ 是 $\mathbb{Q}$ 的一个正规扩域，则如果 $f$ 在 $F$ 上是可约的，那么 $f$ 必然分解成一些次数相同的多项式的乘积：
 
 $$f=f_1f_2\cdots f_r,\quad \deg f_1=\cdots=\deg f_r.$$
 
